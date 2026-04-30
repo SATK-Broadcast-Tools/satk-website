@@ -505,7 +505,7 @@ header { margin-bottom: 56px; }
     {
       "@type": "Question",
       "name": "Kostet SATK etwas?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Die Browser-Tools sind vollständig kostenlos und werbefrei. Im SATK Shop gibt es zusätzlich professionelle Standalone-Software und Plugins für Mac und Windows."}
+      "acceptedAnswer": {"@type": "Answer", "text": "Die Browser-Tools sind vollständig kostenlos und werbefrei."}
     }
   ]
 }
@@ -525,7 +525,6 @@ header { margin-bottom: 56px; }
         <span class="logo-tagline">Professional Broadcast &amp; Post Production Tools</span>
       </div>
       <nav class="lang-nav" aria-label="Language">
-        <a href="index.html" style="color:#c8f060;text-decoration:none;font-size:10px;letter-spacing:1px;margin-right:16px;" data-i18n-pro="pro_link">← Pro Software</a>
         <span class="lang-link active" id="btnDE" onclick="setLang('de')" role="button" tabindex="0">DE</span>
         <span class="lang-sep-txt"> · </span>
         <span class="lang-link" id="btnEN" onclick="setLang('en')" role="button" tabindex="0">EN</span>
@@ -652,22 +651,6 @@ header { margin-bottom: 56px; }
       </div>
     </div>
 
-    <div class="tool-card donate-card" data-tool="index.html" data-name="SATK Shop" role="listitem" aria-label="SATK Shop – Pro Software">
-      <div class="card-preview">
-        <canvas id="prev-donate"></canvas>
-      </div>
-      <div class="card-body">
-        <span class="card-tag">Pro Software · VST3 · AU · Standalone</span>
-        <div class="card-name">SATK Shop</div>
-        <div class="card-desc">Professionelle Audio-Software: Broadcast Meter, VoiceOver Studio, R128 Normalizer usw.</div>
-        <div class="card-footer">
-          <button class="card-open">Zum Shop</button>
-          <span class="card-badge">Mac · Windows</span>
-        </div>
-      </div>
-    </div>
-
-
     </div><!-- /.tool-grid -->
   </main>
 
@@ -679,7 +662,7 @@ header { margin-bottom: 56px; }
         <h2 class="seo-h2" data-i18n="seo_h2">Professionelle Audiowerkzeuge — kostenlos im Browser</h2>
         <p data-i18n-html="seo_p0">SATK (Sascha's Audio Toolkit) ist eine wachsende Sammlung professioneller, browserbasierter Audiowerkzeuge für TV, Broadcast, Podcast, Radio und Online-Produktion. Alle Tools laufen vollständig lokal — Audiodaten verlassen niemals das Gerät. Keine Installation, kein Konto, keine Cloud-Uploads. Kostenlos und werbefrei. Optimiert für Desktop, iPad und iPhone.</p>
 
-        <p data-i18n-html="seo_p1">Der <a href="voiceover-processor.html" onclick="openTool('voiceover-processor.html','VoiceOver Processor')">VoiceOver Processor</a> ist ein vollautomatischer Klangoptimierer und Entrauscher für Sprachaufnahmen: spektraler Wiener-Filter-Denoiser, 5-Band-EQ, Kompressor, De-Esser und R128-Normalisierung — für TV (−23 LUFS), YouTube (−14 LUFS) und Podcast (−16 LUFS). Der <a href="r128-normalizer.html" onclick="openTool('r128-normalizer.html','R128 Loudness Normalizer')">R128 Loudness Normalizer</a> normalisiert Audiodateien mit Doppel-Gating und True-Peak-Limiter nach EBU R128 — direkt im Browser, ohne Upload. Im <a href="index.html">SATK Shop</a> gibt es zusätzlich professionelle Standalone-Software und Plugins für Mac und Windows.</p>
+        <p data-i18n-html="seo_p1">Der <a href="voiceover-processor.html" onclick="openTool('voiceover-processor.html','VoiceOver Processor')">VoiceOver Processor</a> ist ein vollautomatischer Klangoptimierer und Entrauscher für Sprachaufnahmen: spektraler Wiener-Filter-Denoiser, 5-Band-EQ, Kompressor, De-Esser und R128-Normalisierung — für TV (−23 LUFS), YouTube (−14 LUFS) und Podcast (−16 LUFS). Der <a href="r128-normalizer.html" onclick="openTool('r128-normalizer.html','R128 Loudness Normalizer')">R128 Loudness Normalizer</a> normalisiert Audiodateien mit Doppel-Gating und True-Peak-Limiter nach EBU R128 — direkt im Browser, ohne Upload.</p>
 
         <p data-i18n-html="seo_p2">Das <a href="podcast-recorder.html" onclick="openTool('podcast-recorder.html','Podcast Recorder')">kostenlose Podcast Studio</a> bietet 4-Kanal-Aufnahme mit Denoiser, EQ, Kompressor, De-Esser und automatischer R128-Normalisierung. Der <a href="auto-mixer.html" onclick="openTool('auto-mixer.html','Auto-Mixer')">Auto-Mixer</a> mischt Sprecher und Beiträge automatisch mit Side-Chain Ducking. Alle Tools laufen direkt im Browser — ohne Installation, ohne Upload, kostenlos und werbefrei.</p>
 
@@ -1579,7 +1562,7 @@ const T = {
     'aud-7': '<strong>Musikproduktion &amp; Mastering</strong> — LUFS-Metering, LRA, Spektralanalyse, Lautheitsstandards',
     'aud-8': '<strong>Entwickler &amp; Studenten</strong> — Web Audio API, DSP, EBU R128 — alles Open in Browser',
     'seo_p0': `SATK (Sascha's Audio Toolkit) ist eine wachsende Sammlung professioneller, browserbasierter Audiowerkzeuge für TV, Broadcast, Podcast, Radio und Online-Produktion. Alle Tools laufen vollständig lokal — Audiodaten verlassen niemals das Gerät. Keine Installation, kein Konto, keine Cloud-Uploads. Kostenlos und werbefrei. Optimiert für Desktop, iPad und iPhone.`,
-    'seo_p1': `Der <a href="voiceover-processor.html" onclick="openTool('voiceover-processor.html','VoiceOver Processor')">VoiceOver Processor</a> ist ein vollautomatischer Klangoptimierer und Entrauscher für Sprachaufnahmen: spektraler Wiener-Filter-Denoiser, 5-Band-EQ, Kompressor, De-Esser und R128-Normalisierung — für TV (−23 LUFS), YouTube (−14 LUFS) und Podcast (−16 LUFS). Der <a href="r128-normalizer.html" onclick="openTool('r128-normalizer.html','R128 Loudness Normalizer')">R128 Loudness Normalizer</a> normalisiert Audiodateien mit Doppel-Gating und True-Peak-Limiter nach EBU R128 — direkt im Browser. Im <a href="index.html">SATK Shop</a> gibt es professionelle Standalone-Software und Plugins.`,
+    'seo_p1': `Der <a href="voiceover-processor.html" onclick="openTool('voiceover-processor.html','VoiceOver Processor')">VoiceOver Processor</a> ist ein vollautomatischer Klangoptimierer und Entrauscher für Sprachaufnahmen: spektraler Wiener-Filter-Denoiser, 5-Band-EQ, Kompressor, De-Esser und R128-Normalisierung — für TV (−23 LUFS), YouTube (−14 LUFS) und Podcast (−16 LUFS). Der <a href="r128-normalizer.html" onclick="openTool('r128-normalizer.html','R128 Loudness Normalizer')">R128 Loudness Normalizer</a> normalisiert Audiodateien mit Doppel-Gating und True-Peak-Limiter nach EBU R128 — direkt im Browser.`,
     'seo_p2': `Das <a href="podcast-recorder.html" onclick="openTool('podcast-recorder.html','Podcast Recorder')">kostenlose Podcast Studio</a> bietet 4-Kanal-Aufnahme mit Denoiser, EQ, Kompressor, De-Esser und R128-Normalisierung. Alle Tools laufen direkt im Browser — kostenlos und werbefrei.`,
     'seo_p3': `Der <a href="auto-mixer.html" onclick="openTool('auto-mixer.html','Auto-Mixer')">kostenlose Automixer</a> mischt Sprecher- und Beitrags-Spur automatisch mit Side-Chain Ducking und EBU R128 Output. Das kostenlose <a href="audio-editor.html" onclick="openTool('audio-editor.html','Audio Editor')">Audio-Schnittprogramm</a> schneidet und trimmt mit Wellenform-Ansicht, Zoom, Undo und R128-Export. Der <a href="instant-player.html" onclick="openTool('instant-player.html','Instant Player')">Instant Player</a> ist Sampler, Soundbox und Instant-Replay-Player in einem: 64 Cue-Slots in 4 Bänken mit Keyboard-Steuerung für Live-Einsatz. Der <a href="format-wandler.html" onclick="openTool('format-wandler.html','Format Wandler')">Audio Formatwandler</a> konvertiert kostenlos zwischen WAV (16/24/32-bit), MP3, OGG, M4A, Opus, WebM und AIFF — Drag &amp; Drop, Qualitätswahl, sofortiger Download, kein Upload nötig.`,
     'seo_p4': `SATK ist eine kostenlose Browser-Alternative zu kommerziellen Audio-Tools wie Auphonic, iZotope RX, Youlean Loudness Meter, Nugen VisLM, Adobe Audition, Logic Pro, GarageBand oder Reaper — keine Installation, kein Konto, keine Lizenz. Alle Tools laufen lokal im Browser auf Desktop (Windows, macOS, Linux), iPad und iPhone. Audiodaten verlassen niemals das Gerät — 100% datenschutzkonform, DSGVO-freundlich. Kostenlos, werbefrei, für immer.`,
@@ -1648,7 +1631,7 @@ const T = {
     'aud-7': '<strong>Music Production &amp; Mastering</strong> — LUFS metering, LRA, spectrum analysis',
     'aud-8': '<strong>Developers &amp; Students</strong> — Web Audio API, DSP, EBU R128 — all open in browser',
     'seo_p0': `SATK (Sascha's Audio Toolkit) is a collection of professional, browser-based audio tools for TV, broadcast, podcast, radio and online production. All tools run completely locally in your browser — audio data never leaves your device. No installation, no account, no cloud uploads. Optimized for desktop, iPad and iPhone.`,
-    'seo_p1': `The <a href="voiceover-processor.html" onclick="openTool('voiceover-processor.html','VoiceOver Processor')">VoiceOver Processor</a> processes speech files automatically: spectral Wiener-filter denoiser, EQ, compressor, de-esser and R128 normalization — for TV (−23 LUFS), YouTube (−14 LUFS) and podcast (−16 LUFS). The <a href="r128-normalizer.html" onclick="openTool('r128-normalizer.html','R128 Loudness Normalizer')">R128 Loudness Normalizer</a> normalizes audio files with double gating and true-peak limiter. Visit the <a href="index.html">SATK Shop</a> for professional standalone software and plugins.`,
+    'seo_p1': `The <a href="voiceover-processor.html" onclick="openTool('voiceover-processor.html','VoiceOver Processor')">VoiceOver Processor</a> processes speech files automatically: spectral Wiener-filter denoiser, EQ, compressor, de-esser and R128 normalization — for TV (−23 LUFS), YouTube (−14 LUFS) and podcast (−16 LUFS). The <a href="r128-normalizer.html" onclick="openTool('r128-normalizer.html','R128 Loudness Normalizer')">R128 Loudness Normalizer</a> normalizes audio files with double gating and true-peak limiter.`,
     'seo_p2': `The <a href="podcast-recorder.html" onclick="openTool('podcast-recorder.html','Podcast Recorder')">Podcast Recorder</a> provides 4-channel recording with denoiser, EQ, compressor, de-esser and R128 normalization. All tools run directly in the browser — free and ad-free.`,
     'seo_p3': `The <a href="auto-mixer.html" onclick="openTool('auto-mixer.html','Auto-Mixer')">Auto-Mixer</a> mixes presenter and report tracks automatically with side-chain ducking. The <a href="audio-editor.html" onclick="openTool('audio-editor.html','Audio Editor')">Audio Editor</a> cuts and trims audio with waveform view, undo and R128 export. The <a href="instant-player.html" onclick="openTool('instant-player.html','Instant Player')">Instant Player</a> offers 64 cue slots across 4 banks with keyboard control for live use. The <a href="format-wandler.html" onclick="openTool('format-wandler.html','Format Converter')">Format Converter</a> converts audio between WAV (16/24/32-bit), MP3, OGG, M4A, Opus, WebM and AIFF — quality selection, drag & drop, instant download.`,
     'seo_p4': `SATK is a free browser alternative to commercial tools like Auphonic, iZotope RX, Youlean Loudness Meter, Nugen VisLM, Adobe Audition, Logic Pro or GarageBand — no installation, no account, no license. All tools run locally in the browser on desktop (Windows, macOS, Linux), iPad and iPhone. Audio data never leaves your device — 100% privacy-compliant, GDPR-friendly. Free, ad-free, forever.`,

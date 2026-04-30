@@ -17,8 +17,10 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Mono',monospace;-webki
 nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
   padding:16px 48px;background:rgba(10,10,11,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(255,255,255,.04)}
-.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--ac);letter-spacing:4px;text-decoration:none}
-.nav-logo span{color:var(--tx)}
+.nav-logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;line-height:1}
+.nav-logo-mark{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--ac);letter-spacing:4px}
+.nav-logo-accent{color:var(--tx)}
+.nav-logo-sub{font-family:'DM Mono',monospace;font-size:8px;color:var(--mu);letter-spacing:1.5px;text-transform:uppercase;font-weight:300;white-space:nowrap}
 .nav-links{display:flex;gap:32px;align-items:center}
 .nav-links a{color:var(--mu2);text-decoration:none;font-size:11px;letter-spacing:.5px;transition:color .2s}
 .nav-links a:hover{color:var(--tx)}
@@ -27,7 +29,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 
 /* ── Hero ────────────────────────── */
 .hero{text-align:center;padding:72px 32px 48px;position:relative}
-.hero h1{font-family:'Syne',sans-serif;font-size:clamp(32px,5vw,56px);font-weight:800;letter-spacing:-1px;line-height:1.15}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(26px,3.6vw,42px);font-weight:800;letter-spacing:.04em;line-height:1.05;text-transform:uppercase}
 .hero h1 em{font-style:normal;color:var(--ac)}
 .hero p{color:var(--mu2);font-size:12px;margin-top:14px;letter-spacing:.3px;max-width:520px;margin-inline:auto;line-height:1.7}
 .hero-line{width:40px;height:1px;background:var(--ac);margin:28px auto 0;opacity:.4}
@@ -35,7 +37,8 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 /* ── Grid ────────────────────────── */
 .shop-section{max-width:1120px;margin:0 auto;padding:48px 32px 0}
 .shop-section h2{font-family:'Syne',sans-serif;font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:36px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.card-wide{grid-column:1 / -1}
 
 /* ── Card ────────────────────────── */
 .card{background:var(--sf);border-radius:10px;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease;cursor:default;position:relative}
@@ -60,6 +63,23 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .card-btn.buy{background:var(--ac);color:#0a0a0b}
 .card-btn.buy:hover{background:#d4f880;transform:scale(1.03)}
 .card-btn.soon{background:transparent;color:var(--mu);border:1px solid var(--bd);cursor:default}
+.card-appstore{display:inline-block;font-size:10px;color:var(--mu2);margin-top:14px;text-decoration:none;letter-spacing:.5px;transition:color .2s}
+.card-appstore:hover{color:var(--ac)}
+.format-section{margin-top:24px;padding-top:24px;border-top:1px solid var(--bd)}
+.format-section:first-of-type{margin-top:0;padding-top:0;border-top:none}
+.format-label{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:14px}
+.card-stores{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:4px}
+.card-stores.list{flex-direction:row;align-items:flex-start;justify-content:center;gap:20px;flex-wrap:wrap}
+.store-row{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.store-meta{display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center}
+.store-platform{font-size:10px;color:var(--tx);letter-spacing:.3px;font-weight:500}
+.store-price{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--tx);letter-spacing:-.2px;margin-top:1px}
+.store-price .cur{font-size:10px;color:var(--mu2);font-weight:400;margin-left:1px}
+.store-status{font-size:9px;color:var(--mu);letter-spacing:.5px;text-transform:uppercase}
+.appstore-badge{display:inline-block;transition:opacity .25s,transform .25s;border-radius:6px;overflow:hidden}
+.appstore-badge:hover{opacity:.85;transform:scale(1.02)}
+.appstore-badge img{display:block;height:40px;width:auto}
+.format-status{font-size:9px;color:var(--mu);margin-top:10px;letter-spacing:.5px}
 
 /* ── Info ────────────────────────── */
 .info-section{max-width:1120px;margin:0 auto;padding:72px 32px 0}
@@ -107,7 +127,10 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">S<span>A</span>TK</a>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-mark">S<span class="nav-logo-accent">A</span>TK</span>
+    <span class="nav-logo-sub">Sascha&rsquo;s Audio Tool Kit</span>
+  </a>
   <div class="nav-links">
     <a href="#software">Software</a>
     <a href="#info" data-i18n="nav_info">Lizenz &amp; Support</a>
@@ -122,7 +145,7 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 
 <div class="hero">
   <h1>Pro <em>Audio Software</em></h1>
-  <p data-i18n="hero_sub">Standalone-Applikationen und Plugins für Broadcast, Mastering und Produktion — kalibriert auf professionelle Referenzhardware.</p>
+  <p data-i18n="hero_sub">Apps und Plugins für professionelle Medienproduktionen.</p>
   <div class="hero-line"></div>
 </div>
 
@@ -130,78 +153,65 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
   <h2>Software</h2>
   <div class="grid">
 
+    <!-- ╔══ Broadcast Meter (Plugin · Mac · iPad · iPhone Mini) ═══╗ -->
     <div class="card">
       <div class="card-img">
-        <img src="img-broadcast-meter.png" alt="SATK Broadcast Meter Plugin">
-        <span class="card-tag">Plugin · VST3 · AU</span>
+        <img src="img-broadcast-meter.png" alt="SATK Broadcast Meter">
       </div>
       <div class="card-body">
-        <div class="card-name">Broadcast Meter Plugin</div>
+        <div class="card-name">Broadcast Meter</div>
         <div class="card-sub" data-i18n="bm_sub">PPM · LUFS · True Peak · FFT · Goniometer · Radar · Sprachklarheit · Prognose</div>
         <div class="card-platforms">
-          <span>macOS</span><span>Windows</span><span>VST3</span><span>AU</span>
+          <span>VST3</span><span>AU</span><span>macOS</span><span>iPad</span><span>iPhone</span>
         </div>
-        <div class="card-price">99 <span class="cur">€</span></div>
-        <div class="card-vat" data-i18n="vat">inkl. MwSt.</div>
-        <button class="card-btn soon" data-i18n="btn_soon">Bald verfügbar</button>
+
+        <div class="format-section">
+          <div class="format-label" data-i18n="fmt_plugin">Plugin · VST3 · AU</div>
+          <div class="card-price">59 <span class="cur">€</span></div>
+          <div class="card-vat" data-i18n="vat">inkl. MwSt.</div>
+          <button class="card-btn soon" data-i18n="btn_soon">Bald verfügbar</button>
+          <!-- TODO: Plugin Boutique URL -->
+          <a class="card-appstore" href="#" data-i18n="also_pluginboutique" target="_blank" rel="noopener">Auch bei Plugin Boutique →</a>
+        </div>
+
+        <div class="format-section">
+          <div class="format-label" data-i18n="fmt_apps">Apple Apps</div>
+          <div class="card-stores list">
+            <div class="store-row">
+              <!-- TODO: Mac App Store URL -->
+              <a class="appstore-badge" href="#" target="_blank" rel="noopener" aria-label="Im Mac App Store laden">
+                <img src="appstore-badge-mac-de.svg" data-src-de="appstore-badge-mac-de.svg" data-src-en="appstore-badge-mac-en.svg" alt="Mac App Store">
+              </a>
+              <div class="store-meta">
+                <span class="store-platform" data-i18n="store_macos">macOS App</span>
+                <span class="store-status" data-i18n="btn_review">In Prüfung</span>
+              </div>
+            </div>
+            <div class="store-row">
+              <a class="appstore-badge" href="https://apps.apple.com/app/id6762224279" target="_blank" rel="noopener" aria-label="Im App Store laden">
+                <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
+              </a>
+              <div class="store-meta">
+                <span class="store-platform" data-i18n="store_ipad">iPad App</span>
+              </div>
+            </div>
+            <div class="store-row">
+              <a class="appstore-badge" href="https://apps.apple.com/app/id6763360069" target="_blank" rel="noopener" aria-label="Im App Store laden">
+                <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
+              </a>
+              <div class="store-meta">
+                <span class="store-platform" data-i18n="store_iphone">iPhone App</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-img">
-        <img src="img-broadcast-meter.png" alt="SATK-BM für iPad">
-        <span class="card-tag">iPad · App Store</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">SATK-BM</div>
-        <div class="card-sub" data-i18n="bmm_sub">EBU R128 Loudness · True Peak · Speech Clarity · Batch · MIDI Remote</div>
-        <div class="card-platforms">
-          <span>iPad</span><span>iOS 16+</span>
-        </div>
-        <div class="card-price">—</div>
-        <div class="card-vat" data-i18n="appstore_note">im Apple App Store</div>
-        <a class="card-btn buy" href="https://apps.apple.com/us/app/satk-bm/id6762224279" target="_blank" rel="noopener" data-i18n="btn_appstore">Im App Store</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-img">
-        <img src="img-broadcast-meter.png" alt="SATK-BM Mini für iPhone">
-        <span class="card-tag">iPhone · App Store</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">SATK-BM Mini</div>
-        <div class="card-sub" data-i18n="bmmini_sub">Kompaktes Loudness-Metering · PPM · LUFS · True Peak · FFT</div>
-        <div class="card-platforms">
-          <span>iPhone</span><span>iOS 16+</span>
-        </div>
-        <div class="card-price">—</div>
-        <div class="card-vat" data-i18n="appstore_note">im Apple App Store</div>
-        <button class="card-btn soon" data-i18n="btn_review">In Prüfung</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-img">
-        <img src="img-broadcast-meter.png" alt="SATK Broadcast Meter für Mac">
-        <span class="card-tag">Mac · App Store</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Broadcast Meter (Mac)</div>
-        <div class="card-sub" data-i18n="bmmac_sub">Standalone-App für macOS · EBU R128 · True Peak · Speech Clarity · Batch</div>
-        <div class="card-platforms">
-          <span>macOS 12+</span><span>Apple Silicon</span><span>Intel</span>
-        </div>
-        <div class="card-price">—</div>
-        <div class="card-vat" data-i18n="appstore_note">im Apple App Store</div>
-        <button class="card-btn soon" data-i18n="btn_review">In Prüfung</button>
-      </div>
-    </div>
-
+    <!-- ╔══ VoiceOver Studio (Standalone Mac/Win + Mac App) ══════╗ -->
     <div class="card">
       <div class="card-img">
         <img src="img-voiceover-studio.png" alt="SATK VoiceOver Studio">
-        <span class="card-tag">Recording · Processing</span>
       </div>
       <div class="card-body">
         <div class="card-name">VoiceOver Studio</div>
@@ -209,16 +219,30 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
         <div class="card-platforms">
           <span>macOS</span><span>Windows</span><span>Standalone</span>
         </div>
-        <div class="card-price">99 <span class="cur">€</span></div>
-        <div class="card-vat" data-i18n="vat">inkl. MwSt.</div>
-        <button class="card-btn soon" data-i18n="btn_soon">Bald verfügbar</button>
+
+        <div class="format-section">
+          <div class="format-label" data-i18n="fmt_standalone">Standalone · macOS &amp; Windows</div>
+          <div class="card-price">199 <span class="cur">€</span></div>
+          <div class="card-vat" data-i18n="vat">inkl. MwSt.</div>
+          <button class="card-btn soon" data-i18n="btn_soon">Bald verfügbar</button>
+        </div>
+
+        <div class="format-section">
+          <div class="format-label" data-i18n="fmt_macapp">macOS App</div>
+          <div class="card-stores">
+            <!-- TODO: Mac App Store URL -->
+            <a class="appstore-badge" href="#" target="_blank" rel="noopener" aria-label="Im Mac App Store laden">
+              <img src="appstore-badge-mac-de.svg" data-src-de="appstore-badge-mac-de.svg" data-src-en="appstore-badge-mac-en.svg" alt="Mac App Store">
+            </a>
+          </div>
+        </div>
       </div>
     </div>
 
+    <!-- ╔══ R128 Normalizer Pro (Standalone Mac/Win + Mac App) ═══╗ -->
     <div class="card">
       <div class="card-img">
         <img src="img-r128-normalizer.png" alt="SATK R128 Normalizer Pro">
-        <span class="card-tag">Mastering · Loudness</span>
       </div>
       <div class="card-body">
         <div class="card-name">R128 Normalizer Pro</div>
@@ -226,9 +250,23 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
         <div class="card-platforms">
           <span>macOS</span><span>Windows</span><span>Standalone</span><span>CLI</span>
         </div>
-        <div class="card-price">39 <span class="cur">€</span></div>
-        <div class="card-vat" data-i18n="vat">inkl. MwSt.</div>
-        <button class="card-btn soon" data-i18n="btn_soon">Bald verfügbar</button>
+
+        <div class="format-section">
+          <div class="format-label" data-i18n="fmt_standalone">Standalone · macOS &amp; Windows</div>
+          <div class="card-price">39 <span class="cur">€</span></div>
+          <div class="card-vat" data-i18n="vat">inkl. MwSt.</div>
+          <button class="card-btn soon" data-i18n="btn_soon">Bald verfügbar</button>
+        </div>
+
+        <div class="format-section">
+          <div class="format-label" data-i18n="fmt_macapp">macOS App</div>
+          <div class="card-stores">
+            <!-- TODO: Mac App Store URL -->
+            <a class="appstore-badge" href="#" target="_blank" rel="noopener" aria-label="Im Mac App Store laden">
+              <img src="appstore-badge-mac-de.svg" data-src-de="appstore-badge-mac-de.svg" data-src-en="appstore-badge-mac-en.svg" alt="Mac App Store">
+            </a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -267,7 +305,7 @@ const i18n = {
   de: {
     nav_info: 'Lizenz & Support',
     nav_back: '← Kostenlose Browser-Tools',
-    hero_sub: 'Standalone-Applikationen und Plugins für Broadcast, Mastering und Produktion — kalibriert auf professionelle Referenzhardware.',
+    hero_sub: 'Apps und Plugins für professionelle Medienproduktionen.',
     bm_sub: 'PPM · LUFS · True Peak · FFT · Goniometer · Radar · Sprachklarheit · Prognose',
     bmm_sub: 'EBU R128 Loudness · True Peak · Speech Clarity · Batch · MIDI Remote',
     bmmini_sub: 'Kompaktes Loudness-Metering · PPM · LUFS · True Peak · FFT',
@@ -279,6 +317,16 @@ const i18n = {
     r128_sub: 'Batch-Normalisierung · Double-Gating · True Peak Limiter · CLI',
     vat: 'inkl. MwSt.',
     btn_soon: 'Bald verfügbar',
+    also_appstore: 'Auch im Mac App Store →',
+    also_pluginboutique: 'Auch bei Plugin Boutique →',
+    fmt_plugin: 'Plugin · VST3 · AU',
+    fmt_standalone: 'Standalone · macOS & Windows',
+    fmt_apps: 'Apple Apps',
+    fmt_macapp: 'macOS App',
+    fmt_iphone: 'iPhone App',
+    store_macos: 'macOS App',
+    store_ipad: 'iPad App',
+    store_iphone: 'iPhone App',
     info_title: 'Lizenz & Support',
     info_lic_h: 'Lizenz',
     info_lic_p: 'Jede Lizenz gilt für 2 Rechner. Einmalige Zahlung, kein Abo. Sichere Bezahlung über Paddle.',
@@ -292,7 +340,7 @@ const i18n = {
   en: {
     nav_info: 'License & Support',
     nav_back: '← Free Browser Tools',
-    hero_sub: 'Standalone applications and plugins for broadcast, mastering and production — calibrated to professional reference hardware.',
+    hero_sub: 'Apps and plugins for professional media production.',
     bm_sub: 'PPM · LUFS · True Peak · FFT · Vectorscope · Radar · Speech Clarity · Prediction',
     bmm_sub: 'EBU R128 Loudness · True Peak · Speech Clarity · Batch · MIDI Remote',
     bmmini_sub: 'Compact loudness metering · PPM · LUFS · True Peak · FFT',
@@ -304,6 +352,16 @@ const i18n = {
     r128_sub: 'Batch Normalization · Double Gating · True Peak Limiter · CLI',
     vat: 'incl. VAT',
     btn_soon: 'Coming soon',
+    also_appstore: 'Also on the Mac App Store →',
+    also_pluginboutique: 'Also on Plugin Boutique →',
+    fmt_plugin: 'Plugin · VST3 · AU',
+    fmt_standalone: 'Standalone · macOS & Windows',
+    fmt_apps: 'Apple Apps',
+    fmt_macapp: 'macOS App',
+    fmt_iphone: 'iPhone App',
+    store_macos: 'macOS App',
+    store_ipad: 'iPad App',
+    store_iphone: 'iPhone App',
     info_title: 'License & Support',
     info_lic_h: 'License',
     info_lic_p: 'Each license covers 2 computers. One-time payment, no subscription. Secure checkout via Paddle.',
@@ -328,6 +386,10 @@ function setLang(lang) {
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const k = el.dataset.i18nHtml;
     if (t[k]) el.innerHTML = t[k];
+  });
+  document.querySelectorAll('.appstore-badge img').forEach(img => {
+    const src = lang === 'de' ? img.dataset.srcDe : img.dataset.srcEn;
+    if (src) img.src = src;
   });
   try { localStorage.setItem('satk-lang', lang); } catch(e){}
 }

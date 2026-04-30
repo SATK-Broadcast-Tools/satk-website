@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SATK Broadcast Meter – EBU R128 Plugin & App für Broadcast</title>
+<meta name="description" content="EBU R128 / ITU-R BS.1770-4 Loudness-Metering: PPM, LUFS, True Peak, FFT, Goniometer, Sprachklarheit. Plugin (VST3/AU), macOS-, iPad- und iPhone-App.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#c8f060;--tx:#e8e8ec;--mu:#6e6e7a;--mu2:#9a9aaa}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:'DM Mono',monospace;-webkit-font-smoothing:antialiased}
+
+/* ── Nav ─────────────────────────── */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:16px 48px;background:rgba(10,10,11,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.04)}
+.nav-logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;line-height:1}
+.nav-logo-mark{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--ac);letter-spacing:4px}
+.nav-logo-accent{color:var(--tx)}
+.nav-logo-sub{font-family:'DM Mono',monospace;font-size:8px;color:var(--mu);letter-spacing:1.5px;text-transform:uppercase;font-weight:300;white-space:nowrap}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{color:var(--mu2);text-decoration:none;font-size:11px;letter-spacing:.5px;transition:color .2s}
+.nav-links a:hover{color:var(--tx)}
+.nav-back{color:var(--mu);font-size:10px;letter-spacing:.5px;text-decoration:none;opacity:.6;transition:opacity .2s}
+.nav-back:hover{opacity:1}
+.lang-sw{display:flex;align-items:center;gap:6px}
+.lang{font-size:10px;letter-spacing:1px;color:var(--mu);cursor:pointer;transition:color .2s}
+.lang:hover{color:var(--tx)}
+.lang.active{color:var(--ac)}
+.lang-sep{color:var(--mu);font-size:10px}
+
+/* ── Product Hero ─────────────────── */
+.product-hero{text-align:center;padding:80px 32px 32px;max-width:920px;margin:0 auto}
+.product-eyebrow{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.4em;color:var(--ac);text-transform:uppercase;margin-bottom:18px}
+.product-hero h1{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:800;letter-spacing:-1px;line-height:1.05;text-transform:uppercase;margin-bottom:18px}
+.product-hero .tagline{color:var(--mu2);font-size:14px;letter-spacing:.3px;line-height:1.7;max-width:640px;margin:0 auto}
+
+/* ── Hero Image ─────────────────── */
+.hero-img-wrap{max-width:1120px;margin:32px auto 0;padding:0 32px}
+.hero-img{width:100%;border:1px solid var(--bd);border-radius:10px;display:block;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+
+/* ── Section ─────────────────── */
+.section{max-width:1120px;margin:0 auto;padding:96px 32px 0}
+.section-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:16px;text-align:center}
+.section-h2{font-family:'Syne',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-.5px;line-height:1.1;text-align:center;margin-bottom:14px;text-transform:uppercase}
+.section-intro{color:var(--mu2);font-size:13px;line-height:1.7;text-align:center;max-width:680px;margin:0 auto 56px}
+
+/* ── Features ─────────────────── */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feature{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:32px 28px;transition:transform .3s ease,border-color .3s ease}
+.feature:hover{transform:translateY(-3px);border-color:rgba(200,240,96,.2)}
+.feature-icon{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.25em;color:var(--ac);margin-bottom:14px;text-transform:uppercase}
+.feature h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.2px;margin-bottom:10px;color:var(--tx)}
+.feature p{font-size:12px;color:var(--mu2);line-height:1.7}
+
+/* ── Workflow ─────────────────── */
+.workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+.workflow-step{position:relative;padding:28px 24px;background:var(--sf);border-radius:10px;border:1px solid var(--bd)}
+.workflow-num{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--ac);line-height:1;margin-bottom:14px}
+.workflow-step h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px;color:var(--tx)}
+.workflow-step p{font-size:11px;color:var(--mu2);line-height:1.7}
+
+/* ── Platform Compare ─────────── */
+.platform-table{width:100%;border-collapse:collapse;font-size:11px;background:var(--sf);border-radius:10px;overflow:hidden;border:1px solid var(--bd)}
+.platform-table th{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ac);padding:18px 14px;text-align:center;background:rgba(200,240,96,.04);border-bottom:1px solid var(--bd)}
+.platform-table th:first-child{text-align:left;color:var(--mu)}
+.platform-table td{padding:14px 14px;text-align:center;border-bottom:1px solid rgba(255,255,255,.03);color:var(--mu2);font-size:11px;letter-spacing:.2px}
+.platform-table tr:last-child td{border-bottom:none}
+.platform-table td:first-child{text-align:left;color:var(--tx);font-weight:500}
+.platform-table .yes{color:var(--ac);font-size:14px;font-weight:600}
+.platform-table .no{color:var(--mu);opacity:.4}
+.platform-table tbody tr:hover{background:rgba(255,255,255,.015)}
+.platform-table .price-row{background:rgba(200,240,96,.04)}
+.platform-table .price-row td{padding-top:20px;padding-bottom:20px;border-bottom:1px solid var(--bd)}
+.platform-table .price{font-weight:500;font-size:13px;color:var(--tx);letter-spacing:.2px}
+
+/* ── iPhone Showcase ─────────── */
+.iphone-showcase{display:flex;justify-content:center;align-items:flex-start;gap:64px;margin-top:64px;flex-wrap:wrap}
+.iphone-frame{display:flex;flex-direction:column;align-items:center;gap:16px}
+.iphone-frame img{height:520px;width:auto;border-radius:32px;box-shadow:0 30px 80px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.06)}
+.iphone-caption{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--mu)}
+
+/* ── Specs ─────────────────── */
+.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.spec-col{padding:32px 28px;border-right:1px solid var(--bd)}
+.spec-col:last-child{border-right:none}
+.spec-col h4{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:14px}
+.spec-col ul{list-style:none}
+.spec-col li{font-size:11px;color:var(--tx);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);letter-spacing:.2px}
+.spec-col li:last-child{border-bottom:none}
+.spec-col li b{color:var(--ac);font-weight:500;display:inline-block;min-width:90px}
+
+/* ── Buy / Distribution ─────────── */
+.buy-section{max-width:1120px;margin:96px auto 0;padding:0 32px}
+.buy-card{background:var(--sf);border:1px solid var(--bd);border-radius:14px;padding:48px 32px;text-align:center}
+.buy-formats{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:880px;margin:32px auto 0;align-items:start}
+.buy-format{padding:24px 20px;border:1px solid var(--bd);border-radius:10px;background:rgba(255,255,255,.015)}
+.buy-format-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
+.buy-format-price{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--tx);line-height:1;margin-bottom:4px}
+.buy-format-price .cur{font-size:20px;color:var(--mu2);font-weight:400}
+.buy-format-vat{font-size:9px;color:var(--mu);margin-bottom:18px}
+.buy-btn{display:inline-block;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  padding:12px 32px;border-radius:5px;border:none;cursor:pointer;font-weight:500;transition:all .25s;text-decoration:none}
+.buy-btn.primary{background:var(--ac);color:#0a0a0b}
+.buy-btn.primary:hover{background:#d4f880;transform:scale(1.03)}
+.buy-btn.disabled{background:transparent;color:var(--mu);border:1px solid var(--bd);cursor:default}
+.buy-secondary-link{display:inline-block;font-size:10px;color:var(--mu2);margin-top:14px;text-decoration:none;letter-spacing:.5px;transition:color .2s}
+.buy-secondary-link:hover{color:var(--ac)}
+.buy-stores{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:18px}
+.appstore-badge{display:inline-block;transition:opacity .25s,transform .25s}
+.appstore-badge:hover{opacity:.85;transform:scale(1.02)}
+.appstore-badge img{display:block;height:40px;width:auto}
+.store-row{display:flex;flex-direction:column;align-items:center;gap:6px}
+.store-platform{font-size:10px;color:var(--tx);letter-spacing:.3px;font-weight:500}
+.store-price{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--tx);margin-top:2px;letter-spacing:-.2px}
+.store-price .cur{font-size:11px;color:var(--mu2);font-weight:400;margin-left:1px}
+.store-status{font-size:9px;color:var(--mu);letter-spacing:.5px;text-transform:uppercase;margin-top:2px}
+
+/* ── Footer ─────────────────── */
+footer{text-align:center;padding:72px 32px 48px;margin-top:96px;border-top:1px solid rgba(255,255,255,.03)}
+footer p{font-size:9px;color:var(--mu);letter-spacing:.3px}
+footer a{color:var(--mu2);text-decoration:none}
+footer a:hover{color:var(--ac)}
+footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:3px;margin-bottom:10px}
+
+/* ── Responsive ─────────────────── */
+@media(max-width:900px){
+  nav{padding:14px 20px}
+  .nav-links{gap:18px}
+  .features,.workflow,.specs{grid-template-columns:1fr}
+  .spec-col{border-right:none;border-bottom:1px solid var(--bd)}
+  .spec-col:last-child{border-bottom:none}
+  .buy-formats{grid-template-columns:1fr}
+  .product-hero{padding:48px 20px 24px}
+  .hero-img-wrap{padding:0 20px}
+  .section{padding:64px 20px 0}
+  .buy-section{padding:0 20px}
+}
+@media(max-width:600px){
+  .nav-links a:not(.nav-back){display:none}
+}
+
+/* ── Fade-in ─────────────────── */
+.feature,.workflow-step{opacity:0;animation:rise .6s ease forwards}
+.feature:nth-child(1),.workflow-step:nth-child(1){animation-delay:.1s}
+.feature:nth-child(2),.workflow-step:nth-child(2){animation-delay:.18s}
+.feature:nth-child(3),.workflow-step:nth-child(3){animation-delay:.26s}
+.feature:nth-child(4),.workflow-step:nth-child(4){animation-delay:.34s}
+.feature:nth-child(5){animation-delay:.42s}
+.feature:nth-child(6){animation-delay:.5s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-mark">S<span class="nav-logo-accent">A</span>TK</span>
+    <span class="nav-logo-sub">Sascha&rsquo;s Audio Tool Kit</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_shop">Shop</a>
+    <a href="index.html#info" data-i18n="nav_info">Lizenz &amp; Support</a>
+    <div class="lang-sw">
+      <span class="lang active" id="btnDE" onclick="setLang('de')">DE</span>
+      <span class="lang-sep">·</span>
+      <span class="lang" id="btnEN" onclick="setLang('en')">EN</span>
+    </div>
+    <a href="index.html" class="nav-back" data-i18n="nav_back">← Zurück zum Shop</a>
+  </div>
+</nav>
+
+<!-- ╔══ Hero ═══════════════════════════════════════════════════╗ -->
+<section class="product-hero">
+  <div class="product-eyebrow" data-i18n="ph_eyebrow">Plugin · macOS · iPad · iPhone</div>
+  <h1>Broadcast Meter</h1>
+  <p class="tagline" data-i18n="ph_tagline">EBU R128 und ITU-R BS.1770-4 konformes Loudness-Metering. PPM, LUFS-I/S/M, True Peak, Goniometer, Spektrum, Loudness Radar und KI-gestützte Sprachklarheit – in einem Werkzeug, auf jeder Plattform.</p>
+</section>
+
+<div class="hero-img-wrap">
+  <img class="hero-img" src="img-broadcast-meter.png" alt="SATK Broadcast Meter Interface">
+</div>
+
+<!-- ╔══ Highlights ════════════════════════════════════════════╗ -->
+<section class="section">
+  <div class="section-label" data-i18n="bm_features_label">Highlights</div>
+  <h2 class="section-h2" data-i18n="bm_features_title">Alles, was Broadcast braucht</h2>
+  <p class="section-intro" data-i18n="bm_features_intro">Vom RTW-TM7-inspirierten PPM bis zur prädiktiven Programm­dauer-Analyse – jedes Modul in Studio-Qualität, ohne Kompromisse.</p>
+
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">EBU R128</div>
+      <h3 data-i18n="bm_f1_h">LUFS Metering</h3>
+      <p data-i18n="bm_f1_p">Momentary, Short-Term und Integrated Loudness nach ITU-R BS.1770-4. 400-ms-Blocks mit 75% Overlap, Power-Domain Gating, exakter -10 dB Relative Gate.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">True Peak</div>
+      <h3 data-i18n="bm_f2_h">4× Polyphase TP</h3>
+      <p data-i18n="bm_f2_p">Inter-Sample-Peak-Detection mit 4-fachem polyphasem FIR-Filter. Spotaen-genau auch bei Inter-Sample-Peaks – kompatibel zu allen R128-Limitern.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">RTW-Style</div>
+      <h3 data-i18n="bm_f3_h">PPM Bars</h3>
+      <p data-i18n="bm_f3_p">Nicht-lineare Skala (-59, -41, -29, -23, -17, -11, -5) im Broadcast-Stil. Cyan/Grün/Rot-Zonen für sofortige visuelle Bewertung.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">Spectrum</div>
+      <h3 data-i18n="bm_f4_h">FFT &amp; Goniometer</h3>
+      <p data-i18n="bm_f4_p">Hochauflösendes FFT-Spektrum, Lissajous-Vectorscope, Phasen-Korrelation – alles parallel sichtbar. Mono/Stereo-Probleme sofort erkennbar.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">Speech AI</div>
+      <h3 data-i18n="bm_f5_h">Sprachklarheit</h3>
+      <p data-i18n="bm_f5_p">Silero VAD v5 (ONNX) für Sprachpräsenz, plus Konsonanten-Energie-Analyse mit Speaker-Lock. Erkennt automatisch Sprecherwechsel und Pausen.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">Forecast</div>
+      <h3 data-i18n="bm_f6_h">Programm-Prognose</h3>
+      <p data-i18n="bm_f6_p">Während der Aufnahme prognostiziert das Tool die finale Integrated Loudness und LRA. So weißt du vor dem Export, ob dein Material R128-konform ist.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══ Platform Compare ══════════════════════════════════════╗ -->
+<section class="section">
+  <div class="section-label" data-i18n="bm_pc_label">Plattformen im Vergleich</div>
+  <h2 class="section-h2" data-i18n="bm_pc_title">Eine Engine, drei Stufen</h2>
+  <p class="section-intro" data-i18n="bm_pc_intro">Dieselbe DSP läuft auf jeder Plattform. Der Funktionsumfang skaliert mit dem Einsatzgebiet — vom mobilen Quick-Check bis zur Vollproduktion.</p>
+
+  <table class="platform-table">
+    <thead>
+      <tr>
+        <th data-i18n="pc_h_feature">Feature</th>
+        <th data-i18n="pc_h_macos">macOS App</th>
+        <th>Plugin</th>
+        <th data-i18n="pc_h_ipad">iPad App</th>
+        <th data-i18n="pc_h_iphone">iPhone Mini</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="price-row"><td data-i18n="pc_price">Preis</td><td class="price">89 €</td><td class="price">59 €</td><td class="price">24,99 €</td><td class="price">9,99 €</td></tr>
+      <tr><td data-i18n="pc_lufs">LUFS-I/S/M Metering</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+      <tr><td data-i18n="pc_tp">True Peak (4× polyphase)</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+      <tr><td data-i18n="pc_fft">FFT Spektrum</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+      <tr><td data-i18n="pc_ppm">PPM Bars (RTW-Style)</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+      <tr><td data-i18n="pc_gonio">Goniometer / Korrelation</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td></tr>
+      <tr><td data-i18n="pc_radar">Loudness Radar</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td></tr>
+      <tr><td data-i18n="pc_clarity">Sprachklarheit (Silero VAD)</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td></tr>
+      <tr><td data-i18n="pc_forecast">Programm-Prognose</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td></tr>
+      <tr><td data-i18n="pc_histo">Histogramme (Loudness, LRA, Gating)</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td></tr>
+      <tr><td data-i18n="pc_midi">MIDI Remote (Bluetooth + Learn)</td><td class="yes">✓</td><td class="no">—</td><td class="yes">✓</td><td class="no">—</td></tr>
+      <tr><td data-i18n="pc_gpi">GPI Remote</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
+      <tr><td data-i18n="pc_file">File-Open / Batch-Analyse</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
+      <tr><td data-i18n="pc_pdf">PDF / CSV Reports</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="iphone-showcase">
+    <div class="iphone-frame">
+      <img src="img-bm-iphone-meters.png" alt="Broadcast Meter Mini — Page Meters">
+      <span class="iphone-caption" data-i18n="iphone_meters">iPhone Mini · Meters</span>
+    </div>
+    <div class="iphone-frame">
+      <img src="img-bm-iphone-spectrum.png" alt="Broadcast Meter Mini — Page Spectrum">
+      <span class="iphone-caption" data-i18n="iphone_spectrum">iPhone Mini · Spectrum</span>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══ Workflow ══════════════════════════════════════════════╗ -->
+<section class="section">
+  <div class="section-label" data-i18n="bm_wf_label">Funktionsweise</div>
+  <h2 class="section-h2" data-i18n="bm_wf_title">In 4 Schritten zur Sendung</h2>
+  <p class="section-intro" data-i18n="bm_wf_intro">Egal ob als Plugin in deiner DAW oder als Standalone neben dem Schnitt – der Workflow bleibt der gleiche.</p>
+
+  <div class="workflow">
+    <div class="workflow-step">
+      <div class="workflow-num">01</div>
+      <h3 data-i18n="bm_w1_h">Einsetzen</h3>
+      <p data-i18n="bm_w1_p">VST3, AU oder Standalone öffnen. Audio routet automatisch ein – kein Setup, keine Konfiguration nötig.</p>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">02</div>
+      <h3 data-i18n="bm_w2_h">Messen</h3>
+      <p data-i18n="bm_w2_p">Alle Werte in Echtzeit: LUFS-I/S/M, TP, LRA, Sprachklarheit, Korrelation. Histogramme dokumentieren den Verlauf.</p>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">03</div>
+      <h3 data-i18n="bm_w3_h">Korrigieren</h3>
+      <p data-i18n="bm_w3_p">Prädiktive Anzeige zeigt vor Sendeschluss, ob du im R128-Korridor bist. MIDI- und GPI-Remote für die Regie.</p>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">04</div>
+      <h3 data-i18n="bm_w4_h">Dokumentieren</h3>
+      <p data-i18n="bm_w4_p">PDF-Report mit allen Metriken, Histogrammen und Timeline. Batch-CSV für ganze Sendungen oder Folgenpakete.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══ Specs ═════════════════════════════════════════════════╗ -->
+<section class="section">
+  <div class="section-label" data-i18n="bm_specs_label">Technische Details</div>
+  <h2 class="section-h2" data-i18n="bm_specs_title">Built for Production</h2>
+  <p class="section-intro" data-i18n="bm_specs_intro">Saubere DSP, keine Mogelpackungen.</p>
+
+  <div class="specs">
+    <div class="spec-col">
+      <h4 data-i18n="bm_specs_dsp">DSP</h4>
+      <ul>
+        <li><b>K-Weighting</b> ITU-R BS.1770-4</li>
+        <li><b>Gating</b> 400 ms / 75% overlap</li>
+        <li><b>Rel. Gate</b> -10 LU exakt</li>
+        <li><b>True Peak</b> 4× polyphase FIR</li>
+        <li><b>FFT</b> 4096 / 8192 / 16384</li>
+      </ul>
+    </div>
+    <div class="spec-col">
+      <h4 data-i18n="bm_specs_ai">KI</h4>
+      <ul>
+        <li><b>VAD</b> Silero v5 (ONNX)</li>
+        <li><b>Speaker</b> WeSpeaker ResNet34</li>
+        <li><b>Threshold</b> 0.5 (musiksicher)</li>
+        <li><b>Median</b> 1.5 s Smoothing</li>
+        <li><b>Lock</b> Cosine-Sim 0.25</li>
+      </ul>
+    </div>
+    <div class="spec-col">
+      <h4 data-i18n="bm_specs_io">I/O</h4>
+      <ul>
+        <li><b>MIDI</b> Learn + Bluetooth</li>
+        <li><b>GPI</b> Remote-Trigger</li>
+        <li><b>Reports</b> PDF + CSV Batch</li>
+        <li><b>Histograms</b> Loudness, LRA, Gating</li>
+        <li><b>Modes</b> All / Live / Analytics</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">SATK</div>
+  <p>Sascha&rsquo;s Audio Tool Kit · <a href="index.html" data-i18n="f_shop">Shop</a> · <a href="tools.html" data-i18n="f_tools">Browser-Tools</a> · <a href="impressum.html" data-i18n="f_imprint">Impressum</a> · <a href="datenschutz.html" data-i18n="f_privacy">Datenschutz</a> · © 2026</p>
+</footer>
+
+<script>
+const i18n = {
+  de: {
+    nav_shop: 'Shop',
+    nav_info: 'Lizenz & Support',
+    nav_back: '← Zurück zum Shop',
+    ph_eyebrow: 'Plugin · macOS · iPad · iPhone',
+    ph_tagline: 'EBU R128 und ITU-R BS.1770-4 konformes Loudness-Metering. PPM, LUFS-I/S/M, True Peak, Goniometer, Spektrum, Loudness Radar und KI-gestützte Sprachklarheit – in einem Werkzeug, auf jeder Plattform.',
+    bm_features_label: 'Highlights',
+    bm_features_title: 'Alles, was Broadcast braucht',
+    bm_features_intro: 'Vom RTW-TM7-inspirierten PPM bis zur prädiktiven Programmdauer-Analyse – jedes Modul in Studio-Qualität, ohne Kompromisse.',
+    bm_f1_h: 'LUFS Metering',
+    bm_f1_p: 'Momentary, Short-Term und Integrated Loudness nach ITU-R BS.1770-4. 400-ms-Blocks mit 75% Overlap, Power-Domain Gating, exakter -10 dB Relative Gate.',
+    bm_f2_h: '4× Polyphase TP',
+    bm_f2_p: 'Inter-Sample-Peak-Detection mit 4-fachem polyphasem FIR-Filter. Spotaen-genau auch bei Inter-Sample-Peaks – kompatibel zu allen R128-Limitern.',
+    bm_f3_h: 'PPM Bars',
+    bm_f3_p: 'Nicht-lineare Skala (-59, -41, -29, -23, -17, -11, -5) im Broadcast-Stil. Cyan/Grün/Rot-Zonen für sofortige visuelle Bewertung.',
+    bm_f4_h: 'FFT & Goniometer',
+    bm_f4_p: 'Hochauflösendes FFT-Spektrum, Lissajous-Vectorscope, Phasen-Korrelation – alles parallel sichtbar. Mono/Stereo-Probleme sofort erkennbar.',
+    bm_f5_h: 'Sprachklarheit',
+    bm_f5_p: 'Silero VAD v5 (ONNX) für Sprachpräsenz, plus Konsonanten-Energie-Analyse mit Speaker-Lock. Erkennt automatisch Sprecherwechsel und Pausen.',
+    bm_f6_h: 'Programm-Prognose',
+    bm_f6_p: 'Während der Aufnahme prognostiziert das Tool die finale Integrated Loudness und LRA. So weißt du vor dem Export, ob dein Material R128-konform ist.',
+    bm_pc_label: 'Plattformen im Vergleich',
+    bm_pc_title: 'Eine Engine, drei Stufen',
+    bm_pc_intro: 'Dieselbe DSP läuft auf jeder Plattform. Der Funktionsumfang skaliert mit dem Einsatzgebiet — vom mobilen Quick-Check bis zur Vollproduktion.',
+    pc_h_feature: 'Feature',
+    pc_h_plugin: 'Plugin',
+    pc_h_macos: 'macOS App',
+    pc_h_ipad: 'iPad App',
+    pc_h_iphone: 'iPhone Mini',
+    pc_price: 'Preis',
+    pc_lufs: 'LUFS-I/S/M Metering',
+    pc_tp: 'True Peak (4× polyphase)',
+    pc_fft: 'FFT Spektrum',
+    pc_ppm: 'PPM Bars (RTW-Style)',
+    pc_gonio: 'Goniometer / Korrelation',
+    pc_radar: 'Loudness Radar',
+    pc_clarity: 'Sprachklarheit (Silero VAD)',
+    pc_forecast: 'Programm-Prognose',
+    pc_histo: 'Histogramme (Loudness, LRA, Gating)',
+    pc_midi: 'MIDI Remote (Bluetooth + Learn)',
+    pc_gpi: 'GPI Remote',
+    pc_file: 'File-Open / Batch-Analyse',
+    pc_pdf: 'PDF / CSV Reports',
+    iphone_meters: 'iPhone Mini · Meters',
+    iphone_spectrum: 'iPhone Mini · Spectrum',
+    bm_wf_label: 'Funktionsweise',
+    bm_wf_title: 'In 4 Schritten zur Sendung',
+    bm_wf_intro: 'Egal ob als Plugin in deiner DAW oder als Standalone neben dem Schnitt – der Workflow bleibt der gleiche.',
+    bm_w1_h: 'Einsetzen',
+    bm_w1_p: 'VST3, AU oder Standalone öffnen. Audio routet automatisch ein – kein Setup, keine Konfiguration nötig.',
+    bm_w2_h: 'Messen',
+    bm_w2_p: 'Alle Werte in Echtzeit: LUFS-I/S/M, TP, LRA, Sprachklarheit, Korrelation. Histogramme dokumentieren den Verlauf.',
+    bm_w3_h: 'Korrigieren',
+    bm_w3_p: 'Prädiktive Anzeige zeigt vor Sendeschluss, ob du im R128-Korridor bist. MIDI- und GPI-Remote für die Regie.',
+    bm_w4_h: 'Dokumentieren',
+    bm_w4_p: 'PDF-Report mit allen Metriken, Histogrammen und Timeline. Batch-CSV für ganze Sendungen oder Folgenpakete.',
+    bm_specs_label: 'Technische Details',
+    bm_specs_title: 'Built for Production',
+    bm_specs_intro: 'Saubere DSP, keine Mogelpackungen.',
+    bm_specs_dsp: 'DSP',
+    bm_specs_ai: 'KI',
+    bm_specs_io: 'I/O',
+    bm_buy_label: 'Verfügbar',
+    bm_buy_title: 'Auf jeder Plattform',
+    bm_buy_plugin: 'Plugin · VST3 · AU',
+    bm_buy_apps: 'Apple Apps',
+    vat: 'inkl. MwSt.',
+    btn_soon: 'Bald verfügbar',
+    btn_review: 'In Prüfung',
+    also_pluginboutique: 'Auch bei Plugin Boutique →',
+    store_macos: 'macOS App',
+    store_ipad: 'iPad App',
+    store_iphone: 'iPhone App',
+    f_shop: 'Shop',
+    f_tools: 'Browser-Tools',
+    f_imprint: 'Impressum',
+    f_privacy: 'Datenschutz'
+  },
+  en: {
+    nav_shop: 'Shop',
+    nav_info: 'License & Support',
+    nav_back: '← Back to Shop',
+    ph_eyebrow: 'Plugin · macOS · iPad · iPhone',
+    ph_tagline: 'EBU R128 and ITU-R BS.1770-4 compliant loudness metering. PPM, LUFS-I/S/M, True Peak, vectorscope, spectrum, loudness radar and AI-powered speech clarity – one tool, every platform.',
+    bm_features_label: 'Highlights',
+    bm_features_title: 'Everything broadcast needs',
+    bm_features_intro: 'From RTW TM7-inspired PPM to predictive programme analysis – every module studio-grade, no compromises.',
+    bm_f1_h: 'LUFS Metering',
+    bm_f1_p: 'Momentary, Short-Term and Integrated Loudness per ITU-R BS.1770-4. 400 ms blocks at 75% overlap, power-domain gating, exact -10 dB relative gate.',
+    bm_f2_h: '4× Polyphase TP',
+    bm_f2_p: 'Inter-sample peak detection with 4× polyphase FIR filter. Spot-on even at inter-sample peaks – compatible with every R128 limiter.',
+    bm_f3_h: 'PPM Bars',
+    bm_f3_p: 'Non-linear scale (-59, -41, -29, -23, -17, -11, -5) in broadcast style. Cyan/green/red zones for instant visual assessment.',
+    bm_f4_h: 'FFT & Vectorscope',
+    bm_f4_p: 'High-resolution FFT spectrum, Lissajous vectorscope, phase correlation – all visible in parallel. Mono/stereo issues spotted immediately.',
+    bm_f5_h: 'Speech Clarity',
+    bm_f5_p: 'Silero VAD v5 (ONNX) for speech presence, plus consonant-energy analysis with speaker-lock. Automatically detects speaker changes and pauses.',
+    bm_f6_h: 'Programme Forecast',
+    bm_f6_p: 'During recording the tool predicts final Integrated Loudness and LRA. Know before export whether your programme is R128-compliant.',
+    bm_pc_label: 'Platforms compared',
+    bm_pc_title: 'One engine, three tiers',
+    bm_pc_intro: 'The same DSP runs on every platform. Feature scope scales with the use case — from a mobile quick-check to full production.',
+    pc_h_feature: 'Feature',
+    pc_h_plugin: 'Plugin',
+    pc_h_macos: 'macOS App',
+    pc_h_ipad: 'iPad App',
+    pc_h_iphone: 'iPhone Mini',
+    pc_price: 'Price',
+    pc_lufs: 'LUFS-I/S/M Metering',
+    pc_tp: 'True Peak (4× polyphase)',
+    pc_fft: 'FFT Spectrum',
+    pc_ppm: 'PPM Bars (RTW-style)',
+    pc_gonio: 'Vectorscope / Correlation',
+    pc_radar: 'Loudness Radar',
+    pc_clarity: 'Speech Clarity (Silero VAD)',
+    pc_forecast: 'Programme Forecast',
+    pc_histo: 'Histograms (Loudness, LRA, Gating)',
+    pc_midi: 'MIDI Remote (Bluetooth + Learn)',
+    pc_gpi: 'GPI Remote',
+    pc_file: 'File-Open / Batch Analysis',
+    pc_pdf: 'PDF / CSV Reports',
+    iphone_meters: 'iPhone Mini · Meters',
+    iphone_spectrum: 'iPhone Mini · Spectrum',
+    bm_wf_label: 'How it works',
+    bm_wf_title: 'Four steps to broadcast',
+    bm_wf_intro: 'Plugin in your DAW or standalone next to the editor – the workflow stays the same.',
+    bm_w1_h: 'Insert',
+    bm_w1_p: 'Open VST3, AU or standalone. Audio routes automatically – no setup, no configuration.',
+    bm_w2_h: 'Measure',
+    bm_w2_p: 'Every value in realtime: LUFS-I/S/M, TP, LRA, speech clarity, correlation. Histograms document the timeline.',
+    bm_w3_h: 'Correct',
+    bm_w3_p: 'Predictive display shows whether you are inside the R128 corridor before the show ends. MIDI and GPI remote for the gallery.',
+    bm_w4_h: 'Document',
+    bm_w4_p: 'PDF report with every metric, histogram and timeline. Batch CSV for whole shows or episode bundles.',
+    bm_specs_label: 'Technical Details',
+    bm_specs_title: 'Built for Production',
+    bm_specs_intro: 'Clean DSP, no shortcuts.',
+    bm_specs_dsp: 'DSP',
+    bm_specs_ai: 'AI',
+    bm_specs_io: 'I/O',
+    bm_buy_label: 'Available',
+    bm_buy_title: 'On every platform',
+    bm_buy_plugin: 'Plugin · VST3 · AU',
+    bm_buy_apps: 'Apple Apps',
+    vat: 'incl. VAT',
+    btn_soon: 'Coming soon',
+    btn_review: 'In Review',
+    also_pluginboutique: 'Also on Plugin Boutique →',
+    store_macos: 'macOS App',
+    store_ipad: 'iPad App',
+    store_iphone: 'iPhone App',
+    f_shop: 'Shop',
+    f_tools: 'Browser Tools',
+    f_imprint: 'Legal Notice',
+    f_privacy: 'Privacy Policy'
+  }
+};
+
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.getElementById('btnDE').classList.toggle('active', lang==='de');
+  document.getElementById('btnEN').classList.toggle('active', lang==='en');
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    if (t[k]) el.textContent = t[k];
+  });
+  document.querySelectorAll('.appstore-badge img').forEach(img => {
+    const src = lang === 'de' ? img.dataset.srcDe : img.dataset.srcEn;
+    if (src) img.src = src;
+  });
+  try { localStorage.setItem('satk-lang', lang); } catch(e){}
+}
+
+try {
+  const saved = localStorage.getItem('satk-lang');
+  if (saved === 'en') setLang('en');
+} catch(e){}
+</script>
+
+</body>
+</html>

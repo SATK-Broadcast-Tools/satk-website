@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SATK Shop – Professional Audio Software</title>
-<meta name="description" content="SATK Pro Software: Broadcast Meter, Overdub Studio, R128 Normalizer. Plugins (VST3/AU) und Standalone für Mac & Windows.">
+<meta name="description" content="SATK Pro Software: Broadcast Meter, Overdub Studio, Loudness Correct. Plugin VST3/AU, macOS- und iPad-Apps für Broadcast und Postproduktion.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -38,7 +38,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .shop-section{max-width:1120px;margin:0 auto;padding:48px 32px 0}
 .shop-section h2{font-family:'Syne',sans-serif;font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:36px}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
-.card-wide{grid-column:1 / -1}
 
 /* ── Card ────────────────────────── */
 .card{background:var(--sf);border-radius:10px;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease;cursor:default;position:relative}
@@ -49,25 +48,25 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .card-tag{position:absolute;top:14px;left:14px;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;
   padding:4px 10px;border-radius:3px;font-weight:500;background:rgba(10,10,11,.7);color:var(--ac);
   border:1px solid rgba(200,240,96,.2);backdrop-filter:blur(8px)}
-.card-body{padding:24px 28px 28px;text-align:center}
-.card-name{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.3px;margin-bottom:6px}
-.card-sub{font-size:11px;color:var(--mu2);margin-bottom:20px;line-height:1.6}
-.card-platforms{display:flex;justify-content:center;gap:6px;margin-bottom:20px}
+.card-body{padding:18px 24px 22px;text-align:center}
+.card-name{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;letter-spacing:-.3px;margin-bottom:4px}
+.card-sub{font-size:11px;color:var(--mu2);margin-bottom:12px;line-height:1.5}
+.card-platforms{display:flex;justify-content:center;gap:6px;margin-bottom:14px;flex-wrap:wrap}
 .card-platforms span{font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--mu);
   border:1px solid rgba(255,255,255,.06);padding:3px 8px;border-radius:3px}
-.card-price{font-family:'Syne',sans-serif;font-size:32px;font-weight:700;color:var(--tx);margin-bottom:4px}
-.card-price .cur{font-size:18px;color:var(--mu2);font-weight:400}
-.card-vat{font-size:9px;color:var(--mu);margin-bottom:18px}
+.card-price{font-family:'Syne',sans-serif;font-size:24px;font-weight:700;color:var(--tx);margin-bottom:2px;line-height:1}
+.card-price .cur{font-size:14px;color:var(--mu2);font-weight:400}
+.card-vat{font-size:9px;color:var(--mu);margin-bottom:12px}
 .card-btn{display:inline-block;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
-  padding:11px 32px;border-radius:5px;border:none;cursor:pointer;transition:all .25s;font-weight:500}
+  padding:9px 24px;border-radius:5px;border:none;cursor:pointer;transition:all .25s;font-weight:500}
 .card-btn.buy{background:var(--ac);color:#0a0a0b}
 .card-btn.buy:hover{background:#d4f880;transform:scale(1.03)}
 .card-btn.soon{background:transparent;color:var(--mu);border:1px solid var(--bd);cursor:default}
-.card-appstore{display:inline-block;font-size:10px;color:var(--mu2);margin-top:14px;text-decoration:none;letter-spacing:.5px;transition:color .2s}
+.card-appstore{display:inline-block;font-size:10px;color:var(--mu2);margin-top:10px;text-decoration:none;letter-spacing:.5px;transition:color .2s}
 .card-appstore:hover{color:var(--ac)}
-.format-section{margin-top:24px;padding-top:24px;border-top:1px solid var(--bd)}
+.format-section{margin-top:16px;padding-top:16px;border-top:1px solid var(--bd)}
 .format-section:first-of-type{margin-top:0;padding-top:0;border-top:none}
-.format-label{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:14px}
+.format-label{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:10px}
 .card-stores{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:4px}
 .card-stores.list{flex-direction:row;align-items:flex-start;justify-content:center;gap:20px;flex-wrap:wrap}
 .store-row{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
@@ -239,32 +238,39 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
       </div>
     </div>
 
-    <!-- ╔══ R128 Normalizer Pro (Standalone Mac/Win + Mac App) ═══╗ -->
+    <!-- ╔══ Loudness Correct (Mac App + iPad App) ════════════════╗ -->
     <div class="card">
-      <a href="r128-normalizer-pro.html" class="card-img">
-        <img src="img-r128-normalizer.png" alt="SATK R128 Normalizer Pro — zur Detailseite">
+      <a href="loudness-correct.html" class="card-img">
+        <img src="img-loudness-correct.png" alt="SATK Loudness Correct — zur Detailseite">
       </a>
       <div class="card-body">
-        <div class="card-name">R128 Normalizer Pro</div>
-        <div class="card-sub" data-i18n="r128_sub">Batch-Normalisierung · Double-Gating · True Peak Limiter · CLI</div>
+        <div class="card-name">Loudness Correct</div>
+        <div class="card-sub" data-i18n="lc_sub">Offline R128 · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6</div>
         <div class="card-platforms">
-          <span>macOS</span><span>Windows</span><span>Standalone</span><span>CLI</span>
+          <span>macOS</span><span>iPad</span><span>Universal</span>
         </div>
 
         <div class="format-section">
-          <div class="format-label" data-i18n="fmt_standalone">Standalone · macOS &amp; Windows</div>
-          <div class="card-price">39 <span class="cur">€</span></div>
-          <div class="card-vat" data-i18n="vat">inkl. MwSt.</div>
-          <button class="card-btn soon" data-i18n="btn_soon">Bald verfügbar</button>
-        </div>
-
-        <div class="format-section">
-          <div class="format-label" data-i18n="fmt_macapp">macOS App</div>
-          <div class="card-stores">
-            <!-- TODO: Mac App Store URL -->
-            <a class="appstore-badge" href="#" target="_blank" rel="noopener" aria-label="Im Mac App Store laden">
-              <img src="appstore-badge-mac-de.svg" data-src-de="appstore-badge-mac-de.svg" data-src-en="appstore-badge-mac-en.svg" alt="Mac App Store">
-            </a>
+          <div class="format-label" data-i18n="fmt_apps">Apple Apps</div>
+          <div class="card-stores list">
+            <div class="store-row">
+              <!-- TODO: Mac App Store URL -->
+              <a class="appstore-badge" href="#" target="_blank" rel="noopener" aria-label="Im Mac App Store laden">
+                <img src="appstore-badge-mac-de.svg" data-src-de="appstore-badge-mac-de.svg" data-src-en="appstore-badge-mac-en.svg" alt="Mac App Store">
+              </a>
+              <div class="store-meta">
+                <span class="store-platform" data-i18n="store_macos">macOS App</span>
+              </div>
+            </div>
+            <div class="store-row">
+              <!-- TODO: iPad App Store URL für Loudness Correct -->
+              <a class="appstore-badge" href="#" target="_blank" rel="noopener" aria-label="Im App Store laden">
+                <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
+              </a>
+              <div class="store-meta">
+                <span class="store-platform" data-i18n="store_ipad">iPad App</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -314,6 +320,7 @@ const i18n = {
     btn_appstore: 'Im App Store',
     btn_review: 'In Prüfung',
     od_sub: 'Video-Sync · Auto Edit · AutoMix R128 · Smart Prompter · MXF Round-Trip',
+    lc_sub: 'Offline R128 · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6',
     fmt_standalone_mac: 'Standalone · macOS',
     r128_sub: 'Batch-Normalisierung · Double-Gating · True Peak Limiter · CLI',
     vat: 'inkl. MwSt.',
@@ -350,6 +357,7 @@ const i18n = {
     btn_appstore: 'View in App Store',
     btn_review: 'In Review',
     od_sub: 'Video sync · Auto Edit · AutoMix R128 · Smart Prompter · MXF round-trip',
+    lc_sub: 'Offline R128 · 16 delivery presets · verify-and-refine · mono to 9.1.6',
     fmt_standalone_mac: 'Standalone · macOS',
     r128_sub: 'Batch Normalization · Double Gating · True Peak Limiter · CLI',
     vat: 'incl. VAT',

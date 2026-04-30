@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="description" content="Kostenloser Sampler, Soundbox und Instant Replay Player im Browser: 64 Cue-Slots in 4 Bänken, Tastatursteuerung, Loop, Fade. Für Live und Broadcast.">
+<meta name="keywords" content="Instant Player, Soundboard, Cue Player, Sampler Browser, Instant Replay, Jingle Player, Stinger Player, 64 Slots, Keyboard Steuerung, Loop, Fade, Live Audio, Broadcast Player, Studio Playout, kostenlos, kein Download, Browser Soundboard">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>SATK Instant Player – 64 Cue-Slots Soundboard kostenlos im Browser</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap');
+
+  :root {
+    --bg:      #0a0a0b;
+    --surface: #111114;
+    --surface2:#16161a;
+    --border:  #1e1e24;
+    --accent:  #c8f060;
+    --accent2: #60d4f0;
+    --warn:    #f0a060;
+    --danger:  #f06060;
+    --text:    #e8e8ec;
+    --muted:   #5a5a6a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(200,240,96,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,240,96,0.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+    padding-top: max(48px, calc(48px + env(safe-area-inset-top)));
+  }
+
+  /* ── Header / Logo ─────────────────────────────────────────────────────── */
+  header { margin-bottom: 48px; }
+
+  .logo-lockup {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .logo-top-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .logo-wordmark {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(22px, 5vw, 44px);
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text);
+    line-height: 1;
+    position: relative;
+  }
+  .logo-wordmark::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -5px;
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+  }
+  .logo-divider {
+    width: 1px; height: 34px;
+    background: linear-gradient(180deg, transparent, var(--border), transparent);
+  }
+  .logo-right { display: flex; flex-direction: column; gap: 3px; }
+  .logo-sub-word {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(10px, 1.6vw, 12px);
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .logo-standard {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    line-height: 1;
+  }
+  .logo-bottom-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .logo-rule { flex: 1; height: 1px; background: var(--border); max-width: 48px; }
+  .logo-tag {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 2px 7px;
+  }
+  .subtitle {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+  }
+
+  /* ── Transport Bar ─────────────────────────────────────────────────────── */
+  .transport {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 14px 18px;
+    margin-bottom: 24px;
+  }
+
+  .transport-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .transport-label {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .btn-transport {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .btn-transport:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-transport.active { background: var(--accent); color: #0a0a0b; border-color: var(--accent); font-weight: 600; }
+  .btn-transport.danger-btn { border-color: var(--danger); color: var(--danger); }
+  .btn-transport.danger-btn:hover { background: var(--danger); color: #0a0a0b; }
+
+  .transport-sep { width: 1px; height: 28px; background: var(--border); flex-shrink: 0; }
+
+  /* Master volume */
+  .master-vol {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 160px;
+  }
+  .master-vol input[type=range] {
+    flex: 1;
+    -webkit-appearance: none;
+    height: 2px;
+    background: var(--border);
+    outline: none;
+  }
+  .master-vol input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; height: 14px;
+    background: var(--accent);
+    cursor: pointer;
+    border-radius: 0;
+  }
+  .master-vol input[type=range]::-moz-range-thumb {
+    width: 14px; height: 14px;
+    background: var(--accent);
+    cursor: pointer;
+    border: none;
+    border-radius: 0;
+  }
+  .vol-val {
+    font-size: 11px;
+    color: var(--accent);
+    min-width: 38px;
+    text-align: right;
+  }
+
+  /* Status display */
+  .transport-status {
+    font-size: 11px;
+    color: var(--muted);
+    margin-left: auto;
+    letter-spacing: 0.04em;
+  }
+  .transport-status.playing { color: var(--accent); }
+
+  /* ── Bank Tabs ─────────────────────────────────────────────────────────── */
+  .bank-tabs {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 2px;
+  }
+  .bank-tab {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .bank-tab:hover { color: var(--text); }
+  .bank-tab.active {
+    background: var(--surface2);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── Pad Grid ──────────────────────────────────────────────────────────── */
+  .pad-grid-wrap {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 16px;
+  }
+
+  .pad-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  /* ── Single Pad ────────────────────────────────────────────────────────── */
+  .pad {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    aspect-ratio: 1 / 1;
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: border-color 0.1s, background 0.1s, transform 0.06s;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .pad:hover { border-color: var(--muted); }
+  .pad.has-file { border-color: #2a2a35; }
+  .pad.has-file:hover { border-color: var(--accent); }
+
+  /* Playing state */
+  .pad.playing {
+    border-color: var(--accent) !important;
+    background: rgba(200,240,96,0.06);
+  }
+  .pad.playing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(200,240,96,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Progress bar at bottom */
+  .pad-progress {
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 2px;
+    background: var(--accent);
+    width: 0%;
+    transition: width 0.1s linear;
+    z-index: 3;
+  }
+  .pad.playing .pad-progress { transition: width 0.1s linear; }
+
+  /* Pad number badge */
+  .pad-num {
+    position: absolute;
+    top: 8px; left: 9px;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    line-height: 1;
+    z-index: 2;
+  }
+  .pad.playing .pad-num { color: var(--accent); }
+
+  /* Color tag strip */
+  .pad-color {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: transparent;
+    z-index: 2;
+    transition: background 0.2s;
+  }
+
+  /* Content area — layout handled by second .pad-body rule below */
+
+  /* Empty pad icon */
+  .pad-empty-icon {
+    opacity: 0.18;
+    transition: opacity 0.15s;
+  }
+  .pad:hover .pad-empty-icon { opacity: 0.35; }
+
+  /* Playing pulse animation */
+  @keyframes pad-pulse {
+    0%,100% { opacity: 1; }
+    50%      { opacity: 0.5; }
+  }
+  .pad.playing .pad-name { color: var(--accent); animation: pad-pulse 1.5s infinite; }
+
+  /* Pad controls (shown on hover when has file) */
+  .pad-controls {
+    position: absolute;
+    bottom: 8px; right: 8px;
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 5;
+  }
+  .pad.has-file:hover .pad-controls { opacity: 1; }
+  .pad-ctrl-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 9px;
+    padding: 3px 6px;
+    cursor: pointer;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.04em;
+    transition: all 0.12s;
+    z-index: 5;
+  }
+  .pad-ctrl-btn:hover { border-color: var(--danger); color: var(--danger); }
+
+  /* Loop indicator */
+  .pad-loop-badge {
+    position: absolute;
+    top: 8px; right: 8px;
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    color: var(--accent2);
+    border: 1px solid var(--accent2);
+    padding: 1px 5px;
+    display: none;
+    z-index: 2;
+    opacity: 0.8;
+  }
+  .pad.looping .pad-loop-badge { display: block; }
+
+  /* Drop highlight */
+  .pad.drag-over {
+    border-color: var(--accent) !important;
+    background: rgba(200,240,96,0.08);
+  }
+
+  /* Hidden file input */
+  .pad-file-input { display: none; }
+
+  /* ── Settings Row ──────────────────────────────────────────────────────── */
+  .pad-settings {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: none;
+    padding: 10px 16px;
+    margin-bottom: 24px;
+  }
+  .pad-setting {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pad-setting-lbl {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .toggle-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-transform: uppercase;
+  }
+  .toggle-btn.on { border-color: var(--accent2); color: var(--accent2); background: rgba(96,212,240,0.08); }
+  .toggle-btn:hover { border-color: var(--muted); color: var(--text); }
+
+  /* ── Color Picker ──────────────────────────────────────────────────────── */
+  .color-dots {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  .color-dot {
+    width: 12px; height: 12px;
+    border-radius: 0;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: transform 0.1s, border-color 0.1s;
+    flex-shrink: 0;
+  }
+  .color-dot:hover { transform: scale(1.3); }
+  .color-dot.selected { border-color: var(--text); }
+
+  /* ── Info Strip ────────────────────────────────────────────────────────── */
+  .info-strip {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    margin-top: 48px;
+  }
+  .info-item { display: flex; flex-direction: column; gap: 4px; }
+  .info-item dt { font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+  .info-item dd { font-size: 12px; color: var(--accent); }
+
+  /* ── Footer ────────────────────────────────────────────────────────────── */
+  .site-footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    margin-top: 64px;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-logo { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 0.18em; color: var(--accent); }
+  .footer-copy { font-size: 10px; color: var(--muted); }
+
+  /* ── Keyboard hint ─────────────────────────────────────────────────────── */
+  .kbd-hint {
+    position: absolute;
+    bottom: 36px; left: 9px;
+    font-size: 8px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    opacity: 0.6;
+  }
+
+  /* ── Per-Pad Volume Strip ──────────────────────────────────────────────── */
+  .pad-vol-strip {
+    display: none;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 8px 5px;
+    background: rgba(0,0,0,0.35);
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .pad.has-file .pad-vol-strip { display: flex; }
+
+  .pad-vol-slider {
+    flex: 1;
+    -webkit-appearance: none;
+    height: 2px;
+    background: var(--border);
+    outline: none;
+    border-radius: 1px;
+    cursor: pointer;
+  }
+  .pad-vol-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 11px; height: 11px;
+    background: var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .pad-vol-slider::-moz-range-thumb {
+    width: 11px; height: 11px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  }
+  .pad-vol-val {
+    font-size: 8px;
+    color: var(--muted);
+    min-width: 28px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* ── Auto-Cue Badge ────────────────────────────────────────────────────── */
+  .pad-cue-badge {
+    display: none;
+    position: absolute;
+    bottom: 36px; right: 8px;
+    font-size: 7px;
+    letter-spacing: 0.06em;
+    color: #60d4f0;
+    background: rgba(96,212,240,0.1);
+    border: 1px solid rgba(96,212,240,0.3);
+    padding: 1px 4px;
+    border-radius: 2px;
+    pointer-events: none;
+  }
+
+  /* Pad height update to accommodate vol strip */
+  .pad {
+    aspect-ratio: unset;
+    height: 165px;
+    min-height: 140px;
+  }
+
+  /* Pad body: feste Struktur, kein zentriertes Floaten */
+  .pad-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 22px 8px 4px;   /* Platz für pad-num oben */
+    gap: 3px;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  /* Wellenform: feste Höhe, volle Breite — gleich in allen Pads */
+  .pad-wave {
+    width: 100%;
+    height: 60px;
+    flex-shrink: 0;
+    display: none;
+    opacity: 0.85;
+  }
+  .pad.has-file .pad-wave { display: block; }
+
+  /* Name + Dauer: am unteren Ende der Body-Fläche */
+  .pad-name {
+    font-size: 9px;
+    letter-spacing: 0.03em;
+    color: var(--text);
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: none;
+    line-height: 1.3;
+    margin-top: 2px;
+    text-align: left;
+  }
+  .pad.has-file .pad-name { display: block; }
+
+  .pad-dur {
+    font-size: 8px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    display: none;
+    text-align: left;
+  }
+  .pad.has-file .pad-dur { display: block; }
+
+  /* ── Mobile ────────────────────────────────────────────────────────────── */
+  @media (max-width: 700px) {
+    .pad-grid { grid-template-columns: repeat(2, 1fr); }
+    .logo-top-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .logo-divider { display: none; }
+    .logo-wordmark { font-size: clamp(20px, 8vw, 32px); letter-spacing: 0.08em; }
+    .transport { gap: 8px; flex-wrap: wrap; }
+    .transport-sep { display: none; }
+    .pad { height: 140px; min-height: 115px; }
+    .pad-wave { height: 48px; }
+    .pad-vol-val { display: none; }
+    .kbd-hint { display: none; }
+    .pad-cue-badge { display: none !important; }
+  }
+  @media (max-width: 400px) {
+    .pad { height: 120px; min-height: 100px; }
+    .pad-wave { height: 38px; }
+  }
+
+  /* Touch devices: clear button always visible */
+  @media (hover: none) {
+    .pad-controls { opacity: 1 !important; }
+    .kbd-hint { display: none; }
+  }
+
+/* ── Download-Hinweis Toast ── */
+#satkDlHint{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  background:#0d1012;border:1px solid rgba(200,240,96,.35);
+  color:#e2e6ed;font-family:'DM Mono',monospace;font-size:11px;
+  padding:12px 18px;z-index:9999;max-width:420px;width:90%;
+  box-shadow:0 4px 24px rgba(0,0,0,.5);
+  animation:satkDlIn .25s ease;pointer-events:none;
+  line-height:1.6;
+}
+#satkDlHint strong{color:#c8f060;}
+#satkDlHint .satk-dl-file{color:#c8f060;font-size:10px;opacity:.8;display:block;margin-bottom:4px;}
+#satkDlHint .satk-dl-close{
+  position:absolute;top:7px;right:10px;cursor:pointer;
+  color:rgba(200,240,96,.5);font-size:13px;pointer-events:all;
+}
+@keyframes satkDlIn{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
+@keyframes satkDlOut{from{opacity:1;}to{opacity:0;transform:translateX(-50%) translateY(8px);}}
+
+</style>
+
+<style>
+/* ── Eleganter Custom Scrollbar (SATK Style) ─────────────────────────────────
+   Hauchdünn, grün, nur beim Hovern sichtbar — wie macOS Overlay-Scrollbar      */
+
+/* Firefox */
+html, body, * {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(200,240,96,.25) transparent;
+}
+
+/* Chrome / Safari / Edge */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(200,240,96,.2);
+  border-radius: 2px;
+  transition: background .2s;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(200,240,96,.5);
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+</style>
+<!-- SATK: Layout -->
+<style>
+/* Mobile: wrapper scrollbar, kein body-Overflow */
+html { overflow: hidden; height: 100%; }
+body { overflow: hidden; height: 100vh; }
+/* Scrollbalken unsichtbar, Scroll-Funktion erhalten */
+html, body, * { scrollbar-width: none; -ms-overflow-style: none; }
+*::-webkit-scrollbar { display: none; width: 0; height: 0; }
+/* Wrapper scrollt intern — Touch-Scroll aktiviert */
+.wrapper {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+</style>
+  <link rel="canonical" href="https://satk.tech/instant-player.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://satk.tech/instant-player.html">
+<meta property="og:title" content="SATK Instant Player – Soundboard mit 64 Cue-Slots kostenlos im Browser">
+<meta property="og:description" content="64 Cue-Slots in 4 Bänken, Keyboard-Steuerung, Loop, Fade — für Live, Broadcast und Studio. Kostenloser Sampler und Instant-Replay-Player im Browser.">
+<meta property="og:image" content="https://satk.tech/og-image.png">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="SATK – Sascha's Audio Toolkit">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SATK Instant Player – Soundboard mit 64 Cue-Slots kostenlos im Browser">
+<meta name="twitter:description" content="64 Cue-Slots in 4 Bänken, Keyboard-Steuerung, Loop, Fade — für Live, Broadcast und Studio. Kostenloser Sampler und Instant-Replay-Player im Browser.">
+<meta name="twitter:image" content="https://satk.tech/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Instant Player",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Web Browser, iOS, Android",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+  "description": "Kostenloser Sampler, Soundboard und Instant-Replay-Player im Browser: 64 Cue-Slots in 4 Bänken, Keyboard-Steuerung, Loop, Fade, Auto-Cue, Wellenform-Vorschau. Für Live, Broadcast und Studio.",
+  "url": "https://satk.tech/instant-player.html",
+  "creator": {"@type": "Person", "name": "Sascha Hömske"},
+  "isPartOf": {"@type": "WebSite", "name": "SATK – Sascha's Audio Toolkit", "url": "https://satk.tech/"}
+}
+</script>
+</head>
+<body>
+
+<!-- SATK: Audio-Stop vom Launcher -->
+<script>
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.type === 'satk-suspend-audio') {
+    try { document.querySelectorAll('.pad.playing').forEach(function(p){p.click&&p.click();}); } catch(err) {}
+  }
+});
+</script>
+
+<div class="wrapper">
+
+  <header>
+    <div class="logo-lockup">
+      <div class="logo-top-row">
+        <span class="logo-wordmark">Instant</span>
+        <div class="logo-divider"></div>
+        <div class="logo-right">
+          <span class="logo-sub-word">Replay</span>
+          <span class="logo-standard">SATK — Sascha's Audio Toolkit</span>
+        </div>
+      </div>
+      <div class="logo-bottom-row">
+        <div class="logo-rule"></div>
+        <span class="logo-tag">16 Pads · 4 Bänke · Loop · Fade</span>
+        <div class="logo-rule"></div>
+      </div>
+    </div>
+    <p class="subtitle">// Audiodateien auf Pads laden und per Klick oder Taste abspielen</p>
+  </header>
+
+  <!-- Transport Bar -->
+  <div class="transport">
+    <div class="transport-group">
+      <span class="transport-label">Transport</span>
+      <button class="btn-transport" id="btn-stop-all">■ Stop All</button>
+      <button class="btn-transport" id="btn-fade-all">↓ Fade All</button>
+    </div>
+
+    <div class="transport-sep"></div>
+
+    <div class="transport-group">
+      <span class="transport-label">Bank</span>
+      <div class="bank-tabs" id="bank-tabs-transport">
+        <button class="bank-tab active" data-bank="0">A</button>
+        <button class="bank-tab" data-bank="1">B</button>
+        <button class="bank-tab" data-bank="2">C</button>
+        <button class="bank-tab" data-bank="3">D</button>
+      </div>
+    </div>
+
+    <div class="transport-sep"></div>
+
+    <div class="transport-group master-vol">
+      <span class="transport-label">Master</span>
+      <input type="range" id="master-vol" min="0" max="1" step="0.01" value="1">
+      <span class="vol-val" id="master-vol-val">100%</span>
+    </div>
+
+    <span class="transport-status" id="transport-status">Bereit</span>
+  </div>
+
+  <!-- Pad Settings -->
+  <div class="pad-settings">
+    <div class="pad-setting">
+      <span class="pad-setting-lbl">Farbe</span>
+      <div class="color-dots" id="color-picker">
+        <div class="color-dot selected" data-color="" style="background:var(--border)" title="Kein"></div>
+        <div class="color-dot" data-color="#c8f060" style="background:#c8f060" title="Grün"></div>
+        <div class="color-dot" data-color="#60d4f0" style="background:#60d4f0" title="Cyan"></div>
+        <div class="color-dot" data-color="#f0a060" style="background:#f0a060" title="Orange"></div>
+        <div class="color-dot" data-color="#f06060" style="background:#f06060" title="Rot"></div>
+        <div class="color-dot" data-color="#c060f0" style="background:#c060f0" title="Lila"></div>
+        <div class="color-dot" data-color="#f0e060" style="background:#f0e060" title="Gelb"></div>
+      </div>
+    </div>
+    <div class="pad-setting">
+      <span class="pad-setting-lbl">Loop</span>
+      <button class="toggle-btn" id="global-loop">Aus</button>
+    </div>
+    <div class="pad-setting">
+      <span class="pad-setting-lbl">Fade Out</span>
+      <button class="toggle-btn" id="global-fade">Aus</button>
+    </div>
+    <div class="pad-setting">
+      <span class="pad-setting-lbl">Fade Zeit</span>
+      <input type="range" id="fade-time" min="0.5" max="10" step="0.5" value="2" style="-webkit-appearance:none;height:2px;background:var(--border);outline:none;width:80px;">
+      <span style="font-size:10px;color:var(--accent);min-width:28px;" id="fade-time-val">2s</span>
+    </div>
+    <div class="pad-setting">
+      <span class="pad-setting-lbl">Auto-Cue</span>
+      <button class="toggle-btn on" id="global-autocue" title="Überspringt Stille am Anfang">An</button>
+    </div>
+    <div class="pad-setting" style="margin-left:auto;">
+      <span class="pad-setting-lbl" style="color:var(--muted);font-size:9px;">Tasten: 1–9, Q–Y, A–H, Z–V</span>
+    </div>
+  </div>
+
+  <!-- Pad Grid -->
+  <div class="pad-grid-wrap">
+    <div class="pad-grid" id="pad-grid"></div>
+  </div>
+
+  <!-- Info -->
+  <dl class="info-strip">
+    <div class="info-item"><dt>Pads</dt><dd>16 pro Bank</dd></div>
+    <div class="info-item"><dt>Bänke</dt><dd>A · B · C · D</dd></div>
+    <div class="info-item"><dt>Formate</dt><dd>WAV, MP3, M4A, OGG, FLAC</dd></div>
+    <div class="info-item"><dt>Verarbeitung</dt><dd>100% Browser-seitig</dd></div>
+    <div class="info-item"><dt>Laden</dt><dd>Klick oder Drag & Drop</dd></div>
+  </dl>
+        
+      </div>
+    </div>
+    
+  </div>
+
+</div><!-- /.wrapper -->
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span class="footer-logo">SATK</span>
+    <span class="footer-copy">&copy; 2026 Sascha Hömske · Sascha's Audio Toolkit · kostenlos &amp; werbefrei</span>
+  </div>
+</footer>
+
+<script>
+// ── iOS / Webkit ───────────────────────────────────────────────────────────────
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
+// ── State ─────────────────────────────────────────────────────────────────────
+const NUM_BANKS = 4;
+const NUM_PADS  = 16;
+const BANK_KEYS = [
+  ['1','2','3','4','5','6','7','8','9','0','-','=','Backspace','Delete','Insert','Home'],
+  ['q','w','e','r','t','y','u','i','o','p','[',']','\\','Enter','PageUp','PageDown'],
+  ['a','s','d','f','g','h','j','k','l',';',"'",'z','x','c','v','b'],
+  ['n','m',',','.','/',ArrowLeft='ArrowLeft',ArrowUp='ArrowUp',ArrowRight='ArrowRight',ArrowDown='ArrowDown','F1','F2','F3','F4','F5','F6','F7'],
+];
+// Simpler key map: first 16 printable keys across all banks
+const PAD_KEYS = ['1','2','3','4','q','w','e','r','a','s','d','f','z','x','c','v'];
+
+const COLORS = ['','#c8f060','#60d4f0','#f0a060','#f06060','#c060f0','#f0e060'];
+
+let currentBank  = 0;
+let selectedColor = '';
+let globalLoop   = false;
+let globalFade   = false;
+let globalAutoCue= true;
+let fadeTime     = 2;
+let masterVol    = 1;
+
+const AUTO_CUE_THRESHOLD = 0.01; // ca. -40 dBFS
+
+// audioCtx shared
+let audioCtx = null;
+function getCtx() {
+  if (!audioCtx) audioCtx = new AudioContext();
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  return audioCtx;
+}
+
+// masterGain
+let masterGain = null;
+function getMaster() {
+  const ctx = getCtx();
+  if (!masterGain || masterGain.context !== ctx) {
+    masterGain = ctx.createGain();
+    masterGain.gain.value = masterVol;
+    masterGain.connect(ctx.destination);
+  }
+  return masterGain;
+}
+
+// Banks: array of 4 banks, each 16 pads
+// pad = { name, duration, audioBuffer, color, loop, cuePoint, vol, activeSource, gainNode, progressInterval }
+const banks = Array.from({ length: NUM_BANKS }, () =>
+  Array.from({ length: NUM_PADS }, () => ({
+    name: '', duration: 0, audioBuffer: null, color: '',
+    loop: false, cuePoint: 0, vol: 1,
+    activeSource: null, gainNode: null, progressInterval: null
+  }))
+);
+
+// ── DOM ───────────────────────────────────────────────────────────────────────
+const padGrid        = document.getElementById('pad-grid');
+const transportStatus= document.getElementById('transport-status');
+const masterVolSlider= document.getElementById('master-vol');
+const masterVolVal   = document.getElementById('master-vol-val');
+const globalLoopBtn  = document.getElementById('global-loop');
+const globalFadeBtn  = document.getElementById('global-fade');
+const fadeTimeSlider = document.getElementById('fade-time');
+const fadeTimeVal    = document.getElementById('fade-time-val');
+const bankTabsTransport = document.getElementById('bank-tabs-transport');
+
+// ── Build Pad Grid ─────────────────────────────────────────────────────────────
+const padEls = [];
+
+for (let i = 0; i < NUM_PADS; i++) {
+  const pad = document.createElement('div');
+  pad.className = 'pad';
+  pad.dataset.idx = i;
+  pad.innerHTML = `
+    <div class="pad-color" id="pad-color-${i}"></div>
+    <span class="pad-num">${String(i+1).padStart(2,'0')}</span>
+    <span class="pad-loop-badge">LOOP</span>
+    <span class="kbd-hint">${PAD_KEYS[i] || ''}</span>
+    <div class="pad-body">
+      <svg class="pad-empty-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.5">
+        <path d="M12 5v14M5 12h14" stroke-linecap="round"/>
+      </svg>
+      <canvas class="pad-wave" id="pad-wave-${i}" width="200" height="52"></canvas>
+      <span class="pad-name" id="pad-name-${i}"></span>
+      <span class="pad-dur" id="pad-dur-${i}"></span>
+    </div>
+    <div class="pad-vol-strip" id="pad-vol-wrap-${i}">
+      <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor" opacity="0.5"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+      <input type="range" class="pad-vol-slider" id="pad-vol-${i}" min="0" max="1" step="0.05" value="1">
+      <span class="pad-vol-val" id="pad-vol-val-${i}">100%</span>
+    </div>
+    <span class="pad-cue-badge" id="pad-cue-${i}"></span>
+    <div class="pad-controls">
+      <button class="pad-ctrl-btn" data-action="clear" data-idx="${i}">✕</button>
+    </div>
+    <div class="pad-progress" id="pad-prog-${i}"></div>
+  `;
+
+  // Vol slider — stop propagation so it doesn't trigger pad
+  const volSlider = pad.querySelector(`#pad-vol-${i}`);
+  const volValEl  = pad.querySelector(`#pad-vol-val-${i}`);
+  volSlider.addEventListener('input', e => {
+    e.stopPropagation();
+    const p = banks[currentBank][i];
+    p.vol = parseFloat(volSlider.value);
+    volValEl.textContent = Math.round(p.vol * 100) + '%';
+    if (p.gainNode) p.gainNode.gain.value = p.vol;
+  });
+  ['click','mousedown','touchstart','touchend'].forEach(ev =>
+    volSlider.addEventListener(ev, e => e.stopPropagation(), { passive: true })
+  );
+
+  // Click → play/stop
+  pad.addEventListener('click', e => {
+    if (e.target.closest('.pad-ctrl-btn')) return;
+    triggerPad(i);
+  });
+
+  // Drag & Drop
+  pad.addEventListener('dragover', e => { e.preventDefault(); pad.classList.add('drag-over'); });
+  pad.addEventListener('dragleave', () => pad.classList.remove('drag-over'));
+  pad.addEventListener('drop', e => {
+    e.preventDefault();
+    pad.classList.remove('drag-over');
+    const files = [...e.dataTransfer.files].filter(f => f.type.startsWith('audio/'));
+    if (files[0]) loadFile(i, files[0]);
+  });
+
+  // Double-click → open file picker
+  pad.addEventListener('dblclick', e => {
+    if (e.target.closest('.pad-ctrl-btn')) return;
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'audio/*,.mp3,.wav,.aac,.m4a,.flac,.ogg,.opus,.aiff,.aif';
+    input.onchange = () => { if (input.files[0]) loadFile(i, input.files[0]); if(input.parentNode)document.body.removeChild(input); };
+    input.style.display='none';
+    document.body.appendChild(input);
+    input.click();
+  });
+
+  padEls.push(pad);
+  padGrid.appendChild(pad);
+}
+
+// Clear buttons
+padGrid.addEventListener('click', e => {
+  const btn = e.target.closest('.pad-ctrl-btn');
+  if (!btn || btn.dataset.action !== 'clear') return;
+  e.stopPropagation();
+  clearPad(parseInt(btn.dataset.idx));
+});
+
+// ── Render current bank ────────────────────────────────────────────────────────
+function renderBank() {
+  const bk = banks[currentBank];
+  for (let i = 0; i < NUM_PADS; i++) {
+    const p = bk[i];
+    const el = padEls[i];
+    const colorEl = document.getElementById(`pad-color-${i}`);
+    const nameEl  = document.getElementById(`pad-name-${i}`);
+    const durEl   = document.getElementById(`pad-dur-${i}`);
+
+    el.classList.toggle('has-file', !!p.audioBuffer);
+    el.classList.toggle('looping', p.loop);
+    colorEl.style.background = p.color || 'transparent';
+    nameEl.textContent = p.name || '';
+    durEl.textContent  = p.duration ? fmtDur(p.duration) : '';
+
+    // Restore playing state display
+    const isPlaying = !!p.activeSource;
+    el.classList.toggle('playing', isPlaying);
+  }
+}
+
+function fmtDur(sec) {
+  const m = Math.floor(sec / 60);
+  const s = (sec % 60).toFixed(1);
+  return m > 0 ? `${m}:${s.padStart(4,'0')}` : `${s}s`;
+}
+
+// ── Auto-Cue ──────────────────────────────────────────────────────────────────
+function findCuePoint(audioBuf) {
+  if (!globalAutoCue) return 0;
+  const sr  = audioBuf.sampleRate;
+  const len = audioBuf.length;
+  const nCh = audioBuf.numberOfChannels;
+  const CHUNK = 128;
+  for (let i = 0; i < len; i += CHUNK) {
+    for (let c = 0; c < nCh; c++) {
+      const data = audioBuf.getChannelData(c);
+      for (let j = i; j < Math.min(i + CHUNK, len); j++) {
+        if (Math.abs(data[j]) >= AUTO_CUE_THRESHOLD) {
+          return Math.max(0, (j / sr) - 0.05); // 50ms Puffer
+        }
+      }
+    }
+  }
+  return 0;
+}
+
+// ── Load File ──────────────────────────────────────────────────────────────────
+async function loadFile(idx, file) {
+  const pad = banks[currentBank][idx];
+  const el  = padEls[idx];
+  const nameEl = document.getElementById(`pad-name-${idx}`);
+  nameEl.textContent = 'Lade…';
+  el.classList.add('has-file');
+
+  try {
+    const arrayBuf = await file.arrayBuffer();
+    const ctx = getCtx();
+    const audioBuf = await new Promise((res, rej) => ctx.decodeAudioData(arrayBuf, res, rej));
+
+    stopPad(idx, true);
+    pad.name        = file.name.replace(/\.[^.]+$/, '');
+    pad.duration    = audioBuf.duration;
+    pad.audioBuffer = audioBuf;
+    pad.color       = selectedColor;
+    pad.loop        = globalLoop;
+    pad.cuePoint    = findCuePoint(audioBuf);
+
+    // Cue-Badge
+    const cueEl = document.getElementById(`pad-cue-${idx}`);
+    if (cueEl) {
+      if (pad.cuePoint > 0.05) {
+        cueEl.textContent = `CUE +${pad.cuePoint.toFixed(2)}s`;
+        cueEl.style.display = 'block';
+      } else {
+        cueEl.textContent = '';
+        cueEl.style.display = 'none';
+      }
+    }
+
+    drawWaveform(idx, audioBuf, pad.cuePoint);
+    renderBank();
+  } catch(err) {
+    nameEl.textContent = 'Fehler';
+    console.error('loadFile:', err);
+    setTimeout(() => renderBank(), 1500);
+  }
+}
+
+// ── Draw Waveform ──────────────────────────────────────────────────────────────
+function drawWaveform(idx, audioBuf, cuePoint) {
+  const canvas = document.getElementById(`pad-wave-${idx}`);
+  if (!canvas) return;
+
+  // HiDPI / Retina: Canvas in physischen Pixeln zeichnen → gestochen scharf
+  const dpr  = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  // Fallback auf CSS-definierte Größen wenn Canvas noch nicht gerendert (display:none)
+  const CW   = rect.width  > 0 ? rect.width  : canvas.offsetWidth  || 200;
+  const CH   = rect.height > 0 ? rect.height : canvas.offsetHeight || 60;
+  canvas.width  = Math.round(CW * dpr);
+  canvas.height = Math.round(CH * dpr);
+
+  const c = canvas.getContext('2d');
+  c.scale(dpr, dpr);
+
+  const data = audioBuf.getChannelData(0);
+  const step = Math.ceil(data.length / CW);
+
+  c.clearRect(0, 0, CW, CH);
+
+  // Filled waveform
+  c.fillStyle   = '#c8f06022';
+  c.strokeStyle = '#c8f060';
+  c.lineWidth   = 1;
+  c.beginPath();
+  c.moveTo(0, CH / 2);
+  for (let x = 0; x < CW; x++) {
+    let mx = 0;
+    for (let j = 0; j < step; j++) {
+      const v = Math.abs(data[Math.floor(x * step) + j] || 0);
+      if (v > mx) mx = v;
+    }
+    c.lineTo(x, CH / 2 - mx * CH / 2);
+  }
+  for (let x = CW - 1; x >= 0; x--) {
+    let mx = 0;
+    for (let j = 0; j < step; j++) {
+      const v = Math.abs(data[Math.floor(x * step) + j] || 0);
+      if (v > mx) mx = v;
+    }
+    c.lineTo(x, CH / 2 + mx * CH / 2);
+  }
+  c.closePath();
+  c.fill();
+  c.stroke();
+
+  // Center line
+  c.strokeStyle = '#c8f06030';
+  c.lineWidth   = 1;
+  c.beginPath(); c.moveTo(0, CH/2); c.lineTo(CW, CH/2); c.stroke();
+
+  // Cue marker
+  if (cuePoint > 0.05 && audioBuf.duration > 0) {
+    const cx = (cuePoint / audioBuf.duration) * CW;
+    c.strokeStyle = '#60d4f0cc';
+    c.lineWidth   = 1.5;
+    c.setLineDash([3, 2]);
+    c.beginPath(); c.moveTo(cx, 0); c.lineTo(cx, CH); c.stroke();
+    c.setLineDash([]);
+    c.fillStyle = '#60d4f0';
+    c.font = 'bold 7px monospace';
+    c.fillText('CUE', cx + 2, 9);
+  }
+}
+
+// ── Trigger Pad ───────────────────────────────────────────────────────────────
+function triggerPad(idx) {
+  const pad = banks[currentBank][idx];
+  if (!pad.audioBuffer) {
+    // No file: open picker on single click
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'audio/*,.mp3,.wav,.aac,.m4a,.flac,.ogg,.opus,.aiff,.aif';
+    input.onchange = () => { if (input.files[0]) loadFile(idx, input.files[0]); if(input.parentNode)document.body.removeChild(input); };
+    input.style.display='none';
+    document.body.appendChild(input);
+    input.click();
+    return;
+  }
+
+  // Toggle: if playing → stop, else → play
+  if (pad.activeSource) {
+    stopPad(idx);
+    return;
+  }
+
+  playPad(idx);
+}
+
+function playPad(idx) {
+  const pad = banks[currentBank][idx];
+  if (!pad.audioBuffer) return;
+
+  stopPad(idx, true);
+
+  const ctx  = getCtx();
+  const gain = ctx.createGain();
+  gain.gain.value = pad.vol !== undefined ? pad.vol : 1;
+  gain.connect(getMaster());
+
+  const src = ctx.createBufferSource();
+  src.buffer = pad.audioBuffer;
+  src.loop   = pad.loop;
+  src.connect(gain);
+
+  const cue = pad.cuePoint || 0;
+  src.start(0, cue);
+
+  pad.activeSource = src;
+  pad.gainNode     = gain;
+
+  const el = padEls[idx];
+  el.classList.add('playing');
+  updateStatus();
+
+  // Progress bar
+  const dur = (pad.audioBuffer.duration - cue);
+  const progEl = document.getElementById(`pad-prog-${idx}`);
+  const startTime = ctx.currentTime;
+
+  pad.progressInterval = setInterval(() => {
+    const elapsed = ctx.currentTime - startTime;
+    progEl.style.width = (pad.loop
+      ? ((elapsed % dur) / dur * 100)
+      : Math.min(100, elapsed / dur * 100)) + '%';
+  }, 80);
+
+  src.onended = () => {
+    if (pad.activeSource === src) clearPadPlayState(idx);
+  };
+}
+
+function stopPad(idx, immediate = false) {
+  const pad = banks[currentBank][idx];
+  if (!pad.activeSource) return;
+
+  if (immediate || !globalFade) {
+    try { pad.activeSource.stop(); } catch(e){}
+    clearPadPlayState(idx);
+  } else {
+    // Fade out
+    const gain = pad.gainNode;
+    const ctx  = getCtx();
+    gain.gain.setValueAtTime(gain.gain.value, ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(0, ctx.currentTime + fadeTime);
+    const src = pad.activeSource;
+    setTimeout(() => {
+      try { src.stop(); } catch(e){}
+      clearPadPlayState(idx);
+    }, fadeTime * 1000 + 50);
+  }
+}
+
+function clearPadPlayState(idx) {
+  const pad = banks[currentBank][idx];
+  pad.activeSource = null;
+  pad.gainNode     = null;
+  if (pad.progressInterval) { clearInterval(pad.progressInterval); pad.progressInterval = null; }
+  const el = padEls[idx];
+  el.classList.remove('playing');
+  const progEl = document.getElementById(`pad-prog-${idx}`);
+  progEl.style.width = '0%';
+  updateStatus();
+}
+
+function clearPad(idx) {
+  stopPad(idx, true);
+  const pad = banks[currentBank][idx];
+  pad.name = ''; pad.duration = 0; pad.audioBuffer = null;
+  pad.color = ''; pad.loop = false; pad.cuePoint = 0; pad.vol = 1;
+  const canvas = document.getElementById(`pad-wave-${idx}`);
+  if (canvas) canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+  const cueEl = document.getElementById(`pad-cue-${idx}`);
+  if (cueEl) { cueEl.textContent = ''; cueEl.style.display = 'none'; }
+  const volSlider = document.getElementById(`pad-vol-${idx}`);
+  const volValEl  = document.getElementById(`pad-vol-val-${idx}`);
+  if (volSlider) volSlider.value = 1;
+  if (volValEl)  volValEl.textContent = '100%';
+  renderBank();
+}
+
+function stopAllPads() {
+  for (let i = 0; i < NUM_PADS; i++) stopPad(i);
+}
+function fadeAllPads() {
+  const orig = globalFade;
+  globalFade = true;
+  for (let i = 0; i < NUM_PADS; i++) stopPad(i);
+  globalFade = orig;
+}
+
+function updateStatus() {
+  const bk = banks[currentBank];
+  const playing = bk.filter(p => p.activeSource).length;
+  transportStatus.textContent = playing > 0 ? `● ${playing} aktiv` : 'Bereit';
+  transportStatus.className   = 'transport-status' + (playing > 0 ? ' playing' : '');
+}
+
+// ── Bank switching ─────────────────────────────────────────────────────────────
+function switchBank(b) {
+  currentBank = b;
+  document.querySelectorAll('.bank-tab').forEach((t, i) => t.classList.toggle('active', i === b));
+  renderBank();
+}
+
+bankTabsTransport.addEventListener('click', e => {
+  const tab = e.target.closest('.bank-tab');
+  if (!tab) return;
+  switchBank(parseInt(tab.dataset.bank));
+});
+
+// ── Transport buttons ──────────────────────────────────────────────────────────
+document.getElementById('btn-stop-all').addEventListener('click', stopAllPads);
+document.getElementById('btn-fade-all').addEventListener('click', fadeAllPads);
+
+// ── Master volume ──────────────────────────────────────────────────────────────
+masterVolSlider.addEventListener('input', () => {
+  masterVol = parseFloat(masterVolSlider.value);
+  masterVolVal.textContent = Math.round(masterVol * 100) + '%';
+  if (masterGain) masterGain.gain.value = masterVol;
+});
+
+// ── Global Loop / Fade ────────────────────────────────────────────────────────
+globalLoopBtn.addEventListener('click', () => {
+  globalLoop = !globalLoop;
+  globalLoopBtn.textContent = globalLoop ? 'An' : 'Aus';
+  globalLoopBtn.classList.toggle('on', globalLoop);
+});
+
+globalFadeBtn.addEventListener('click', () => {
+  globalFade = !globalFade;
+  globalFadeBtn.textContent = globalFade ? 'An' : 'Aus';
+  globalFadeBtn.classList.toggle('on', globalFade);
+});
+
+fadeTimeSlider.addEventListener('input', () => {
+  fadeTime = parseFloat(fadeTimeSlider.value);
+  fadeTimeVal.textContent = fadeTime + 's';
+});
+
+// ── Auto-Cue ──────────────────────────────────────────────────────────────────
+document.getElementById('global-autocue').addEventListener('click', function() {
+  globalAutoCue = !globalAutoCue;
+  this.textContent = globalAutoCue ? 'An' : 'Aus';
+  this.classList.toggle('on', globalAutoCue);
+});
+
+// ── Color Picker ───────────────────────────────────────────────────────────────
+document.getElementById('color-picker').addEventListener('click', e => {
+  const dot = e.target.closest('.color-dot');
+  if (!dot) return;
+  selectedColor = dot.dataset.color;
+  document.querySelectorAll('.color-dot').forEach(d => d.classList.toggle('selected', d === dot));
+});
+
+// ── Keyboard ──────────────────────────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  const key = e.key.toLowerCase();
+  const idx = PAD_KEYS.indexOf(key);
+  if (idx !== -1) {
+    e.preventDefault();
+    triggerPad(idx);
+    return;
+  }
+  // Bank switching: F5-F8
+  if (key === 'f5') { e.preventDefault(); switchBank(0); }
+  if (key === 'f6') { e.preventDefault(); switchBank(1); }
+  if (key === 'f7') { e.preventDefault(); switchBank(2); }
+  if (key === 'f8') { e.preventDefault(); switchBank(3); }
+  // Escape = stop all
+  if (key === 'escape') stopAllPads();
+});
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+renderBank();
+</script>
+
+<style>
+/* ── Donate Section ───────────────────────────────────────────────────────── */
+
+@keyframes ir-heartbeat {
+  0%,100% { box-shadow: 0 0 0 0 rgba(200,240,96,0.25); }
+  50%      { box-shadow: 0 0 0 8px rgba(200,240,96,0); }
+}
+
+@media (max-width: 600px) {
+}
+</style>
+
+<script>
+// ── Spenden (Instant Player) ──────────────────────────────────────────────────
+
+// ── Download-Hinweis (plattform-spezifisch, nur beim ersten Export) ────────────
+function showDownloadHint(filename){
+  // Nur einmal zeigen — localStorage merkt sich ob Hint schon erschienen ist
+  try {
+    if(localStorage.getItem('satk_dl_hint_shown')) return;
+    localStorage.setItem('satk_dl_hint_shown','1');
+  } catch(e) {}
+
+  var ua=navigator.userAgent, pl=navigator.platform||'';
+  var isIOS=/iPad|iPhone|iPod/.test(ua)||(/Mac/.test(pl)&&navigator.maxTouchPoints>1);
+  var isAndroid=/Android/.test(ua);
+  var isMac=/Mac/.test(pl)&&!isIOS;
+  var isWin=/Win/.test(pl);
+  var isSafari=/^((?!chrome|android).)*safari/i.test(ua);
+  var isChrome=/Chrome/.test(ua)&&!/Edg/.test(ua);
+  var isEdge=/Edg/.test(ua);
+  var isFirefox=/Firefox/.test(ua);
+
+  var msg='';
+  if(isIOS){
+    if(isSafari)
+      msg='Öffne die <strong>Dateien-App</strong> → Auf meinem iPhone → Downloads';
+    else
+      msg='Datei gespeichert. Öffne die <strong>Dateien-App</strong> auf deinem iPhone/iPad';
+  } else if(isAndroid){
+    msg='Gespeichert im <strong>Downloads-Ordner</strong>. Öffne Dateien oder den Download-Manager';
+  } else if(isMac){
+    if(isSafari)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf den Pfeil ↓ oben rechts in Safari';
+    else if(isChrome)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ oben rechts in Chrome';
+    else if(isEdge)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ oben rechts in Edge';
+    else
+      msg='Gespeichert im Ordner <strong>~/Downloads</strong>';
+  } else if(isWin){
+    if(isChrome)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ unten oder oben rechts in Chrome';
+    else if(isEdge)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ oben rechts in Edge';
+    else if(isFirefox)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf den Pfeil ↓ in der Symbolleiste';
+    else
+      msg='Gespeichert in <strong>C:\\Users\\[Name]\\Downloads</strong>';
+  } else {
+    msg='Gespeichert im <strong>Downloads-Ordner</strong>';
+  }
+
+  // Altes Toast entfernen
+  var old=document.getElementById('satkDlHint');
+  if(old) old.remove();
+
+  var el=document.createElement('div');
+  el.id='satkDlHint';
+  el.innerHTML='<span class="satk-dl-close" onclick="this.parentNode.remove()">✕</span>'
+    +(filename?'<span class="satk-dl-file">📄 '+filename+'</span>':'')
+    +'<span>'+msg+'</span>';
+  document.body.appendChild(el);
+
+  // Auto-ausblenden nach 9s
+  var timer=setTimeout(function(){
+    if(el.parentNode){
+      el.style.animation='satkDlOut .3s ease forwards';
+      setTimeout(function(){if(el.parentNode)el.remove();},300);
+    }
+  },9000);
+  el.querySelector('.satk-dl-close').addEventListener('click',function(){clearTimeout(timer);});
+}
+
+</script>
+</body>
+</html>

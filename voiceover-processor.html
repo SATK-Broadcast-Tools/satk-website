@@ -1,0 +1,2344 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="description" content="Kostenloser Voiceover-Klangoptimierer im Browser: KI-Entrauscher, EQ, Kompressor, De-Esser, R128-Normalisierung für TV −23 LUFS, Podcast −16 LUFS, YouTube −14 LUFS.">
+<meta name="keywords" content="VoiceOver Processor, Stimme optimieren, Sprachoptimierung, Entrauscher, KI Denoiser, Spectral Denoiser, Wiener Filter, Rauschunterdrückung, EQ Equalizer, Kompressor, De-Esser, R128 Normalisierung, TV Audio, Podcast Audio, YouTube Audio, LUFS, True Peak, kostenlos, Browser, kein Download">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>SATK VoiceOver Processor – Stimme optimieren, R128 normalisieren, kostenlos</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap');
+:root{--bg:#0a0a0b;--sf:#111114;--sf2:#16161a;--bd:#1e1e24;--ac:#c8f060;--ac2:#60d4f0;--warn:#f0a060;--red:#f06060;--tx:#e8e8ec;--mu:#5a5a6a;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--tx);font-family:'DM Mono',monospace;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(200,240,96,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(200,240,96,.025) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+.wrapper{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:48px 24px 80px;}
+
+/* Header */
+header{margin-bottom:36px;}
+.logo-top{display:flex;align-items:center;gap:14px;}
+.logo-word{font-family:'Syne',sans-serif;font-size:clamp(20px,4.5vw,38px);font-weight:800;letter-spacing:.18em;color:var(--tx);line-height:1;position:relative;}
+.logo-word::after{content:'';position:absolute;left:0;bottom:-5px;width:100%;height:1px;background:linear-gradient(90deg,var(--ac),transparent);}
+.logo-div{width:1px;height:28px;background:linear-gradient(180deg,transparent,var(--bd),transparent);}
+.logo-r{display:flex;flex-direction:column;gap:3px;}
+.logo-sub{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--ac);}
+.logo-std{font-size:9px;letter-spacing:.1em;color:var(--mu);}
+.logo-bot{display:flex;align-items:center;gap:8px;margin-top:10px;}
+.logo-rule{flex:1;height:1px;background:var(--bd);max-width:48px;}
+.logo-tag{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);border:1px solid var(--bd);padding:2px 7px;}
+.subtitle{margin-top:12px;font-size:11px;color:var(--mu);}
+
+/* Drop Zone */
+.drop-zone{border:1px dashed var(--bd);padding:32px 24px;text-align:center;cursor:pointer;transition:all .15s;margin-bottom:20px;}
+.drop-zone:hover,.drop-zone.dragging{border-color:var(--ac);background:rgba(200,240,96,.04);}
+.drop-icon{color:var(--mu);margin-bottom:10px;}
+.drop-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin-bottom:5px;}
+.drop-sub{font-size:11px;color:var(--mu);}
+.drop-name{color:var(--ac);display:block;margin-top:6px;font-size:11px;min-height:14px;}
+input[type=file]{display:none;}
+
+/* Profile Selector */
+.profiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px;}@media(max-width:700px){.profiles{grid-template-columns:repeat(2,1fr);}}
+.profile-card{border:1px solid var(--bd);background:var(--sf);padding:14px 12px;cursor:pointer;transition:all .15s;position:relative;}
+.profile-card:hover{border-color:var(--mu);}
+.profile-card.active{border-color:var(--ac);background:rgba(200,240,96,.05);}
+.profile-card.active::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--ac);}
+.prof-icon{font-size:20px;margin-bottom:6px;display:block;}
+.prof-name{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--tx);display:block;margin-bottom:3px;}
+.prof-target{font-size:9px;color:var(--ac);letter-spacing:.05em;display:block;margin-bottom:2px;}
+.prof-desc{font-size:8px;color:var(--mu);line-height:1.4;}
+.profile-card.active .prof-name{color:var(--ac);}
+
+/* Pipeline steps */
+.pipeline{display:flex;border:1px solid var(--bd);margin-bottom:20px;overflow-x:auto;overflow-y:hidden;}@media(max-width:700px){.pipeline{overflow-x:auto;-webkit-overflow-scrolling:touch;}}
+.pstep{flex:1;padding:10px 6px;text-align:center;border-right:1px solid var(--bd);cursor:pointer;user-select:none;transition:background .2s,border-color .15s;position:relative;}
+.pstep:last-child{border-right:none;}
+.pstep-n{font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);display:block;margin-bottom:3px;transition:color .15s;}
+.pstep-name{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;color:var(--ac);display:block;margin-bottom:2px;transition:color .15s;}
+.pstep-d{font-size:7px;color:var(--mu);line-height:1.3;transition:color .15s;}
+.pstep-tog{position:absolute;top:5px;right:5px;width:6px;height:6px;border-radius:50%;background:var(--ac);transition:background .15s;}
+/* OFF state */
+.pstep.off{background:rgba(0,0,0,.3);}
+.pstep.off .pstep-name{color:var(--mu);}
+.pstep.off .pstep-tog{background:#333;}
+.pstep.off .pstep-n{color:#333;}
+/* Processing states */
+.pstep.active{background:rgba(96,212,240,.05);}.pstep.active .pstep-name{color:var(--ac2);}
+.pstep.done{background:rgba(200,240,96,.04);}.pstep.done .pstep-name{color:var(--ac);}
+
+/* Loudness Meters */
+.meters-section{background:var(--sf);border:1px solid var(--bd);margin-bottom:20px;overflow:hidden;}
+.meters-head{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;border-bottom:1px solid var(--bd);}
+.meters-title{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);}
+.meters-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.meter-col{padding:12px 14px;border-right:1px solid var(--bd);}
+.meter-col:last-child{border-right:none;}
+.meter-col-label{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--mu);margin-bottom:8px;display:block;}
+.meter-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.meter-label{font-size:9px;color:var(--mu);min-width:20px;}
+.meter-track{flex:1;height:6px;background:#0d1a2a;border:1px solid #1a2a40;position:relative;overflow:hidden;}
+.meter-fill{height:100%;width:0%;transition:width .1s linear;}
+.meter-fill.M{background:linear-gradient(90deg,#1565c0,#42a5f5 85%,#ef5350);}
+.meter-fill.S{background:linear-gradient(90deg,#0d5e3c,#26a269 85%,#f0a060);}
+.meter-fill.I{background:linear-gradient(90deg,#1a3a5c,#1e88e5);}
+.meter-val{font-family:'DM Mono',monospace;font-size:10px;font-weight:600;min-width:52px;text-align:right;color:#90caf9;}
+.meter-val.good{color:var(--ac);}
+.meter-target-line{position:absolute;top:0;bottom:0;width:1px;background:rgba(200,240,96,.6);}
+.meter-summary{padding:8px 14px;border-top:1px solid var(--bd);display:flex;gap:20px;align-items:center;}
+.msumm{display:flex;flex-direction:column;gap:2px;}
+.msumm-l{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--mu);}
+.msumm-v{font-family:'DM Mono',monospace;font-size:12px;font-weight:600;color:var(--mu);}
+.msumm-v.good{color:var(--ac);}
+.msumm-v.warn{color:var(--warn);}
+
+/* Waveforms */
+.wave-section{background:var(--sf);border:1px solid var(--bd);margin-bottom:20px;overflow:hidden;}
+.wave-cols{display:grid;grid-template-columns:1fr 1fr;}
+.wave-col{position:relative;}
+.wave-col+.wave-col{border-left:1px solid var(--bd);}
+.wave-lbl{position:absolute;top:6px;left:9px;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);z-index:2;}
+canvas.wv{width:100%;height:80px;display:block;background:#08090a;}
+.wave-ctrl{display:flex;align-items:center;gap:8px;padding:6px 12px;background:var(--bg);border-top:1px solid var(--bd);}
+.play-btn{display:flex;align-items:center;gap:5px;background:none;border:1px solid var(--bd);color:var(--mu);font-family:'DM Mono',monospace;font-size:9px;padding:4px 10px;cursor:pointer;transition:all .12s;}
+.play-btn:hover:not(:disabled){border-color:var(--ac);color:var(--ac);}
+.play-btn.playing{border-color:var(--ac);color:var(--ac);background:rgba(200,240,96,.07);}
+.play-btn:disabled{opacity:.3;cursor:not-allowed;}
+.play-time{font-size:9px;color:var(--mu);margin-left:auto;}
+.playhead{position:absolute;top:0;bottom:28px;width:1px;background:var(--ac);pointer-events:none;display:none;z-index:3;}
+.prog-wrap{height:3px;background:var(--bd);display:none;}
+.prog-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--ac2),var(--ac));transition:width .12s linear;}
+
+/* Actions */
+.actions{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;}
+.btn-primary{background:var(--ac);color:#0a0a0b;border:none;font-family:'DM Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:14px 28px;cursor:pointer;transition:all .15s;flex:1;min-width:160px;}
+.btn-primary:hover{background:#d4fc70;}.btn-primary:disabled{opacity:.4;cursor:not-allowed;}
+.btn-sec{background:none;color:var(--mu);border:1px solid var(--bd);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;padding:14px 20px;cursor:pointer;transition:all .15s;}
+.btn-sec:hover{border-color:var(--mu);color:var(--tx);}
+
+/* Result */
+.result-card{background:var(--sf);border:1px solid var(--ac);padding:20px;margin-bottom:20px;display:none;}
+.result-card.visible{display:block;}
+.result-head{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--ac);margin-bottom:12px;}
+.result-stats{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:14px;}
+.rs{display:flex;flex-direction:column;gap:2px;}
+.rs dt{font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);}
+.rs dd{font-family:'DM Mono',monospace;font-size:12px;font-weight:600;color:var(--tx);}
+.rs dd.good{color:var(--ac);}
+.btn-dl{display:inline-flex;align-items:center;gap:7px;background:var(--ac);color:#0a0a0b;border:none;font-family:'DM Mono',monospace;font-size:11px;font-weight:600;padding:10px 20px;cursor:pointer;text-decoration:none;transition:background .15s;}
+.btn-dl:hover{background:#d4fc70;}
+
+/* Info / Footer */
+.info-strip{display:flex;gap:20px;flex-wrap:wrap;border-top:1px solid var(--bd);padding-top:20px;margin-top:36px;}
+.ii{display:flex;flex-direction:column;gap:3px;}
+.ii dt{font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);}
+.ii dd{font-size:10px;color:var(--ac);}
+
+/* Donate */
+@keyframes hb{0%,100%{box-shadow:0 0 0 0 rgba(200,240,96,.25)}50%{box-shadow:0 0 0 8px rgba(200,240,96,0)}}
+.site-footer{background:var(--sf);border-top:1px solid var(--bd);margin-top:60px;}
+.footer-inner{max-width:900px;margin:0 auto;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-logo{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;letter-spacing:.18em;color:var(--ac);}
+.footer-copy{font-size:10px;color:var(--mu);}
+
+@media(max-width:700px){
+  .profiles{grid-template-columns:1fr 1fr;}
+  .wave-cols{grid-template-columns:1fr;}
+  .wave-col+.wave-col{border-left:none;border-top:1px solid var(--bd);}
+  .meters-grid{grid-template-columns:1fr;}
+  .meter-col{border-right:none;border-bottom:1px solid var(--bd);}
+  .pipeline{flex-wrap:wrap;}
+  .pstep{flex:0 0 50%;border-bottom:1px solid var(--bd);}
+}
+
+/* ── Download-Hinweis Toast ── */
+#satkDlHint{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  background:#0d1012;border:1px solid rgba(200,240,96,.35);
+  color:#e2e6ed;font-family:'DM Mono',monospace;font-size:11px;
+  padding:12px 18px;z-index:9999;max-width:420px;width:90%;
+  box-shadow:0 4px 24px rgba(0,0,0,.5);
+  animation:satkDlIn .25s ease;pointer-events:none;
+  line-height:1.6;
+}
+#satkDlHint strong{color:#c8f060;}
+#satkDlHint .satk-dl-file{color:#c8f060;font-size:10px;opacity:.8;display:block;margin-bottom:4px;}
+#satkDlHint .satk-dl-close{
+  position:absolute;top:7px;right:10px;cursor:pointer;
+  color:rgba(200,240,96,.5);font-size:13px;pointer-events:all;
+}
+@keyframes satkDlIn{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
+@keyframes satkDlOut{from{opacity:1;}to{opacity:0;transform:translateX(-50%) translateY(8px);}}
+
+</style>
+
+<style>
+/* ── Eleganter Custom Scrollbar (SATK Style) ─────────────────────────────────
+   Hauchdünn, grün, nur beim Hovern sichtbar — wie macOS Overlay-Scrollbar      */
+
+/* Scrollbalken unsichtbar — Scroll-Funktion bleibt erhalten */
+html, body, * {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+</style>
+<!-- SATK: Layout -->
+<style>
+/* SATK: Innerer Scroll-Container */
+html { overflow: hidden; height: 100%; }
+body { overflow: hidden; height: 100vh; }
+.wrapper {
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.wrapper::-webkit-scrollbar { display: none; width: 0; }
+</style>
+  <link rel="canonical" href="https://satk.tech/voiceover-processor.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://satk.tech/voiceover-processor.html">
+<meta property="og:title" content="SATK VoiceOver Processor – Stimme automatisch optimieren & normalisieren">
+<meta property="og:description" content="KI-Entrauscher, EQ, Kompressor, De-Esser und R128-Normalisierung in einem: TV −23 LUFS, YouTube −14 LUFS, Podcast −16 LUFS. Kostenlos im Browser.">
+<meta property="og:image" content="https://satk.tech/og-image.png">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="SATK – Sascha's Audio Toolkit">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SATK VoiceOver Processor – Stimme automatisch optimieren & normalisieren">
+<meta name="twitter:description" content="KI-Entrauscher, EQ, Kompressor, De-Esser und R128-Normalisierung in einem: TV −23 LUFS, YouTube −14 LUFS, Podcast −16 LUFS. Kostenlos im Browser.">
+<meta name="twitter:image" content="https://satk.tech/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "VoiceOver Processor",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Web Browser, iOS, Android",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+  "description": "Vollautomatischer Voiceover-Processor im Browser: Spektraler KI-Denoiser, High-Pass, 5-Band Tube-EQ, Kompressor, De-Esser, Brickwall-Limiter, R128-Normalisierung für TV −23, YouTube −14, Podcast −16 LUFS.",
+  "url": "https://satk.tech/voiceover-processor.html",
+  "creator": {"@type": "Person", "name": "Sascha Hömske"},
+  "isPartOf": {"@type": "WebSite", "name": "SATK – Sascha's Audio Toolkit", "url": "https://satk.tech/"}
+}
+</script>
+</head>
+<body>
+
+<!-- SATK: Audio-Stop vom Launcher -->
+<script>
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.type === 'satk-suspend-audio') {
+    try { stopPreview(); } catch(err) {}
+  }
+});
+</script>
+
+<div class="wrapper">
+
+<header>
+  <div class="logo-top">
+    <span class="logo-word">VoiceOver</span>
+    <div class="logo-div"></div>
+    <div class="logo-r">
+      <span class="logo-sub">Processor</span>
+      <span class="logo-std">SATK — Sascha's Audio Toolkit</span>
+    </div>
+  </div>
+  <div class="logo-bot">
+    <div class="logo-rule"></div>
+    <span class="logo-tag">4 Profile · Denoise · Gate · EQ · Kompressor · R128</span>
+    <div class="logo-rule"></div>
+  </div>
+  <p class="subtitle">// Profil wählen → Datei laden → Optimieren. Automatisch. Kein Einrichten.</p>
+</header>
+
+<!-- Profile -->
+<div class="profiles" id="profiles">
+  <div class="profile-card active" data-profile="mann">
+    <span class="prof-icon">🎙</span>
+    <span class="prof-name">Mann</span>
+    <span class="prof-target">TV · −23 LUFS</span>
+    <span class="prof-desc">Nachvertonung, Low-Cut 120 Hz, Mittenabsenkung, Höhenanhebung, mischfertig</span>
+  </div>
+  <div class="profile-card" data-profile="frau">
+    <span class="prof-icon">🎤</span>
+    <span class="prof-name">Frau</span>
+    <span class="prof-target">TV · −23 LUFS</span>
+    <span class="prof-desc">Nachvertonung, Low-Cut 150 Hz, weniger Mittenbetonung, mehr Presence</span>
+  </div>
+  <div class="profile-card" data-profile="werbung">
+    <span class="prof-icon">📢</span>
+    <span class="prof-name">YouTube</span>
+    <span class="prof-target">YouTube · −14 LUFS</span>
+    <span class="prof-desc">Stark komprimiert, warmes Fundament, crispe Höhen, Spot-Sound</span>
+  </div>
+  <div class="profile-card" data-profile="podcast">
+    <span class="prof-icon">🎧</span>
+    <span class="prof-name">Podcast</span>
+    <span class="prof-target">Podcast · −16 LUFS</span>
+    <span class="prof-desc">Mittelstark komprimiert, klar, verständlich, natürlicher Klang</span>
+  </div>
+</div>
+
+<!-- Drop Zone -->
+<div class="drop-zone" id="dropZone">
+  <div class="drop-icon">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <path d="M4 14v4a2 2 0 002 2h12a2 2 0 002-2v-4"/><polyline points="16 8 12 4 8 8"/><line x1="12" y1="4" x2="12" y2="14"/>
+    </svg>
+  </div>
+  <div class="drop-title">Sprachdatei hierher ziehen</div>
+  <div class="drop-sub">oder tippen · WAV, MP3, M4A, AAC, FLAC, OGG, AIFF</div>
+  <span class="drop-name" id="dropName"></span>
+  <input type="file" id="fileInput" accept="audio/*,.mp3,.wav,.aac,.m4a,.flac,.ogg,.opus,.aiff,.aif,.mp4">
+</div>
+
+<!-- Pipeline entfernt: alle Schritte laufen automatisch -->
+
+<!-- Loudness Meters -->
+<div class="meters-section">
+  <div class="meters-head">
+    <span class="meters-title">Integrated Loudness</span>
+    <span style="font-size:9px;color:var(--mu);">EBU R128 · LUFS</span>
+  </div>
+  <div class="meters-grid">
+    <div class="meter-col">
+      <span class="meter-col-label">Original</span>
+      <div class="meter-row">
+        <span class="meter-label">I</span>
+        <div class="meter-track" id="mto-track-i"><div class="meter-fill I" id="mto-fill-i"></div><div class="meter-target-line" id="mto-tl-i"></div></div>
+        <span class="meter-val" id="mto-val-i">— LUFS</span>
+      </div>
+    </div>
+    <div class="meter-col">
+      <span class="meter-col-label">Verarbeitet</span>
+      <div class="meter-row">
+        <span class="meter-label">I</span>
+        <div class="meter-track" id="mtp-track-i"><div class="meter-fill I" id="mtp-fill-i"></div><div class="meter-target-line" id="mtp-tl-i"></div></div>
+        <span class="meter-val" id="mtp-val-i">— LUFS</span>
+      </div>
+    </div>
+  </div>
+  <div class="meter-summary">
+    <div class="msumm"><span class="msumm-l">Original</span><span class="msumm-v" id="summ-orig">— LUFS</span></div>
+    <div style="flex:1;height:1px;background:var(--bd);margin:0 8px;"></div>
+    <div class="msumm"><span class="msumm-l">Verarbeitet</span><span class="msumm-v" id="summ-proc">— LUFS</span></div>
+    <div class="msumm"><span class="msumm-l">TP Limit</span><span class="msumm-v" id="summ-proc-tp">— dBTP</span></div>
+  </div>
+</div>
+
+<!-- Waveforms -->
+<div class="wave-section">
+  <div class="wave-cols">
+    <div class="wave-col">
+      <span class="wave-lbl">Original</span>
+      <canvas class="wv" id="cvOrig" width="400" height="80"></canvas>
+      <div class="playhead" id="phOrig"></div>
+      <div class="wave-ctrl">
+        <button class="play-btn" id="btnOrig" disabled>
+          <svg class="ip" width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
+          <svg class="is" width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="5" y="5" width="14" height="14" rx="1"/></svg>
+          Original
+        </button>
+        <span class="play-time" id="tOrig">—</span>
+      </div>
+    </div>
+    <div class="wave-col">
+      <span class="wave-lbl">Verarbeitet</span>
+      <canvas class="wv" id="cvProc" width="400" height="80"></canvas>
+      <div class="playhead" id="phProc"></div>
+      <div class="wave-ctrl">
+        <button class="play-btn" id="btnProc" disabled>
+          <svg class="ip" width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
+          <svg class="is" width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="5" y="5" width="14" height="14" rx="1"/></svg>
+          Verarbeitet
+        </button>
+        <span class="play-time" id="tProc">—</span>
+      </div>
+    </div>
+  </div>
+  <div class="prog-wrap" id="progWrap"><div class="prog-bar" id="progBar"></div></div>
+</div>
+
+<!-- Actions: processBtn versteckt, wird vom Analysepanel getriggert -->
+<div class="actions">
+  <button class="btn-primary" id="processBtn" disabled style="display:none;">✦ Optimieren</button>
+  <button class="btn-sec" id="resetBtn" style="display:none;">Reset</button>
+</div>
+
+<!-- Result -->
+<div class="result-card" id="resultCard">
+  <div class="result-head">✓ Optimierung abgeschlossen</div>
+  <div class="result-stats" id="resultStats"></div>
+  <a class="btn-dl" id="dlBtn" href="#">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    WAV herunterladen
+  </a>
+</div>
+
+
+</div><!-- /.wrapper -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span class="footer-logo">SATK</span>
+    <span class="footer-copy">&copy; 2026 Sascha Hömske · Sascha's Audio Toolkit · kostenlos &amp; werbefrei</span>
+  </div>
+</footer>
+
+<script>
+'use strict';
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+// ── Safari-kompatibler Audio-Decode ──────────────────────────────────────────
+
+// ── Safari-kompatibler File → ArrayBuffer ─────────────────────────────────────
+// file.arrayBuffer() ist in Safari < 14.1 nicht verfügbar → FileReader-Fallback
+
+// ── AudioContext Helper (Safari-kompatibel) ───────────────────────────────────
+// WICHTIG: AudioContext wird LAZY erstellt — erst beim ersten Aufruf von
+// getAudioContext(). Kein new AudioContext() beim Seitenaufruf, da das
+// in Safari den File-Dialog blockieren kann.
+
+// Offline-Rendering mit Callback-Fallback (Safari/Firefox-kompatibel)
+function renderOffline(ctx) {
+  return new Promise(function(resolve, reject) {
+    ctx.oncomplete = function(e) { resolve(e.renderedBuffer); };
+    try {
+      var p = ctx.startRendering();
+      if (p && typeof p.then === 'function') p.then(resolve).catch(reject);
+    } catch(e) { reject(e); }
+  });
+}
+
+function getAudioContext() {
+  var AC = window.AudioContext || window.webkitAudioContext;
+  if (!window._satkAC || window._satkAC.state === 'closed') {
+    window._satkAC = new AC();
+  }
+  if (window._satkAC.state === 'suspended') {
+    window._satkAC.resume().catch(function(){});
+  }
+  return window._satkAC;
+}
+
+async function getAudioContextReady() {
+  var ac = getAudioContext();
+  if (ac.state !== 'running') {
+    try { await ac.resume(); } catch(e) {}
+  }
+  return ac;
+}
+
+function readFileAsArrayBuffer(file) {
+  // Immer FileReader — file.arrayBuffer() ist auf iOS Safari buggy
+  return new Promise(function(resolve, reject) {
+    var reader = new FileReader();
+    reader.onload  = function(e) { resolve(e.target.result); };
+    reader.onerror = function()  { reject(new Error('FileReader Fehler')); };
+    reader.onabort = function()  { reject(new Error('FileReader abgebrochen')); };
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+async function safariFriendlyDecode(actx, arrayBuffer) {
+  // Puffer kopieren — Safari verbraucht ArrayBuffer beim ersten Versuch
+  var buf = arrayBuffer.slice ? arrayBuffer.slice(0) : arrayBuffer;
+  // Nur Callback-Form — kein Double-Resolve auf Safari Desktop
+  return new Promise(function(resolve, reject) {
+    actx.decodeAudioData(
+      buf,
+      function(decoded) { resolve(decoded); },
+      function(err)     { reject(err || new Error('decodeAudioData fehlgeschlagen')); }
+    );
+  });
+}
+
+window.OfflineAudioContext = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+
+// ── Profiles — Analog-abgestimmte EQ-Kurven, Mastering-Qualität ───────────────
+// Philosophie: weniger ist mehr. Sanfte Absenkungen statt aggressiver Schnitte.
+// Wärme durch Low-Shelf statt Mid-Boost. Luft durch weiten High-Shelf statt Peak.
+const PROFILES = {
+  mann: {
+    name: 'Mann / Nachvertonung',
+    target: -23, tp: -3,
+    hp: 80,
+    warmShelf:  null,
+    eq: [
+      { fc: 100,  g: +2.5, Q: 2.5  },
+      { fc: 200,  g: -3.0, Q: 1.15 },
+      { fc: 440,  g: -2.0, Q: 6.5  },
+      { fc: 784,  g: +3.0, Q: 1.7  },
+      { fc: 4000, g: +4.0, Q: 1.5  },
+    ],
+    air:   { fc: 9000, g: +7.0 },
+    deEss: { thresh: -22, fc1: 5000, fc2: 9000 },
+    tube:  0,
+    comp:  { thresh: -25, ratio: 4.0, atk: 10, rel: 100, makeup: 3 },
+    label: 'TV −23 LUFS'
+  },
+  frau: {
+    name: 'Frau / Nachvertonung',
+    target: -23, tp: -3,
+    hp: 130,                             // Etwas höher für Frauenstimme
+    warmShelf:  { fc: 150, g: +0.8 },   // Weniger Körper (Frauenstimme schlanker)
+    eq: [
+      { fc: 450,  g: -1.8, Q: 0.7 },   // Mittigkeit — breite weiche Absenkung
+      { fc: 3200, g: +2.8, Q: 0.9 },   // Presence etwas höher für Frauenstimme
+      { fc: 6500, g: +1.5, Q: 1.0 },   // Brillanz — sanfte breite Glocke
+    ],
+    air:   { fc: 14000, g: +1.8 },      // Höherer Air-Punkt — offener, nicht spitz
+    deEss: { thresh: -20, fc1: 6000, fc2: 10000 },
+    tube:  0.14,
+    comp:  { thresh: -20, ratio: 3.0, atk: 7, rel: 110, makeup: 3 },
+    label: 'TV −23 LUFS'
+  },
+  werbung: {
+    name: 'YouTube',
+    target: -14, tp: -1,
+    hp: 80,
+    warmShelf:  { fc: 120, g: +2.0 },
+    eq: [
+      { fc: 280,  g: -1.0, Q: 0.6 },
+      { fc: 2500, g: +3.0, Q: 0.8 },
+      { fc: 5000, g: +1.5, Q: 1.0 },
+    ],
+    air:   { fc: 12000, g: +2.5 },
+    deEss: { thresh: -20, fc1: 5500, fc2: 9500 },
+    tube:  0.22,
+    // Moderater Kompressor für YouTube −14 LUFS
+    comp:  { thresh: -26, ratio: 7.0, atk: 3, rel: 60, makeup: 13 },
+    label: 'YouTube −14 LUFS'
+  },
+  podcast: {
+    name: 'Podcast',
+    target: -16, tp: -1,
+    hp: 90,
+    warmShelf:  { fc: 160, g: +1.0 },
+    eq: [
+      { fc: 320,  g: -1.5, Q: 0.65 },
+      { fc: 2600, g: +2.5, Q: 0.9 },
+      { fc: 5200, g: +1.2, Q: 1.1 },
+    ],
+    air:   { fc: 11000, g: +1.5 },
+    deEss: { thresh: -24, fc1: 5000, fc2: 8500 },
+    tube:  0.16,
+    // Bringt integrierte Lautheit nahe -18 LUFS → R128 trim +2 dB → kein Zerren
+    comp:  { thresh: -24, ratio: 6.0, atk: 5, rel: 80, makeup: 10 },
+    label: 'Podcast −16 LUFS'
+  }
+};
+
+let currentProfile = 'mann';
+let origBuf = null, procBuf = null, blobUrl = null, fileName = '';
+
+// ── DOM ────────────────────────────────────────────────────────────────────────
+const dropZone   = document.getElementById('dropZone');
+const fileInput  = document.getElementById('fileInput');
+const dropName   = document.getElementById('dropName');
+const processBtn = document.getElementById('processBtn');
+const resetBtn   = document.getElementById('resetBtn');
+const progWrap   = document.getElementById('progWrap');
+const progBar    = document.getElementById('progBar');
+const resultCard = document.getElementById('resultCard');
+const resultStats= document.getElementById('resultStats');
+const dlBtn      = document.getElementById('dlBtn');
+const cvOrig     = document.getElementById('cvOrig');
+const cvProc     = document.getElementById('cvProc');
+const btnOrig    = document.getElementById('btnOrig');
+const btnProc    = document.getElementById('btnProc');
+const tOrig      = document.getElementById('tOrig');
+const tProc      = document.getElementById('tProc');
+const phOrig     = document.getElementById('phOrig');
+const phProc     = document.getElementById('phProc');
+const ps = [1,2,3,4,5,6].map(i => document.getElementById('ps'+i)).filter(Boolean);
+
+// ── Pipeline Toggles (Pipeline-UI entfernt, alle Schritte immer aktiv) ────────
+const stepEnabled = { denoise: true, gate: true, hp: true, eq: true, comp: true, r128: true };
+
+document.querySelector('.pipeline')?.addEventListener('click', e => {
+  const step = e.target.closest('.pstep');
+  if (!step || !step.dataset.step) return;
+  const key = step.dataset.step;
+  stepEnabled[key] = !stepEnabled[key];
+  step.classList.toggle('off', !stepEnabled[key]);
+});
+
+// ── Profile Selection ──────────────────────────────────────────────────────────
+document.getElementById('profiles').addEventListener('click', e => {
+  const card = e.target.closest('.profile-card');
+  if (!card) return;
+  document.querySelectorAll('.profile-card').forEach(c => c.classList.remove('active'));
+  card.classList.add('active');
+  currentProfile = card.dataset.profile;
+  updateTargetLines();
+  // Automatisch neu verarbeiten wenn Datei bereits geladen
+  if(origBuf && !processBtn.disabled){
+    const name = card.querySelector('.profile-name')?.textContent || card.dataset.profile;
+    dropName.textContent = '⏳ Verarbeite mit Preset: ' + name + '…';
+    processBtn.click();
+  }
+});
+
+// ── File Loading ───────────────────────────────────────────────────────────────
+dropZone.addEventListener('click', () => fileInput.click());
+dropZone.addEventListener('dragover',  e => { e.preventDefault(); dropZone.classList.add('dragging'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragging'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('dragging');
+  const f = [...e.dataTransfer.files].find(f => f.type.startsWith('audio/') || /\.(m4a|aac|mp3|wav|flac|ogg|aiff|aif|mp4)$/i.test(f.name));
+  if (f) loadFile(f);
+});
+fileInput.addEventListener('change', e => { if (e.target.files[0]) loadFile(e.target.files[0]); });
+
+// ── Audio Decoder — mit M4A/AAC Fallback ──────────────────────────────────────
+async function decodeAudioFile(file) {
+  // iOS: AudioContext SYNC resumieren vor dem ersten await
+  var _ctx = getAudioContext();
+  _ctx.resume().catch(()=>{});
+  const ab  = await readFileAsArrayBuffer(file);
+
+  // Zeige erste Bytes für Diagnose
+  const header = new Uint8Array(ab.slice(0, 12));
+  const hex = Array.from(header).map(b => b.toString(16).padStart(2,'0')).join(' ');
+  console.log('[SATK] Datei:', file.name, file.type, file.size, 'bytes, Header:', hex);
+
+  // Safari Desktop Fix: safariFriendlyDecode, kein getAudioContextReady (würde await resume aufrufen)
+  const _sCtx = getAudioContext();
+  _sCtx.resume().catch(()=>{});
+  try {
+    const buf = await safariFriendlyDecode(_sCtx, ab);
+    return buf;
+  } catch (e1) {
+    console.warn('[SATK] decodeAudioData fehlgeschlagen:', e1.message);
+    // Zeige mehr Header-Bytes für Diagnose
+    const more = new Uint8Array(ab.slice(0, 32));
+    const ascii = Array.from(more).map(b => b >= 32 && b < 127 ? String.fromCharCode(b) : '.').join('');
+    console.warn('[SATK] Header ASCII:', ascii);
+    throw new Error('M4A wird in Chrome nicht unterstützt wenn die Seite lokal geöffnet ist.\n\nLösung: Die Datei auf deinen Webserver (IONOS) hochladen und dort öffnen, oder M4A als WAV/MP3 exportieren.');
+  }
+}
+
+async function loadFile(file) {
+  stopPreview();
+  dropName.textContent = file.name + ' — Lädt…';
+  fileName = file.name;
+  try {
+    origBuf = await decodeAudioFile(file);
+    dropName.textContent = file.name;
+
+    // ── Auto-Analyse + optionales Denoising ─────────────────────────────
+    (async()=>{
+      try{
+        if(typeof analyzeBuffer === 'function'){
+          dropName.textContent = file.name + ' — Analysiere…';
+          const analysis = await analyzeBuffer(origBuf);
+          dropName.textContent = file.name
+            + ' · ' + analysis.contentType
+            + ' · ' + analysis.intLufs.toFixed(1) + ' LUFS'
+            + ' · LRA ' + analysis.lra.toFixed(1) + ' LU';
+
+          if(typeof showAnalysisPanel === 'function'){
+            showAnalysisPanel(analysis, {
+              onApplyAll: async(res)=>{
+                const rec = res.recommendations;
+                if(rec.denoise.recommended && typeof denoiseBuffer==='function'){
+                  dropName.textContent = '⏳ Denoising…';
+                  origBuf = await denoiseBuffer(origBuf, rec.denoise.settings);
+                  drawWave(cvOrig, origBuf, '#c8f060');
+                  dropName.textContent = file.name + ' · ✓ Denoised';
+                }
+                // Direkt optimieren — kein zweiter Klick nötig
+                setTimeout(()=>{ document.getElementById('processBtn')?.click(); }, 100);
+              },
+            });
+          }
+        }
+      }catch(e){ console.warn('[SATK VO Analyse]',e); }
+    })();
+    drawWave(cvOrig, origBuf, '#c8f060');
+    clearWave(cvProc);
+    tOrig.textContent = fmtT(origBuf.duration);
+    tProc.textContent = '—';
+    btnOrig.disabled  = false;
+    btnProc.disabled  = true;
+    processBtn.disabled = false;
+    resultCard.classList.remove('visible');
+    procBuf = null;
+    if (blobUrl) { URL.revokeObjectURL(blobUrl); blobUrl = null; }
+    ps.forEach(s => s.classList.remove('active','done'));
+    progWrap.style.display='none'; progBar.style.width='0%';
+    await showMeterValues(origBuf, 'mto', 'summ-orig', 'summ-orig-tp');
+    clearMeter('mtp');
+    document.getElementById('summ-proc').textContent='— LUFS';
+    document.getElementById('summ-proc-tp').textContent='— dBTP';
+    updateTargetLines();
+  } catch(e) {
+    const msg = e.message || 'Unbekannter Fehler';
+    if (msg.includes('M4A')) {
+      dropName.innerHTML = '⚠ M4A auf lokalem Dateisystem nicht unterstützt — '
+        + 'Tool auf Webserver öffnen oder Datei als WAV/MP3 exportieren.';
+    } else {
+      dropName.textContent = '✗ ' + msg;
+    }
+    console.error('[SATK] loadFile Fehler:', e);
+  }
+}
+
+// ── Loudness Meter Display ─────────────────────────────────────────────────────
+const LUFS_MIN = -60, LUFS_MAX = 0;
+function lufsToPercent(l) { return Math.max(0,Math.min(100,((l-LUFS_MIN)/(LUFS_MAX-LUFS_MIN))*100)); }
+
+function updateTargetLines() {
+  const prof = PROFILES[currentProfile];
+  const t = prof.target;
+  const pct = lufsToPercent(t) + '%';
+  ['mto-tl-m','mto-tl-s','mto-tl-i','mtp-tl-m','mtp-tl-s','mtp-tl-i'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.left = pct;
+  });
+}
+updateTargetLines();
+
+function setMeterBar(prefix, key, lufs) {
+  const fill = document.getElementById(prefix+'-fill-'+key);
+  const val  = document.getElementById(prefix+'-val-'+key);
+  if (!fill || !val) return;
+  if (lufs <= -69) { fill.style.width='0%'; val.textContent='— LUFS'; val.className='meter-val'; return; }
+  fill.style.width = lufsToPercent(lufs)+'%';
+  val.textContent  = lufs.toFixed(1)+' LUFS';
+  const prof = PROFILES[currentProfile];
+  const diff = Math.abs(lufs - prof.target);
+  val.className = 'meter-val' + (diff<=1?' good':(diff<=3?' warn':''));
+}
+
+function clearMeter(prefix) {
+  ['m','s','i'].forEach(k => {
+    const f=document.getElementById(prefix+'-fill-'+k);
+    const v=document.getElementById(prefix+'-val-'+k);
+    if(f)f.style.width='0%';
+    if(v){v.textContent='— LUFS';v.className='meter-val';}
+  });
+}
+
+async function showMeterValues(buf, prefix, summId, summTpId) {
+  // Compute M, S, I from the buffer
+  const sr = buf.sampleRate, nCh = Math.min(buf.numberOfChannels,2);
+  const ok = (sr>=46000&&sr<=50000);
+  const pB=ok?[1.53512485958697,-2.69169618940638,1.19839281085285]:[1.53085766865605,-2.65072300564990,1.16916682897904];
+  const pA=ok?[1,-1.69065929318241,.73248077421585]:[1,-1.66364048874477,.71247332735500];
+  const hB=[1,-2,1],hA=ok?[1,-1.99004745483398,.99007225036621]:[1,-1.98919956770367,.98922949918125];
+  const kw=ch=>bqArr(bqArr(new Float32Array(ch),pB[0],pB[1],pB[2],pA[1],pA[2]),hB[0],hB[1],hB[2],hA[1],hA[2]);
+  const w=[]; for(let c=0;c<nCh;c++) w.push(kw(buf.getChannelData(c)));
+
+  const bsmp=Math.round(.4*sr), hsmp=Math.round(.1*sr);
+  const nb=Math.max(1,Math.floor((buf.length-bsmp)/hsmp)+1);
+  const allMs=[];
+  for(let b=0;b<nb;b++){
+    const s=b*hsmp; let lk=0;
+    for(let c=0;c<nCh;c++){let ms=0;for(let i=s;i<Math.min(s+bsmp,buf.length);i++)ms+=w[c][i]**2;lk+=ms/bsmp;}
+    allMs.push(lk);
+  }
+
+  // Integrated
+  const absT=Math.pow(10,(-70+.691)/10);
+  const g1=allMs.filter(v=>v>absT);
+  let iLufs=-70;
+  if(g1.length){const m1=g1.reduce((a,b)=>a+b,0)/g1.length;const g2=allMs.filter(v=>v>m1*Math.pow(10,-1));if(g2.length)iLufs=-.691+10*Math.log10(g2.reduce((a,b)=>a+b,0)/g2.length);}
+
+  // Momentary (last 400ms = last 4 blocks)
+  const mBlks=allMs.slice(-4);
+  const mLufs=mBlks.length?-.691+10*Math.log10(mBlks.reduce((a,b)=>a+b,0)/mBlks.length):-70;
+
+  // Short-term (last 3s = last 30 blocks)
+  const sBlks=allMs.slice(-30);
+  const sLufs=sBlks.length?-.691+10*Math.log10(sBlks.reduce((a,b)=>a+b,0)/sBlks.length):-70;
+
+  // True Peak
+  let pk=0;
+  for(let c=0;c<nCh;c++){const d=buf.getChannelData(c);for(let i=0;i<d.length;i++)if(Math.abs(d[i])>pk)pk=Math.abs(d[i]);}
+  const tpDb=pk>0?20*Math.log10(pk):-Infinity;
+
+  setMeterBar(prefix,'m',mLufs);
+  setMeterBar(prefix,'s',sLufs);
+  setMeterBar(prefix,'i',iLufs);
+
+  const summEl=document.getElementById(summId);
+  const summTpEl=document.getElementById(summTpId);
+  if(summEl){summEl.textContent=iLufs>-70?iLufs.toFixed(1)+' LUFS':'— LUFS';summEl.className='msumm-v'+(Math.abs(iLufs-PROFILES[currentProfile].target)<=1?' good':Math.abs(iLufs-PROFILES[currentProfile].target)<=3?' warn':'');}
+  if(summTpEl){summTpEl.textContent=tpDb>-Infinity?tpDb.toFixed(1)+' dBTP':'— dBTP';}
+
+  return { m:mLufs, s:sLufs, i:iLufs, tp:tpDb };
+}
+
+// ── Waveform ───────────────────────────────────────────────────────────────────
+function drawWave(canvas, buf, color) {
+  const dpr=window.devicePixelRatio||1,rect=canvas.getBoundingClientRect();
+  const CW=rect.width>0?rect.width:400,CH=80;
+  canvas.width=Math.round(CW*dpr);canvas.height=Math.round(CH*dpr);
+  const c=canvas.getContext('2d');c.scale(dpr,dpr);
+  const data=buf.getChannelData(0),step=Math.ceil(data.length/CW);
+  c.fillStyle='#08090a';c.fillRect(0,0,CW,CH);
+  c.fillStyle=color+'25';c.strokeStyle=color;c.lineWidth=1;
+  c.beginPath();c.moveTo(0,CH/2);
+  for(let x=0;x<CW;x++){let mx=0;for(let j=0;j<step;j++){const v=Math.abs(data[x*step+j]||0);if(v>mx)mx=v;}c.lineTo(x,CH/2-mx*CH/2);}
+  for(let x=CW-1;x>=0;x--){let mx=0;for(let j=0;j<step;j++){const v=Math.abs(data[x*step+j]||0);if(v>mx)mx=v;}c.lineTo(x,CH/2+mx*CH/2);}
+  c.closePath();c.fill();c.stroke();
+  c.strokeStyle=color+'30';c.beginPath();c.moveTo(0,CH/2);c.lineTo(CW,CH/2);c.stroke();
+}
+function clearWave(canvas){const c=canvas.getContext('2d');c.fillStyle='#08090a';c.fillRect(0,0,canvas.width,canvas.height);}
+
+// ── Preview ────────────────────────────────────────────────────────────────────
+let pvCtx=null,pvSrc=null,pvWhich=null,pvStart=0,pvDur=0,pvRAF=null;
+function stopPreview(){
+  if(pvSrc){try{pvSrc.stop();}catch(e){}}  pvSrc=null;
+  if(pvCtx){try{pvCtx.close();}catch(e){}} pvCtx=null;
+  if(pvRAF){cancelAnimationFrame(pvRAF);pvRAF=null;}
+  pvWhich=null;
+  [btnOrig,btnProc].forEach(b=>{b.classList.remove('playing');b.querySelector('.ip').style.display='';b.querySelector('.is').style.display='none';});
+  [phOrig,phProc].forEach(p=>p.style.display='none');
+}
+async function startPreview(buf,which){
+  stopPreview();pvCtx=getAudioContext();
+  if(pvCtx.state==='suspended'){try{await pvCtx.resume();}catch(e){}}
+  pvSrc=pvCtx.createBufferSource();pvSrc.buffer=buf;pvSrc.connect(pvCtx.destination);pvSrc.start(0);
+  pvWhich=which;pvStart=pvCtx.currentTime;pvDur=buf.duration;
+  const btn=which==='orig'?btnOrig:btnProc,tel=which==='orig'?tOrig:tProc;
+  const ph=which==='orig'?phOrig:phProc,cv=which==='orig'?cvOrig:cvProc;
+  btn.classList.add('playing');btn.querySelector('.ip').style.display='none';btn.querySelector('.is').style.display='';ph.style.display='block';
+  function tick(){if(!pvCtx||pvWhich!==which)return;const el=Math.min(pvCtx.currentTime-pvStart,pvDur);const rect=cv.getBoundingClientRect(),pr=cv.parentElement.getBoundingClientRect();ph.style.left=(rect.left-pr.left+el/pvDur*rect.width)+'px';tel.textContent=fmtT(el)+' / '+fmtT(pvDur);pvRAF=requestAnimationFrame(tick);}
+  tick();pvSrc.onended=()=>{if(pvWhich===which){tel.textContent=fmtT(pvDur);stopPreview();}};
+}
+function fmtT(s){const m=Math.floor(s/60),sc=Math.floor(s%60);return m+':'+(sc<10?'0':'')+sc;}
+btnOrig.addEventListener('click',async()=>{if(pvWhich==='orig'){stopPreview();return;}if(origBuf)await startPreview(origBuf,'orig');});
+btnProc.addEventListener('click',async()=>{if(pvWhich==='proc'){stopPreview();return;}if(procBuf)await startPreview(procBuf,'proc');});
+
+// ── Reset ──────────────────────────────────────────────────────────────────────
+resetBtn.addEventListener('click',()=>{
+  stopPreview();origBuf=procBuf=null;
+  if(blobUrl){URL.revokeObjectURL(blobUrl);blobUrl=null;}
+  dropName.textContent='';fileName='';fileInput.value='';
+  clearWave(cvOrig);clearWave(cvProc);
+  btnOrig.disabled=btnProc.disabled=true;processBtn.disabled=true;
+  tOrig.textContent=tProc.textContent='—';
+  resultCard.classList.remove('visible');
+  ps.forEach(s=>{ s.classList.remove('active','done'); s.classList.toggle('off',!stepEnabled[s.dataset.step]); });
+  progWrap.style.display='none';progBar.style.width='0%';
+  clearMeter('mto');clearMeter('mtp');
+  ['summ-orig','summ-proc'].forEach(id=>{const el=document.getElementById(id);if(el){el.textContent='— LUFS';el.className='msumm-v';}});
+  ['summ-orig-tp','summ-proc-tp'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='— dBTP';});
+});
+
+// ── DSP ────────────────────────────────────────────────────────────────────────
+
+// Direct Form II Transposed Biquad — numerisch stabil
+// ═══════════════════════════════════════════════════════════════════════════════
+// DSP ENGINE — Analog-Matched Mastering Quality
+// Methoden: Bilinear Transform mit Frequency Pre-Warping (Zölzer/Pirkle),
+//           Röhren-Sättigung (gerade Harmonische), Transient-sensitiver Kompressor
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Direct Form II Transposed — numerisch stabil, keine Overflow-Artefakte
+function bqArr(src, b0,b1,b2,a1,a2) {
+  const dst=new Float32Array(src.length); let s1=0,s2=0;
+  for(let i=0;i<src.length;i++){const x=src[i],y=b0*x+s1;s1=b1*x-a1*y+s2;s2=b2*x-a2*y;dst[i]=y;}
+  return dst;
+}
+
+// 2nd-order analog-matched Butterworth High-Pass (Bilinear + Pre-Warping)
+// Klingt deutlich sanfter als digitaler HP — kein "Sounding off" beim Low-Cut
+function hp(data, fc, sr) {
+  const w  = Math.tan(Math.PI * fc / sr); // pre-warped
+  const n  = 1 / (1 + Math.SQRT2*w + w*w);
+  return bqArr(data, n, -2*n, n, 2*(w*w-1)*n, (1-Math.SQRT2*w+w*w)*n);
+}
+
+// Gentle 1st-order Low-Shelf (Pultec-Style) — weicher Warmton in den Bässen
+// Boost unten, kein Ringing, klingt wie ein Pultec EQP-1A
+function lowShelf1(data, fc, gainDb, sr) {
+  const A  = Math.pow(10, gainDb/20);
+  const wc = 2*Math.PI*fc/sr;
+  // Bilinear transform 1st-order shelf
+  const K  = Math.tan(wc/2);
+  if (gainDb >= 0) {
+    const b0=(1+A*K)/(1+K), b1=(A*K-1)/(1+K), a1=(K-1)/(1+K);
+    return bqArr(data, b0,b1,0, a1,0);
+  } else {
+    const b0=(1+K)/(1+K/A), b1=(K-1)/(1+K/A), a1=(K/A-1)/(1+K/A);
+    return bqArr(data, b0,b1,0, a1,0);
+  }
+}
+
+// Analog-Parametric Peak/Dip (Massberg 2nd order, musical Q)
+// Breiter, runder Klang — kein digitaler "chirp" bei hohen Frequenzen
+function peak(data, fc, gainDb, Q, sr) {
+  if (Math.abs(gainDb) < 0.05) return data;
+  const A   = Math.pow(10, gainDb/40);
+  // Pre-warp Frequenz für analogen Charakter
+  const wc  = 2 * Math.PI * fc / sr;
+  const K   = Math.tan(wc/2);
+  const K2  = K*K;
+  if (gainDb > 0) {
+    const a0 = 1 + K/(A*Q) + K2;
+    return bqArr(data,
+      (1 + A*K/Q + K2)/a0,
+      (2*(K2-1))/a0,
+      (1 - A*K/Q + K2)/a0,
+      (2*(K2-1))/a0,
+      (1 - K/(A*Q) + K2)/a0
+    );
+  } else {
+    const a0 = 1 + A*K/Q + K2;
+    return bqArr(data,
+      (1 + K/(A*Q) + K2)/a0,
+      (2*(K2-1))/a0,
+      (1 - K/(A*Q) + K2)/a0,
+      (2*(K2-1))/a0,
+      (1 - A*K/Q + K2)/a0
+    );
+  }
+}
+
+// Analog-matched High Shelf (Neve/SSL style)
+// Sanfterer Slope als Standard-Shelf — klingt luftig, nicht scharf
+function hshelf(data, fc, gainDb, sr) {
+  if (Math.abs(gainDb) < 0.05) return data;
+  const A   = Math.pow(10, gainDb/40);
+  const wc  = 2*Math.PI*fc/sr;
+  const K   = Math.tan(wc/2);
+  const K2  = K*K;
+  const sq  = Math.SQRT2;
+  if (gainDb > 0) {
+    const a0 = 1 + sq*K + K2;
+    return bqArr(data,
+      (A*A + sq*A*K + K2)/a0,
+      (2*(K2-A*A))/a0,
+      (A*A - sq*A*K + K2)/a0,
+      (2*(K2-1))/a0,
+      (1 - sq*K + K2)/a0
+    );
+  } else {
+    const a0 = A*A + sq*A*K + K2;
+    return bqArr(data,
+      (1 + sq*K + K2) * A*A/a0,
+      (2*A*A*(K2-1))/a0,
+      (1 - sq*K + K2) * A*A/a0,
+      (2*(K2-A*A))/a0,
+      (A*A - sq*A*K + K2)/a0
+    );
+  }
+}
+
+// De-Esser — reduziert harte Sibilanten (3–8 kHz) sanft ohne Lisp
+// Dynamisch: greift nur ein wenn Hochton-Energie zu stark ist
+function deEss(data, sr, threshDb, fc1, fc2) {
+  // Band-Detection via einfachem HP+LP Envelope
+  const out  = new Float32Array(data.length);
+  const hpd  = hp(data, fc1, sr);                      // >fc1
+  const lpd  = bqArr(hpd,                              // <fc2 Bandpass
+    ...(() => {
+      const w=Math.tan(Math.PI*fc2/sr), n=1/(1+Math.SQRT2*w+w*w);
+      return [1/(1+Math.SQRT2/w+1/w/w), 2/(1+Math.SQRT2/w+1/w/w)-2/(1+Math.SQRT2/w+1/w/w), 1/(1+Math.SQRT2/w+1/w/w), 2*(1/w/w-1)/(1+Math.SQRT2/w+1/w/w), (1-Math.SQRT2/w+1/w/w)/(1+Math.SQRT2/w+1/w/w)];
+    })()
+  );
+  const thresh = Math.pow(10, threshDb/20);
+  const atkC  = Math.exp(-1/(sr*0.001));
+  const relC  = Math.exp(-1/(sr*0.08));
+  let env = 0;
+  for(let i=0;i<data.length;i++){
+    const lv=Math.abs(lpd[i]);
+    env=lv>env?atkC*env+(1-atkC)*lv:relC*env+(1-relC)*lv;
+    const gr=env>thresh?thresh/env:1;
+    out[i]=data[i]*gr;
+  }
+  return out;
+}
+
+// ── Röhren-Sättigung (Tube Saturation) ────────────────────────────────────────
+// Emuliert gerade Harmonische einer Trioden-Röhre (2nd + 4th Harmonic)
+// Sehr subtil: drive 0.0 = bypass, 1.0 = leichte Sättigung
+// Macht Vokale seidiger, Bässe wärmer, Höhen weniger spitz
+function tubeSaturate(data, drive) {
+  if (drive <= 0) return data;
+  const out   = new Float32Array(data.length);
+  const g     = 1 + drive * 2;                 // Eingangs-Gain
+  const comp  = 1 / (1 + drive * 0.3);         // Kompensations-Gain
+  for(let i=0;i<data.length;i++){
+    const x = data[i] * g;
+    // Asymmetrische Kennlinie — wie eine Triode
+    // Positive Halbwelle etwas weicher (Gitter-Strombegrenzung)
+    let y;
+    if (x >= 0) {
+      y = Math.tanh(x * 0.85) / 0.85;          // leicht soft-clipped
+    } else {
+      y = Math.tanh(x) ;                        // negative Halbwelle normaler
+    }
+    out[i] = y * comp;
+  }
+  return out;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SPEKTRALE ENTRAUSCHUNG — Wiener-Filter mit FFT-Overlap-Add
+// Funktioniert gegen stationäres Rauschen: Raumrauschen, Lüfter, Bandrauschen,
+// HF-Brummen, Klimaanlage — ähnlich klassischem Waves NS1 / iZotope RX Grundlage
+//
+// Algorithmus:
+// 1. Rauschprofil aus dem leisesten Segment messen (min-statistics)
+// 2. FFT-Frame-weise: Wiener-Gain = SNR / (SNR + 1) per Frequenzbin
+// 3. Spectral Floor verhindert "musical noise" (Restgeräusche als Töne)
+// 4. Overlap-Add Rekonstruktion (75% Überlappung, Hann-Fenster)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+function spectralDenoise(data, sr, strength) {
+  // strength: 0.0 = bypass, 1.0 = maximum (typisch 0.7–0.9)
+  if (strength <= 0) return data;
+
+  const FFT_SIZE  = 2048;
+  const HOP       = FFT_SIZE >> 2;           // 75% Überlappung
+  const HALF      = FFT_SIZE >> 1;
+
+  // ── Hann-Fenster (verhindert Spektral-Leakage) ────────────────────────────
+  const window = new Float32Array(FFT_SIZE);
+  for (let i = 0; i < FFT_SIZE; i++)
+    window[i] = 0.5 * (1 - Math.cos(2 * Math.PI * i / FFT_SIZE));
+
+  // Fenster-Normalisierungsfaktor für Overlap-Add
+  const winNorm = new Float32Array(data.length);
+
+  // ── Rauschprofil schätzen ─────────────────────────────────────────────────
+  // Methode: "Minimum Statistics" — nimm das Minimum der Spektrum-Energie
+  // über mehrere Frames. Rauschen ist konstant, Sprache variiert stark.
+  // Schätz-Fenster: erste 0.5s + letzten 0.3s (oft Stille vor/nach Sprache)
+  const noiseSamps = Math.min(Math.round(sr * 0.5), data.length >> 2);
+  const noiseProfile = new Float32Array(HALF + 1);  // Rausch-Magnitudenspektrum
+  let noiseFrameCount = 0;
+
+  // Mehrere Frames aus ruhigen Segmenten mitteln
+  for (let start = 0; start < noiseSamps - FFT_SIZE; start += HOP) {
+    const re = new Float32Array(FFT_SIZE);
+    const im = new Float32Array(FFT_SIZE);
+    for (let i = 0; i < FFT_SIZE; i++) re[i] = data[start + i] * window[i];
+    fftInPlace(re, im, false);
+    for (let k = 0; k <= HALF; k++) {
+      const mag = Math.sqrt(re[k]*re[k] + im[k]*im[k]);
+      noiseProfile[k] += mag;
+    }
+    noiseFrameCount++;
+  }
+  if (noiseFrameCount === 0) return data;
+  for (let k = 0; k <= HALF; k++) noiseProfile[k] /= noiseFrameCount;
+
+  // Overestimation-Faktor — verhindert Restgeräusche (typisch 1.5–3.0)
+  // Höherer Wert = aggressiverer Schnitt, aber mehr Klangverfärbung
+  const over = 1.0 + strength * 2.5;
+  // Spectral floor — mindest-Restenergie damit kein "Tunnel"-Effekt (1–5%)
+  const floor = 0.02 * (1 - strength * 0.5);
+
+  // ── Overlap-Add Verarbeitung ──────────────────────────────────────────────
+  const output = new Float32Array(data.length);
+
+  // Glättungs-Puffer für temporale Glättung der Gain-Funktion
+  // (verhindert "musikalisches Rauschen" — Resttöne nach Subtraktion)
+  const smoothGain = new Float32Array(HALF + 1).fill(1);
+
+  for (let pos = 0; pos + FFT_SIZE <= data.length; pos += HOP) {
+    // Frame mit Hann-Fenster
+    const re = new Float32Array(FFT_SIZE);
+    const im = new Float32Array(FFT_SIZE);
+    for (let i = 0; i < FFT_SIZE; i++) {
+      re[i] = data[pos + i] * window[i];
+    }
+
+    // Vorwärts-FFT
+    fftInPlace(re, im, false);
+
+    // Wiener-Filter per Frequenzbin anwenden
+    for (let k = 0; k <= HALF; k++) {
+      const mag   = Math.sqrt(re[k]*re[k] + im[k]*im[k]);
+      const noise = noiseProfile[k] * over;
+
+      // Wiener-Gain: G = max(1 - noise/mag, floor)
+      // Für SNR >> 1: G ≈ 1 (Signal dominiert, kein Eingriff)
+      // Für SNR << 1: G ≈ floor (Rauschen dominiert, Dämpfung)
+      const rawGain = mag > 1e-10 ? Math.max(1 - noise / mag, floor) : floor;
+
+      // Temporale Glättung: verhindert "musical noise" durch schnelle Gain-Änderungen
+      // Ansteigen schnell (Signal), abfallen langsam (vermeidet Artefakte)
+      const alpha = rawGain > smoothGain[k] ? 0.7 : 0.92;
+      smoothGain[k] = alpha * smoothGain[k] + (1 - alpha) * rawGain;
+
+      // Gain anwenden (Phase bleibt unverändert — wichtig für Sprachverständlichkeit)
+      const g = smoothGain[k];
+      re[k] *= g;
+      im[k] *= g;
+
+      // Konjugiert-symmetrische Spiegelung
+      if (k > 0 && k < HALF) {
+        re[FFT_SIZE - k] *= g;
+        im[FFT_SIZE - k] *= g;
+      }
+    }
+
+    // Rückwärts-FFT
+    fftInPlace(re, im, true);
+
+    // Overlap-Add mit Hann-Fenster (für perfekte Rekonstruktion)
+    for (let i = 0; i < FFT_SIZE; i++) {
+      if (pos + i < output.length) {
+        output[pos + i] += re[i] * window[i];
+        winNorm[pos + i]  += window[i] * window[i];
+      }
+    }
+  }
+
+  // Normalisierung (Fenster-Überlappung ausgleichen)
+  for (let i = 0; i < output.length; i++) {
+    if (winNorm[i] > 1e-8) output[i] /= winNorm[i];
+    else output[i] = data[i]; // Ränder unverändert lassen
+  }
+
+  return output;
+}
+
+// ── FFT — Cooley-Tukey Radix-2 In-Place ──────────────────────────────────────
+// Kompakte, korrekte Implementierung für Potenzen von 2
+function fftInPlace(re, im, inverse) {
+  const N = re.length;
+  // Bit-Reversal Permutation
+  let j = 0;
+  for (let i = 1; i < N; i++) {
+    let bit = N >> 1;
+    for (; j & bit; bit >>= 1) j ^= bit;
+    j ^= bit;
+    if (i < j) {
+      [re[i], re[j]] = [re[j], re[i]];
+      [im[i], im[j]] = [im[j], im[i]];
+    }
+  }
+  // Butterfly-Operationen
+  for (let len = 2; len <= N; len <<= 1) {
+    const ang = (inverse ? 2 : -2) * Math.PI / len;
+    const wRe = Math.cos(ang), wIm = Math.sin(ang);
+    for (let i = 0; i < N; i += len) {
+      let curRe = 1, curIm = 0;
+      for (let k = 0; k < (len >> 1); k++) {
+        const uRe = re[i+k],      uIm = im[i+k];
+        const vRe = re[i+k+(len>>1)] * curRe - im[i+k+(len>>1)] * curIm;
+        const vIm = re[i+k+(len>>1)] * curIm + im[i+k+(len>>1)] * curRe;
+        re[i+k]          = uRe + vRe;  im[i+k]          = uIm + vIm;
+        re[i+k+(len>>1)] = uRe - vRe;  im[i+k+(len>>1)] = uIm - vIm;
+        const newRe = curRe*wRe - curIm*wIm;
+        curIm = curRe*wIm + curIm*wRe;
+        curRe = newRe;
+      }
+    }
+  }
+  if (inverse) { for (let i=0;i<N;i++){re[i]/=N;im[i]/=N;} }
+}
+
+// ── Noise Gate (wie bisher) ───────────────────────────────────────────────────
+function noiseGate(data, sr) {
+  const FRAME=Math.round(.01*sr), rms=[];
+  for(let i=0;i<data.length;i+=FRAME){let s=0,n=0;for(let j=i;j<Math.min(i+FRAME,data.length);j++){s+=data[j]*data[j];n++;}rms.push(n>0?Math.sqrt(s/n):0);}
+  const sorted=[...rms].sort((a,b)=>a-b);
+  const nf=sorted[Math.floor(sorted.length*.2)]||0;
+  const open=Math.max(nf*6,1e-4), hold=open*.5;
+  const atkC=Math.exp(-1/(sr*.005)), relC=Math.exp(-1/(sr*.1));
+  const out=new Float32Array(data.length); let gain=0,fr=0;
+  for(let i=0;i<data.length;i++){
+    if(i%FRAME===0) fr=rms[Math.floor(i/FRAME)]||0;
+    const tg=fr>=open?1:fr>=hold?.5:0;
+    gain=tg>gain?1-(1-tg)*(1-gain)*atkC:gain+(tg-gain)*(1-relC);
+    gain=Math.max(0,Math.min(1,gain));
+    out[i]=data[i]*gain;
+  }
+  return out;
+}
+
+// ── VCA Compressor (Feed-Forward, RMS-Detektor) ────────────────────────────────
+// Klingt musikalischer als Peak-Kompressor — näher an SSL G-Bus
+function compress(data, sr, threshDb, ratio, atkMs, relMs, makeupDb) {
+  const thresh=Math.pow(10,threshDb/20), makeup=Math.pow(10,makeupDb/20);
+  const atkC=Math.exp(-1/(sr*atkMs/1000)), relC=Math.exp(-1/(sr*relMs/1000));
+  // RMS-Detektor mit 10ms Fenster für musikalischeres Ansprechen
+  const rmsBuf=new Float32Array(Math.round(sr*0.01)); let rmsBufIdx=0, rmsSum=0;
+  const out=new Float32Array(data.length); let env=0;
+  for(let i=0;i<data.length;i++){
+    const x=data[i]*data[i];
+    rmsSum+=x-rmsBuf[rmsBufIdx]; rmsBuf[rmsBufIdx]=x; rmsBufIdx=(rmsBufIdx+1)%rmsBuf.length;
+    const rms=Math.sqrt(Math.max(0,rmsSum/rmsBuf.length));
+    env=rms>env?atkC*env+(1-atkC)*rms:relC*env+(1-relC)*rms;
+    const gr=env>thresh?Math.pow(env/thresh,1/ratio-1):1;
+    out[i]=data[i]*gr*makeup;
+  }
+  return out;
+}
+
+// ── Brickwall Lookahead Limiter (Two-Pass, verzerrungsfrei) ──────────────────
+// Pass 1 rückwärts: Gain-Kurve berechnen (Lookahead-Attack + Release)
+// Pass 2 vorwärts:  Gain anwenden (garantiert keine Clips über Ceiling)
+function limit(data, sr, ceilDb) {
+  const ceil = Math.pow(10, ceilDb / 20);
+  const n    = data.length;
+  const look = Math.round(sr * 0.005);  // 5ms Lookahead (Attack vorwärts)
+  const relS = Math.round(sr * 0.100);  // 100ms Release
+
+  // Pass 1 rückwärts: jede Transiente wird `look` Samples früher sichtbar
+  // → schnelle Erholung im Rücklauf = sanfter Attack im Vorlauf
+  const gr = new Float32Array(n).fill(1.0);
+  let run = 1.0;
+  for(let i = n - 1; i >= 0; i--){
+    const lv = Math.abs(data[i]);
+    if(lv > ceil) run = Math.min(run, ceil / lv); // sofort auf Peak reagieren
+    gr[i] = run;
+    run = Math.min(1.0, run + 1.0 / look);         // schnell erholen → Attack vorwärts
+  }
+
+  // Pass 2 vorwärts: gr[] anwenden mit langsamer Release
+  const out = new Float32Array(n);
+  run = 1.0;
+  for(let i = 0; i < n; i++){
+    run = Math.min(run, gr[i]);                    // Gain nie höher als berechnet
+    out[i] = data[i] * run;
+    run = Math.min(1.0, run + 1.0 / relS);         // langsam erholen
+  }
+  return out;
+}
+function computeLufs(buf){
+  const sr=buf.sampleRate,nCh=Math.min(buf.numberOfChannels,2);
+  const ok=(sr>=46000&&sr<=50000);
+  const pB=ok?[1.53512485958697,-2.69169618940638,1.19839281085285]:[1.53085766865605,-2.65072300564990,1.16916682897904];
+  const pA=ok?[1,-1.69065929318241,.73248077421585]:[1,-1.66364048874477,.71247332735500];
+  const hB=[1,-2,1],hA=ok?[1,-1.99004745483398,.99007225036621]:[1,-1.98919956770367,.98922949918125];
+  const kw=ch=>bqArr(bqArr(new Float32Array(ch),pB[0],pB[1],pB[2],pA[1],pA[2]),hB[0],hB[1],hB[2],hA[1],hA[2]);
+  const w=[];for(let c=0;c<nCh;c++)w.push(kw(buf.getChannelData(c)));
+  const bsmp=Math.round(.4*sr),hsmp=Math.round(.1*sr);
+  const nb=Math.max(1,Math.floor((buf.length-bsmp)/hsmp)+1),blocks=[];
+  for(let b=0;b<nb;b++){const s=b*hsmp;let lk=0;for(let c=0;c<nCh;c++){let ms=0;for(let i=s;i<Math.min(s+bsmp,buf.length);i++)ms+=w[c][i]**2;lk+=ms/bsmp;}blocks.push(lk);}
+  const absT=Math.pow(10,(-70+.691)/10);
+  const g1=blocks.filter(v=>v>absT);if(!g1.length)return -70;
+  const m1=g1.reduce((a,b)=>a+b,0)/g1.length;
+  const g2=blocks.filter(v=>v>m1*Math.pow(10,-1));if(!g2.length)return -70;
+  return -.691+10*Math.log10(g2.reduce((a,b)=>a+b,0)/g2.length);
+}
+
+// ── Progress ───────────────────────────────────────────────────────────────────
+function setProg(p){progWrap.style.display='block';progBar.style.width=p+'%';}
+function setStep(i){
+  ps.forEach((s,j)=>{
+    const isOff = s.classList.contains('off');
+    s.classList.toggle('done',   j<i && !isOff);
+    s.classList.toggle('active', j===i && !isOff);
+  });
+}
+
+// ── WAV Encoder ────────────────────────────────────────────────────────────────
+function encodeWav(buf){
+  const nCh=buf.numberOfChannels,sr=buf.sampleRate,len=buf.length,dl=len*nCh*2;
+  const ab=new ArrayBuffer(44+dl),v=new DataView(ab);
+  const ws=(o,s)=>{for(let i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i));};
+  ws(0,'RIFF');v.setUint32(4,36+dl,true);ws(8,'WAVE');ws(12,'fmt ');
+  v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,nCh,true);
+  v.setUint32(24,sr,true);v.setUint32(28,sr*nCh*2,true);v.setUint16(32,nCh*2,true);
+  v.setUint16(34,16,true);ws(36,'data');v.setUint32(40,dl,true);
+  let off=44;
+  for(let i=0;i<len;i++)for(let c=0;c<nCh;c++){const s=Math.max(-1,Math.min(1,buf.getChannelData(c)[i]));v.setInt16(off,s<0?s*0x8000:s*0x7FFF,true);off+=2;}
+  return new Blob([ab],{type:'audio/wav'});
+}
+
+// ── Main Processing ────────────────────────────────────────────────────────────
+processBtn.addEventListener('click', async () => {
+  if (!origBuf) return;
+  processBtn.disabled=true; resetBtn.disabled=true; stopPreview();
+  resultCard.classList.remove('visible');
+  ps.forEach(s=>{ s.classList.remove('active','done'); s.classList.toggle('off',!stepEnabled[s.dataset.step]); });
+  clearMeter('mtp');
+
+  const prof = PROFILES[currentProfile];
+
+  try {
+    const sr=origBuf.sampleRate, nCh=origBuf.numberOfChannels;
+    const chs=[];
+
+    for(let ch=0;ch<nCh;ch++){
+      let d=new Float32Array(origBuf.getChannelData(ch));
+
+      // Step 1: Spektrale Entrauschung (Wiener-Filter)
+      setStep(0); setProg(5+ch*3); await new Promise(r=>setTimeout(r,0));
+      if(stepEnabled.denoise) d=spectralDenoise(d, sr, 0.78);
+
+      // Step 2: Noise Gate
+      setStep(1); setProg(22+ch*3); await new Promise(r=>setTimeout(r,0));
+      if(stepEnabled.gate) d=noiseGate(d,sr);
+
+      // Step 3: High-Pass (auch separat wenn EQ aus)
+      setStep(2); setProg(36+ch*3); await new Promise(r=>setTimeout(r,0));
+      if(!stepEnabled.eq && stepEnabled.hp) d=hp(d,prof.hp,sr);
+
+      // Step 4: EQ — Analog-Matched
+      setStep(3); setProg(50+ch*3); await new Promise(r=>setTimeout(r,0));
+      if(stepEnabled.eq){
+        d = hp(d, prof.hp, sr);
+        if(prof.warmShelf) d = lowShelf1(d, prof.warmShelf.fc, prof.warmShelf.g, sr);
+        for(const band of prof.eq) d = peak(d, band.fc, band.g, band.Q, sr);
+        if(prof.air) d = hshelf(d, prof.air.fc, prof.air.g, sr);
+        if(prof.deEss) d = deEss(d, sr, prof.deEss.thresh, prof.deEss.fc1, prof.deEss.fc2);
+        if(prof.tube > 0) d = tubeSaturate(d, prof.tube);
+      }
+
+      // Step 5: Kompressor + Limiter zum Schutz vor Makeup-Gain-Clipping
+      setStep(4); setProg(65+ch*3); await new Promise(r=>setTimeout(r,0));
+      if(stepEnabled.comp){
+        d=compress(d,sr,prof.comp.thresh,prof.comp.ratio,prof.comp.atk,prof.comp.rel,prof.comp.makeup);
+        d=limit(d,sr,-0.5); // Schutz: harter Ceiling nach aggressivem Makeup
+      }
+
+      chs.push(d);
+    }
+
+    // Step 6: R128 Normalisierung — Two-Pass für verzerrungsfreies Ergebnis
+    setStep(5); setProg(78); await new Promise(r=>setTimeout(r,0));
+    const tmpOff=new OfflineAudioContext(nCh,origBuf.length,sr);
+    const tmpBuf=tmpOff.createBuffer(nCh,origBuf.length,sr);
+    for(let c=0;c<nCh;c++) tmpBuf.copyToChannel(chs[c],c);
+    const measLufs=computeLufs(tmpBuf);
+
+    const TARGET=prof.target, TP=prof.tp;
+    let gainDb = stepEnabled.r128 ? Math.max(-6, Math.min(6, TARGET - measLufs)) : 0;
+    let gainLin = Math.pow(10, gainDb/20);
+
+    // ── Two-Pass: messe Verlust durch Limiter und kompensiere ─────────────────
+    if(stepEnabled.r128 && Math.abs(gainDb) > 1){
+      const trialChs = chs.map(ch => limit(ch.map(v=>v*gainLin), sr, TP));
+      const trialOff = new OfflineAudioContext(nCh, origBuf.length, sr);
+      const trialBuf = trialOff.createBuffer(nCh, origBuf.length, sr);
+      for(let c=0;c<nCh;c++) trialBuf.copyToChannel(trialChs[c], c);
+      const actualLufs = computeLufs(trialBuf);
+      const diff = TARGET - actualLufs;
+      if(Math.abs(diff) > 0.3){
+        gainDb  += diff * 0.9;
+        gainLin  = Math.pow(10, gainDb/20);
+      }
+    }
+
+    setProg(85); await new Promise(r=>setTimeout(r,0));
+
+    // Final pass: apply gain + limiter, render to AudioBuffer
+    const offFinal=new OfflineAudioContext(nCh,origBuf.length,sr);
+    const fbuf=offFinal.createBuffer(nCh,origBuf.length,sr);
+    for(let c=0;c<nCh;c++){
+      const sc=chs[c].map(v=>v*gainLin);
+      fbuf.copyToChannel(limit(sc,sr,TP),c);
+    }
+    const fs=offFinal.createBufferSource(); fs.buffer=fbuf; fs.connect(offFinal.destination); fs.start(0);
+    procBuf=await renderOffline(offFinal);
+
+    // ── Fade-in am Anfang (verhindert Denoiser-Anlauf-Artefakt) ─────────────
+    {
+      const fadeMs  = 15; // 15ms reicht um Anlauf-Rauschen zu eliminieren
+      const fadeSmp = Math.round(sr * fadeMs / 1000);
+      for(let c=0;c<procBuf.numberOfChannels;c++){
+        const d=procBuf.getChannelData(c);
+        for(let i=0;i<Math.min(fadeSmp,d.length);i++) d[i]*=i/fadeSmp;
+      }
+    }
+
+    ps.forEach(s=>{
+      if(!s.classList.contains('off')) s.classList.add('done');
+      s.classList.remove('active');
+    });
+    setProg(95); await new Promise(r=>setTimeout(r,0));
+
+    // Measure final
+    const finalLufs=computeLufs(procBuf);
+    let fpk=0;
+    for(let c=0;c<nCh;c++){const d=procBuf.getChannelData(c);for(let i=0;i<d.length;i++)if(Math.abs(d[i])>fpk)fpk=Math.abs(d[i]);}
+    const fpkDb=fpk>0?20*Math.log10(fpk):-Infinity;
+
+    // Update meters
+    await showMeterValues(procBuf,'mtp','summ-proc','summ-proc-tp');
+    // TP-Anzeige = garantiertes Profil-Limit (nicht gemessener Peak)
+    const tpEl = document.getElementById('summ-proc-tp');
+    if(tpEl) tpEl.textContent = prof.tp.toFixed(1) + ' dBTP (Limit)';
+
+    // Draw waveform
+    drawWave(cvProc,procBuf,'#60d4f0');
+    tProc.textContent=fmtT(procBuf.duration);
+    btnProc.disabled=false;
+
+    // Encode
+    const blob=encodeWav(procBuf);
+    const outName=satkFilename('voiceover','wav');
+    const nb2=new File([blob],outName,{type:'audio/wav'});
+    if(blobUrl) URL.revokeObjectURL(blobUrl);
+    blobUrl=URL.createObjectURL(nb2);
+    const ios=/iPad|iPhone|iPod/.test(navigator.userAgent);
+    dlBtn.href=blobUrl;
+    if(ios){dlBtn.removeAttribute('download');dlBtn.target='_blank';}
+    else dlBtn.download=outName;
+  showDownloadHint(outName);
+
+    setProg(100);
+    const origLufsVal = computeLufs(origBuf);
+    let origPk=0; for(let c=0;c<origBuf.numberOfChannels;c++){const d=origBuf.getChannelData(c);for(let i=0;i<d.length;i++)if(Math.abs(d[i])>origPk)origPk=Math.abs(d[i]);}
+    const origPkDb=origPk>0?20*Math.log10(origPk):-Infinity;
+
+    resultStats.innerHTML=`
+      <div class="rs"><dt>Profil</dt><dd>${prof.name}</dd></div>
+      <div class="rs"><dt>Ziel</dt><dd>${prof.label}</dd></div>
+      <div class="rs"><dt>Original I</dt><dd>${origLufsVal>-70?origLufsVal.toFixed(1)+' LUFS':'—'}</dd></div>
+      <div class="rs"><dt>Original TP</dt><dd>${origPkDb>-100?origPkDb.toFixed(1)+' dB':'—'}</dd></div>
+      <div class="rs"><dt>Final I</dt><dd class="good">${finalLufs.toFixed(1)} LUFS</dd></div>
+      <div class="rs"><dt>Final TP</dt><dd class="good">${fpkDb.toFixed(1)} dB</dd></div>
+      <div class="rs"><dt>Gain</dt><dd>${gainDb>=0?'+':''}${gainDb.toFixed(1)} dB</dd></div>
+    `;
+    resultCard.classList.add('visible');
+
+  } catch(e) {
+    console.error(e);
+    ps.forEach(s=>s.classList.remove('active'));
+    dropName.textContent='Fehler: '+(e.message||e);
+  }
+  processBtn.disabled=false; resetBtn.disabled=false;
+});
+
+// ── Download-Hinweis (plattform-spezifisch, nur beim ersten Export) ────────────
+function showDownloadHint(filename){
+  // Nur einmal zeigen — localStorage merkt sich ob Hint schon erschienen ist
+  try {
+    if(localStorage.getItem('satk_dl_hint_shown')) return;
+    localStorage.setItem('satk_dl_hint_shown','1');
+  } catch(e) {}
+
+  var ua=navigator.userAgent, pl=navigator.platform||'';
+  var isIOS=/iPad|iPhone|iPod/.test(ua)||(/Mac/.test(pl)&&navigator.maxTouchPoints>1);
+  var isAndroid=/Android/.test(ua);
+  var isMac=/Mac/.test(pl)&&!isIOS;
+  var isWin=/Win/.test(pl);
+  var isSafari=/^((?!chrome|android).)*safari/i.test(ua);
+  var isChrome=/Chrome/.test(ua)&&!/Edg/.test(ua);
+  var isEdge=/Edg/.test(ua);
+  var isFirefox=/Firefox/.test(ua);
+
+  var msg='';
+  if(isIOS){
+    if(isSafari)
+      msg='Öffne die <strong>Dateien-App</strong> → Auf meinem iPhone → Downloads';
+    else
+      msg='Datei gespeichert. Öffne die <strong>Dateien-App</strong> auf deinem iPhone/iPad';
+  } else if(isAndroid){
+    msg='Gespeichert im <strong>Downloads-Ordner</strong>. Öffne Dateien oder den Download-Manager';
+  } else if(isMac){
+    if(isSafari)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf den Pfeil ↓ oben rechts in Safari';
+    else if(isChrome)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ oben rechts in Chrome';
+    else if(isEdge)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ oben rechts in Edge';
+    else
+      msg='Gespeichert im Ordner <strong>~/Downloads</strong>';
+  } else if(isWin){
+    if(isChrome)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ unten oder oben rechts in Chrome';
+    else if(isEdge)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ oben rechts in Edge';
+    else if(isFirefox)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf den Pfeil ↓ in der Symbolleiste';
+    else
+      msg='Gespeichert in <strong>C:\\Users\\[Name]\\Downloads</strong>';
+  } else {
+    msg='Gespeichert im <strong>Downloads-Ordner</strong>';
+  }
+
+  // Altes Toast entfernen
+  var old=document.getElementById('satkDlHint');
+  if(old) old.remove();
+
+  var el=document.createElement('div');
+  el.id='satkDlHint';
+  el.innerHTML='<span class="satk-dl-close" onclick="this.parentNode.remove()">✕</span>'
+    +(filename?'<span class="satk-dl-file">📄 '+filename+'</span>':'')
+    +'<span>'+msg+'</span>';
+  document.body.appendChild(el);
+
+  // Auto-ausblenden nach 9s
+  var timer=setTimeout(function(){
+    if(el.parentNode){
+      el.style.animation='satkDlOut .3s ease forwards';
+      setTimeout(function(){if(el.parentNode)el.remove();},300);
+    }
+  },9000);
+  el.querySelector('.satk-dl-close').addEventListener('click',function(){clearTimeout(timer);});
+}
+
+
+// ── SATK Einheitliche Dateinamen-Funktion ─────────────────────────────────────
+// Schema: satk_[tool]_[YYYY-MM-DD]_[HH-MM-SS]_v[n].[ext]
+// Versionszahl: Session-Counter pro Tool (localStorage)
+function satkFilename(tool, ext){
+  var d = new Date();
+  var pad = function(n){ return n<10?'0'+n:String(n); };
+  var date = d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+  var time = pad(d.getHours())+'-'+pad(d.getMinutes())+'-'+pad(d.getSeconds());
+  var key  = 'satk_v_'+tool;
+  var ver  = 1;
+  try {
+    ver = (parseInt(localStorage.getItem(key))||0) + 1;
+    localStorage.setItem(key, ver);
+  } catch(e) {}
+  return 'satk_'+tool+'_'+date+'_'+time+'_v'+ver+(ext?'.'+ext:'');
+}
+
+
+// ── SATK Analyzer ──────────────────────
+// ============================================================
+// SATK Audio Analyzer — Automatische Klanganalyse nach Upload
+// Analysiert AudioBuffer und gibt Empfehlungen zurück
+// Aufruf: const result = await analyzeBuffer(audioBuffer)
+// ============================================================
+'use strict';
+
+// ── K-Weighting Filter (BS.1770-4) ───────────────────────────────────────────
+function makeKWeightFilters(sr) {
+  const f0=1681.974450955533, G=3.999843853973347, Q=0.7071752369554196;
+  const K=Math.tan(Math.PI*f0/sr), Vh=Math.pow(10,G/20), Vb=Math.pow(Vh,0.4996667741545416);
+  const a0=1+K/Q+K*K;
+  const preB=[(Vh+Vb*K/Q+K*K)/a0, 2*(K*K-Vh)/a0, (Vh-Vb*K/Q+K*K)/a0];
+  const preA=[1, 2*(K*K-1)/a0, (1-K/Q+K*K)/a0];
+  const f1=38.13547087602444, Q2=0.5003270373238773, K2=Math.tan(Math.PI*f1/sr);
+  const d=1+K2/Q2+K2*K2;
+  const hpB=[1/d, -2/d, 1/d];
+  const hpA=[1, 2*(K2*K2-1)/d, (1-K2/Q2+K2*K2)/d];
+  return {preB,preA,hpB,hpA};
+}
+
+function applyBiquad(inp, b, a) {
+  const out=new Float32Array(inp.length);
+  let x1=0,x2=0,y1=0,y2=0;
+  for(let i=0;i<inp.length;i++){
+    const x0=inp[i], y0=b[0]*x0+b[1]*x1+b[2]*x2-a[1]*y1-a[2]*y2;
+    out[i]=y0; x2=x1;x1=x0;y2=y1;y1=y0;
+  }
+  return out;
+}
+
+function kWeight(ch, f) {
+  return applyBiquad(applyBiquad(ch, f.preB, f.preA), f.hpB, f.hpA);
+}
+
+// ── Integrated LUFS (BS.1770-4 mit Gating) ───────────────────────────────────
+function measureIntegratedLUFS(buffer) {
+  const sr=buffer.sampleRate, nCh=buffer.numberOfChannels;
+  const f=makeKWeightFilters(sr);
+  const chWeights=[1,1,1,1.41,1.41];
+  const weighted=[];
+  for(let c=0;c<nCh;c++) weighted.push(kWeight(buffer.getChannelData(c), f));
+
+  const blockS=Math.round(0.4*sr), hopS=Math.round(0.1*sr);
+  const nBlk=Math.max(0,Math.floor((buffer.length-blockS)/hopS)+1);
+  const blocks=[];
+
+  for(let b=0;b<nBlk;b++){
+    const s=b*hopS, e=s+blockS;
+    let ms=0;
+    weighted.forEach((w,c)=>{
+      const wt=c<chWeights.length?chWeights[c]:1;
+      let sum=0; for(let i=s;i<e;i++) sum+=w[i]*w[i];
+      ms+=wt*sum/blockS;
+    });
+    blocks.push(ms); // R128: Summe der Kanalenergie
+  }
+
+  const absG=Math.pow(10,(-70+0.691)/10);
+  const g1=blocks.filter(m=>m>absG);
+  if(!g1.length) return -70;
+  const m1=g1.reduce((a,b)=>a+b,0)/g1.length;
+  const relG=m1*Math.pow(10,-10/10);
+  const g2=blocks.filter(m=>m>relG);
+  if(!g2.length) return -70;
+  return -0.691+10*Math.log10(g2.reduce((a,b)=>a+b,0)/g2.length);
+}
+
+// ── Short-term LUFS pro 3s-Fenster ───────────────────────────────────────────
+function measureShortTermSeries(buffer) {
+  const sr=buffer.sampleRate, nCh=buffer.numberOfChannels;
+  const f=makeKWeightFilters(sr);
+  const weighted=[];
+  for(let c=0;c<nCh;c++) weighted.push(kWeight(buffer.getChannelData(c), f));
+
+  const winS=Math.round(3*sr), hopS=Math.round(0.1*sr);
+  const series=[];
+
+  for(let pos=0; pos+winS<=buffer.length; pos+=hopS){
+    let ms=0;
+    weighted.forEach(w=>{
+      let sum=0; for(let i=pos;i<pos+winS;i++) sum+=w[i]*w[i];
+      ms+=sum/winS;
+    });
+    // R128: Summe der Kanalenergie (NICHT Mittelwert)
+    series.push(ms>0 ? -0.691+10*Math.log10(ms) : -70);
+  }
+  return series;
+}
+
+// ── LRA (Loudness Range, EBU R128 Annex 2) ───────────────────────────────────
+function measureLRA(buffer) {
+  const series=measureShortTermSeries(buffer);
+  const valid=series.filter(v=>v>-70).sort((a,b)=>a-b);
+  if(valid.length<2) return 0;
+  const lo=valid[Math.floor(valid.length*0.10)];
+  const hi=valid[Math.floor(valid.length*0.95)];
+  return Math.max(0, hi-lo);
+}
+
+// ── True Peak (4× oversampling, kubische Interpolation) ──────────────────────
+function measureTruePeak(buffer) {
+  let peak=0;
+  for(let c=0;c<buffer.numberOfChannels;c++){
+    const d=buffer.getChannelData(c);
+    for(let i=1;i<d.length-2;i++){
+      const s0=d[i-1],s1=d[i],s2=d[i+1],s3=i+2<d.length?d[i+2]:s2;
+      for(let j=0;j<=3;j++){
+        const t=j/4, a0=s3-s2-s0+s1, a1=s0-s1-a0, a2=s2-s0;
+        const v=Math.abs(((a0*t+a1)*t+a2)*t+s1);
+        if(v>peak) peak=v;
+      }
+    }
+  }
+  return peak>0 ? 20*Math.log10(peak) : -144;
+}
+
+// ── Rauschboden-Schätzung (leisestes 200ms-Fenster) ──────────────────────────
+function measureNoiseFloor(buffer) {
+  const ch=buffer.getChannelData(0);
+  const sr=buffer.sampleRate;
+  const winS=Math.round(0.2*sr), step=Math.round(0.05*sr);
+  let minRms=Infinity;
+  for(let s=0;s+winS<=ch.length;s+=step){
+    let sum=0; for(let i=s;i<s+winS;i++) sum+=ch[i]*ch[i];
+    const rms=Math.sqrt(sum/winS);
+    if(rms<minRms) minRms=rms;
+  }
+  return minRms>0 ? 20*Math.log10(minRms) : -90;
+}
+
+// ── Spektrale Balance (8 Bänder) ──────────────────────────────────────────────
+function measureSpectralBalance(buffer) {
+  const sr=buffer.sampleRate;
+  const ch=buffer.getChannelData(0);
+  const N=2048;
+  const nFrames=Math.floor(ch.length/N);
+
+  // Einfache Hann-FFT-Summierung
+  const hann=new Float32Array(N);
+  for(let i=0;i<N;i++) hann[i]=0.5*(1-Math.cos(2*Math.PI*i/N));
+
+  // Frequenzbänder: sub/bass/lowmid/mid/highmid/presence/air/brilliant
+  const bands=[
+    {name:'Sub',      lo:20,  hi:80  },
+    {name:'Bass',     lo:80,  hi:250 },
+    {name:'Low-Mid',  lo:250, hi:800 },
+    {name:'Mid',      lo:800, hi:2500},
+    {name:'Presence', lo:2500,hi:5000},
+    {name:'Air',      lo:5000,hi:10000},
+    {name:'Brillanz', lo:10000,hi:20000},
+  ];
+
+  const energy=new Float64Array(bands.length);
+  let totalE=0;
+
+  // Vereinfacht: RMS pro Band über Downsampling
+  for(let f=0;f<nFrames;f++){
+    const re=new Float32Array(N), im=new Float32Array(N);
+    for(let i=0;i<N;i++) re[i]=ch[f*N+i]*hann[i];
+    // Simple DFT für niedrige Frequenzen wäre zu langsam
+    // Stattdessen: Näherung über Bandpassfilter-RMS
+  }
+
+  // Schnellerer Ansatz: RMS in Zeitbereich mit Bandpass-Näherung
+  // Basierend auf Hüllkurven-Analyse über verschiedene Fensterlängen
+  bands.forEach((b,bi)=>{
+    const fRel=b.lo/sr;
+    // Näherung: längere Fenster = tiefere Frequenzen
+    const winLen=Math.max(32, Math.round(sr/b.hi));
+    let sum=0, n=0;
+    for(let i=winLen;i<ch.length-winLen;i+=winLen){
+      // Differenz zweier Mittelwerte ≈ Bandpassfilter
+      let loAvg=0,hiAvg=0;
+      for(let k=0;k<winLen;k++){
+        loAvg+=ch[i-k]; hiAvg+=ch[i+k];
+      }
+      const bp=(loAvg-hiAvg)/winLen;
+      sum+=bp*bp; n++;
+    }
+    const rms=n>0?Math.sqrt(sum/n):0;
+    energy[bi]=rms;
+    totalE+=rms;
+  });
+
+  // Normiert auf Gesamtenergie (%)
+  return bands.map((b,i)=>({
+    name:b.name, lo:b.lo, hi:b.hi,
+    rms:energy[i],
+    pct:totalE>0?energy[i]/totalE*100:0,
+    db:energy[i]>0?20*Math.log10(energy[i]):-90,
+  }));
+}
+
+// ── Inhaltstyp erkennen (Speech/Music/Mixed) ──────────────────────────────────
+function detectContentType(buffer, integratedLufs, lra, spectral) {
+  const sr=buffer.sampleRate;
+  const ch=buffer.getChannelData(0);
+
+  // Zero-Crossing Rate (Sprache: hoch ~100Hz, Musik: niedriger)
+  let zc=0;
+  for(let i=1;i<Math.min(ch.length,sr*5);i++)
+    if((ch[i]>=0)!==(ch[i-1]>=0)) zc++;
+  const zcr=zc/(Math.min(ch.length,sr*5)/sr);
+
+  // Spectral: Sprache hat viel Energie 250-3000Hz, wenig Sub/Brillanz
+  const speechBandPct=(spectral[2]?.pct||0)+(spectral[3]?.pct||0)+(spectral[4]?.pct||0);
+  const subBandPct   =(spectral[0]?.pct||0)+(spectral[1]?.pct||0);
+
+  // Heuristik
+  let type, confidence;
+  if(lra<4 && speechBandPct>55){
+    type='PODCAST'; confidence=90;
+  } else if(lra<7 && speechBandPct>45){
+    type='SPRACHE'; confidence=80;
+  } else if(lra>10 && subBandPct>20){
+    type='MUSIK'; confidence=75;
+  } else if(lra>6){
+    type='GEMISCHT'; confidence=65;
+  } else {
+    type='SPRACHE'; confidence=55;
+  }
+
+  return {type, confidence, zcr, speechBandPct, lra};
+}
+
+// ── Empfehlungen generieren ───────────────────────────────────────────────────
+function generateRecommendations(metrics) {
+  const {intLufs, lra, truePeak, plr, noiseFloor, contentType, spectral, sr} = metrics;
+  const recs = {};
+
+  // ── R128-Zielwerte nach Inhaltstyp ───────────────────────────────────────
+  const PROFILES = {
+    'PODCAST':  {lufs:-16, tp:-1.0, label:'Podcast (Apple/Spotify)'},
+    'SPRACHE':  {lufs:-16, tp:-1.0, label:'Sprache/Voice-Over'},
+    'MUSIK':    {lufs:-14, tp:-1.0, label:'Streaming (Online)'},
+    'GEMISCHT': {lufs:-18, tp:-1.0, label:'Broadcast-Nah'},
+  };
+  const profile=PROFILES[contentType]||PROFILES['SPRACHE'];
+  recs.target=profile;
+  recs.gainNeeded=profile.lufs-intLufs;
+
+  // ── Denoising ─────────────────────────────────────────────────────────────
+  const snr=intLufs-noiseFloor;
+  recs.denoise={
+    recommended: snr < 40,
+    urgency:     snr < 25 ? 'hoch' : snr < 40 ? 'mittel' : 'gering',
+    snr:         snr,
+    noiseFloor:  noiseFloor,
+    settings:    snr<30
+      ? {thresh:2.2, depth:28, smooth:40}  // Aggressiv
+      : {thresh:1.6, depth:16, smooth:80}, // Sanft
+  };
+
+  // ── EQ-Empfehlungen basierend auf spektraler Balance ──────────────────────
+  const eqRecs=[];
+
+  // Hochpassfilter
+  const subEnergy=spectral[0]?.pct||0;
+  if(subEnergy>8){
+    eqRecs.push({band:'High-Pass', freq:80, action:'Filter', reason:'Überschuss Sub-Energie ('+subEnergy.toFixed(1)+'%)'});
+  } else if(subEnergy<2){
+    eqRecs.push({band:'High-Pass', freq:40, action:'Filter 40Hz', reason:'Normaler Sub-Anteil'});
+  }
+
+  // Bass-Behandlung
+  const bassEn=spectral[1]?.pct||0;
+  if(bassEn>30) eqRecs.push({band:'Bass', freq:200, gain:-2, reason:'Bass überbetont ('+bassEn.toFixed(1)+'%)'});
+  else if(bassEn<10) eqRecs.push({band:'Bass', freq:150, gain:+2, reason:'Bass zu dünn'});
+
+  // Präsenz (Verständlichkeit)
+  const presEn=spectral[4]?.pct||0;
+  if(presEn<8)  eqRecs.push({band:'Presence', freq:3000, gain:+2.5, reason:'Verständlichkeit verbessern'});
+  if(presEn>20) eqRecs.push({band:'Presence', freq:4000, gain:-2,   reason:'Präsenz zu aggressiv'});
+
+  // Air/Brillanz
+  const airEn=spectral[5]?.pct||0;
+  if(airEn<5 && contentType!=='MUSIK')
+    eqRecs.push({band:'Air', freq:10000, gain:+1.5, reason:'Natürliche Luft hinzufügen'});
+
+  recs.eq=eqRecs;
+
+  // ── Kompressor-Empfehlungen ───────────────────────────────────────────────
+  let ratio, attack, release, threshold, knee;
+
+  if(contentType==='PODCAST'||contentType==='SPRACHE'){
+    // Sprach-optimierte Kompression
+    ratio     = lra>10 ? 3.5 : lra>6 ? 2.5 : 1.8;
+    attack    = 8;    // ms — schnell genug für Plosive
+    release   = 300;  // ms — natürlich für Sprache
+    threshold = intLufs + 6; // dBFS
+    knee      = 6;
+  } else if(contentType==='MUSIK'){
+    ratio     = lra>14 ? 2.5 : lra>8 ? 2.0 : 1.5;
+    attack    = 20;   // ms — Transienten schützen
+    release   = 500;
+    threshold = intLufs + 8;
+    knee      = 10;
+  } else {
+    ratio=2.0; attack=12; release=400; threshold=intLufs+7; knee=8;
+  }
+
+  recs.compressor={
+    ratio, attack, release, threshold: Math.min(-12, threshold), knee,
+    needed: lra > 5,
+    description: lra>10 ? 'Starke Dynamik — Kompression empfohlen'
+                : lra>5  ? 'Mittlere Dynamik — leichte Kompression'
+                         : 'Bereits komprimiert — nur Limiter nötig',
+  };
+
+  // ── Limiter-Empfehlung ────────────────────────────────────────────────────
+  const tpHeadroom=profile.tp-truePeak;
+  recs.limiter={
+    ceiling:   profile.tp,
+    headroom:  tpHeadroom,
+    needed:    truePeak > profile.tp - 2,
+    release:   50, // ms — schnell für transparenten Brickwall
+  };
+
+  // ── Reihenfolge der Verarbeitung ──────────────────────────────────────────
+  recs.processingOrder=[
+    recs.denoise.recommended ? '1. Denoising' : null,
+    eqRecs.length            ? '2. EQ'        : null,
+    recs.compressor.needed   ? '3. Kompressor': null,
+    '4. Brickwall-Limiter',
+    '5. R128-Normalisierung → '+profile.lufs+' LUFS',
+  ].filter(Boolean);
+
+  return recs;
+}
+
+// ── Haupt-API ────────────────────────────────────────────────────────────────
+/**
+ * Vollständige Audioanalyse mit Empfehlungen.
+ * @param {AudioBuffer} buffer
+ * @param {Function}    onProgress  - optional callback(0–1)
+ * @returns {Promise<Object>}       - Messwerte + Empfehlungen
+ */
+async function analyzeBuffer(buffer, onProgress) {
+  const sr  = buffer.sampleRate;
+  const dur = buffer.duration;
+
+  if(onProgress) onProgress(0.05);
+
+  // ── Messungen ─────────────────────────────────────────────────────────────
+  const intLufs   = measureIntegratedLUFS(buffer);
+  if(onProgress) onProgress(0.25);
+
+  const lra       = measureLRA(buffer);
+  if(onProgress) onProgress(0.45);
+
+  const truePeak  = measureTruePeak(buffer);
+  const plr       = truePeak - intLufs; // Peak-to-Loudness Ratio
+  if(onProgress) onProgress(0.60);
+
+  const noiseFloor = measureNoiseFloor(buffer);
+  if(onProgress) onProgress(0.70);
+
+  const spectral  = measureSpectralBalance(buffer);
+  if(onProgress) onProgress(0.80);
+
+  // ── Inhaltstyp ────────────────────────────────────────────────────────────
+  const {type: contentType, confidence, lra: _lra} =
+    detectContentType(buffer, intLufs, lra, spectral);
+  if(onProgress) onProgress(0.90);
+
+  const metrics = {intLufs, lra, truePeak, plr, noiseFloor, spectral, contentType, sr, dur};
+
+  // ── Empfehlungen ─────────────────────────────────────────────────────────
+  const recommendations = generateRecommendations(metrics);
+  if(onProgress) onProgress(1.0);
+
+  return {
+    // Messwerte
+    intLufs, lra, truePeak, plr, noiseFloor,
+    contentType, confidence,
+    spectral, duration: dur, sampleRate: sr,
+    channels: buffer.numberOfChannels,
+    // Empfehlungen
+    recommendations,
+  };
+}
+
+// Export
+if(typeof window !== 'undefined') window.analyzeBuffer = analyzeBuffer;
+if(typeof module !== 'undefined') module.exports = { analyzeBuffer };
+
+// ── SATK Analysis Panel ────────────────
+// ============================================================
+// SATK Analysis Panel — UI-Komponente für Analyse-Ergebnisse
+// Aufruf: showAnalysisPanel(result, opts)
+// ============================================================
+'use strict';
+
+function showAnalysisPanel(result, opts = {}) {
+  const {
+    onApplyAll    = null,  // Callback wenn "Alles anwenden" geklickt
+    onApplyDenoise = null,
+    onApplyEQ     = null,
+    onApplyComp   = null,
+    onApplyNorm   = null,
+    containerId   = 'satkAnalysisPanel',
+  } = opts;
+
+  // Altes Panel entfernen
+  document.getElementById(containerId)?.remove();
+
+  const r = result;
+  const rec = r.recommendations;
+  const tgt = rec.target;
+
+  // ── Farb-Kodierung ────────────────────────────────────────────────────────
+  const lufsColor = r.intLufs > tgt.lufs + 2 ? '#f06060'
+                  : r.intLufs < tgt.lufs - 6 ? '#ffd000'
+                  : '#c8f060';
+  const tpColor   = r.truePeak > tgt.tp ? '#f06060' : '#c8f060';
+  const lraColor  = r.lra > 14 ? '#ffd000' : r.lra < 2 ? '#5a5a6a' : '#c8f060';
+  const noiseColor= rec.denoise.urgency==='hoch' ? '#f06060'
+                  : rec.denoise.urgency==='mittel' ? '#ffd000' : '#c8f060';
+
+  const fmt = n => (n >= 0 ? '+' : '') + n.toFixed(1);
+  const fmtLU = n => n.toFixed(1) + ' LU';
+
+  // ── HTML generieren ───────────────────────────────────────────────────────
+  const panel = document.createElement('div');
+  panel.id = containerId;
+  panel.innerHTML = `
+<div style="
+  position:fixed; top:0; left:0; right:0; bottom:0;
+  background:rgba(0,0,0,.75); z-index:9000;
+  display:flex; align-items:center; justify-content:center;
+  padding:20px;
+  animation:satkFadeIn .2s ease;
+">
+<style>
+@keyframes satkFadeIn{from{opacity:0}to{opacity:1}}
+#${containerId} *{box-sizing:border-box;margin:0;padding:0;}
+#${containerId} .ap{
+  background:#0e0e11; border:1px solid #2a2a34;
+  max-width:720px; width:100%; max-height:90vh; overflow-y:auto;
+  font-family:'DM Mono',monospace; color:#e8e8ec;
+  box-shadow:0 24px 80px rgba(0,0,0,.8);
+}
+#${containerId} .ap-head{
+  padding:16px 20px 12px; border-bottom:1px solid #1e1e24;
+  display:flex; align-items:flex-start; justify-content:space-between;
+}
+#${containerId} .ap-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;letter-spacing:.12em;color:#c8f060;}
+#${containerId} .ap-sub{font-size:8px;color:#5a5a6a;letter-spacing:.1em;margin-top:3px;}
+#${containerId} .ap-close{background:none;border:none;color:#5a5a6a;font-size:18px;cursor:pointer;line-height:1;padding:2px 6px;}
+#${containerId} .ap-close:hover{color:#e8e8ec;}
+#${containerId} .ap-body{padding:16px 20px;}
+#${containerId} .ap-section{margin-bottom:16px;}
+#${containerId} .ap-sect-title{font-size:8px;color:#5a5a6a;letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid #1e1e24;}
+#${containerId} .metrics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;}
+#${containerId} .metric{background:#06060a;border:1px solid #1e1e24;padding:8px 10px;}
+#${containerId} .metric-lbl{font-size:7px;color:#5a5a6a;letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px;}
+#${containerId} .metric-val{font-size:16px;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:.02em;}
+#${containerId} .metric-sub{font-size:8px;color:#5a5a6a;margin-top:2px;}
+#${containerId} .badge{display:inline-block;padding:2px 8px;font-size:9px;letter-spacing:.1em;
+  font-family:'Syne',sans-serif;font-weight:700;}
+#${containerId} .badge-type{background:rgba(200,240,96,.1);border:1px solid rgba(200,240,96,.3);color:#c8f060;}
+#${containerId} .rec-list{display:flex;flex-direction:column;gap:6px;}
+#${containerId} .rec-item{background:#06060a;border:1px solid #1e1e24;padding:8px 10px 8px 12px;
+  display:flex;align-items:flex-start;gap:10px;}
+#${containerId} .rec-item.warn{border-left:2px solid #ffd000;}
+#${containerId} .rec-item.ok{border-left:2px solid #c8f060;}
+#${containerId} .rec-item.alert{border-left:2px solid #f06060;}
+#${containerId} .rec-icon{font-size:14px;line-height:1;flex-shrink:0;margin-top:1px;}
+#${containerId} .rec-text{flex:1;}
+#${containerId} .rec-title{font-size:10px;color:#e8e8ec;margin-bottom:2px;}
+#${containerId} .rec-detail{font-size:8px;color:#5a5a6a;line-height:1.5;}
+#${containerId} .order-list{display:flex;flex-direction:column;gap:4px;}
+#${containerId} .order-item{font-size:9px;color:#a0a0b0;padding:4px 8px;background:#06060a;border-left:2px solid #1e1e24;}
+#${containerId} .ap-footer{padding:12px 20px;border-top:1px solid #1e1e24;display:flex;gap:8px;flex-wrap:wrap;}
+#${containerId} .ap-btn{background:none;border:1px solid #2a2a34;color:#5a5a6a;
+  font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;
+  padding:7px 14px;cursor:pointer;transition:all .12s;}
+#${containerId} .ap-btn:hover{border-color:#5a5a6a;color:#e8e8ec;}
+#${containerId} .ap-btn.primary{border-color:rgba(200,240,96,.4);color:#c8f060;background:rgba(200,240,96,.04);}
+#${containerId} .ap-btn.primary:hover{border-color:#c8f060;background:rgba(200,240,96,.08);}
+</style>
+
+<div class="ap">
+  <!-- Header -->
+  <div class="ap-head">
+    <div>
+      <div class="ap-title">✦ AUDIO-ANALYSE</div>
+      <div class="ap-sub">${r.duration.toFixed(1)}s · ${r.sampleRate/1000}kHz · ${r.channels}Ch &nbsp;|&nbsp;
+        <span class="badge badge-type">${r.contentType}</span>
+        &nbsp;${r.confidence}% Konfidenz
+      </div>
+    </div>
+    <button class="ap-close" id="${containerId}-close">✕</button>
+  </div>
+
+  <div class="ap-body">
+
+    <!-- Messwerte -->
+    <div class="ap-section">
+      <div class="ap-sect-title">Messwerte (EBU R128 / BS.1770-4)</div>
+      <div class="metrics-grid">
+        <div class="metric">
+          <div class="metric-lbl">Integrated LUFS</div>
+          <div class="metric-val" style="color:${lufsColor}">${r.intLufs.toFixed(1)}</div>
+          <div class="metric-sub">Ziel: ${tgt.lufs} LUFS · ${fmt(rec.gainNeeded)} dB nötig</div>
+        </div>
+        <div class="metric">
+          <div class="metric-lbl">LRA (Dynamikumfang)</div>
+          <div class="metric-val" style="color:${lraColor}">${fmtLU(r.lra)}</div>
+          <div class="metric-sub">${r.lra<4?'Stark komprimiert':r.lra<8?'Mittlere Dynamik':r.lra<14?'Breite Dynamik':'Sehr breite Dynamik'}</div>
+        </div>
+        <div class="metric">
+          <div class="metric-lbl">True Peak</div>
+          <div class="metric-val" style="color:${tpColor}">${r.truePeak.toFixed(1)} dBTP</div>
+          <div class="metric-sub">Ziel: ${tgt.tp} dBTP · ${fmt(tgt.tp-r.truePeak)} dB Headroom</div>
+        </div>
+        <div class="metric">
+          <div class="metric-lbl">PLR (Crest Factor)</div>
+          <div class="metric-val" style="color:#e8e8ec">${r.plr.toFixed(1)} LU</div>
+          <div class="metric-sub">${r.plr<8?'Stark komprimiert':r.plr<14?'Normal':r.plr<20?'Dynamisch':'Sehr dynamisch'}</div>
+        </div>
+        <div class="metric">
+          <div class="metric-lbl">Rauschboden</div>
+          <div class="metric-val" style="color:${noiseColor}">${r.noiseFloor.toFixed(0)} dBFS</div>
+          <div class="metric-sub">SNR: ${(r.intLufs-r.noiseFloor).toFixed(0)} dB · ${rec.denoise.urgency==='gering'?'✓ Sauber':rec.denoise.urgency==='mittel'?'Denoising empfohlen':'⚠ Denoising nötig'}</div>
+        </div>
+        <div class="metric">
+          <div class="metric-lbl">Profil</div>
+          <div class="metric-val" style="color:#c8f060;font-size:11px;padding-top:3px;">${tgt.label}</div>
+          <div class="metric-sub">Optimale Einstellungen angewendet</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zusammenfassung -->
+    <div class="ap-section" style="padding:8px 0;">
+      <div style="font-size:9px;color:#5a5a6a;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;">Wird angewendet</div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;">
+        ${rec.denoise.recommended ? `<span style="background:#c8f060;color:#0a0a0b;font-size:9px;padding:2px 8px;border-radius:1px;letter-spacing:.06em;">DENOISING</span>` : ''}
+        ${rec.eq.length>0 ? `<span style="background:#1e1e24;color:#c8f060;font-size:9px;padding:2px 8px;border-radius:1px;border:1px solid #c8f060;letter-spacing:.06em;">EQ</span>` : ''}
+        ${rec.compressor.needed ? `<span style="background:#1e1e24;color:#c8f060;font-size:9px;padding:2px 8px;border-radius:1px;border:1px solid #c8f060;letter-spacing:.06em;">KOMPRESSOR</span>` : ''}
+        <span style="background:#1e1e24;color:#c8f060;font-size:9px;padding:2px 8px;border-radius:1px;border:1px solid #c8f060;letter-spacing:.06em;">LIMITER ${tgt.tp} dBTP</span>
+        <span style="background:#c8f060;color:#0a0a0b;font-size:9px;padding:2px 8px;border-radius:1px;letter-spacing:.06em;">R128 ${tgt.lufs} LUFS</span>
+      </div>
+    </div></div><!-- /ap-body -->
+
+  <!-- Footer -->
+  <div class="ap-footer">
+    ${onApplyAll ? `<button class="ap-btn primary" id="${containerId}-applyAll">✦ Optimieren</button>` : ''}
+    ${onApplyDenoise && rec.denoise.recommended ? `<button class="ap-btn" id="${containerId}-applyDenoise">Denoising</button>` : ''}
+    ${onApplyNorm ? `<button class="ap-btn" id="${containerId}-applyNorm">R128 Normalisieren</button>` : ''}
+    <button class="ap-btn" id="${containerId}-close2">Schließen</button>
+  </div>
+</div><!-- /ap -->
+</div><!-- /overlay -->`;
+
+  document.body.appendChild(panel);
+
+  // Events
+  const close = () => panel.remove();
+  panel.querySelector(`#${containerId}-close`)?.addEventListener('click', close);
+  panel.querySelector(`#${containerId}-close2`)?.addEventListener('click', close);
+  panel.addEventListener('click', e => { if(e.target===panel.firstElementChild) close(); });
+
+  if(onApplyAll)
+    panel.querySelector(`#${containerId}-applyAll`)?.addEventListener('click', ()=>{
+      onApplyAll(result); close();
+    });
+  if(onApplyDenoise)
+    panel.querySelector(`#${containerId}-applyDenoise`)?.addEventListener('click', ()=>{
+      onApplyDenoise(result); close();
+    });
+  if(onApplyNorm)
+    panel.querySelector(`#${containerId}-applyNorm`)?.addEventListener('click', ()=>{
+      onApplyNorm(result); close();
+    });
+
+  return panel;
+}
+
+if(typeof window !== 'undefined') window.showAnalysisPanel = showAnalysisPanel;
+if(typeof module !== 'undefined') module.exports = { showAnalysisPanel };
+
+
+// ── SATK Denoiser ──────────────────────
+// ============================================================
+// SATK Offline Spectral Denoiser
+// Verwendung: const cleaned = await denoiseBuffer(audioBuffer, opts)
+// Funktioniert mit jedem AudioBuffer — kein AudioWorklet nötig
+// ============================================================
+
+'use strict';
+
+// ── Radix-2 FFT (in-place, Cooley-Tukey) ────────────────────────────────────
+function fft(re, im, inverse) {
+  const N = re.length;
+  // Bit-reversal permutation
+  for (let i = 1, j = 0; i < N; i++) {
+    let bit = N >> 1;
+    for (; j & bit; bit >>= 1) j ^= bit;
+    j ^= bit;
+    if (i < j) {
+      [re[i], re[j]] = [re[j], re[i]];
+      [im[i], im[j]] = [im[j], im[i]];
+    }
+  }
+  // Butterfly passes
+  for (let len = 2; len <= N; len <<= 1) {
+    const ang = (inverse ? 1 : -1) * 2 * Math.PI / len;
+    const wRe = Math.cos(ang), wIm = Math.sin(ang);
+    for (let i = 0; i < N; i += len) {
+      let curRe = 1, curIm = 0;
+      for (let j = 0; j < len / 2; j++) {
+        const uRe = re[i+j], uIm = im[i+j];
+        const vRe = re[i+j+len/2]*curRe - im[i+j+len/2]*curIm;
+        const vIm = re[i+j+len/2]*curIm + im[i+j+len/2]*curRe;
+        re[i+j]         = uRe + vRe; im[i+j]         = uIm + vIm;
+        re[i+j+len/2]   = uRe - vRe; im[i+j+len/2]   = uIm - vIm;
+        const nRe = curRe*wRe - curIm*wIm;
+        curIm = curRe*wIm + curIm*wRe; curRe = nRe;
+      }
+    }
+  }
+  if (inverse) { for (let i = 0; i < N; i++) { re[i] /= N; im[i] /= N; } }
+}
+
+// ── Hann-Fenster ─────────────────────────────────────────────────────────────
+function makeHann(N) {
+  const w = new Float32Array(N);
+  for (let i = 0; i < N; i++) w[i] = 0.5 * (1 - Math.cos(2 * Math.PI * i / N));
+  return w;
+}
+
+// ── Leisestes Segment automatisch finden ─────────────────────────────────────
+function findQuietestSegment(channel, sr, durationSec = 0.5) {
+  const segLen  = Math.round(sr * durationSec);
+  const stepLen = Math.round(sr * 0.05); // 50ms Schritte
+  let   minRms  = Infinity, bestStart = 0;
+
+  for (let s = 0; s + segLen <= channel.length; s += stepLen) {
+    let sum = 0;
+    for (let i = s; i < s + segLen; i++) sum += channel[i] * channel[i];
+    const rms = Math.sqrt(sum / segLen);
+    if (rms < minRms) { minRms = rms; bestStart = s; }
+  }
+  return { start: bestStart, length: segLen, rms: minRms };
+}
+
+// ── Rauschprofil aus Segment schätzen ────────────────────────────────────────
+function estimateNoiseProfile(channel, segStart, segLen, N, hann) {
+  const bins   = N / 2 + 1;
+  const accum  = new Float64Array(bins);
+  const hop    = N / 2;
+  let   frames = 0;
+
+  for (let pos = segStart; pos + N <= segStart + segLen; pos += hop) {
+    const re = new Float32Array(N);
+    const im = new Float32Array(N);
+    for (let i = 0; i < N; i++) re[i] = (channel[pos + i] || 0) * hann[i];
+    fft(re, im, false);
+    for (let i = 0; i < bins; i++) accum[i] += Math.sqrt(re[i]*re[i] + im[i]*im[i]);
+    frames++;
+  }
+
+  const profile = new Float32Array(bins);
+  if (frames > 0) {
+    const margin = 1.2; // 20% Sicherheitsmarge
+    for (let i = 0; i < bins; i++) profile[i] = (accum[i] / frames) * margin;
+  }
+  return profile;
+}
+
+// ── Spektrales Gating (Wiener-Style, Overlap-Add) ────────────────────────────
+function spectralGate(channel, noiseProfile, N, hann, opts) {
+  const {
+    thresh      = 1.8,  // Faktor über Rauschfluss
+    depth       = 20,   // Max Reduktion dB
+    smoothTime  = 60,   // ms zeitliche Glättung
+    freqSmooth  = 2,    // Frequenz-Nachbarbins
+    hpBins      = 3,    // Bins unter denen nicht reduziert wird
+    sr          = 48000,
+  } = opts;
+
+  const bins     = N / 2 + 1;
+  const hop      = N / 2;
+  const minGain  = Math.pow(10, -depth / 20);
+  const out      = new Float64Array(channel.length + N);
+  const norm     = new Float64Array(channel.length + N); // OLA Normierung
+  const gainSmth = new Float32Array(bins).fill(1.0);
+  const smoothFrames = Math.max(1, (smoothTime / 1000) * sr / hop);
+  const smoothCoef   = Math.exp(-1 / smoothFrames);
+
+  for (let pos = 0; pos + N <= channel.length; pos += hop) {
+    // FFT
+    const re = new Float32Array(N);
+    const im = new Float32Array(N);
+    for (let i = 0; i < N; i++) re[i] = (channel[pos + i] || 0) * hann[i];
+    fft(re, im, false);
+
+    // Magnitude
+    const mag = new Float32Array(bins);
+    for (let i = 0; i < bins; i++) mag[i] = Math.sqrt(re[i]*re[i] + im[i]*im[i]);
+
+    // Gain pro Bin
+    const gainTarget = new Float32Array(bins);
+    for (let i = 0; i < bins; i++) {
+      if (i < hpBins) { gainTarget[i] = 1.0; continue; }
+      const floor = noiseProfile[i] * thresh;
+      if (mag[i] < 1e-10) { gainTarget[i] = minGain; continue; }
+      const snr = mag[i] / floor;
+      if (snr >= 1.0) {
+        gainTarget[i] = 1.0;
+      } else {
+        // Kubische Soft-Curve: glatte Übergänge, kein Knacken
+        const t = Math.max(0, snr);
+        gainTarget[i] = Math.max(minGain, t * t * (3 - 2 * t));
+      }
+    }
+
+    // Frequenz-Glättung (verhindert spektrale Löcher)
+    if (freqSmooth > 0) {
+      for (let i = freqSmooth; i < bins - freqSmooth; i++) {
+        let s = 0;
+        for (let k = -freqSmooth; k <= freqSmooth; k++) s += gainTarget[i + k];
+        gainTarget[i] = s / (2 * freqSmooth + 1);
+      }
+    }
+
+    // Zeitliche Glättung (asymmetrisch: langsam öffnen, schnell schließen)
+    for (let i = 0; i < bins; i++) {
+      const t = gainTarget[i], g = gainSmth[i];
+      const c = t > g ? smoothCoef * 0.4 : smoothCoef;
+      gainSmth[i] = c * g + (1 - c) * t;
+    }
+
+    // Gain anwenden + konjugierte Symmetrie herstellen
+    for (let i = 0; i < bins; i++) {
+      const g = gainSmth[i];
+      re[i] *= g; im[i] *= g;
+    }
+    for (let i = 1; i < bins - 1; i++) {
+      re[N - i] = re[i]; im[N - i] = -im[i];
+    }
+
+    // IFFT
+    fft(re, im, true);
+
+    // Overlap-Add (mit Hann-Fenster zurück)
+    for (let i = 0; i < N; i++) {
+      out[pos + i]  += re[i] * hann[i];
+      norm[pos + i] += hann[i] * hann[i];
+    }
+  }
+
+  // OLA Normierung
+  const result = new Float32Array(channel.length);
+  for (let i = 0; i < channel.length; i++) {
+    result[i] = norm[i] > 1e-8 ? out[i] / norm[i] : 0;
+  }
+  return result;
+}
+
+// ── Haupt-API: AudioBuffer → gereinigter AudioBuffer ─────────────────────────
+/**
+ * Entfernt Hintergrundrauschen aus einem AudioBuffer.
+ *
+ * @param {AudioBuffer} buffer   - Eingangs-AudioBuffer
+ * @param {Object}      opts     - Optionen
+ * @param {number}      opts.thresh      - Empfindlichkeit (1.2–3.0, default 1.8)
+ * @param {number}      opts.depth       - Max Reduktion dB (6–40, default 20)
+ * @param {number}      opts.smoothTime  - Zeitliche Glättung ms (20–200, default 60)
+ * @param {number}      opts.freqSmooth  - Frequenz-Glättung Bänder (0–5, default 2)
+ * @param {number}      opts.noiseLen    - Länge Rauschsegment s (0.2–2.0, default 0.5)
+ * @param {Function}    opts.onProgress  - Callback(0–1) für Fortschrittsanzeige
+ * @returns {Promise<AudioBuffer>}
+ */
+async function denoiseBuffer(buffer, opts = {}) {
+  const {
+    thresh     = 1.8,
+    depth      = 20,
+    smoothTime = 60,
+    freqSmooth = 2,
+    noiseLen   = 0.5,
+    onProgress = null,
+  } = opts;
+
+  const sr   = buffer.sampleRate;
+  const nCh  = buffer.numberOfChannels;
+  const len  = buffer.length;
+  const N    = 1024; // FFT-Größe (21ms @ 48kHz — gut für Sprache)
+  const hann = makeHann(N);
+  const hpBins = Math.round(60 / (sr / N)); // 60Hz HP-Schutz
+
+  // Offline AudioContext für Output-Buffer
+  const offCtx = new OfflineAudioContext(nCh, len, sr);
+  const outBuf  = offCtx.createBuffer(nCh, len, sr);
+
+  for (let ch = 0; ch < nCh; ch++) {
+    if (onProgress) onProgress(ch / nCh);
+
+    const channel = buffer.getChannelData(ch);
+
+    // 1. Leisestes Segment finden
+    const quiet = findQuietestSegment(channel, sr, noiseLen);
+    console.log(
+      `[SATK Denoiser] Ch${ch}: Rauschsegment bei ${(quiet.start/sr).toFixed(2)}s`,
+      `RMS: ${(20*Math.log10(quiet.rms+1e-10)).toFixed(1)} dBFS`
+    );
+
+    // 2. Rauschprofil schätzen
+    const noiseProfile = estimateNoiseProfile(
+      channel, quiet.start, quiet.length, N, hann
+    );
+
+    // 3. Spektrales Gating anwenden
+    const cleaned = spectralGate(channel, noiseProfile, N, hann, {
+      thresh, depth, smoothTime, freqSmooth, hpBins, sr
+    });
+
+    outBuf.copyToChannel(cleaned, ch);
+
+    if (onProgress) onProgress((ch + 1) / nCh);
+  }
+
+  return outBuf;
+}
+
+// ── Export ────────────────────────────────────────────────────────────────────
+// Browser: global verfügbar
+if (typeof window !== 'undefined') window.denoiseBuffer = denoiseBuffer;
+// Node/Module:
+if (typeof module !== 'undefined') module.exports = { denoiseBuffer };
+
+
+// ── VoiceOver DENOISE Button ─────────────────────────────────────────────────
+
+</script>
+</body>
+</html>

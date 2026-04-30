@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="description" content="Kostenloser R128 Normalizer nach EBU R128 / ITU-R BS.1770-4. TV −23 LUFS, Podcast −16 LUFS, Online −14 LUFS. True Peak Limiter. Keine Installation, kein Upload.">
+<meta name="keywords" content="R128 Normalizer, EBU R128, Loudness Normalizer, LUFS normalisieren, Lautheit normalisieren, TV Audio normalisieren, Podcast normalisieren, YouTube normalisieren, -23 LUFS, -16 LUFS, -14 LUFS, True Peak, ITU-R BS.1770-4, K-Weighted, Auphonic Alternative, kostenlos, Browser, kein Upload">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>SATK R128 Normalizer – EBU R128 Lautheit normalisieren kostenlos</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap');
+
+  :root {
+    --bg: #0a0a0b;
+    --surface: #111114;
+    --border: #1e1e24;
+    --accent: #c8f060;
+    --accent2: #60d4f0;
+    --warn: #f0a060;
+    --danger: #f06060;
+    --text: #e8e8ec;
+    --muted: #5a5a6a;
+    --target-lufs: -23;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(200,240,96,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,240,96,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  header {
+    margin-bottom: 56px;
+  }
+
+  .logo-lockup {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .logo-top-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-wordmark {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(22px, 8vw, 48px);
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text);
+    line-height: 1;
+    position: relative;
+  }
+
+  .logo-wordmark::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+  }
+
+  .logo-divider {
+    width: 1px;
+    height: 38px;
+    background: linear-gradient(180deg, transparent, var(--border), transparent);
+  }
+
+  .logo-right {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .logo-sub-word {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(10px, 1.8vw, 13px);
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .logo-standard {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    line-height: 1;
+  }
+
+  .logo-bottom-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .logo-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 48px;
+  }
+
+  .logo-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 2px 7px;
+  }
+
+  .subtitle {
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.03em;
+  }
+
+  /* Drop Zone */
+  .drop-zone {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    padding: 56px 32px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+
+  .drop-zone::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(200,240,96,0.06) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .drop-zone:hover::before,
+  .drop-zone.dragging::before { opacity: 1; }
+
+  .drop-zone:hover,
+  .drop-zone.dragging {
+    border-color: var(--accent);
+  }
+
+  .drop-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 20px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .drop-zone:hover .drop-icon,
+  .drop-zone.dragging .drop-icon {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+
+  .drop-icon svg { stroke: var(--accent); }
+
+  .drop-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .drop-sub {
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  #fileInput { display: none; }
+
+  /* Settings bar */
+  .settings-bar {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+
+  .setting-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 160px;
+  }
+
+  .setting-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .setting-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .setting-control input[type=range] {
+    flex: 1;
+    -webkit-appearance: none;
+    height: 2px;
+    background: var(--border);
+    outline: none;
+  }
+
+  .setting-control input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    background: var(--accent);
+    cursor: pointer;
+  }
+
+  .setting-val {
+    font-size: 13px;
+    color: var(--accent);
+    min-width: 48px;
+    text-align: right;
+  }
+
+  .setting-control select {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    padding: 6px 10px;
+    outline: none;
+    cursor: pointer;
+    flex: 1;
+  }
+
+  .setting-control select:focus {
+    border-color: var(--accent);
+  }
+
+  /* File list */
+  #fileList {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 24px;
+  }
+
+  .file-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 18px;
+    transition: border-color 0.2s;
+  }
+
+  .file-item.processing { border-color: var(--accent2); }
+  .file-item.done { border-color: var(--accent); }
+  .file-item.error { border-color: var(--danger); }
+
+  .file-name {
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .file-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .lufs-display b { color: var(--text); }
+
+  .status-badge {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid;
+  }
+
+  .status-badge.idle { color: var(--muted); border-color: var(--muted); }
+  .status-badge.processing { color: var(--accent2); border-color: var(--accent2); animation: pulse 1s infinite; }
+  .status-badge.done { color: var(--accent); border-color: var(--accent); }
+  .status-badge.error { color: var(--danger); border-color: var(--danger); }
+
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  .btn-download {
+    background: none;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 5px 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.15s, color 0.15s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-download:hover {
+    background: var(--accent);
+    color: #0a0a0b;
+  }
+
+  .btn-remove {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 2px 6px;
+    transition: color 0.15s;
+    line-height: 1;
+  }
+  .btn-remove:hover { color: var(--danger); }
+
+  /* Action buttons */
+  .actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #0a0a0b;
+    border: none;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 14px 32px;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    text-transform: uppercase;
+  }
+
+  .btn-primary:hover:not(:disabled) { opacity: 0.85; transform: translateY(-1px); }
+  .btn-primary:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  .btn-secondary {
+    background: none;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    padding: 14px 24px;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+    text-transform: uppercase;
+  }
+
+  .btn-secondary:hover { color: var(--text); border-color: var(--muted); }
+
+  /* Progress */
+  .progress-bar-wrap {
+    height: 2px;
+    background: var(--border);
+    margin-bottom: 24px;
+    display: none;
+  }
+
+  .progress-bar-inner {
+    height: 100%;
+    background: var(--accent);
+    width: 0%;
+    transition: width 0.3s;
+  }
+
+  /* Info footer */
+  .info-strip {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .info-item dt {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  .info-item dd {
+    font-size: 13px;
+    color: var(--accent);
+  }
+
+  
+
+  
+
+  
+
+  
+
+  .empty-hint {
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+    padding: 24px;
+    display: none;
+  }
+  
+  .empty-hint.visible { display: block; }
+
+  /* ─── Section divider ───────────────────────────────────────────────────── */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 48px 0 32px;
+  }
+  .section-divider::before,
+  .section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-divider-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* ─── LUFS Meter ─────────────────────────────────────────────────────────── */
+  
+  
+  
+  
+  
+  .meter-tab:hover { color: var(--text); border-color: var(--muted); }
+  .meter-tab.active { background: var(--accent); color: #0a0a0b; border-color: var(--accent); font-weight: 600; }
+
+  
+  
+  .meter-card.active-card { border-color: var(--accent); }
+  .meter-card.warn-card   { border-color: var(--warn); }
+  .meter-card.danger-card { border-color: var(--danger); }
+  
+  
+  .meter-card-value.good   { color: var(--accent); }
+  .meter-card-value.warn   { color: var(--warn); }
+  .meter-card-value.danger { color: var(--danger); }
+  
+
+  /* ── Vertical bar meter ─────────────────────────────────────────────────── */
+
+  /* Scale on the left */
+  .lufs-scale span {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1;
+  }
+  .lufs-scale span
+
+  /* The three channel bars + labels */
+
+  /* Tick marks inside track */
+
+  /* Target line */
+
+  /* Peak hold tick */
+  .btn-meter:hover { color: var(--text); border-color: var(--muted); }
+  .btn-meter.running { border-color: var(--danger); color: var(--danger); }
+  .btn-meter.running:hover { background: var(--danger); color: #0a0a0b; }
+  .btn-meter.running
+  
+  
+
+  /* ─── Mobile ────────────────────────────────────────────────────────────── */
+  @media (max-width: 540px) {
+    .wrapper { padding: 24px 12px 40px; padding-top: max(24px, calc(24px + env(safe-area-inset-top))); }
+    .wrapper {
+      padding: 32px 16px 60px;
+    }
+
+    /* Logo: stack vertically on small screens */
+    .logo-top-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .logo-divider {
+      display: none;
+    }
+
+    .logo-wordmark {
+      font-size: clamp(22px, 8vw, 36px);
+      letter-spacing: 0.06em;
+    }
+
+    .logo-sub-word {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+    }
+
+    .logo-standard {
+      font-size: 9px;
+    }
+
+    .logo-tag {
+      font-size: 8px;
+      letter-spacing: 0.1em;
+    }
+
+    header {
+      margin-bottom: 36px;
+    }
+
+    /* Drop zone: compact */
+    .drop-zone {
+      padding: 36px 20px;
+    }
+
+    .drop-title {
+      font-size: 15px;
+    }
+
+    /* Settings: full width each */
+    .settings-bar {
+      flex-direction: column;
+      gap: 20px;
+      padding: 16px;
+    }
+
+    .setting-group {
+      min-width: unset;
+      width: 100%;
+    }
+
+    /* File items: stack name + meta vertically */
+    .file-item {
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto;
+      gap: 8px 12px;
+      padding: 12px 14px;
+    }
+
+    .file-name {
+      grid-column: 1;
+      grid-row: 1;
+      font-size: 12px;
+    }
+
+    .btn-remove {
+      grid-column: 2;
+      grid-row: 1;
+      align-self: start;
+    }
+
+    .file-meta {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* Buttons: full width */
+    .actions {
+      flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      text-align: center;
+      padding: 16px;
+    }
+
+    /* Info strip: 2-col grid */
+    .info-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 16px;
+      margin-top: 32px;
+    }
+  }
+
+/* ── Download-Hinweis Toast ── */
+#satkDlHint{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  background:#0d1012;border:1px solid rgba(200,240,96,.35);
+  color:#e2e6ed;font-family:'DM Mono',monospace;font-size:11px;
+  padding:12px 18px;z-index:9999;max-width:420px;width:90%;
+  box-shadow:0 4px 24px rgba(0,0,0,.5);
+  animation:satkDlIn .25s ease;pointer-events:none;
+  line-height:1.6;
+}
+#satkDlHint strong{color:#c8f060;}
+#satkDlHint .satk-dl-file{color:#c8f060;font-size:10px;opacity:.8;display:block;margin-bottom:4px;}
+#satkDlHint .satk-dl-close{
+  position:absolute;top:7px;right:10px;cursor:pointer;
+  color:rgba(200,240,96,.5);font-size:13px;pointer-events:all;
+}
+@keyframes satkDlIn{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
+@keyframes satkDlOut{from{opacity:1;}to{opacity:0;transform:translateX(-50%) translateY(8px);}}
+
+</style>
+
+<style>
+/* SATK: Layout im Modal */
+html { overflow: hidden; height: 100%; }
+body { overflow: hidden; height: 100vh; }
+.wrapper {
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+/* Scrollbalken unsichtbar — Scroll-Funktion bleibt erhalten */
+.wrapper { scrollbar-width: none; -ms-overflow-style: none; }
+.wrapper::-webkit-scrollbar { display: none; width: 0; }
+</style>
+
+  <link rel="canonical" href="https://satk.tech/r128-normalizer.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://satk.tech/r128-normalizer.html">
+<meta property="og:title" content="SATK R128 Normalizer – Lautheit auf EBU R128 normalisieren kostenlos">
+<meta property="og:description" content="Audio auf TV −23 LUFS, Podcast −16 LUFS oder YouTube −14 LUFS normalisieren. K-Weighted, True Peak Limiter. Kostenlose Auphonic-Alternative im Browser.">
+<meta property="og:image" content="https://satk.tech/og-image.png">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="SATK – Sascha's Audio Toolkit">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SATK R128 Normalizer – Lautheit auf EBU R128 normalisieren kostenlos">
+<meta name="twitter:description" content="Audio auf TV −23 LUFS, Podcast −16 LUFS oder YouTube −14 LUFS normalisieren. K-Weighted, True Peak Limiter. Kostenlose Auphonic-Alternative im Browser.">
+<meta name="twitter:image" content="https://satk.tech/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "R128 Normalizer",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Web Browser, iOS, Android",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+  "description": "Kostenloser EBU R128 Loudness Normalizer nach ITU-R BS.1770-4: TV −23 LUFS, Podcast −16 LUFS, Online −14 LUFS. K-Weighted Messung, Doppel-Gating, True Peak Limiter. Alternative zu Auphonic. Kein Upload.",
+  "url": "https://satk.tech/r128-normalizer.html",
+  "creator": {"@type": "Person", "name": "Sascha Hömske"},
+  "isPartOf": {"@type": "WebSite", "name": "SATK – Sascha's Audio Toolkit", "url": "https://satk.tech/"}
+}
+</script>
+</head>
+<body>
+
+<!-- SATK: Audio-Stop vom Launcher -->
+<script>
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.type === 'satk-suspend-audio') {
+    try { if(typeof stopMeter==='function') stopMeter(); } catch(err){}
+    
+  }
+});
+</script>
+
+<div class="wrapper">
+  <header>
+    <div class="logo-lockup">
+      <div class="logo-top-row">
+        <span class="logo-wordmark">Loudness</span>
+        <div class="logo-divider"></div>
+        <div class="logo-right">
+          <span class="logo-sub-word">Normalizer</span>
+          <span class="logo-standard">EBU R128 / ITU-R BS.1770-4</span>
+        </div>
+      </div>
+      <div class="logo-bottom-row">
+        <div class="logo-rule"></div>
+        <span class="logo-tag">K-weighted · Gating · True Peak</span>
+        <div class="logo-rule"></div>
+      </div>
+    </div>
+    <p class="subtitle">// Automatische Pegelnormalisierung nach EBU R128 / ITU-R BS.1770 im Browser</p>
+  </header>
+
+  <!-- Drop Zone -->
+  <div class="drop-zone" id="dropZone">
+    <div class="drop-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 14v4a2 2 0 002 2h12a2 2 0 002-2v-4"/>
+        <polyline points="16 8 12 4 8 8"/>
+        <line x1="12" y1="4" x2="12" y2="14"/>
+      </svg>
+    </div>
+    <div class="drop-title">Audio-Dateien hierher ziehen</div>
+    <div class="drop-sub">oder tippen zum Auswählen &mdash; WAV, MP3, M4A, AAC, FLAC, OGG</div>
+    <input type="file" id="fileInput" accept="audio/*,.mp3,.wav,.aac,.m4a,.flac,.ogg,.opus,.aiff,.aif" multiple>
+  </div>
+
+  <!-- Settings -->
+  <div class="settings-bar">
+    <div class="setting-group">
+      <div class="setting-row" style="margin-bottom:12px;">
+        
+      </div>
+      <span class="setting-label">Ziel-Lautheit (LUFS)</span>
+      <div class="setting-control">
+        <input type="range" id="targetLufs" min="-32" max="-9" step="0.5" value="-23">
+        <span class="setting-val" id="targetLufsVal">−23 LUFS</span>
+      </div>
+    </div>
+    <div class="setting-group">
+      <span class="setting-label">True Peak Limit (dBTP)</span>
+      <div class="setting-control">
+        <input type="range" id="tpLimit" min="-6" max="-0.3" step="0.1" value="-1">
+        <span class="setting-val" id="tpLimitVal">−1.0 dBTP</span>
+      </div>
+    </div>
+    <div class="setting-group">
+      <span class="setting-label">Export-Format</span>
+      <div class="setting-control">
+        <select id="exportFormat">
+          <option value="wav">WAV (verlustlos)</option>
+          <option value="mp3">MP3 (128 kbps)</option>
+          <option value="ogg">OGG Vorbis</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-bar-wrap" id="progressWrap">
+    <div class="progress-bar-inner" id="progressBar"></div>
+  </div>
+
+  <!-- File List -->
+  <div id="fileList"></div>
+  <div class="empty-hint" id="emptyHint">Noch keine Dateien geladen.</div>
+
+  <!-- Actions -->
+  <div class="actions">
+    <button class="btn-primary" id="processBtn" disabled>Normalisieren</button>
+    <button class="btn-secondary" id="clearBtn">Liste leeren</button>
+  </div>
+
+
+
+  <!-- Info -->
+  <dl class="info-strip">
+    <div class="info-item">
+      <dt>Standard</dt>
+      <dd>EBU R128 / ITU-R BS.1770-4</dd>
+    </div>
+    <div class="info-item">
+      <dt>Messung</dt>
+      <dd>Integrierte Lautheit (IL)</dd>
+    </div>
+    <div class="info-item">
+      <dt>Verarbeitung</dt>
+      <dd>100% im Browser, kein Upload</dd>
+    </div>
+    <div class="info-item">
+      <dt>Algorithmus</dt>
+      <dd>K-weighted, Gating</dd>
+    </div>
+  </dl>
+</div><!-- /.wrapper -->
+
+<script>
+// iOS: AudioContext + webkit-Fallback
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
+// ── Browser-Kompatibilitäts-Helfer ───────────────────────────────────────────
+
+function readFileAsArrayBuffer(file) {
+  if (typeof file.arrayBuffer === 'function') {
+    return file.arrayBuffer();
+  }
+  return new Promise(function(resolve, reject) {
+    var reader = new FileReader();
+    reader.onload  = function(e) { resolve(e.target.result); };
+    reader.onerror = function()  { reject(new Error('FileReader: Lesefehler')); };
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+function safariFriendlyDecode(actx, arrayBuffer) {
+  // Puffer kopieren — Safari verbraucht ArrayBuffer beim ersten Versuch
+  var buf = arrayBuffer.slice ? arrayBuffer.slice(0) : arrayBuffer;
+  // Nur Callback-Form — kein Double-Resolve auf Safari Desktop
+  return new Promise(function(resolve, reject) {
+    actx.decodeAudioData(
+      buf,
+      function(decoded) { resolve(decoded); },
+      function(err)     { reject(err || new Error('decodeAudioData fehlgeschlagen')); }
+    );
+  });
+}
+
+function renderOffline(ctx) {
+  return new Promise(function(resolve, reject) {
+    ctx.oncomplete = function(e) { resolve(e.renderedBuffer); };
+    try {
+      var p = ctx.startRendering();
+      if (p && typeof p.then === 'function') p.then(resolve).catch(reject);
+    } catch(e) { reject(e); }
+  });
+}
+
+function getAudioContext() {
+  var AC = window.AudioContext || window.webkitAudioContext;
+  if (!window._satkAC || window._satkAC.state === 'closed') {
+    window._satkAC = new AC();
+  }
+  if (window._satkAC.state === 'suspended') {
+    window._satkAC.resume().catch(function(){});
+  }
+  return window._satkAC;
+}
+
+async function getAudioContextReady() {
+  var ac = getAudioContext();
+  if (ac.state !== 'running') {
+    try { await ac.resume(); } catch(e) {}
+  }
+  return ac;
+}
+
+window.OfflineAudioContext = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+
+// iOS Download-Hilfsfunktion: öffnet Blob in neuem Tab → Teilen-Dialog
+function iosDownload(blobUrl, filename) {
+  const a = document.createElement('a');
+  a.href = blobUrl;
+  a.download = satkFilename('r128','wav');
+  a.target = '_blank';
+  a.rel = 'noopener';
+  document.body.appendChild(a);
+  a.click();
+  showDownloadHint(a.download);
+  document.body.removeChild(a);
+}
+
+// ─── State ────────────────────────────────────────────────────────────────────
+const files = []; // { file, name, status, measuredLufs, gainDb, blobUrl }
+
+// ─── DOM refs ─────────────────────────────────────────────────────────────────
+const dropZone    = document.getElementById('dropZone');
+const fileInput   = document.getElementById('fileInput');
+const fileList    = document.getElementById('fileList');
+const processBtn  = document.getElementById('processBtn');
+const clearBtn    = document.getElementById('clearBtn');
+const emptyHint   = document.getElementById('emptyHint');
+const progressWrap= document.getElementById('progressWrap');
+const progressBar = document.getElementById('progressBar');
+const targetLufsSlider = document.getElementById('targetLufs');
+const targetLufsVal    = document.getElementById('targetLufsVal');
+const tpLimitSlider    = document.getElementById('tpLimit');
+const tpLimitVal       = document.getElementById('tpLimitVal');
+const exportFormat     = document.getElementById('exportFormat');
+
+// ─── Slider labels ────────────────────────────────────────────────────────────
+targetLufsSlider.addEventListener('input', () => {
+  const v = parseFloat(targetLufsSlider.value);
+  targetLufsVal.textContent = `${v > 0 ? '+' : '−'}${Math.abs(v).toFixed(1)} LUFS`;
+});
+tpLimitSlider.addEventListener('input', () => {
+  const v = parseFloat(tpLimitSlider.value);
+  tpLimitVal.textContent = `${v > 0 ? '+' : '−'}${Math.abs(v).toFixed(1)} dBTP`;
+});
+
+// ─── Drop / Click ─────────────────────────────────────────────────────────────
+dropZone.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', e => addFiles([...e.target.files]));
+
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragging'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragging'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('dragging');
+  addFiles([...e.dataTransfer.files].filter(f => f.type.startsWith('audio/')));
+});
+
+function addFiles(newFiles) {
+  const wasEmpty = files.length === 0;
+  newFiles.forEach(f => {
+    if (!files.find(x => x.name === f.name && x.file.size === f.size)) {
+      files.push({ file: f, name: f.name, status: 'idle', measuredLufs: null, gainDb: null, blobUrl: null });
+    }
+  });
+  renderList();
+}
+
+clearBtn.addEventListener('click', () => {
+  files.length = 0;
+  renderList();
+});
+
+// ─── Render ───────────────────────────────────────────────────────────────────
+function renderList() {
+  fileList.innerHTML = '';
+  emptyHint.classList.toggle('visible', files.length === 0);
+  processBtn.disabled = files.length === 0 || files.every(f => f.status === 'done');
+
+  files.forEach((f, i) => {
+    const div = document.createElement('div');
+    div.className = `file-item ${f.status}`;
+    div.id = `item-${i}`;
+
+    const lufsInfo = f.measuredLufs !== null
+      ? `<span class="lufs-display">Gemessen: <b>${f.measuredLufs.toFixed(1)} LUFS</b>${f.gainDb !== null ? ` &rarr; Gain: <b>${f.gainDb >= 0 ? '+' : ''}${f.gainDb.toFixed(1)} dB</b>` : ''}</span>`
+      : '';
+
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const fname = normalizedName(f.name);
+    const actionBtn = f.status === 'done' && f.blobUrl
+      ? isIOS
+        ? `<button class="btn-download" onclick="iosDownload('${f.blobUrl}','${fname}')">Speichern</button>`
+        : `<a class="btn-download" href="${f.blobUrl}" download="${fname}">Download</a>`
+      : '';
+
+    div.innerHTML = `
+      <span class="file-name" title="${f.name}">${f.name}</span>
+      <div class="file-meta">
+        ${lufsInfo}
+        <span class="status-badge ${f.status}">${statusLabel(f.status)}</span>
+        ${f.status === 'error' && f.errorMsg ? `<span style="font-size:10px;color:var(--danger);margin-left:6px;" title="${f.errorMsg}">${f.errorMsg.slice(0,60)}${f.errorMsg.length>60?'…':''}</span>` : ''}
+        ${actionBtn}
+      </div>
+      <button class="btn-remove" onclick="removeFile(${i})" title="Entfernen">&times;</button>
+    `;
+    fileList.appendChild(div);
+  });
+}
+
+function normalizedName(name) {
+  const ext = exportFormat.value;
+  const base = name.replace(/\.[^.]+$/, '');
+  return `${base}_R128.${ext}`;
+}
+
+function statusLabel(s) {
+  return { idle: 'Bereit', processing: 'Läuft...', done: 'Fertig', error: 'Fehler' }[s] || s;
+}
+
+function removeFile(i) {
+  if (files[i].blobUrl) URL.revokeObjectURL(files[i].blobUrl);
+  files.splice(i, 1);
+  renderList();
+}
+
+// ─── R128 / ITU-R BS.1770-4 Loudness Measurement ─────────────────────────────
+// Pre-filter coefficients (K-weighting stage 1: high-shelf pre-filter)
+// Stage 2: high-pass filter
+// Simplified but accurate enough for stereo content at common sample rates.
+
+function makeKWeightingFilters(sampleRate) {
+  // Stage 1: Pre-filter (high-shelf, +4 dB at 1681 Hz)
+  const f0 = 1681.974450955533;
+  const G  = 3.999843853973347;
+  const Q  = 0.7071752369554196;
+  const K  = Math.tan(Math.PI * f0 / sampleRate);
+  const Vh = Math.pow(10, G / 20);
+  const Vb = Math.pow(Vh, 0.4996667741545416);
+
+  const a0 = 1 + K / Q + K * K;
+  const preB = [
+    (Vh + Vb * K / Q + K * K) / a0,
+    2 * (K * K - Vh) / a0,
+    (Vh - Vb * K / Q + K * K) / a0
+  ];
+  const preA = [
+    1,
+    2 * (K * K - 1) / a0,
+    (1 - K / Q + K * K) / a0
+  ];
+
+  // Stage 2: High-pass (100 Hz, 2nd order, Butterworth)
+  const f1 = 38.13547087602444;
+  const Q2 = 0.5003270373238773;
+  const K2 = Math.tan(Math.PI * f1 / sampleRate);
+  const hpB = [
+    1 / (1 + K2 / Q2 + K2 * K2),
+    -2 / (1 + K2 / Q2 + K2 * K2),
+    1 / (1 + K2 / Q2 + K2 * K2)
+  ];
+  const hpA = [
+    1,
+    2 * (K2 * K2 - 1) / (1 + K2 / Q2 + K2 * K2),
+    (1 - K2 / Q2 + K2 * K2) / (1 + K2 / Q2 + K2 * K2)
+  ];
+
+  return { preB, preA, hpB, hpA };
+}
+
+function applyBiquad(input, b, a) {
+  const out = new Float32Array(input.length);
+  let x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+  for (let i = 0; i < input.length; i++) {
+    const x0 = input[i];
+    const y0 = b[0]*x0 + b[1]*x1 + b[2]*x2 - a[1]*y1 - a[2]*y2;
+    out[i] = y0;
+    x2 = x1; x1 = x0;
+    y2 = y1; y1 = y0;
+  }
+  return out;
+}
+
+function kWeightChannel(channel, filters) {
+  const s1 = applyBiquad(channel, filters.preB, filters.preA);
+  return applyBiquad(s1, filters.hpB, filters.hpA);
+}
+
+function measureIntegratedLoudness(audioBuffer) {
+  const sampleRate  = audioBuffer.sampleRate;
+  const numChannels = audioBuffer.numberOfChannels;
+  const filters     = makeKWeightingFilters(sampleRate);
+
+  // Channel weights (ITU-R BS.1770 Table 1)
+  const chWeight = [1, 1, 1, 1.41, 1.41]; // L R C Ls Rs
+
+  // K-weight each channel
+  const weighted = [];
+  for (let c = 0; c < numChannels; c++) {
+    const raw = audioBuffer.getChannelData(c);
+    weighted.push(kWeightChannel(raw, filters));
+  }
+
+  // Gate: 400ms blocks, 75% overlap
+  const blockSamples  = Math.round(0.4 * sampleRate);
+  const hopSamples    = Math.round(0.1 * sampleRate); // 75% overlap → 100ms hop
+  const numBlocks     = Math.floor((audioBuffer.length - blockSamples) / hopSamples) + 1;
+
+  const blockLoudness = []; // mean square per block
+
+  for (let b = 0; b < numBlocks; b++) {
+    const start = b * hopSamples;
+    const end   = start + blockSamples;
+    let ms = 0;
+    for (let c = 0; c < numChannels; c++) {
+      const w = c < chWeight.length ? chWeight[c] : 1;
+      let sum = 0;
+      for (let s = start; s < end; s++) sum += weighted[c][s] ** 2;
+      ms += w * sum / blockSamples;
+    }
+    blockLoudness.push(ms);
+  }
+
+  // Absolute gate: −70 LUFS threshold
+  const absThreshLinear = Math.pow(10, (-70 + 0.691) / 10);
+  // Absolute gate — explizite Loops statt reduce() (Safari Stack Overflow Fix)
+  let sum1 = 0, cnt1 = 0;
+  for(let i=0;i<blockLoudness.length;i++) if(blockLoudness[i]>absThreshLinear){sum1+=blockLoudness[i];cnt1++;}
+  if(cnt1===0) return -70;
+
+  const mean1 = sum1/cnt1;
+  const relThreshold = mean1 * Math.pow(10, -10/10);
+
+  let sum2 = 0, cnt2 = 0;
+  for(let i=0;i<blockLoudness.length;i++) if(blockLoudness[i]>relThreshold){sum2+=blockLoudness[i];cnt2++;}
+  if(cnt2===0) return -70;
+
+  return -0.691 + 10 * Math.log10(sum2/cnt2);
+}
+
+// ─── Apply gain (reines Gain-Node, kein Compressor) ───────────────────────────
+async function applyGainToBuffer(audioBuffer, gainLinear) {
+  const ctx = new OfflineAudioContext(
+    audioBuffer.numberOfChannels,
+    audioBuffer.length,
+    audioBuffer.sampleRate
+  );
+  const src  = ctx.createBufferSource();
+  src.buffer = audioBuffer;
+  const gain = ctx.createGain();
+  gain.gain.value = gainLinear;
+  src.connect(gain);
+  gain.connect(ctx.destination);
+  src.start(0);
+
+  // startRendering() gibt in manchen Browsern (ältere Safari/Firefox) kein Promise
+  // zurück → Callback-Fallback
+  return new Promise(function(resolve, reject) {
+    ctx.oncomplete = function(e) { resolve(e.renderedBuffer); };
+    var result = ctx.startRendering();
+    if (result && typeof result.then === 'function') {
+      result.then(resolve).catch(reject);
+    }
+  });
+}
+
+// ─── True Peak (4x oversampled, kubische Interpolation) ───────────────────────
+function measureTruePeakDb(audioBuffer) {
+  let peak = 0;
+  for (let c = 0; c < audioBuffer.numberOfChannels; c++) {
+    const d = audioBuffer.getChannelData(c);
+    for (let i = 1; i < d.length - 2; i++) {
+      const abs0 = Math.abs(d[i]);
+      if (abs0 > peak) peak = abs0;
+      const s0 = d[i-1], s1 = d[i], s2 = d[i+1];
+      const s3 = (i+2 < d.length) ? d[i+2] : s2;
+      for (let j = 1; j <= 3; j++) {
+        const t  = j / 4;
+        const a0 = s3 - s2 - s0 + s1;
+        const a1 = s0 - s1 - a0;
+        const a2 = s2 - s0;
+        const v  = Math.abs(((a0*t + a1)*t + a2)*t + s1);
+        if (v > peak) peak = v;
+      }
+    }
+  }
+  return peak > 0 ? 20 * Math.log10(peak) : -144;
+}
+
+// ─── Normalisierungs-Pipeline mit Verifikations-Pass ──────────────────────────
+async function normalizeBuffer(audioBuffer, targetLufs, tpLimitDb) {
+  // Pass 1: Messen
+  const measuredLufs = measureIntegratedLoudness(audioBuffer);
+  let   gainDb       = targetLufs - measuredLufs;
+
+  // TP-Clamp NUR beim Anheben (gainDb > 0)
+  // Beim Absenken kann der TP-Grenzwert nicht überschritten werden
+  if (gainDb > 0) {
+    const tpDb    = measureTruePeakDb(audioBuffer);
+    const maxGain = tpLimitDb - tpDb;
+    if (gainDb > maxGain) gainDb = maxGain;
+  }
+
+  // Gain anwenden
+  let result = await applyGainToBuffer(audioBuffer, Math.pow(10, gainDb / 20));
+
+  // Pass 2: Verifikation — korrigiert Gating-Ungenauigkeiten
+  const verifyLufs = measureIntegratedLoudness(result);
+  const error      = targetLufs - verifyLufs;
+  if (Math.abs(error) > 0.3 && verifyLufs > -69) {
+    let corrDb = error;
+    if (corrDb > 0) {
+      const tpAfter = measureTruePeakDb(result);
+      const maxCorr = tpLimitDb - tpAfter;
+      if (corrDb > maxCorr) corrDb = maxCorr;
+    }
+    if (Math.abs(corrDb) > 0.05) {
+      result  = await applyGainToBuffer(result, Math.pow(10, corrDb / 20));
+      gainDb += corrDb;
+    }
+  }
+
+  return { buffer: result, measuredLufs, gainDb };
+}
+
+function audioBufferToWav(buffer) {
+  const numChannels = buffer.numberOfChannels;
+  const sampleRate  = buffer.sampleRate;
+  const length      = buffer.length;
+  const dataLength  = length * numChannels * 2;
+  const arrayBuffer = new ArrayBuffer(44 + dataLength);
+  const view        = new DataView(arrayBuffer);
+
+  function writeStr(offset, str) {
+    for (let i = 0; i < str.length; i++) view.setUint8(offset + i, str.charCodeAt(i));
+  }
+
+  writeStr(0, 'RIFF');
+  view.setUint32(4, 36 + dataLength, true);
+  writeStr(8, 'WAVE');
+  writeStr(12, 'fmt ');
+  view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true); // PCM
+  view.setUint16(22, numChannels, true);
+  view.setUint32(24, sampleRate, true);
+  view.setUint32(28, sampleRate * numChannels * 2, true);
+  view.setUint16(32, numChannels * 2, true);
+  view.setUint16(34, 16, true);
+  writeStr(36, 'data');
+  view.setUint32(40, dataLength, true);
+
+  let offset = 44;
+  for (let i = 0; i < length; i++) {
+    for (let c = 0; c < numChannels; c++) {
+      const s = Math.max(-1, Math.min(1, buffer.getChannelData(c)[i]));
+      view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
+      offset += 2;
+    }
+  }
+  return new Blob([arrayBuffer], { type: 'audio/wav' });
+}
+
+async function encodeBuffer(audioBuffer) {
+  const fmt = exportFormat.value;
+  if (fmt === 'wav') return audioBufferToWav(audioBuffer);
+
+  // Für MP3/OGG: MediaRecorder nutzen
+  // WICHTIG: Eigenen temporären Context erstellen, NICHT den globalen schließen
+  var AC = window.AudioContext || window.webkitAudioContext;
+  const tmpCtx = new AC();
+  try { await tmpCtx.resume(); } catch(e) {}
+  const src  = tmpCtx.createBufferSource();
+  src.buffer = audioBuffer;
+
+  const dest = tmpCtx.createMediaStreamDestination();
+  src.connect(dest);
+
+  const mimeType = fmt === 'mp3' ? 'audio/mpeg' : 'audio/ogg; codecs=vorbis';
+  if (!MediaRecorder.isTypeSupported(mimeType)) {
+    tmpCtx.close();
+    return audioBufferToWav(audioBuffer); // fallback WAV
+  }
+
+  return new Promise((resolve, reject) => {
+    const recorder = new MediaRecorder(dest.stream, { mimeType });
+    const chunks   = [];
+    recorder.ondataavailable = e => chunks.push(e.data);
+    recorder.onstop = () => {
+      tmpCtx.close();
+      resolve(new Blob(chunks, { type: mimeType }));
+    };
+    recorder.onerror = (e) => { tmpCtx.close(); reject(e); };
+    recorder.start();
+    src.start(0);
+    setTimeout(() => recorder.stop(), (audioBuffer.length / audioBuffer.sampleRate * 1000) + 200);
+  });
+}
+
+// ─── Process pipeline ─────────────────────────────────────────────────────────
+processBtn.addEventListener('click', async () => {
+  const target  = parseFloat(targetLufsSlider.value);
+  const tpLimit = parseFloat(tpLimitSlider.value);
+
+  const pending = files.filter(f => f.status !== 'done');
+  processBtn.disabled = true;
+  progressWrap.style.display = 'block';
+
+  for (let i = 0; i < files.length; i++) {
+    const f = files[i];
+    if (f.status === 'done') continue;
+
+    f.status = 'processing';
+    renderList();
+
+    try {
+      // Decode
+      const arrayBuf = await readFileAsArrayBuffer(f.file);
+      const actx     = await getAudioContextReady();
+      const audioBuf = await safariFriendlyDecode(actx, arrayBuf);
+
+      // Normalisieren (Messen + Gain + Verifikation)
+      const { buffer: processed, measuredLufs, gainDb } =
+        await normalizeBuffer(audioBuf, target, tpLimit);
+
+      f.measuredLufs = measuredLufs;
+      f.gainDb       = gainDb;
+
+      // Encode
+      const blob = await encodeBuffer(processed);
+      // iOS: Blob mit explizitem Dateinamen als File-Objekt erzeugen
+      const filename = normalizedName(f.name);
+      const namedBlob = new File([blob], filename, { type: blob.type || 'audio/wav' });
+      if (f.blobUrl) URL.revokeObjectURL(f.blobUrl);
+      f.blobUrl = URL.createObjectURL(namedBlob);
+      f.status  = 'done';
+
+    } catch (err) {
+      console.error(err);
+      f.status = 'error';
+      f.errorMsg = err.message || String(err);
+    }
+
+    progressBar.style.width = `${((i + 1) / files.length) * 100}%`;
+    renderList();
+  }
+
+  processBtn.disabled = false;
+  renderList();
+});
+
+</script>
+
+<!-- ─── Footer ─────────────────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">SATK</span>
+      <span class="footer-tagline">Sascha's Audio Toolkit</span>
+    </div>
+    <div class="footer-copy">
+      &copy; 2026 by SATK &mdash; Sascha's Audio Toolkit. Alle Rechte vorbehalten.
+    </div>
+    <div class="footer-links">
+      <button class="footer-link" onclick="openModal('impressum')">Impressum</button>
+      <span class="footer-sep">·</span>
+      <button class="footer-link" onclick="openModal('datenschutz')">Datenschutz</button>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── Modals ──────────────────────────────────────────────────────────────── -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<style>
+/* Footer */
+.site-footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  margin-top: 64px;
+}
+.footer-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.footer-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+}
+.footer-tagline {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-link {
+  background: none;
+  border: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--border);
+}
+.footer-link:hover { color: var(--accent); text-decoration-color: var(--accent); }
+.footer-sep { color: var(--border); font-size: 11px; }
+
+/* Modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  max-width: 560px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 36px 32px;
+  position: relative;
+  animation: modalIn 0.18s ease;
+}
+@keyframes modalIn { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: translateY(0); } }
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.15s;
+}
+.modal-close:hover { color: var(--text); }
+.modal-box h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.modal-box h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin: 20px 0 8px;
+}
+.modal-box p {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.modal-box address {
+  font-style: normal;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.modal-badge {
+  display: inline-block;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  padding: 4px 10px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/* Footer mobile */
+@media (max-width: 540px) {
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .modal-box { padding: 28px 20px; }
+}
+</style>
+
+<script>
+const impressumHTML = `
+  <span class="modal-badge">Impressum</span>
+  <h2>Angaben gemäß § 5 TMG</h2>
+  <address>
+    Sascha Hömske<br>
+    Alte Poststr. 34<br>
+    53721 Siegburg<br>
+    Deutschland
+  </address>
+  <h3>Steuerliche Angaben</h3>
+  <p>Steuernummer: 22051832225</p>
+  <h3>Kontakt</h3>
+  <p>Anfragen bitte per E-Mail über die auf der Website angegebene Kontaktadresse.</p>
+  <h3>Haftungshinweis</h3>
+  <p>Dieses Tool wird als kostenfreier Service ohne Gewähr bereitgestellt. Für die korrekte Verarbeitung von Audiodateien übernehmen wir keine Haftung. Die gesamte Verarbeitung erfolgt lokal im Browser – es werden keine Daten an Server übertragen.</p>
+`;
+
+const datenschutzHTML = `
+  <span class="modal-badge">Datenschutz</span>
+  <h2>Datenschutzerklärung</h2>
+  <h3>Verantwortlicher</h3>
+  <p>Sascha Hömske, Alte Poststr. 34, 53721 Siegburg</p>
+  <h3>Grundsatz: Keine Datenverarbeitung</h3>
+  <p>Dieses Tool verarbeitet Audiodateien ausschließlich lokal in Ihrem Browser. Es werden <strong style="color:var(--accent)">keine Audiodaten, Metadaten oder persönliche Informationen</strong> an externe Server übertragen, gespeichert oder Dritten zugänglich gemacht.</p>
+  <h3>Server-Logfiles</h3>
+  <p>Beim Aufruf dieser Website werden durch den Webhoster automatisch technische Zugriffsdaten (IP-Adresse, Datum/Uhrzeit, aufgerufene Seite, Browser-Typ) in Server-Logfiles gespeichert. Diese Daten werden nicht mit anderen Datenquellen zusammengeführt und dienen ausschließlich der technischen Betriebssicherheit.</p>
+  <h3>Cookies</h3>
+  <p>Diese Website verwendet keine Cookies und kein Tracking.</p>
+  <h3>Externe Ressourcen</h3>
+  <p>Beim Laden der Seite werden Schriftarten (Google Fonts) von externen Servern geladen. Dabei kann die IP-Adresse des Nutzers an Google übermittelt werden. Grundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an korrekter Darstellung).</p>
+  <h3>Ihre Rechte</h3>
+  <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten sowie ein Widerspruchsrecht gemäß DSGVO. Da dieses Tool selbst keine personenbezogenen Daten verarbeitet, beschränken sich diese Rechte auf die Webserver-Logfiles des Hosters.</p>
+  <h3>Beschwerderecht</h3>
+  <p>Sie haben das Recht, sich bei der zuständigen Datenschutzaufsichtsbehörde zu beschweren. In NRW ist dies der Landesbeauftragte für Datenschutz und Informationsfreiheit (LDI NRW).</p>
+`;
+
+function openModal(type) {
+  document.getElementById('modalContent').innerHTML = type === 'impressum' ? impressumHTML : datenschutzHTML;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+
+<style>
+/* ─── Donate Section ──────────────────────────────────────────────────────── */
+
+@keyframes heartbeat {
+  0%,100% { box-shadow: 0 0 0 0 rgba(200,240,96,0.25); }
+  50%      { box-shadow: 0 0 0 8px rgba(200,240,96,0); }
+}
+
+@media (max-width: 540px) {
+}
+</style>
+
+<script>
+
+// ── Download-Hinweis (plattform-spezifisch, nur beim ersten Export) ────────────
+function showDownloadHint(filename){
+  // Nur einmal zeigen — localStorage merkt sich ob Hint schon erschienen ist
+  try {
+    if(localStorage.getItem('satk_dl_hint_shown')) return;
+    localStorage.setItem('satk_dl_hint_shown','1');
+  } catch(e) {}
+
+  var ua=navigator.userAgent, pl=navigator.platform||'';
+  var isIOS=/iPad|iPhone|iPod/.test(ua)||(/Mac/.test(pl)&&navigator.maxTouchPoints>1);
+  var isAndroid=/Android/.test(ua);
+  var isMac=/Mac/.test(pl)&&!isIOS;
+  var isWin=/Win/.test(pl);
+  var isSafari=/^((?!chrome|android).)*safari/i.test(ua);
+  var isChrome=/Chrome/.test(ua)&&!/Edg/.test(ua);
+  var isEdge=/Edg/.test(ua);
+  var isFirefox=/Firefox/.test(ua);
+
+  var msg='';
+  if(isIOS){
+    if(isSafari)
+      msg='Öffne die <strong>Dateien-App</strong> → Auf meinem iPhone → Downloads';
+    else
+      msg='Datei gespeichert. Öffne die <strong>Dateien-App</strong> auf deinem iPhone/iPad';
+  } else if(isAndroid){
+    msg='Gespeichert im <strong>Downloads-Ordner</strong>. Öffne Dateien oder den Download-Manager';
+  } else if(isMac){
+    if(isSafari)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf den Pfeil ↓ oben rechts in Safari';
+    else if(isChrome)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ oben rechts in Chrome';
+    else if(isEdge)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ oben rechts in Edge';
+    else
+      msg='Gespeichert im Ordner <strong>~/Downloads</strong>';
+  } else if(isWin){
+    if(isChrome)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ unten oder oben rechts in Chrome';
+    else if(isEdge)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ oben rechts in Edge';
+    else if(isFirefox)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf den Pfeil ↓ in der Symbolleiste';
+    else
+      msg='Gespeichert in <strong>C:\\Users\\[Name]\\Downloads</strong>';
+  } else {
+    msg='Gespeichert im <strong>Downloads-Ordner</strong>';
+  }
+
+  // Altes Toast entfernen
+  var old=document.getElementById('satkDlHint');
+  if(old) old.remove();
+
+  var el=document.createElement('div');
+  el.id='satkDlHint';
+  el.innerHTML='<span class="satk-dl-close" onclick="this.parentNode.remove()">✕</span>'
+    +(filename?'<span class="satk-dl-file">📄 '+filename+'</span>':'')
+    +'<span>'+msg+'</span>';
+  document.body.appendChild(el);
+
+  // Auto-ausblenden nach 9s
+  var timer=setTimeout(function(){
+    if(el.parentNode){
+      el.style.animation='satkDlOut .3s ease forwards';
+      setTimeout(function(){if(el.parentNode)el.remove();},300);
+    }
+  },9000);
+  el.querySelector('.satk-dl-close').addEventListener('click',function(){clearTimeout(timer);});
+}
+
+
+// ── SATK Einheitliche Dateinamen-Funktion ─────────────────────────────────────
+// Schema: satk_[tool]_[YYYY-MM-DD]_[HH-MM-SS]_v[n].[ext]
+// Versionszahl: Session-Counter pro Tool (localStorage)
+function satkFilename(tool, ext){
+  var d = new Date();
+  var pad = function(n){ return n<10?'0'+n:String(n); };
+  var date = d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+  var time = pad(d.getHours())+'-'+pad(d.getMinutes())+'-'+pad(d.getSeconds());
+  var key  = 'satk_v_'+tool;
+  var ver  = 1;
+  try {
+    ver = (parseInt(localStorage.getItem(key))||0) + 1;
+    localStorage.setItem(key, ver);
+  } catch(e) {}
+  return 'satk_'+tool+'_'+date+'_'+time+'_v'+ver+(ext?'.'+ext:'');
+}
+
+
+// ── Offline Denoiser (für R128 Normalizer) ────────────────────────────────────
+// ============================================================
+// SATK Offline Spectral Denoiser
+// Funktioniert mit jedem AudioBuffer — kein AudioWorklet nötig
+// ============================================================
+
+'use strict';
+
+// ── Radix-2 FFT (in-place, Cooley-Tukey) ────────────────────────────────────
+function fft(re, im, inverse) {
+  const N = re.length;
+  // Bit-reversal permutation
+  for (let i = 1, j = 0; i < N; i++) {
+    let bit = N >> 1;
+    for (; j & bit; bit >>= 1) j ^= bit;
+    j ^= bit;
+    if (i < j) {
+      [re[i], re[j]] = [re[j], re[i]];
+      [im[i], im[j]] = [im[j], im[i]];
+    }
+  }
+  // Butterfly passes
+  for (let len = 2; len <= N; len <<= 1) {
+    const ang = (inverse ? 1 : -1) * 2 * Math.PI / len;
+    const wRe = Math.cos(ang), wIm = Math.sin(ang);
+    for (let i = 0; i < N; i += len) {
+      let curRe = 1, curIm = 0;
+      for (let j = 0; j < len / 2; j++) {
+        const uRe = re[i+j], uIm = im[i+j];
+        const vRe = re[i+j+len/2]*curRe - im[i+j+len/2]*curIm;
+        const vIm = re[i+j+len/2]*curIm + im[i+j+len/2]*curRe;
+        re[i+j]         = uRe + vRe; im[i+j]         = uIm + vIm;
+        re[i+j+len/2]   = uRe - vRe; im[i+j+len/2]   = uIm - vIm;
+        const nRe = curRe*wRe - curIm*wIm;
+        curIm = curRe*wIm + curIm*wRe; curRe = nRe;
+      }
+    }
+  }
+  if (inverse) { for (let i = 0; i < N; i++) { re[i] /= N; im[i] /= N; } }
+}
+
+// ── Hann-Fenster ─────────────────────────────────────────────────────────────
+function makeHann(N) {
+  const w = new Float32Array(N);
+  for (let i = 0; i < N; i++) w[i] = 0.5 * (1 - Math.cos(2 * Math.PI * i / N));
+  return w;
+}
+
+// ── Leisestes Segment automatisch finden ─────────────────────────────────────
+</script>
+
+</body>
+</html>

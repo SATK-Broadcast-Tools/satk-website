@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="description" content="Kostenloser Audio Formatwandler im Browser: WAV (16/24/32-bit), MP3, OGG, M4A, Opus, WebM, AIFF. Drag & Drop, kein Upload, sofortiger Download.">
+<meta name="keywords" content="Audio Format Wandler, Formatwandler, Audio konvertieren, WAV in MP3, MP3 in WAV, OGG konvertieren, M4A konvertieren, AIFF konvertieren, Opus konvertieren, WebM Audio, 24-bit WAV, WAV Konverter, Audio Konverter online, kostenlos, kein Upload, Browser, sofortiger Download">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>SATK Format Wandler – Audio kostenlos konvertieren: WAV, MP3, OGG, M4A</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap');
+
+  :root {
+    --bg:#0a0a0b;--sf:#111114;--sf2:#16161a;--bd:#1e1e24;
+    --ac:#c8f060;--ac2:#60d4f0;--warn:#f0a060;--danger:#f06060;
+    --tx:#e8e8ec;--mu:#5a5a6a;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+  body{background:var(--bg);color:var(--tx);font-family:'DM Mono',monospace;min-height:100vh;overflow-x:hidden;}
+
+  body::before{content:'';position:fixed;inset:0;
+    background-image:linear-gradient(rgba(200,240,96,.025)1px,transparent 1px),linear-gradient(90deg,rgba(200,240,96,.025)1px,transparent 1px);
+    background-size:40px 40px;pointer-events:none;z-index:0;}
+
+  .wrapper{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:48px 24px 80px;}
+
+  /* ── Header ── */
+  header { margin-bottom: 56px; }
+  .logo-lockup { display: inline-flex; flex-direction: column; gap: 0; position: relative; }
+  .logo-top-row { display: flex; align-items: center; gap: 14px; }
+  .logo-wordmark { font-family: 'Syne', sans-serif; font-size: clamp(28px, 5vw, 48px);
+    font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tx); line-height: 1; position: relative; }
+  .logo-wordmark::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 100%; height: 1px;
+    background: linear-gradient(90deg, var(--ac) 0%, transparent 100%); }
+  .logo-divider { width: 1px; height: 38px; background: linear-gradient(180deg, transparent, var(--bd), transparent); }
+  .logo-right { display: flex; flex-direction: column; gap: 4px; }
+  .logo-sub-word { font-family: 'Syne', sans-serif; font-size: clamp(10px, 1.8vw, 13px); font-weight: 600;
+    letter-spacing: 0.28em; text-transform: uppercase; color: var(--ac); line-height: 1; }
+  .logo-standard { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--mu); line-height: 1; }
+  .logo-bottom-row { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+  .logo-rule { flex: 1; height: 1px; background: var(--bd); max-width: 48px; }
+  .logo-tag { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--mu); border: 1px solid var(--bd); padding: 2px 7px; }
+  .subtitle { margin-top: 18px; color: var(--mu); font-size: 12px; letter-spacing: 0.03em; }
+
+  /* ── Drop Zone ── */
+  .drop-zone{border:1px dashed var(--bd);background:var(--sf);padding:32px 24px;
+    text-align:center;cursor:pointer;transition:all .2s;position:relative;border-radius:2px;
+    margin-bottom:24px;}
+  .drop-zone:hover,.drop-zone.drag{border-color:var(--ac);background:rgba(200,240,96,.03);}
+  .drop-zone.has-file{border-color:var(--ac2);border-style:solid;}
+  .drop-icon{margin-bottom:12px;opacity:.4;transition:opacity .2s;}
+  .drop-zone:hover .drop-icon,.drop-zone.drag .drop-icon{opacity:.8;}
+  .drop-title{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--tx);margin-bottom:6px;}
+  .drop-sub{font-size:10px;color:var(--mu);letter-spacing:.05em;}
+  .drop-name{display:block;margin-top:10px;font-size:11px;color:var(--ac2);letter-spacing:.05em;}
+  input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;}
+
+  /* ── File Info ── */
+  .file-info{background:var(--sf);border:1px solid var(--bd);padding:14px 16px;
+    display:none;gap:16px;flex-wrap:wrap;margin-bottom:24px;border-radius:2px;}
+  .file-info.show{display:flex;}
+  .fi-item{display:flex;flex-direction:column;gap:3px;}
+  .fi-label{font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);}
+  .fi-val{font-size:12px;color:var(--tx);}
+
+  /* ── Format Selector — gleicher Stil wie VoiceOver Preset-Karten ── */
+  .format-section{margin-bottom:24px;}
+  .section-label{font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--mu);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--bd);}
+
+  .format-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;}
+  .fmt-btn{border:1px solid var(--bd);background:var(--sf);padding:14px 12px;
+    cursor:pointer;transition:all .15s;position:relative;}
+  .fmt-btn:hover{border-color:var(--mu);}
+  .fmt-btn.active{border-color:var(--ac);background:rgba(200,240,96,.05);}
+  .fmt-btn.active::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--ac);}
+  .fmt-icon{font-size:18px;margin-bottom:6px;display:block;}
+  .fmt-name{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;
+    color:var(--tx);display:block;margin-bottom:3px;}
+  .fmt-btn.active .fmt-name{color:var(--ac);}
+  .fmt-sub{font-size:9px;color:var(--ac);letter-spacing:.05em;display:block;margin-bottom:2px;}
+  .fmt-desc{font-size:8px;color:var(--mu);line-height:1.4;}
+
+  /* ── Quality Options ── */
+  .quality-section{margin-bottom:24px;display:none;}
+  .quality-section.show{display:block;}
+  .quality-row{display:flex;gap:8px;flex-wrap:wrap;}
+  .qual-btn{background:var(--sf);border:1px solid var(--bd);padding:8px 16px;
+    font-size:10px;letter-spacing:.08em;cursor:pointer;transition:all .15s;border-radius:2px;color:var(--tx);}
+  .qual-btn:hover{border-color:var(--mu);}
+  .qual-btn.active{border-color:var(--ac);color:var(--ac);}
+
+  /* ── Progress ── */
+  .progress-wrap{height:2px;background:var(--bd);margin-bottom:24px;display:none;}
+  .progress-wrap.show{display:block;}
+  .progress-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--ac2),var(--ac));transition:width .1s;}
+
+  /* ── Action ── */
+  .actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:24px;}
+  .btn-primary{background:var(--ac);color:#0a0a0b;font-family:'Syne',sans-serif;
+    font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    border:none;padding:13px 28px;cursor:pointer;transition:all .15s;border-radius:2px;}
+  .btn-primary:hover{background:#d4f870;transform:translateY(-1px);}
+  .btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none;}
+  .btn-sec{background:transparent;color:var(--mu);font-family:'DM Mono',monospace;
+    font-size:10px;letter-spacing:.08em;border:1px solid var(--bd);padding:12px 20px;
+    cursor:pointer;transition:all .15s;border-radius:2px;}
+  .btn-sec:hover{border-color:var(--mu);color:var(--tx);}
+  .status-txt{font-size:10px;color:var(--mu);letter-spacing:.05em;}
+
+  /* ── Result ── */
+  .result-card{background:var(--sf);border:1px solid var(--ac2);padding:20px 24px;
+    display:none;border-radius:2px;margin-bottom:24px;}
+  .result-card.show{display:block;}
+  .result-head{font-family:'Syne',sans-serif;font-weight:800;font-size:11px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ac2);margin-bottom:12px;}
+  .result-stats{font-size:10px;color:var(--mu);margin-bottom:14px;line-height:1.8;}
+  .result-stats span{color:var(--tx);}
+  .btn-dl{display:inline-flex;align-items:center;gap:8px;background:var(--ac2);
+    color:#0a0a0b;font-family:'Syne',sans-serif;font-weight:800;font-size:10px;
+    letter-spacing:.1em;text-transform:uppercase;padding:11px 22px;text-decoration:none;
+    border-radius:2px;transition:all .15s;}
+  .btn-dl:hover{background:#70e0ff;transform:translateY(-1px);}
+
+  /* ── Footer ── */
+  .site-footer{border-top:1px solid var(--bd);margin-top:60px;padding-top:24px;
+    display:flex;align-items:center;gap:16px;}
+  .footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:11px;
+    letter-spacing:.18em;color:var(--mu);}
+  .footer-copy{font-size:9px;color:var(--mu);opacity:.5;}
+
+  /* ── Responsive ── */
+  @media(max-width:600px){
+    .wrapper{padding:72px 16px 60px;}
+    .format-grid{grid-template-columns:repeat(3,1fr);}
+  }
+</style>
+  <link rel="canonical" href="https://satk.tech/format-wandler.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://satk.tech/format-wandler.html">
+<meta property="og:title" content="SATK Format Wandler – Audio kostenlos konvertieren: WAV MP3 OGG M4A AIFF">
+<meta property="og:description" content="WAV (16/24/32-bit), MP3, OGG, M4A, Opus, WebM, AIFF konvertieren. Drag & Drop, Qualitätswahl, sofortiger Download — 100% Browser, kein Upload.">
+<meta property="og:image" content="https://satk.tech/og-image.png">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="SATK – Sascha's Audio Toolkit">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SATK Format Wandler – Audio kostenlos konvertieren: WAV MP3 OGG M4A AIFF">
+<meta name="twitter:description" content="WAV (16/24/32-bit), MP3, OGG, M4A, Opus, WebM, AIFF konvertieren. Drag & Drop, Qualitätswahl, sofortiger Download — 100% Browser, kein Upload.">
+<meta name="twitter:image" content="https://satk.tech/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Format Wandler",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Web Browser, iOS, Android",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+  "description": "Kostenloser Audio Formatwandler im Browser: WAV 16/24/32-bit, MP3 (bis 320 kbps), OGG Vorbis, M4A AAC, Opus, WebM, AIFF. Drag & Drop, Qualitätswahl, sofortiger Download. Kein Upload, keine Installation.",
+  "url": "https://satk.tech/format-wandler.html",
+  "creator": {"@type": "Person", "name": "Sascha Hömske"},
+  "isPartOf": {"@type": "WebSite", "name": "SATK – Sascha's Audio Toolkit", "url": "https://satk.tech/"}
+}
+</script>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- Header -->
+  <header>
+    <div class="logo-lockup">
+      <div class="logo-top-row">
+        <span class="logo-wordmark">Format</span>
+        <div class="logo-divider"></div>
+        <div class="logo-right">
+          <span class="logo-sub-word">Wandler</span>
+          <span class="logo-standard">SATK · Sascha's Audio Toolkit</span>
+        </div>
+      </div>
+      <div class="logo-bottom-row">
+        <div class="logo-rule"></div>
+        <span class="logo-tag">WAV · MP3 · FLAC · OGG · M4A · AIFF · Opus</span>
+        <div class="logo-rule"></div>
+      </div>
+    </div>
+    <p class="subtitle">// Audiodateien im Browser konvertieren · Kein Upload · Keine Limits</p>
+  </header>
+
+  <!-- Drop Zone -->
+  <div class="drop-zone" id="dropZone">
+    <input type="file" id="fileInput" accept="audio/*,.mp3,.wav,.aac,.m4a,.flac,.ogg,.opus,.aiff,.aif">
+    <div class="drop-icon">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+        <polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
+      </svg>
+    </div>
+    <div class="drop-title">Audiodatei hierher ziehen</div>
+    <div class="drop-sub">oder klicken · WAV, MP3, M4A, AAC, FLAC, OGG, AIFF, Opus</div>
+    <span class="drop-name" id="dropName"></span>
+  </div>
+
+  <!-- File Info -->
+  <div class="file-info" id="fileInfo">
+    <div class="fi-item"><div class="fi-label">Dateiname</div><div class="fi-val" id="fiName">—</div></div>
+    <div class="fi-item"><div class="fi-label">Format</div><div class="fi-val" id="fiFormat">—</div></div>
+    <div class="fi-item"><div class="fi-label">Dauer</div><div class="fi-val" id="fiDur">—</div></div>
+    <div class="fi-item"><div class="fi-label">Sample Rate</div><div class="fi-val" id="fiSr">—</div></div>
+    <div class="fi-item"><div class="fi-label">Kanäle</div><div class="fi-val" id="fiCh">—</div></div>
+    <div class="fi-item"><div class="fi-label">Größe</div><div class="fi-val" id="fiSize">—</div></div>
+  </div>
+
+  <!-- Format Selector -->
+  <div class="format-section">
+    <div class="section-label">Zielformat wählen</div>
+    <div class="format-grid" id="fmtGrid">
+      <div class="fmt-btn active" data-fmt="wav">
+        <span class="fmt-icon">💿</span>
+        <span class="fmt-name">WAV 16-bit</span>
+        <span class="fmt-sub">Verlustfrei</span>
+        <span class="fmt-desc">Universell kompatibel, Standard für Produktion</span>
+      </div>
+      <div class="fmt-btn" data-fmt="wav24">
+        <span class="fmt-icon">🎚</span>
+        <span class="fmt-name">WAV 24-bit</span>
+        <span class="fmt-sub">Verlustfrei · Studio</span>
+        <span class="fmt-desc">Broadcast-Standard, maximale Qualität</span>
+      </div>
+      <div class="fmt-btn" data-fmt="wav32">
+        <span class="fmt-icon">🎛</span>
+        <span class="fmt-name">WAV 32-bit</span>
+        <span class="fmt-sub">Verlustfrei · Float</span>
+        <span class="fmt-desc">Maximale Dynamik, ideal für DAW-Workflows</span>
+      </div>
+      <div class="fmt-btn" data-fmt="mp3">
+        <span class="fmt-icon">🎵</span>
+        <span class="fmt-name">MP3</span>
+        <span class="fmt-sub">Komprimiert</span>
+        <span class="fmt-desc">Weit verbreitet, kleine Dateigröße</span>
+      </div>
+      <div class="fmt-btn" data-fmt="ogg">
+        <span class="fmt-icon">🔊</span>
+        <span class="fmt-name">OGG Vorbis</span>
+        <span class="fmt-sub">Offen · effizient</span>
+        <span class="fmt-desc">Gute Qualität bei kleiner Größe</span>
+      </div>
+      <div class="fmt-btn" data-fmt="m4a">
+        <span class="fmt-icon">🍎</span>
+        <span class="fmt-name">M4A</span>
+        <span class="fmt-sub">AAC · Apple</span>
+        <span class="fmt-desc">Standard für iTunes, iPhone, iPad</span>
+      </div>
+      <div class="fmt-btn" data-fmt="opus">
+        <span class="fmt-icon">⚡</span>
+        <span class="fmt-name">Opus</span>
+        <span class="fmt-sub">Modern · sehr effizient</span>
+        <span class="fmt-desc">Beste Qualität bei niedrigster Bitrate</span>
+      </div>
+      <div class="fmt-btn" data-fmt="aiff">
+        <span class="fmt-icon">🎼</span>
+        <span class="fmt-name">AIFF</span>
+        <span class="fmt-sub">Verlustfrei · 16-bit</span>
+        <span class="fmt-desc">Apple-Standard, ideal für Logic Pro · Nur als Ziel (Safari als Quelle)</span>
+      </div>
+      <div class="fmt-btn" data-fmt="webm">
+        <span class="fmt-icon">🌐</span>
+        <span class="fmt-name">WebM</span>
+        <span class="fmt-sub">Web-Standard</span>
+        <span class="fmt-desc">Ideal für Web-Projekte und Streaming</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quality (für MP3/OGG/Opus) -->
+  <div class="quality-section" id="qualSection">
+    <div class="section-label">Qualität</div>
+    <div class="quality-row" id="qualRow"></div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-wrap" id="progWrap"><div class="progress-bar" id="progBar"></div></div>
+
+  <!-- Actions -->
+  <div class="actions">
+    <button class="btn-primary" id="convertBtn" disabled>✦ Konvertieren</button>
+    <button class="btn-sec" id="resetBtn">Reset</button>
+    <span class="status-txt" id="statusTxt">Datei laden um zu beginnen</span>
+  </div>
+
+  <!-- Result -->
+  <div class="result-card" id="resultCard">
+    <div class="result-head">✓ Konvertierung abgeschlossen</div>
+    <div class="result-stats" id="resultStats"></div>
+    <a class="btn-dl" id="dlBtn" href="#" download>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      Herunterladen
+    </a>
+  </div>
+
+  <footer class="site-footer">
+    <span class="footer-logo">SATK</span>
+    <span class="footer-copy">&copy; 2026 Sascha Hömske · Sascha's Audio Toolkit · kostenlos &amp; werbefrei</span>
+  </footer>
+
+</div><!-- /.wrapper -->
+
+<!-- lamejs für MP3 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lamejs/1.2.1/lame.min.js"></script>
+
+<script>
+'use strict';
+
+// ── Format & Quality Definitions ──────────────────────────────────────────────
+const FORMATS = {
+  wav:   { ext:'wav',  label:'WAV 16-bit',  lossy:false, bits:16 },
+  wav24: { ext:'wav',  label:'WAV 24-bit',  lossy:false, bits:24 },
+  wav32: { ext:'wav',  label:'WAV 32-bit',  lossy:false, bits:32 },
+  aiff:  { ext:'aiff', label:'AIFF',        lossy:false, bits:16 },
+  mp3:   { ext:'mp3',  label:'MP3',         lossy:true  },
+  ogg:   { ext:'ogg',  label:'OGG Vorbis',  lossy:true  },
+  m4a:   { ext:'m4a',  label:'M4A (AAC)',   lossy:true  },
+  opus:  { ext:'opus', label:'Opus',        lossy:true  },
+  webm:  { ext:'webm', label:'WebM',        lossy:true  },
+};
+
+const QUALITY = {
+  mp3:  [{v:'320',l:'320 kbps · Maximum'},{v:'192',l:'192 kbps · Hoch'},{v:'128',l:'128 kbps · Standard'},{v:'96',l:'96 kbps · Klein'}],
+  ogg:  [{v:'9',l:'q9 · Maximum'},{v:'6',l:'q6 · Hoch'},{v:'4',l:'q4 · Standard'},{v:'2',l:'q2 · Klein'}],
+  m4a:  [{v:'256',l:'256 kbps · Maximum'},{v:'192',l:'192 kbps · Hoch'},{v:'128',l:'128 kbps · Standard'},{v:'96',l:'96 kbps · Klein'}],
+  opus: [{v:'160',l:'160 kbps · Maximum'},{v:'96',l:'96 kbps · Hoch'},{v:'64',l:'64 kbps · Standard'},{v:'32',l:'32 kbps · Klein'}],
+  webm: [{v:'160',l:'160 kbps · Maximum'},{v:'96',l:'96 kbps · Hoch'},{v:'64',l:'64 kbps · Standard'},{v:'32',l:'32 kbps · Klein'}],
+};
+
+// ── State ─────────────────────────────────────────────────────────────────────
+let origFile=null, audioBuf=null, currentFmt='wav', currentQual='192';
+let blobUrl=null;
+
+// ── DOM ───────────────────────────────────────────────────────────────────────
+const dropZone    = document.getElementById('dropZone');
+const fileInput   = document.getElementById('fileInput');
+const dropName    = document.getElementById('dropName');
+const fileInfo    = document.getElementById('fileInfo');
+const convertBtn  = document.getElementById('convertBtn');
+const resetBtn    = document.getElementById('resetBtn');
+const statusTxt   = document.getElementById('statusTxt');
+const progWrap    = document.getElementById('progWrap');
+const progBar     = document.getElementById('progBar');
+const resultCard  = document.getElementById('resultCard');
+const resultStats = document.getElementById('resultStats');
+const dlBtn       = document.getElementById('dlBtn');
+const qualSection = document.getElementById('qualSection');
+const qualRow     = document.getElementById('qualRow');
+
+// ── Format Selection ──────────────────────────────────────────────────────────
+document.getElementById('fmtGrid').addEventListener('click', e=>{
+  const btn=e.target.closest('.fmt-btn');
+  if(!btn)return;
+  document.querySelectorAll('.fmt-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentFmt=btn.dataset.fmt;
+  updateQualityUI();
+  resultCard.classList.remove('show');
+  if(blobUrl){URL.revokeObjectURL(blobUrl);blobUrl=null;}
+});
+
+function updateQualityUI(){
+  const q=QUALITY[currentFmt];
+  if(!q){ qualSection.classList.remove('show'); return; }
+  qualSection.classList.add('show');
+  qualRow.innerHTML=q.map((o,i)=>`<button class="qual-btn${i===0?' active':''}" data-val="${o.v}">${o.l}</button>`).join('');
+  currentQual=q[0].v;
+  qualRow.querySelectorAll('.qual-btn').forEach(b=>{
+    b.addEventListener('click',()=>{
+      qualRow.querySelectorAll('.qual-btn').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      currentQual=b.dataset.val;
+    });
+  });
+}
+
+// ── File Loading ──────────────────────────────────────────────────────────────
+dropZone.addEventListener('click',()=>fileInput.click());
+dropZone.addEventListener('dragover',e=>{e.preventDefault();dropZone.classList.add('drag');});
+dropZone.addEventListener('dragleave',()=>dropZone.classList.remove('drag'));
+dropZone.addEventListener('drop',e=>{
+  e.preventDefault();dropZone.classList.remove('drag');
+  const f=[...e.dataTransfer.files].find(f=>f.type.startsWith('audio/')||/\.(mp3|wav|aac|m4a|flac|ogg|opus|aiff|aif)$/i.test(f.name));
+  if(f)loadFile(f);
+});
+fileInput.addEventListener('change',e=>{if(e.target.files[0])loadFile(e.target.files[0]);});
+
+async function loadFile(f){
+  origFile=f;
+  dropName.textContent=f.name;
+  dropZone.classList.add('has-file');
+  statusTxt.textContent='Datei wird analysiert…';
+  resultCard.classList.remove('show');
+
+  try{
+    const ab=await f.arrayBuffer();
+    const ac=new(window.AudioContext||window.webkitAudioContext)();
+    audioBuf=await new Promise((res,rej)=>ac.decodeAudioData(ab.slice(0),res,rej));
+
+    const dur=audioBuf.duration;
+    const m=Math.floor(dur/60),s=(dur%60).toFixed(1);
+    const ext=f.name.split('.').pop().toUpperCase();
+
+    document.getElementById('fiName').textContent=f.name;
+    document.getElementById('fiFormat').textContent=ext;
+    document.getElementById('fiDur').textContent=`${m}:${s.padStart(4,'0')}`;
+    document.getElementById('fiSr').textContent=audioBuf.sampleRate+' Hz';
+    document.getElementById('fiCh').textContent=audioBuf.numberOfChannels===1?'Mono':'Stereo';
+    document.getElementById('fiSize').textContent=fmtBytes(f.size);
+    fileInfo.classList.add('show');
+
+    convertBtn.disabled=false;
+    statusTxt.textContent='Bereit zur Konvertierung';
+  }catch(e){
+    const isAiff = origFile?.name?.match(/\.aiff?$/i);
+    statusTxt.textContent = isAiff
+      ? 'AIFF als Quelle wird nur in Safari unterstützt. Bitte zuerst in WAV konvertieren.'
+      : 'Fehler beim Laden: '+e.message;
+    console.error(e);
+  }
+}
+
+// ── Konvertierung ──────────────────────────────────────────────────────────────
+convertBtn.addEventListener('click',async()=>{
+  if(!audioBuf||!origFile)return;
+  convertBtn.disabled=true;
+  resultCard.classList.remove('show');
+  progWrap.classList.add('show');
+  progBar.style.width='0%';
+
+  try{
+    const fmt=FORMATS[currentFmt];
+    statusTxt.textContent='Konvertiere zu '+fmt.label+'…';
+    setProgress(10);
+
+    let blob;
+
+    if(currentFmt==='wav'||currentFmt==='wav24'||currentFmt==='wav32'){
+      setProgress(40);
+      blob=encodeWAV(audioBuf,fmt.bits);
+      setProgress(90);
+
+    }else if(currentFmt==='aiff'){
+      setProgress(40);
+      blob=encodeAIFF(audioBuf);
+      setProgress(90);
+
+    }else if(currentFmt==='mp3'){
+      blob=await encodeMP3(audioBuf,parseInt(currentQual));
+
+    }else if(currentFmt==='ogg'||currentFmt==='m4a'||currentFmt==='opus'||currentFmt==='webm'){
+      blob=await encodeViaMediaRecorder(audioBuf,currentFmt,currentQual);
+    }
+
+    setProgress(100);
+
+    if(blobUrl)URL.revokeObjectURL(blobUrl);
+    blobUrl=URL.createObjectURL(blob);
+    const outName=origFile.name.replace(/\.[^.]+$/,'')+'.'+fmt.ext;
+    dlBtn.href=blobUrl;
+    dlBtn.download=outName;
+
+    resultStats.innerHTML=
+      `Eingabe: <span>${origFile.name}</span> · <span>${fmtBytes(origFile.size)}</span><br>`+
+      `Ausgabe: <span>${outName}</span> · <span>${fmtBytes(blob.size)}</span><br>`+
+      `Format: <span>${fmt.label}</span>`+
+      (fmt.lossy?` · <span>${currentQual} ${currentFmt==='ogg'?'q':'kbps'}</span>`:'');
+
+    resultCard.classList.add('show');
+    statusTxt.textContent='✓ Fertig';
+  }catch(e){
+    statusTxt.textContent='Fehler: '+e.message;
+    console.error(e);
+  }finally{
+    convertBtn.disabled=false;
+    setTimeout(()=>progWrap.classList.remove('show'),1000);
+  }
+});
+
+// ── WAV Encoder (16, 24, 32-bit) ──────────────────────────────────────────────
+function encodeWAV(buf,bits=16){
+  const nCh=buf.numberOfChannels,sr=buf.sampleRate,len=buf.length;
+  const bytesPerSample=bits===32?4:bits===24?3:2;
+  const dataLen=len*nCh*bytesPerSample;
+  const ab=new ArrayBuffer(44+dataLen);
+  const v=new DataView(ab);
+  const ws=(o,s)=>{for(let i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i));};
+  ws(0,'RIFF');v.setUint32(4,36+dataLen,true);ws(8,'WAVE');ws(12,'fmt ');
+  v.setUint32(16,16,true);
+  v.setUint16(20,bits===32?3:1,true); // 3=IEEE float, 1=PCM
+  v.setUint16(22,nCh,true);v.setUint32(24,sr,true);
+  v.setUint32(28,sr*nCh*bytesPerSample,true);
+  v.setUint16(32,nCh*bytesPerSample,true);v.setUint16(34,bits,true);
+  ws(36,'data');v.setUint32(40,dataLen,true);
+  let off=44;
+  for(let i=0;i<len;i++){
+    for(let c=0;c<nCh;c++){
+      const s=Math.max(-1,Math.min(1,buf.getChannelData(c)[i]));
+      if(bits===32){ v.setFloat32(off,s,true); off+=4; }
+      else if(bits===24){
+        const iv=Math.round(s*(s<0?8388608:8388607));
+        v.setUint8(off,   iv&0xFF);
+        v.setUint8(off+1,(iv>>8)&0xFF);
+        v.setUint8(off+2,(iv>>16)&0xFF);
+        off+=3;
+      } else { v.setInt16(off,s<0?s*0x8000:s*0x7FFF,true); off+=2; }
+    }
+  }
+  return new Blob([ab],{type:'audio/wav'});
+}
+
+// ── AIFF Encoder (16-bit, Big-Endian) ──────────────────────────────────────────
+// Lookup-Tabelle für gängige Sample Rates (80-bit IEEE 754 Extended)
+const AIFF_SR_TABLE = {
+  8000:  [0x400A,0xFA000000,0],
+  11025: [0x400A,0xAC440000,0],
+  12000: [0x400B,0xBB800000,0],
+  16000: [0x400B,0xFA000000,0],
+  22050: [0x400B,0xAC440000,0],
+  24000: [0x400C,0xBB800000,0],
+  32000: [0x400C,0xFA000000,0],
+  44100: [0x400C,0xAC440000,0],
+  48000: [0x400C,0xBB800000,0],
+  88200: [0x400D,0xAC440000,0],
+  96000: [0x400D,0xBB800000,0],
+  192000:[0x400E,0xBB800000,0],
+};
+function encodeAIFF(buf){
+  const nCh=buf.numberOfChannels, sr=buf.sampleRate, len=buf.length;
+  const dataLen=len*nCh*2;
+  const ab=new ArrayBuffer(54+dataLen);
+  const v=new DataView(ab);
+  const ws=(o,s)=>{for(let i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i));};
+  // FORM chunk
+  ws(0,'FORM'); v.setUint32(4,46+dataLen); ws(8,'AIFF');
+  // COMM chunk (18 bytes)
+  ws(12,'COMM'); v.setUint32(16,18);
+  v.setUint16(20,nCh);       // numChannels
+  v.setUint32(22,len);       // numSampleFrames
+  v.setUint16(26,16);        // sampleSize
+  // 80-bit extended sample rate
+  const ext = AIFF_SR_TABLE[sr] || AIFF_SR_TABLE[48000];
+  v.setUint16(28,ext[0]); v.setUint32(30,ext[1]); v.setUint32(34,ext[2]);
+  // SSND chunk
+  ws(36,'SSND'); v.setUint32(40,dataLen+8); v.setUint32(44,0); v.setUint32(48,0);
+  let off=52;
+  for(let i=0;i<len;i++){
+    for(let c=0;c<nCh;c++){
+      const s=Math.max(-1,Math.min(1,buf.getChannelData(c)[i]));
+      v.setInt16(off, s<0 ? s*0x8000 : s*0x7FFF); // Big-Endian
+      off+=2;
+    }
+  }
+  return new Blob([ab],{type:'audio/aiff'});
+}
+
+// ── MP3 Encoder (lamejs) ──────────────────────────────────────────────────────
+async function encodeMP3(buf,kbps=192){
+  setProgress(20);
+  if(typeof lamejs==='undefined')throw new Error('MP3-Encoder nicht geladen');
+  const nCh=buf.numberOfChannels,sr=buf.sampleRate,len=buf.length;
+  const mp3enc=new lamejs.Mp3Encoder(nCh,sr,kbps);
+  const BLOCK=1152;
+  const out=[];
+  const L=buf.getChannelData(0);
+  const R=nCh>1?buf.getChannelData(1):L;
+  const toInt16=ch=>{const a=new Int16Array(ch.length);for(let i=0;i<ch.length;i++)a[i]=Math.max(-32768,Math.min(32767,ch[i]*32767));return a;};
+  const Li=toInt16(L),Ri=toInt16(R);
+  const total=Math.ceil(len/BLOCK);
+  for(let b=0;b<total;b++){
+    const s=b*BLOCK,e=Math.min(s+BLOCK,len);
+    const chunk=nCh>1?mp3enc.encodeBuffer(Li.subarray(s,e),Ri.subarray(s,e)):mp3enc.encodeBuffer(Li.subarray(s,e));
+    if(chunk.length)out.push(chunk);
+    if(b%10===0)setProgress(20+Math.round(b/total*65));
+    if(b%50===0)await new Promise(r=>setTimeout(r,0));
+  }
+  const fin=mp3enc.flush();if(fin.length)out.push(fin);
+  setProgress(90);
+  return new Blob(out,{type:'audio/mpeg'});
+}
+
+// ── MediaRecorder Encoder (OGG, M4A, Opus) ───────────────────────────────────
+async function encodeViaMediaRecorder(buf,fmt,qual){
+  const mimeMap={ogg:'audio/ogg; codecs=vorbis',m4a:'audio/mp4; codecs=mp4a.40.2',opus:'audio/ogg; codecs=opus',webm:'audio/webm; codecs=opus'};
+  let mimeType=mimeMap[fmt];
+
+  // Fallback: probiere was der Browser unterstützt
+  const fallbacks=['audio/ogg; codecs=opus','audio/ogg; codecs=vorbis','audio/mp4','audio/webm; codecs=opus','audio/webm'];
+  if(!MediaRecorder.isTypeSupported(mimeType)){
+    mimeType=fallbacks.find(m=>MediaRecorder.isTypeSupported(m))||'';
+    if(!mimeType)throw new Error('Dieses Format wird von Ihrem Browser nicht unterstützt. Bitte WAV oder MP3 verwenden.');
+  }
+  setProgress(20);
+  const ac=new(window.AudioContext||window.webkitAudioContext)({sampleRate:buf.sampleRate});
+  await ac.resume().catch(()=>{});
+  const src=ac.createBufferSource();
+  src.buffer=buf;
+  const dest=ac.createMediaStreamDestination();
+  src.connect(dest);
+  const kbps=parseInt(qual)||128;
+  setProgress(30);
+  return new Promise((res,rej)=>{
+    const rec=new MediaRecorder(dest.stream,{mimeType,audioBitsPerSecond:kbps*1000});
+    const chunks=[];
+    rec.ondataavailable=e=>chunks.push(e.data);
+    rec.onstop=()=>{ac.close();setProgress(95);res(new Blob(chunks,{type:mimeType}));};
+    rec.onerror=e=>{ac.close();rej(e);};
+    rec.start();src.start(0);
+    let elapsed=0;
+    const iv=setInterval(()=>{
+      elapsed+=100;
+      const pct=Math.min(90,30+Math.round(elapsed/buf.duration/1000*60));
+      setProgress(pct);
+    },100);
+    src.onended=()=>{clearInterval(iv);rec.stop();};
+    setTimeout(()=>{clearInterval(iv);try{rec.stop();}catch(e){}},buf.duration*1000+500);
+  });
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function setProgress(p){progBar.style.width=p+'%';}
+function fmtBytes(b){if(b<1024)return b+'B';if(b<1048576)return(b/1024).toFixed(1)+' KB';return(b/1048576).toFixed(1)+' MB';}
+
+resetBtn.addEventListener('click',()=>{
+  origFile=null;audioBuf=null;
+  fileInput.value='';
+  dropName.textContent='';
+  dropZone.classList.remove('has-file');
+  fileInfo.classList.remove('show');
+  resultCard.classList.remove('show');
+  progWrap.classList.remove('show');
+  convertBtn.disabled=true;
+  statusTxt.textContent='Datei laden um zu beginnen';
+  if(blobUrl){URL.revokeObjectURL(blobUrl);blobUrl=null;}
+});
+</script>
+</body>
+</html>

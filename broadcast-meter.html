@@ -1,0 +1,3107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="description" content="Professioneller EBU R128 Broadcast Meter im RTW TM7 Stil: PPM, Goniometer, LUFS, FFT Spektrum, True Peak. Kostenlose Alternative zu Youlean und Nugen. Kein Download.">
+<meta name="keywords" content="EBU R128, Broadcast Meter, LUFS Meter, True Peak Meter, R128 Meter, PPM Meter, Goniometer, Korrelationsmeter, FFT Spektrum, Loudness Meter, Youlean Alternative, Nugen VisLM Alternative, ITU-R BS.1770, Lautheitsstandard, Momentary LUFS, Integrated LUFS, LRA, kostenlos, Browser">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SATK Broadcast Meter – EBU R128 LUFS Meter kostenlos im Browser</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap');
+:root{--bg:#0a0a0b;--sf:#0e0e11;--bd:#1e1e24;--ac:#c8f060;--ac2:#60d4f0;--tx:#e8e8ec;--mu:#8a8a9a;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow:hidden;height:100%;background:var(--bg);color:var(--tx);font-family:'DM Mono',monospace;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(200,240,96,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(200,240,96,.018) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+
+.app{position:relative;z-index:1;display:flex;flex-direction:column;height:100vh;overflow:hidden;}
+
+/* Header */
+header{flex-shrink:0;padding:12px 22px 10px;border-bottom:1px solid var(--bd);display:flex;align-items:flex-end;justify-content:space-between;gap:16px;}
+.hdr-brand{display:flex;flex-direction:column;gap:2px;}
+.hdr-top{display:flex;align-items:baseline;gap:10px;}
+.hdr-main{font-family:'Syne',sans-serif;font-size:clamp(20px,2.8vw,32px);font-weight:800;letter-spacing:.14em;color:var(--tx);line-height:1;position:relative;}
+.hdr-main::after{content:'';position:absolute;left:0;bottom:-3px;width:100%;height:1px;background:linear-gradient(90deg,var(--ac),transparent);}
+.hdr-green{font-family:'Syne',sans-serif;font-size:clamp(11px,1.2vw,14px);font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);line-height:1;}
+.hdr-tag{font-size:9px;letter-spacing:.1em;color:var(--mu);margin-top:5px;}
+.hdr-right{display:flex;align-items:center;gap:7px;flex-wrap:wrap;}@media(max-width:700px){.hdr-status{display:none;}}
+.hdr-status{font-size:9px;letter-spacing:.06em;color:var(--mu);min-width:120px;text-align:right;}
+.hdr-status.on{color:var(--ac);}
+.cbtn{background:none;border:1px solid var(--bd);color:var(--mu);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.07em;text-transform:uppercase;padding:5px 12px;cursor:pointer;transition:all .12s;display:flex;align-items:center;gap:5px;white-space:nowrap;}
+.cbtn:hover{border-color:var(--ac);color:var(--ac);}
+.cbtn.sel{border-color:var(--ac);color:var(--ac);background:rgba(200,240,96,.06);}
+.cbtn.go{border-color:var(--ac);color:var(--ac);}
+.cbtn.stop-h:hover{border-color:#f06060;color:#f06060;}
+input[type=file]{display:none;}
+input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus{-webkit-box-shadow:0 0 0 1000px #0a0a0b inset!important;-webkit-text-fill-color:#8a8a9a!important;caret-color:#8a8a9a!important;}
+#inpDur{color-scheme:dark;}
+#inpDur::placeholder{color:#555568;opacity:1;}
+
+/* Main grid: PPM left | content right */
+.meter-area{flex:1;min-height:0;display:grid;grid-template-columns:auto 1fr;grid-template-rows:1fr;align-items:stretch;overflow:hidden;}
+
+/* PPM section */
+.ppm-col{display:flex;padding:10px 6px 6px;gap:0;border-right:1px solid var(--bd);background:var(--sf);}
+.ppm-group{display:flex;gap:3px;padding:0 7px;}
+.ppm-group+.ppm-group{border-left:1px solid var(--bd);}
+.ppm-bar{display:flex;flex-direction:column;align-items:center;width:28px;}
+.ppm-peak-lbl{font-size:8px;font-weight:600;color:var(--tx);text-align:center;height:14px;line-height:14px;margin-bottom:3px;}
+.ppm-wrap{flex:1;width:100%;min-height:0;position:relative;}
+.ppm-wrap canvas{position:absolute;inset:0;width:100%;height:100%;}
+.ppm-ch{font-size:8px;color:var(--mu);text-align:center;margin-top:3px;letter-spacing:.06em;}
+
+/* Layout: right-area = 2-column grid (Radar+Gonio links | FFT+Info rechts) */
+.right-area{display:grid;grid-template-columns:34% 66%;grid-template-rows:100%;min-height:0;overflow:hidden;height:100%;}
+.gonio-col{display:flex;flex-direction:column;border-right:1px solid var(--bd);overflow:hidden;min-height:0;}
+.fft-info-col{display:flex;flex-direction:column;min-height:0;overflow:hidden;height:100%;}
+.fft-area{flex:0 0 38%;min-height:60px;background:#08090a;border-bottom:1px solid var(--bd);position:relative;overflow:hidden;}
+.fft-area canvas{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.fft-lbl{position:absolute;top:5px;left:9px;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);pointer-events:none;}
+.radar-area{flex:1;min-height:0;background:#06060a;border-bottom:1px solid var(--bd);position:relative;overflow:hidden;}
+.radar-area canvas{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.radar-lbl{position:absolute;top:5px;left:8px;font-size:7px;letter-spacing:.08em;text-transform:uppercase;color:rgba(200,240,96,.45);pointer-events:none;}
+.radar-period{position:absolute;top:4px;right:6px;background:none;border:1px solid var(--bd);color:var(--mu);font-family:'DM Mono',monospace;font-size:7px;padding:2px 5px;cursor:pointer;letter-spacing:.06em;}
+.radar-period:hover{border-color:var(--ac);color:var(--ac);}
+.gonio-area{flex:1;min-height:0;background:#06060a;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.gonio-area canvas{display:block;}
+.g-lbl{position:absolute;font-size:9px;font-weight:700;color:rgba(40,80,120,.6);font-family:'Syne',sans-serif;}
+.g-lbl.l{left:10px;top:50%;transform:translateY(-50%);}
+.g-lbl.r{right:10px;top:50%;transform:translateY(-50%);}
+
+/* Info panel — Flex Column, kein Scroll, füllt exakt den verfügbaren Platz */
+.info{background:var(--sf);padding:8px 12px;display:flex;flex-direction:column;overflow:hidden;flex:1 1 0%;min-height:0;box-sizing:border-box;}
+.info-top{flex-shrink:0;display:grid;grid-template-columns:1fr 138px 0.65fr;gap:0 10px;align-items:start;}
+.info-corr{flex-shrink:0;}
+.info-hists{flex:1;min-height:0;display:flex;flex-direction:column;gap:0;}
+.info-hist-block{flex:0 0 80px;display:flex;flex-direction:column;padding-top:3px;}
+.hist-wrap{flex:1;min-height:0;position:relative;border-radius:3px;overflow:hidden;}
+.hist-wrap canvas{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.info-hd{font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);margin-bottom:3px;flex-shrink:0;}
+
+/* Große LUFS-Wertanzeige */
+.lufs-big-panel{display:flex;flex-direction:column;gap:4px;justify-content:flex-start;padding-top:14px;}
+.lufs-big-box{border:1px solid var(--bd);padding:5px 9px 4px;display:flex;flex-direction:column;gap:1px;transition:border-color .15s;}
+.lufs-big-box.good{border-color:rgba(200,240,96,.5);}
+.lufs-big-box.warn{border-color:rgba(255,204,48,.4);}
+.lufs-big-box.danger{border-color:rgba(240,96,96,.4);}
+.lufs-big-ch{font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);line-height:1;}
+.lufs-big-val{font-family:'DM Mono',monospace;font-size:17px;font-weight:500;line-height:1.15;letter-spacing:.02em;}
+.lufs-big-unit{font-size:7px;letter-spacing:.08em;color:var(--mu);line-height:1;}
+
+/* LUFS */
+.lufs-row{display:flex;align-items:center;gap:6px;margin-bottom:4px;}
+.lufs-lbl{font-size:8px;color:var(--mu);width:14px;flex-shrink:0;}
+.lufs-track{flex:1;height:4px;background:#0d1520;border:1px solid #1a2535;position:relative;overflow:hidden;}
+.lufs-fill{height:100%;width:0%;}
+.lf-M{background:#42a5f5;}.lf-S{background:var(--ac2);}.lf-I{background:var(--ac);}
+.lufs-tl{position:absolute;top:0;bottom:0;width:1px;background:rgba(200,240,96,.5);}
+.lufs-val{display:none;}
+
+/* Correlation */
+.corr-bg{height:10px;background:#0d150a;border:1px solid #1a251a;position:relative;margin-bottom:3px;overflow:hidden;}
+.corr-fill{position:absolute;top:0;bottom:0;}
+.corr-cl{position:absolute;top:0;bottom:0;left:50%;width:1px;background:rgba(255,255,255,.12);}
+.corr-num-row{display:flex;justify-content:space-between;align-items:center;}
+.corr-big{font-family:'DM Mono',monospace;font-size:13px;font-weight:600;color:#c8f060;}
+.corr-ends{display:flex;justify-content:space-between;font-size:7px;color:var(--mu);margin-top:1px;}
+
+/* Stats */
+.stats{border-top:1px solid var(--bd);padding-top:6px;}
+.st-row{display:flex;justify-content:space-between;margin-bottom:4px;}
+.st-l{font-size:8px;color:var(--mu);}.st-v{font-family:'DM Mono',monospace;font-size:8px;font-weight:600;color:var(--tx);}
+.st-v.good{color:var(--ac);}
+
+/* Sprachklarheits-Ampel */
+.ampel-wrap{display:flex;align-items:center;gap:7px;margin-top:5px;padding-top:4px;border-top:1px solid var(--bd);}
+.ampel{display:flex;flex-direction:column;gap:3px;background:#080a08;border:1px solid var(--bd);padding:4px;border-radius:3px;}
+.al-dot{width:10px;height:10px;border-radius:50%;transition:background .4s;}
+
+/* Toolbar */
+.toolbar{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:6px 14px;background:var(--sf);border-top:1px solid var(--bd);}
+.tb-info{font-size:8px;color:var(--mu);margin-left:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+/* ── Mobile Responsive ──────────────────────────────────────────────────── */
+@media (max-width:640px) {
+  /* Header: kompakter, Controls umbrechen */
+  header{padding:8px 10px;flex-wrap:wrap;align-items:flex-start;}
+  .hdr-tag{display:none;}
+  .hdr-status{display:none;}
+  .hdr-right{width:100%;gap:5px;}
+  .cbtn{font-size:8px;padding:4px 8px;}
+
+  /* PPM-Balken schmaler */
+  .ppm-bar{width:22px;}
+  .ppm-group{padding:0 4px;gap:1px;}
+  .ppm-col{padding:6px 3px 4px;}
+
+  /* Untere Zeile: untereinander */
+  .bottom-row{
+    grid-template-columns:1fr;
+    grid-template-rows:150px auto;
+    height:auto;
+  }
+  .gonio-area{border-right:none;border-bottom:1px solid var(--bd);}
+  .info{grid-template-columns:1fr;}
+  .info-full{grid-column:1;}
+  .corr-big{font-size:11px;}
+}
+
+@media (max-width:400px) {
+  /* Sehr kleine Screens: PPM noch schmaler, Header noch kompakter */
+  .ppm-bar{width:18px;}
+  .ppm-peak-lbl{font-size:6px;}
+  .hdr-main{font-size:18px;}
+  .hdr-green{font-size:9px;}
+}
+
+/* ── Auto-Start Overlay ── */
+#startOverlay{
+  position:fixed;inset:0;z-index:9000;
+  background:rgba(6,6,10,.82);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:14px;cursor:pointer;backdrop-filter:blur(2px);
+  transition:opacity .25s;
+}
+#startOverlay .so-icon{width:48px;height:48px;border:1.5px solid rgba(200,240,96,.5);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+#startOverlay .so-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--tx);letter-spacing:.06em;}
+#startOverlay .so-sub{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);}
+
+/* ── Download-Hinweis Toast ── */
+#satkDlHint{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  background:#0d1012;border:1px solid rgba(200,240,96,.35);
+  color:#e2e6ed;font-family:'DM Mono',monospace;font-size:11px;
+  padding:12px 18px;z-index:9999;max-width:420px;width:90%;
+  box-shadow:0 4px 24px rgba(0,0,0,.5);
+  animation:satkDlIn .25s ease;pointer-events:none;
+  line-height:1.6;
+}
+#satkDlHint strong{color:#c8f060;}
+#satkDlHint .satk-dl-file{color:#c8f060;font-size:10px;opacity:.8;display:block;margin-bottom:4px;}
+#satkDlHint .satk-dl-close{
+  position:absolute;top:7px;right:10px;cursor:pointer;
+  color:rgba(200,240,96,.5);font-size:13px;pointer-events:all;
+}
+@keyframes satkDlIn{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
+@keyframes satkDlOut{from{opacity:1;}to{opacity:0;transform:translateX(-50%) translateY(8px);}}
+
+</style>
+  <link rel="canonical" href="https://satk.tech/broadcast-meter.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://satk.tech/broadcast-meter.html">
+<meta property="og:title" content="SATK Broadcast Meter – EBU R128 LUFS Metering kostenlos">
+<meta property="og:description" content="Professioneller EBU R128 Broadcast Meter im Browser: PPM, Goniometer, LUFS M/S/I, LRA, True Peak, FFT. Kostenlose Alternative zu Youlean und Nugen VisLM.">
+<meta property="og:image" content="https://satk.tech/og-image.png">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="SATK – Sascha's Audio Toolkit">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SATK Broadcast Meter – EBU R128 LUFS Metering kostenlos">
+<meta name="twitter:description" content="Professioneller EBU R128 Broadcast Meter im Browser: PPM, Goniometer, LUFS M/S/I, LRA, True Peak, FFT. Kostenlose Alternative zu Youlean und Nugen VisLM.">
+<meta name="twitter:image" content="https://satk.tech/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Broadcast Meter",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Web Browser, iOS, Android",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+  "description": "Professioneller EBU R128 Broadcast Meter im RTW TM7 Stil: PPM, Goniometer, LUFS Momentary/Short-term/Integrated, LRA, True Peak (4× Oversampling), FFT Spektrum. Kostenlose Youlean & Nugen Alternative.",
+  "url": "https://satk.tech/broadcast-meter.html",
+  "creator": {"@type": "Person", "name": "Sascha Hömske"},
+  "isPartOf": {"@type": "WebSite", "name": "SATK – Sascha's Audio Toolkit", "url": "https://satk.tech/"}
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.wasm.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.29/dist/bundle.min.js"></script>
+</head>
+<body>
+<script>
+window.addEventListener('message',function(e){if(e.data&&e.data.type==='satk-suspend-audio'){try{stopMeter();}catch(err){}}});
+</script>
+<!-- Start-Overlay: direkt in body, außerhalb von .app -->
+<div id="startOverlay">
+  <div class="so-icon">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c8f060" stroke-width="1.5"><path d="M12 2a3 3 0 013 3v7a3 3 0 11-6 0V5a3 3 0 013-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+  </div>
+  <div class="so-title">SATK Broadcast Meter</div>
+  <div class="so-sub">Klicken zum Starten des Live-Meters</div>
+</div>
+<div class="app">
+
+<header>
+  <div class="hdr-brand">
+    <div class="hdr-top">
+      <span class="hdr-main">Broadcast</span>
+      <span class="hdr-green">Meter</span>
+    </div>
+    <div class="hdr-tag">SATK — Sascha's Audio Toolkit &nbsp;·&nbsp; EBU R128 / ITU-R BS.1770-4 &nbsp;·&nbsp; PPM · Gonio · Korrelation · FFT</div>
+  </div>
+  <div class="hdr-right">
+    <span class="hdr-status" id="hdrStatus">● Live</span>
+    <button class="cbtn" id="btnFile" onclick="document.getElementById('fIn').click()">
+      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+      Datei
+    </button>
+    <input type="file" id="fIn" accept="audio/*,.mp3,.wav,.m4a,.flac,.aac,.ogg,.aiff,.aif">
+    <button class="cbtn go stop-h" id="btnGo" style="min-width:80px;">▶ Starten</button>
+    <button class="cbtn stop-h" id="btnPause" style="display:none;">⏸</button>
+    <button class="cbtn stop-h" id="btnReset">↺</button>
+    <button class="cbtn" id="btnBatch" style="border-color:#60d4f0;color:#60d4f0;">
+      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/></svg>
+      Batch
+    </button>
+  </div>
+</header>
+
+<!-- Batch Overlay -->
+<div id="batchOverlay" style="display:none;position:absolute;inset:0;z-index:200;background:rgba(6,6,10,.96);overflow-y:auto;padding:24px 32px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+    <div>
+      <span style="font-family:Syne,sans-serif;font-size:22px;font-weight:800;color:#e8e8ec;">Batch</span>
+      <span style="font-family:Syne,sans-serif;font-size:14px;font-weight:600;color:#60d4f0;margin-left:8px;">Analyse</span>
+      <span style="font-size:9px;color:#8a8a9a;margin-left:12px;">EBU R128 · True Peak · Multi-File</span>
+    </div>
+    <div style="display:flex;gap:8px;">
+      <button class="cbtn" id="batchExport" style="display:none;">CSV Export</button>
+      <button class="cbtn" id="batchClose" style="border-color:#f06060;color:#f06060;">Schliessen</button>
+    </div>
+  </div>
+  <div id="batchDrop" style="border:2px dashed #2a2a30;border-radius:8px;padding:48px 24px;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:20px;">
+    <div style="font-family:DM Mono,monospace;font-size:12px;color:#8a8a9a;margin-bottom:8px;">Audiodateien hierher ziehen oder klicken</div>
+    <div style="font-size:9px;color:#7a7a86;">WAV · MP3 · M4A · FLAC · OGG · AIFF — unbegrenzt viele Dateien</div>
+    <input type="file" id="batchFiles" multiple accept="audio/*,.mp3,.wav,.m4a,.flac,.aac,.ogg,.aiff,.aif" style="display:none;">
+  </div>
+  <div id="batchProgress" style="display:none;margin-bottom:16px;">
+    <div style="font-family:DM Mono,monospace;font-size:10px;color:#c8f060;" id="batchStatus">Analysiere...</div>
+    <div style="height:4px;background:#1a1a20;border-radius:2px;margin-top:6px;overflow:hidden;">
+      <div id="batchBar" style="height:100%;width:0%;background:#c8f060;border-radius:2px;transition:width .2s;"></div>
+    </div>
+  </div>
+  <table id="batchTable" style="width:100%;border-collapse:collapse;font-family:DM Mono,monospace;font-size:10px;display:none;">
+    <thead>
+      <tr style="border-bottom:1px solid #2a2a30;">
+        <th style="text-align:left;padding:8px 6px;color:#8a8a9a;font-weight:500;">Datei</th>
+        <th style="text-align:right;padding:8px 6px;color:#8a8a9a;font-weight:500;">Integrated</th>
+        <th style="text-align:right;padding:8px 6px;color:#8a8a9a;font-weight:500;">LRA</th>
+        <th style="text-align:right;padding:8px 6px;color:#8a8a9a;font-weight:500;">True Peak</th>
+        <th style="text-align:right;padding:8px 6px;color:#8a8a9a;font-weight:500;">Dauer</th>
+        <th style="text-align:center;padding:8px 6px;color:#8a8a9a;font-weight:500;">R128</th>
+      </tr>
+    </thead>
+    <tbody id="batchBody"></tbody>
+  </table>
+</div>
+
+<div class="meter-area">
+
+  <!-- PPM: L R | M S -->
+  <div class="ppm-col">
+    <div class="ppm-group">
+      <div class="ppm-bar"><div class="ppm-peak-lbl" id="pN_L">—</div><div class="ppm-wrap"><canvas id="cv_L"></canvas></div><div class="ppm-ch">L</div></div>
+      <div class="ppm-bar"><div class="ppm-peak-lbl" id="pN_R">—</div><div class="ppm-wrap"><canvas id="cv_R"></canvas></div><div class="ppm-ch">R</div></div>
+    </div>
+    <div class="ppm-group">
+      <div class="ppm-bar"><div class="ppm-peak-lbl" id="pN_M" style="font-size:7px;">—</div><div class="ppm-wrap"><canvas id="cv_M"></canvas></div><div class="ppm-ch">M<br><span style="font-size:6px;color:var(--mu);">LUFS</span></div></div>
+      <div class="ppm-bar"><div class="ppm-peak-lbl" id="pN_S" style="font-size:7px;">—</div><div class="ppm-wrap"><canvas id="cv_S"></canvas></div><div class="ppm-ch">S<br><span style="font-size:6px;color:var(--mu);">LUFS</span></div></div>
+    </div>
+  </div>
+
+  <div class="right-area">
+    <!-- Links: Radar (oben) + Goniometer (unten) — volle Höhe -->
+    <div class="gonio-col">
+      <div class="radar-area">
+        <canvas id="cvRadar"></canvas>
+        <span class="radar-lbl">Loudness Radar</span>
+        <button class="radar-period" id="btnRadarPeriod" title="Messperiode">60s</button>
+      </div>
+      <div class="gonio-area">
+        <span class="g-lbl l">L</span>
+        <canvas id="cvGonio"></canvas>
+        <span class="g-lbl r">R</span>
+      </div>
+    </div>
+    <!-- Rechts: FFT (oben) + Info-Panel (unten) -->
+    <div class="fft-info-col">
+      <div class="fft-area"><span class="fft-lbl">FFT Spektrum · L+R · 8192pt · 1/3 Oct RTA</span><canvas id="cvFFT"></canvas></div>
+      <div class="info">
+        <!-- Obere Zeile: 3 Spalten (kompakt, flex-shrink:0) -->
+        <div class="info-top">
+          <!-- Spalte 1: LUFS Balken + Korrelation darunter -->
+          <div>
+            <div class="info-hd">EBU R128 Loudness</div>
+            <div class="lufs-row"><span class="lufs-lbl">M</span><div class="lufs-track"><div class="lufs-fill lf-M" id="lbM"></div><div class="lufs-tl" id="lTL"></div></div><span class="lufs-val" id="lvM">—</span></div>
+            <div class="lufs-row"><span class="lufs-lbl">S</span><div class="lufs-track"><div class="lufs-fill lf-S" id="lbS"></div></div><span class="lufs-val" id="lvS">—</span></div>
+            <div class="lufs-row"><span class="lufs-lbl">I</span><div class="lufs-track"><div class="lufs-fill lf-I" id="lbI"></div></div><span class="lufs-val" id="lvI">—</span></div>
+            <div style="display:flex;justify-content:space-between;margin-top:1px;padding-left:18px;">
+              <span style="font-size:6px;color:#1e2a1e;">−40</span>
+              <span style="font-size:6px;color:rgba(200,240,96,.45);">−23</span>
+              <span style="font-size:6px;color:#1e2a1e;">0</span>
+            </div>
+            <!-- Korrelation direkt darunter -->
+            <div style="border-top:1px solid var(--bd);margin-top:5px;padding-top:4px;">
+              <div class="info-hd">L &lt;&gt; R Korrelation</div>
+              <div class="corr-bg"><div class="corr-cl"></div><div class="corr-fill" id="cFill"></div></div>
+              <div class="corr-num-row"><span style="font-size:7px;color:var(--mu);">−1</span><span class="corr-big" id="cVal">+1.0</span><span style="font-size:7px;color:var(--mu);">+1</span></div>
+              <div class="corr-ends"><span>Aus Phase</span><span>In Phase</span></div>
+            </div>
+            <!-- Sprachklarheits-Ampel -->
+            <div class="ampel-wrap">
+              <div class="ampel">
+                <div class="al-dot" id="alG" style="background:#1a2a1a;"></div>
+                <div class="al-dot" id="alY" style="background:#2a2a14;"></div>
+                <div class="al-dot" id="alR" style="background:#2a1414;"></div>
+              </div>
+              <div style="min-width:0;">
+                <div style="font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:2px;">Sprachklarheit</div>
+                <div style="font-family:'DM Mono',monospace;font-size:11px;font-weight:600;line-height:1;" id="alLabel" style="color:var(--mu);">—</div>
+                <div style="font-size:6px;color:var(--mu);margin-top:2px;line-height:1.4;" id="alDesc">Schätzwert</div>
+              </div>
+            </div>
+          </div>
+          <!-- Spalte 2: Große LUFS Werte -->
+          <div class="lufs-big-panel">
+            <div class="lufs-big-box" id="bboxM">
+              <span class="lufs-big-ch">M · Momentary</span>
+              <span class="lufs-big-val" id="bvM" style="color:#42a5f5;">—</span>
+              <span class="lufs-big-unit">LUFS</span>
+            </div>
+            <div class="lufs-big-box" id="bboxS">
+              <span class="lufs-big-ch">S · Short-term</span>
+              <span class="lufs-big-val" id="bvS" style="color:#60d4f0;">—</span>
+              <span class="lufs-big-unit">LUFS</span>
+            </div>
+            <div class="lufs-big-box" id="bboxI">
+              <span class="lufs-big-ch">I · Integrated</span>
+              <span class="lufs-big-val" id="bvI" style="color:#c8f060;">—</span>
+              <span class="lufs-big-unit">LUFS</span>
+            </div>
+          </div>
+          <!-- Spalte 3: Stats -->
+          <div>
+            <!-- Statistik -->
+            <div style="border:1px solid rgba(200,240,96,.25);border-radius:3px;padding:5px 6px;margin-bottom:5px;">
+              <div class="info-hd">Statistik</div>
+              <div class="st-row"><span class="st-l">LRA</span><span class="st-v" id="sLRA">— LU</span></div>
+              <div class="st-row"><span class="st-l">Max M</span><span class="st-v" id="sMaxM">—</span></div>
+              <div class="st-row"><span class="st-l">Max TP</span><span class="st-v" id="sMaxTp">—</span></div>
+              <div class="st-row"><span class="st-l">Zeit</span><span class="st-v" id="sTime">0:00</span></div>
+            </div>
+            <!-- Reports -->
+            <div style="border:1px solid rgba(200,240,96,.25);border-radius:3px;padding:5px 6px;margin-bottom:5px;">
+              <div class="info-hd">Reports</div>
+              <div style="display:flex;flex-direction:column;gap:3px;">
+                <button class="cbtn" id="btnReport" style="font-size:7px;padding:3px 8px;">PDF Report</button>
+                <button class="cbtn" id="btnXML" style="font-size:7px;padding:3px 8px;">XML</button>
+              </div>
+            </div>
+            <!-- MIDI Fernsteuerung -->
+            <div style="border:1px solid rgba(200,240,96,.25);border-radius:3px;padding:5px 6px;">
+              <div style="font-size:6px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:3px;">MIDI Remote</div>
+              <div style="display:flex;gap:3px;align-items:center;">
+                <button class="cbtn" id="btnMidiStart" style="font-size:6px;padding:2px 5px;" title="MIDI-Befehl zuweisen für Start/Stop">▶ Learn</button>
+                <span id="midiStartInfo" style="font-size:6px;color:var(--mu);">—</span>
+              </div>
+              <div style="display:flex;gap:3px;align-items:center;margin-top:2px;">
+                <button class="cbtn" id="btnMidiReset" style="font-size:6px;padding:2px 5px;" title="MIDI-Befehl zuweisen für Reset">↺ Learn</button>
+                <span id="midiResetInfo" style="font-size:6px;color:var(--mu);">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prognose-Banner -->
+        <div id="predBanner" style="visibility:hidden;border-top:1px solid var(--bd);margin-top:6px;padding-top:5px;flex-shrink:0;">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;">
+            <!-- Programmdauer -->
+            <div style="border:1px solid var(--bd);padding:5px 8px;">
+              <div style="font-size:6px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);">Programmdauer</div>
+              <div style="display:flex;align-items:center;margin-top:3px;">
+                <input id="inpDur" type="text" placeholder="6000 = 60 Min" maxlength="8" autocomplete="off"
+                  style="background:transparent;border:1px solid var(--bd);color:var(--mu);font-family:'DM Mono',monospace;font-size:14px;padding:2px 4px;width:100%;outline:none;"
+                  title="Nur Ziffern: 6000 = 60:00, 40000 = 4:00:00">
+              </div>
+              <div style="font-family:'DM Mono',monospace;font-size:11px;margin-top:3px;color:#c8f060;" id="durCountdown"></div>
+              <div style="font-size:6px;color:var(--mu);margin-top:1px;" id="durHint">nur Ziffern · 6000=60min · 40000=4h · bei Datei auto</div>
+            </div>
+            <!-- Prognose Endwert -->
+            <div style="border:1px solid var(--bd);padding:5px 8px;" id="predBox">
+              <div style="font-size:6px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);">Prognose · Endwert</div>
+              <div style="font-family:'DM Mono',monospace;font-size:16px;font-weight:500;line-height:1.2;" id="predVal">—</div>
+              <div style="font-size:6px;color:var(--mu);">LUFS bei Programmende</div>
+            </div>
+            <!-- Korrekturfaktor -->
+            <div style="border:1px solid var(--bd);padding:5px 8px;" id="corrBox">
+              <div style="font-size:6px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);">Korrekturfaktor</div>
+              <div style="font-family:'DM Mono',monospace;font-size:16px;font-weight:500;line-height:1.2;" id="corrVal">—</div>
+              <div style="font-size:6px;color:var(--mu);" id="corrHint">dB Pegel­anpassung</div>
+            </div>
+            <!-- Trend -->
+            <div style="border:1px solid var(--bd);padding:5px 8px;">
+              <div style="font-size:6px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);">Trend · 30s</div>
+              <div style="font-family:'DM Mono',monospace;font-size:16px;font-weight:500;line-height:1.2;" id="trendVal">—</div>
+              <div style="font-size:6px;color:var(--mu);" id="trendHint">gegenüber Gesamt</div>
+            </div>
+          </div>
+          <div style="font-size:6px;color:var(--mu);margin-top:3px;text-align:right;" id="predBasis">Prognose-Basis: Trend-Extrapolation</div>
+        </div>
+
+        <!-- Histogramme: füllen den gesamten verbleibenden Platz -->
+        <div class="info-hists" style="border-top:1px solid var(--bd);margin-top:6px;">
+          <!-- Loudness Histogram -->
+          <div class="info-hist-block">
+            <div class="info-hd">Loudness · Verlauf <span style="color:var(--mu);font-weight:400;">M <span style="color:#42a5f5;">●</span> S <span style="color:#60d4f0;">●</span> I <span style="color:#c8f060;">―</span></span></div>
+            <div class="hist-wrap"><canvas id="cvLoud"></canvas></div>
+          </div>
+          <!-- LRA Histogram -->
+          <div class="info-hist-block">
+            <div class="info-hd" style="margin-top:3px;">Loudness Range · LRA <span style="color:var(--mu);font-weight:400;">· <span style="color:#c8f060;">5–15 LU</span> Broadcast-Norm</span></div>
+            <div class="hist-wrap"><canvas id="cvLRA"></canvas></div>
+          </div>
+          <!-- Gating Histogram -->
+          <div class="info-hist-block">
+            <div class="info-hd" style="margin-top:3px;">R128 Gating · Histogramm <span style="color:var(--mu);font-weight:400;"><span style="color:#c8f060;">●</span> contributes <span style="color:#60d4f0;">●</span> abs-gate <span style="color:#555;">●</span> below</span></div>
+            <div class="hist-wrap"><canvas id="cvGate"></canvas></div>
+            <div style="display:flex;justify-content:space-between;margin-top:2px;flex-shrink:0;">
+              <span style="font-size:6px;color:#8a8a9a;">Abs Gate −70 LUFS</span>
+              <span style="font-size:6px;color:#60d4f0;" id="gateRelLabel">Rel Gate —</span>
+            </div>
+          </div>
+          <!-- Leerkommentar entfernt -->
+        </div>
+      </div><!-- end info -->
+    </div><!-- end fft-info-col -->
+  </div><!-- end right-area -->
+</div><!-- end meter-area -->
+
+<div class="toolbar">
+  <span style="font-size:8px;color:var(--mu);">SATK Broadcast Meter · EBU R128</span>
+  <span class="tb-info" id="tbInfo">Mikrofon oder Datei wählen, dann Starten drücken</span>
+</div>
+</div>
+
+<script>
+'use strict';
+window.AudioContext=window.AudioContext||window.webkitAudioContext;
+
+// ── Browser-Kompatibilitäts-Helfer ───────────────────────────────────────────
+
+// 1. Datei sicher als ArrayBuffer lesen (Safari < 14.1 hat kein file.arrayBuffer())
+function readFileAsArrayBuffer(file) {
+  if (typeof file.arrayBuffer === 'function') {
+    return file.arrayBuffer();
+  }
+  return new Promise(function(resolve, reject) {
+    var reader = new FileReader();
+    reader.onload  = function(e) { resolve(e.target.result); };
+    reader.onerror = function()  { reject(new Error('FileReader: Lesefehler')); };
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+// 2. Audio dekodieren — Callback-Stil (funktioniert in allen Browser-Versionen)
+function safariFriendlyDecode(actx, arrayBuffer) {
+  var buf = arrayBuffer.slice ? arrayBuffer.slice(0) : arrayBuffer;
+  return new Promise(function(resolve, reject) {
+    actx.decodeAudioData(
+      buf,
+      function(decoded) { resolve(decoded); },
+      function(err)     { reject(err || new Error('decodeAudioData fehlgeschlagen')); }
+    );
+  });
+}
+
+function renderOffline(ctx) {
+  return new Promise(function(resolve, reject) {
+    ctx.oncomplete = function(e) { resolve(e.renderedBuffer); };
+    try {
+      var p = ctx.startRendering();
+      if (p && typeof p.then === 'function') p.then(resolve).catch(reject);
+    } catch(e) { reject(e); }
+  });
+}
+
+// 4. AudioContext lazy — erst beim ersten Aufruf erstellen, nie beim Laden
+function getAudioContext() {
+  var AC = window.AudioContext || window.webkitAudioContext;
+  if (!window._satkAC || window._satkAC.state === 'closed') {
+    window._satkAC = new AC();
+  }
+  if (window._satkAC.state === 'suspended') {
+    window._satkAC.resume().catch(function(){});
+  }
+  return window._satkAC;
+}
+
+async function getAudioContextReady() {
+  var ac = getAudioContext();
+  if (ac.state !== 'running') {
+    try { await ac.resume(); } catch(e) {}
+  }
+  return ac;
+}
+
+window.OfflineAudioContext=window.OfflineAudioContext||window.webkitOfflineAudioContext;
+
+// ── State ──────────────────────────────────────────────────────────────────────
+let actx=null,srcNode=null,scriptN=null,strm=null,fftAn=null;
+let lufsPaused=false;
+let running=false,inputMode='mic',t0=0,wallClockStart=0;
+let predictedTotalSec=0;
+
+// Sprachklarheit — akkumulierendes System mit Hysterese
+let speechScoreHistory = [];  // Array von {t, score} Einträgen
+let speechDisplayScore = -1;  // Angezeigte Bewertung (-1=kein Wert, -2=keine Sprache)
+let speechDisplayState = 0;   // 0=gut, 1=mittel, 2=schlecht
+let speechStateHoldUntil = 0; // Zeitpunkt bis Zustandswechsel gesperrt
+let speechRmsHistory = [];    // RMS im Sprachband für Modulation
+let speechLastActive = 0;     // Zeitstempel des letzten aktiven Signals
+let speechNonSpeechStart = 0; // Wann begann die aktuelle Nicht-Sprache-Phase
+// Akkumulierte Energie über 30s-Fenster (nicht pro Frame!)
+let speechAccum = [];         // Array von {t, speechE, consonantE, subBassE}
+let speechEnergyTrack = [];   // Speech-band Energie über Zeit für Modulations-Erkennung (ungegated)
+// ── Silero VAD (ML-basierte Spracherkennung) ──
+let vadInstance = null;       // MicVAD Instanz
+let vadSpeechProb = 0;        // Letzte Speech-Probability (0-1)
+let vadSpeechAvg = 0;         // Gleitender Durchschnitt der Speech-Prob
+let vadReady = false;         // VAD geladen und bereit
+let vadStreamDest = null;     // MediaStreamDestination für VAD-Feed
+const SPEECH_WINDOW = 5;      // Bewertungsfenster in Sekunden (kürzer = reagiert schneller)
+const SPEECH_HOLD = 1;        // Sekunden die ein Zustand mindestens gehalten wird
+const SPEECH_NOSPEECH_DELAY = 3; // Sekunden bis "Keine Sprache" angezeigt wird
+let intelFrameCount = 0; // 0=unbekannt, >0=gesetzt durch User oder Datei
+let kC=null,stPL,stRL,stPR,stRR;
+const GS=8192;
+let gL=new Float32Array(GS),gR=new Float32Array(GS),gIdx=0;
+let corr=1.0;
+const pH={L:-80,R:-80,M:-80,S:-80},pD={L:0,R:0,M:0,S:0};
+const PMIN=-60,PMAX=9;
+
+// ── K-weighting (ITU-R BS.1770-4) — exakte Koeffizienten ──────────────────────
+function mkK(sr){
+  // Exakte Koeffizienten für gängige Sample Rates (aus ITU-Referenzimplementation)
+  if(sr>=46000&&sr<=50000) return{
+    preB:[1.53512485958697,-2.69169618940638,1.19839281085285],
+    preA:[1,-1.69065929318241,.73248077421585],
+    hpB:[1,-2,1],
+    hpA:[1,-1.99004745483398,.99007225036621]
+  };
+  if(sr>=43000&&sr<=45200) return{
+    preB:[1.5308412300498355,-2.6509799951547297,1.1690790799215869],
+    preA:[1,-1.6636551132560204,.7125954280732254],
+    hpB:[1,-2,1],
+    hpA:[1,-1.9891696736297957,.9891990357870394]
+  };
+  if(sr>=95000&&sr<=97000) return{
+    preB:[1.5346687670341565,-2.7179963507482220,1.2166861263498240],
+    preA:[1,-1.7265786076998700,.7598301412930940],
+    hpB:[1,-2,1],
+    hpA:[1,-1.9950812823840170,.9950911844498830]
+  };
+  // Fallback: Bilinear Transform für beliebige Raten
+  const pi=Math.PI;
+  function shelf(f0,db,Q){
+    const K=Math.tan(pi*f0/sr),K2=K*K,Vh=Math.pow(10,db/20),Vb=Math.pow(Vh,0.4996667741545416);
+    const a0=1+K/(Q*Vb)+K2;
+    return{b:[(Vh+Vb*K/Q+K2)/a0, 2*(K2-Vh)/a0, (Vh-Vb*K/Q+K2)/a0],a:[1, 2*(K2-1)/a0, (1-K/(Q*Vb)+K2)/a0]};
+  }
+  function hp(f0,Q){
+    const K=Math.tan(pi*f0/sr),K2=K*K,a0=1+K/Q+K2;
+    return{b:[1/a0,-2/a0,1/a0],a:[1, 2*(K2-1)/a0, (1-K/Q+K2)/a0]};
+  }
+  const s1=shelf(1681.974450955533,3.999843904,0.7071752369554196);
+  const s2=hp(38.13547087602444,0.5003270373238773);
+  return{preB:s1.b,preA:s1.a,hpB:s2.b,hpA:s2.a};
+}
+function mst(){return{x1:0,x2:0,y1:0,y2:0};}
+function bqf(x,b,a,s){
+  const y=b[0]*x+b[1]*s.x1+b[2]*s.x2-a[1]*s.y1-a[2]*s.y2;
+  s.x2=s.x1;s.x1=x;s.y2=s.y1;s.y1=y;return y;
+}
+
+// ── True Peak — 4× Oversampling (ITU-R BS.1770-4 Anhang 2) ────────────────────
+// Polyphasen-FIR-Filter, 4 Phasen × 12 Koeffizienten = 48-Tap Interpolationsfilter
+// Koeffizienten: Kaiser-Fenster, fc=0.45*fs, β=9.5 (identisch iZotope/TC-Methode)
+const TP_PHASES = 4;
+const TP_TAPS   = 12; // pro Phase
+// Vorberechnete Polyphasen-Koeffizienten (normiert auf Einheitsgewinn)
+const TP_COEFFS = [
+  // Phase 0 (Original-Sample — Durchgang)
+  Float32Array.from([0,0,0,0,0,1,0,0,0,0,0,0]),
+  // Phase 1 (0.25 Sample-Versatz)
+  Float32Array.from([-0.000228,0.001009,-0.002786,0.006242,-0.013372,0.520516,
+                      0.558068,-0.071678,0.028912,-0.010417,0.003055,-0.000621]),
+  // Phase 2 (0.5 Sample-Versatz)
+  Float32Array.from([-0.000439,0.001900,-0.005181,0.011460,-0.024168,0.500000,
+                      0.500000,-0.024168,0.011460,-0.005181,0.001900,-0.000439]),
+  // Phase 3 (0.75 Sample-Versatz)
+  Float32Array.from([-0.000621,0.003055,-0.010417,0.028912,-0.071678,0.558068,
+                      0.520516,-0.013372,0.006242,-0.002786,0.001009,-0.000228]),
+];
+
+// Schieberegister pro Kanal (L und R)
+let tpBufL = new Float32Array(TP_TAPS);
+let tpBufR = new Float32Array(TP_TAPS);
+let tpBufPos = 0;
+
+function truePeakFrame(samples, buf) {
+  // Gibt den True-Peak-Wert (linear) für diesen Block zurück
+  let peak = 0;
+  for (let n = 0; n < samples.length; n++) {
+    // Sample in Schieberegister schieben
+    buf[tpBufPos % TP_TAPS] = samples[n];
+    // 4 interpolierte Samples pro Original-Sample berechnen
+    for (let p = 0; p < TP_PHASES; p++) {
+      const h = TP_COEFFS[p];
+      let acc = 0;
+      for (let k = 0; k < TP_TAPS; k++) {
+        acc += h[k] * buf[(tpBufPos - k + TP_TAPS*2) % TP_TAPS];
+      }
+      const v = Math.abs(acc);
+      if (v > peak) peak = v;
+    }
+    tpBufPos = (tpBufPos + 1) % TP_TAPS;
+  }
+  return peak;
+}
+
+// ── Loudness State ─────────────────────────────────────────────────────────────
+// EBU R128: Momentary = 400ms Fenster, 75% Overlap (Hop = 100ms)
+// Short-term = 3s Fenster, 66% Overlap (Hop = 1s)
+// Wir akkumulieren in 100ms-Blöcken (kleinster gemeinsamer Nenner)
+const HOP_MS    = 100;        // Basisblock: 100ms
+const M_HOPS    = 4;          // Momentary: 4 × 100ms = 400ms
+const ST_HOPS   = 30;         // Short-term: 30 × 100ms = 3s
+const ST_STRIDE = 10;         // Short-term Stride: 1s (10 Hops)
+
+// Ringpuffer für 100ms-Blöcke (max 30 Blöcke = 3s)
+const RING_SIZE = 32;
+let   ring      = new Float64Array(RING_SIZE);   // gemittelte K-Energie pro Block
+let   ringHead  = 0;                             // nächster Schreibzeiger
+let   ringFill  = 0;                             // wie viele Blöcke befüllt
+
+// Aktuell befüllter Block
+let hopBuf = null, hopIdx = 0, hopSz = 0;
+
+// Integrierte Lautheit: alle gültigen Blöcke (für Gating-Algorithmus)
+let allBlocks = [];   // Float64Array wäre besser aber Array ist einfacher
+let lastFileReportData = null; // Gespeicherte Messdaten der letzten Datei (für Report nach Auto-Live)
+
+// Max-Werte
+let maxM = -Infinity, maxTp = -Infinity;
+
+// Gating Histogram: block-level LUFS history for visualization
+let gateHistory = []; // {lufs, gated} per 100ms block — nur noch für lastHistLen-Trigger
+let gateRelThreshold = -Infinity;
+
+// Loudness Histogram: M/S/I values per 100ms block for Youlean-style display
+let loudHistory = []; // nur noch für lastHistLen-Trigger
+let lraHistory  = []; // LRA in LU pro 100ms-Block (null = noch zu wenig Daten)
+
+// ── Verteilungs-Histogramm Bins ────────────────────────────────────────────────
+// Loudness: M-Werte, -59 bis -5 LUFS, 1 LU / Bin = 54 Bins
+const LBINS = 54, LBIN_MIN = -59;
+let loudBins = new Float32Array(LBINS); // Häufigkeit pro Bin
+
+// Gating: Block-LUFS, -70 bis -5 LUFS, 1 LU / Bin = 65 Bins
+const GBINS = 65, GBIN_MIN = -70;
+let gateBinsContrib = new Float32Array(GBINS); // grün: zählt zur Integration
+let gateBinsAbs     = new Float32Array(GBINS); // cyan: über Abs-Gate, unter Rel-Gate
+let gateBinsBelow   = new Float32Array(GBINS); // dunkel: unter -70 LUFS
+
+// Offscreen-Buffer (werden bei den neuen Static-Histogrammen nicht mehr benötigt,
+// aber Variablen bleiben für sauberes Reset)
+const loudState = { buf: null };
+const gateState = { buf: null };
+
+// ── Hilfsfunktionen ────────────────────────────────────────────────────────────
+
+// Summe von ring[head-n .. head-1] (n Blöcke, neueste zuerst)
+function ringSum(n) {
+  let s = 0;
+  const count = Math.min(n, ringFill);
+  for (let i = 0; i < count; i++) {
+    s += ring[(ringHead - 1 - i + RING_SIZE) % RING_SIZE];
+  }
+  return { sum: s, count };
+}
+
+function blockToLufs(meanSquare) {
+  return meanSquare > 0 ? -0.691 + 10*Math.log10(meanSquare) : -Infinity;
+}
+
+// Momentary LUFS (400ms, neuester Stand)
+function momentaryLufs() {
+  const { sum, count } = ringSum(M_HOPS);
+  if (count < 1) return -Infinity;
+  return blockToLufs(sum / count);
+}
+
+// Short-term LUFS (3s)
+function shorttermLufs() {
+  const { sum, count } = ringSum(ST_HOPS);
+  if (count < 1) return -Infinity;
+  return blockToLufs(sum / count);
+}
+
+// Integrated LUFS — EBU R128 Doppel-Gating exakt nach BS.1770
+function integratedLufs() {
+  if (allBlocks.length < 1) return -Infinity;
+  // Absoluter Gate: -70 LUFS
+  const absGate = Math.pow(10, (-70 + 0.691) / 10);
+  const g1 = allBlocks.filter(v => v > absGate);
+  if (!g1.length) return -Infinity;
+  // Relativer Gate: -10 LU unterhalb des ungewichteten Mittelwerts
+  const mean1 = g1.reduce((a,b)=>a+b,0) / g1.length;
+  const relGate = mean1 * Math.pow(10, -10/10);
+  const g2 = allBlocks.filter(v => v > relGate);
+  if (!g2.length) return -Infinity;
+  return blockToLufs(g2.reduce((a,b)=>a+b,0) / g2.length);
+}
+
+// LRA — EBU R128 exakt: Short-term-Blöcke (3s Fenster, 1s Stride) mit Gating
+let stBlocks = [];   // gesammelte Short-term-Block-Energien
+let stHopCounter = 0;
+
+function computeLRA() {
+  if (stBlocks.length < 2) return null;
+  // Absoluter Gate -70 LUFS
+  const absGate = Math.pow(10, (-70 + 0.691) / 10);
+  const g1 = stBlocks.filter(v => v > absGate);
+  if (g1.length < 2) return null;
+  // Relativer Gate -20 LU
+  const mean1 = g1.reduce((a,b)=>a+b,0) / g1.length;
+  const relGate = mean1 * Math.pow(10, -20/10);
+  const g2 = g1.filter(v => v > relGate).sort((a,b) => a-b);
+  if (g2.length < 2) return null;
+  const l95 = blockToLufs(g2[Math.floor(g2.length * 0.95)]);
+  const l10 = blockToLufs(g2[Math.floor(g2.length * 0.10)]);
+  return l95 - l10;
+}
+
+// ── PPM Drawing (L/R — True Peak, dBFS) ────────────────────────────────────────
+function grLR(c,h){const g=c.createLinearGradient(0,0,0,h);g.addColorStop(0,'#ff1a1a');g.addColorStop(.06,'#ff3810');g.addColorStop(.15,'#ff7a14');g.addColorStop(.28,'#ffd000');g.addColorStop(.5,'#c8d818');g.addColorStop(1,'#50aa14');return g;}
+
+function d2y(db,H){return H*(1-Math.max(0,Math.min(1,(db-PMIN)/(PMAX-PMIN))));}
+
+function drawBar(id,db,ch){
+  const cv=document.getElementById(id);
+  if(!cv||!cv.parentElement)return;
+  const dpr=window.devicePixelRatio||1;
+  const W=cv.parentElement.offsetWidth,H=cv.parentElement.offsetHeight;
+  if(!W||!H)return;
+  if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);}
+  const c=cv.getContext('2d');
+  c.setTransform(dpr,0,0,dpr,0,0);
+  c.fillStyle='#06080a';c.fillRect(0,0,W,H);
+
+  // Scale marks (dBFS)
+  const ticks=[-60,-54,-48,-42,-36,-30,-24,-18,-15,-12,-9,-6,-3,0,3,6,9];
+  c.font='6px DM Mono,monospace';c.textAlign='right';
+  ticks.forEach(t=>{
+    const y=d2y(t,H);
+    c.strokeStyle=t===0?'rgba(255,255,255,.2)':t>0?'rgba(255,80,80,.15)':'rgba(255,255,255,.06)';
+    c.lineWidth=t===0?1:.5;
+    c.beginPath();c.moveTo(0,y);c.lineTo(W-10,y);c.stroke();
+    if(t%6===0||t===0||t===3||t===6||t===9){
+      c.fillStyle='rgba(255,255,255,.45)';
+      c.fillText(t===0?'0':t.toString(),W-1,y+2);
+    }
+  });
+
+  // Bar
+  const bw=W-12,yb=d2y(db,H);
+  if(H-yb>0){c.fillStyle=grLR(c,H);c.fillRect(0,yb,bw,H-yb);}
+
+  // Peak hold
+  if(db>pH[ch]){pH[ch]=db;pD[ch]=0;}else{pD[ch]++;if(pD[ch]>45)pH[ch]-=0.25;}
+  if(pH[ch]>PMIN){
+    const yp=d2y(pH[ch],H);
+    c.fillStyle=pH[ch]>=0?'#ff1a1a':pH[ch]>=-9?'#ffd000':'#ffffff';
+    c.fillRect(0,yp,bw,2);
+  }
+
+  // Label
+  const el=document.getElementById('pN_'+ch);
+  if(el){
+    el.textContent=pH[ch]>PMIN?pH[ch].toFixed(1):'—';
+    el.style.color=pH[ch]>=0?'#ff2020':pH[ch]>=-9?'#ffd000':'#e8e8ec';
+  }
+}
+
+// ── LUFS Bar Drawing (M/S — Momentary & Short-term LUFS) ──────────────────────
+// Skala: −59 LUFS (unten) bis −5 LUFS (oben), absolut
+// Ziel bei −23 LUFS (EBU R128 Broadcast)
+const LU_FLOOR=-59, LU_CEIL=-5;
+const lufsBarPeak={M:-80,S:-80}, lufsBarDecay={M:0,S:0};
+
+function lu2y(lufs,H){
+  return H*(1-Math.max(0,Math.min(1,(lufs-LU_FLOOR)/(LU_CEIL-LU_FLOOR))));
+}
+
+function drawLufsBar(id,lufs,ch){
+  const cv=document.getElementById(id);
+  if(!cv||!cv.parentElement)return;
+  const dpr=window.devicePixelRatio||1;
+  const W=cv.parentElement.offsetWidth,H=cv.parentElement.offsetHeight;
+  if(!W||!H)return;
+  if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);}
+  const c=cv.getContext('2d');
+  c.setTransform(dpr,0,0,dpr,0,0);
+  c.fillStyle='#06080a';c.fillRect(0,0,W,H);
+
+  // y-Position der −23 LUFS Linie (Broadcast-Ziel)
+  const yTarget=lu2y(-23,H);
+
+  // Skala-Ticks (absolute LUFS)
+  const luTicks=[-55,-50,-45,-40,-35,-30,-25,-23,-20,-15,-10,-5];
+  c.font='6px DM Mono,monospace';c.textAlign='right';
+  luTicks.forEach(t=>{
+    const y=lu2y(t,H);
+    const isTarget=t===-23;
+    const isHot=t>-23;
+    c.strokeStyle=isTarget?'rgba(200,240,96,.55)':isHot?'rgba(255,80,80,.2)':'rgba(255,255,255,.06)';
+    c.lineWidth=isTarget?1.5:.5;
+    c.beginPath();c.moveTo(0,y);c.lineTo(W-10,y);c.stroke();
+    if(t%10===0||t===-23||t===-5){
+      c.fillStyle=isTarget?'rgba(200,240,96,.7)':isHot?'rgba(255,120,120,.5)':'rgba(255,255,255,.22)';
+      c.fillText(t.toString(),W-1,y+2);
+    }
+  });
+
+  if(lufs<=-70){
+    const el=document.getElementById('pN_'+ch);
+    if(el){el.textContent='—';el.style.color='#e8e8ec';}
+    return;
+  }
+
+  const bw=W-12;
+
+  // Balken: unterhalb −23 LUFS = blau, oberhalb = orange→rot
+  if(lufs>LU_FLOOR){
+    if(lufs<=-23){
+      const yb=lu2y(lufs,H);
+      const gr=c.createLinearGradient(0,yTarget,0,H);
+      gr.addColorStop(0,'#40ccff');gr.addColorStop(.5,'#1a88e0');gr.addColorStop(1,'#0a408a');
+      c.fillStyle=gr;c.fillRect(0,yb,bw,H-yb);
+    } else {
+      // Blauer Sockel bis −23
+      const grB=c.createLinearGradient(0,yTarget,0,H);
+      grB.addColorStop(0,'#40ccff');grB.addColorStop(.5,'#1a88e0');grB.addColorStop(1,'#0a408a');
+      c.fillStyle=grB;c.fillRect(0,yTarget,bw,H-yTarget);
+      // Roter Teil von −23 bis aktuell
+      const yb=lu2y(lufs,H);
+      const grR=c.createLinearGradient(0,yb,0,yTarget);
+      grR.addColorStop(0,lufs>=-10?'#ff1010':'#ff4020');
+      grR.addColorStop(.5,'#ff6030');
+      grR.addColorStop(1,'#ffaa20');
+      c.fillStyle=grR;c.fillRect(0,yb,bw,yTarget-yb);
+    }
+  }
+
+  // Peak-Hold Linie
+  if(lufs>lufsBarPeak[ch]){lufsBarPeak[ch]=lufs;lufsBarDecay[ch]=0;}
+  else{lufsBarDecay[ch]++;if(lufsBarDecay[ch]>40)lufsBarPeak[ch]=Math.max(LU_FLOOR,lufsBarPeak[ch]-0.2);}
+  if(lufsBarPeak[ch]>LU_FLOOR){
+    const yp=lu2y(lufsBarPeak[ch],H);
+    c.fillStyle=lufsBarPeak[ch]>=-10?'#ff3030':lufsBarPeak[ch]>=-20?'#ffcc30':'#ffffff';
+    c.fillRect(0,yp,bw,2);
+  }
+
+  // Numerischer Wert (LU relativ zu −23, für Peak-Label oben)
+  const lu=lufs+23;
+  const el=document.getElementById('pN_'+ch);
+  if(el){
+    el.textContent=(lu>=0?'+':'')+lu.toFixed(1)+' LU';
+    el.style.color=lu>0?'#ff4040':lu>-3?'#ffcc30':'#40ccff';
+  }
+}
+
+// ── Loudness Radar (RTW/TC-Style) ─────────────────────────────────────────────
+const RADAR_PERIODS = [60, 120, 300, 600]; // Sekunden pro Umdrehung
+let radarPeriodIdx = 0;
+let radarPeriodSec = RADAR_PERIODS[0];
+
+document.getElementById('btnRadarPeriod').addEventListener('click', () => {
+  radarPeriodIdx = (radarPeriodIdx + 1) % RADAR_PERIODS.length;
+  radarPeriodSec = RADAR_PERIODS[radarPeriodIdx];
+  const lbl = radarPeriodSec >= 60 ? (radarPeriodSec/60)+'min' : radarPeriodSec+'s';
+  document.getElementById('btnRadarPeriod').textContent = lbl;
+});
+
+function drawRadar() {
+  try {
+  const cv = document.getElementById('cvRadar');
+  if (!cv || !cv.parentElement) return;
+  const dpr = window.devicePixelRatio || 1;
+  const par = cv.parentElement;
+  const W = par.offsetWidth, H = par.offsetHeight;
+  if (!W || !H) return;
+  const cW = Math.round(W*dpr), cH = Math.round(H*dpr);
+  if (cv.width !== cW || cv.height !== cH) { cv.width = cW; cv.height = cH; }
+
+  const c = cv.getContext('2d');
+  c.setTransform(dpr, 0, 0, dpr, 0, 0);
+  c.fillStyle = '#06060a';
+  c.fillRect(0, 0, W, H);
+
+  const cx = W/2, cy = H/2;
+  const maxR = Math.min(W, H)/2 - 14;
+  if (maxR < 10) return;
+
+  const LMIN = -40, LMAX = -5;
+  function lToR(l) { return maxR * Math.max(0, Math.min(1, (l-LMIN)/(LMAX-LMIN))); }
+  function tToA(t) { return (t % radarPeriodSec) / radarPeriodSec * Math.PI*2 - Math.PI/2; }
+
+  // ── Zielzone −24…−22 LUFS ──
+  c.beginPath();
+  c.arc(cx, cy, lToR(-22), 0, Math.PI*2);
+  c.arc(cx, cy, lToR(-24), 0, Math.PI*2, true);
+  c.fillStyle = 'rgba(200,240,96,.07)';
+  c.fill();
+
+  // ── Konzentrische Ringe ──
+  [-35,-30,-25,-23,-20,-15,-10].forEach(l => {
+    const r = lToR(l);
+    if (r < 2) return;
+    const isTarget = l === -23;
+    c.beginPath(); c.arc(cx, cy, r, 0, Math.PI*2);
+    c.strokeStyle = isTarget ? 'rgba(200,240,96,.5)' : 'rgba(255,255,255,.08)';
+    c.lineWidth = isTarget ? 1.2 : .5;
+    c.stroke();
+    // Beschriftung am oberen Scheitel
+    c.fillStyle = isTarget ? 'rgba(200,240,96,.65)' : 'rgba(255,255,255,.22)';
+    c.font = `${5.5}px DM Mono,monospace`; c.textAlign = 'center';
+    c.fillText(l+'', cx, cy - r - 2);
+  });
+
+  // ── Zeittick-Markierungen ──
+  const numTicks = radarPeriodSec <= 60 ? 12 : radarPeriodSec <= 120 ? 12 : 10;
+  for (let i = 0; i < numTicks; i++) {
+    const a = (i/numTicks)*Math.PI*2 - Math.PI/2;
+    const inner = maxR + 2, outer = maxR + (i===0?9:5);
+    c.beginPath();
+    c.moveTo(cx + Math.cos(a)*maxR, cy + Math.sin(a)*maxR);
+    c.lineTo(cx + Math.cos(a)*outer, cy + Math.sin(a)*outer);
+    c.strokeStyle = i===0 ? 'rgba(255,255,255,.4)' : 'rgba(255,255,255,.15)';
+    c.lineWidth = i===0 ? 1.2 : .5;
+    c.stroke();
+  }
+
+  // ── Kreisrahmen ──
+  c.beginPath(); c.arc(cx, cy, maxR, 0, Math.PI*2);
+  c.strokeStyle = 'rgba(255,255,255,.12)'; c.lineWidth = 1; c.stroke();
+
+  if (!loudHistory.length) {
+    c.fillStyle = 'rgba(255,255,255,.35)'; c.font = '8px DM Mono,monospace';
+    c.textAlign = 'center'; c.fillText('Messung starten', cx, cy+3);
+    return;
+  }
+
+  // ── Verlaufsdaten als gefüllte Sektoren ──
+  const now = (loudHistory.length - 1) * 0.1;
+  const anglePerBlock = (0.1 / radarPeriodSec) * Math.PI * 2;
+  const currentRevolution = Math.floor(now / radarPeriodSec);
+
+  loudHistory.forEach((blk, idx) => {
+    const lufs = blk.m;
+    if (!isFinite(lufs) || lufs <= LMIN) return;
+    const t = idx * 0.1;
+    const r = lToR(Math.min(LMAX, lufs));
+    const a0 = tToA(t) - anglePerBlock*0.5;
+    const a1 = a0 + anglePerBlock * 1.02; // leicht überlappend für lückenlose Füllung
+
+    const rev = Math.floor(t / radarPeriodSec);
+    const age = currentRevolution - rev;
+    if (age > 2) return; // max 2 Umdrehungen Verlauf
+
+    // Alpha nach Alter: aktuell=hell, −1 Umdrehung=mittel, −2=sehr dunkel
+    const alpha = age === 0 ? 0.75 : age === 1 ? 0.18 : 0.06;
+
+    // Farbe nach LUFS-Abstand zum Ziel
+    const d = lufs + 23;
+    let r_, g_, b_;
+    if (d > 3)        { r_=240; g_=80;  b_=40;  }  // zu laut
+    else if (d > 0.5) { r_=255; g_=180; b_=30;  }  // knapp über Ziel
+    else if (d > -2)  { r_=170; g_=230; b_=60;  }  // Ziel ✓
+    else if (d > -5)  { r_=50;  g_=140; b_=220; }  // leicht darunter
+    else              { r_=30;  g_=80;  b_=160; }  // zu leise
+
+    c.beginPath();
+    c.moveTo(cx, cy);
+    c.arc(cx, cy, r, a0, a1);
+    c.closePath();
+    c.fillStyle = `rgba(${r_},${g_},${b_},${alpha})`;
+    c.fill();
+  });
+
+  // ── Aktueller Zeiger (Sweep-Linie) ──
+  const sweepA = tToA(now);
+  const grad = c.createLinearGradient(cx, cy,
+    cx + Math.cos(sweepA)*maxR, cy + Math.sin(sweepA)*maxR);
+  grad.addColorStop(0, 'rgba(255,255,255,0)');
+  grad.addColorStop(1, 'rgba(255,255,255,.35)');
+  c.beginPath();
+  c.moveTo(cx, cy);
+  c.lineTo(cx + Math.cos(sweepA)*maxR, cy + Math.sin(sweepA)*maxR);
+  c.strokeStyle = grad; c.lineWidth = 1.5; c.stroke();
+
+  // Aktueller Punkt (heller Kreis)
+  const curLufs = loudHistory[loudHistory.length-1].m;
+  if (isFinite(curLufs) && curLufs > LMIN) {
+    const curR = lToR(Math.min(LMAX, curLufs));
+    c.beginPath();
+    c.arc(cx + Math.cos(sweepA)*curR, cy + Math.sin(sweepA)*curR, 3.5, 0, Math.PI*2);
+    c.fillStyle = '#ffffff'; c.fill();
+  }
+
+  // Mittelpunkt
+  c.beginPath(); c.arc(cx, cy, 2, 0, Math.PI*2);
+  c.fillStyle = 'rgba(255,255,255,.4)'; c.fill();
+
+  } catch(e) { console.error('Radar:', e); }
+}
+
+// ── Goniometer ────────────────────────────────────────────────────────────────
+const cvG=document.getElementById('cvGonio');
+let gTrail=null;
+
+function drawGonio(){
+  const par=cvG.parentElement;
+  const dpr=window.devicePixelRatio||1;
+  const W=par.offsetWidth,H=par.offsetHeight;
+  if(!W||!H)return;
+  const SZ=Math.min(W,H)-24;
+  if(cvG.width!==Math.round(W*dpr)){cvG.width=Math.round(W*dpr);cvG.height=Math.round(H*dpr);cvG.style.width=W+'px';cvG.style.height=H+'px';gTrail=null;}
+  if(!gTrail){gTrail=document.createElement('canvas');gTrail.width=cvG.width;gTrail.height=cvG.height;const t=gTrail.getContext('2d');t.fillStyle='#06060a';t.fillRect(0,0,cvG.width,cvG.height);}
+
+  const ct=gTrail.getContext('2d');
+  // Fade
+  ct.globalAlpha=.84;ct.fillStyle='#06060a';ct.fillRect(0,0,cvG.width,cvG.height);ct.globalAlpha=1;
+  // Dots
+  const cx=cvG.width/2,cy=cvG.height/2,r=SZ/2*dpr;
+  for(let i=0;i<GS;i+=4){
+    const idx=(gIdx+i)%GS;
+    const l=gL[idx],ri=gR[idx];
+    const x=cx+(l-ri)/Math.SQRT2*r*.88;
+    const y=cy-(l+ri)/Math.SQRT2*r*.88;
+    const br=Math.min(1,Math.sqrt(l*l+ri*ri)*4);
+    ct.fillStyle=`rgba(28,168,230,${.35+br*.55})`;
+    ct.fillRect(x-.5,y-.5,1.5,1.5);
+  }
+
+  const c=cvG.getContext('2d');
+  c.setTransform(1,0,0,1,0,0);
+  c.drawImage(gTrail,0,0);
+
+  // Grid overlay
+  c.save();c.scale(dpr,dpr);
+  const cxN=W/2,cyN=H/2,rN=SZ/2;
+  c.strokeStyle='rgba(28,80,130,.3)';c.lineWidth=1;
+  c.beginPath();c.arc(cxN,cyN,rN,0,Math.PI*2);c.stroke();
+  [.5,.25].forEach(f=>{c.strokeStyle='rgba(28,80,130,.15)';c.lineWidth=.5;c.beginPath();c.arc(cxN,cyN,rN*f,0,Math.PI*2);c.stroke();});
+  c.strokeStyle='rgba(28,80,130,.2)';c.lineWidth=.5;
+  c.beginPath();c.moveTo(cxN-rN,cyN);c.lineTo(cxN+rN,cyN);c.moveTo(cxN,cyN-rN);c.lineTo(cxN,cyN+rN);c.stroke();
+  c.setLineDash([3,5]);c.strokeStyle='rgba(28,80,130,.15)';
+  const d=rN/Math.SQRT2;
+  c.beginPath();c.moveTo(cxN-d,cyN-d);c.lineTo(cxN+d,cyN+d);c.moveTo(cxN+d,cyN-d);c.lineTo(cxN-d,cyN+d);c.stroke();c.setLineDash([]);
+  // Labels
+  c.fillStyle='rgba(28,80,130,.5)';c.font='bold 8px DM Mono,monospace';c.textAlign='center';
+  c.fillText('M',cxN,cyN-rN-4);c.fillText('S',cxN,cyN+rN+11);
+  c.restore();
+}
+
+// ── FFT ───────────────────────────────────────────────────────────────────────
+const cvF=document.getElementById('cvFFT');
+
+function drawFFT(){
+  const dpr=window.devicePixelRatio||1;
+  const par=cvF.parentElement;
+  const W=par.offsetWidth||par.clientWidth;
+  const H=par.offsetHeight||par.clientHeight;
+  if(!W||!H)return;
+  if(cvF.width!==Math.round(W*dpr)){
+    cvF.width=Math.round(W*dpr);cvF.height=Math.round(H*dpr);
+    cvF.style.width=W+'px';cvF.style.height=H+'px';
+    fftSmoothed=null;
+    fftPeakHold=null;
+  }
+  const c=cvF.getContext('2d');
+  c.setTransform(dpr,0,0,dpr,0,0);
+  const nyq=actx?actx.sampleRate/2:24000;
+  const pL=32,pR=6,pT=16,pB=22;
+  const pW=W-pL-pR,pH=H-pT-pB;
+  const dMin=-60,dMax=6;
+  const CAL=+17; // Kalibriert auf TC Clarity M (Power/RMS, 1kHz @ -20dBFS = -14dB)
+
+  c.fillStyle='#08090a';c.fillRect(0,0,W,H);
+
+  // ── Grid: dB lines ─────────────────────────────────────────────
+  [-60,-48,-36,-24,-18,-12,-6,0,6].forEach(db=>{
+    const y=pT+(1-(db-dMin)/(dMax-dMin))*pH;
+    const isZero=db===0;
+    c.strokeStyle=isZero?'rgba(255,255,255,.22)':db>0?'rgba(255,80,80,.12)':db%12===0?'rgba(255,255,255,.08)':'rgba(255,255,255,.04)';
+    c.lineWidth=isZero?1:.5;
+    c.beginPath();c.moveTo(pL,y);c.lineTo(W-pR,y);c.stroke();
+    if(db%12===0||db===0||db===6||db===-6){
+      c.fillStyle=isZero?'rgba(255,255,255,.55)':db>0?'rgba(255,80,80,.5)':'rgba(255,255,255,.3)';
+      c.font='7px DM Mono,monospace';c.textAlign='right';
+      c.fillText(db.toString(),pL-3,y+2);
+    }
+  });
+
+  // ── Grid: Frequency lines ──────────────────────────────────────
+  const logMin=Math.log2(20),logMax=Math.log2(nyq),logRange=logMax-logMin;
+  [20,50,100,200,500,1000,2000,5000,10000,20000].forEach(f=>{
+    if(f>nyq||f<20)return;
+    const x=pL+((Math.log2(f)-logMin)/logRange)*pW;
+    c.strokeStyle='rgba(255,255,255,.06)';c.lineWidth=.5;
+    c.beginPath();c.moveTo(x,pT);c.lineTo(x,pT+pH);c.stroke();
+    c.fillStyle='rgba(255,255,255,.5)';c.font='7px DM Mono,monospace';c.textAlign='center';
+    c.fillText(f>=1000?(f/1000)+'k':f.toString(),x,pT+pH+12);
+  });
+  // Minor grid
+  [30,40,60,80,150,300,400,600,800,1500,3000,4000,6000,8000,15000].forEach(f=>{
+    if(f>nyq||f<20)return;
+    const x=pL+((Math.log2(f)-logMin)/logRange)*pW;
+    c.strokeStyle='rgba(255,255,255,.025)';c.lineWidth=.5;
+    c.beginPath();c.moveTo(x,pT);c.lineTo(x,pT+pH);c.stroke();
+  });
+
+  if(!fftAn)return;
+
+  // ── Glatte Kurve statt Balken ────────────────────────────────────
+  const data=new Float32Array(fftAn.frequencyBinCount);
+  fftAn.getFloatFrequencyData(data);
+  const bins=data.length;
+  const binHz=nyq/bins;
+  if(!fftSmoothed||fftSmoothed.length!==bins) fftSmoothed=new Float32Array(bins).fill(dMin);
+
+  // Sammle Y-Werte pro Pixel
+  const pts=new Float32Array(pW);
+  for(let px=0;px<pW;px++){
+    const normX=px/pW;
+    const freq=Math.pow(2,logMin+normX*logRange);
+    if(freq<20||freq>nyq){pts[px]=pT+pH;continue;}
+    const fLo=freq/Math.pow(2,1/6);
+    const fHi=freq*Math.pow(2,1/6);
+    const bLo=Math.max(1,Math.floor(fLo/binHz));
+    const bHi=Math.min(bins-1,Math.ceil(fHi/binHz));
+    let sum=0,cnt=0;
+    for(let b=bLo;b<=bHi;b++){sum+=Math.pow(10,(data[b]+CAL)/10);cnt++;}
+    let raw=cnt>0?10*Math.log10(sum):dMin;
+    // Kein Tilt-Filter: Bandpass-Summe zeigt korrekte Band-Energie
+    // Pink Noise = flat, White Noise steigt 3 dB/Oktave (wie TC Clarity)
+    raw=Math.max(dMin,Math.min(dMax,raw));
+    const binIdx=Math.min(bins-1,Math.max(1,Math.floor(freq/binHz)));
+    let prev=fftSmoothed[binIdx];
+    if(!isFinite(prev)) prev=dMin;
+    const coeff=raw>prev?0.35:0.88;
+    const sm=prev+(1-coeff)*(raw-prev);
+    fftSmoothed[binIdx]=sm;
+    const db=Math.max(dMin,Math.min(dMax,sm));
+    pts[px]=pT+(1-(db-dMin)/(dMax-dMin))*pH;
+  }
+
+  // ── Peak Hold ──────────────────────────────────────────────────────
+  if (!fftPeakHold || fftPeakHold.length !== pW) {
+    fftPeakHold = new Float32Array(pW).fill(pT + pH);
+    fftPeakDecay = new Float64Array(pW).fill(0);
+  }
+  const nowMs = performance.now();
+  for (let i = 0; i < pW; i++) {
+    if (pts[i] < fftPeakHold[i]) {
+      // Neuer Peak
+      fftPeakHold[i] = pts[i];
+      fftPeakDecay[i] = nowMs + FFT_PEAK_HOLD_MS;
+    } else if (nowMs > fftPeakDecay[i]) {
+      // Hold-Zeit abgelaufen → langsam fallen lassen
+      fftPeakHold[i] += FFT_PEAK_DECAY * (pT + pH - pT) / (dMax - dMin) * 0.5;
+      if (fftPeakHold[i] > pT + pH) fftPeakHold[i] = pT + pH;
+    }
+  }
+
+  // Peak Hold Linie zeichnen
+  c.strokeStyle = 'rgba(255,100,80,.6)';
+  c.lineWidth = 0.8;
+  c.beginPath();
+  let started = false;
+  for (let i = 0; i < pW; i++) {
+    if (fftPeakHold[i] < pT + pH - 1) {
+      if (!started) { c.moveTo(pL + i, fftPeakHold[i]); started = true; }
+      else c.lineTo(pL + i, fftPeakHold[i]);
+    }
+  }
+  c.stroke();
+
+  // Gefüllte Kurve mit Bezier-Glättung
+  const base=pT+pH;
+  const gr=c.createLinearGradient(0,pT,0,base);
+  gr.addColorStop(0,'rgba(200,240,96,.85)');
+  gr.addColorStop(0.5,'rgba(200,240,96,.35)');
+  gr.addColorStop(1,'rgba(200,240,96,.04)');
+  c.fillStyle=gr;
+  c.beginPath();
+  c.moveTo(pL,base);
+  c.lineTo(pL,pts[0]);
+  for(let i=1;i<pW;i++){
+    const x0=pL+i-1,x1=pL+i;
+    const y0=pts[i-1],y1=pts[i];
+    const cx=(x0+x1)/2;
+    c.bezierCurveTo(cx,y0,cx,y1,x1,y1);
+  }
+  c.lineTo(pL+pW-1,base);
+  c.closePath();
+  c.fill();
+
+  // Obere Konturlinie
+  c.strokeStyle='rgba(200,240,96,.7)';
+  c.lineWidth=1.2;
+  c.beginPath();
+  c.moveTo(pL,pts[0]);
+  for(let i=1;i<pW;i++){
+    const x0=pL+i-1,x1=pL+i;
+    const cx=(x0+x1)/2;
+    c.bezierCurveTo(cx,pts[i-1],cx,pts[i],x1,pts[i]);
+  }
+  c.stroke();
+}
+
+// FFT smoothing buffer
+let fftSmoothed=null;
+let fftPeakHold=null;       // Peak-Hold-Werte pro Pixel
+let fftPeakDecay=null;      // Zeitstempel des letzten Peak-Resets
+const FFT_PEAK_HOLD_MS=2000; // Peak-Hold-Zeit in ms
+const FFT_PEAK_DECAY=0.15;   // dB pro Frame Abfall nach Hold
+
+// ── LUFS Anzeige ───────────────────────────────────────────────────────────────
+const LUFS_FLOOR=-40, LUFS_CEIL=0;
+function lufsW(l){return Math.max(0,Math.min(100,(l-LUFS_FLOOR)/(LUFS_CEIL-LUFS_FLOOR)*100))+'%';}
+function setLufs(m,s,i){
+  document.getElementById('lbM').style.width=m>-70?lufsW(m):'0%';
+  document.getElementById('lbS').style.width=s>-70?lufsW(s):'0%';
+  document.getElementById('lbI').style.width=i>-70?lufsW(i):'0%';
+  document.getElementById('lTL').style.left=lufsW(-23);
+
+  // Große Wertanzeige
+  function setBig(valId, boxId, v, baseCol){
+    const ve=document.getElementById(valId);
+    const be=document.getElementById(boxId);
+    if(!ve||!be)return;
+    if(v<=-70){
+      ve.textContent='—';ve.style.color='var(--mu)';
+      be.className='lufs-big-box';return;
+    }
+    ve.textContent=v.toFixed(1);
+    const d=Math.abs(v-(-23));
+    if(d<=1){ve.style.color=baseCol;be.className='lufs-big-box good';}
+    else if(d<=3){ve.style.color='#ffcc30';be.className='lufs-big-box warn';}
+    else{ve.style.color='#f06060';be.className='lufs-big-box danger';}
+  }
+  setBig('bvM','bboxM',m,'#42a5f5');
+  setBig('bvS','bboxS',s,'#60d4f0');
+  setBig('bvI','bboxI',i,'#c8f060');
+}
+
+// ── Correlation ────────────────────────────────────────────────────────────────
+function setCorr(v){
+  const cl=Math.max(-1,Math.min(1,v));
+  document.getElementById('cVal').textContent=(cl>=0?'+':'')+cl.toFixed(2);
+  const col=cl>=.5?'#c8f060':cl>=0?'rgba(200,240,96,.7)':cl>=-.5?'#ffcc30':'#ff4040';
+  document.getElementById('cVal').style.color=col;
+  document.getElementById('cFill').style.background=col;
+  const pct=(cl+1)/2*100;
+  if(cl>=0){document.getElementById('cFill').style.left='50%';document.getElementById('cFill').style.width=(pct-50)+'%';}
+  else{document.getElementById('cFill').style.left=pct+'%';document.getElementById('cFill').style.width=(50-pct)+'%';}
+}
+
+// ── Audio processing ───────────────────────────────────────────────────────────
+function processAudio(ib){
+  const nCh = ib.numberOfChannels;
+  const L   = ib.getChannelData(0);
+  const len = L.length;
+
+  // Mono-Erkennung via Signal-Inhalt (numberOfChannels unzuverlässig bei Mikrofon)
+  let ch1HasSignal = false;
+  if (nCh > 1) {
+    const ch1 = ib.getChannelData(1);
+    for (let i = 0; i < Math.min(len, 512); i++) {
+      if (Math.abs(ch1[i]) > 1e-3) { ch1HasSignal = true; break; }
+    }
+  }
+  const isMono = !ch1HasSignal;
+  const R = isMono ? L : ib.getChannelData(1);
+
+  // ── True Peak (4× Oversampling, ITU-R BS.1770-4 Anhang 2) ────────────────
+  // Beide Kanäle unabhängig messen, höchsten Wert nehmen
+  const tpL = truePeakFrame(L, tpBufL);
+  const tpR = isMono ? tpL : truePeakFrame(R, tpBufR);
+  const tpMax = Math.max(tpL, tpR);
+  const dbL = tpL > 0 ? 20*Math.log10(tpL) : PMIN;
+  const dbR = tpR > 0 ? 20*Math.log10(tpR) : PMIN;
+  if (tpMax > 0) {
+    const dbMax = 20*Math.log10(tpMax);
+    if (dbMax > maxTp) maxTp = dbMax;
+  }
+  drawBar('cv_L', dbL, 'L');
+  drawBar('cv_R', dbR, 'R');
+
+  // ── Goniometer ────────────────────────────────────────────────────────────
+  for (let i = 0; i < len; i += 2) {
+    gL[gIdx] = L[i]; gR[gIdx] = R[i];
+    gIdx = (gIdx + 1) % GS;
+  }
+
+  // ── Korrelation ───────────────────────────────────────────────────────────
+  if (isMono) {
+    corr = 1.0;
+  } else {
+    let sLR=0, sLL=0, sRR=0;
+    for (let i=0; i<len; i++) {
+      sLR+=L[i]*R[i]; sLL+=L[i]*L[i]; sRR+=R[i]*R[i];
+    }
+    const dn = Math.sqrt(sLL*sRR);
+    corr = dn > 0 ? sLR/dn : 1;
+  }
+
+  // ── K-gewichtete Lautheit ─────────────────────────────────────────────────
+  if (!kC || lufsPaused) return;
+  for (let i = 0; i < len; i++) {
+    const wL = bqf(bqf(L[i],kC.preB,kC.preA,stPL), kC.hpB,kC.hpA,stRL);
+    const ms = isMono
+      ? wL*wL
+      : wL*wL + bqf(bqf(R[i],kC.preB,kC.preA,stPR), kC.hpB,kC.hpA,stRR)**2;
+
+    hopBuf[hopIdx++] = ms;
+
+    if (hopIdx >= hopSz) {
+      // 100ms-Block abgeschlossen
+      const blockEnergy = hopBuf.reduce((a,b)=>a+b,0) / hopSz;
+
+      // Ringpuffer aktualisieren
+      ring[ringHead] = blockEnergy;
+      ringHead = (ringHead + 1) % RING_SIZE;
+      if (ringFill < RING_SIZE) ringFill++;
+
+      // Für Integrated LUFS merken
+      allBlocks.push(blockEnergy);
+
+      // Gating Histogram: Track which blocks pass the gates
+      const blkLufs = blockEnergy > 0 ? -0.691 + 10*Math.log10(blockEnergy) : -Infinity;
+      const absGateL = -70;
+      // Compute current relative gate
+      const absGateLin = Math.pow(10, (-70+0.691)/10);
+      const absPassed = allBlocks.filter(v=>v>absGateLin);
+      let relGateL = -Infinity;
+      if(absPassed.length>0){
+        const ungatedMean = absPassed.reduce((a,b)=>a+b,0)/absPassed.length;
+        relGateL = -0.691 + 10*Math.log10(ungatedMean) - 10;
+      }
+      gateRelThreshold = relGateL;
+      gateHistory.push({ lufs: blkLufs, contributes: blkLufs > absGateL && blkLufs > relGateL });
+
+      // Loudness-Bins: M (Momentary) akkumulieren
+      const curM = momentaryLufs();
+      const curS = shorttermLufs();
+      const curI = integratedLufs();
+      loudHistory.push({ m: curM, s: curS, i: curI });
+      lraHistory.push(computeLRA()); // null wenn noch zu wenig Daten
+      const lbIdx = Math.floor(curM - LBIN_MIN);
+      if (lbIdx >= 0 && lbIdx < LBINS) loudBins[lbIdx]++;
+
+      // Gating-Bins: Block-LUFS mit Gate-Status akkumulieren
+      const gbIdx = Math.floor(blkLufs - GBIN_MIN);
+      if (gbIdx >= 0 && gbIdx < GBINS) {
+        if (blkLufs > absGateL && blkLufs > relGateL) gateBinsContrib[gbIdx]++;
+        else if (blkLufs > absGateL)                   gateBinsAbs[gbIdx]++;
+        else                                            gateBinsBelow[gbIdx]++;
+      }
+
+      // Short-term LRA: alle 10 Blöcke (= 1s) einen Short-term-Wert aufzeichnen
+      stHopCounter++;
+      if (stHopCounter >= ST_STRIDE) {
+        stHopCounter = 0;
+        const { sum, count } = ringSum(ST_HOPS);
+        if (count >= ST_HOPS) {  // erst ab 3s Füllstand
+          stBlocks.push(sum / count);
+        }
+      }
+
+      hopIdx = 0;
+    }
+  }
+}
+
+// ── Zeitachsen-Hilfsfunktionen ─────────────────────────────────────────────────
+function fmtDuration(sec) {
+  const h = Math.floor(sec / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  const s = Math.floor(sec % 60);
+  if (h > 0) return h + ':' + (m<10?'0':'') + m + ':' + (s<10?'0':'') + s;
+  return m + ':' + (s<10?'0':'') + s;
+}
+
+function fmtWallTime(ms) {
+  const d = new Date(ms);
+  const h = d.getHours(), m = d.getMinutes(), s = d.getSeconds();
+  return (h<10?'0':'') + h + ':' + (m<10?'0':'') + m + ':' + (s<10?'0':'') + s;
+}
+
+function niceTickSec(totalSec) {
+  // Ziel: 4–8 sichtbare Ticks
+  const steps = [2,5,10,15,30,60,120,300,600,900,1800,3600,7200];
+  for (const t of steps) {
+    if (totalSec / t >= 3 && totalSec / t <= 9) return t;
+  }
+  return Math.max(1, Math.round(totalSec / 6));
+}
+
+function drawTimeAxis(ctx, n, iW, cH, cW, dpr, padT, padB) {
+  if (n < 2) return;
+  const totalSec = n * 0.1;
+  const tickSec  = niceTickSec(totalSec);
+  const isLive   = inputMode === 'mic';
+
+  ctx.font = `${8*dpr}px DM Mono,monospace`;
+  ctx.textAlign = 'center';
+
+  for (let t = tickSec; t < totalSec - tickSec * 0.3; t += tickSec) {
+    const px = Math.round((t / totalSec) * iW);
+
+    // Tick-Linie
+    ctx.strokeStyle = 'rgba(255,255,255,.1)';
+    ctx.lineWidth   = dpr;
+    ctx.setLineDash([]);
+    ctx.beginPath();
+    ctx.moveTo(px + .5, padT);
+    ctx.lineTo(px + .5, cH - padB + 3*dpr);
+    ctx.stroke();
+
+    // Label
+    const label = isLive ? fmtWallTime(wallClockStart + t * 1000) : fmtDuration(t);
+    ctx.fillStyle = 'rgba(255,255,255,.35)';
+    // Label nur wenn genug Platz nach rechts (nicht über Y-Achse)
+    if (px + 18*dpr < iW) ctx.fillText(label, px, cH - 1.5*dpr);
+  }
+}
+
+// ── Histogramme: Kompletter Programmverlauf, immer eingepasst ─────────────────
+// Kein Scrollen — alle Blöcke seit Start werden immer komplett dargestellt.
+// Mehr Blöcke → mehr Verdichtung (wie DAW-Wellenform).
+// 10fps via setInterval → kein Flackern, kein rAF-Zusammenspiel.
+
+const loudImgStore = { cW: 0, cH: 0 };
+const gateImgStore  = { cW: 0, cH: 0 };
+const lraImgStore   = { cW: 0, cH: 0 };
+
+function sizeCanvas(cv, store) {
+  const dpr = window.devicePixelRatio || 1;
+  const cW  = Math.round(cv.clientWidth  * dpr);
+  const cH  = Math.round(cv.clientHeight * dpr);
+  if (!cW || !cH) return false;
+  cv.width = cW; cv.height = cH;
+  store.cW = cW; store.cH = cH;
+  return true;
+}
+
+function lufsToY(v, dMin, dMax, iH, padT) {
+  if (!isFinite(v)) return padT + iH;
+  return padT + (1 - Math.max(0, Math.min(1, (v - dMin) / (dMax - dMin)))) * iH;
+}
+
+function drawLoudHistogram() {
+  try {
+  const { cW, cH } = loudImgStore;
+  if (!cW || !cH) return;                // noch nicht initialisiert
+  const cv = document.getElementById('cvLoud');
+  if (!cv) return;
+  const dpr = window.devicePixelRatio || 1;
+  const ctx = cv.getContext('2d');
+
+  ctx.fillStyle = '#08090a';
+  ctx.fillRect(0, 0, cW, cH);
+
+  const dMin = -59, dMax = -5;
+  const padR = 22 * dpr, padT = 2 * dpr, padB = 18 * dpr;
+  const iW = cW - padR, iH = cH - padT - padB;
+
+  const y22 = lufsToY(-22, dMin, dMax, iH, padT);
+  const y24 = lufsToY(-24, dMin, dMax, iH, padT);
+  const y23 = lufsToY(-23, dMin, dMax, iH, padT);
+  ctx.fillStyle = 'rgba(200,240,96,.05)';
+  ctx.fillRect(0, y22, iW, y24 - y22);
+  ctx.fillStyle = 'rgba(200,240,96,.2)';
+  ctx.fillRect(0, y23, iW, 1);
+
+  if (!loudHistory.length) {
+    ctx.fillStyle = '#666';
+    ctx.font = `${8*dpr}px DM Mono,monospace`;
+    ctx.textAlign = 'center';
+    ctx.fillText('Starte Messung…', iW / 2, cH / 2 + 3 * dpr);
+  } else {
+    const n   = loudHistory.length;
+    const bpp = n / iW;
+
+    for (let px = 0; px < iW; px++) {
+      const b0 = Math.floor(px * bpp);
+      const b1 = Math.min(n, Math.max(b0 + 1, Math.ceil((px + 1) * bpp)));
+      let sumM = 0, sumS = 0, sumI = 0, cnt = 0;
+      for (let b = b0; b < b1; b++) {
+        const blk = loudHistory[b];
+        if (isFinite(blk.m)) sumM += blk.m;
+        if (isFinite(blk.s)) sumS += blk.s;
+        if (isFinite(blk.i)) sumI += blk.i;
+        cnt++;
+      }
+      if (!cnt) continue;
+      const avgM = sumM / cnt, avgS = sumS / cnt, avgI = sumI / cnt;
+
+      if (isFinite(avgS)) {
+        const ys = lufsToY(avgS, dMin, dMax, iH, padT);
+        ctx.fillStyle = 'rgba(18,68,80,.65)';
+        ctx.fillRect(px, ys, 1, padT + iH - ys);
+      }
+      if (isFinite(avgM)) {
+        const ym = lufsToY(avgM, dMin, dMax, iH, padT);
+        const d = avgM + 23;
+        ctx.fillStyle = d > 2 ? 'rgba(210,80,20,.85)'
+                      : d > -3 ? 'rgba(50,130,210,.85)'
+                      : 'rgba(22,55,130,.65)';
+        ctx.fillRect(px, ym, 1, padT + iH - ym);
+      }
+      if (isFinite(avgI)) {
+        const yi = lufsToY(avgI, dMin, dMax, iH, padT);
+        ctx.fillStyle = 'rgba(200,240,96,.95)';
+        ctx.fillRect(px, Math.max(padT, yi - 1), 1, 2);
+      }
+    }
+  }
+
+  ctx.font = `${6*dpr}px DM Mono,monospace`; ctx.textAlign = 'right';
+  ctx.fillStyle = 'rgba(255,255,255,.45)';
+  [-55,-45,-35,-25,-15].forEach(db => {
+    ctx.fillText(db, cW - 2, lufsToY(db, dMin, dMax, iH, padT) + 2*dpr);
+  });
+  ctx.fillStyle = 'rgba(200,240,96,.5)';
+  ctx.fillText('-23', cW - 2, y23 + 2*dpr);
+
+  drawTimeAxis(ctx, loudHistory.length, iW, cH, cW, dpr, padT, padB);
+
+  } catch(e) { console.error('LoudHist:', e); }
+}
+
+function drawGateHistogram() {
+  try {
+  const { cW, cH } = gateImgStore;
+  if (!cW || !cH) return;
+  const cv = document.getElementById('cvGate');
+  if (!cv) return;
+  const dpr = window.devicePixelRatio || 1;
+  const ctx = cv.getContext('2d');
+
+  const rl = document.getElementById('gateRelLabel');
+  if (rl) rl.textContent = isFinite(gateRelThreshold)
+    ? 'Rel Gate ' + gateRelThreshold.toFixed(1) + ' LUFS' : 'Rel Gate —';
+
+  ctx.fillStyle = '#08090a';
+  ctx.fillRect(0, 0, cW, cH);
+
+  const dMin = -70, dMax = -5;
+  const padR = 22 * dpr, padT = 2 * dpr, padB = 18 * dpr;
+  const iW = cW - padR, iH = cH - padT - padB;
+
+  if (!gateHistory.length) {
+    ctx.fillStyle = '#666';
+    ctx.font = `${8*dpr}px DM Mono,monospace`;
+    ctx.textAlign = 'center';
+    ctx.fillText('Starte Messung…', iW / 2, cH / 2 + 3 * dpr);
+  } else {
+    const n   = gateHistory.length;
+    const bpp = n / iW;
+
+    for (let px = 0; px < iW; px++) {
+      const b0 = Math.floor(px * bpp);
+      const b1 = Math.min(n, Math.max(b0 + 1, Math.ceil((px + 1) * bpp)));
+      let cntC = 0, cntA = 0, sumL = 0;
+      for (let b = b0; b < b1; b++) {
+        const blk = gateHistory[b];
+        sumL += isFinite(blk.lufs) ? blk.lufs : dMin;
+        if (blk.contributes)       cntC++;
+        else if (blk.lufs > -70)   cntA++;
+      }
+      const cnt = b1 - b0;
+      const avgL = sumL / cnt;
+      const y = lufsToY(Math.max(dMin, Math.min(dMax, avgL)), dMin, dMax, iH, padT);
+
+      if (cntC >= cntA && cntC > 0)
+        ctx.fillStyle = 'rgba(200,240,96,.75)';
+      else if (cntA > 0)
+        ctx.fillStyle = 'rgba(60,180,200,.5)';
+      else
+        ctx.fillStyle = 'rgba(70,70,90,.5)';
+      ctx.fillRect(px, y, 1, padT + iH - y);
+    }
+  }
+
+  const absY = lufsToY(-70, dMin, dMax, iH, padT);
+  const relY = isFinite(gateRelThreshold) ? lufsToY(gateRelThreshold, dMin, dMax, iH, padT) : -1;
+  if (absY > padT && absY < padT+iH) {
+    ctx.strokeStyle='rgba(255,68,68,.5)'; ctx.lineWidth=dpr;
+    ctx.setLineDash([3*dpr,3*dpr]);
+    ctx.beginPath(); ctx.moveTo(0,absY+.5); ctx.lineTo(iW,absY+.5); ctx.stroke();
+    ctx.setLineDash([]);
+  }
+  if (relY > padT && relY < padT+iH) {
+    ctx.strokeStyle='rgba(96,212,240,.7)'; ctx.lineWidth=dpr;
+    ctx.setLineDash([2*dpr,2*dpr]);
+    ctx.beginPath(); ctx.moveTo(0,relY+.5); ctx.lineTo(iW,relY+.5); ctx.stroke();
+    ctx.setLineDash([]);
+  }
+  ctx.font = `${6*dpr}px DM Mono,monospace`; ctx.textAlign='right';
+  ctx.fillStyle='rgba(255,255,255,.45)';
+  [-60,-50,-40,-30,-20,-10].forEach(db => {
+    const y2 = lufsToY(db, dMin, dMax, iH, padT);
+    if (y2 > padT+4*dpr && y2 < padT+iH-2*dpr) ctx.fillText(db, cW-2, y2+2*dpr);
+  });
+
+  drawTimeAxis(ctx, gateHistory.length, iW, cH, cW, dpr, padT, padB);
+
+  } catch(e) { console.error('GateHist:', e); }
+}
+
+function drawLRAHistogram() {
+  try {
+  const { cW, cH } = lraImgStore;
+  if (!cW || !cH) return;
+  const cv = document.getElementById('cvLRA');
+  if (!cv) return;
+  const dpr = window.devicePixelRatio || 1;
+  const ctx = cv.getContext('2d');
+
+  ctx.fillStyle = '#08090a';
+  ctx.fillRect(0, 0, cW, cH);
+
+  // LRA-Skala: 0–25 LU, Norm 5–15 LU (EBU R128 Broadcast)
+  const dMin = 0, dMax = 25;
+  const padR = 22 * dpr, padT = 2 * dpr, padB = 18 * dpr;
+  const iW = cW - padR, iH = cH - padT - padB;
+
+  function lraY(v) {
+    return padT + (1 - Math.max(0, Math.min(1, (v - dMin) / (dMax - dMin)))) * iH;
+  }
+
+  // Norm-Zone 5–15 LU hervorheben
+  const y5  = lraY(5),  y15 = lraY(15);
+  ctx.fillStyle = 'rgba(200,240,96,.06)';
+  ctx.fillRect(0, y15, iW, y5 - y15);
+
+  // Norm-Linien
+  ctx.setLineDash([3*dpr, 3*dpr]); ctx.lineWidth = dpr;
+  ctx.strokeStyle = 'rgba(200,240,96,.35)';
+  ctx.beginPath(); ctx.moveTo(0, y5);  ctx.lineTo(iW, y5);  ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(0, y15); ctx.lineTo(iW, y15); ctx.stroke();
+  ctx.setLineDash([]);
+
+  if (!lraHistory.length || lraHistory.every(v => v === null)) {
+    ctx.fillStyle = '#666';
+    ctx.font = `${8*dpr}px DM Mono,monospace`;
+    ctx.textAlign = 'center';
+    ctx.fillText('Starte Messung…', iW / 2, cH / 2 + 3*dpr);
+  } else {
+    const n   = lraHistory.length;
+    const bpp = n / iW;
+
+    for (let px = 0; px < iW; px++) {
+      const b0 = Math.floor(px * bpp);
+      const b1 = Math.min(n, Math.max(b0 + 1, Math.ceil((px + 1) * bpp)));
+      let sum = 0, cnt = 0;
+      for (let b = b0; b < b1; b++) {
+        if (lraHistory[b] !== null) { sum += lraHistory[b]; cnt++; }
+      }
+      if (!cnt) continue;
+      const avg = sum / cnt;
+      const y   = lraY(avg);
+      const bh  = Math.max(1, padT + iH - y);
+
+      // Farbe: zu komprimiert / Norm / zu dynamisch
+      if (avg < 3)       ctx.fillStyle = 'rgba(255,80,40,.85)';   // zu wenig: rot
+      else if (avg < 5)  ctx.fillStyle = 'rgba(255,160,30,.85)';  // grenzwertig: orange
+      else if (avg <= 15)ctx.fillStyle = 'rgba(200,240,96,.85)';  // Norm: grün
+      else if (avg <= 20)ctx.fillStyle = 'rgba(255,160,30,.85)';  // etwas zu hoch: orange
+      else               ctx.fillStyle = 'rgba(255,80,40,.85)';   // viel zu hoch: rot
+      ctx.fillRect(px, y, 1, bh);
+    }
+  }
+
+  // Y-Achse: LU-Werte
+  ctx.font = `${6*dpr}px DM Mono,monospace`; ctx.textAlign = 'right';
+  [0, 5, 10, 15, 20, 25].forEach(lu => {
+    const y = lraY(lu);
+    if (y < padT + 2*dpr || y > padT + iH) return;
+    ctx.fillStyle = (lu === 5 || lu === 15)
+      ? 'rgba(200,240,96,.55)' : 'rgba(255,255,255,.22)';
+    ctx.fillText(lu + ' LU', cW - 2, y + 2*dpr);
+  });
+
+  // Zeitachse
+  drawTimeAxis(ctx, lraHistory.length, iW, cH, cW, dpr, padT, padB);
+
+  } catch(e) { console.error('LRAHist:', e); }
+}
+
+// ── Sprachklarheit-Schätzwert ─────────────────────────────────────────────────
+// Akkumulierendes System: sammelt Einzelmessungen über SPEECH_WINDOW Sekunden,
+// zeigt den Median an, und wechselt die Ampel erst nach SPEECH_HOLD Sekunden
+// anhaltender Verschlechterung. Funktioniert für Sprache, Musik und Live-Events.
+
+function tickSpeechRms() {
+  if (!fftAn || !running) return;
+  const sr = actx ? actx.sampleRate : 44100;
+  const data = new Float32Array(fftAn.frequencyBinCount);
+  fftAn.getFloatFrequencyData(data);
+  const binHz = sr / fftAn.fftSize;
+  let e = 0, cnt = 0;
+  for (let b = 0; b < data.length; b++) {
+    const freq = b * binHz;
+    if (freq >= 300 && freq <= 4000) {
+      e += Math.pow(10, Math.max(-120, data[b]) / 10); cnt++;
+    }
+  }
+  const rms = cnt > 0 ? Math.sqrt(e / cnt) : 0;
+  const rmsDb = rms > 0 ? 20 * Math.log10(rms) : -120;
+  if (rmsDb < -80) return; // Signalpause → nicht messen
+  speechLastActive = performance.now();
+  speechRmsHistory.push(rms);
+  if (speechRmsHistory.length > 100) speechRmsHistory.shift();
+}
+
+function computeIntelligibility() {
+  if (!fftAn || !running) return;
+
+  const sr = actx ? actx.sampleRate : 44100;
+  const data = new Float32Array(fftAn.frequencyBinCount);
+  fftAn.getFloatFrequencyData(data);
+  const binHz = sr / fftAn.fftSize;
+
+  // ── Spektral-Analyse ──────────────────────────────────────────────
+  let speechE = 0, consonantE = 0, totalE = 0;
+  let wSum = 0, eSum = 0; // für Spectral Centroid
+  for (let b = 0; b < data.length; b++) {
+    const freq = b * binHz;
+    const dB = Math.max(-120, data[b]);
+    const lin = Math.pow(10, dB / 10);
+    totalE += lin;
+    if (freq >= 100 && freq <= 8000) { wSum += freq * lin; eSum += lin; }
+    if (freq >= 300 && freq <= 4000) speechE += lin;
+    if (freq >= 2000 && freq <= 6000) consonantE += lin;
+  }
+
+  // Stille → einfrieren
+  const totalDb = totalE > 0 ? 10 * Math.log10(totalE) : -120;
+  if (totalDb < -90) return;
+
+  // ── Spectral Centroid tracken (100-8000 Hz) ───────────────────────
+  // Centroid = gewichteter Frequenzschwerpunkt
+  // Sprache: springt ständig (Vokal ~800Hz ↔ Konsonant ~3000Hz) → hoher CV
+  // Musik: bleibt stabiler → niedriger CV
+  const centroid = eSum > 1e-15 ? wSum / eSum : 0;
+  speechEnergyTrack.push(centroid);
+  if (speechEnergyTrack.length > 50) speechEnergyTrack.shift(); // 5s bei 10fps
+
+  // ── Sprach-Erkennung ────────────────────────────────────────────────
+  // Warmup
+  if (speechEnergyTrack.length < 20) {
+    speechDisplayScore = -1; // zeigt "Analysiere…"
+    return;
+  }
+
+  // Primär: Silero VAD (ML-basiert, professionell)
+  // Fallback: StableRatio-Heuristik wenn VAD nicht geladen
+  let isSpeech;
+  if (vadReady) {
+    // vadSpeechAvg ist gleitender Durchschnitt der Speech-Probability (0-1)
+    // > 0.25 = Sprache erkannt, < 0.15 = keine Sprache
+    isSpeech = vadSpeechAvg > 0.25;
+  } else {
+    // Fallback: Centroid-Stabilität
+    const arr = speechEnergyTrack;
+    let stableCount = 0;
+    for (let i = 1; i < arr.length; i++) {
+      if (Math.abs(arr[i] - arr[i-1]) < 50) stableCount++;
+    }
+    isSpeech = (stableCount / (arr.length - 1)) <= 0.55;
+  }
+
+  if (!isSpeech) {
+    if (!speechNonSpeechStart) speechNonSpeechStart = performance.now();
+    if ((performance.now() - speechNonSpeechStart) > SPEECH_NOSPEECH_DELAY * 1000) {
+      speechDisplayScore = -2;
+      speechAccum = [];
+    }
+    return;
+  }
+  speechNonSpeechStart = 0;
+
+  // ── Klarheits-Bewertung ───────────────────────────────────────────
+  const now = performance.now() / 1000;
+  speechAccum.push({ t: now, speechE, consonantE });
+  const cutoff = now - SPEECH_WINDOW;
+  while (speechAccum.length > 0 && speechAccum[0].t < cutoff) speechAccum.shift();
+  if (speechAccum.length < 5) return;
+
+  // Akkumulierte Konsonanten-Ratio
+  let totalSpeechE = 0, totalConsonantE = 0;
+  const newest = speechAccum[speechAccum.length - 1].t;
+  for (const s of speechAccum) {
+    const w = 0.1 + 0.9 * (1 - (newest - s.t) / SPEECH_WINDOW);
+    totalSpeechE += s.speechE * w;
+    totalConsonantE += s.consonantE * w;
+  }
+  const windowCR = totalSpeechE > 1e-12 ? totalConsonantE / totalSpeechE : 0;
+  // Kalibrierung anhand TV-Beitrag (live gemessen):
+  // Weibliche Hauptsprecherin: CR~0.050 → 71% (Gut)
+  // Männliche Stimme: CR~0.033 → 47% (Mittel)
+  // Leicht leiser als männlich: CR~0.025 → 36% (Schlecht)
+  const clarityScore = Math.max(0, Math.min(1, windowCR / 0.06));
+
+  // Pegelfaktor: RELATIVER Pegel — vergleicht aktuelle Sprach-Energie
+  // mit dem Peak der letzten Sekunden. Leise Stimme im Vergleich → niedrig.
+  const recentCutoff = now - 3;
+  let recentE = 0, recentN = 0;
+  for (let i = speechAccum.length - 1; i >= 0 && speechAccum[i].t > recentCutoff; i--) {
+    recentE += speechAccum[i].speechE; recentN++;
+  }
+  const avgRecentDb = recentN > 0 && recentE > 0 ? 10 * Math.log10(recentE / recentN) : -120;
+  // Absoluter Pegelfaktor (steilerer Übergang)
+  const absLevel = Math.max(0, Math.min(1, (avgRecentDb + 62) / 16));
+  // Relativer Pegelfaktor: Vergleich mit Peak im Fenster
+  let peakE = 0;
+  for (const s of speechAccum) { if (s.speechE > peakE) peakE = s.speechE; }
+  const peakDb = peakE > 0 ? 10 * Math.log10(peakE) : -120;
+  const relDb = avgRecentDb - peakDb; // dB unter Peak (negativ)
+  // 0 dB unter Peak = 1.0, -15 dB = 0.0
+  const relLevel = Math.max(0, Math.min(1, (relDb + 15) / 15));
+  // Kombiniert: geometrisches Mittel
+  const levelFactor = Math.sqrt(absLevel * relLevel);
+
+  speechDisplayScore = clarityScore * levelFactor;
+}
+
+function updateAmpel() {
+  const alG = document.getElementById('alG');
+  const alY = document.getElementById('alY');
+  const alR = document.getElementById('alR');
+  const alLabel = document.getElementById('alLabel');
+  const alDesc  = document.getElementById('alDesc');
+  if (!alG) return;
+
+  if (speechDisplayScore < 0 || !running) {
+    alG.style.background = '#1a2a1a';
+    alY.style.background = '#2a2a14';
+    alR.style.background = '#2a1414';
+    alLabel.textContent = '—';
+    alLabel.style.color = 'var(--mu)';
+    if (!running) alDesc.textContent = 'Schätzwert';
+    else if (speechDisplayScore === -2) alDesc.textContent = 'Keine Sprache erkannt';
+    else alDesc.textContent = 'Analysiere…';
+    return;
+  }
+
+  // Neuen Zustand bestimmen (0=gut, 1=mittel, 2=schlecht)
+  // Hysterese-Bänder: verschiedene Schwellenwerte je nach aktuellem Zustand
+  // Verhindert Flackern wenn Score um eine Grenze pendelt
+  let newState;
+  const pct100 = speechDisplayScore * 100;
+  if (speechDisplayState === 0) {
+    // Aktuell GUT → erst unter 55% nach Mittel wechseln (nicht schon bei 64%)
+    if (pct100 < 55) newState = pct100 < 25 ? 2 : 1;
+    else newState = 0;
+  } else if (speechDisplayState === 1) {
+    // Aktuell MITTEL → erst über 70% nach Gut, erst unter 22% nach Schlecht
+    if (pct100 >= 70) newState = 0;
+    else if (pct100 < 22) newState = 2;
+    else newState = 1;
+  } else {
+    // Aktuell SCHLECHT → erst über 38% nach Mittel
+    if (pct100 >= 38) newState = pct100 >= 70 ? 0 : 1;
+    else newState = 2;
+  }
+
+  const now = performance.now();
+  const pct = Math.round(speechDisplayScore * 100);
+  const n = speechAccum.length;
+  const winSec = n > 1 ? Math.round(speechAccum[n-1].t - speechAccum[0].t) : 0;
+
+  // Hysterese: Zustand nur wechseln wenn SPEECH_HOLD Sekunden abgelaufen
+  // Ausnahme: Verbesserung ist sofort erlaubt (nur Verschlechterung wird gebremst)
+  if (newState > speechDisplayState) {
+    // Verschlechterung → nur wechseln wenn Hold-Zeit abgelaufen
+    if (now < speechStateHoldUntil) {
+      newState = speechDisplayState; // alten Zustand beibehalten
+    } else {
+      speechStateHoldUntil = now + SPEECH_HOLD * 1000;
+      speechDisplayState = newState;
+    }
+  } else if (newState < speechDisplayState) {
+    // Verbesserung → sofort anzeigen, neuen Hold setzen
+    speechDisplayState = newState;
+    speechStateHoldUntil = now + SPEECH_HOLD * 1000;
+  }
+
+  const vadTag = vadReady ? '' : ' [Heuristik]';
+  const stateLabels = [
+    { label: 'Gut',      color: '#c8f060', g: '#c8f060', y: '#2a2a14', r: '#2a1414',
+      desc: `Ø ${pct}% · ${winSec}s Fenster · Gute Verständlichkeit${vadTag}` },
+    { label: 'Mittel',   color: '#ffcc30', g: '#1a2a1a', y: '#ffcc30', r: '#2a1414',
+      desc: `Ø ${pct}% · ${winSec}s Fenster · Eingeschränkt${vadTag}` },
+    { label: 'Schlecht', color: '#f06060', g: '#1a2a1a', y: '#2a2a14', r: '#f06060',
+      desc: `Ø ${pct}% · ${winSec}s Fenster · Schlecht${vadTag}` }
+  ];
+
+  const s = stateLabels[speechDisplayState];
+  alG.style.background = s.g;
+  alY.style.background = s.y;
+  alR.style.background = s.r;
+  alLabel.textContent = s.label;
+  alLabel.style.color = s.color;
+  alDesc.textContent = s.desc;
+}
+
+// ── Loudness-Prognose (Extrapolation auf Programmende) ────────────────────────
+function computePrediction() {
+  if (allBlocks.length < 100) return null;
+
+  const n = allBlocks.length;
+  const elapsed = n * 0.1; // Sekunden bisher
+
+  // EBU-Double-Gating für bisherige Blöcke
+  const absGateLin = Math.pow(10, (-70 + 0.691) / 10);
+  const g1 = allBlocks.filter(v => v > absGateLin);
+  if (!g1.length) return null;
+  const ungatedMean = g1.reduce((a,b)=>a+b,0) / g1.length;
+  const relGate = ungatedMean * Math.pow(10, -10/10);
+  const gatedAll = allBlocks.filter(v => v > absGateLin && v > relGate);
+  if (gatedAll.length < 10) return null;
+
+  const currentGatedMean = gatedAll.reduce((a,b)=>a+b,0) / gatedAll.length;
+  const currentI = -0.691 + 10 * Math.log10(currentGatedMean);
+
+  // Trend: letzte 30s (oder max. letztes Drittel)
+  const recentN = Math.min(300, Math.floor(n / 3));
+  const recentGated = allBlocks.slice(-recentN).filter(v => v > absGateLin && v > relGate);
+  const recentMean = recentGated.length > 5
+    ? recentGated.reduce((a,b)=>a+b,0) / recentGated.length
+    : currentGatedMean;
+  const recentI = -0.691 + 10 * Math.log10(recentMean);
+  const trendDb = recentI - currentI;
+
+  // Gating-Quote (wie viele Blöcke bestehen die Gates?)
+  const gatingRatio = gatedAll.length / n;
+
+  let predictedI;
+  let basisText;
+
+  if (predictedTotalSec > elapsed + 10) {
+    // Bekannte Gesamtdauer → gewichtete Extrapolation
+    const remaining = predictedTotalSec - elapsed;
+    const futureGated = (remaining / 0.1) * gatingRatio;
+    const totalGated = gatedAll.length + futureGated;
+    const blendedMean = (gatedAll.length * currentGatedMean + futureGated * recentMean) / totalGated;
+    predictedI = -0.691 + 10 * Math.log10(blendedMean);
+    const pct = Math.round(elapsed / predictedTotalSec * 100);
+    basisText = `Basis: ${pct}% des Programms analysiert · ${fmtDuration(remaining)} verbleibend`;
+  } else {
+    // Keine Gesamtdauer → Trendgewichtung (70/30)
+    predictedI = currentI * 0.7 + recentI * 0.3;
+    basisText = 'Basis: Trend-Extrapolation (Programmdauer eingeben für präzise Prognose)';
+  }
+
+  const target = -23;
+  const correction = target - predictedI; // positiv = lauter, negativ = leiser
+
+  return { predictedI, currentI, recentI, trendDb, correction, basisText };
+}
+
+function updatePrediction() {
+  const banner = document.getElementById('predBanner');
+  if (!banner) return;
+  
+  // Banner immer sichtbar wenn Meter läuft (wegen Programmdauer-Eingabe)
+  if (!running) { banner.style.visibility = 'hidden'; return; }
+  banner.style.visibility = 'visible';
+  
+  // Countdown aktualisieren
+  const cdEl = document.getElementById('durCountdown');
+  if (cdEl) {
+    const elapsed = (performance.now() - t0) / 1000;
+    if (predictedTotalSec > 0) {
+      const remaining = Math.max(0, predictedTotalSec - elapsed);
+      if (remaining > 0) {
+        cdEl.textContent = '▼ ' + fmtDuration(remaining) + ' verbleibend';
+        cdEl.style.color = remaining < 60 ? '#ff4444' : remaining < 300 ? '#ffcc30' : '#c8f060';
+      } else {
+        cdEl.textContent = '● Programmende erreicht';
+        cdEl.style.color = '#ff4444';
+      }
+    } else {
+      cdEl.textContent = '';
+    }
+  }
+  
+  const pred = computePrediction();
+  if (!pred) {
+    // Keine Vorhersage möglich → Werte dimmen, Eingabefeld bleibt sichtbar
+    ['predVal','corrVal','trendVal'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.textContent = '—'; el.style.color = '#8a8a9a'; }
+    });
+    ['predBox','corrBox'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.borderColor = '';
+    });
+    return;
+  }
+
+  // Prognose-Wert
+  const predBox = document.getElementById('predBox');
+  const predVal = document.getElementById('predVal');
+  const dev = pred.predictedI - (-23);
+  predVal.textContent = pred.predictedI.toFixed(1);
+  if (Math.abs(dev) <= 0.5) {
+    predVal.style.color = '#c8f060'; predBox.style.borderColor = 'rgba(200,240,96,.5)';
+  } else if (Math.abs(dev) <= 2) {
+    predVal.style.color = '#ffcc30'; predBox.style.borderColor = 'rgba(255,204,48,.4)';
+  } else {
+    predVal.style.color = '#f06060'; predBox.style.borderColor = 'rgba(240,96,96,.4)';
+  }
+
+  // Korrekturfaktor
+  const corrBox = document.getElementById('corrBox');
+  const corrVal = document.getElementById('corrVal');
+  const corrHint = document.getElementById('corrHint');
+  const c = pred.correction;
+  corrVal.textContent = (c >= 0 ? '+' : '') + c.toFixed(1) + ' dB';
+  if (Math.abs(c) <= 0.5) {
+    corrVal.style.color = '#c8f060'; corrBox.style.borderColor = 'rgba(200,240,96,.5)';
+    corrHint.textContent = '✓ Ziel wird getroffen';
+  } else if (c > 0) {
+    corrVal.style.color = '#ffcc30'; corrBox.style.borderColor = 'rgba(255,204,48,.4)';
+    corrHint.textContent = 'Pegel anheben';
+  } else {
+    corrVal.style.color = '#f06060'; corrBox.style.borderColor = 'rgba(240,96,96,.4)';
+    corrHint.textContent = 'Pegel absenken';
+  }
+
+  // Trend
+  const trendVal = document.getElementById('trendVal');
+  const trendHint = document.getElementById('trendHint');
+  const t = pred.trendDb;
+  trendVal.textContent = (t >= 0 ? '+' : '') + t.toFixed(1) + ' LU';
+  trendVal.style.color = Math.abs(t) < 1 ? '#c8f060' : Math.abs(t) < 3 ? '#ffcc30' : '#f06060';
+  trendHint.textContent = t > 0.3 ? 'Tendenz lauter ↑' : t < -0.3 ? 'Tendenz leiser ↓' : 'Pegel stabil →';
+
+  document.getElementById('predBasis').textContent = pred.basisText;
+}
+
+// ── Render loop ────────────────────────────────────────────────────────────────
+let lastHistLen = 0; // Histogramme nur bei neuen Daten neu zeichnen (verhindert Flackern)
+
+function loop(){
+  if(!running)return;
+  requestAnimationFrame(loop);
+
+  // Kritische Messungen zuerst (LUFS, Korrelation, Bars)
+  const mL = momentaryLufs();
+  const sL = shorttermLufs();
+  const iL = integratedLufs();
+  drawLufsBar('cv_M', mL, 'M');
+  drawLufsBar('cv_S', sL, 'S');
+  setLufs(mL, sL, iL);
+  setCorr(corr);
+  tickSpeechRms();
+  if (mL > maxM) maxM = mL;
+  document.getElementById('sMaxM').textContent  = maxM>-Infinity ? maxM.toFixed(1)+' LUFS' : '—';
+  document.getElementById('sMaxTp').textContent = maxTp>-Infinity ? maxTp.toFixed(1)+' dBTP' : '—';
+  const lr = computeLRA();
+  document.getElementById('sLRA').textContent   = lr!==null ? lr.toFixed(1)+' LU' : '— LU';
+  const el=(performance.now()-t0)/1000, m=Math.floor(el/60), s=Math.floor(el%60);
+  document.getElementById('sTime').textContent  = m+':'+(s<10?'0':'')+s;
+
+  // Canvas-Draws separat absichern
+  try { drawGonio(); } catch(e) { console.warn('drawGonio:', e); }
+  try { drawFFT(); } catch(e) { console.warn('drawFFT:', e); }
+
+  // Histogramme laufen im eigenen 100ms-Timer — nicht im rAF-Loop
+}
+
+// ── Histogram-Timer ────────────────────────────────────────────────────────────
+// Canvas-Größe wird EINMALIG gesetzt (nach Layout-Stabilisierung).
+// setInterval zeichnet neu — aber sizeCanvas wird NIE im Draw-Loop aufgerufen.
+let histTimer = null;
+
+function startHistTimer() {
+  stopHistTimer();
+  setTimeout(() => {
+    const cvL = document.getElementById('cvLoud');
+    const cvG = document.getElementById('cvGate');
+    const cvR = document.getElementById('cvLRA');
+    if (cvL) sizeCanvas(cvL, loudImgStore);
+    if (cvG) sizeCanvas(cvG, gateImgStore);
+    if (cvR) sizeCanvas(cvR, lraImgStore);
+    histTimer = setInterval(() => {
+      if (!running) return;
+      drawLoudHistogram();
+      drawGateHistogram();
+      drawLRAHistogram();
+      drawRadar();
+      updatePrediction();
+      computeIntelligibility();
+      updateAmpel();
+    }, 100);
+  }, 200);
+}
+
+function stopHistTimer() {
+  if (histTimer) { clearInterval(histTimer); histTimer = null; }
+}
+
+// Nur bei echtem Window-Resize neu initialisieren
+window.addEventListener('resize', () => {
+  loudImgStore.cW = 0; loudImgStore.cH = 0;
+  gateImgStore.cW  = 0; gateImgStore.cH  = 0;
+  lraImgStore.cW   = 0; lraImgStore.cH   = 0;
+  if (running) {
+    const cvL = document.getElementById('cvLoud');
+    const cvG = document.getElementById('cvGate');
+    const cvR = document.getElementById('cvLRA');
+    if (cvL) sizeCanvas(cvL, loudImgStore);
+    if (cvG) sizeCanvas(cvG, gateImgStore);
+    if (cvR) sizeCanvas(cvR, lraImgStore);
+  }
+});
+// ── Silero VAD Integration ────────────────────────────────────────────
+async function startVAD() {
+  if (!actx || !srcNode) return;
+  try {
+    // MediaStreamDestination erstellen und mit Audio-Graph verbinden
+    vadStreamDest = actx.createMediaStreamDestination();
+    srcNode.connect(vadStreamDest);
+    
+    // VAD mit unserem Audio-Stream initialisieren
+    vadInstance = await vad.MicVAD.new({
+      getStream: async () => vadStreamDest.stream,
+      onnxWASMBasePath: "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/",
+      baseAssetPath: "https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.29/dist/",
+      positiveSpeechThreshold: 0.5,
+      negativeSpeechThreshold: 0.35,
+      onFrameProcessed: (probs) => {
+        vadSpeechProb = probs.isSpeech;
+        // Gleitender Durchschnitt (α=0.15 → reagiert in ~1s)
+        vadSpeechAvg = vadSpeechAvg * 0.70 + vadSpeechProb * 0.30;
+      },
+    });
+    vadInstance.start();
+    vadReady = true;
+    console.log('[VAD] Silero VAD gestartet');
+  } catch(err) {
+    console.warn('[VAD] Konnte nicht geladen werden, Fallback auf Heuristik:', err.message);
+    vadReady = false;
+  }
+}
+
+function stopVAD() {
+  if (vadInstance) {
+    try { vadInstance.pause(); vadInstance.destroy(); } catch(e) {}
+    vadInstance = null;
+  }
+  if (vadStreamDest) {
+    try { vadStreamDest.disconnect(); } catch(e) {}
+    vadStreamDest = null;
+  }
+  vadReady = false;
+  vadSpeechProb = 0;
+  vadSpeechAvg = 0;
+}
+
+function setupGraph(){
+  const sr=actx.sampleRate;
+  kC=mkK(sr); stPL=mst(); stRL=mst(); stPR=mst(); stRR=mst();
+  // True Peak Schieberegister zurücksetzen
+  tpBufL = new Float32Array(TP_TAPS);
+  tpBufR = new Float32Array(TP_TAPS);
+  tpBufPos = 0;
+  // Lautheit-Puffer zurücksetzen
+  hopSz  = Math.round(sr * HOP_MS / 1000);
+  hopBuf = new Float32Array(hopSz);
+  hopIdx = 0;
+  ring      = new Float64Array(RING_SIZE);
+  ringHead  = 0;
+  ringFill  = 0;
+  allBlocks = [];
+  stBlocks  = [];
+  stHopCounter = 0;
+  fftAn=actx.createAnalyser();
+  fftAn.fftSize=8192;              // Feine Auflösung: 4096 Bins, ~5 Hz/Bin bei 44100 Hz
+  fftAn.smoothingTimeConstant=0.35; // Wenig Smoothing → Peaks korrekt sichtbar
+  fftAn.minDecibels=-90;           // Messbereich (beeinflusst nur Byte-API, nicht Float)
+  fftAn.maxDecibels=0;
+  // ScriptProcessor immer mit 2 Kanälen — Mono-Erkennung erfolgt im processAudio via Signal-Inhalt
+  scriptN=actx.createScriptProcessor(4096,2,2);
+  scriptN.onaudioprocess=e=>processAudio(e.inputBuffer);
+  const sil=actx.createGain();sil.gain.value=0;
+  srcNode.connect(fftAn);fftAn.connect(sil);
+  srcNode.connect(scriptN);scriptN.connect(sil);
+  sil.connect(actx.destination);
+  if(inputMode==='file')srcNode.connect(actx.destination);
+  running=true;t0=performance.now();wallClockStart=Date.now();requestAnimationFrame(loop);
+  startHistTimer();
+  // ── Silero VAD starten ──
+  startVAD();
+  document.getElementById('btnGo').textContent='■ Stoppen';
+  document.getElementById('btnGo').style.borderColor='#f06060';
+  document.getElementById('btnGo').style.color='#f06060';
+  document.getElementById('btnPause').style.display='';
+  document.getElementById('hdrStatus').textContent = inputMode==='mic' ? '● Live' : '● Läuft';
+  document.getElementById('hdrStatus').classList.add('on');
+}
+
+async function startMic(){
+  actx=getAudioContext(); await actx.resume();
+  strm=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}});
+  srcNode=actx.createMediaStreamSource(strm);
+  setupGraph();
+}
+// Programmdauer aus Eingabe parsen (MM:SS oder HH:MM:SS)
+function parseDuration(str) {
+  str = str.trim();
+  // Wenn Doppelpunkte vorhanden → normales Parsen
+  if (str.includes(':')) {
+    const parts = str.split(':').map(Number);
+    if (parts.some(isNaN)) return 0;
+    if (parts.length === 2) return parts[0]*60 + parts[1];
+    if (parts.length === 3) return parts[0]*3600 + parts[1]*60 + parts[2];
+    return 0;
+  }
+  // Nur Ziffern → auto-formatieren und parsen
+  const formatted = formatTimeInput(str);
+  if (!formatted || !formatted.includes(':')) return 0;
+  return parseDuration(formatted);
+}
+
+// Auto-Format Zeiteingabe: nur Ziffern tippen, Doppelpunkte werden automatisch gesetzt
+// z.B. "6000" → "60:00", "40000" → "4:00:00", "130" → "1:30"
+function formatTimeInput(raw) {
+  const digits = raw.replace(/\D/g, '');
+  if (!digits) return '';
+  if (digits.length <= 2) return digits; // SS
+  if (digits.length <= 4) { // M:SS oder MM:SS
+    const ss = digits.slice(-2);
+    const mm = digits.slice(0, -2);
+    return mm + ':' + ss;
+  }
+  // H:MM:SS oder HH:MM:SS
+  const ss = digits.slice(-2);
+  const mm = digits.slice(-4, -2);
+  const hh = digits.slice(0, -4);
+  return hh + ':' + mm + ':' + ss;
+}
+
+const durInput = document.getElementById('inpDur');
+function applyDuration() {
+  const formatted = formatTimeInput(durInput.value);
+  durInput.value = formatted;
+  predictedTotalSec = parseDuration(formatted);
+}
+durInput.addEventListener('blur', applyDuration);
+durInput.addEventListener('change', applyDuration);
+durInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter') { applyDuration(); durInput.blur(); }
+});
+
+async function startFile(f){
+  actx=await getAudioContextReady();
+  const ab=await readFileAsArrayBuffer(f);
+  const buf=await safariFriendlyDecode(actx, ab);
+  // Dateilänge automatisch als Programmdauer setzen
+  predictedTotalSec = buf.duration;
+  const dur = document.getElementById('inpDur');
+  if (dur) dur.value = fmtDuration(buf.duration);
+  const s=actx.createBufferSource();s.buffer=buf;s.loop=true;srcNode=s;
+  setupGraph();s.start(0);
+}
+
+function stopMeter(){
+  running=false;
+  stopHistTimer();
+  stopVAD();
+  if(scriptN){try{scriptN.disconnect();}catch(e){}scriptN=null;}
+  if(srcNode){try{srcNode.disconnect();}catch(e){};if(srcNode.stop)try{srcNode.stop();}catch(e){}srcNode=null;}
+  if(strm){strm.getTracks().forEach(t=>t.stop());strm=null;}
+  if(actx){try{actx.close();}catch(e){} actx=null;}fftAn=null;
+  const bg=document.getElementById('btnGo');
+  bg.textContent='▶ Starten';bg.style.borderColor='';bg.style.color='';
+  document.getElementById('btnPause').style.display='none';
+  lufsPaused=false;
+  document.getElementById('hdrStatus').textContent='Gestoppt';
+  document.getElementById('hdrStatus').classList.remove('on');
+}
+
+function resetLufs(){
+  ring=new Float64Array(RING_SIZE); ringHead=0; ringFill=0;
+  allBlocks=[]; stBlocks=[]; stHopCounter=0;
+  hopBuf=hopBuf?new Float64Array(hopBuf.length):null; hopIdx=0;
+  maxM=-Infinity; maxTp=-Infinity;
+  tpBufL=new Float32Array(TP_TAPS); tpBufR=new Float32Array(TP_TAPS); tpBufPos=0;
+  ['L','R','M','S'].forEach(ch=>{pH[ch]=-80;pD[ch]=0;});
+  lufsBarPeak.M=-80;lufsBarPeak.S=-80;lufsBarDecay.M=0;lufsBarDecay.S=0;
+  setLufs(-Infinity,-Infinity,-Infinity);
+  ['sMaxM','sMaxTp'].forEach(id=>document.getElementById(id).textContent='—');
+  document.getElementById('sLRA').textContent='— LU';
+  document.getElementById('sTime').textContent='0:00';
+  t0=performance.now();
+  lufsPaused=false;
+  gateHistory=[];gateRelThreshold=-Infinity;
+  loudHistory=[];lraHistory=[];
+  speechRmsHistory=[];speechScoreHistory=[];speechAccum=[];speechEnergyTrack=[];speechDisplayScore=-1;speechDisplayState=0;speechStateHoldUntil=0;speechLastActive=0;speechNonSpeechStart=0;vadSpeechProb=0;vadSpeechAvg=0;
+  const bp=document.getElementById('btnPause');
+  bp.textContent='⏸';bp.style.borderColor='';bp.style.color='';
+  document.getElementById('tbInfo').textContent='Messung zurückgesetzt';
+}
+
+function resetAll(){
+  stopMeter();
+  resetLufs();
+  gL=new Float32Array(GS);gR=new Float32Array(GS);gIdx=0;gTrail=null;corr=1;
+  fftSmoothed=null;fftPeakHold=null;
+  drawBar('cv_L',-80,'L');drawBar('cv_R',-80,'R');
+  drawLufsBar('cv_M',-Infinity,'M');drawLufsBar('cv_S',-Infinity,'S');
+  drawGonio();setCorr(1);drawFFT();
+  document.getElementById('btnPause').style.display='none';
+  document.getElementById('tbInfo').textContent='Zurückgesetzt';
+}
+
+// ── Controls ───────────────────────────────────────────────────────────────────
+// Standard: Live-Audio (Mic/System-Input). Datei überschreibt den Modus.
+inputMode = 'mic';
+
+document.getElementById('fIn').addEventListener('change', e => {
+  if (!e.target.files[0]) return;
+  if (running) stopMeter(); // laufende Messung stoppen wenn neue Datei gewählt
+  inputMode = 'file';
+  document.getElementById('btnFile').classList.add('sel');
+  document.getElementById('tbInfo').textContent = e.target.files[0].name + ' — Starten drücken';
+  document.getElementById('hdrStatus').textContent = e.target.files[0].name.substring(0, 30);
+});
+
+document.getElementById('btnGo').addEventListener('click', async () => {
+  if (running) {
+    const wasFile = inputMode === 'file';
+    // Messdaten SICHERN bevor Auto-Live sie löscht
+    if (wasFile) {
+      lastFileReportData = {
+        allBlocks: allBlocks.slice(),
+        stBlocks: stBlocks.slice(),
+        maxM, maxTp, t0,
+        gateHistory: gateHistory.slice()
+      };
+    }
+    stopMeter();
+    // Immer auf Live zurückschalten
+    inputMode = 'mic';
+    document.getElementById('fIn').value = '';
+    document.getElementById('btnFile').classList.remove('sel');
+    if (wasFile) {
+      // Nach Datei-Stopp automatisch Live starten
+      document.getElementById('btnGo').textContent = '…';
+      try {
+        await startMic();
+        document.getElementById('tbInfo').textContent = 'Live-Audio aktiv';
+        document.getElementById('hdrStatus').textContent = '● Live';
+      } catch(e) {
+        document.getElementById('tbInfo').textContent = 'Live: ' + e.message;
+        document.getElementById('btnGo').textContent = '▶ Starten';
+      }
+    } else {
+      document.getElementById('hdrStatus').textContent = 'Gestoppt';
+      document.getElementById('tbInfo').textContent = 'Starten für Live-Audio';
+    }
+    return;
+  }
+  document.getElementById('btnGo').textContent = '…';
+  try {
+    if (inputMode === 'file') {
+      await startFile(document.getElementById('fIn').files[0]);
+      document.getElementById('tbInfo').textContent =
+        document.getElementById('fIn').files[0].name;
+    } else {
+      inputMode = 'mic';
+      await startMic();
+      document.getElementById('tbInfo').textContent = 'Live-Audio aktiv';
+      document.getElementById('hdrStatus').textContent = '● Live';
+    }
+  } catch(e) {
+    document.getElementById('tbInfo').textContent = 'Fehler: ' + e.message;
+    document.getElementById('btnGo').textContent = '▶ Starten';
+    console.error(e);
+  }
+});
+
+document.getElementById('btnReset').addEventListener('click', () => {
+  if (running) resetLufs(); else resetAll();
+});
+
+document.getElementById('btnPause').addEventListener('click', () => {
+  lufsPaused = !lufsPaused;
+  const bp = document.getElementById('btnPause');
+  if (lufsPaused) {
+    bp.textContent = '▶'; bp.style.borderColor = '#c8f060'; bp.style.color = '#c8f060';
+    document.getElementById('hdrStatus').textContent = '⏸ Pausiert';
+  } else {
+    bp.textContent = '⏸'; bp.style.borderColor = ''; bp.style.color = '';
+    document.getElementById('hdrStatus').textContent = inputMode === 'mic' ? '● Live' : '● Läuft';
+  }
+});
+
+// ── Init ───────────────────────────────────────────────────────────────────────
+window.addEventListener('load', () => {
+  drawBar('cv_L', -80, 'L'); drawBar('cv_R', -80, 'R');
+  drawLufsBar('cv_M', -Infinity, 'M'); drawLufsBar('cv_S', -Infinity, 'S');
+  drawFFT();
+  drawGonio(); setCorr(1); setLufs(-Infinity, -Infinity, -Infinity);
+  document.getElementById('tbInfo').textContent = 'Starten drücken für Live-Audio · oder Datei wählen';
+
+  // Overlay: erster Klick startet Live-Audio automatisch
+  const overlay = document.getElementById('startOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', async () => {
+      // AudioContext SYNCHRON erzeugen (iOS Safari-Anforderung)
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!window._satkAC || window._satkAC.state === 'closed') {
+        window._satkAC = new AC();
+      }
+      window._satkAC.resume().catch(() => {});
+
+      // Overlay ausblenden
+      overlay.style.opacity = '0';
+      overlay.style.pointerEvents = 'none';
+      setTimeout(() => { overlay.style.display = 'none'; }, 280);
+
+      if (!running && inputMode === 'mic') {
+        document.getElementById('btnGo').textContent = '…';
+        try {
+          await startMic();
+          document.getElementById('tbInfo').textContent = 'Live-Audio aktiv';
+        } catch(e) {
+          document.getElementById('tbInfo').textContent =
+            'Mikrofon: ' + (e.name === 'NotAllowedError' ? 'Zugriff verweigert' : e.message);
+          document.getElementById('btnGo').textContent = '▶ Starten';
+          console.error('startMic:', e);
+        }
+      }
+    });
+  }
+});
+window.addEventListener('resize',()=>{
+  gTrail=null;
+  ['cv_L','cv_R','cv_M','cv_S'].forEach(id=>{const c=document.getElementById(id);if(c){c.width=0;c.height=0;}});
+  if(!running){
+    drawBar('cv_L',pH.L,'L');drawBar('cv_R',pH.R,'R');
+    drawLufsBar('cv_M',lufsBarPeak.M,'M');drawLufsBar('cv_S',lufsBarPeak.S,'S');
+  }
+});
+
+// ── Download-Hinweis (plattform-spezifisch, nur beim ersten Export) ────────────
+function showDownloadHint(filename){
+  // Nur einmal zeigen — localStorage merkt sich ob Hint schon erschienen ist
+  try {
+    if(localStorage.getItem('satk_dl_hint_shown')) return;
+    localStorage.setItem('satk_dl_hint_shown','1');
+  } catch(e) {}
+
+  var ua=navigator.userAgent, pl=navigator.platform||'';
+  var isIOS=/iPad|iPhone|iPod/.test(ua)||(/Mac/.test(pl)&&navigator.maxTouchPoints>1);
+  var isAndroid=/Android/.test(ua);
+  var isMac=/Mac/.test(pl)&&!isIOS;
+  var isWin=/Win/.test(pl);
+  var isSafari=/^((?!chrome|android).)*safari/i.test(ua);
+  var isChrome=/Chrome/.test(ua)&&!/Edg/.test(ua);
+  var isEdge=/Edg/.test(ua);
+  var isFirefox=/Firefox/.test(ua);
+
+  var msg='';
+  if(isIOS){
+    if(isSafari)
+      msg='Öffne die <strong>Dateien-App</strong> → Auf meinem iPhone → Downloads';
+    else
+      msg='Datei gespeichert. Öffne die <strong>Dateien-App</strong> auf deinem iPhone/iPad';
+  } else if(isAndroid){
+    msg='Gespeichert im <strong>Downloads-Ordner</strong>. Öffne Dateien oder den Download-Manager';
+  } else if(isMac){
+    if(isSafari)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf den Pfeil ↓ oben rechts in Safari';
+    else if(isChrome)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ oben rechts in Chrome';
+    else if(isEdge)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ oben rechts in Edge';
+    else
+      msg='Gespeichert im Ordner <strong>~/Downloads</strong>';
+  } else if(isWin){
+    if(isChrome)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ unten oder oben rechts in Chrome';
+    else if(isEdge)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ oben rechts in Edge';
+    else if(isFirefox)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf den Pfeil ↓ in der Symbolleiste';
+    else
+      msg='Gespeichert in <strong>C:\\Users\\[Name]\\Downloads</strong>';
+  } else {
+    msg='Gespeichert im <strong>Downloads-Ordner</strong>';
+  }
+
+  // Altes Toast entfernen
+  var old=document.getElementById('satkDlHint');
+  if(old) old.remove();
+
+  var el=document.createElement('div');
+  el.id='satkDlHint';
+  el.innerHTML='<span class="satk-dl-close" onclick="this.parentNode.remove()">✕</span>'
+    +(filename?'<span class="satk-dl-file">📄 '+filename+'</span>':'')
+    +'<span>'+msg+'</span>';
+  document.body.appendChild(el);
+
+  // Auto-ausblenden nach 9s
+  var timer=setTimeout(function(){
+    if(el.parentNode){
+      el.style.animation='satkDlOut .3s ease forwards';
+      setTimeout(function(){if(el.parentNode)el.remove();},300);
+    }
+  },9000);
+  el.querySelector('.satk-dl-close').addEventListener('click',function(){clearTimeout(timer);});
+}
+
+
+// ── Loudness Report Export (PDF via Print + XML) ─────────────────────────────
+(function(){
+  var btnR=document.getElementById('btnReport');
+  var btnX=document.getElementById('btnXML');
+  if(!btnR||!btnX){console.warn('Report buttons not found');return;}
+  btnR.addEventListener('click',function(){try{generateReport();}catch(e){console.error('Report error:',e);}});
+  btnX.addEventListener('click',function(){try{generateXML();}catch(e){console.error('XML error:',e);}});
+
+  function getReportData(){
+    let iL=integratedLufs();
+    // Wenn aktuelle Messung leer/ungültig ist (z.B. nach Auto-Live-Switch),
+    // gespeicherte Datei-Messdaten verwenden
+    let useSaved = (!isFinite(iL) || allBlocks.length < 10) && lastFileReportData;
+    let _allBlocks, _stBlocks, _maxM, _maxTp, _t0, _gateHistory;
+    if (useSaved) {
+      _allBlocks = lastFileReportData.allBlocks;
+      _stBlocks = lastFileReportData.stBlocks;
+      _maxM = lastFileReportData.maxM;
+      _maxTp = lastFileReportData.maxTp;
+      _t0 = lastFileReportData.t0;
+      _gateHistory = lastFileReportData.gateHistory;
+      // Recalculate integrated from saved blocks
+      const absGate = Math.pow(10, (-70 + 0.691) / 10);
+      const g1 = _allBlocks.filter(v => v > absGate);
+      if (g1.length) {
+        const mean1 = g1.reduce((a,b)=>a+b,0) / g1.length;
+        const relGate = mean1 * Math.pow(10, -10/10);
+        const g2 = _allBlocks.filter(v => v > relGate);
+        if (g2.length) iL = blockToLufs(g2.reduce((a,b)=>a+b,0) / g2.length);
+      }
+    } else {
+      _allBlocks = allBlocks;
+      _stBlocks = stBlocks;
+      _maxM = maxM;
+      _maxTp = maxTp;
+      _t0 = t0;
+      _gateHistory = gateHistory;
+    }
+    const mL=momentaryLufs();
+    const sL=shorttermLufs();
+    let lr=computeLRA();
+    const el=(performance.now()-_t0)/1000;
+    const sr=actx?actx.sampleRate:48000;
+
+    // LRA aus gespeicherten Daten berechnen wenn aktuelle leer
+    if (useSaved && _stBlocks.length >= 2) {
+      const absGate = Math.pow(10, (-70 + 0.691) / 10);
+      const g1 = _stBlocks.filter(v => v > absGate);
+      if (g1.length >= 2) {
+        const mean1 = g1.reduce((a,b)=>a+b,0) / g1.length;
+        const relGate = mean1 * Math.pow(10, -20/10);
+        const g2 = g1.filter(v => v > relGate).sort((a,b) => a-b);
+        if (g2.length >= 2) {
+          lr = blockToLufs(g2[Math.floor(g2.length * 0.95)]) - blockToLufs(g2[Math.floor(g2.length * 0.10)]);
+        }
+      }
+    }
+
+    // Integrated check
+    const intPass=isFinite(iL)&&iL>=-24&&iL<=-22;
+    const tpPass=_maxTp<=-1;
+
+    return{
+      integrated:iL, momentaryMax:_maxM, shortTerm:sL, lra:lr, truePeak:_maxTp,
+      duration:el, sampleRate:sr, intPass, tpPass,
+      passAll:intPass&&tpPass,
+      date:new Date().toISOString(),
+      gateHistory:_gateHistory
+    };
+  }
+
+  function fmtT(s){const m=Math.floor(s/60);return m+':'+(('0'+Math.floor(s%60)).slice(-2));}
+
+  function generateReport(){
+    const d=getReportData();
+    const passCol=d.passAll?'#c8f060':'#ff4444';
+    const passText=d.passAll?'BESTANDEN':'NICHT BESTANDEN';
+
+    // Build timeline SVG (downsampled für große Datensätze)
+    let timelineSVG='';
+    if(d.gateHistory.length>0){
+      const w=800,h=120,pad=40;
+      const n=d.gateHistory.length;
+      const plotW=w-pad*2;
+      const dMin=-70,dMax=-5;
+      let bars='';
+      
+      // Downsample: max 1 Bar pro Pixel
+      const step=Math.max(1,Math.floor(n/plotW));
+      const numBars=Math.min(n,plotW);
+      const bw=Math.max(0.5,plotW/numBars);
+      
+      for(let i=0;i<numBars;i++){
+        // Durchschnitt über step Blöcke
+        const start=i*step;
+        const end=Math.min(start+step,n);
+        let sumLufs=0,contrib=0,absGatePass=0,cnt=0;
+        for(let j=start;j<end;j++){
+          const blk=d.gateHistory[j];
+          const l = isFinite(blk.lufs) ? blk.lufs : -70;
+          sumLufs+=l;
+          if(blk.contributes) contrib++;
+          else if(l > -70) absGatePass++;
+          cnt++;
+        }
+        const avgLufs=cnt>0?sumLufs/cnt:-70;
+        const lufs=Math.max(dMin,Math.min(dMax,avgLufs));
+        const y=10+(1-(lufs-dMin)/(dMax-dMin))*(h-20);
+        const bh=Math.max(1,h-10-y);
+        const col=contrib>cnt/2?'#c8f060':absGatePass>cnt/2?'#60d4f0':'#333';
+        bars+='<rect x="'+(pad+i*bw)+'" y="'+y+'" width="'+Math.max(0.5,bw-0.3)+'" height="'+bh+'" fill="'+col+'" opacity="0.6"/>';
+      }
+      // Time axis
+      let timeLabels='';
+      const totalSec=n*0.1;
+      for(let t=0;t<=totalSec;t+=Math.max(1,Math.round(totalSec/10))){
+        const x=pad+(t/totalSec)*(w-pad*2);
+        timeLabels+='<text x="'+x+'" y="'+(h+12)+'" font-size="9" fill="#666" text-anchor="middle">'+fmtT(t)+'</text>';
+      }
+      timelineSVG='<svg width="'+w+'" height="'+(h+20)+'" style="background:#0a0a0d;border-radius:4px;">'+bars+timeLabels
+        +'<line x1="'+pad+'" x2="'+(w-pad)+'" y1="'+(10+(1-(-23-dMin)/(dMax-dMin))*(h-20))+'" y2="'+(10+(1-(-23-dMin)/(dMax-dMin))*(h-20))+'" stroke="#c8f060" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>'
+        +'<text x="'+(w-pad+4)+'" y="'+(10+(1-(-23-dMin)/(dMax-dMin))*(h-20)+3)+'" font-size="8" fill="#c8f060">-23</text>'
+        +'</svg>';
+    }
+
+    // Violations table removed - Verlaufsgrafik zeigt alles
+    
+    const html='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>SATK R128 Loudness Report</title>'
+      +'<style>*{margin:0;padding:0;box-sizing:border-box;}body{background:#0a0a0d;color:#e8e8ec;font-family:monospace;padding:32px;max-width:900px;margin:0 auto;}'
+      +'h1{font-size:24px;margin-bottom:4px;}h2{font-size:14px;color:#8a8a9a;margin:24px 0 8px;text-transform:uppercase;letter-spacing:2px;}'
+      +'table{width:100%;border-collapse:collapse;margin:8px 0;}td,th{text-align:left;padding:6px 12px;border-bottom:1px solid #1a1a20;font-size:12px;}'
+      +'.pass{color:#c8f060;font-weight:bold;}.fail{color:#ff4444;font-weight:bold;}.warn{color:#ffcc00;}'
+      +'.badge{display:inline-block;padding:4px 16px;border:2px solid;border-radius:4px;font-size:14px;font-weight:bold;margin:12px 0;}'
+      +'@media print{body{background:#fff;color:#000;}td,th{border-color:#ddd;}.pass{color:#228B22;}.fail{color:#cc0000;}}'
+      +'</style></head><body>'
+      +'<div style="display:flex;justify-content:space-between;align-items:center;">'
+      +'<div><h1 style="color:#c8f060;">SATK</h1><span style="font-size:12px;color:#8a8a9a;">EBU R128 Loudness Report</span></div>'
+      +'<div style="text-align:right;font-size:10px;color:#8a8a9a;">'+new Date().toLocaleString()+'<br>SATK Broadcast Meter</div></div>'
+      +'<div class="badge" style="border-color:'+passCol+';color:'+passCol+';">EBU R128: '+passText+'</div>'
+      +'<h2>Messergebnisse</h2>'
+      +'<table><tr><td style="color:#8a8a9a;">Integrated LUFS</td><td class="'+(d.intPass?'pass':'fail')+'">'+(isFinite(d.integrated)?d.integrated.toFixed(1)+' LUFS':'—')+'</td><td style="color:#8a8a9a;">Ziel: -24 bis -22 LUFS</td></tr>'
+      +'<tr><td style="color:#8a8a9a;">Max Momentary</td><td>'+(isFinite(d.momentaryMax)?d.momentaryMax.toFixed(1)+' LUFS':'—')+'</td><td></td></tr>'
+      +'<tr><td style="color:#8a8a9a;">Loudness Range (LRA)</td><td>'+(d.lra!==null?d.lra.toFixed(1)+' LU':'—')+'</td><td style="color:#8a8a9a;">Empf: 5-20 LU</td></tr>'
+      +'<tr><td style="color:#8a8a9a;">True Peak</td><td class="'+(d.tpPass?'pass':'fail')+'">'+(isFinite(d.truePeak)?d.truePeak.toFixed(1)+' dBTP':'—')+'</td><td style="color:#8a8a9a;">Max: -1.0 dBTP</td></tr>'
+      +'<tr><td style="color:#8a8a9a;">Dauer</td><td>'+fmtT(d.duration)+'</td><td></td></tr>'
+      +'<tr><td style="color:#8a8a9a;">Sample Rate</td><td>'+d.sampleRate+' Hz</td><td></td></tr></table>'
+      +'<h2>Loudness Timeline</h2>'
+      +'<p style="font-size:9px;color:#8a8a9a;margin-bottom:8px;">Gruen = zaehlt zur Integrated LUFS · Cyan = ueber Abs. Gate, unter Rel. Gate · Dunkel = unter -70 LUFS · Gestrichelt = -23 LUFS Ziel</p>'
+      +timelineSVG
+      +'<div style="margin-top:32px;padding-top:12px;border-top:1px solid #1a1a20;font-size:9px;color:#7a7a86;">SATK Broadcast Meter · EBU R128 / ITU-R BS.1770-4 · satk.tech · Generiert am '+new Date().toLocaleString()+'</div>'
+      +'</body></html>';
+
+    const w=window.open('','_blank');
+    w.document.write(html);
+    w.document.close();
+  }
+
+  function generateXML(){
+    const d=getReportData();
+    let xml='<?xml version="1.0" encoding="UTF-8"?>\n';
+    xml+='<EBU_R128_Report generator="SATK Broadcast Meter" version="1.0" date="'+d.date+'">\n';
+    xml+='  <Summary>\n';
+    xml+='    <IntegratedLoudness unit="LUFS">'+(isFinite(d.integrated)?d.integrated.toFixed(1):'')+'</IntegratedLoudness>\n';
+    xml+='    <LoudnessRange unit="LU">'+(d.lra!==null?d.lra.toFixed(1):'')+'</LoudnessRange>\n';
+    xml+='    <MaxMomentary unit="LUFS">'+(isFinite(d.momentaryMax)?d.momentaryMax.toFixed(1):'')+'</MaxMomentary>\n';
+    xml+='    <MaxTruePeak unit="dBTP">'+(isFinite(d.truePeak)?d.truePeak.toFixed(1):'')+'</MaxTruePeak>\n';
+    xml+='    <Duration unit="seconds">'+d.duration.toFixed(1)+'</Duration>\n';
+    xml+='    <SampleRate>'+d.sampleRate+'</SampleRate>\n';
+    xml+='    <Compliance standard="EBU_R128">'+(d.passAll?'PASS':'FAIL')+'</Compliance>\n';
+    xml+='  </Summary>\n';
+    xml+='</EBU_R128_Report>';
+
+    const blob=new Blob([xml],{type:'application/xml'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download=satkFilename('r128-report','xml');a.click();URL.revokeObjectURL(a.href);
+  }
+})();
+
+// ── Web MIDI Remote Control ──────────────────────────────────────────────────
+(function(){
+  let midiAccess = null;
+  let midiLearnTarget = null; // 'start' oder 'reset'
+  let midiStartMapping = null; // {channel, type, note/cc}
+  let midiResetMapping = null;
+
+  const btnStart = document.getElementById('btnMidiStart');
+  const btnReset = document.getElementById('btnMidiReset');
+  const infoStart = document.getElementById('midiStartInfo');
+  const infoReset = document.getElementById('midiResetInfo');
+  if (!btnStart || !btnReset) return;
+
+  // Gespeicherte Mappings laden
+  try {
+    const saved = JSON.parse(localStorage.getItem('satk-midi-mappings'));
+    if (saved) {
+      midiStartMapping = saved.start || null;
+      midiResetMapping = saved.reset || null;
+      if (midiStartMapping) infoStart.textContent = fmtMapping(midiStartMapping);
+      if (midiResetMapping) infoReset.textContent = fmtMapping(midiResetMapping);
+    }
+  } catch(e) {}
+
+  function saveMappings() {
+    try {
+      localStorage.setItem('satk-midi-mappings', JSON.stringify({
+        start: midiStartMapping, reset: midiResetMapping
+      }));
+    } catch(e) {}
+  }
+
+  function fmtMapping(m) {
+    if (!m) return '—';
+    const type = m.type === 'note' ? 'Note' : 'CC';
+    return `Ch${m.channel} ${type} ${m.number}`;
+  }
+
+  // MIDI initialisieren
+  async function initMIDI() {
+    if (midiAccess) return true;
+    if (!navigator.requestMIDIAccess) {
+      console.warn('[MIDI] Web MIDI API nicht verfügbar');
+      return false;
+    }
+    try {
+      midiAccess = await navigator.requestMIDIAccess({ sysex: false });
+      // Listener auf alle Inputs
+      function connectInputs() {
+        for (const input of midiAccess.inputs.values()) {
+          input.onmidimessage = handleMIDI;
+        }
+      }
+      connectInputs();
+      midiAccess.onstatechange = () => connectInputs();
+      console.log('[MIDI] Web MIDI aktiv, ' + midiAccess.inputs.size + ' Input(s)');
+      return true;
+    } catch(e) {
+      console.warn('[MIDI] Zugriff verweigert:', e.message);
+      return false;
+    }
+  }
+
+  function handleMIDI(e) {
+    const data = e.data;
+    if (data.length < 3) return;
+    const status = data[0] & 0xF0;
+    const channel = (data[0] & 0x0F) + 1;
+    const number = data[1];
+    const value = data[2];
+
+    // Note On (0x90) oder CC (0xB0) mit Velocity/Value > 0
+    let type = null;
+    if (status === 0x90 && value > 0) type = 'note';
+    else if (status === 0xB0 && value > 64) type = 'cc';
+    if (!type) return;
+
+    const msg = { channel, type, number };
+
+    // Learn-Modus aktiv?
+    if (midiLearnTarget) {
+      if (midiLearnTarget === 'start') {
+        midiStartMapping = msg;
+        infoStart.textContent = fmtMapping(msg);
+        infoStart.style.color = '#c8f060';
+        setTimeout(() => infoStart.style.color = '', 500);
+        btnStart.textContent = '▶ Learn';
+        btnStart.style.borderColor = '';
+      } else if (midiLearnTarget === 'reset') {
+        midiResetMapping = msg;
+        infoReset.textContent = fmtMapping(msg);
+        infoReset.style.color = '#c8f060';
+        setTimeout(() => infoReset.style.color = '', 500);
+        btnReset.textContent = '↺ Learn';
+        btnReset.style.borderColor = '';
+      }
+      midiLearnTarget = null;
+      saveMappings();
+      return;
+    }
+
+    // Mapping ausführen
+    if (midiStartMapping && matchMapping(msg, midiStartMapping)) {
+      // Start/Stop toggle
+      const btn = document.getElementById('btnGo');
+      if (btn) btn.click();
+      infoStart.style.color = '#c8f060';
+      setTimeout(() => infoStart.style.color = '', 300);
+    }
+    if (midiResetMapping && matchMapping(msg, midiResetMapping)) {
+      // Reset
+      const btn = document.getElementById('btnReset');
+      if (btn) btn.click();
+      infoReset.style.color = '#c8f060';
+      setTimeout(() => infoReset.style.color = '', 300);
+    }
+  }
+
+  function matchMapping(msg, mapping) {
+    return msg.channel === mapping.channel &&
+           msg.type === mapping.type &&
+           msg.number === mapping.number;
+  }
+
+  // Learn-Buttons
+  btnStart.addEventListener('click', async () => {
+    if (!(await initMIDI())) {
+      infoStart.textContent = 'MIDI nicht verfügbar';
+      return;
+    }
+    if (midiLearnTarget === 'start') {
+      // Abbrechen
+      midiLearnTarget = null;
+      btnStart.textContent = '▶ Learn';
+      btnStart.style.borderColor = '';
+      infoStart.textContent = midiStartMapping ? fmtMapping(midiStartMapping) : '—';
+    } else {
+      midiLearnTarget = 'start';
+      btnStart.textContent = '⏳ Warte…';
+      btnStart.style.borderColor = '#c8f060';
+      infoStart.textContent = 'MIDI senden…';
+    }
+  });
+
+  btnReset.addEventListener('click', async () => {
+    if (!(await initMIDI())) {
+      infoReset.textContent = 'MIDI nicht verfügbar';
+      return;
+    }
+    if (midiLearnTarget === 'reset') {
+      midiLearnTarget = null;
+      btnReset.textContent = '↺ Learn';
+      btnReset.style.borderColor = '';
+      infoReset.textContent = midiResetMapping ? fmtMapping(midiResetMapping) : '—';
+    } else {
+      midiLearnTarget = 'reset';
+      btnReset.textContent = '⏳ Warte…';
+      btnReset.style.borderColor = '#c8f060';
+      infoReset.textContent = 'MIDI senden…';
+    }
+  });
+
+  // Doppelklick = Mapping löschen
+  btnStart.addEventListener('dblclick', () => {
+    midiStartMapping = null;
+    infoStart.textContent = '—';
+    saveMappings();
+  });
+  btnReset.addEventListener('dblclick', () => {
+    midiResetMapping = null;
+    infoReset.textContent = '—';
+    saveMappings();
+  });
+})();
+
+// ── Batch Multi-File R128 Analysis ────────────────────────────────────────────
+// Unique feature: no plugin can do this!
+(function(){
+  const overlay=document.getElementById('batchOverlay');
+  const drop=document.getElementById('batchDrop');
+  const fileInput=document.getElementById('batchFiles');
+  const tbody=document.getElementById('batchBody');
+  const table=document.getElementById('batchTable');
+  const prog=document.getElementById('batchProgress');
+  const bar=document.getElementById('batchBar');
+  const bStatus=document.getElementById('batchStatus');
+  const exportBtn=document.getElementById('batchExport');
+  let results=[];
+
+  document.getElementById('btnBatch').addEventListener('click',()=>{overlay.style.display='block';});
+  document.getElementById('batchClose').addEventListener('click',()=>{overlay.style.display='none';});
+
+  drop.addEventListener('click',()=>fileInput.click());
+  drop.addEventListener('dragover',e=>{e.preventDefault();drop.style.borderColor='#60d4f0';drop.style.background='rgba(96,212,240,.04)';});
+  drop.addEventListener('dragleave',()=>{drop.style.borderColor='#2a2a30';drop.style.background='';});
+  drop.addEventListener('drop',e=>{e.preventDefault();drop.style.borderColor='#2a2a30';drop.style.background='';processFiles(e.dataTransfer.files);});
+  fileInput.addEventListener('change',e=>{if(e.target.files.length)processFiles(e.target.files);});
+
+  async function processFiles(files){
+    const arr=Array.from(files).filter(f=>f.type.startsWith('audio/')||/\.(wav|mp3|m4a|flac|ogg|aiff|aif|aac)$/i.test(f.name));
+    if(!arr.length)return;
+    prog.style.display='block';table.style.display='table';exportBtn.style.display='';
+    results=[];tbody.innerHTML='';
+
+    for(let i=0;i<arr.length;i++){
+      bStatus.textContent='Analysiere '+(i+1)+'/'+arr.length+': '+arr[i].name;
+      bar.style.width=((i/arr.length)*100)+'%';
+      try{
+        const r=await analyzeFile(arr[i]);
+        results.push(r);
+        addRow(r);
+      }catch(e){
+        results.push({name:arr[i].name,error:e.message});
+        addRow({name:arr[i].name,integrated:NaN,lra:NaN,truePeak:NaN,duration:0,error:e.message});
+      }
+      await new Promise(r=>setTimeout(r,10));
+    }
+    bar.style.width='100%';
+    bStatus.textContent='Fertig — '+arr.length+' Datei'+(arr.length>1?'en':'')+' analysiert';
+  }
+
+  async function analyzeFile(file){
+    const actx2=new (window.AudioContext||window.webkitAudioContext)({sampleRate:48000});
+    const ab=await file.arrayBuffer();
+    const buf=await actx2.decodeAudioData(ab);
+    const sr=buf.sampleRate;
+    const ch=buf.numberOfChannels;
+    const L=buf.getChannelData(0);
+    const R=ch>1?buf.getChannelData(1):L;
+    const len=L.length;
+    const duration=len/sr;
+
+    const kc=mkK(sr);
+    const sPL=mst(),sRL=mst(),sPR=mst(),sRR=mst();
+
+    const blockSz=Math.round(sr*0.1);
+    const blocks=[];
+    let blockBuf=new Float64Array(blockSz);
+    let bi=0;
+
+    for(let i=0;i<len;i++){
+      const wL=bqf(bqf(L[i],kc.preB,kc.preA,sPL),kc.hpB,kc.hpA,sRL);
+      const wR=ch>1?bqf(bqf(R[i],kc.preB,kc.preA,sPR),kc.hpB,kc.hpA,sRR):wL;
+      blockBuf[bi++]=wL*wL+wR*wR;
+      if(bi>=blockSz){
+        blocks.push(blockBuf.reduce((a,b)=>a+b,0)/blockSz);
+        blockBuf=new Float64Array(blockSz);bi=0;
+      }
+    }
+
+    const absGate=Math.pow(10,(-70+0.691)/10);
+    const g1=blocks.filter(v=>v>absGate);
+    let integrated=-Infinity;
+    if(g1.length){
+      const mean1=g1.reduce((a,b)=>a+b,0)/g1.length;
+      const relGate=mean1*Math.pow(10,-10/10);
+      const g2=blocks.filter(v=>v>relGate);
+      if(g2.length) integrated=-0.691+10*Math.log10(g2.reduce((a,b)=>a+b,0)/g2.length);
+    }
+
+    let lra=0;
+    if(blocks.length>20){
+      const stSz=Math.round(3/0.1);
+      const stStride=Math.round(1/0.1);
+      const stB=[];
+      for(let s=0;s+stSz<=blocks.length;s+=stStride){
+        let sum=0;for(let j=s;j<s+stSz;j++)sum+=blocks[j];
+        stB.push(sum/stSz);
+      }
+      const sg1=stB.filter(v=>v>absGate);
+      if(sg1.length>2){
+        const smean=sg1.reduce((a,b)=>a+b,0)/sg1.length;
+        const srel=smean*Math.pow(10,-20/10);
+        const sg2=sg1.filter(v=>v>srel).sort((a,b)=>a-b);
+        if(sg2.length>2){
+          const l10=-0.691+10*Math.log10(sg2[Math.floor(sg2.length*0.10)]);
+          const l95=-0.691+10*Math.log10(sg2[Math.floor(sg2.length*0.95)]);
+          lra=l95-l10;
+        }
+      }
+    }
+
+    let tp=0;
+    for(let i=0;i<len;i++){
+      const aL=Math.abs(L[i]),aR=Math.abs(R[i]);
+      if(aL>tp)tp=aL;if(aR>tp)tp=aR;
+    }
+    const truePeak=tp>0?20*Math.log10(tp):-Infinity;
+
+    actx2.close();
+    return{name:file.name,integrated,lra,truePeak,duration};
+  }
+
+  function addRow(r){
+    const tr=document.createElement('tr');
+    tr.style.borderBottom='1px solid #1a1a20';
+    const pass=r.integrated>=-24&&r.integrated<=-22&&r.truePeak<=-1;
+    const warn=!pass&&r.integrated>=-26&&r.integrated<=-20;
+    const col=r.error?'#ff4444':pass?'#c8f060':warn?'#ffcc00':'#ff8800';
+    tr.innerHTML='<td style="padding:7px 6px;color:#e8e8ec;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'+r.name+'</td>'
+      +'<td style="padding:7px 6px;text-align:right;color:'+col+';font-weight:500;">'+(r.error?'Fehler':isFinite(r.integrated)?r.integrated.toFixed(1)+' LUFS':'—')+'</td>'
+      +'<td style="padding:7px 6px;text-align:right;color:#8a8a9a;">'+(isFinite(r.lra)?r.lra.toFixed(1)+' LU':'—')+'</td>'
+      +'<td style="padding:7px 6px;text-align:right;color:'+(r.truePeak>-1?'#ff4444':'#e8e8ec')+';">'+(isFinite(r.truePeak)?r.truePeak.toFixed(1)+' dBTP':'—')+'</td>'
+      +'<td style="padding:7px 6px;text-align:right;color:#8a8a9a;">'+(r.duration?fmtBTime(r.duration):'—')+'</td>'
+      +'<td style="padding:7px 6px;text-align:center;">'+(r.error?'<span style="color:#ff4444;">&#10007;</span>':pass?'<span style="color:#c8f060;">&#10003;</span>':warn?'<span style="color:#ffcc00;">~</span>':'<span style="color:#ff8800;">&#10007;</span>')+'</td>';
+    tbody.appendChild(tr);
+  }
+
+  function fmtBTime(s){const m=Math.floor(s/60);return m+':'+(('0'+Math.floor(s%60)).slice(-2));}
+
+  exportBtn.addEventListener('click',()=>{
+    if(!results.length)return;
+    let csv='Datei,Integrated LUFS,LRA LU,True Peak dBTP,Dauer,R128 Pass\n';
+    results.forEach(r=>{
+      if(r.error){csv+='"'+r.name+'",Error,,,\n';return;}
+      const pass=r.integrated>=-24&&r.integrated<=-22&&r.truePeak<=-1;
+      csv+='"'+r.name+'",'+(isFinite(r.integrated)?r.integrated.toFixed(1):'')+','+(isFinite(r.lra)?r.lra.toFixed(1):'')+','+(isFinite(r.truePeak)?r.truePeak.toFixed(1):'')+','+fmtBTime(r.duration)+','+(pass?'OK':'FAIL')+'\n';
+    });
+    const blob=new Blob([csv],{type:'text/csv'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download=satkFilename('batch-r128','csv');a.click();URL.revokeObjectURL(a.href);
+  });
+})();
+
+// ── SATK Einheitliche Dateinamen-Funktion ─────────────────────────────────────
+// Schema: satk_[tool]_[YYYY-MM-DD]_[HH-MM-SS]_v[n].[ext]
+// Versionszahl: Session-Counter pro Tool (localStorage)
+function satkFilename(tool, ext){
+  var d = new Date();
+  var pad = function(n){ return n<10?'0'+n:String(n); };
+  var date = d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+  var time = pad(d.getHours())+'-'+pad(d.getMinutes())+'-'+pad(d.getSeconds());
+  var key  = 'satk_v_'+tool;
+  var ver  = 1;
+  try {
+    ver = (parseInt(localStorage.getItem(key))||0) + 1;
+    localStorage.setItem(key, ver);
+  } catch(e) {}
+  return 'satk_'+tool+'_'+date+'_'+time+'_v'+ver+(ext?'.'+ext:'');
+}
+
+</script>
+</body>
+</html>

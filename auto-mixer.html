@@ -1,0 +1,2122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="description" content="Kostenloser Automixer im Browser: Sprecher- und Beitrags-Spur automatisch mischen mit Side-Chain Ducking, EBU R128 konformer Output.">
+<meta name="keywords" content="Auto-Mixer, Automixer, Side-Chain Ducking, Sprecher Beitrag mischen, O-Ton Atmo, Radio Mix, TV Mix, Podcast Mix, EBU R128, automatisch mischen, Browser Mixer, kostenlos, kein Download">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SATK Auto-Mixer – Sprecher & Beitrag automatisch mischen kostenlos</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap');
+:root {
+  --bg:#0a0a0b; --sf:#0e0e11; --sf2:#111114; --bd:#1e1e24;
+  --ac:#c8f060; --ac2:#60d4f0; --warn:#f0a060; --red:#f06060;
+  --tx:#e8e8ec; --mu:#5a5a6a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow:hidden;height:100%;background:var(--bg);color:var(--tx);font-family:'DM Mono',monospace;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(200,240,96,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(200,240,96,.018) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+html,body,*{scrollbar-width:none;-ms-overflow-style:none;}
+*::-webkit-scrollbar{display:none;width:0;}
+
+.app{position:relative;z-index:1;display:flex;flex-direction:column;height:100vh;overflow:hidden;}
+
+/* Header */
+header{flex-shrink:0;padding:12px 22px 10px;border-bottom:1px solid var(--bd);display:flex;align-items:flex-end;justify-content:space-between;gap:16px;}
+.hdr-brand{display:flex;flex-direction:column;gap:2px;}
+.hdr-top{display:flex;align-items:baseline;gap:10px;}
+.hdr-main{font-family:'Syne',sans-serif;font-size:clamp(20px,2.8vw,30px);font-weight:800;letter-spacing:.14em;color:var(--tx);line-height:1;position:relative;}
+.hdr-main::after{content:'';position:absolute;left:0;bottom:-3px;width:100%;height:1px;background:linear-gradient(90deg,var(--ac),transparent);}
+.hdr-green{font-family:'Syne',sans-serif;font-size:clamp(10px,1.2vw,13px);font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);line-height:1;}
+.hdr-tag{font-size:9px;letter-spacing:.1em;color:var(--mu);margin-top:4px;}
+
+/* Main layout */
+.main{flex:1;min-height:0;display:grid;grid-template-columns:1fr minmax(260px,300px);overflow:hidden;}@media(max-width:700px){.main{grid-template-columns:1fr;grid-template-rows:1fr auto;}}
+
+/* Left: tracks */
+.track-area{display:flex;flex-direction:column;padding:14px;gap:10px;overflow-y:auto;border-right:1px solid var(--bd);}
+
+/* Right: control panel — vollständig scrollbar */
+.ctrl-panel{
+  display:flex;flex-direction:column;gap:0;
+  overflow-y:auto;overflow-x:hidden;
+  background:var(--sf);
+  min-width:0;
+  /* Sicherstellen dass der Inhalt nicht abgeschnitten wird */
+  height:100%;
+}
+
+/* ── Mobile Responsive ───────────────────────────────────────────────── */
+@media (max-width:680px){
+  /* Untereinander statt nebeneinander */
+  .main{
+    grid-template-columns:1fr;
+    grid-template-rows:auto 1fr;
+    overflow-y:auto;
+  }
+  .track-area{
+    border-right:none;
+    border-bottom:1px solid var(--bd);
+    overflow-y:visible;
+    flex-shrink:0;
+  }
+  .ctrl-panel{
+    overflow-y:auto;
+    max-height:none;
+    flex-shrink:0;
+  }
+}
+
+/* Track drop zones */
+.track{background:var(--sf);border:1px solid var(--bd);padding:14px 16px;cursor:pointer;transition:border-color .15s,background .15s;position:relative;}
+.track:hover,.track.dragover{border-color:var(--ac);background:rgba(200,240,96,.04);}
+.track.loaded{border-color:rgba(200,240,96,.3);}
+.track-head{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.track-icon{width:28px;height:28px;border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.track-icon svg{color:var(--ac);}
+.track-meta{flex:1;}
+.track-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--tx);letter-spacing:.08em;}
+.track-hint{font-size:9px;color:var(--mu);margin-top:2px;}
+.track-filename{font-size:9px;color:var(--ac);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:300px;}
+.track-badge{font-size:8px;letter-spacing:.08em;padding:2px 7px;border:1px solid var(--bd);color:var(--mu);}
+.track-badge.ok{border-color:rgba(200,240,96,.3);color:var(--ac);}
+
+/* Waveform canvas + Playback */
+.wave-wrap{height:58px;background:#060809;border:1px solid var(--bd);position:relative;overflow:hidden;cursor:pointer;}
+.wave-wrap canvas{width:100%;height:100%;}
+.wave-label{position:absolute;top:4px;left:8px;font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);pointer-events:none;}
+.wave-info{position:absolute;top:4px;right:8px;font-size:7px;color:var(--mu);pointer-events:none;}
+
+/* Play button overlay */
+.play-btn{
+  position:absolute;bottom:6px;left:8px;
+  width:22px;height:22px;
+  border:1px solid rgba(200,240,96,.4);
+  background:rgba(10,10,11,.8);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:2;transition:border-color .12s,background .12s;
+  pointer-events:all;
+}
+.play-btn:hover{border-color:var(--ac);background:rgba(200,240,96,.12);}
+.play-btn.playing{border-color:var(--ac);background:rgba(200,240,96,.15);}
+.play-btn svg{pointer-events:none;}
+
+/* Playhead */
+.playhead{
+  position:absolute;top:0;bottom:0;width:1px;
+  background:rgba(200,240,96,.8);
+  pointer-events:none;z-index:1;
+  display:none;
+}
+.wave-wrap.playing .playhead{display:block;}
+.wave-time{
+  position:absolute;bottom:6px;right:8px;
+  font-size:7px;color:var(--ac);
+  pointer-events:none;z-index:2;
+  display:none;
+}
+.wave-wrap.playing .wave-time{display:block;}
+input[type=file]{display:none;}
+
+/* Ducking visualizer */
+.duck-viz{height:48px;background:#060809;border:1px solid var(--bd);position:relative;overflow:hidden;}
+.duck-viz canvas{width:100%;height:100%;}
+.duck-label{position:absolute;top:4px;left:8px;font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);}
+
+/* Right: controls */
+.ctrl-panel{display:flex;flex-direction:column;gap:0;overflow-y:auto;background:var(--sf);}
+
+.ctrl-section{padding:14px 16px;border-bottom:1px solid var(--bd);}
+.ctrl-hd{font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);margin-bottom:10px;}
+
+/* Sliders */
+.slider-row{display:flex;align-items:center;gap:6px;margin-bottom:10px;}
+.slider-row:last-child{margin-bottom:0;}
+.slider-lbl{font-size:9px;color:var(--mu);width:70px;flex-shrink:0;line-height:1.3;}
+.slider-wrap{flex:1;display:flex;align-items:center;gap:5px;min-width:0;}
+.slider-wrap input[type=range]{flex:1;min-width:0;}
+input[type=range]{
+  flex:1;height:3px;
+  -webkit-appearance:none;appearance:none;
+  background:var(--bd);outline:none;cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:12px;height:12px;
+  background:var(--ac);border-radius:50%;cursor:pointer;
+}
+input[type=range]::-moz-range-thumb{
+  width:12px;height:12px;background:var(--ac);
+  border:none;border-radius:50%;cursor:pointer;
+}
+.slider-val{font-family:'DM Mono',monospace;font-size:9px;color:rgba(180,180,210,.7);width:52px;flex-shrink:0;text-align:right;white-space:nowrap;}
+
+/* Target select */
+.target-row{display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap;}
+.target-btn{background:none;border:1px solid var(--bd);color:var(--mu);font-family:'DM Mono',monospace;font-size:8px;padding:4px 8px;cursor:pointer;transition:all .12s;flex:1;}
+.target-btn:hover,.target-btn.active{border-color:var(--ac);color:var(--ac);background:rgba(200,240,96,.06);}
+
+/* Process button */
+.proc-btn{width:100%;padding:12px;background:none;border:1px solid var(--ac);color:var(--ac);font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;cursor:pointer;transition:all .15s;margin-top:2px;}
+.proc-btn:hover:not(:disabled){background:rgba(200,240,96,.08);}
+.proc-btn:disabled{opacity:.35;cursor:not-allowed;border-color:var(--bd);color:var(--mu);}
+.proc-btn.running{border-color:var(--ac2);color:var(--ac2);}
+
+/* Progress */
+.prog-wrap{display:none;padding:0 16px 14px;}
+.prog-bg{height:3px;background:var(--bd);}
+.prog-fill{height:100%;width:0%;background:var(--ac);transition:width .1s;}
+.prog-label{font-size:9px;color:var(--mu);margin-top:6px;text-align:center;}
+
+/* Stats */
+.stats-section{padding:14px 16px;border-bottom:1px solid var(--bd);}
+.stat-row{display:flex;justify-content:space-between;margin-bottom:6px;}
+.stat-row:last-child{margin-bottom:0;}
+.stat-l{font-size:8px;color:var(--mu);}
+.stat-v{font-family:'DM Mono',monospace;font-size:8px;font-weight:600;color:var(--tx);}
+.stat-v.good{color:var(--ac);}
+.stat-v.warn{color:var(--warn);}
+
+/* Download */
+.dl-section{padding:14px 16px;margin-top:auto;}
+.dl-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:10px;background:rgba(200,240,96,.08);border:1px solid var(--ac);color:var(--ac);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;text-decoration:none;transition:background .15s;display:none;}
+.dl-btn:hover{background:rgba(200,240,96,.14);}
+.dl-btn.visible{display:flex;}
+
+/* Toolbar */
+.toolbar{flex-shrink:0;display:flex;align-items:center;gap:10px;padding:6px 16px;background:var(--sf);border-top:1px solid var(--bd);}
+.tb-info{font-size:8px;color:var(--mu);margin-left:auto;}
+
+.slider-hint{font-size:8px;color:var(--mu);line-height:1.5;margin-bottom:2px;padding-left:2px;}
+
+/* Slider mit Skala zusammen */
+.slider-with-scale { flex:1; display:flex; flex-direction:column; gap:0; }
+.slider-scale-wrap{
+  position:relative;
+  height:13px;
+  margin:1px 0 4px 0;
+  /* Slider-Thumb hat ~6px Radius, korrigiere Enden */
+  padding:0 6px;
+  box-sizing:border-box;
+}
+.slider-scale-wrap .sc{
+  position:absolute;
+  transform:translateX(-50%);
+  font-size:7px;
+  color:rgba(180,180,210,.65);
+  white-space:nowrap;
+  line-height:1;
+  top:1px;
+  pointer-events:none;
+}
+.slider-scale-wrap .sc.lo { transform:translateX(0%); }   /* Links-bündig */
+.slider-scale-wrap .sc.hi { transform:translateX(-100%); } /* Rechts-bündig */
+.slider-scale-wrap .sc.center{}
+
+/* EQ Preset buttons */
+.preset-row{display:flex;gap:4px;margin-bottom:8px;}
+.preset-btn{flex:1;background:none;border:1px solid var(--bd);color:var(--mu);font-family:'DM Mono',monospace;font-size:8px;padding:5px 4px;cursor:pointer;transition:all .12s;text-align:center;}
+.preset-btn:hover{border-color:var(--ac2);color:var(--ac2);}
+.preset-btn.active{border-color:var(--ac2);color:var(--ac2);background:rgba(96,212,240,.06);}
+.preset-desc{font-size:8px;color:var(--mu);line-height:1.5;}
+
+/* Analysis result box */
+.analysis-item{
+  font-size:9px;color:var(--mu);line-height:1.7;padding:2px 0;
+  display:flex;gap:7px;align-items:baseline;
+}
+.analysis-item::before{content:'✓';color:var(--ac);font-size:8px;flex-shrink:0;}
+
+/* Advanced toggle */
+.adv-toggle{
+  background:none;border:none;color:var(--mu);font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:.06em;cursor:pointer;padding:0;
+  transition:color .12s;width:100%;text-align:left;
+}
+.adv-toggle:hover{color:var(--tx);}
+.status-dot{width:6px;height:6px;border-radius:50%;background:var(--bd);flex-shrink:0;}
+.status-dot.ok{background:var(--ac);}
+.status-dot.proc{background:var(--ac2);animation:pulse .8s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ── Download-Hinweis Toast ── */
+#satkDlHint{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  background:#0d1012;border:1px solid rgba(200,240,96,.35);
+  color:#e2e6ed;font-family:'DM Mono',monospace;font-size:11px;
+  padding:12px 18px;z-index:9999;max-width:420px;width:90%;
+  box-shadow:0 4px 24px rgba(0,0,0,.5);
+  animation:satkDlIn .25s ease;pointer-events:none;
+  line-height:1.6;
+}
+#satkDlHint strong{color:#c8f060;}
+#satkDlHint .satk-dl-file{color:#c8f060;font-size:10px;opacity:.8;display:block;margin-bottom:4px;}
+#satkDlHint .satk-dl-close{
+  position:absolute;top:7px;right:10px;cursor:pointer;
+  color:rgba(200,240,96,.5);font-size:13px;pointer-events:all;
+}
+@keyframes satkDlIn{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
+@keyframes satkDlOut{from{opacity:1;}to{opacity:0;transform:translateX(-50%) translateY(8px);}}
+
+</style>
+  <link rel="canonical" href="https://satk.tech/auto-mixer.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://satk.tech/auto-mixer.html">
+<meta property="og:title" content="SATK Auto-Mixer – Sprecher & Beitrag automatisch mischen mit Side-Chain">
+<meta property="og:description" content="Sprecher- und Beitrags-Spur automatisch mischen mit Side-Chain Ducking und EBU R128 Output. Kostenlos für Radio, TV und Podcast im Browser.">
+<meta property="og:image" content="https://satk.tech/og-image.png">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="SATK – Sascha's Audio Toolkit">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SATK Auto-Mixer – Sprecher & Beitrag automatisch mischen mit Side-Chain">
+<meta name="twitter:description" content="Sprecher- und Beitrags-Spur automatisch mischen mit Side-Chain Ducking und EBU R128 Output. Kostenlos für Radio, TV und Podcast im Browser.">
+<meta name="twitter:image" content="https://satk.tech/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Auto-Mixer",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Web Browser, iOS, Android",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+  "description": "Kostenloser Automixer im Browser: Sprecher- und Beitrags-Spur automatisch mischen mit Side-Chain Ducking. Konfigurierbarer Attack/Release, EBU R128 konformer Mix-Output. Für Radio, TV und Podcast.",
+  "url": "https://satk.tech/auto-mixer.html",
+  "creator": {"@type": "Person", "name": "Sascha Hömske"},
+  "isPartOf": {"@type": "WebSite", "name": "SATK – Sascha's Audio Toolkit", "url": "https://satk.tech/"}
+}
+</script>
+</head>
+<body>
+<script>
+window.addEventListener('message', function(e){
+  if(e.data && e.data.type==='satk-suspend-audio'){
+    try{ if(previewSrc){previewSrc.stop();previewSrc=null;} }catch(e){}
+  }
+});
+</script>
+
+<div class="app">
+
+<header>
+  <div class="hdr-brand">
+    <div class="hdr-top">
+      <span class="hdr-main">Auto</span>
+      <span class="hdr-green">Mixer</span>
+    </div>
+    <div class="hdr-tag">SATK — Side-Chain Ducking · EBU R128 · Broadcast-Qualität</div>
+  </div>
+</header>
+
+<div class="main">
+
+  <!-- Track Area -->
+  <div class="track-area">
+
+    <!-- Voice Track -->
+    <div class="track" id="trackVoice" onclick="if(!event.target.closest('.wave-wrap')&&!event.target.closest('.play-btn'))document.getElementById('fileVoice').click()">
+      <input type="file" id="fileVoice" accept="audio/*,.mp3,.wav,.m4a,.flac,.aac,.ogg,.aiff">
+      <div class="track-head">
+        <div class="track-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 013 3v7a3 3 0 11-6 0V5a3 3 0 013-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg>
+        </div>
+        <div class="track-meta">
+          <div class="track-label">Sprecher-Spur</div>
+          <div class="track-hint" id="hintVoice">Mono · WAV / MP3 / M4A → hier ablegen oder klicken</div>
+          <div class="track-filename" id="nameVoice"></div>
+        </div>
+        <div class="track-badge" id="badgeVoice">leer</div>
+      </div>
+      <div class="wave-wrap" id="waveVoice">
+        <canvas id="cvVoice"></canvas>
+        <span class="wave-label">Sprecher</span>
+        <span class="wave-info" id="durVoice"></span>
+        <div class="playhead" id="phVoice"></div>
+        <div class="wave-time" id="wtVoice">0:00</div>
+        <div class="play-btn" id="pbVoice" title="Vorhören" onclick="event.stopPropagation();togglePlay('voice')">
+          <svg id="pbIconVoice" width="10" height="10" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="color:var(--ac)"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Background Track -->
+    <div class="track" id="trackBg" onclick="if(!event.target.closest('.wave-wrap')&&!event.target.closest('.play-btn'))document.getElementById('fileBg').click()">
+      <input type="file" id="fileBg" accept="audio/*,.mp3,.wav,.m4a,.flac,.aac,.ogg,.aiff">
+      <div class="track-head">
+        <div class="track-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </div>
+        <div class="track-meta">
+          <div class="track-label">Beitrags-Spur</div>
+          <div class="track-hint" id="hintBg">Stereo · Original-O-Ton / Musik → hier ablegen oder klicken</div>
+          <div class="track-filename" id="nameBg"></div>
+        </div>
+        <div class="track-badge" id="badgeBg">leer</div>
+      </div>
+      <div class="wave-wrap" id="waveBg">
+        <canvas id="cvBg"></canvas>
+        <span class="wave-label">Beitrag</span>
+        <span class="wave-info" id="durBg"></span>
+        <div class="playhead" id="phBg"></div>
+        <div class="wave-time" id="wtBg">0:00</div>
+        <div class="play-btn" id="pbBg" title="Vorhören" onclick="event.stopPropagation();togglePlay('bg')">
+          <svg id="pbIconBg" width="10" height="10" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="color:var(--ac)"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Duck Visualizer (nur nach Processing) -->
+    <div class="duck-viz" id="duckViz" style="display:none;">
+      <canvas id="cvDuck"></canvas>
+      <span class="duck-label">Duck-Gain-Kurve (Background)</span>
+    </div>
+
+    <!-- Mix Waveform (nur nach Processing) -->
+    <div class="wave-wrap" id="waveMix" style="display:none;">
+      <canvas id="cvMix"></canvas>
+      <span class="wave-label">Mix-Ergebnis</span>
+      <span class="wave-info" id="durMix"></span>
+      <div class="playhead" id="phMix"></div>
+      <div class="wave-time" id="wtMix">0:00</div>
+      <div class="play-btn" id="pbMix" title="Mix vorhören" onclick="event.stopPropagation();togglePlay('mix')">
+        <svg id="pbIconMix" width="10" height="10" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="color:var(--ac)"><polygon points="5,3 19,12 5,21"/></svg>
+      </div>
+    </div>
+
+  </div><!-- /.track-area -->
+
+  <!-- Control Panel -->
+  <div class="ctrl-panel">
+
+    <!-- Format -->
+    <div class="ctrl-section">
+      <div class="ctrl-hd">Ausgabe-Format</div>
+      <div class="target-row">
+        <button class="target-btn active" data-lufs="-23">TV<br><span style="font-size:7px;opacity:.6;">−23 LUFS</span></button>
+        <button class="target-btn" data-lufs="-16">Podcast<br><span style="font-size:7px;opacity:.6;">−16 LUFS</span></button>
+        <button class="target-btn" data-lufs="-14">Online<br><span style="font-size:7px;opacity:.6;">−14 LUFS</span></button>
+        <button class="target-btn" data-lufs="-9">Radio<br><span style="font-size:7px;opacity:.6;">−9 LUFS</span></button>
+      </div>
+      <input type="hidden" id="slTarget" value="-23">
+    </div>
+
+    <!-- Voice EQ Preset -->
+    <div class="ctrl-section">
+      <div class="ctrl-hd">Sprecher EQ &amp; Dynamik</div>
+      <div class="preset-row">
+        <button class="preset-btn" data-preset="off">Aus</button>
+        <button class="preset-btn active" data-preset="mann">Mann</button>
+        <button class="preset-btn" data-preset="frau">Frau</button>
+        <button class="preset-btn" data-preset="werbung">Werbung</button>
+      </div>
+      <div class="preset-desc" id="presetDesc">Männliche Stimme · Warm, Presence, leichte Kompression</div>
+    </div>
+
+    <!-- Die 3 sichtbaren Regler -->
+    <div class="ctrl-section">
+      <div class="ctrl-hd">Feinabstimmung</div>
+
+      <div class="slider-row">
+        <span class="slider-lbl">Sprachlevel</span>
+        <div class="slider-with-scale">
+          <div class="slider-wrap">
+            <input type="range" id="slVoiceGain" min="-12" max="6" step="0.5" value="0">
+          </div>
+          <!-- −12…+6 = 18 dB. 0 liegt bei 12/18 = 66.7% -->
+          <div class="slider-scale-wrap">
+            <span class="sc lo"  style="left:0%">−12</span>
+            <span class="sc"     style="left:33.3%">−6 dB</span>
+            <span class="sc"     style="left:66.7%">0 dB</span>
+            <span class="sc hi"  style="left:100%">+6 dB</span>
+          </div>
+        </div>
+      </div>
+      <div class="slider-hint">Sprecher lauter/leiser. Analysierter Wert steht auf 0 dB.</div>
+
+      <div class="slider-row" style="margin-top:10px;">
+        <span class="slider-lbl">Beitragslevel</span>
+        <div class="slider-with-scale">
+          <div class="slider-wrap">
+            <input type="range" id="slBgGain" min="-12" max="6" step="0.5" value="0">
+          </div>
+          <div class="slider-scale-wrap">
+            <span class="sc lo"  style="left:0%">−12</span>
+            <span class="sc"     style="left:33.3%">−6 dB</span>
+            <span class="sc"     style="left:66.7%">0 dB</span>
+            <span class="sc hi"  style="left:100%">+6 dB</span>
+          </div>
+        </div>
+      </div>
+      <div class="slider-hint">Beitrag lauter/leiser. Analysierter Wert steht auf 0 dB.</div>
+
+      <div class="slider-row" style="margin-top:10px;">
+        <span class="slider-lbl">Hold-Zeit</span>
+        <div class="slider-with-scale">
+          <div class="slider-wrap">
+            <input type="range" id="slHold" min="100" max="3000" step="50" value="600">
+          </div>
+          <!-- Wie lange bleibt Beitrag nach letztem Wort unten? 200ms = Broadcast-Standard -->
+          <div class="slider-scale-wrap">
+            <span class="sc lo" style="left:0%">100 ms</span>
+            <span class="sc"    style="left:36.8%">800 ms</span>
+            <span class="sc"    style="left:68.4%">1400 ms</span>
+            <span class="sc hi" style="left:100%">2000 ms</span>
+          </div>
+        </div>
+      </div>
+      <div class="slider-hint">Wie lange der Beitrag nach der letzten Silbe unten bleibt. TV-Magazin: 800–1200 ms.</div>
+    </div>
+
+    <!-- Auto-Analyse Ergebnis -->
+    <div class="ctrl-section" id="analysisBox" style="display:none;">
+      <div class="ctrl-hd">Analyse ✓</div>
+      <div class="analysis-item" id="anSpeech"></div>
+      <div class="analysis-item" id="anDuck"></div>
+      <div class="analysis-item" id="anTiming"></div>
+    </div>
+
+    <!-- Haupt-Button -->
+    <div class="ctrl-section">
+      <button class="proc-btn" id="procBtn" disabled>▶ Mix erstellen</button>
+      <div class="prog-wrap" id="progWrap">
+        <div class="prog-bg"><div class="prog-fill" id="progFill"></div></div>
+        <div class="prog-label" id="progLabel">Initialisiere…</div>
+      </div>
+    </div>
+
+    <!-- Ergebnis -->
+    <div class="stats-section" id="statsSection" style="display:none;">
+      <div class="ctrl-hd">Ergebnis</div>
+      <div class="stat-row"><span class="stat-l">Integrated LUFS</span><span class="stat-v" id="stLufs">—</span></div>
+      <div class="stat-row"><span class="stat-l">True Peak</span><span class="stat-v" id="stTp">—</span></div>
+      <div class="stat-row"><span class="stat-l">LRA</span><span class="stat-v" id="stLra">—</span></div>
+      <div class="stat-row"><span class="stat-l">Dauer</span><span class="stat-v" id="stDur">—</span></div>
+    </div>
+
+    <!-- Download -->
+    <div class="dl-section">
+      <a class="dl-btn" id="dlBtn" href="#" download="satk-mix.wav">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        WAV herunterladen
+      </a>
+    </div>
+
+    <!-- Erweitert -->
+    <div class="ctrl-section" style="padding-top:8px;padding-bottom:8px;">
+      <button class="adv-toggle" id="advToggle" onclick="toggleAdv()">▸ Erweiterte Einstellungen</button>
+    </div>
+    <div id="advPanel" style="display:none;">
+      <div class="ctrl-section">
+        <!-- Rauschunterdrückung Toggle -->
+        <div style="padding:10px 0 12px;border-bottom:1px solid var(--bd);margin-bottom:12px;">
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+            <input type="checkbox" id="chkVoiceDenoise" checked
+              style="width:16px;height:16px;accent-color:var(--ac);cursor:pointer;">
+            <span style="font-size:11px;color:var(--tx);">Rauschunterdrückung der Sprecher-Spur</span>
+            <span style="font-size:9px;color:var(--mu);margin-left:4px;">(empfohlen)</span>
+          </label>
+          <div style="font-size:9px;color:var(--mu);margin-top:4px;margin-left:26px;">
+            Entfernt automatisch Hintergrundrauschen vor dem Mischen. Nur deaktivieren wenn die Aufnahme bereits sehr sauber ist.
+          </div>
+        </div>
+
+        <div class="ctrl-hd">Ducking (automatisch)</div>
+        <div class="slider-row">
+          <span class="slider-lbl">Duck-Tiefe</span>
+          <div class="slider-wrap"><input type="range" id="slDepth" min="-30" max="-3" step="0.5" value="-14"><span class="slider-val" id="valDepth">−14 dB</span></div>
+        </div>
+        <div class="slider-row">
+          <span class="slider-lbl">Schwelle</span>
+          <div class="slider-wrap"><input type="range" id="slThresh" min="-60" max="-20" step="1" value="-40"><span class="slider-val" id="valThresh">−40 dBFS</span></div>
+        </div>
+        <div class="slider-row">
+          <span class="slider-lbl">Attack</span>
+          <div class="slider-wrap"><input type="range" id="slAtk" min="2" max="100" step="1" value="8"><span class="slider-val" id="valAtk">8 ms</span></div>
+        </div>
+        <div class="slider-row">
+          <span class="slider-lbl">Release</span>
+          <div class="slider-wrap"><input type="range" id="slRel" min="50" max="2000" step="10" value="80"><span class="slider-val" id="valRel">80 ms</span></div>
+        </div>
+        <div class="slider-row">
+          <span class="slider-lbl">True Peak Limit</span>
+          <div class="slider-wrap"><input type="range" id="slTP" min="-4" max="-0.5" step="0.1" value="-1.0"><span class="slider-val" id="valTP">−1.0 dBTP</span></div>
+        </div>
+      </div>
+      <!-- Leerraum damit beim Öffnen sicher alles scrollbar ist -->
+      <div style="height:20px;"></div>
+    </div>
+
+  </div><!-- /.ctrl-panel -->
+</div><!-- /.main -->
+
+<div class="toolbar">
+  <div class="status-dot" id="statusDot"></div>
+  <span style="font-size:8px;color:var(--mu);">SATK Auto-Mixer · Side-Chain Ducking · EBU R128</span>
+  <span class="tb-info" id="tbInfo">Beide Spuren laden, dann Mix erstellen</span>
+</div>
+
+</div><!-- /.app -->
+
+<script>
+'use strict';
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
+// ── Browser-Kompatibilitäts-Helfer ───────────────────────────────────────────
+
+// 1. Datei sicher als ArrayBuffer lesen (Safari < 14.1 hat kein file.arrayBuffer())
+function readFileAsArrayBuffer(file) {
+  if (typeof file.arrayBuffer === 'function') {
+    return file.arrayBuffer();
+  }
+  return new Promise(function(resolve, reject) {
+    var reader = new FileReader();
+    reader.onload  = function(e) { resolve(e.target.result); };
+    reader.onerror = function()  { reject(new Error('FileReader: Lesefehler')); };
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+// 2. Audio dekodieren — Callback-Stil (funktioniert in allen Browser-Versionen)
+function safariFriendlyDecode(actx, arrayBuffer) {
+  // Puffer kopieren — Safari verbraucht ArrayBuffer beim ersten Versuch
+  var buf = arrayBuffer.slice ? arrayBuffer.slice(0) : arrayBuffer;
+  // Nur Callback-Form — kein Double-Resolve auf Safari Desktop
+  return new Promise(function(resolve, reject) {
+    actx.decodeAudioData(
+      buf,
+      function(decoded) { resolve(decoded); },
+      function(err)     { reject(err || new Error('decodeAudioData fehlgeschlagen')); }
+    );
+  });
+}
+
+// 3. OfflineAudioContext rendern — oncomplete-Fallback für ältere Browser
+function renderOffline(ctx) {
+  return new Promise(function(resolve, reject) {
+    ctx.oncomplete = function(e) { resolve(e.renderedBuffer); };
+    try {
+      var p = ctx.startRendering();
+      if (p && typeof p.then === 'function') p.then(resolve).catch(reject);
+    } catch(e) { reject(e); }
+  });
+}
+
+// 4. AudioContext lazy — erst beim ersten Aufruf erstellen, nie beim Laden
+function getAudioContext() {
+  var AC = window.AudioContext || window.webkitAudioContext;
+  if (!window._satkAC || window._satkAC.state === 'closed') {
+    window._satkAC = new AC();
+  }
+  if (window._satkAC.state === 'suspended') {
+    window._satkAC.resume().catch(function(){});
+  }
+  return window._satkAC;
+}
+
+async function getAudioContextReady() {
+  var ac = getAudioContext();
+  if (ac.state !== 'running') {
+    try { await ac.resume(); } catch(e) {}
+  }
+  return ac;
+}
+
+window.OfflineAudioContext = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+
+// ── State ──────────────────────────────────────────────────────────────────────
+let voiceBuf = null, bgBuf = null, mixBlobUrl = null;
+let _noiseFloorDb  = -60;
+let _speechLevelDb = -20;
+let previewSrc = null;
+
+// ── DOM ────────────────────────────────────────────────────────────────────────
+const procBtn  = document.getElementById('procBtn');
+const progWrap = document.getElementById('progWrap');
+const progFill = document.getElementById('progFill');
+const progLabel= document.getElementById('progLabel');
+const dlBtn    = document.getElementById('dlBtn');
+const tbInfo   = document.getElementById('tbInfo');
+const statusDot= document.getElementById('statusDot');
+
+// ── K-Weighting (ITU-R BS.1770-4) ─────────────────────────────────────────────
+function mkK(sr) {
+  const ok = sr>=46000 && sr<=50000;
+  return {
+    preB: ok?[1.53512485958697,-2.69169618940638,1.19839281085285]:[1.53085766865605,-2.65072300564990,1.16916682897904],
+    preA: ok?[1,-1.69065929318241,.73248077421585]:[1,-1.66364048874477,.71247332735500],
+    hpB:  [1,-2,1],
+    hpA:  ok?[1,-1.99004745483398,.99007225036621]:[1,-1.98919956770367,.98922949918125]
+  };
+}
+function mst(){return{x1:0,x2:0,y1:0,y2:0};}
+function bqf(x,b,a,s){
+  const y=b[0]*x+b[1]*s.x1+b[2]*s.x2-a[1]*s.y1-a[2]*s.y2;
+  s.x2=s.x1;s.x1=x;s.y2=s.y1;s.y1=y;return y;
+}
+
+// Integrated LUFS (BS.1770 Doppel-Gating) — optimiert: Präfixsumme O(N)
+async function measureLufs(buf) {
+  const sr=buf.sampleRate, nCh=Math.min(buf.numberOfChannels,2);
+  const kc=mkK(sr);
+  const bsmp=Math.round(.4*sr), hsmp=Math.round(.1*sr), len=buf.length;
+
+  // ── 1. K-Weighting 1× über gesamtes Signal ──────────────────────────────
+  const weighted=[];
+  for(let c=0;c<nCh;c++){
+    const ch=buf.getChannelData(c), out=new Float32Array(len);
+    const ps=mst(), hs=mst();
+    for(let i=0;i<len;i++){
+      if(i>0&&i%500000===0) await new Promise(r=>setTimeout(r,0));
+      out[i]=bqf(bqf(ch[i],kc.preB,kc.preA,ps),kc.hpB,kc.hpA,hs);
+    }
+    weighted.push(out);
+  }
+
+  // ── 2. Präfixsumme der Quadrate pro Kanal → O(N) Blockenergien ──────────
+  // Statt jedes Block-Fenster 19200× zu lesen → 1× über Präfixsumme
+  const prefix=Array.from({length:nCh},(_,c)=>{
+    const w=weighted[c], p=new Float64Array(len+1);
+    for(let i=0;i<len;i++) p[i+1]=p[i]+w[i]*w[i];
+    return p;
+  });
+
+  const nb=Math.max(1,Math.floor((len-bsmp)/hsmp)+1);
+  const blocks=new Float32Array(nb);
+  for(let b=0;b<nb;b++){
+    const s=b*hsmp, e=Math.min(s+bsmp,len), n=e-s;
+    let lk=0;
+    for(let c=0;c<nCh;c++) lk+=(prefix[c][e]-prefix[c][s])/n;
+    blocks[b]=lk; // R128: Summe der Kanalenergie (NICHT Mittelwert)
+  }
+
+  // ── 3. Gating (absolut + relativ) ───────────────────────────────────────
+  const absT=Math.pow(10,(-70+.691)/10);
+  let s1=0, n1=0;
+  for(let b=0;b<nb;b++) if(blocks[b]>absT){s1+=blocks[b];n1++;}
+  if(!n1) return -Infinity;
+  const relT=(s1/n1)*Math.pow(10,-1);
+  let s2=0, n2=0;
+  for(let b=0;b<nb;b++) if(blocks[b]>relT){s2+=blocks[b];n2++;}
+  return n2?-.691+10*Math.log10(s2/n2):-Infinity;
+}
+
+// Measure True Peak (4× Oversampling, Polyphasen-FIR)
+const TP_H = [
+  Float32Array.from([0,0,0,0,0,1,0,0,0,0,0,0]),
+  Float32Array.from([-0.000228,0.001009,-0.002786,0.006242,-0.013372,0.520516,0.558068,-0.071678,0.028912,-0.010417,0.003055,-0.000621]),
+  Float32Array.from([-0.000439,0.001900,-0.005181,0.011460,-0.024168,0.500000,0.500000,-0.024168,0.011460,-0.005181,0.001900,-0.000439]),
+  Float32Array.from([-0.000621,0.003055,-0.010417,0.028912,-0.071678,0.558068,0.520516,-0.013372,0.006242,-0.002786,0.001009,-0.000228]),
+];
+function measureTruePeak(data) {
+  const N=12, buf=new Float32Array(N); let pos=0, peak=0;
+  for(let n=0;n<data.length;n++){
+    buf[pos%N]=data[n];
+    for(let p=0;p<4;p++){
+      const h=TP_H[p]; let acc=0;
+      for(let k=0;k<N;k++) acc+=h[k]*buf[(pos-k+N*2)%N];
+      if(Math.abs(acc)>peak) peak=Math.abs(acc);
+    }
+    pos=(pos+1)%N;
+  }
+  return peak>0?20*Math.log10(peak):-Infinity;
+}
+
+// ── Waveform Drawing ───────────────────────────────────────────────────────────
+function drawWave(canvasId, buf, color='#c8f060') {
+  const cv=document.getElementById(canvasId);
+  if(!cv||!buf)return;
+  const dpr=window.devicePixelRatio||1;
+  const W=cv.parentElement.offsetWidth, H=cv.parentElement.offsetHeight;
+  cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
+  cv.style.width=W+'px'; cv.style.height=H+'px';
+  const c=cv.getContext('2d');
+  c.scale(dpr,dpr);
+  c.fillStyle='#060809'; c.fillRect(0,0,W,H);
+  const ch=buf.getChannelData(0);
+  const step=Math.ceil(ch.length/W);
+  const mid=H/2;
+  c.strokeStyle=color; c.lineWidth=1; c.globalAlpha=0.7;
+  c.beginPath();
+  for(let x=0;x<W;x++){
+    let min=1,max=-1;
+    for(let s=x*step;s<Math.min((x+1)*step,ch.length);s++){
+      if(ch[s]<min)min=ch[s]; if(ch[s]>max)max=ch[s];
+    }
+    c.moveTo(x,mid+min*mid*.9); c.lineTo(x,mid+max*mid*.9);
+  }
+  c.stroke(); c.globalAlpha=1;
+  // Zero line
+  c.strokeStyle='rgba(255,255,255,.08)'; c.lineWidth=1;
+  c.beginPath(); c.moveTo(0,mid); c.lineTo(W,mid); c.stroke();
+}
+
+function drawDuckCurve(gainCurve, sr) {
+  const viz=document.getElementById('duckViz');
+  viz.style.display='block';
+  const cv=document.getElementById('cvDuck');
+  const dpr=window.devicePixelRatio||1;
+  const W=cv.parentElement.offsetWidth, H=cv.parentElement.offsetHeight;
+  cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
+  cv.style.width=W+'px'; cv.style.height=H+'px';
+  const c=cv.getContext('2d');
+  c.scale(dpr,dpr);
+  c.fillStyle='#060809'; c.fillRect(0,0,W,H);
+  const step=Math.ceil(gainCurve.length/W);
+  c.strokeStyle='rgba(96,212,240,.7)'; c.lineWidth=1;
+  c.beginPath();
+  for(let x=0;x<W;x++){
+    const g=gainCurve[Math.min(x*step,gainCurve.length-1)];
+    // g ist linear 0..1, 1=kein Duck, mapped zu Y
+    const y=H*(1-g)*.9+H*.05;
+    x===0?c.moveTo(x,y):c.lineTo(x,y);
+  }
+  c.stroke();
+  // 0dB Linie
+  c.strokeStyle='rgba(200,240,96,.2)'; c.lineWidth=.5; c.setLineDash([2,3]);
+  c.beginPath(); c.moveTo(0,H*.05); c.lineTo(W,H*.05); c.stroke();
+  c.setLineDash([]);
+}
+
+function drawMixWave(buf) {
+  const wrap=document.getElementById('waveMix');
+  wrap.style.display='block';
+  drawWave('cvMix', buf, '#60d4f0');
+  const d=buf.duration;
+  document.getElementById('durMix').textContent=
+    `${Math.floor(d/60)}:${('0'+Math.floor(d%60)).slice(-2)}`;
+}
+
+// ── Progress Helper ────────────────────────────────────────────────────────────
+function setProgress(pct, label) {
+  progWrap.style.display='block';
+  progFill.style.width=pct+'%';
+  progLabel.textContent=label;
+}
+
+// ── WAV Encoder ────────────────────────────────────────────────────────────────
+function encodeWav(buf) {
+  const nCh=buf.numberOfChannels, sr=buf.sampleRate, len=buf.length;
+  const bytes=new ArrayBuffer(44+len*nCh*2);
+  const v=new DataView(bytes);
+  const ws=(off,s)=>{for(let i=0;i<s.length;i++)v.setUint8(off+i,s.charCodeAt(i));};
+  ws(0,'RIFF'); v.setUint32(4,36+len*nCh*2,true); ws(8,'WAVE');
+  ws(12,'fmt '); v.setUint32(16,16,true); v.setUint16(20,1,true);
+  v.setUint16(22,nCh,true); v.setUint32(24,sr,true);
+  v.setUint32(28,sr*nCh*2,true); v.setUint16(32,nCh*2,true);
+  v.setUint16(34,16,true); ws(36,'data'); v.setUint32(40,len*nCh*2,true);
+  // ── Schnelles Int16-Encoding via TypedArray (3× schneller als setInt16) ──
+  const int16=new Int16Array(bytes, 44);
+  const channels=Array.from({length:nCh},(_,c)=>buf.getChannelData(c));
+  for(let i=0;i<len;i++){
+    for(let c=0;c<nCh;c++){
+      const s=Math.max(-1,Math.min(1,channels[c][i]));
+      int16[i*nCh+c]=s<0?s*32768:s*32767;
+    }
+  }
+  return new Blob([bytes],{type:'audio/wav'});
+}
+
+// ── Core: Auto-Mixer DSP ───────────────────────────────────────────────────────
+async function runMix() {
+  const targetLufs = parseFloat(document.getElementById('slTarget').value);
+  const duckDepthDb= parseFloat(document.getElementById('slDepth').value);
+  const threshDb   = parseFloat(document.getElementById('slThresh').value);
+  const atkMs      = parseFloat(document.getElementById('slAtk').value);
+  const relMs      = parseFloat(document.getElementById('slRel').value);
+  const holdMs     = parseFloat(document.getElementById('slHold').value);  // sichtbarer Regler
+  const voiceGainDb= parseFloat(document.getElementById('slVoiceGain').value);
+  const bgGainDb   = parseFloat(document.getElementById('slBgGain').value);
+  const tpCeilDb   = parseFloat(document.getElementById('slTP').value);
+
+  // ── Schritt 1: Beide Tracks auf gleiche Samplerate bringen ──────────────
+  setProgress(2, 'Resample & Vorbereitung…');
+  await tick();
+
+  // Verwende die höhere Samplerate als Ausgabe-SR
+  const outSr = Math.max(voiceBuf.sampleRate, bgBuf.sampleRate);
+  const outLen = Math.max(
+    Math.round(voiceBuf.duration * outSr),
+    Math.round(bgBuf.duration   * outSr)
+  );
+
+  // Voice resamplen (OfflineAudioContext als Resampler)
+  async function resample(buf, targetSr, targetLen) {
+    if (buf.sampleRate === targetSr) return buf;
+    const ctx = new OfflineAudioContext(buf.numberOfChannels, targetLen, targetSr);
+    const src = ctx.createBufferSource();
+    src.buffer = buf; src.connect(ctx.destination); src.start(0);
+    return renderOffline(ctx);
+  }
+
+  setProgress(6, 'Resample Voice…');
+  let voiceR = await resample(voiceBuf, outSr, outLen);
+
+  // ── Optionales Voice-Denoising vor dem Mischen ────────────────────────────
+  // Denoising: standardmäßig aktiv, abschaltbar in Erweiterten Einstellungen
+  const denoiseEnabled = document.getElementById('chkVoiceDenoise')?.checked !== false;
+  if(denoiseEnabled && typeof denoiseBuffer==='function'){
+    try{
+      setProgress(8, 'Rauschunterdrückung…'); await tick();
+      voiceR = await denoiseBuffer(voiceR, {thresh:1.8,depth:20,smoothTime:60,freqSmooth:2});
+      setProgress(9, ''); await tick();
+    }catch(e){ console.warn('[SATK Denoiser]',e); }
+  }
+
+  setProgress(12, 'Resample Background…');
+  const bgR    = await resample(bgBuf, outSr, outLen);
+  await tick();
+
+  // ── Schritt 2: R128-Normalisierung beider Tracks ──────────────────────────
+  setProgress(18, 'Messe Voice-Lautheit (EBU R128)…');
+  await tick();
+  const voiceLufs = await measureLufs(voiceR);
+  setProgress(26, 'Messe Background-Lautheit…');
+  await tick();
+  const bgLufs = await measureLufs(bgR);
+
+  // Gain-Berechnung
+  const voiceNormGainDb = (voiceLufs > -70 ? targetLufs - voiceLufs : 0) + voiceGainDb;
+  const bgNormGainDb    = (bgLufs > -70 ? targetLufs - bgLufs : 0) + bgGainDb;
+  const voiceGainLin = Math.pow(10, voiceNormGainDb / 20);
+  const bgGainLin    = Math.pow(10, bgNormGainDb    / 20);
+
+  // ── Voice EQ + Kompressor Preset ─────────────────────────────────────────
+  setProgress(32, `Wende Preset "${activePreset}" auf Sprecher an…`);
+  await tick();
+  let voiceProcessed = new Float32Array(voiceR.getChannelData(0));
+  voiceProcessed = applyVoicePreset(voiceProcessed, outSr, activePreset);
+
+  // ── Fade-out am Ende der Voice-Spur (verhindert Click) ───────────────────
+  // Letztes Sample → 0 erzeugt sonst eine Diskontinuität im Mix.
+  // 20ms linearer Fade-out eliminiert den Click program-unabhängig.
+  {
+    const fadeMs  = 20;
+    const fadeSmp = Math.min(Math.round(outSr * fadeMs / 1000), voiceProcessed.length);
+    const start   = voiceProcessed.length - fadeSmp;
+    for(let k = 0; k < fadeSmp; k++){
+      voiceProcessed[start + k] *= (fadeSmp - k) / fadeSmp;
+    }
+  }
+
+  // ── Schritt 3: Envelope-Follower auf Voice-Spur ───────────────────────────
+  setProgress(35, 'Berechne Sprecher-Aktivität…');
+  await tick();
+
+  const voiceCh  = voiceProcessed;   // verarbeitete Voice-Spur
+  const threshLin = Math.pow(10, threshDb / 20);
+  const duckDepth = Math.pow(10, duckDepthDb / 20); // z.B. 0.2 für −14 dB
+
+  // ── Phase 1: Sprach-Aktivität per Frame erkennen (10ms) ──────────────────────
+  // Direktes Frame-RMS ohne Glättung — Glättung nur in der Gain-Kurve.
+  // Hysterese verhindert Flattern bei Grenzpegeln.
+  const frameSz   = Math.round(outSr * 0.010);
+  const nFrames   = Math.ceil(outLen / frameSz);
+  const frameRms  = new Float32Array(nFrames);
+  const activity  = new Uint8Array(nFrames);
+
+  const threshClose = threshLin * 1.2;
+  const threshOpen  = threshLin * 0.8;
+  let wasActive = false;
+
+  for (let f = 0; f < nFrames; f++) {
+    const start = f * frameSz;
+    let sq = 0, n = 0;
+    for (let i = start; i < Math.min(start + frameSz, voiceCh.length); i++) {
+      const s = voiceCh[i]; sq += s*s; n++;
+    }
+    const rms = n > 0 ? Math.sqrt(sq / n) : 0;
+    frameRms[f] = rms;
+    if (!wasActive && rms > threshClose) wasActive = true;
+    else if (wasActive && rms < threshOpen) wasActive = false;
+    activity[f] = wasActive ? 1 : 0;
+  }
+
+  // ── DIAGNOSE ─────────────────────────────────────────────────────────────────
+  const activeFrames = Array.from(activity).filter(v=>v>0).length;
+  const maxRms = Array.from(frameRms).reduce((a,b)=>Math.max(a,b),0);
+  const avgRms = Array.from(frameRms).reduce((a,b)=>a+b,0)/nFrames;
+  console.log('[SATK AutoMix] Sprach-Aktivität:',
+    activeFrames, 'von', nFrames, 'Frames =',
+    Math.round(activeFrames/nFrames*100)+'%');
+  console.log('[SATK AutoMix] RMS: max='+maxRms.toFixed(4)+
+    ' avg='+avgRms.toFixed(4)+
+    ' threshClose='+threshClose.toFixed(4)+
+    ' threshOpen='+threshOpen.toFixed(4));
+  console.log('[SATK AutoMix] duckDepth='+duckDepth.toFixed(3)+
+    ' ('+duckDepthDb+' dB)'+
+    ' holdMs='+holdMs+' atkMs='+atkMs+' relMs='+relMs);
+  console.log('[SATK AutoMix] voiceCh.length='+voiceCh.length+
+    ' outLen='+outLen+' nFrames='+nFrames);
+  // ─────────────────────────────────────────────────────────────────────────────
+
+    // ── Phase 2: Hold anwenden (unveränderter Code) ───────────────────────────
+    // ── Phase 2: Hold anwenden ─────────────────────────────────────────────────
+  // Nach Ende der Sprache noch holdMs aktiv halten (kein sofortiges Hochziehen
+  // bei kurzen Atempausen innerhalb eines Satzes)
+  const holdFrames = Math.ceil(holdMs / 10);
+  const held = new Uint8Array(nFrames);
+  let holdLeft = 0;
+  for (let f = 0; f < nFrames; f++) {
+    if (activity[f]) { held[f] = 1; holdLeft = holdFrames; }
+    else if (holdLeft > 0) { held[f] = 1; holdLeft--; }
+    else { held[f] = 0; }
+  }
+
+  // ── Phase 3: Dynamischer Offline-Ducker ──────────────────────────────────────
+  //
+  // Offline-Stärke: wir kennen das gesamte Sprachmuster VOR der Verarbeitung.
+  // → Dynamischer Hold: kurze Pause = kurzer Hold, lange Pause = längerer Hold
+  // → Beitrag kommt proportional zur Pausenlänge zurück — klingt natürlich
+  //
+  // Prinzip:
+  //   · Während Sprache: ducken (schneller Attack)
+  //   · Nach Sprachende: Hold = f(Pausenlänge) — dynamisch per Pause
+  //     - Kurze Pause (< 300ms): Hold = 80% der Pause → kaum Erholung
+  //     - Mittlere Pause (300-800ms): Hold = 40% der Pause → partial Erholung
+  //     - Lange Pause (> 800ms): Hold = 20% der Pause → volle Erholung
+  //   · Release: sanft und gleichmäßig (relCoeff)
+
+  // ── 3a: Dynamischen Hold per Pause berechnen ─────────────────────────────
+  // Baue targetPerFrame[] mit individuellen Hold-Zeiten pro Stille-Segment
+  const targetPerFrame = new Float32Array(nFrames).fill(1.0);
+
+  // Markiere alle Sprach-Frames als geduckt
+  for(let f=0; f<nFrames; f++){
+    if(activity[f]) targetPerFrame[f] = duckDepth;
+  }
+
+  // Hold-Slider = Schwelle ab der Pausen aufgehen dürfen (in ms)
+  // Pausen kürzer als holdMs → 100% hold → Background bewegt sich nicht
+  // Pausen länger als holdMs → graduell mehr Erholung
+  const holdThreshMs = holdMs; // aus Slider gelesen
+
+  // Finde jedes Stille-Segment und berechne dynamischen Hold
+  let f2 = 0;
+  while(f2 < nFrames){
+    if(!activity[f2]){
+      const silStart  = f2;
+      while(f2 < nFrames && !activity[f2]) f2++;
+      const silEnd    = f2;
+      const silFrames = silEnd - silStart;
+      const silMs     = silFrames * 10; // 10ms pro Frame
+      const isFinal   = (silEnd >= nFrames); // Sprecher fertig — letztes Stille-Segment
+
+      let holdFrac;
+      if(isFinal) {
+        // Sprecher fertig → sofort hochregeln
+        const minHoldMs = Math.min(150, holdThreshMs * 0.3);
+        holdFrac = silMs > 0 ? Math.min(0.08, minHoldMs / silMs) : 0;
+      } else if(silMs <= holdThreshMs) {
+        holdFrac = 1.0;    // kürzer als Schwelle → komplett geduckt
+      } else if(silMs < holdThreshMs * 2) {
+        holdFrac = 0.85;   // knapp darüber → kaum Öffnung
+      } else if(silMs < holdThreshMs * 4) {
+        holdFrac = 0.55;   // deutlich länger → moderate Öffnung
+      } else {
+        holdFrac = 0.25;   // sehr lange Pause → Background kommt hoch
+      }
+
+      const dynHoldFrames = Math.round(silFrames * holdFrac);
+      for(let k=silStart; k<Math.min(silStart+dynHoldFrames, silEnd); k++){
+        targetPerFrame[k] = duckDepth;
+      }
+    } else {
+      f2++;
+    }
+  }
+
+  // ── 3b: Smooth Attack + Release auf die Kurve anwenden ───────────────────
+  const atkCoeff  = Math.exp(-1 / (outSr * atkMs / 1000));
+  const relCoeff  = Math.exp(-1 / (outSr * relMs / 1000));
+
+  const duckGain   = new Float32Array(outLen);
+  let   currentGain = 1.0;
+  const yieldEvery  = Math.round(outSr * 2);
+
+  for(let i=0; i<outLen; i++){
+    if(i > 0 && i % yieldEvery === 0){
+      setProgress(35 + Math.round(i / outLen * 15),
+        'Duck-Kurve… ' + Math.round(i / outLen * 100) + '%');
+      await tick();
+    }
+    const f = Math.min((i / frameSz) | 0, nFrames - 1);
+    const tg = targetPerFrame[f];
+    currentGain = tg < currentGain
+      ? atkCoeff * currentGain + (1 - atkCoeff) * tg  // Attack: Beitrag runter
+      : relCoeff * currentGain + (1 - relCoeff) * tg; // Release: Beitrag hoch
+    duckGain[i] = currentGain;
+  }
+
+  setProgress(52, 'Wende Duck-Kurve an…');
+  await tick();
+
+  // ── Schritt 4: Mix zusammenbauen ─────────────────────────────────────────
+  // Ausgabe: immer Stereo
+  const mixL = new Float32Array(outLen);
+  const mixR = new Float32Array(outLen);
+
+  const bgNch  = bgR.numberOfChannels;
+  const bgL    = bgR.getChannelData(0);
+  const bgRCh  = bgNch > 1 ? bgR.getChannelData(1) : bgL;
+
+  // Voice (Mono → Stereo Center)
+  for (let i = 0; i < outLen; i++) {
+    if(i>0&&i%200000===0) await tick();
+    const v = (voiceCh[i] || 0) * voiceGainLin;
+    mixL[i] += v;
+    mixR[i] += v;
+  }
+
+  // Background (Stereo, geduckt)
+  for (let i = 0; i < outLen; i++) {
+    const g = duckGain[i] * bgGainLin;
+    mixL[i] += (bgL[i]   || 0) * g;
+    mixR[i] += (bgRCh[i] || 0) * g;
+  }
+
+  setProgress(65, 'Messe Mix-Lautheit (R128)…');
+  await tick();
+
+  // ── Schritt 5: Finale R128-Normalisierung des Mix ─────────────────────────
+  // Temporärer Buffer für Messung
+  const actx = new OfflineAudioContext(2, outLen, outSr);
+  const tmpBuf = actx.createBuffer(2, outLen, outSr);
+  tmpBuf.copyToChannel(mixL, 0);
+  tmpBuf.copyToChannel(mixR, 1);
+  const mixLufs = measureLufs(tmpBuf);
+
+  // True Peak vor Normalisierung prüfen
+  const tpL_pre = measureTruePeak(mixL);
+  const tpR_pre = measureTruePeak(mixR);
+
+  // Gain für Ziel-LUFS
+  let finalGainDb = mixLufs > -70 ? targetLufs - mixLufs : 0;
+
+  // True-Peak-Limiter: falls gain die TP-Grenze verletzt, einschränken
+  const tpPeak = Math.max(tpL_pre, tpR_pre);
+  if (tpPeak > -Infinity) {
+    const tpGainLimit = tpCeilDb - tpPeak;
+    if (finalGainDb > tpGainLimit) finalGainDb = tpGainLimit;
+  }
+
+  const finalGainLin = Math.pow(10, finalGainDb / 20);
+
+  setProgress(78, 'Wende finale Normalisierung an…');
+  await tick();
+
+  for (let i = 0; i < outLen; i++) {
+    mixL[i] *= finalGainLin;
+    mixR[i] *= finalGainLin;
+  }
+
+  // Hartes Clipping-Limit als Sicherheitsnetz
+  const clipLin = Math.pow(10, tpCeilDb / 20);
+  for (let i = 0; i < outLen; i++) {
+    mixL[i] = Math.max(-clipLin, Math.min(clipLin, mixL[i]));
+    mixR[i] = Math.max(-clipLin, Math.min(clipLin, mixR[i]));
+  }
+
+  setProgress(88, 'Erstelle Output-Buffer…');
+  await tick();
+
+  // ── Schritt 6: Finale Messung & Output ────────────────────────────────────
+  const outBuf = actx.createBuffer(2, outLen, outSr);
+  outBuf.copyToChannel(mixL, 0);
+  outBuf.copyToChannel(mixR, 1);
+
+  const finalLufs = measureLufs(outBuf);
+  const finalTpL  = measureTruePeak(mixL);
+  const finalTpR  = measureTruePeak(mixR);
+  const finalTp   = Math.max(finalTpL, finalTpR);
+
+  // LRA des Mix
+  function calcLRA(buf) {
+    const sr=buf.sampleRate, nCh=Math.min(buf.numberOfChannels,2);
+    const kc=mkK(sr);
+    const states=Array.from({length:nCh},()=>({preS:mst(),hpS:mst()}));
+    const wsmp=Math.round(3*sr), hsmp=Math.round(sr);
+    if(buf.length<wsmp) return null;
+    const nb=Math.floor((buf.length-wsmp)/hsmp)+1;
+    const stBlocks=[];
+    for(let b=0;b<nb;b++){
+      const start=b*hsmp; let lk=0;
+      for(let c=0;c<nCh;c++){
+        const ch=buf.getChannelData(c); const st=states[c]; let ms=0;
+        for(let i=start;i<start+wsmp;i++){
+          const w=bqf(bqf(ch[i]||0,kc.preB,kc.preA,st.preS),kc.hpB,kc.hpA,st.hpS);
+          ms+=w*w;
+        }
+        lk+=ms/wsmp;
+      }
+      stBlocks.push(lk);
+    }
+    const absT=Math.pow(10,(-70+.691)/10);
+    const g1=stBlocks.filter(v=>v>absT); if(g1.length<2) return null;
+    const m1=g1.reduce((a,b)=>a+b,0)/g1.length;
+    const g2=g1.filter(v=>v>m1*Math.pow(10,-2)).sort((a,b)=>a-b);
+    if(g2.length<2) return null;
+    return (-.691+10*Math.log10(g2[Math.floor(g2.length*.95)])) -
+           (-.691+10*Math.log10(g2[Math.floor(g2.length*.10)]));
+  }
+  const finalLRA = calcLRA(outBuf);
+
+  setProgress(95, 'Encodiere WAV…');
+  await tick();
+
+  // Mix-Buffer für Vorhören speichern
+  mixBuf = outBuf;
+
+  const wav = encodeWav(outBuf);
+  if (mixBlobUrl) URL.revokeObjectURL(mixBlobUrl);
+  mixBlobUrl = URL.createObjectURL(wav);
+
+  setProgress(100, 'Fertig!');
+  await tick();
+
+  // ── UI aktualisieren ──────────────────────────────────────────────────────
+  const dur = outLen / outSr;
+  document.getElementById('stLufs').textContent  = finalLufs > -70 ? finalLufs.toFixed(1)+' LUFS' : '—';
+  document.getElementById('stTp').textContent    = finalTp > -Infinity ? finalTp.toFixed(1)+' dBTP' : '—';
+  document.getElementById('stLra').textContent   = finalLRA !== null ? finalLRA.toFixed(1)+' LU' : '— LU';
+  document.getElementById('stDur').textContent   = `${Math.floor(dur/60)}:${('0'+Math.floor(dur%60)).slice(-2)}`;
+
+  // Farbe für LUFS-Wert
+  const stLufsEl = document.getElementById('stLufs');
+  const d = Math.abs(finalLufs - targetLufs);
+  stLufsEl.className = 'stat-v' + (d<=0.5?' good':d<=1.5?' warn':'');
+
+  document.getElementById('statsSection').style.display='block';
+  dlBtn.href = mixBlobUrl;
+  dlBtn.download = satkFilename('auto-mixer','wav');
+  showDownloadHint(dlBtn.download);
+  dlBtn.classList.add('visible');
+
+  // Duck-Kurve visualisieren
+  drawDuckCurve(duckGain, outSr);
+  // Mix-Wellenform
+  drawMixWave(outBuf);
+
+  tbInfo.textContent = `Mix fertig · ${finalLufs.toFixed(1)} LUFS · TP ${finalTp.toFixed(1)} dBTP`;
+  statusDot.className = 'status-dot ok';
+}
+
+// ── Auto-Analyse der Sprecher-Spur ─────────────────────────────────────────────
+// Bestimmt automatisch alle Ducking-Parameter aus dem Signal.
+// Kein manueller Eingriff nötig.
+
+function analyzeVoice(buf) {
+  const r = _analyzeVoiceImpl(buf);
+  _noiseFloorDb  = r.noiseFloorDb;
+  _speechLevelDb = r.speechLevelDb;
+  return r;
+}
+function _analyzeVoiceImpl(buf) {
+  const ch  = buf.getChannelData(0);
+  const sr  = buf.sampleRate;
+  const len = ch.length;
+
+  // RMS in 20ms-Frames messen
+  const frameSz  = Math.round(sr * 0.02);
+  const frameRms = [];
+  for (let i = 0; i < len; i += frameSz) {
+    let sq = 0, n = 0;
+    for (let j = i; j < Math.min(i+frameSz, len); j++) { sq += ch[j]*ch[j]; n++; }
+    frameRms.push(n > 0 ? Math.sqrt(sq/n) : 0);
+  }
+
+  // ── Histogramm in dBFS (100 Bins von -70 bis 0 dBFS) ──────────────────────
+  const BINS = 100, DB_MIN = -70, DB_MAX = 0;
+  const hist = new Int32Array(BINS);
+  for (const rms of frameRms) {
+    if (rms <= 0) continue;
+    const db = 20 * Math.log10(rms);
+    const bin = Math.floor((db - DB_MIN) / (DB_MAX - DB_MIN) * BINS);
+    if (bin >= 0 && bin < BINS) hist[bin]++;
+  }
+
+  // ── Bimodale Analyse: finde Rauschteppich und Sprachpegel ─────────────────
+  // Glättung des Histogramms
+  const smooth = new Float32Array(BINS);
+  for (let i = 2; i < BINS-2; i++) {
+    smooth[i] = (hist[i-2]+hist[i-1]*2+hist[i]*3+hist[i+1]*2+hist[i+2]) / 9;
+  }
+
+  // Gesamt-Energie und Anteil aktiver Frames
+  const activeFrames = frameRms.filter(r => r > 0.001).length;
+  const speechRatio  = activeFrames / frameRms.length; // 0..1: Anteil Sprache
+
+  // Tiefster prominenter Peak = Rauschteppich
+  let noiseFloorDb = DB_MIN;
+  for (let i = 0; i < BINS * 0.6; i++) {
+    if (smooth[i] > 2) { noiseFloorDb = DB_MIN + (i/BINS)*(DB_MAX-DB_MIN); break; }
+  }
+
+  // Höchster prominenter Peak = typischer Sprachpegel
+  let speechPeakDb = -18, peakVal = 0;
+  for (let i = Math.floor(BINS*0.3); i < BINS; i++) {
+    if (smooth[i] > peakVal) { peakVal = smooth[i]; speechPeakDb = DB_MIN + (i/BINS)*(DB_MAX-DB_MIN); }
+  }
+
+  // Sprachpegel aus der oberen 20% der aktiven Frames (robuster)
+  const sortedActive = frameRms.filter(r=>r>0.001).sort((a,b)=>a-b);
+  const p80 = sortedActive[Math.floor(sortedActive.length * 0.80)] || 0.01;
+  const speechLevelDb = 20 * Math.log10(p80);
+
+  // ── Ducking-Schwelle: mittig zwischen Rauschteppich und Sprachpegel ────────
+  const gapDb   = speechLevelDb - noiseFloorDb;
+  const threshDb = Math.max(-55, Math.min(-25,
+    noiseFloorDb + gapDb * 0.45   // 45% zwischen Noise und Speech
+  ));
+
+  // ── Duck-Tiefe: Broadcast-Standard abhängig vom Sprachpegel ───────────────
+  // Sprache lauter → Beitrag tiefer ducken (klassische Rundfunkregel)
+  // Schwacher Sprecher (-30 dBFS): Duck auf -10 dB reicht
+  // Lauter Sprecher (-12 dBFS): Duck auf -18 dB nötig
+  const duckDepthDb = Math.max(-22, Math.min(-9,
+    -10 - (speechLevelDb + 30) * 0.35
+  ));
+
+  // ── Timing: abhängig von Sprechgeschwindigkeit ─────────────────────────────
+  // Sprechgeschwindigkeit: wie oft wechselt der Status Sprache/Stille?
+  const threshold_lin = Math.pow(10, threshDb/20);
+  let transitions = 0, wasSpeech = false;
+  for (const rms of frameRms) {
+    const isSpeech = rms > threshold_lin;
+    if (isSpeech !== wasSpeech) { transitions++; wasSpeech = isSpeech; }
+  }
+  const transRate = transitions / (buf.duration / 60); // Wechsel pro Minute
+
+  // Timing: schnelle Release damit Beitrag zwischen Sätzen wieder atmet.
+  // Hold kurz genug um Atemzüge zu überbrücken, aber Beitrag kommt hoch.
+  let relMs, holdMs, atkMs;
+  // Hold: kürzer → Fade beginnt früher
+  // Release: viel länger → Fade gleitet sanft hoch statt zu schnappen
+  if (transRate > 80) {        // sehr schneller Sprecher
+    atkMs  = 30;
+    relMs  = 400;   // war 100ms — langer, sanfter Fade
+    holdMs = 400;   // war 700ms — früher beginnen
+  } else if (transRate > 40) { // normales Sprechtempo
+    atkMs  = 40;
+    relMs  = 500;   // war 120ms
+    holdMs = 500;   // war 900ms
+  } else {                     // langsamer, bedächtiger Sprecher
+    atkMs  = 50;
+    relMs  = 600;   // war 150ms
+    holdMs = 600;   // war 1200ms
+  }
+
+  // Duck-Tiefe: Beitrag soll im Hintergrund deutlich hörbar bleiben
+  // Rundfunk-Standard: Sprecher 6-10 dB über Beitrag
+  // → Beitrag nicht zu weit runter (max -18 dB)
+  // Duck-Tiefe: sanft aber hörbar — max -10dB, min -14dB
+  const duckDepthDbAdj = Math.max(-14, Math.min(-8, duckDepthDb));
+
+  // Sliders setzen — Hold im sichtbaren Regler
+  setSlider('slHold',   'valHold',   holdMs+' ms',                   holdMs);
+  setSlider('slDepth',  'valDepth',  duckDepthDbAdj.toFixed(1)+' dB', duckDepthDbAdj);
+  setSlider('slThresh', 'valThresh', threshDb.toFixed(0)+' dBFS',    threshDb);
+  setSlider('slAtk',    'valAtk',    atkMs+' ms',                    atkMs);
+  setSlider('slRel',    'valRel',    relMs+' ms',                    relMs);
+
+  // Analyse-Box
+  const speechPct = Math.round(speechRatio * 100);
+  const tmDesc = transRate > 80 ? 'Schnelles Sprechtempo' : transRate > 40 ? 'Normales Sprechtempo' : 'Ruhiges Sprechtempo';
+  document.getElementById('anSpeech').textContent  = `Sprache: ${speechPct}% aktiv · Pegel ${speechLevelDb.toFixed(0)} dBFS · Rauschen ${noiseFloorDb.toFixed(0)} dBFS`;
+  document.getElementById('anDuck').textContent    = `Duck ${duckDepthDbAdj.toFixed(0)} dB · Attack ${atkMs}ms · Release ${relMs}ms · Hold ${holdMs}ms`;
+  document.getElementById('anTiming').textContent  = `${tmDesc} · Pausen < ${holdMs}ms bleiben geduckt · Pausen > ${holdMs}ms: Beitrag kommt ${relMs}ms nach Hold wieder hoch`;
+  document.getElementById('analysisBox').style.display = 'block';
+
+  return { threshDb, duckDepthDb: duckDepthDbAdj, atkMs, relMs, holdMs, speechLevelDb, noiseFloorDb, speechRatio, transRate };
+}
+
+function setSlider(id, valId, label, value) {
+  const sl = document.getElementById(id);
+  const vl = document.getElementById(valId);
+  if (sl) sl.value = value;
+  if (vl) vl.textContent = label;
+}
+
+function toggleAdv() {
+  const panel  = document.getElementById('advPanel');
+  const btn    = document.getElementById('advToggle');
+  const isOpen = panel.style.display !== 'none';
+  panel.style.display = isOpen ? 'none' : 'block';
+  btn.textContent = (isOpen ? '▸' : '▾') + ' Erweiterte Einstellungen';
+  // Nach dem Öffnen: Panel in Sicht scrollen
+  if (!isOpen) {
+    setTimeout(() => {
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 50);
+  }
+}
+
+// ── Playback Engine ────────────────────────────────────────────────────────────
+let playCtx    = null;   // AudioContext für Vorhören
+let playNode   = null;   // aktueller BufferSourceNode
+let playStart  = 0;      // AudioContext-Zeit beim Start
+let playOffset = 0;      // Startposition in Sekunden (für Seek)
+let playTrack  = null;   // 'voice' | 'bg' | 'mix'
+let playBuf    = null;   // aktueller AudioBuffer
+let playRafId  = null;   // requestAnimationFrame ID
+let mixBuf     = null;   // AudioBuffer des fertigen Mix
+
+const PLAY_ICONS = {
+  play: '<polygon points="5,3 19,12 5,21"/>',
+  stop: '<rect x="5" y="4" width="14" height="16"/>'
+};
+
+function getTrackBuf(track) {
+  if (track==='voice') return voiceBuf;
+  if (track==='bg')    return bgBuf;
+  if (track==='mix')   return mixBuf;
+}
+
+function setPlayIcon(track, isPlaying) {
+  const svg = document.getElementById('pbIcon'+cap(track));
+  if (svg) svg.innerHTML = isPlaying ? PLAY_ICONS.stop : PLAY_ICONS.play;
+  const btn = document.getElementById('pb'+cap(track));
+  if (btn) btn.classList.toggle('playing', isPlaying);
+  const wrap = document.getElementById('wave'+cap(track));
+  if (wrap) wrap.classList.toggle('playing', isPlaying);
+}
+
+function cap(s) { return s.charAt(0).toUpperCase()+s.slice(1); }
+
+function stopPlay() {
+  if (playRafId) { cancelAnimationFrame(playRafId); playRafId=null; }
+  if (playNode)  { try{playNode.stop();}catch(e){} playNode=null; }
+  if (playTrack) {
+    setPlayIcon(playTrack, false);
+    // Playhead auf 0 zurück
+    const ph = document.getElementById('ph'+cap(playTrack));
+    if (ph) ph.style.left = '0px';
+  }
+  playTrack=null; playBuf=null; playOffset=0;
+}
+
+function togglePlay(track) {
+  const buf = getTrackBuf(track);
+  if (!buf) return;
+
+  // Wenn dieser Track schon spielt: Stop
+  if (playTrack === track) { stopPlay(); return; }
+
+  // Anderen Track stoppen
+  stopPlay();
+
+  playCtx = getAudioContext();
+
+  playTrack  = track;
+  playBuf    = buf;
+  playOffset = 0;
+  startPlay(0);
+}
+
+function startPlay(offset) {
+  if (!playCtx || !playBuf) return;
+
+  playNode = playCtx.createBufferSource();
+  playNode.buffer = playBuf;
+  playNode.connect(playCtx.destination);
+  playNode.start(0, offset);
+  playStart  = playCtx.currentTime - offset;
+  playOffset = offset;
+
+  playNode.onended = () => {
+    if (playTrack) { stopPlay(); }
+  };
+
+  setPlayIcon(playTrack, true);
+  animPlayhead();
+}
+
+function animPlayhead() {
+  if (!playTrack || !playCtx || !playBuf) return;
+
+  const elapsed = playCtx.currentTime - playStart;
+  const dur     = playBuf.duration;
+  const pct     = Math.min(1, elapsed / dur);
+
+  // Playhead bewegen
+  const wrap = document.getElementById('wave'+cap(playTrack));
+  const ph   = document.getElementById('ph'+cap(playTrack));
+  const wt   = document.getElementById('wt'+cap(playTrack));
+  if (wrap && ph) {
+    ph.style.left = (pct * wrap.offsetWidth) + 'px';
+  }
+  if (wt) {
+    const t = elapsed;
+    wt.textContent = `${Math.floor(t/60)}:${('0'+Math.floor(t%60)).slice(-2)}`;
+  }
+
+  if (elapsed < dur) {
+    playRafId = requestAnimationFrame(animPlayhead);
+  }
+}
+
+// Klick auf Wellenform = Seek zur Position
+function seekWave(e, track) {
+  const buf = getTrackBuf(track);
+  if (!buf) return;
+  // Wenn gerade ein anderer Track spielt: nichts tun
+  if (playTrack && playTrack !== track) return;
+
+  const wrap = document.getElementById('wave'+cap(track));
+  const rect = wrap.getBoundingClientRect();
+  const x    = e.clientX - rect.left;
+  const pct  = Math.max(0, Math.min(1, x / rect.width));
+  const seekTo = pct * buf.duration;
+
+  if (playTrack === track) {
+    // Läuft: seek
+    if (playNode) { try{playNode.stop();}catch(e){} playNode=null; }
+    if (playRafId) { cancelAnimationFrame(playRafId); playRafId=null; }
+    startPlay(seekTo);
+  }
+  // Wenn nicht spielt: nur Playhead positionieren
+  else {
+    const ph = document.getElementById('ph'+cap(track));
+    if (ph) { ph.style.left = (pct * wrap.offsetWidth)+'px'; }
+  }
+}
+
+// ── Voice EQ + Compressor Presets ─────────────────────────────────────────────
+// Dieselben analogen Biquad-Filter wie im VoiceOver Prozessor
+const VOICE_PRESETS = {
+  off: {
+    desc: 'Kein EQ, kein Kompressor — Rohmaterial',
+    hp: null, eq: [], comp: null, tube: 0
+  },
+  mann: {
+    desc: 'TV-VO Stimme · 10-Band EQ, Kompressor, De-Esser',
+    hp:   { fc: 80 },
+    eq:   [
+      { fc: 100,  g: +2.5, Q: 2.5  },  // Wärme
+      { fc: 200,  g: -3.0, Q: 1.15 },  // Low-Cut untere Mitten
+      { fc: 440,  g: -2.0, Q: 6.5  },  // Schmaler Notch
+      { fc: 784,  g: +3.0, Q: 1.7  },  // Body/Grundton
+      { fc: 4000, g: +4.0, Q: 1.5  },  // Presence
+    ],
+    air:  { fc: 9000, g: +7.0 },
+    comp: { thresh: -25, ratio: 4.0, atk: 10, rel: 100, makeup: 3 },
+    deess:{ thresh: -21, ratio: 3.5, atk: 1,  rel: 80,  makeup: 0 },
+    tube: 0
+  },
+  frau: {
+    desc: 'Weibliche Stimme · Schlank, Klarheit, sanfte Kompression',
+    hp:   { fc: 130 },
+    eq:   [
+      { fc: 450,  g: -1.8, Q: 0.7 },
+      { fc: 3200, g: +2.8, Q: 0.9 },
+      { fc: 6500, g: +1.5, Q: 1.0 },
+    ],
+    air:  { fc: 14000, g: +1.8 },
+    comp: { thresh: -20, ratio: 3.0, atk: 7, rel: 110, makeup: 3 },
+    deess:{ thresh: -21, ratio: 3.5, atk: 1, rel: 80, makeup: 0 },
+    tube: 0.12
+  },
+  werbung: {
+    desc: 'Werbestimme · Körper, Punch, starke Kompression',
+    hp:   { fc: 80 },
+    eq:   [
+      { fc: 120,  g: +2.0, Q: 0.6 },  // Fundament
+      { fc: 280,  g: -1.2, Q: 0.6 },  // Boxigkeit
+      { fc: 2500, g: +3.5, Q: 0.8 },  // Presence
+      { fc: 5000, g: +2.0, Q: 1.0 },  // Crispness
+    ],
+    air:  { fc: 12000, g: +3.0 },
+    comp: { thresh: -13, ratio: 5.0, atk: 3, rel: 55, makeup: 8 },
+    deess:{ thresh: -21, ratio: 3.5, atk: 1, rel: 80, makeup: 0 },
+    tube: 0.26
+  }
+};
+
+let activePreset = 'mann';
+
+// Biquad-Filter (Direct Form II Transposed)
+function bqArr(src, b0,b1,b2,a1,a2) {
+  const dst=new Float32Array(src.length); let s1=0,s2=0;
+  for(let i=0;i<src.length;i++){const x=src[i],y=b0*x+s1;s1=b1*x-a1*y+s2;s2=b2*x-a2*y;dst[i]=y;}
+  return dst;
+}
+// HP Butterworth
+function dspHp(d,fc,sr){const w=Math.tan(Math.PI*fc/sr),n=1/(1+Math.SQRT2*w+w*w);return bqArr(d,n,-2*n,n,2*(w*w-1)*n,(1-Math.SQRT2*w+w*w)*n);}
+// Low-Shelf 1st order (Pultec-Style)
+function dspLs(d,fc,g,sr){const A=Math.pow(10,g/20),K=Math.tan(Math.PI*fc/sr);if(g>=0){const b0=(1+A*K)/(1+K),b1=(A*K-1)/(1+K),a1=(K-1)/(1+K);return bqArr(d,b0,b1,0,a1,0);}else{const b0=(1+K)/(1+K/A),b1=(K-1)/(1+K/A),a1=(K/A-1)/(1+K/A);return bqArr(d,b0,b1,0,a1,0);}}
+// Massberg Peak EQ
+function dspPeak(d,fc,gDb,Q,sr){if(Math.abs(gDb)<0.05)return d;const A=Math.pow(10,gDb/40),K=Math.tan(Math.PI*fc/sr),K2=K*K;if(gDb>0){const a0=1+K/(A*Q)+K2;return bqArr(d,(1+A*K/Q+K2)/a0,(2*(K2-1))/a0,(1-A*K/Q+K2)/a0,(2*(K2-1))/a0,(1-K/(A*Q)+K2)/a0);}else{const a0=1+A*K/Q+K2;return bqArr(d,(1+K/(A*Q)+K2)/a0,(2*(K2-1))/a0,(1-K/(A*Q)+K2)/a0,(2*(K2-1))/a0,(1-A*K/Q+K2)/a0);}}
+// Neve High-Shelf
+function dspHs(d,fc,gDb,sr){if(Math.abs(gDb)<0.05)return d;const A=Math.pow(10,gDb/40),K=Math.tan(Math.PI*fc/sr),K2=K*K,sq=Math.SQRT2;if(gDb>0){const a0=1+sq*K+K2;return bqArr(d,(A*A+sq*A*K+K2)/a0,(2*(K2-A*A))/a0,(A*A-sq*A*K+K2)/a0,(2*(K2-1))/a0,(1-sq*K+K2)/a0);}else{const a0=A*A+sq*A*K+K2;return bqArr(d,(1+sq*K+K2)*A*A/a0,(2*A*A*(K2-1))/a0,(1-sq*K+K2)*A*A/a0,(2*(K2-A*A))/a0,(A*A-sq*A*K+K2)/a0);}}
+// Tube Saturation
+function dspTube(d,drive){if(drive<=0)return d;const out=new Float32Array(d.length),g=1+drive*2,comp=1/(1+drive*.3);for(let i=0;i<d.length;i++){const x=d[i]*g;out[i]=(x>=0?Math.tanh(x*.85)/.85:Math.tanh(x))*comp;}return out;}
+// RMS Compressor (SSL G-Bus Style)
+function dspComp(d,sr,thDb,ratio,atkMs,relMs,mkDb){
+  const thresh=Math.pow(10,thDb/20),mk=Math.pow(10,mkDb/20);
+  const atkC=Math.exp(-1/(sr*atkMs/1000)),relC=Math.exp(-1/(sr*relMs/1000));
+  const rmsBuf=new Float32Array(Math.round(sr*.01));let rmsIdx=0,rmsSum=0,env=0;
+  const out=new Float32Array(d.length);
+  for(let i=0;i<d.length;i++){const x=d[i]*d[i];rmsSum+=x-rmsBuf[rmsIdx];rmsBuf[rmsIdx]=x;rmsIdx=(rmsIdx+1)%rmsBuf.length;const rms=Math.sqrt(Math.max(0,rmsSum/rmsBuf.length));env=rms>env?atkC*env+(1-atkC)*rms:relC*env+(1-relC)*rms;out[i]=d[i]*(env>thresh?Math.pow(env/thresh,1/ratio-1):1)*mk;}
+  return out;
+}
+
+function applyVoicePreset(data, sr, presetKey) {
+  const p = VOICE_PRESETS[presetKey];
+  if (!p || presetKey === 'off') return data;
+  let d = data;
+  if (p.hp)  d = dspHp(d, p.hp.fc, sr);
+  for (const b of p.eq) d = dspPeak(d, b.fc, b.g, b.Q, sr);
+  if (p.air) d = dspHs(d, p.air.fc, p.air.g, sr);
+  if (p.comp) d = dspComp(d, sr, p.comp.thresh, p.comp.ratio, p.comp.atk, p.comp.rel, p.comp.makeup);
+  if (p.deess) d = dspComp(d, sr, p.deess.thresh, p.deess.ratio, p.deess.atk, p.deess.rel, p.deess.makeup);
+  if (p.tube > 0) d = dspTube(d, p.tube);
+  return d;
+}
+
+function tick() { return new Promise(r=>setTimeout(r,0)); }
+
+// ── File Loading ───────────────────────────────────────────────────────────────
+async function loadAudio(file) {
+  // Nutze globalen entsperrten AudioContext (Safari-kompatibel)
+  const actx = getAudioContext(); actx.resume().catch(()=>{});
+  const ab  = await readFileAsArrayBuffer(file);
+  const buf = await safariFriendlyDecode(actx, ab);
+  return buf;
+}
+
+function fmtDur(buf) {
+  const d=buf.duration;
+  return `${Math.floor(d/60)}:${('0'+Math.floor(d%60)).slice(-2)}`;
+}
+
+function showDurationWarning(buf, label) {
+  const mins = buf.duration / 60;
+  if(mins <= 10) return; // unter 10 Min: kein Hinweis
+
+  // Abstufung: Warnung vs kritisch
+  const level    = mins > 20 ? 'kritisch' : 'hinweis';
+  const estSecs  = Math.round(mins * 3); // ~3s Verarbeitungszeit pro Minute
+  const color    = level === 'kritisch' ? '#f06060' : '#ffd000';
+  const icon     = level === 'kritisch' ? '⚠' : 'ℹ';
+  const msg      = level === 'kritisch'
+    ? `${icon} ${label}: ${Math.floor(mins)} Min ist sehr lang — Verarbeitung kann mehrere Minuten dauern und viel RAM benötigen.`
+    : `${icon} ${label}: ${Math.floor(mins)} Min — Verarbeitung dauert ca. ${estSecs}s. Für lange Produktionen ggf. Audio Editor nutzen.`;
+
+  // Alten Toast entfernen
+  document.getElementById('satkDurWarn')?.remove();
+
+  const toast = document.createElement('div');
+  toast.id = 'satkDurWarn';
+  toast.style.cssText = [
+    'position:fixed','top:20px','left:50%','transform:translateX(-50%)',
+    `border:1px solid ${color}44`,`color:${color}`,
+    'background:#0a0a0b','font-family:DM Mono,monospace','font-size:10px',
+    'letter-spacing:.06em','line-height:1.6','padding:10px 18px',
+    'border-radius:2px','z-index:9999','max-width:520px','text-align:center',
+    'box-shadow:0 4px 24px rgba(0,0,0,.7)',
+    'opacity:0','transition:opacity .3s',
+  ].join(';');
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+  requestAnimationFrame(() => {
+    toast.style.opacity = '1';
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      setTimeout(() => toast.remove(), 300);
+    }, level === 'kritisch' ? 8000 : 5000);
+  });
+}
+
+async function handleVoice(file) {
+  try {
+    tbInfo.textContent = 'Lade Sprecher-Spur…';
+    voiceBuf = await loadAudio(file);
+    document.getElementById('nameVoice').textContent = file.name;
+    document.getElementById('hintVoice').textContent = `${voiceBuf.numberOfChannels===1?'Mono':'Stereo'} · ${voiceBuf.sampleRate} Hz`;
+    document.getElementById('badgeVoice').textContent = fmtDur(voiceBuf);
+    document.getElementById('badgeVoice').className = 'track-badge ok';
+    document.getElementById('trackVoice').classList.add('loaded');
+    document.getElementById('durVoice').textContent = fmtDur(voiceBuf);
+    drawWave('cvVoice', voiceBuf, '#c8f060');
+    // Längen-Warnung
+    showDurationWarning(voiceBuf, 'Sprecher-Spur');
+    // Auto-Analyse der Sprecher-Spur
+    tbInfo.textContent = 'Analysiere Sprecher-Spur…';
+    await new Promise(r=>setTimeout(r,10));
+    analyzeVoice(voiceBuf);
+    checkReady();
+  } catch(e) {
+    tbInfo.textContent = 'Fehler beim Laden: '+e.message;
+  }
+}
+
+async function handleBg(file) {
+  try {
+    tbInfo.textContent = 'Lade Beitrags-Spur…';
+    bgBuf = await loadAudio(file);
+    document.getElementById('nameBg').textContent = file.name;
+    document.getElementById('hintBg').textContent = `${bgBuf.numberOfChannels===1?'Mono':'Stereo'} · ${bgBuf.sampleRate} Hz`;
+    document.getElementById('badgeBg').textContent = fmtDur(bgBuf);
+    document.getElementById('badgeBg').className = 'track-badge ok';
+    document.getElementById('trackBg').classList.add('loaded');
+    document.getElementById('durBg').textContent = fmtDur(bgBuf);
+    drawWave('cvBg', bgBuf, '#60d4f0');
+    // Längen-Warnung
+    showDurationWarning(bgBuf, 'Beitrags-Spur');
+    checkReady();
+  } catch(e) {
+    tbInfo.textContent = 'Fehler beim Laden: '+e.message;
+  }
+}
+
+function checkReady() {
+  const ready = voiceBuf && bgBuf;
+  procBtn.disabled = !ready;
+  if (ready) tbInfo.textContent = 'Beide Spuren geladen — Mix erstellen';
+}
+
+// ── Event Listeners ────────────────────────────────────────────────────────────
+document.getElementById('fileVoice').addEventListener('change', e => {
+  if(e.target.files[0]) handleVoice(e.target.files[0]);
+});
+document.getElementById('fileBg').addEventListener('change', e => {
+  if(e.target.files[0]) handleBg(e.target.files[0]);
+});
+
+// Drag & Drop
+['trackVoice','trackBg'].forEach(id => {
+  const el = document.getElementById(id);
+  el.addEventListener('dragover', e => { e.preventDefault(); el.classList.add('dragover'); });
+  el.addEventListener('dragleave',()=> el.classList.remove('dragover'));
+  el.addEventListener('drop', e => {
+    e.preventDefault(); el.classList.remove('dragover');
+    const f = e.dataTransfer.files[0];
+    if(!f) return;
+    if(id==='trackVoice') handleVoice(f);
+    else handleBg(f);
+  });
+});
+
+// Seek-Klick auf Wellenformen
+document.getElementById('waveVoice').addEventListener('click', e => seekWave(e,'voice'));
+document.getElementById('waveBg').addEventListener('click',    e => seekWave(e,'bg'));
+document.getElementById('waveMix').addEventListener('click',   e => seekWave(e,'mix'));
+
+// Target LUFS Buttons
+document.querySelectorAll('.target-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    document.querySelectorAll('.target-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('slTarget').value = btn.dataset.lufs;
+  });
+});
+
+// EQ Preset Buttons
+document.querySelectorAll('.preset-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    activePreset = btn.dataset.preset;
+    const desc = VOICE_PRESETS[activePreset]?.desc || '';
+    document.getElementById('presetDesc').textContent = desc;
+  });
+});
+
+// Sichtbare Slider
+[
+  ['slVoiceGain','valVoiceGain', v=>(parseFloat(v)>=0?'+':'')+parseFloat(v).toFixed(1)+' dB'],
+  ['slBgGain',   'valBgGain',   v=>(parseFloat(v)>=0?'+':'')+parseFloat(v).toFixed(1)+' dB'],
+  ['slHold',     'valHold',     v=>v+' ms'],
+].forEach(([sid,vid,fmt])=>{
+  const sl=document.getElementById(sid);
+  const vl=document.getElementById(vid);
+  if(sl) sl.addEventListener('input',()=>{ vl.textContent=fmt(sl.value); });
+});
+
+// Erweiterte Slider
+[
+  ['slDepth','valDepth',  v=>v+' dB'],
+  ['slThresh','valThresh',v=>v+' dBFS'],
+  ['slAtk',  'valAtk',   v=>v+' ms'],
+  ['slRel',  'valRel',   v=>v+' ms'],
+  ['slTP',   'valTP',    v=>v+' dBTP'],
+].forEach(([sid,vid,fmt])=>{
+  const sl=document.getElementById(sid);
+  const vl=document.getElementById(vid);
+  if(sl) sl.addEventListener('input',()=>{ vl.textContent=fmt(sl.value); });
+});
+
+// Process
+procBtn.addEventListener('click', async () => {
+  if(!voiceBuf||!bgBuf) return;
+  stopPlay(); // Vorhören stoppen bevor Processing startet
+  procBtn.disabled=true; procBtn.classList.add('running');
+  procBtn.textContent='⏳ Verarbeite…';
+  statusDot.className='status-dot proc';
+  document.getElementById('statsSection').style.display='none';
+  dlBtn.classList.remove('visible');
+  document.getElementById('duckViz').style.display='none';
+  document.getElementById('waveMix').style.display='none';
+  mixBuf = null; // Mix-Buffer zurücksetzen
+
+  try {
+    await runMix();
+  } catch(err) {
+    tbInfo.textContent='Fehler: '+err.message;
+    statusDot.className='status-dot';
+    console.error(err);
+  }
+
+  procBtn.disabled=false; procBtn.classList.remove('running');
+  procBtn.textContent='▶ Mix erstellen';
+});
+
+// Resize
+window.addEventListener('resize', () => {
+  if(voiceBuf) drawWave('cvVoice', voiceBuf, '#c8f060');
+  if(bgBuf)    drawWave('cvBg',    bgBuf,    '#60d4f0');
+});
+
+// ── Download-Hinweis (plattform-spezifisch, nur beim ersten Export) ────────────
+function showDownloadHint(filename){
+  // Nur einmal zeigen — localStorage merkt sich ob Hint schon erschienen ist
+  try {
+    if(localStorage.getItem('satk_dl_hint_shown')) return;
+    localStorage.setItem('satk_dl_hint_shown','1');
+  } catch(e) {}
+
+  var ua=navigator.userAgent, pl=navigator.platform||'';
+  var isIOS=/iPad|iPhone|iPod/.test(ua)||(/Mac/.test(pl)&&navigator.maxTouchPoints>1);
+  var isAndroid=/Android/.test(ua);
+  var isMac=/Mac/.test(pl)&&!isIOS;
+  var isWin=/Win/.test(pl);
+  var isSafari=/^((?!chrome|android).)*safari/i.test(ua);
+  var isChrome=/Chrome/.test(ua)&&!/Edg/.test(ua);
+  var isEdge=/Edg/.test(ua);
+  var isFirefox=/Firefox/.test(ua);
+
+  var msg='';
+  if(isIOS){
+    if(isSafari)
+      msg='Öffne die <strong>Dateien-App</strong> → Auf meinem iPhone → Downloads';
+    else
+      msg='Datei gespeichert. Öffne die <strong>Dateien-App</strong> auf deinem iPhone/iPad';
+  } else if(isAndroid){
+    msg='Gespeichert im <strong>Downloads-Ordner</strong>. Öffne Dateien oder den Download-Manager';
+  } else if(isMac){
+    if(isSafari)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf den Pfeil ↓ oben rechts in Safari';
+    else if(isChrome)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ oben rechts in Chrome';
+    else if(isEdge)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ oben rechts in Edge';
+    else
+      msg='Gespeichert im Ordner <strong>~/Downloads</strong>';
+  } else if(isWin){
+    if(isChrome)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ unten oder oben rechts in Chrome';
+    else if(isEdge)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ oben rechts in Edge';
+    else if(isFirefox)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf den Pfeil ↓ in der Symbolleiste';
+    else
+      msg='Gespeichert in <strong>C:\\Users\\[Name]\\Downloads</strong>';
+  } else {
+    msg='Gespeichert im <strong>Downloads-Ordner</strong>';
+  }
+
+  // Altes Toast entfernen
+  var old=document.getElementById('satkDlHint');
+  if(old) old.remove();
+
+  var el=document.createElement('div');
+  el.id='satkDlHint';
+  el.innerHTML='<span class="satk-dl-close" onclick="this.parentNode.remove()">✕</span>'
+    +(filename?'<span class="satk-dl-file">📄 '+filename+'</span>':'')
+    +'<span>'+msg+'</span>';
+  document.body.appendChild(el);
+
+  // Auto-ausblenden nach 9s
+  var timer=setTimeout(function(){
+    if(el.parentNode){
+      el.style.animation='satkDlOut .3s ease forwards';
+      setTimeout(function(){if(el.parentNode)el.remove();},300);
+    }
+  },9000);
+  el.querySelector('.satk-dl-close').addEventListener('click',function(){clearTimeout(timer);});
+}
+
+
+// ── SATK Einheitliche Dateinamen-Funktion ─────────────────────────────────────
+// Schema: satk_[tool]_[YYYY-MM-DD]_[HH-MM-SS]_v[n].[ext]
+// Versionszahl: Session-Counter pro Tool (localStorage)
+function satkFilename(tool, ext){
+  var d = new Date();
+  var pad = function(n){ return n<10?'0'+n:String(n); };
+  var date = d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+  var time = pad(d.getHours())+'-'+pad(d.getMinutes())+'-'+pad(d.getSeconds());
+  var key  = 'satk_v_'+tool;
+  var ver  = 1;
+  try {
+    ver = (parseInt(localStorage.getItem(key))||0) + 1;
+    localStorage.setItem(key, ver);
+  } catch(e) {}
+  return 'satk_'+tool+'_'+date+'_'+time+'_v'+ver+(ext?'.'+ext:'');
+}
+
+
+// ── SATK Denoiser ──────────────────────
+// ============================================================
+// SATK Offline Spectral Denoiser
+// Verwendung: const cleaned = await denoiseBuffer(audioBuffer, opts)
+// Funktioniert mit jedem AudioBuffer — kein AudioWorklet nötig
+// ============================================================
+
+'use strict';
+
+// ── Radix-2 FFT (in-place, Cooley-Tukey) ────────────────────────────────────
+function fft(re, im, inverse) {
+  const N = re.length;
+  // Bit-reversal permutation
+  for (let i = 1, j = 0; i < N; i++) {
+    let bit = N >> 1;
+    for (; j & bit; bit >>= 1) j ^= bit;
+    j ^= bit;
+    if (i < j) {
+      [re[i], re[j]] = [re[j], re[i]];
+      [im[i], im[j]] = [im[j], im[i]];
+    }
+  }
+  // Butterfly passes
+  for (let len = 2; len <= N; len <<= 1) {
+    const ang = (inverse ? 1 : -1) * 2 * Math.PI / len;
+    const wRe = Math.cos(ang), wIm = Math.sin(ang);
+    for (let i = 0; i < N; i += len) {
+      let curRe = 1, curIm = 0;
+      for (let j = 0; j < len / 2; j++) {
+        const uRe = re[i+j], uIm = im[i+j];
+        const vRe = re[i+j+len/2]*curRe - im[i+j+len/2]*curIm;
+        const vIm = re[i+j+len/2]*curIm + im[i+j+len/2]*curRe;
+        re[i+j]         = uRe + vRe; im[i+j]         = uIm + vIm;
+        re[i+j+len/2]   = uRe - vRe; im[i+j+len/2]   = uIm - vIm;
+        const nRe = curRe*wRe - curIm*wIm;
+        curIm = curRe*wIm + curIm*wRe; curRe = nRe;
+      }
+    }
+  }
+  if (inverse) { for (let i = 0; i < N; i++) { re[i] /= N; im[i] /= N; } }
+}
+
+// ── Hann-Fenster ─────────────────────────────────────────────────────────────
+function makeHann(N) {
+  const w = new Float32Array(N);
+  for (let i = 0; i < N; i++) w[i] = 0.5 * (1 - Math.cos(2 * Math.PI * i / N));
+  return w;
+}
+
+// ── Leisestes Segment automatisch finden ─────────────────────────────────────
+function findQuietestSegment(channel, sr, durationSec = 0.5) {
+  const segLen  = Math.round(sr * durationSec);
+  const stepLen = Math.round(sr * 0.05); // 50ms Schritte
+  let   minRms  = Infinity, bestStart = 0;
+
+  for (let s = 0; s + segLen <= channel.length; s += stepLen) {
+    let sum = 0;
+    for (let i = s; i < s + segLen; i++) sum += channel[i] * channel[i];
+    const rms = Math.sqrt(sum / segLen);
+    if (rms < minRms) { minRms = rms; bestStart = s; }
+  }
+  return { start: bestStart, length: segLen, rms: minRms };
+}
+
+// ── Rauschprofil aus Segment schätzen ────────────────────────────────────────
+function estimateNoiseProfile(channel, segStart, segLen, N, hann) {
+  const bins   = N / 2 + 1;
+  const accum  = new Float64Array(bins);
+  const hop    = N / 2;
+  let   frames = 0;
+
+  for (let pos = segStart; pos + N <= segStart + segLen; pos += hop) {
+    const re = new Float32Array(N);
+    const im = new Float32Array(N);
+    for (let i = 0; i < N; i++) re[i] = (channel[pos + i] || 0) * hann[i];
+    fft(re, im, false);
+    for (let i = 0; i < bins; i++) accum[i] += Math.sqrt(re[i]*re[i] + im[i]*im[i]);
+    frames++;
+  }
+
+  const profile = new Float32Array(bins);
+  if (frames > 0) {
+    const margin = 1.2; // 20% Sicherheitsmarge
+    for (let i = 0; i < bins; i++) profile[i] = (accum[i] / frames) * margin;
+  }
+  return profile;
+}
+
+// ── Spektrales Gating (Wiener-Style, Overlap-Add) ────────────────────────────
+function spectralGate(channel, noiseProfile, N, hann, opts) {
+  const {
+    thresh      = 1.8,  // Faktor über Rauschfluss
+    depth       = 20,   // Max Reduktion dB
+    smoothTime  = 60,   // ms zeitliche Glättung
+    freqSmooth  = 2,    // Frequenz-Nachbarbins
+    hpBins      = 3,    // Bins unter denen nicht reduziert wird
+    sr          = 48000,
+  } = opts;
+
+  const bins     = N / 2 + 1;
+  const hop      = N / 2;
+  const minGain  = Math.pow(10, -depth / 20);
+  const out      = new Float64Array(channel.length + N);
+  const norm     = new Float64Array(channel.length + N); // OLA Normierung
+  const gainSmth = new Float32Array(bins).fill(1.0);
+  const smoothFrames = Math.max(1, (smoothTime / 1000) * sr / hop);
+  const smoothCoef   = Math.exp(-1 / smoothFrames);
+
+  for (let pos = 0; pos + N <= channel.length; pos += hop) {
+    // FFT
+    const re = new Float32Array(N);
+    const im = new Float32Array(N);
+    for (let i = 0; i < N; i++) re[i] = (channel[pos + i] || 0) * hann[i];
+    fft(re, im, false);
+
+    // Magnitude
+    const mag = new Float32Array(bins);
+    for (let i = 0; i < bins; i++) mag[i] = Math.sqrt(re[i]*re[i] + im[i]*im[i]);
+
+    // Gain pro Bin
+    const gainTarget = new Float32Array(bins);
+    for (let i = 0; i < bins; i++) {
+      if (i < hpBins) { gainTarget[i] = 1.0; continue; }
+      const floor = noiseProfile[i] * thresh;
+      if (mag[i] < 1e-10) { gainTarget[i] = minGain; continue; }
+      const snr = mag[i] / floor;
+      if (snr >= 1.0) {
+        gainTarget[i] = 1.0;
+      } else {
+        // Kubische Soft-Curve: glatte Übergänge, kein Knacken
+        const t = Math.max(0, snr);
+        gainTarget[i] = Math.max(minGain, t * t * (3 - 2 * t));
+      }
+    }
+
+    // Frequenz-Glättung (verhindert spektrale Löcher)
+    if (freqSmooth > 0) {
+      for (let i = freqSmooth; i < bins - freqSmooth; i++) {
+        let s = 0;
+        for (let k = -freqSmooth; k <= freqSmooth; k++) s += gainTarget[i + k];
+        gainTarget[i] = s / (2 * freqSmooth + 1);
+      }
+    }
+
+    // Zeitliche Glättung (asymmetrisch: langsam öffnen, schnell schließen)
+    for (let i = 0; i < bins; i++) {
+      const t = gainTarget[i], g = gainSmth[i];
+      const c = t > g ? smoothCoef * 0.4 : smoothCoef;
+      gainSmth[i] = c * g + (1 - c) * t;
+    }
+
+    // Gain anwenden + konjugierte Symmetrie herstellen
+    for (let i = 0; i < bins; i++) {
+      const g = gainSmth[i];
+      re[i] *= g; im[i] *= g;
+    }
+    for (let i = 1; i < bins - 1; i++) {
+      re[N - i] = re[i]; im[N - i] = -im[i];
+    }
+
+    // IFFT
+    fft(re, im, true);
+
+    // Overlap-Add (mit Hann-Fenster zurück)
+    for (let i = 0; i < N; i++) {
+      out[pos + i]  += re[i] * hann[i];
+      norm[pos + i] += hann[i] * hann[i];
+    }
+  }
+
+  // OLA Normierung
+  const result = new Float32Array(channel.length);
+  for (let i = 0; i < channel.length; i++) {
+    result[i] = norm[i] > 1e-8 ? out[i] / norm[i] : 0;
+  }
+  return result;
+}
+
+// ── Haupt-API: AudioBuffer → gereinigter AudioBuffer ─────────────────────────
+/**
+ * Entfernt Hintergrundrauschen aus einem AudioBuffer.
+ *
+ * @param {AudioBuffer} buffer   - Eingangs-AudioBuffer
+ * @param {Object}      opts     - Optionen
+ * @param {number}      opts.thresh      - Empfindlichkeit (1.2–3.0, default 1.8)
+ * @param {number}      opts.depth       - Max Reduktion dB (6–40, default 20)
+ * @param {number}      opts.smoothTime  - Zeitliche Glättung ms (20–200, default 60)
+ * @param {number}      opts.freqSmooth  - Frequenz-Glättung Bänder (0–5, default 2)
+ * @param {number}      opts.noiseLen    - Länge Rauschsegment s (0.2–2.0, default 0.5)
+ * @param {Function}    opts.onProgress  - Callback(0–1) für Fortschrittsanzeige
+ * @returns {Promise<AudioBuffer>}
+ */
+async function denoiseBuffer(buffer, opts = {}) {
+  const {
+    thresh     = 1.8,
+    depth      = 20,
+    smoothTime = 60,
+    freqSmooth = 2,
+    noiseLen   = 0.5,
+    onProgress = null,
+  } = opts;
+
+  const sr   = buffer.sampleRate;
+  const nCh  = buffer.numberOfChannels;
+  const len  = buffer.length;
+  const N    = 1024; // FFT-Größe (21ms @ 48kHz — gut für Sprache)
+  const hann = makeHann(N);
+  const hpBins = Math.round(60 / (sr / N)); // 60Hz HP-Schutz
+
+  // Offline AudioContext für Output-Buffer
+  const offCtx = new OfflineAudioContext(nCh, len, sr);
+  const outBuf  = offCtx.createBuffer(nCh, len, sr);
+
+  for (let ch = 0; ch < nCh; ch++) {
+    if (onProgress) onProgress(ch / nCh);
+
+    const channel = buffer.getChannelData(ch);
+
+    // 1. Leisestes Segment finden
+    const quiet = findQuietestSegment(channel, sr, noiseLen);
+    console.log(
+      `[SATK Denoiser] Ch${ch}: Rauschsegment bei ${(quiet.start/sr).toFixed(2)}s`,
+      `RMS: ${(20*Math.log10(quiet.rms+1e-10)).toFixed(1)} dBFS`
+    );
+
+    // 2. Rauschprofil schätzen
+    const noiseProfile = estimateNoiseProfile(
+      channel, quiet.start, quiet.length, N, hann
+    );
+
+    // 3. Spektrales Gating anwenden
+    const cleaned = spectralGate(channel, noiseProfile, N, hann, {
+      thresh, depth, smoothTime, freqSmooth, hpBins, sr
+    });
+
+    outBuf.copyToChannel(cleaned, ch);
+
+    if (onProgress) onProgress((ch + 1) / nCh);
+  }
+
+  return outBuf;
+}
+
+// ── Export ────────────────────────────────────────────────────────────────────
+// Browser: global verfügbar
+if (typeof window !== 'undefined') window.denoiseBuffer = denoiseBuffer;
+// Node/Module:
+if (typeof module !== 'undefined') module.exports = { denoiseBuffer };
+
+</script>
+</body>
+</html>

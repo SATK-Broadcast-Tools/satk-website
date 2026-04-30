@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="description" content="Kostenloses Audio-Schnittprogramm im Browser: Schneiden, Trimmen, Exportieren. Wellenform-Ansicht, Zoom, Undo, R128-Export. Keine Installation.">
+<meta name="keywords" content="Audio Editor, Audioschnitt, Audio schneiden, Audio trimmen, Schnittprogramm kostenlos, Wellenform Editor, Waveform Editor, Audio zuschneiden, Fade In Out, Zero-Crossing, R128 Export, WAV Editor, kostenlos, Browser, kein Download, Online Audio Editor">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>SATK Audio Editor – Audio schneiden & trimmen kostenlos im Browser</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap');
+:root{
+  --bg:#0a0a0b;--sf:#0e0e11;--sf2:#111114;--bd:#1e1e24;
+  --ac:#c8f060;--ac2:#60d4f0;--warn:#f0a060;--red:#f06060;
+  --tx:#e8e8ec;--mu:#5a5a6a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow:hidden;height:100%;background:var(--bg);color:var(--tx);font-family:'DM Mono',monospace;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(200,240,96,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(200,240,96,.018) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+html,body,*{scrollbar-width:thin;scrollbar-color:rgba(200,240,96,.2) transparent;}
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-thumb{background:rgba(200,240,96,.2);border-radius:2px;}
+::-webkit-scrollbar-track{background:transparent;}
+
+.app{position:relative;z-index:1;display:flex;flex-direction:column;height:100vh;overflow:hidden;}
+
+/* ── Header ── */
+header{flex-shrink:0;padding:10px 18px 8px;border-bottom:1px solid var(--bd);display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.hdr-top{display:flex;align-items:baseline;gap:10px;}
+.hdr-main{font-family:'Syne',sans-serif;font-size:clamp(18px,2.5vw,28px);font-weight:800;letter-spacing:.14em;color:var(--tx);line-height:1;position:relative;}
+.hdr-main::after{content:'';position:absolute;left:0;bottom:-3px;width:100%;height:1px;background:linear-gradient(90deg,var(--ac),transparent);}
+.hdr-green{font-family:'Syne',sans-serif;font-size:clamp(9px,1vw,12px);font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);}
+.hdr-tag{font-size:8px;letter-spacing:.08em;color:var(--mu);margin-top:3px;}
+.hdr-right{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+
+/* ── Buttons ── */
+.btn{background:none;border:1px solid var(--bd);color:var(--mu);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.07em;text-transform:uppercase;padding:5px 11px;cursor:pointer;transition:all .12s;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;}
+.btn:hover{border-color:var(--ac);color:var(--ac);}
+.btn.active{border-color:var(--ac);color:var(--ac);background:rgba(200,240,96,.06);}
+.btn.danger:hover{border-color:var(--red);color:var(--red);}
+.btn.primary{border-color:var(--ac);color:var(--ac);}
+.btn.primary:hover{background:rgba(200,240,96,.08);}
+.btn:disabled{opacity:.3;cursor:not-allowed;}
+input[type=file]{display:none;}
+
+/* ── Timecode ── */
+.timecode{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--tx);letter-spacing:.06em;background:var(--sf);border:1px solid var(--bd);padding:4px 10px;}
+.timecode span{color:var(--mu);}
+.tc-dur{font-size:9px;color:var(--mu);padding:4px 8px;}
+
+/* ── Tool Bar ── */
+.tool-bar{
+  flex-shrink:0;
+  display:flex;align-items:center;gap:5px;
+  padding:6px 12px;background:var(--sf);border-bottom:1px solid var(--bd);
+  flex-wrap:wrap;          /* Umbruch statt Scrollbar */
+  overflow:hidden;
+  row-gap:4px;
+}
+.tool-bar::-webkit-scrollbar{display:none;}
+.tool-sep{width:1px;height:18px;background:var(--bd);flex-shrink:0;align-self:center;}
+.tool-sep.row-break{  /* Unsichtbarer Zeilenumbruch */
+  display:none;
+}
+.tool-group{display:flex;gap:3px;flex-shrink:0;}
+
+/* Touch-friendly buttons on mobile */
+@media (max-width:700px),(pointer:coarse){
+  .tool-btn{min-height:36px;padding:6px 10px;}
+  .btn{padding:6px 9px;font-size:8px;}
+  .tool-bar{padding:5px 8px;gap:4px;row-gap:4px;}
+  .tool-sep{height:16px;}
+  /* Auf sehr kleinen Screens: Seps ausblenden, nur Gruppen-Umbruch */
+}
+
+/* ── Waveform Area ── */
+.waveform-area{flex:1;min-height:0;display:flex;flex-direction:column;position:relative;overflow:hidden;}
+
+/* Timecode ruler */
+.ruler{height:22px;background:var(--sf);border-bottom:1px solid var(--bd);position:relative;flex-shrink:0;overflow:hidden;}
+.ruler canvas{width:100%;height:100%;}
+
+/* Waveform scroll container */
+.wave-scroll{flex:1;overflow-x:auto;overflow-y:hidden;position:relative;background:#060708;cursor:text;}
+.wave-inner{height:100%;position:relative;min-width:100%;}
+.wave-canvas{display:block;height:100%;position:absolute;top:0;left:0;}
+.wave-canvas-sel{display:block;height:100%;position:absolute;top:0;left:0;pointer-events:none;z-index:6;}
+
+/* Playhead */
+.playhead-line{position:absolute;top:0;bottom:0;width:2px;background:#fff;pointer-events:none;z-index:10;transform:translateX(-1px);}
+.playhead-line::before{content:'';position:absolute;top:0;left:-4px;border:5px solid transparent;border-top-color:#fff;border-bottom:none;}
+
+/* Selection overlay — orange like Probe */
+.selection-overlay{
+  position:absolute;top:0;bottom:0;
+  background:rgba(255,160,40,.22);
+  pointer-events:none;z-index:5;display:none;
+}
+
+/* Draggable In/Out handles */
+.sel-handle{
+  position:absolute;top:0;bottom:0;width:14px;
+  cursor:ew-resize;z-index:20;display:none;
+  transform:translateX(-7px);
+  touch-action:none;
+}
+.sel-handle::before{
+  /* Senkrechte Linie */
+  content:'';position:absolute;top:0;bottom:0;
+  left:6px;width:2px;
+  background:rgba(255,185,50,.9);
+}
+.sel-handle::after{
+  /* Griffpfeil oben */
+  content:'';position:absolute;top:0;left:1px;
+  width:12px;height:12px;
+  background:rgba(255,185,50,.9);
+  clip-path:polygon(50% 100%,0 0,100% 0);
+}
+.sel-handle.handle-out::after{
+  /* Griffpfeil unten für Out-Punkt */
+  top:auto;bottom:0;
+  clip-path:polygon(50% 0%,0 100%,100% 100%);
+}
+
+/* Cut markers */
+.cut-marker{position:absolute;top:0;bottom:0;width:2px;background:var(--red);pointer-events:none;z-index:6;}
+.cut-marker::before{content:'✂';position:absolute;top:3px;left:3px;font-size:10px;color:var(--red);}
+
+/* Region (cut-out) shading */
+.region-shade{position:absolute;top:0;bottom:0;background:rgba(240,96,96,.12);border-left:1px dashed var(--red);border-right:1px dashed var(--red);pointer-events:none;z-index:4;}
+
+/* ── Region list ── */
+.region-panel{flex-shrink:0;height:44px;border-top:1px solid var(--bd);background:var(--sf);display:flex;flex-direction:column;overflow:hidden;}
+.region-header{display:flex;align-items:center;justify-content:space-between;padding:5px 12px;border-bottom:1px solid var(--bd);flex-shrink:0;}
+.region-hd{font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);}
+.region-list{display:flex;gap:6px;padding:6px 12px;overflow-x:auto;align-items:center;flex:1;}
+.region-chip{display:flex;align-items:center;gap:5px;background:var(--sf2);border:1px solid var(--bd);padding:3px 8px;font-size:8px;color:var(--tx);white-space:nowrap;flex-shrink:0;}
+.region-chip.trim{border-color:rgba(200,240,96,.3);color:var(--ac);}
+.region-chip.cut{border-color:rgba(240,96,96,.3);color:var(--red);}
+.region-del{background:none;border:none;color:var(--mu);cursor:pointer;font-size:10px;padding:0 2px;line-height:1;}
+.region-del:hover{color:var(--red);}
+.no-regions{font-size:9px;color:var(--mu);align-self:center;}
+
+/* ── Status bar ── */
+.statusbar{flex-shrink:0;display:flex;align-items:center;gap:10px;padding:4px 14px;background:var(--sf);border-top:1px solid var(--bd);}
+.sb-info{font-size:8px;color:var(--mu);}
+.sb-info.ok{color:var(--ac);}
+.sb-sep{width:1px;height:14px;background:var(--bd);}
+
+/* ── Drop overlay ── */
+.drop-overlay{
+  position:absolute;inset:0;z-index:50;
+  background:rgba(10,10,11,.92);border:2px dashed var(--ac);
+  display:none;align-items:center;justify-content:center;flex-direction:column;gap:12px;
+}
+.drop-overlay.visible{display:flex;}
+.drop-overlay svg{color:var(--ac);}
+.drop-overlay p{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--ac);letter-spacing:.08em;}
+.drop-overlay small{font-size:10px;color:var(--mu);}
+
+/* ── R128 toggle ── */
+.r128-row{display:flex;align-items:center;gap:6px;}
+.r128-chk{width:12px;height:12px;accent-color:var(--ac);cursor:pointer;}
+.r128-lbl{font-size:9px;color:var(--mu);cursor:pointer;}
+
+/* ── Download-Hinweis Toast ── */
+#satkDlHint{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  background:#0d1012;border:1px solid rgba(200,240,96,.35);
+  color:#e2e6ed;font-family:'DM Mono',monospace;font-size:11px;
+  padding:12px 18px;z-index:9999;max-width:420px;width:90%;
+  box-shadow:0 4px 24px rgba(0,0,0,.5);
+  animation:satkDlIn .25s ease;pointer-events:none;
+  line-height:1.6;
+}
+#satkDlHint strong{color:#c8f060;}
+#satkDlHint .satk-dl-file{color:#c8f060;font-size:10px;opacity:.8;display:block;margin-bottom:4px;}
+#satkDlHint .satk-dl-close{
+  position:absolute;top:7px;right:10px;cursor:pointer;
+  color:rgba(200,240,96,.5);font-size:13px;pointer-events:all;
+}
+@keyframes satkDlIn{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
+@keyframes satkDlOut{from{opacity:1;}to{opacity:0;transform:translateX(-50%) translateY(8px);}}
+
+</style>
+  <link rel="canonical" href="https://satk.tech/audio-editor.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://satk.tech/audio-editor.html">
+<meta property="og:title" content="SATK Audio Editor – Audio kostenlos schneiden, trimmen & exportieren">
+<meta property="og:description" content="Audio schneiden, trimmen, Fade In/Out, Undo und als R128-normalisiertes WAV exportieren. Kostenloses Schnittprogramm im Browser — keine Installation.">
+<meta property="og:image" content="https://satk.tech/og-image.png">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="SATK – Sascha's Audio Toolkit">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SATK Audio Editor – Audio kostenlos schneiden, trimmen & exportieren">
+<meta name="twitter:description" content="Audio schneiden, trimmen, Fade In/Out, Undo und als R128-normalisiertes WAV exportieren. Kostenloses Schnittprogramm im Browser — keine Installation.">
+<meta name="twitter:image" content="https://satk.tech/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Audio Editor",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Web Browser, iOS, Android",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+  "description": "Kostenloses Audio-Schnittprogramm im Browser: Schneiden, Trimmen, Fade In/Out, Zoom, Undo, Wellenform-Ansicht, In/Out-Punkte, R128-normalisierter Export. Keine Installation, kein Upload.",
+  "url": "https://satk.tech/audio-editor.html",
+  "creator": {"@type": "Person", "name": "Sascha Hömske"},
+  "isPartOf": {"@type": "WebSite", "name": "SATK – Sascha's Audio Toolkit", "url": "https://satk.tech/"}
+}
+</script>
+</head>
+<body>
+<script>
+window.addEventListener('message',function(e){
+  if(e.data&&e.data.type==='satk-suspend-audio'){try{stopPlay();}catch(e){}}
+});
+</script>
+<div class="app">
+
+<!-- Drop overlay -->
+<div class="drop-overlay" id="dropOverlay">
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+  <p>Audio-Datei ablegen</p>
+  <small>WAV · MP3 · M4A · FLAC · AAC · OGG · AIFF</small>
+</div>
+
+<!-- Header -->
+<header>
+  <div>
+    <div class="hdr-top">
+      <span class="hdr-main">Audio</span>
+      <span class="hdr-green">Editor</span>
+    </div>
+    <div class="hdr-tag">SATK — Schneiden · Trimmen · Exportieren · EBU R128</div>
+  </div>
+  <div class="hdr-right">
+    <div class="timecode" id="tcNow">0:00:00<span>.</span>000</div>
+    <div class="tc-dur" id="tcDur">/ —</div>
+    <button class="btn primary" onclick="document.getElementById('fileIn').click()">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+      Datei laden
+    </button>
+    <input type="file" id="fileIn" accept="audio/*,.mp3,.wav,.m4a,.flac,.aac,.ogg,.aiff,.aif">
+  </div>
+</header>
+
+<!-- Tool bar -->
+<div class="tool-bar">
+  <!-- Gruppe 1: Transport -->
+  <div class="tool-group">
+    <button class="btn active" id="btnPlay"       disabled title="Leertaste / Space">▶ PLAY</button>
+    <button class="btn"        id="btnStop"       disabled title="Escape / Space">■ STOP</button>
+    <button class="btn"        id="btnPlayFromIn" disabled title="Ab In-Punkt abspielen">▶ PLAY IN</button>
+    <button class="btn"        id="btnPlayToOut"  disabled title="1,5s vor Out abspielen, stoppt bei Out">PLAY OUT ▶|</button>
+  </div>
+  <div class="tool-sep"></div>
+  <!-- Gruppe 2: Schnitt -->
+  <div class="tool-group">
+    <button class="btn danger" id="btnTrim"    disabled title="Auswahl behalten, Rest löschen">✂ Trim</button>
+    <button class="btn danger" id="btnCutSel"  disabled title="Auswahl ausschneiden">✂ Ausschneiden</button>
+  </div>
+  <div class="tool-sep"></div>
+  <!-- Gruppe 3: Zoom -->
+  <div class="tool-group">
+    <button class="btn" id="btnZoomOut"  disabled title="Übersicht (ganzes File)">NORMAL</button>
+    <button class="btn" id="btnZoomIn"   disabled title="Detail-Ansicht">ZOOM</button>
+    <button class="btn" id="btnZoomIn2"  disabled title="Detail-Zoom auf In-Punkt">ZOOM TO IN</button>
+    <button class="btn" id="btnZoomOut2" disabled title="Detail-Zoom auf Out-Punkt">ZOOM TO OUT</button>
+  </div>
+  <div class="tool-sep"></div>
+  <!-- Gruppe 4: Edit -->
+  <div class="tool-group">
+    <button class="btn"        id="btnUndo"     disabled title="Strg+Z — Rückgängig">↩ UNDO</button>
+    <button class="btn danger" id="btnClearAll" disabled title="Zurück zum Original">RESET</button>
+  </div>
+  <div class="tool-sep"></div>
+  <!-- Export — darf umbrechen -->
+  <div class="tool-group">
+    <button id="btnExport" class="btn primary" disabled title="Als WAV exportieren (R128 normalisiert)">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      EXPORT
+    </button>
+  </div>
+</div>
+
+<!-- Waveform -->
+<div class="waveform-area">
+  <div class="ruler"><canvas id="cvRuler"></canvas></div>
+  <div class="wave-scroll" id="waveScroll">
+    <div class="wave-inner" id="waveInner">
+      <canvas class="wave-canvas" id="cvWave"></canvas>
+      <canvas class="wave-canvas-sel" id="cvSel"></canvas>
+      <div class="playhead-line" id="playhead" style="display:none;left:0;"></div>
+      <div class="selection-overlay" id="selOverlay"></div>
+      <div class="sel-handle handle-in"  id="handleIn"></div>
+      <div class="sel-handle handle-out" id="handleOut"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Region panel -->
+<div class="region-panel">
+  <div class="region-header">
+    <span class="region-hd">Schnitte &amp; Trim</span>
+    <!-- btnClearAll duplicate entfernt -->
+  </div>
+  <div class="region-list" id="regionList">
+    <span class="no-regions" id="noRegions">Keine Schnitte. In-/Out-Punkte setzen oder Schnitt-Tool verwenden.</span>
+  </div>
+</div>
+
+<!-- Status bar -->
+<div class="statusbar">
+  <span class="sb-info" id="sbInfo">Datei laden oder hier ablegen</span>
+  <div class="sb-sep"></div>
+  <span class="sb-info" id="sbSr">—</span>
+  <div class="sb-sep"></div>
+  <span class="sb-info" id="sbLufs">—</span>
+  <div class="sb-sep"></div>
+  <span class="sb-info" id="sbZoom">Zoom: 1×</span>
+</div>
+</div><!-- /.app -->
+
+<script>
+'use strict';
+window.AudioContext=window.AudioContext||window.webkitAudioContext;
+// ── Safari-kompatibler Audio-Decode ──────────────────────────────────────────
+// Safari braucht: (1) Callback-Stil für decodeAudioData, (2) AudioContext nur
+// innerhalb User-Gesture, (3) arrayBuffer.slice(0) um Transfers zu vermeiden
+
+// ── Safari-kompatibler File → ArrayBuffer ─────────────────────────────────────
+// file.arrayBuffer() ist in Safari < 14.1 nicht verfügbar → FileReader-Fallback
+
+// ── AudioContext Helper (Safari-kompatibel) ───────────────────────────────────
+// WICHTIG: AudioContext wird LAZY erstellt — erst beim ersten Aufruf von
+// getAudioContext(). Kein new AudioContext() beim Seitenaufruf, da das
+// in Safari den File-Dialog blockieren kann.
+function getAudioContext() {
+  var AC = window.AudioContext || window.webkitAudioContext;
+  if (!window._satkAC || window._satkAC.state === 'closed') {
+    window._satkAC = new AC();
+  }
+  if (window._satkAC.state === 'suspended') {
+    window._satkAC.resume().catch(function(){});
+  }
+  return window._satkAC;
+}
+
+async function getAudioContextReady() {
+  var ac = getAudioContext();
+  if (ac.state !== 'running') {
+    try { await ac.resume(); } catch(e) {}
+  }
+  return ac;
+}
+
+function readFileAsArrayBuffer(file) {
+  // Immer FileReader — file.arrayBuffer() ist auf iOS Safari buggy
+  return new Promise(function(resolve, reject) {
+    var reader = new FileReader();
+    reader.onload  = function(e) { resolve(e.target.result); };
+    reader.onerror = function()  { reject(new Error('FileReader Fehler')); };
+    reader.onabort = function()  { reject(new Error('FileReader abgebrochen')); };
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+async function safariFriendlyDecode(actx, arrayBuffer) {
+  // Puffer IMMER kopieren — Safari transferiert ArrayBuffer manchmal
+  var buf;
+  try { buf = arrayBuffer.slice(0); }
+  catch(e) { buf = arrayBuffer; }
+
+  return new Promise(function(resolve, reject) {
+    var done = false;
+    function ok(decoded)  { if(!done){ done=true; resolve(decoded); } }
+    function err(e)       { if(!done){ done=true; reject(e || new Error('Decode fehlgeschlagen')); } }
+
+    // Callback-Form (iOS Safari kompatibel)
+    try {
+      var result = actx.decodeAudioData(buf, ok, err);
+      // Modernes Promise-API als Fallback zusätzlich
+      if (result && typeof result.then === 'function') {
+        result.then(ok).catch(err);
+      }
+    } catch(ex) {
+      err(ex);
+    }
+
+    // Timeout: iOS Safari hängt manchmal ohne Callback (15s)
+    setTimeout(function() {
+      err(new Error('Timeout: Datei konnte nicht dekodiert werden. Format unterstützt?'));
+    }, 15000);
+  });
+}
+
+
+// ── State ──────────────────────────────────────────────────────────────────────
+// Destruktiver Ansatz: workBuf ist der aktuelle Stand, Undo-Stack hält Vorgänger
+let origBuf=null;    // Original (unverändert, für Referenz)
+let workBuf=null;    // Aktueller Arbeits-Buffer (wird bei Schnitten ersetzt)
+let undoStack=[];    // Array von AudioBuffers (vorherige Stände)
+let actx=null;
+let playNode=null, playStart=0, playOffset=0, playing=false;
+// zoomLevel and view declared in zoom section
+let duration=0;
+let origFileName='satk-edit';
+
+// Auswahl
+let selIn=null, selOut=null;
+let isDragging=false, dragStartX=0;
+let justFinishedDrag=false;
+
+
+// ── DOM ────────────────────────────────────────────────────────────────────────
+const cvWave   = document.getElementById('cvWave');
+const cvSel    = document.getElementById('cvSel');
+const cvRuler  = document.getElementById('cvRuler');
+const waveScroll=document.getElementById('waveScroll');
+const waveInner=document.getElementById('waveInner');
+const playheadEl=document.getElementById('playhead');
+const selOverlay=document.getElementById('selOverlay');
+const sbInfo   = document.getElementById('sbInfo');
+const sbSr     = document.getElementById('sbSr');
+const sbLufs   = document.getElementById('sbLufs');
+const sbZoom   = document.getElementById('sbZoom');
+const tcNow    = document.getElementById('tcNow');
+const tcDur    = document.getElementById('tcDur');
+const regionList=document.getElementById('regionList');
+const noRegions=document.getElementById('noRegions');
+
+// ── K-Weighting / LUFS ────────────────────────────────────────────────────────
+function mkK(sr){const ok=sr>=46000&&sr<=50000;return{preB:ok?[1.53512485958697,-2.69169618940638,1.19839281085285]:[1.53085766865605,-2.65072300564990,1.16916682897904],preA:ok?[1,-1.69065929318241,.73248077421585]:[1,-1.66364048874477,.71247332735500],hpB:[1,-2,1],hpA:ok?[1,-1.99004745483398,.99007225036621]:[1,-1.98919956770367,.98922949918125]};}
+function mst(){return{x1:0,x2:0,y1:0,y2:0};}
+function bqf(x,b,a,s){const y=b[0]*x+b[1]*s.x1+b[2]*s.x2-a[1]*s.y1-a[2]*s.y2;s.x2=s.x1;s.x1=x;s.y2=s.y1;s.y1=y;return y;}
+function measureLufs(buf){
+  const sr=buf.sampleRate,nCh=Math.min(buf.numberOfChannels,2);
+  const kc=mkK(sr);
+  const states=Array.from({length:nCh},()=>({preS:mst(),hpS:mst()}));
+  const bsmp=Math.round(.4*sr),hsmp=Math.round(.1*sr);
+  const nb=Math.max(1,Math.floor((buf.length-bsmp)/hsmp)+1);
+  const blocks=[];
+  for(let b=0;b<nb;b++){
+    const s0=b*hsmp;let lk=0;
+    for(let c=0;c<nCh;c++){const ch=buf.getChannelData(c),st=states[c];let ms=0;for(let i=s0;i<Math.min(s0+bsmp,buf.length);i++){const w=bqf(bqf(ch[i],kc.preB,kc.preA,st.preS),kc.hpB,kc.hpA,st.hpS);ms+=w*w;}lk+=ms/bsmp;}
+    blocks.push(lk);
+  }
+  const absT=Math.pow(10,(-70+.691)/10);
+  const g1=blocks.filter(v=>v>absT);if(!g1.length)return -Infinity;
+  const m1=g1.reduce((a,b)=>a+b,0)/g1.length;
+  const g2=blocks.filter(v=>v>m1*Math.pow(10,-1));if(!g2.length)return -Infinity;
+  return -.691+10*Math.log10(g2.reduce((a,b)=>a+b,0)/g2.length);
+}
+
+// ── Timecode ──────────────────────────────────────────────────────────────────
+function fmtTc(s){
+  if(s==null||isNaN(s))return'0:00:00.000';
+  const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=Math.floor(s%60),ms=Math.floor((s%1)*1000);
+  return`${h}:${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}.${String(ms).padStart(3,'0')}`;
+}
+function fmtShort(s){
+  if(s==null||isNaN(s))return'0:00.00';
+  const m=Math.floor(s/60),sec=(s%60).toFixed(2);
+  return`${m}:${sec<10?'0':''}${sec}`;
+}
+function setTc(s){
+  const t=fmtTc(s).split('.');
+  tcNow.innerHTML=t[0]+'<span>.</span>'+t[1];
+}
+
+// ── Zoom ──────────────────────────────────────────────────────────────────────
+// timeToPx/pxToTime/totalWidth defined in zoom section
+
+// waveformCache wird in buildPeaksForView() gesetzt (zoom-abhängig)
+let waveformCache=null;
+
+// ── Waveform Drawing ──────────────────────────────────────────────────────────
+// ── Peak-Cache Aufbau ─────────────────────────────────────────────────────────
+// fitCache: einmalig beim Laden gebaut, für Zoom-Level 0 (Fit)
+// detailCache: bei jedem Zoom-Level-1-Aufruf, aber nur für den kleinen Ausschnitt
+let fitCache = null;
+
+function buildCache(sampleStart, sampleEnd, STEPS){
+  // Baut Peak-Min/Max-Arrays für einen Sample-Bereich mit STEPS Stufen
+  // STEPS ist immer klein (= Viewport-Pixel), daher immer schnell
+  const visLen = sampleEnd - sampleStart;
+  function ch(idx){
+    const d  = workBuf.getChannelData(idx);
+    const mn = new Float32Array(STEPS);
+    const mx = new Float32Array(STEPS);
+    const step = visLen / STEPS;
+    for(let i=0; i<STEPS; i++){
+      const j0 = sampleStart + Math.floor(i * step);
+      const j1 = Math.min(sampleStart + Math.floor((i+1)*step)+1, sampleEnd);
+      let a=d[j0], b=d[j0];
+      for(let j=j0+1; j<j1; j++){ const v=d[j]; if(v<a)a=v; if(v>b)b=v; }
+      mn[i]=a; mx[i]=b;
+    }
+    return {mn, mx};
+  }
+  const L = ch(0);
+  const R = workBuf.numberOfChannels > 1 ? ch(1) : null;
+  return {L, R, steps: STEPS};
+}
+
+function buildFitCache(){
+  if(!workBuf) return;
+  const STEPS = waveScroll.clientWidth || 800;  // 1 Step pro Pixel — immer schnell
+  fitCache = buildCache(0, workBuf.length, STEPS);
+}
+
+function buildPeaksForView(){
+  // View muss BEREITS gesetzt sein (von drawWaveform) — hier keine updateView
+  if(!workBuf) return;
+  const STEPS = waveScroll.clientWidth || 800;  // immer = Viewport-Breite
+  const sr = workBuf.sampleRate;
+  const sStart = Math.max(0, Math.floor(viewStart * sr));
+  const sEnd   = Math.min(workBuf.length, Math.ceil(viewEnd * sr));
+
+  if(zoomLevel === 0){
+    // Fit: fitCache wiederverwenden wenn vorhanden
+    if(fitCache){ waveformCache = fitCache; return; }
+    buildFitCache();
+    waveformCache = fitCache;
+  } else {
+    // Detail: nur den sichtbaren Ausschnitt (500ms) → sehr schnell
+    waveformCache = buildCache(sStart, sEnd, STEPS);
+  }
+}
+
+function drawWaveform(centerAt, noRecenter){
+  if(!workBuf) return;
+  // noRecenter=true: View NICHT zurücksetzen (z.B. bei manuellem Edge-Scroll)
+  if(!noRecenter) updateView(centerAt);
+  if(!waveformCache) buildPeaksForView(); // baut Peaks für die gerade gesetzte View
+  if(!waveformCache) return;
+
+  const dpr = window.devicePixelRatio||1;
+  // updateView schon oben aufgerufen — nicht nochmal
+  const W = waveScroll.clientWidth || 800;
+  const H = waveScroll.clientHeight;
+  if(!W||!H) return;
+
+  cvWave.width  = Math.round(W*dpr); cvWave.height = Math.round(H*dpr);
+  cvWave.style.width  = W+'px'; cvWave.style.height = H+'px';
+  waveInner.style.width = W+'px';
+
+  const c = cvWave.getContext('2d');
+  c.scale(dpr, dpr);
+  c.fillStyle = '#060a06'; c.fillRect(0,0,W,H);
+
+  const isStereo = !!waveformCache.R;
+  const PAD=18, GAP=isStereo?8:0;
+  const chH = isStereo ? (H-PAD*2-GAP)/2 : (H-PAD*2);
+  const ch1Y=PAD, ch2Y=PAD+chH+GAP;
+  const {steps} = waveformCache;
+  const AMP = 0.92; // Amplituden-Faktor: fast randvoll für maximale Detailsicht
+
+  function drawCh(cache, yOff, h){
+    const mid = yOff + h*.5;
+    const {mn, mx} = cache;
+
+    // Hintergrund der Spur — leicht abgehoben
+    c.fillStyle='rgba(0,0,0,.25)';
+    c.fillRect(0, yOff, W, h);
+
+    // Center line
+    c.strokeStyle='rgba(255,255,255,.1)'; c.lineWidth=1;
+    c.beginPath(); c.moveTo(0,mid); c.lineTo(W,mid); c.stroke();
+
+    // Wellenform gefüllt
+    c.beginPath();
+    for(let i=0; i<steps; i++){
+      const x = i/steps*W;
+      i===0 ? c.moveTo(x, mid+mn[i]*(h*AMP)) : c.lineTo(x, mid+mn[i]*(h*AMP));
+    }
+    for(let i=steps-1; i>=0; i--){
+      c.lineTo(i/steps*W, mid+mx[i]*(h*AMP));
+    }
+    c.closePath();
+    c.fillStyle='rgba(60,210,100,.85)'; c.fill();
+
+    // Helle Oberkante
+    c.beginPath();
+    for(let i=0; i<steps; i++){
+      const x = i/steps*W;
+      i===0 ? c.moveTo(x, mid+mx[i]*(h*AMP)) : c.lineTo(x, mid+mx[i]*(h*AMP));
+    }
+    c.strokeStyle='rgba(120,255,150,.75)'; c.lineWidth=1; c.stroke();
+
+    // Sample-Punkte bei sehr hohem Zoom (< 3 Samples pro Peak-Stufe)
+    const sampPerStep = workBuf.length / steps;
+    if(sampPerStep < 3){
+      c.fillStyle='rgba(160,255,180,.9)';
+      for(let i=0; i<steps; i++){
+        const x=i/steps*W, y=mid+mx[i]*(h*AMP);
+        c.beginPath(); c.arc(x,y,1.5,0,Math.PI*2); c.fill();
+      }
+    }
+  }
+
+  drawCh(waveformCache.L, ch1Y, chH);
+  if(isStereo){
+    c.strokeStyle='rgba(255,255,255,.12)'; c.lineWidth=1;
+    c.beginPath(); c.moveTo(0,ch1Y+chH+GAP/2); c.lineTo(W,ch1Y+chH+GAP/2); c.stroke();
+    drawCh(waveformCache.R, ch2Y, chH);
+  }
+
+  selOverlay.style.display='none';
+  drawSelection();
+  drawRuler();
+  updatePlayhead();
+}
+
+// ── Selektion auf separatem Canvas (schnell, kein Wellenform-Redraw) ──────────
+function drawSelection(){
+  if(!workBuf) return;
+  const dpr=window.devicePixelRatio||1;
+  const W=totalWidth(), H=waveScroll.clientHeight;
+  if(!W||!H) return;
+
+  // Canvas-Größe synchron halten
+  if(cvSel.width!==Math.round(W*dpr)||cvSel.height!==Math.round(H*dpr)){
+    cvSel.width=Math.round(W*dpr); cvSel.height=Math.round(H*dpr);
+    cvSel.style.width=W+'px'; cvSel.style.height=H+'px';
+  }
+  const c=cvSel.getContext('2d');
+  c.setTransform(dpr,0,0,dpr,0,0);
+  c.clearRect(0,0,W,H); // transparent löschen (kein fillRect!)
+
+  if(selIn!=null&&selOut!=null&&Math.abs(selOut-selIn)>0.001){
+    const x1=timeToPx(Math.min(selIn,selOut));
+    const x2=timeToPx(Math.max(selIn,selOut));
+    // Oranges Overlay
+    c.fillStyle='rgba(255,155,30,.28)'; c.fillRect(x1,0,x2-x1,H);
+    // Randlinien
+    c.strokeStyle='rgba(255,200,50,.85)'; c.lineWidth=2;
+    c.beginPath(); c.moveTo(x1,0); c.lineTo(x1,H); c.stroke();
+    c.beginPath(); c.moveTo(x2,0); c.lineTo(x2,H); c.stroke();
+  }
+
+  updateHandles();
+}
+
+// ── Ruler ─────────────────────────────────────────────────────────────────────
+function drawRuler(){
+  const dpr=window.devicePixelRatio||1;
+  const W=waveScroll.scrollWidth||waveScroll.clientWidth;
+  const H=cvRuler.parentElement.clientHeight;
+  cvRuler.width=Math.round(W*dpr); cvRuler.height=Math.round(H*dpr);
+  cvRuler.style.width=W+'px'; cvRuler.style.height=H+'px';
+  const c=cvRuler.getContext('2d');
+  c.scale(dpr,dpr);
+  c.fillStyle='#0e0e11'; c.fillRect(0,0,W,H);
+  if(!workBuf)return;
+  // pxPerSec: Pixel pro Sekunde im aktuellen View
+  const pps = viewEnd > viewStart
+    ? (waveScroll.clientWidth || 800) / (viewEnd - viewStart)
+    : 100;
+  let tick=1;
+  if(pps<20)tick=10;else if(pps<50)tick=5;else if(pps<100)tick=2;
+  else if(pps>500000)tick=1/workBuf.sampleRate;   // Sample-Ebene
+  else if(pps>100000)tick=0.0001;                  // 0.1ms
+  else if(pps>10000)tick=0.001;                    // 1ms
+  else if(pps>2000)tick=0.01;                      // 10ms
+  else if(pps>500)tick=0.1;else if(pps>200)tick=0.5;
+  const sl=waveScroll.scrollLeft;
+  const startT=Math.floor(pxToTime(sl)/tick)*tick;
+  const endT=pxToTime(sl+waveScroll.clientWidth)+tick;
+  c.font='7px DM Mono,monospace'; c.textAlign='center';
+  for(let t=startT;t<endT&&t<=duration;t+=tick){
+    const x=timeToPx(t)-sl;
+    const major=Number.isInteger(Math.round(t*10)/10) && (tick>=1?Number.isInteger(t):true);
+    c.strokeStyle=major?'rgba(255,255,255,.25)':'rgba(255,255,255,.08)';
+    c.lineWidth=.5;
+    c.beginPath();c.moveTo(x,major?0:H*.6);c.lineTo(x,H);c.stroke();
+    if(major){c.fillStyle='rgba(255,255,255,.4)';c.fillText(fmtShort(t),x,H-3);}
+  }
+  if(selIn!=null){const x=timeToPx(selIn)-sl;c.fillStyle='rgba(255,200,50,.8)';c.font='bold 8px DM Mono,monospace';c.fillText('I',x,H-2);}
+  if(selOut!=null){const x=timeToPx(selOut)-sl;c.fillStyle='rgba(255,200,50,.8)';c.font='bold 8px DM Mono,monospace';c.fillText('O',x,H-2);}
+}
+
+function updatePlayhead(){
+  if(!workBuf){playheadEl.style.display='none';return;}
+  playheadEl.style.display='block';
+  const t=currentPos();
+  playheadEl.style.left=timeToPx(t)+'px';
+  setTc(t);
+}
+
+// ── Playback ──────────────────────────────────────────────────────────────────
+let rafId=null;
+function currentPos(){
+  // Korrekte Positionsberechnung: Offset + vergangene Zeit
+  return playing ? Math.min(playOffset+(actx.currentTime-playStart), duration) : playOffset;
+}
+function animLoop(){
+  if(!playing)return;
+  updatePlayhead();
+  if(currentPos()>=duration){stopPlay();return;}
+  // Im Detail-Modus: Playhead-Linie reicht — kein View-Rebuild während Playback
+  // (verhindert visuelles Scrubbing/Springen)
+  rafId=requestAnimationFrame(animLoop);
+}
+
+// ── Zentraler Audio-Starter ──────────────────────────────────────────────────
+// Startet Audio wenn Context bereit ist — cross-browser/platform sicher
+// onStarted(actualFrom) wird aufgerufen sobald das Audio wirklich läuft
+function playAudioWhenReady(from, onStarted){
+  if(!workBuf) return;
+  actx = getAudioContext();
+  // resume() SYNC im User-Gesture-Kontext anstoßen
+  actx.resume().catch(()=>{});
+
+  // 80ms Delay — stellt auf ALLEN Plattformen sicher dass der Context läuft
+  // bevor start() aufgerufen wird. Safari braucht Zeit um resume() abzuschließen.
+  setTimeout(function(){
+    if(!workBuf) return;
+    if(playNode){try{playNode.stop();}catch(e){}playNode=null;}
+    const t = Math.max(0, Math.min(from, workBuf.duration));
+    try {
+      playNode = actx.createBufferSource();
+      playNode.buffer = workBuf;
+      playNode.connect(actx.destination);
+      playNode.start(0, t);
+      playStart = actx.currentTime;
+      playOffset = t;
+      playing = true;
+      playNode.onended = function(){ if(playing) stopPlay(); };
+      document.getElementById('btnPlay').classList.add('active');
+      rafId = requestAnimationFrame(animLoop);
+      if(onStarted) onStarted(t);
+    } catch(e) {
+      console.warn('playAudioWhenReady error:', e.message);
+      sbInfo.textContent = 'Audio-Fehler: ' + e.message;
+    }
+  }, 80);
+}
+
+function startPlay(from){
+  if(!workBuf) return;
+  actx = getAudioContext();
+  actx.resume().catch(()=>{});
+  playAudioWhenReady(from, null);
+}
+
+function stopPlay(){
+  if(playing) playOffset=currentPos(); // Position merken wo wir waren
+  playing=false;
+  if(rafId){cancelAnimationFrame(rafId);rafId=null;}
+  if(playNode){try{playNode.stop();}catch(e){}playNode=null;}
+  if(playToOutTimer){clearTimeout(playToOutTimer);playToOutTimer=null;}
+  if(scrubNode){try{scrubNode.stop();}catch(e){}scrubNode=null;}
+  if(scrubTimer){clearTimeout(scrubTimer);scrubTimer=null;}
+  document.getElementById('btnPlay').classList.remove('active');
+  updatePlayhead();
+}
+function togglePlay(){playing?stopPlay():startPlay(playOffset);}
+
+// ── Buffer-Operationen (destruktiv) ───────────────────────────────────────────
+function sliceBuf(buf, startSec, endSec){
+  const sr=buf.sampleRate, nCh=buf.numberOfChannels;
+  const s=Math.max(0,Math.round(startSec*sr));
+  const e=Math.min(buf.length,Math.round(endSec*sr));
+  const len=e-s; if(len<=0)return null;
+  // actx ist beim Editing immer vorhanden (Datei wurde geladen)
+  const out=actx.createBuffer(nCh,len,sr);
+  for(let c=0;c<nCh;c++){
+    const src=buf.getChannelData(c), dst=out.getChannelData(c);
+    for(let i=0;i<len;i++) dst[i]=src[s+i];
+  }
+  return out;
+}
+
+function concatBufs(bufs){
+  const bufsF=bufs.filter(Boolean);
+  if(!bufsF.length)return null;
+  const sr=bufsF[0].sampleRate, nCh=bufsF[0].numberOfChannels;
+  const total=bufsF.reduce((s,b)=>s+b.length,0);
+  if(total<=0)return null;
+  const out=actx.createBuffer(nCh,total,sr);
+  let pos=0;
+  for(const b of bufsF){
+    for(let c=0;c<nCh;c++){
+      const src=b.getChannelData(c), dst=out.getChannelData(c);
+      for(let i=0;i<b.length;i++) dst[pos+i]=src[i];
+    }
+    pos+=b.length;
+  }
+  return out;
+}
+
+function pushUndo(){
+  undoStack.push(workBuf);
+  if(undoStack.length>10)undoStack.shift(); // max 10 Undo-Schritte
+  enableButtons();
+}
+
+function applyWorkBuf(newBuf, msg){
+  if(!newBuf){sbInfo.textContent='Fehler: leerer Schnitt'; return;}
+  stopPlay();                    // Wiedergabe sofort stoppen
+  pushUndo();
+  workBuf=newBuf;
+  duration=workBuf.duration;
+  playOffset=0;                  // Playhead immer auf Anfang
+  fitCache=null; waveformCache=null;
+  tcDur.textContent='/ '+fmtShort(duration);
+  selIn=null; selOut=null;
+  drawWaveform();
+  setTc(0);
+  updatePlayhead();
+  enableButtons();
+  sbInfo.textContent=(msg||'Erledigt')+' · Neue Länge: '+fmtShort(duration);
+}
+
+// ── Load File ─────────────────────────────────────────────────────────────────
+async function loadFile(file){
+  sbInfo.textContent='Lade…'; stopPlay();
+  // iOS: AudioContext SYNC vor jedem await erstellen/resumieren
+  actx = getAudioContext();
+  // iOS: resume() SYNC starten (User Gesture noch aktiv)
+  try { actx.resume(); } catch(e){}
+  try{
+    sbInfo.textContent='Lese Datei…';
+    const ab=await readFileAsArrayBuffer(file);
+    sbInfo.textContent='Dekodiere…';
+    // decodeAudioData ist eine Offline-Operation — kein running Context nötig
+    origBuf=await safariFriendlyDecode(actx, ab);
+    workBuf=origBuf;
+    duration=workBuf.duration;
+    undoStack=[];
+    selIn=null; selOut=null; playOffset=0;
+    zoomLevel=0;
+    fitCache=null; waveformCache=null;
+    enableButtons();
+    tcDur.textContent='/ '+fmtShort(duration);
+    // fitCache asynchron bauen, dann zeichnen
+    setTimeout(()=>{ buildFitCache(); drawWaveform(); },0);
+    setTc(0);
+    sbSr.textContent=workBuf.sampleRate+'Hz · '+(workBuf.numberOfChannels>1?'Stereo':'Mono');
+    origFileName=file.name;
+    sbInfo.textContent=file.name+' — Bereich ziehen, dann Trim oder Ausschneiden';
+    sbLufs.textContent='Messe…';
+    setTimeout(()=>{
+      const l=measureLufs(workBuf);
+      sbLufs.textContent=l>-70?l.toFixed(1)+' LUFS':'—';
+
+      // Kein Auto-Analyse: Audio Editor ist ein reines Schnitt-Tool
+    },100);
+  }catch(e){
+    const msg='Ladefehler: '+e.message;
+    sbInfo.textContent=msg;
+    console.error('SATK loadFile:', e);
+  }
+}
+
+// ── Buttons ───────────────────────────────────────────────────────────────────
+function enableButtons(){
+  const has=!!workBuf;
+  const hasSel=has&&selIn!=null&&selOut!=null&&Math.abs(selOut-selIn)>0.001;
+  const canUndo=undoStack.length>0;
+  ['btnPlay','btnStop','btnZoomIn','btnZoomOut','btnZoomFit','btnExport']
+    .forEach(id=>{ const el=document.getElementById(id); if(el)el.disabled=!has; });
+  document.getElementById('btnTrim').disabled=!hasSel;
+  document.getElementById('btnCutSel').disabled=!hasSel;
+  document.getElementById('btnUndo').disabled=!canUndo;
+  document.getElementById('btnClearAll').disabled=!has;
+  // Zu-In / Zu-Out nur aktiv wenn jeweiliger Punkt gesetzt
+  const inBtn=document.getElementById('btnZoomIn2');
+  const outBtn=document.getElementById('btnZoomOut2');
+  if(inBtn)  inBtn.disabled  = !(has && selIn!=null);
+  if(outBtn) outBtn.disabled = !(has && selOut!=null);
+  // Play from In / Play to Out
+  const pfiBtn=document.getElementById('btnPlayFromIn');
+  const ptoBtn=document.getElementById('btnPlayToOut');
+  if(pfiBtn) pfiBtn.disabled = !(has && selIn!=null);
+  if(ptoBtn) ptoBtn.disabled = !(has && selOut!=null);
+}
+
+// ── Cut / Trim ────────────────────────────────────────────────────────────────
+function getSelNorm(){
+  if(selIn==null||selOut==null)return null;
+  return{a:Math.min(selIn,selOut), b:Math.max(selIn,selOut)};
+}
+
+function doTrim(){
+  const s=getSelNorm(); if(!s)return;
+  const newBuf=sliceBuf(workBuf, s.a, s.b);
+  applyWorkBuf(newBuf, `Trim: ${fmtShort(s.a)} – ${fmtShort(s.b)} · Länge: ${fmtShort(s.b-s.a)}`);
+}
+
+function doCutSel(){
+  const s=getSelNorm(); if(!s)return;
+  const before=s.a>0.001?sliceBuf(workBuf,0,s.a):null;
+  const after=s.b<duration-0.001?sliceBuf(workBuf,s.b,duration):null;
+  const newBuf=concatBufs([before,after]);
+  applyWorkBuf(newBuf, `Ausgeschnitten: ${fmtShort(s.a)} – ${fmtShort(s.b)}`);
+}
+
+function undo(){
+  if(!undoStack.length)return;
+  stopPlay();
+  const prev=undoStack.pop();
+  workBuf=prev; duration=workBuf.duration;
+  fitCache=null; waveformCache=null; // Buffer geändert → beide Caches löschen
+  playOffset=0; zoomLevel=0;          // zurück zu Fit-Ansicht
+  tcDur.textContent='/ '+fmtShort(duration);
+  selIn=null; selOut=null;
+  drawWaveform(); setTc(0); updatePlayhead(); enableButtons();
+  sbInfo.textContent='Undo ↩  Länge: '+fmtShort(duration)+(undoStack.length?' · ('+undoStack.length+' weitere möglich)':'');
+}
+
+function resetToOrig(){
+  if(!origBuf)return;
+  stopPlay();
+  // RESET = komplett auf Anfang — Undo-Stack leeren, kein pushUndo
+  undoStack=[];
+  workBuf=origBuf; duration=workBuf.duration;
+  fitCache=null; waveformCache=null;
+  playOffset=0; zoomLevel=0; selIn=null; selOut=null;
+  tcDur.textContent='/ '+fmtShort(duration);
+  drawWaveform(); setTc(0); updatePlayhead(); enableButtons();
+  sbInfo.textContent='↺ Zurückgesetzt auf Original · Länge: '+fmtShort(duration);
+}
+
+// ── Selection via I/O buttons ─────────────────────────────────────────────────
+function setIn(){
+  if(!workBuf)return;
+  selIn=playOffset;
+  if(selOut!=null&&selOut<=selIn)selOut=null;
+  drawWaveform(); enableButtons();
+  sbInfo.textContent=selOut!=null
+    ?`Auswahl: ${fmtShort(selIn)} – ${fmtShort(selOut)} (${fmtShort(selOut-selIn)})`
+    :`In-Punkt: ${fmtShort(selIn)} — jetzt Out-Punkt setzen`;
+}
+function setOut(){
+  if(!workBuf)return;
+  selOut=playOffset;
+  if(selIn!=null&&selIn>=selOut)selIn=null;
+  drawWaveform(); enableButtons();
+  sbInfo.textContent=selIn!=null
+    ?`Auswahl: ${fmtShort(selIn)} – ${fmtShort(selOut)} (${fmtShort(selOut-selIn)})`
+    :`Out-Punkt: ${fmtShort(selOut)} — jetzt In-Punkt setzen`;
+}
+function clearSel(){selIn=null;selOut=null;drawSelection();enableButtons();sbInfo.textContent='Auswahl gelöscht';}
+
+// ── Mouse on waveform ─────────────────────────────────────────────────────────
+// ── Handle-Positionierung ─────────────────────────────────────────────────────
+const handleIn  = document.getElementById('handleIn');
+const handleOut = document.getElementById('handleOut');
+
+function updateHandles(){
+  const hasSel = selIn!=null && selOut!=null && Math.abs(selOut-selIn)>0.001;
+  if(!hasSel){
+    handleIn.style.display='none';
+    handleOut.style.display='none';
+    return;
+  }
+  const inT  = Math.min(selIn,selOut);
+  const outT = Math.max(selIn,selOut);
+  handleIn.style.display  = 'block';
+  handleOut.style.display = 'block';
+  handleIn.style.left     = timeToPx(inT)+'px';
+  handleOut.style.left    = timeToPx(outT)+'px';
+}
+
+// ── Play from In / Play to Out ────────────────────────────────────────────────
+const PREROLL = 1.5; // Sekunden Vorlauf vor Out-Punkt
+
+function playFromIn(){
+  if(!workBuf || selIn==null) return;
+
+  // Zuerst stoppen — gleiche Race-Condition-Vermeidung wie playToOut
+  stopPlay();
+
+  actx = getAudioContext();
+  actx.resume().catch(()=>{});
+
+  if(playToOutTimer){clearTimeout(playToOutTimer);playToOutTimer=null;}
+
+  setTimeout(function(){
+    if(!workBuf) return;
+    const t = Math.max(0, Math.min(selIn, workBuf.duration));
+    try {
+      playNode = actx.createBufferSource();
+      playNode.buffer = workBuf;
+      playNode.connect(actx.destination);
+      playNode.start(0, t);
+      playStart = actx.currentTime;
+      playOffset = t;
+      playing = true;
+      playNode.onended = function(){ if(playing) stopPlay(); };
+      document.getElementById('btnPlay').classList.add('active');
+      rafId = requestAnimationFrame(animLoop);
+
+      if(selOut!=null && selOut > selIn){
+        playToOutTimer = setTimeout(function(){
+          stopPlay();
+          playToOutTimer=null;
+        }, (selOut - t) * 1000 + 20);
+      }
+    } catch(e) {
+      sbInfo.textContent = 'Fehler: ' + e.message;
+      console.warn('playFromIn error:', e);
+    }
+  }, 80);
+}
+
+function playToOut(){
+  if(!workBuf || selOut==null) return;
+  const from = Math.max(0, selOut - PREROLL);
+
+  // Zuerst stoppen — verhindert Race Condition wo onended des alten Nodes
+  // den neuen Stop auslöst (onended feuert async NACH neuem start())
+  stopPlay();
+
+  actx = getAudioContext();
+  actx.resume().catch(()=>{}); // sync im User-Gesture-Kontext (Button-Click)
+
+  if(playToOutTimer){clearTimeout(playToOutTimer);playToOutTimer=null;}
+
+  setTimeout(function(){
+    if(!workBuf) return;
+    const t = Math.max(0, Math.min(from, workBuf.duration));
+    try {
+      playNode = actx.createBufferSource();
+      playNode.buffer = workBuf;
+      playNode.connect(actx.destination);
+      playNode.start(0, t);
+      playStart = actx.currentTime;
+      playOffset = t;
+      playing = true;
+      playNode.onended = function(){ if(playing) stopPlay(); };
+      document.getElementById('btnPlay').classList.add('active');
+      rafId = requestAnimationFrame(animLoop);
+
+      // Stop-Timer ZUERST setzen — bevor drawWaveform() läuft
+      // (falls draw wirft oder blockiert, stoppt Audio trotzdem korrekt)
+      playToOutTimer = setTimeout(function(){
+        stopPlay();
+        playToOutTimer=null;
+      }, (selOut - t) * 1000 + 20);
+
+      // View auf Out-Punkt zentrieren (visuell, nach Timer-Setup)
+      zoomLevel=1; waveformCache=null;
+      updateView(selOut); drawWaveform();
+      sbZoom.textContent='Detail ('+((viewEnd-viewStart)*1000).toFixed(0)+'ms)';
+
+    } catch(e) {
+      sbInfo.textContent = 'Fehler: ' + e.message;
+      console.warn('playToOut error:', e);
+    }
+  }, 80);
+}
+let playToOutTimer=null;
+
+// ── Scrubbing (Shift + Drag) ──────────────────────────────────────────────────
+// Shift gedrückt halten + Maus ziehen → hört Audio an Cursor-Position (200ms)
+let scrubNode=null, scrubDebounce=null;
+
+let scrubTimer = null; // Separater Timer für scrub-Stop
+
+function scrubAt(t){
+  if(!workBuf) return;
+
+  // Alten Scrub-Node sofort stoppen
+  if(scrubNode){ try{scrubNode.stop();}catch(e){} scrubNode=null; }
+
+  const ac = getAudioContext();
+  ac.resume().catch(()=>{});
+
+  const SCRUB_DUR = 0.10;  // 100ms — kürzere Vorschau, näher an der Handle-Position
+  // Audio startet AM Handle — was der User direkt am Schnittpunkt hört
+  const from = Math.max(0, Math.min(t, duration - SCRUB_DUR));
+
+  // Polling statt Promise.then — Safari Desktop verträgt .then() nicht zuverlässig
+  var attempts = 0;
+  function tryPlay(){
+    if(ac.state === 'running'){
+      if(scrubNode){ try{scrubNode.stop();}catch(e){} scrubNode=null; }
+      try {
+        const node = ac.createBufferSource();
+        node.buffer = workBuf;
+        node.connect(ac.destination);
+        // ac.currentTime + kleiner Offset — Safari Desktop akzeptiert kein 0 nach Resume
+        node.start(ac.currentTime + 0.005, from);
+        node.stop(ac.currentTime + 0.005 + SCRUB_DUR);
+        node.onended = ()=>{ if(scrubNode===node) scrubNode=null; };
+        scrubNode = node;
+      } catch(e){ scrubNode=null; }
+    } else if(attempts++ < 8){
+      setTimeout(tryPlay, 25); // max 200ms warten auf Context-Resume
+    }
+  }
+  tryPlay();
+
+  // playOffset und Playhead NICHT ändern — Handle scrubbt nur Audio, kein Snap
+}
+// Gibt 'in', 'out' oder null zurück — ob clientX nahe einem Handle ist
+const HANDLE_HIT = 12; // px Toleranz (einheitlich)
+
+function hitHandle(clientX){
+  if(selIn==null||selOut==null||Math.abs(selOut-selIn)<0.001) return null;
+  const rect = cvWave.getBoundingClientRect();
+  const px   = clientX - rect.left + waveScroll.scrollLeft;
+  const inPx  = timeToPx(Math.min(selIn,selOut));
+  const outPx = timeToPx(Math.max(selIn,selOut));
+  if(Math.abs(px-inPx)  <= HANDLE_HIT) return 'in';
+  if(Math.abs(px-outPx) <= HANDLE_HIT) return 'out';
+  return null;
+}
+
+// ── Mouse Interaktion (mit Handle-Drag) ───────────────────────────────────────
+waveScroll.addEventListener('click',e=>{
+  if(!workBuf)return;
+  if(justFinishedDrag){justFinishedDrag=false;return;}
+  if(hitHandle(e.clientX)) return; // Handle-Klick — kein Playhead setzen
+  const rect=cvWave.getBoundingClientRect();
+  const t=Math.max(0,Math.min(pxToTime(e.clientX-rect.left+waveScroll.scrollLeft),duration));
+  playOffset=t; setTc(t);
+  selIn=null; selOut=null;
+  // Klick zentriert View auf Playhead — das ist eine bewusste Navigation
+  waveformCache=null;
+  updateView();       // View auf neuen playOffset zentrieren
+  drawWaveform();     // Neu zeichnen
+  enableButtons();
+});
+
+
+
+
+waveScroll.addEventListener('mousedown',e=>{
+  if(!workBuf)return;
+  if(e.target.closest('button'))return;
+  e.preventDefault();
+
+  // Resume hier (mousedown = User-Gesture auf Safari Desktop, mousemove nicht!)
+  // Stellt sicher dass scrubAt() im folgenden mousemove Audio abspielen kann
+  const _ac = getAudioContext();
+  _ac.resume().catch(()=>{});
+
+  const rect=cvWave.getBoundingClientRect();
+  const hit=hitHandle(e.clientX);
+
+  if(hit){
+    // ── Handle-Drag ───────────────────────────────────────────────────────
+    let lastHandleT = null;
+    let lastScrollT = 0;
+
+    function doScroll(dt){
+      // dt in Sekunden, Span bleibt konstant
+      const span = viewEnd - viewStart;
+      viewStart = Math.max(0, Math.min(viewStart + dt, duration - span));
+      viewEnd   = viewStart + span;
+      waveformCache = null;
+      drawWaveform(null, true); // noRecenter: updateView NICHT aufrufen
+    }
+
+    const moveHandle = ev => {
+      const canvasX = ev.clientX - rect.left;
+      const W       = rect.width;
+
+      // ── Handle-Position ZUERST (vor Scroll, mit aktueller View) ──────
+      // clampedX auf [0,W]: außerhalb → Handle bleibt am Rand
+      const clampedX = Math.max(0, Math.min(canvasX, W));
+      const t = Math.max(0, Math.min(pxToTime(clampedX), duration));
+      if(hit === 'in'){
+        selIn = t;
+        if(selOut != null && selIn > selOut) selIn = selOut;
+      } else {
+        selOut = t;
+        if(selIn != null && selOut < selIn) selOut = selIn;
+      }
+      const handleT = hit === 'in' ? selIn : selOut;
+
+      // ── Edge-Scroll DANACH (verschiebt View, Handle-Zeit bleibt) ─────
+      // Throttle 20ms → max 50fps, unabhängig von Mausgeschwindigkeit
+      if(zoomLevel === 1){
+        const now = performance.now();
+        if(now - lastScrollT >= 20){
+          const span = viewEnd - viewStart;
+          const ZONE = 60;
+          if(canvasX < ZONE && viewStart > 0){
+            const frac = canvasX < 0 ? 1.0 : (ZONE - canvasX) / ZONE;
+            doScroll(-frac * span * 0.025); lastScrollT = now;
+          } else if(canvasX > W - ZONE && viewEnd < duration){
+            const frac = canvasX > W ? 1.0 : (canvasX - (W - ZONE)) / ZONE;
+            doScroll(frac * span * 0.025); lastScrollT = now;
+          }
+        }
+      }
+
+      if(lastHandleT === null || Math.abs(handleT - lastHandleT) > 0.001){
+        scrubAt(handleT);
+        lastHandleT = handleT;
+      }
+      drawSelection();
+      enableButtons();
+      sbInfo.textContent = `${hit==='in'?'In':'Out'}: ${fmtShort(handleT)} · Auswahl: ${fmtShort(Math.abs(selOut-selIn))}`;
+    };
+
+    const upHandle = ev => {
+      justFinishedDrag = true;
+      if(scrubNode){ try{scrubNode.stop();}catch(e){} scrubNode = null; }
+      if(selIn > selOut)[selIn,selOut] = [selOut,selIn];
+      try{ ev.target.releasePointerCapture(ev.pointerId); }catch(e){}
+      drawSelection(); enableButtons();
+      sbInfo.textContent = `Auswahl: ${fmtShort(selIn)} – ${fmtShort(selOut)} (${fmtShort(selOut-selIn)})`;
+      window.removeEventListener('mousemove', moveHandle);
+      window.removeEventListener('mouseup',   upHandle);
+    };
+
+    try{ waveScroll.setPointerCapture(e.pointerId); }catch(err){}
+    window.addEventListener('mousemove', moveHandle);
+    window.addEventListener('mouseup',   upHandle);
+    return;
+  }
+  // ── Neue Selektion per Drag ───────────────────────────────────────────────
+  isDragging=false;
+  const x0=e.clientX-rect.left+waveScroll.scrollLeft;
+  dragStartX=x0;
+  selIn=Math.max(0,Math.min(pxToTime(x0),duration));
+  selOut=selIn;
+  const onMove=ev=>{
+    const x=ev.clientX-rect.left+waveScroll.scrollLeft;
+    if(Math.abs(x-dragStartX)>4)isDragging=true;
+    if(isDragging){
+      selOut=Math.max(0,Math.min(pxToTime(x),duration));
+      drawSelection(); enableButtons();
+    }
+  };
+  const onUp=()=>{
+    if(isDragging){
+      justFinishedDrag=true;
+      if(selIn>selOut)[selIn,selOut]=[selOut,selIn];
+      drawSelection(); enableButtons();
+      if(Math.abs(selOut-selIn)>0.001)
+        sbInfo.textContent=`Auswahl: ${fmtShort(selIn)} – ${fmtShort(selOut)} (${fmtShort(selOut-selIn)})`;
+    } else { selIn=null; selOut=null; updateHandles(); }
+    isDragging=false;
+    window.removeEventListener('mousemove',onMove);
+    window.removeEventListener('mouseup',onUp);
+  };
+  window.addEventListener('mousemove',onMove);
+  window.addEventListener('mouseup',onUp);
+});
+
+// ── Touch Support (mit Handle-Drag) ───────────────────────────────────────────
+function touchTime(touch){
+  const rect=cvWave.getBoundingClientRect();
+  const x=touch.clientX-rect.left+waveScroll.scrollLeft;
+  return Math.max(0,Math.min(pxToTime(x),duration));
+}
+function hitHandleTouch(touch){
+  if(selIn==null||selOut==null||Math.abs(selOut-selIn)<0.001) return null;
+  const rect=cvWave.getBoundingClientRect();
+  const px=touch.clientX-rect.left+waveScroll.scrollLeft;
+  const inPx=timeToPx(Math.min(selIn,selOut));
+  const outPx=timeToPx(Math.max(selIn,selOut));
+  if(Math.abs(px-inPx)  <= 18) return 'in';  // etwas großzügiger auf Touch
+  if(Math.abs(px-outPx) <= 18) return 'out';
+  return null;
+}
+
+let pinchDist0=null;
+let touchHandleTarget=null; // 'in' | 'out' | null
+let touchScrollT=0;         // Throttle für Touch-Edge-Scroll
+
+function getPinchDist(touches){
+  const dx=touches[0].clientX-touches[1].clientX;
+  const dy=touches[0].clientY-touches[1].clientY;
+  return Math.sqrt(dx*dx+dy*dy);
+}
+
+waveScroll.addEventListener('touchstart', e=>{
+  if(!workBuf)return;
+  if(e.touches.length===2){
+    e.preventDefault();
+    // Zwei Finger = Zoom-Stufe wechseln (kein kontinuierliches Pinch)
+    pinchDist0=getPinchDist(e.touches);
+    return;
+  }
+  if(e.touches.length!==1)return;
+  e.preventDefault();
+
+  // Handle-Drag Erkennung
+  touchHandleTarget=hitHandleTouch(e.touches[0]);
+  if(touchHandleTarget){
+    isDragging=true; // blockiert Tap-Handler
+    return;
+  }
+
+  isDragging=false; justFinishedDrag=false;
+  const t=touchTime(e.touches[0]);
+  dragStartX=timeToPx(t);
+  selIn=t; selOut=t;
+},{passive:false});
+
+waveScroll.addEventListener('touchmove', e=>{
+  if(!workBuf)return;
+  if(e.touches.length===2){
+    e.preventDefault();
+    // Pinch rein = zoom in, Pinch raus = zoom out
+    if(pinchDist0!==null){
+      const dist=getPinchDist(e.touches);
+      const ratio=dist/pinchDist0;
+      if(ratio>1.3){ zoomIn(); pinchDist0=dist; }
+      else if(ratio<0.7){ zoomOut(); pinchDist0=dist; }
+    }
+    return;
+  }
+  if(e.touches.length!==1)return;
+  e.preventDefault();
+
+  if(touchHandleTarget){
+    // Handle-Feintuning per Touch — gleiche Logik wie Desktop moveHandle
+    const touch = e.touches[0];
+    const rect  = cvWave.getBoundingClientRect();
+    const W     = rect.width;
+    const canvasX = touch.clientX - rect.left;
+
+    // ── Handle-Position ZUERST (vor Scroll) ───────────────────────────
+    const clampedX = Math.max(0, Math.min(canvasX, W));
+    const t = Math.max(0, Math.min(pxToTime(clampedX), duration));
+    if(touchHandleTarget==='in'){
+      selIn=t; if(selOut!=null&&selIn>selOut)selIn=selOut;
+    } else {
+      selOut=t; if(selIn!=null&&selOut<selIn)selOut=selIn;
+    }
+    const handleT = touchHandleTarget==='in' ? selIn : selOut;
+    scrubAt(handleT);
+
+    // ── Edge-Scroll mit Throttle (20ms) ───────────────────────────────
+    if(zoomLevel===1){
+      const now = performance.now();
+      if(now - (touchScrollT||0) >= 20){
+        const span = viewEnd - viewStart;
+        const ZONE = 60;
+        if(canvasX < ZONE && viewStart > 0){
+          const frac = canvasX < 0 ? 1.0 : (ZONE - canvasX) / ZONE;
+          const vs = Math.max(0, Math.min(viewStart - frac*span*0.025, duration-span));
+          viewStart = vs; viewEnd = vs + span;
+          waveformCache = null; touchScrollT = now;
+        } else if(canvasX > W - ZONE && viewEnd < duration){
+          const frac = canvasX > W ? 1.0 : (canvasX - (W-ZONE)) / ZONE;
+          const vs = Math.max(0, Math.min(viewStart + frac*span*0.025, duration-span));
+          viewStart = vs; viewEnd = vs + span;
+          waveformCache = null; touchScrollT = now;
+        }
+      }
+    }
+
+    if(waveformCache===null){
+      drawWaveform(null, true); // noRecenter!
+    } else {
+      drawSelection();
+    }
+    enableButtons();
+    sbInfo.textContent=`${touchHandleTarget==='in'?'In':'Out'}: ${fmtShort(handleT)} · ${fmtShort(Math.abs(selOut-selIn))}`;
+    return;
+  }
+
+  const x=timeToPx(touchTime(e.touches[0]));
+  if(Math.abs(x-dragStartX)>6){
+    isDragging=true;
+    selOut=touchTime(e.touches[0]);
+    drawSelection(); enableButtons();
+  }
+},{passive:false});
+
+waveScroll.addEventListener('touchend', e=>{
+  if(!workBuf)return;
+  pinchDist0=null;
+
+  if(touchHandleTarget){
+    // Handle-Drag beendet — Scrub stoppen
+    if(scrubNode){try{scrubNode.stop();}catch(e){}scrubNode=null;}
+    if(selIn!=null&&selOut!=null&&selIn>selOut)[selIn,selOut]=[selOut,selIn];
+    justFinishedDrag=true;
+    drawSelection(); enableButtons();
+    sbInfo.textContent=`Auswahl: ${fmtShort(selIn)} – ${fmtShort(selOut)} (${fmtShort(selOut-selIn)})`;
+    touchHandleTarget=null; isDragging=false;
+    return;
+  }
+
+  if(isDragging){
+    if(selIn>selOut)[selIn,selOut]=[selOut,selIn];
+    justFinishedDrag=true;
+    drawSelection(); enableButtons();
+    if(Math.abs(selOut-selIn)>0.001)
+      sbInfo.textContent=`Auswahl: ${fmtShort(selIn)} – ${fmtShort(selOut)} (${fmtShort(selOut-selIn)})`;
+    isDragging=false;
+  } else {
+    if(e.changedTouches.length>0){
+      const t=touchTime(e.changedTouches[0]);
+      playOffset=t; setTc(t); updatePlayhead();
+      selIn=null; selOut=null; drawSelection(); enableButtons();
+    }
+    isDragging=false;
+  }
+},{passive:true});
+// ── 2 Zoomstufen: FIT und DETAIL ─────────────────────────────────────────────
+// Canvas ist immer genau Viewport-Breite — kein Scroll, kein schwarzes Bild
+// timeToPx/pxToTime rechnen relativ zu viewStart (sichtbarer Zeitbereich)
+let zoomLevel = 0;  // 0 = Fit, 1 = Detail
+const DETAIL_WIN = 0.5;  // Sekunden im Detail-Modus
+let viewStart = 0, viewEnd = 1;  // sichtbarer Zeitbereich
+
+function updateView(centerAt){
+  // centerAt: optionaler Zeitpunkt für Detail-Fenster (Standard: playOffset)
+  const sw = waveScroll.clientWidth || 800;
+  if(!workBuf){ viewStart=0; viewEnd=1; return; }
+  if(zoomLevel===0){
+    viewStart = 0;
+    viewEnd   = duration;
+  } else {
+    const center = (centerAt !== undefined) ? centerAt : playOffset;
+    const half = DETAIL_WIN / 2;
+    viewStart = Math.max(0, Math.min(center - half, duration - DETAIL_WIN));
+    viewEnd   = Math.min(duration, viewStart + DETAIL_WIN);
+    if(viewEnd-viewStart < DETAIL_WIN && viewStart===0) viewEnd=Math.min(duration,DETAIL_WIN);
+  }
+}
+
+function timeToPx(t){
+  const sw = waveScroll.clientWidth || 800;
+  return (t - viewStart) / (viewEnd - viewStart) * sw;
+}
+function pxToTime(px){
+  const sw = waveScroll.clientWidth || 800;
+  return viewStart + px / sw * (viewEnd - viewStart);
+}
+function totalWidth(){ return waveScroll.clientWidth || 800; }
+
+function zoomIn(){
+  if(!workBuf || zoomLevel>=1) return;
+  zoomLevel=1; applyZoom();
+}
+function zoomOut(){
+  if(!workBuf || zoomLevel<=0) return;
+  zoomLevel=0; applyZoom();
+}
+function zoomFit(){
+  if(!workBuf) return;
+  zoomLevel=0; applyZoom();
+}
+function zoomToPoint(t){
+  // In Detail-Modus wechseln und auf Zeitpunkt t zentrieren
+  zoomLevel=1;
+  playOffset=t;
+  waveformCache=null;
+  updateView();
+  drawWaveform();
+  const win=viewEnd-viewStart;
+  sbZoom.textContent='Detail ('+(win*1000).toFixed(0)+'ms)';
+}
+function zoomToIn(){
+  if(selIn!=null) zoomToPoint(selIn);
+}
+function zoomToOut(){
+  if(selOut!=null) zoomToPoint(selOut);
+}
+  // Zoom-Zentrum: Mitte der Auswahl, sonst Playhead
+function applyZoom(){
+  const zoomCenter = (selIn!=null && selOut!=null)
+    ? (selIn + selOut) / 2
+    : playOffset;
+
+  if(zoomLevel===1){
+    // Detail: Fenster auf Zoom-Zentrum
+    playOffset = zoomCenter;
+  }
+
+  waveformCache=null;
+  updateView();
+  drawWaveform();
+  const win = viewEnd - viewStart;
+  sbZoom.textContent = zoomLevel===0 ? 'Zoom: Fit' :
+    'Zoom: Detail ('+(win*1000).toFixed(0)+'ms)';
+}
+
+// ── Export ────────────────────────────────────────────────────────────────────
+async function exportWav(){
+  sbInfo.textContent='Messe LUFS…';
+  await new Promise(r=>setTimeout(r,10));
+  const lufs=measureLufs(workBuf);
+  const TARGET=-23, TPDB=-1;
+  let finalBuf=workBuf;
+  if(lufs>-70){
+    let gain=Math.pow(10,(TARGET-lufs)/20);
+    const nCh=workBuf.numberOfChannels, len=workBuf.length, sr=workBuf.sampleRate;
+    // True peak check
+    let pk=0;
+    for(let c=0;c<nCh;c++){const d=workBuf.getChannelData(c);for(let i=0;i<len;i++)if(Math.abs(d[i])>pk)pk=Math.abs(d[i]);}
+    const tpLin=Math.pow(10,TPDB/20);
+    if(pk*gain>tpLin)gain=tpLin/pk;
+    const ctx=actx;
+    finalBuf=ctx.createBuffer(nCh,len,sr);
+    for(let c=0;c<nCh;c++){const s=workBuf.getChannelData(c),d=finalBuf.getChannelData(c);for(let i=0;i<len;i++)d[i]=s[i]*gain;}
+  }
+  sbInfo.textContent='Encodiere WAV…';
+  await new Promise(r=>setTimeout(r,10));
+  const wav=encodeWav(finalBuf);
+  const url=URL.createObjectURL(wav);
+  const a=document.createElement('a');
+  a.href=url; a.download=satkFilename('audio-editor','wav'); a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),2000);
+  showDownloadHint(a.download);
+  sbInfo.textContent=`Exportiert ✓  ${fmtShort(finalBuf.duration)} · ${lufs.toFixed(1)} → −23 LUFS`;
+}
+
+function encodeWav(buf){
+  const nCh=buf.numberOfChannels,sr=buf.sampleRate,len=buf.length;
+  const ab=new ArrayBuffer(44+len*nCh*2); const v=new DataView(ab);
+  const ws=(o,s)=>{for(let i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i));};
+  ws(0,'RIFF');v.setUint32(4,36+len*nCh*2,true);ws(8,'WAVE');
+  ws(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);
+  v.setUint16(22,nCh,true);v.setUint32(24,sr,true);v.setUint32(28,sr*nCh*2,true);
+  v.setUint16(32,nCh*2,true);v.setUint16(34,16,true);ws(36,'data');v.setUint32(40,len*nCh*2,true);
+  let off=44;const chs=Array.from({length:nCh},(_,c)=>buf.getChannelData(c));
+  for(let i=0;i<len;i++)for(let c=0;c<nCh;c++){const s=Math.max(-1,Math.min(1,chs[c][i]));v.setInt16(off,s<0?s*32768:s*32767,true);off+=2;}
+  return new Blob([ab],{type:'audio/wav'});
+}
+
+
+// ── Event wiring ──────────────────────────────────────────────────────────────
+document.getElementById('fileIn').addEventListener('change',e=>{if(e.target.files[0])loadFile(e.target.files[0]);});
+document.getElementById('btnPlay').addEventListener('click',togglePlay);
+document.getElementById('btnStop').addEventListener('click',()=>{stopPlay();playOffset=0;setTc(0);updatePlayhead();});
+document.getElementById('btnPlayFromIn').addEventListener('click',playFromIn);
+document.getElementById('btnPlayToOut').addEventListener('click',playToOut);
+// In/Out entfernt
+
+document.getElementById('btnTrim').addEventListener('click',doTrim);
+document.getElementById('btnCutSel').addEventListener('click',doCutSel);
+document.getElementById('btnClearAll').addEventListener('click',resetToOrig);
+document.getElementById('btnUndo').addEventListener('click',undo);
+document.getElementById('btnZoomIn').addEventListener('click',zoomIn);
+document.getElementById('btnZoomOut').addEventListener('click',zoomOut);
+document.getElementById('btnZoomIn2').addEventListener('click',zoomToIn);
+document.getElementById('btnZoomOut2').addEventListener('click',zoomToOut);
+document.getElementById('btnExport').addEventListener('click',exportWav);
+
+
+// Kein Scroll-Listener: Canvas = Viewport, kein Scrollbar
+window.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT')return;
+  switch(e.key){
+    case' ':e.preventDefault();togglePlay();break;
+    case'Escape':stopPlay();if(selIn!=null){clearSel();}break;
+    case't':case'T':doTrim();break;
+    case'x':case'X':doCutSel();break;
+    case'z':if(e.ctrlKey||e.metaKey){e.preventDefault();undo();}break;
+    case'+':case'=':zoomIn();break;
+    case'-':zoomOut();break;
+    case'f':case'F':zoomFit();break;
+    case'ArrowLeft':
+      if(!playing){playOffset=Math.max(0,playOffset-1);setTc(playOffset);updatePlayhead();}
+      break;
+    case'ArrowRight':
+      if(!playing){playOffset=Math.min(duration,playOffset+1);setTc(playOffset);updatePlayhead();}
+      break;
+  }
+});
+document.addEventListener('dragover',e=>{e.preventDefault();document.getElementById('dropOverlay').classList.add('visible');});
+document.addEventListener('dragleave',e=>{if(!e.relatedTarget)document.getElementById('dropOverlay').classList.remove('visible');});
+document.addEventListener('drop',e=>{
+  e.preventDefault();document.getElementById('dropOverlay').classList.remove('visible');
+  const f=e.dataTransfer.files[0];if(f)loadFile(f);
+});
+window.addEventListener('resize',()=>{if(workBuf)drawWaveform();});
+
+// Region list: jetzt zeigt es Undo-Stack Tiefe
+function updateRegionList(){}
+
+// Init
+enableButtons(); // Kein separates Tool mehr — immer Auswahl-Modus
+
+// ── Download-Hinweis (plattform-spezifisch, nur beim ersten Export) ────────────
+function showDownloadHint(filename){
+  // Nur einmal zeigen — localStorage merkt sich ob Hint schon erschienen ist
+  try {
+    if(localStorage.getItem('satk_dl_hint_shown')) return;
+    localStorage.setItem('satk_dl_hint_shown','1');
+  } catch(e) {}
+
+  var ua=navigator.userAgent, pl=navigator.platform||'';
+  var isIOS=/iPad|iPhone|iPod/.test(ua)||(/Mac/.test(pl)&&navigator.maxTouchPoints>1);
+  var isAndroid=/Android/.test(ua);
+  var isMac=/Mac/.test(pl)&&!isIOS;
+  var isWin=/Win/.test(pl);
+  var isSafari=/^((?!chrome|android).)*safari/i.test(ua);
+  var isChrome=/Chrome/.test(ua)&&!/Edg/.test(ua);
+  var isEdge=/Edg/.test(ua);
+  var isFirefox=/Firefox/.test(ua);
+
+  var msg='';
+  if(isIOS){
+    if(isSafari)
+      msg='Öffne die <strong>Dateien-App</strong> → Auf meinem iPhone → Downloads';
+    else
+      msg='Datei gespeichert. Öffne die <strong>Dateien-App</strong> auf deinem iPhone/iPad';
+  } else if(isAndroid){
+    msg='Gespeichert im <strong>Downloads-Ordner</strong>. Öffne Dateien oder den Download-Manager';
+  } else if(isMac){
+    if(isSafari)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf den Pfeil ↓ oben rechts in Safari';
+    else if(isChrome)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ oben rechts in Chrome';
+    else if(isEdge)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ oben rechts in Edge';
+    else
+      msg='Gespeichert im Ordner <strong>~/Downloads</strong>';
+  } else if(isWin){
+    if(isChrome)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ unten oder oben rechts in Chrome';
+    else if(isEdge)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf ↓ oben rechts in Edge';
+    else if(isFirefox)
+      msg='Gespeichert in <strong>Downloads</strong>. Klicke auf den Pfeil ↓ in der Symbolleiste';
+    else
+      msg='Gespeichert in <strong>C:\\Users\\[Name]\\Downloads</strong>';
+  } else {
+    msg='Gespeichert im <strong>Downloads-Ordner</strong>';
+  }
+
+  // Altes Toast entfernen
+  var old=document.getElementById('satkDlHint');
+  if(old) old.remove();
+
+  var el=document.createElement('div');
+  el.id='satkDlHint';
+  el.innerHTML='<span class="satk-dl-close" onclick="this.parentNode.remove()">✕</span>'
+    +(filename?'<span class="satk-dl-file">📄 '+filename+'</span>':'')
+    +'<span>'+msg+'</span>';
+  document.body.appendChild(el);
+
+  // Auto-ausblenden nach 9s
+  var timer=setTimeout(function(){
+    if(el.parentNode){
+      el.style.animation='satkDlOut .3s ease forwards';
+      setTimeout(function(){if(el.parentNode)el.remove();},300);
+    }
+  },9000);
+  el.querySelector('.satk-dl-close').addEventListener('click',function(){clearTimeout(timer);});
+}
+
+
+// ── SATK Einheitliche Dateinamen-Funktion ─────────────────────────────────────
+// Schema: satk_[tool]_[YYYY-MM-DD]_[HH-MM-SS]_v[n].[ext]
+// Versionszahl: Session-Counter pro Tool (localStorage)
+function satkFilename(tool, ext){
+  var d = new Date();
+  var pad = function(n){ return n<10?'0'+n:String(n); };
+  var date = d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+  var time = pad(d.getHours())+'-'+pad(d.getMinutes())+'-'+pad(d.getSeconds());
+  var key  = 'satk_v_'+tool;
+  var ver  = 1;
+  try {
+    ver = (parseInt(localStorage.getItem(key))||0) + 1;
+    localStorage.setItem(key, ver);
+  } catch(e) {}
+  return 'satk_'+tool+'_'+date+'_'+time+'_v'+ver+(ext?'.'+ext:'');
+}
+
+
+// ── Offline Denoiser (eingebettet) ────────────────────────────────────────────
+// ============================================================
+// SATK Offline Spectral Denoiser
+// Verwendung: const cleaned = await denoiseBuffer(audioBuffer, opts)
+// Funktioniert mit jedem AudioBuffer — kein AudioWorklet nötig
+// ============================================================
+
+'use strict';
+
+// ── Radix-2 FFT (in-place, Cooley-Tukey) ────────────────────────────────────
+function fft(re, im, inverse) {
+  const N = re.length;
+  // Bit-reversal permutation
+  for (let i = 1, j = 0; i < N; i++) {
+    let bit = N >> 1;
+    for (; j & bit; bit >>= 1) j ^= bit;
+    j ^= bit;
+    if (i < j) {
+      [re[i], re[j]] = [re[j], re[i]];
+      [im[i], im[j]] = [im[j], im[i]];
+    }
+  }
+  // Butterfly passes
+  for (let len = 2; len <= N; len <<= 1) {
+    const ang = (inverse ? 1 : -1) * 2 * Math.PI / len;
+    const wRe = Math.cos(ang), wIm = Math.sin(ang);
+    for (let i = 0; i < N; i += len) {
+      let curRe = 1, curIm = 0;
+      for (let j = 0; j < len / 2; j++) {
+        const uRe = re[i+j], uIm = im[i+j];
+        const vRe = re[i+j+len/2]*curRe - im[i+j+len/2]*curIm;
+        const vIm = re[i+j+len/2]*curIm + im[i+j+len/2]*curRe;
+        re[i+j]         = uRe + vRe; im[i+j]         = uIm + vIm;
+        re[i+j+len/2]   = uRe - vRe; im[i+j+len/2]   = uIm - vIm;
+        const nRe = curRe*wRe - curIm*wIm;
+        curIm = curRe*wIm + curIm*wRe; curRe = nRe;
+      }
+    }
+  }
+  if (inverse) { for (let i = 0; i < N; i++) { re[i] /= N; im[i] /= N; } }
+}
+
+// ── Hann-Fenster ─────────────────────────────────────────────────────────────
+function makeHann(N) {
+  const w = new Float32Array(N);
+  for (let i = 0; i < N; i++) w[i] = 0.5 * (1 - Math.cos(2 * Math.PI * i / N));
+  return w;
+}
+
+// ── Leisestes Segment automatisch finden ─────────────────────────────────────
+function findQuietestSegment(channel, sr, durationSec = 0.5) {
+  const segLen  = Math.round(sr * durationSec);
+  const stepLen = Math.round(sr * 0.05); // 50ms Schritte
+  let   minRms  = Infinity, bestStart = 0;
+
+  for (let s = 0; s + segLen <= channel.length; s += stepLen) {
+    let sum = 0;
+    for (let i = s; i < s + segLen; i++) sum += channel[i] * channel[i];
+    const rms = Math.sqrt(sum / segLen);
+    if (rms < minRms) { minRms = rms; bestStart = s; }
+  }
+  return { start: bestStart, length: segLen, rms: minRms };
+}
+
+// ── Rauschprofil aus Segment schätzen ────────────────────────────────────────
+function estimateNoiseProfile(channel, segStart, segLen, N, hann) {
+  const bins   = N / 2 + 1;
+  const accum  = new Float64Array(bins);
+  const hop    = N / 2;
+  let   frames = 0;
+
+  for (let pos = segStart; pos + N <= segStart + segLen; pos += hop) {
+    const re = new Float32Array(N);
+    const im = new Float32Array(N);
+    for (let i = 0; i < N; i++) re[i] = (channel[pos + i] || 0) * hann[i];
+    fft(re, im, false);
+    for (let i = 0; i < bins; i++) accum[i] += Math.sqrt(re[i]*re[i] + im[i]*im[i]);
+    frames++;
+  }
+
+  const profile = new Float32Array(bins);
+  if (frames > 0) {
+    const margin = 1.2; // 20% Sicherheitsmarge
+    for (let i = 0; i < bins; i++) profile[i] = (accum[i] / frames) * margin;
+  }
+  return profile;
+}
+
+// ── Spektrales Gating (Wiener-Style, Overlap-Add) ────────────────────────────
+function spectralGate(channel, noiseProfile, N, hann, opts) {
+  const {
+    thresh      = 1.8,  // Faktor über Rauschfluss
+    depth       = 20,   // Max Reduktion dB
+    smoothTime  = 60,   // ms zeitliche Glättung
+    freqSmooth  = 2,    // Frequenz-Nachbarbins
+    hpBins      = 3,    // Bins unter denen nicht reduziert wird
+    sr          = 48000,
+  } = opts;
+
+  const bins     = N / 2 + 1;
+  const hop      = N / 2;
+  const minGain  = Math.pow(10, -depth / 20);
+  const out      = new Float64Array(channel.length + N);
+  const norm     = new Float64Array(channel.length + N); // OLA Normierung
+  const gainSmth = new Float32Array(bins).fill(1.0);
+  const smoothFrames = Math.max(1, (smoothTime / 1000) * sr / hop);
+  const smoothCoef   = Math.exp(-1 / smoothFrames);
+
+  for (let pos = 0; pos + N <= channel.length; pos += hop) {
+    // FFT
+    const re = new Float32Array(N);
+    const im = new Float32Array(N);
+    for (let i = 0; i < N; i++) re[i] = (channel[pos + i] || 0) * hann[i];
+    fft(re, im, false);
+
+    // Magnitude
+    const mag = new Float32Array(bins);
+    for (let i = 0; i < bins; i++) mag[i] = Math.sqrt(re[i]*re[i] + im[i]*im[i]);
+
+    // Gain pro Bin
+    const gainTarget = new Float32Array(bins);
+    for (let i = 0; i < bins; i++) {
+      if (i < hpBins) { gainTarget[i] = 1.0; continue; }
+      const floor = noiseProfile[i] * thresh;
+      if (mag[i] < 1e-10) { gainTarget[i] = minGain; continue; }
+      const snr = mag[i] / floor;
+      if (snr >= 1.0) {
+        gainTarget[i] = 1.0;
+      } else {
+        // Kubische Soft-Curve: glatte Übergänge, kein Knacken
+        const t = Math.max(0, snr);
+        gainTarget[i] = Math.max(minGain, t * t * (3 - 2 * t));
+      }
+    }
+
+    // Frequenz-Glättung (verhindert spektrale Löcher)
+    if (freqSmooth > 0) {
+      for (let i = freqSmooth; i < bins - freqSmooth; i++) {
+        let s = 0;
+        for (let k = -freqSmooth; k <= freqSmooth; k++) s += gainTarget[i + k];
+        gainTarget[i] = s / (2 * freqSmooth + 1);
+      }
+    }
+
+    // Zeitliche Glättung (asymmetrisch: langsam öffnen, schnell schließen)
+    for (let i = 0; i < bins; i++) {
+      const t = gainTarget[i], g = gainSmth[i];
+      const c = t > g ? smoothCoef * 0.4 : smoothCoef;
+      gainSmth[i] = c * g + (1 - c) * t;
+    }
+
+    // Gain anwenden + konjugierte Symmetrie herstellen
+    for (let i = 0; i < bins; i++) {
+      const g = gainSmth[i];
+      re[i] *= g; im[i] *= g;
+    }
+    for (let i = 1; i < bins - 1; i++) {
+      re[N - i] = re[i]; im[N - i] = -im[i];
+    }
+
+    // IFFT
+    fft(re, im, true);
+
+    // Overlap-Add (mit Hann-Fenster zurück)
+    for (let i = 0; i < N; i++) {
+      out[pos + i]  += re[i] * hann[i];
+      norm[pos + i] += hann[i] * hann[i];
+    }
+  }
+
+  // OLA Normierung
+  const result = new Float32Array(channel.length);
+  for (let i = 0; i < channel.length; i++) {
+    result[i] = norm[i] > 1e-8 ? out[i] / norm[i] : 0;
+  }
+  return result;
+}
+
+// ── Haupt-API: AudioBuffer → gereinigter AudioBuffer ─────────────────────────
+/**
+ * Entfernt Hintergrundrauschen aus einem AudioBuffer.
+ *
+ * @param {AudioBuffer} buffer   - Eingangs-AudioBuffer
+ * @param {Object}      opts     - Optionen
+ * @param {number}      opts.thresh      - Empfindlichkeit (1.2–3.0, default 1.8)
+ * @param {number}      opts.depth       - Max Reduktion dB (6–40, default 20)
+ * @param {number}      opts.smoothTime  - Zeitliche Glättung ms (20–200, default 60)
+ * @param {number}      opts.freqSmooth  - Frequenz-Glättung Bänder (0–5, default 2)
+ * @param {number}      opts.noiseLen    - Länge Rauschsegment s (0.2–2.0, default 0.5)
+ * @param {Function}    opts.onProgress  - Callback(0–1) für Fortschrittsanzeige
+ * @returns {Promise<AudioBuffer>}
+ */
+
+
+// DENOISE Button
+
+
+</script>
+</body>
+</html>

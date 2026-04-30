@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenschutzerklärung — SATK</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap');
+:root{--bg:#0a0a0b;--sf:#111114;--bd:#1e1e24;--ac:#c8f060;--tx:#e8e8ec;--mu:#5a5a6a;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--bg);color:var(--tx);font-family:'DM Mono',monospace;min-height:100%;}
+html{scrollbar-width:thin;scrollbar-color:rgba(200,240,96,.25) transparent;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:rgba(200,240,96,.2);}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(200,240,96,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(200,240,96,.018) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:40px 24px 60px;}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.08em;color:var(--mu);text-decoration:none;margin-bottom:32px;transition:color .12s;}
+.back:hover{color:var(--ac);}
+.logo{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);margin-bottom:8px;}
+h1{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--tx);letter-spacing:.06em;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--bd);}
+h2{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);margin:28px 0 10px;}
+p{font-size:11px;color:rgba(232,232,236,.75);line-height:1.9;margin-bottom:10px;}
+ul{font-size:11px;color:rgba(232,232,236,.75);line-height:1.9;margin:0 0 10px 18px;}
+li{margin-bottom:4px;}
+a{color:var(--ac);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.highlight{padding:12px 14px;border:1px solid rgba(200,240,96,.2);margin:12px 0;font-size:11px;color:rgba(200,240,96,.8);line-height:1.8;}
+.note{font-size:10px;color:var(--mu);line-height:1.8;padding:12px 14px;border:1px solid var(--bd);margin-top:24px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="index.html">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Zurück zu SATK
+  </a>
+  <div class="logo">SATK</div>
+  <h1>Datenschutzerklärung</h1>
+
+  <div class="highlight">
+    Kurzfassung: SATK verarbeitet keine personenbezogenen Daten. Weder die Browser-Tools noch die nativen Apps (SATK-BM für iPad/Mac, VoiceOver Studio, R128 Normalizer Pro) erheben, speichern oder übertragen personenbezogene oder Audio-Daten. Keine Cookies, kein Tracking, keine Third-Party-Analytics.
+  </div>
+
+  <h2>1. Verantwortlicher</h2>
+  <p>Sascha Hömske<br>Alte Poststr. 34<br>53721 Siegburg<br>E-Mail: info@satk.tech</p>
+
+  <h2>2. Allgemeines zur Datenverarbeitung</h2>
+  <p>Sascha's Audio Toolkit (SATK) ist ein datenschutzfreundliches Angebot. Wir erheben und verarbeiten personenbezogene Daten nur in dem Umfang, der für die Bereitstellung des Dienstes technisch unbedingt erforderlich ist.</p>
+
+  <h2>3. Audio-Verarbeitung (Browser-Tools)</h2>
+  <p>Alle Audio-Verarbeitungen der Browser-Tools — einschließlich Lautheits-Normalisierung, Spektralanalyse, Encoding und Schnitt — werden vollständig lokal im Browser des Nutzers durchgeführt (Web Audio API, OfflineAudioContext). Audiodaten verlassen das Gerät zu keinem Zeitpunkt. Es werden keine Audiodateien auf Servern gespeichert oder übermittelt.</p>
+
+  <h2>4. Native Apps (SATK-BM, VoiceOver Studio, R128 Normalizer Pro)</h2>
+  <p>Die nativen SATK-Apps für iPad, iPhone, macOS und Windows verarbeiten Audio ausschließlich lokal auf dem Endgerät. Es werden keine Audio-Daten, Mess­ergebnisse oder personenbezogenen Daten an Server übermittelt oder dauerhaft gespeichert.</p>
+  <p>Für den Betrieb benötigen die Apps je nach Funktion folgende Systemberechtigungen:</p>
+  <ul>
+    <li><strong>Mikrofon / Audio-Eingang:</strong> zur Echtzeit-Messung von Loudness, True Peak und Spektrum. Die Audio-Signale werden ausschließlich in den Speicher des Geräts gelesen, analysiert und wieder verworfen. Keine Aufnahme, kein Upload.</li>
+    <li><strong>Bluetooth (nur SATK-BM):</strong> wird ausschließlich zur Verbindung mit Bluetooth-MIDI-Controllern genutzt. Es werden keinerlei Daten gelesen, versendet oder weitergeleitet.</li>
+    <li><strong>Datei-Zugriff:</strong> Nutzer können über den "Datei öffnen"-Dialog Audio-Dateien zur Analyse wählen. Diese Dateien werden nur lokal lesend geöffnet, nicht kopiert, nicht verändert und nicht übertragen. Exportierte PDF- und CSV-Reports werden ausschließlich am vom Nutzer gewählten Speicherort abgelegt.</li>
+  </ul>
+  <p>Die Apps enthalten kein Analytics, kein Crash-Tracking-SDK, keine Werbe-Bibliotheken und keine Third-Party-Netzwerk-Kommunikation. Ein Internet-Zugang ist für den Betrieb nicht erforderlich.</p>
+
+  <h2>5. App-Store-Distribution</h2>
+  <p>SATK-BM wird über den Apple App Store (für iPad, iPhone, Mac) vertrieben. Bei Kauf, Installation, Update sowie optionalen TestFlight-Einladungen verarbeitet Apple eigenständig Daten (Apple-ID, Kaufhistorie, Geräte-Token). Wir haben darauf keinen Einfluss. Es gelten die Datenschutzbestimmungen von Apple: <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">apple.com/legal/privacy</a>.</p>
+  <p>Apple stellt uns aggregierte, anonymisierte Verkaufs- und Crash-Statistiken zur Verfügung. Diese enthalten keine auf einzelne Nutzer zurückführbaren Informationen.</p>
+
+  <h2>6. Bestellung / Zahlungsabwicklung (Desktop-Software)</h2>
+  <p>Der Verkauf der Desktop-Apps (macOS- und Windows-Versionen außerhalb des App Stores) erfolgt über unseren Zahlungsabwickler <strong>Paddle</strong> (Paddle.com Market Ltd., Judd House, 18–29 Mora Street, London EC1V 8BT, United Kingdom), der als "Merchant of Record" auftritt. Paddle verarbeitet Name, E-Mail, Rechnungsadresse und Zahlungsinformationen zur Abwicklung des Kaufs und zur Erstellung einer korrekten Rechnung inkl. Umsatzsteuer.</p>
+  <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung). Es gelten die Datenschutzbestimmungen von Paddle: <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener">paddle.com/legal/privacy</a>.</p>
+  <p>Wir erhalten von Paddle lediglich die E-Mail-Adresse des Käufers zur Auslieferung des Lizenzschlüssels und für Support-Zwecke. Speicherdauer: für die gesetzliche Aufbewahrungsfrist bei Rechnungen (10 Jahre) bzw. bis zum Widerruf für Support-Kontakt.</p>
+
+  <h2>7. Zugriffsdaten / Server-Logs</h2>
+  <p>Beim Abruf dieser Website werden durch den Hosting-Anbieter (IONOS SE, Elgendorfer Str. 57, 56410 Montabaur) automatisch Zugriffsdaten in Server-Logfiles gespeichert. Diese umfassen:</p>
+  <ul>
+    <li>IP-Adresse des anfragenden Geräts</li>
+    <li>Datum und Uhrzeit des Abrufs</li>
+    <li>Name und URL der abgerufenen Datei</li>
+    <li>Übertragene Datenmenge</li>
+    <li>Browser-Typ und Betriebssystem</li>
+  </ul>
+  <p>Diese Daten werden ausschließlich zur Sicherstellung des Betriebs und zur Fehleranalyse genutzt und nach spätestens 7 Tagen automatisch gelöscht. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).</p>
+
+  <h2>8. Cookies und Tracking</h2>
+  <p>Diese Website verwendet keine Cookies. Es werden keine Tracking-Technologien, Analyse-Dienste (wie Google Analytics), Werbenetzwerke oder Social-Media-Plugins eingesetzt. Es werden keine Nutzerprofile erstellt.</p>
+
+  <h2>9. Externe Schriftarten (Google Fonts)</h2>
+  <p>Diese Website lädt Schriftarten von Google Fonts (Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). Dabei wird Ihre IP-Adresse an Google übermittelt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Um dies zu vermeiden, können Sie die Website mit deaktiviertem Laden externer Ressourcen aufrufen — die Website funktioniert auch mit System-Schriften vollständig.</p>
+  <p>Datenschutzerklärung Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+
+  <h2>10. PayPal (Spendenlink)</h2>
+  <p>Auf der Spendenseite wird ein Link zu PayPal (PayPal Holdings, Inc., 2211 North First Street, San Jose, CA 95131, USA) bereitgestellt. Erst beim Klick auf diesen Link wird eine Verbindung zu PayPal hergestellt. Bis zu diesem Klick findet keinerlei Datenübermittlung an PayPal statt. Die Nutzung von PayPal erfolgt auf freiwilliger Basis. Es gelten die Datenschutzbestimmungen von PayPal: <a href="https://www.paypal.com/de/webapps/mpp/ua/privacy-full" target="_blank" rel="noopener">paypal.com/privacy</a></p>
+
+  <h2>11. Ihre Rechte (DSGVO)</h2>
+  <p>Sie haben gemäß DSGVO folgende Rechte:</p>
+  <ul>
+    <li>Auskunft über gespeicherte Daten (Art. 15 DSGVO)</li>
+    <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
+    <li>Löschung Ihrer Daten (Art. 17 DSGVO)</li>
+    <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+    <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+    <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+    <li>Beschwerde bei der zuständigen Aufsichtsbehörde</li>
+  </ul>
+  <p>Da SATK keine personenbezogenen Daten erhebt, liegen in der Regel keine Daten über Sie vor, auf die sich diese Rechte beziehen könnten. Bei Fragen wenden Sie sich an: info@satk.tech</p>
+
+  <h2>12. Zuständige Aufsichtsbehörde</h2>
+  <p>Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen<br>
+  Postfach 20 04 44, 40102 Düsseldorf<br>
+  <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener">www.ldi.nrw.de</a></p>
+
+  <div class="note">Stand: April 2026 · Bei Fragen zum Datenschutz: info@satk.tech</div>
+</div>
+</body>
+</html>

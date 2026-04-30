@@ -1,0 +1,18 @@
+.DS_Store
+*.log
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+
+# Node (falls später Build-Tools)
+node_modules/
+package-lock.json
+dist/
+.cache/
+
+# Secrets
+.env
+.env.*
+!.env.example

@@ -1,0 +1,1752 @@
+<!-- SATK v272 built 2026-04-04 14:13:43 -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ── Primary SEO ──────────────────────────────────────────────────────────── -->
+<title>SATK – R128 Normalizer, VoiceOver Processor &amp; Audio Tools im Browser</title>
+<meta name="description" content="Kostenlose Audiotools im Browser: EBU R128 Metering, Loudness-Normalisierung, VoiceOver-Prozessor, Auto-Mixer & Audio Editor – keine Installation.">
+<meta name="keywords" content="R128, EBU R128, R128 Meter, R128 Normalizer, Broadcast Tools, Podcast Studio, Podcast Recorder, free audio tools, kostenlose Audio Programme, kostenfreie Audio Programme, kostenlose DAW, DAW im Browser, Schnittprogramm kostenlos, Audio Schnittprogramm, Youlean Alternative, Nugen Alternative, Automixer, Auto-Mixer, kostenloser Audio Editor, Instant Replay, Sampler, Soundbox, Cue Player, Formatwandler, Audio Konverter, Video Vertonung, Voiceover, Voiceover Studio, Voiceover Aufnahme, Entrauscher, KI Entrauscher, Klangoptimierer, Sprachoptimierung, LUFS Meter, True Peak, EBU R128, ITU-R BS.1770, kostenfreie Audio Programme, Browser Audio Tool, Web Audio, Online Audio Editor, Online Normalizer, Online Recorder, Video Vertonung Browser, Sprachaufnahme Video, Voiceover Software kostenlos, Voiceover aufnehmen, Sprecher Software, Sprecheraufnahme, Nachvertonung, Nachsynchronisation, DAW kostenlos, Mini DAW, Browser DAW, Audioschnitt online, Podcast aufnehmen, Podcast Software kostenlos, Podcast Recorder Browser, 4-Kanal Recorder, Mehrkanal Aufnahme, Spectral Denoiser, Wiener Filter, Noise Reduction, Rauschunterdrückung, Audio Entrauschen, Sprachoptimierung KI, KI Audio, Kompressor Audio, De-Esser, EQ Equalizer, High-Pass Filter, Brickwall Limiter, True Peak Limiter, Loudness Normalisierung, Loudness Meter, LUFS online, Integrated LUFS, Momentary LUFS, EBU R128 kostenlos, ITU-R BS.1770-4, Lautheitsnormalisierung, Lautheitsstandard, Broadcast Standard, TV Audio, Radio Audio, -23 LUFS, -16 LUFS, -14 LUFS, WAV Konverter, MP3 Konverter, OGG Konverter, M4A Konverter, AIFF Konverter, Opus Konverter, WebM Audio, Audio Format umwandeln, Audio umwandeln online, WAV in MP3, MP3 in WAV, Audio Qualität, 24-bit WAV, Lossless Audio, Verlustfreies Audio, Wellenform Editor, Waveform Editor, Audio zuschneiden, Audio trimmen, Audio schneiden, Fade In Fade Out, Zero-Crossing, Pegel messen, Pegelanzeige, PPM Meter, VU Meter, Korrelationsmessung, Goniometer, Phasenmeter, FFT Spektrum, Spektrumanalyzer, Frequenzanalyse, iPad Audio, iPhone Audio, Mobile Audio Tool, Browser App Audio, kein Download, keine Installation, kein Konto, datenschutzfreundlich, DSGVO konform, werbefrei, kostenlos, gratis, free, Side-Chain Ducking, Auto-Mix, Beitrags-Mix, Sprecher Beitrag, O-Ton, Atmo, Reportage Mix, Live Player, Cue Player, Studioton, Jingle Player, Stinger, Hörfunk, Fernsehen, Rundfunk, Audio Produktion, Medienproduktion, Redaktion, Journalismus Audio">
+<meta name="author" content="Sascha Hömske">
+<meta name="robots" content="index, follow">
+<meta name="language" content="de">
+<meta name="revisit-after" content="7 days">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="canonical" href="https://satk.tech/tools.html">
+<link rel="alternate" hreflang="de" href="https://satk.tech/tools.html">
+<link rel="alternate" hreflang="x-default" href="https://satk.tech/tools.html">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+<!-- ── Open Graph (Facebook, LinkedIn, WhatsApp) ────────────────────────────── -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://satk.tech/">
+<meta property="og:title" content="SATK – Kostenlose Browser-Audiotools für Broadcast &amp; Podcast">
+<meta property="og:description" content="R128 Normalizer, VoiceOver Processor, Instant Player und mehr – professionelle Audiotools direkt im Browser, kostenlos &amp; ohne Installation.">
+<meta property="og:image" content="https://satk.tech/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SATK Audio Toolkit – professionelle Browser-Audiowerkzeuge">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="SATK – Sascha's Audio Toolkit">
+
+<!-- ── Twitter Card ─────────────────────────────────────────────────────────── -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SATK – Kostenlose Browser-Audiotools für Broadcast &amp; Podcast">
+<meta name="twitter:description" content="R128 Normalizer, VoiceOver Processor, Instant Player und mehr – professionelle Audiotools direkt im Browser, kostenlos &amp; ohne Installation.">
+<meta name="twitter:image" content="https://satk.tech/og-image.png">
+
+<!-- ── Favicons ─────────────────────────────────────────────────────────────── -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0a0b'/><text y='24' x='2' font-family='monospace' font-size='22' font-weight='bold' fill='%23c8f060'>S</text></svg>">
+<meta name="theme-color" content="#0a0a0b">
+<meta name="category" content="Audio Tools, Broadcast, Podcast, Media Production">
+<meta name="coverage" content="Worldwide">
+<meta name="target" content="Broadcast Engineers, Podcast Producers, Radio Editors, TV Editors, Voice-over Artists, Media Professionals">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="390">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SATK Audio Tools">
+<meta name="application-name" content="SATK – Sascha's Audio Toolkit">
+<meta name="rating" content="General">
+<meta name="geo.region" content="DE">
+<meta name="geo.placename" content="Germany">
+<meta name="DC.title" content="SATK – Sascha's Audio Toolkit">
+<meta name="DC.creator" content="Sascha Hömske">
+<meta name="DC.subject" content="Audio Tools, Broadcast, Podcast, EBU R128, Loudness">
+<meta name="DC.language" content="de">
+<meta name="msapplication-TileColor" content="#0a0a0b">
+
+<!-- ── Schema.org Structured Data ───────────────────────────────────────────── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "SATK – Sascha's Audio Toolkit",
+  "alternateName": ["SATK Audio Tools", "Sascha's Audio Toolkit", "SATK Browser DAW"],
+  "url": "https://www.satk.tech/",
+  "description": "7 professionelle Audiowerkzeuge kostenlos im Browser: VoiceOver Processor mit Entrauscher, Podcast Recorder, Format Wandler, R128 Normalizer, Auto-Mixer, Audio Editor, Instant Player. Kostenlos, ohne Installation, ohne Uploads.",
+  "applicationCategory": "MultimediaApplication",
+  "applicationSubCategory": "Audio Production, Broadcast Tools, Podcast Studio, DAW, Audio Editor",
+  "operatingSystem": "Web Browser, iOS Safari, Chrome, Firefox",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR",
+    "description": "Kostenlos und werbefrei"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Sascha Hömske",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Alte Poststr. 34",
+      "addressLocality": "Siegburg",
+      "postalCode": "53721",
+      "addressCountry": "DE"
+    }
+  },
+  "featureList": [
+    "VoiceOver Processor: Spectral Denoiser, EQ, Kompressor, De-Esser, R128-Normalisierung",
+    "R128 Loudness Normalizer: TV −23 LUFS, Podcast −16 LUFS, Online −14 LUFS",
+    "Podcast Recorder: 4-Kanal-Aufnahme, DNS Auto-Learn, R128-Export",
+    "Format Wandler: WAV 16/24/32-bit, MP3, OGG, M4A, Opus, WebM, AIFF",
+    "Auto-Mixer: Side-Chain Ducking, Sprecher+Beitrag automatisch mischen",
+    "Audio Editor: Schneiden, Trimmen, Undo, R128-Export",
+    "Instant Player: 64 Cue-Slots, 4 Bänke, Keyboard-Steuerung",
+    "100% Browser-basiert, kein Upload, keine Installation, kein Konto",
+    "Optimiert für Desktop, iPad und iPhone",
+    "Kostenlos und werbefrei"
+  ],
+  "keywords": "EBU R128, R128 Normalizer, LUFS Meter, True Peak, Podcast Recorder, Voiceover Software, Spectral Denoiser, Rauschunterdrückung, Klangoptimierung, Sprachbearbeitung, Audio Schnittprogramm, Formatwandler, WAV MP3 OGG Konverter, Instant Replay Player, Auto-Mixer, Side-Chain Ducking, ITU-R BS.1770-4, kostenlos, gratis, werbefrei, kein Download, Broadcast Standard, Podcast Software, TV Audio, Radio Audio, iPad iPhone Audio Tool",
+  "inLanguage": "de",
+  "isAccessibleForFree": true,
+  "browserRequirements": "Moderner Browser mit Web Audio API (Chrome, Safari, Firefox, Edge)"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "SATK – Kostenlose Audiowerkzeuge im Browser",
+  "description": "7 professionelle, kostenlose Audio-Tools für Broadcast, Podcast, Voiceover und Online-Produktion",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "VoiceOver Processor – Klangoptimierer und Entrauscher",
+        "url": "https://satk.tech/voiceover-processor.html",
+        "description": "Vollautomatischer Klangoptimierer und Entrauscher für Sprachaufnahmen: Spektraler KI-Denoiser, EQ, Kompressor, De-Esser, R128-Normalisierung für TV, Podcast und YouTube.",
+        "applicationCategory": "MultimediaApplication",
+        "offers": {"@type": "Offer", "price": "0"}
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "R128 Loudness Normalizer",
+        "url": "https://satk.tech/r128-normalizer.html",
+        "description": "Kostenloser R128 Normalizer nach EBU R128 / ITU-R BS.1770-4. TV −23 LUFS, Podcast −16 LUFS, Online −14 LUFS. True Peak Limiter. Alternative zu Auphonic.",
+        "applicationCategory": "MultimediaApplication",
+        "offers": {"@type": "Offer", "price": "0"}
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "Podcast Recorder – Kostenloses Podcast Studio",
+        "url": "https://satk.tech/podcast-recorder.html",
+        "description": "Kostenloses Podcast Studio im Browser: 4-Kanal-Aufnahme mit Denoiser, EQ, Kompressor und automatischer R128-Normalisierung.",
+        "applicationCategory": "MultimediaApplication",
+        "offers": {"@type": "Offer", "price": "0"}
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "Format Wandler – Kostenloser Audio Konverter",
+        "url": "https://satk.tech/format-wandler.html",
+        "description": "Kostenloser Formatwandler für Audiodateien: WAV (16/24/32-bit), MP3, OGG, M4A, Opus, WebM, AIFF. Drag & Drop, Qualitätswahl, sofortiger Download im Browser.",
+        "applicationCategory": "MultimediaApplication",
+        "offers": {"@type": "Offer", "price": "0"}
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "Auto-Mixer – Kostenloser Automixer",
+        "url": "https://satk.tech/auto-mixer.html",
+        "description": "Kostenloser Automixer im Browser: Sprecher- und Beitrags-Spur automatisch mischen mit Side-Chain Ducking und EBU R128 Output.",
+        "applicationCategory": "MultimediaApplication",
+        "offers": {"@type": "Offer", "price": "0"}
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "Audio Editor – Kostenloses Schnittprogramm",
+        "url": "https://satk.tech/audio-editor.html",
+        "description": "Kostenloses Audio-Schnittprogramm im Browser: Schneiden, Trimmen, Exportieren mit Wellenform-Ansicht, Undo und automatischer R128-Normalisierung.",
+        "applicationCategory": "MultimediaApplication",
+        "offers": {"@type": "Offer", "price": "0"}
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "Instant Player – Sampler, Soundbox und Cue Player",
+        "url": "https://satk.tech/instant-player.html",
+        "description": "Kostenloser Sampler, Soundbox und Instant Replay Player im Browser: 64 Cue-Slots in 4 Bänken, Tastatursteuerung, Loop und Fade für Live-Einsatz.",
+        "applicationCategory": "MultimediaApplication",
+        "offers": {"@type": "Offer", "price": "0"}
+      }
+    }
+  ]
+}
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap');
+
+:root {
+  --bg:    #0a0a0b;
+  --sf:    #111114;
+  --bd:    #1e1e24;
+  --ac:    #c8f060;
+  --ac2:   #60d4f0;
+  --warn:  #f0a060;
+  --red:   #f06060;
+  --tx:    #e8e8ec;
+  --mu:    #5a5a6a;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg); color: var(--tx);
+  font-family: 'DM Mono', monospace;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(200,240,96,.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,240,96,.018) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none; z-index: 0;
+}
+
+/* ── Layout ── */
+.wrapper { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 48px 28px 80px; }
+
+/* ── Header ── */
+header { margin-bottom: 56px; }
+.logo-row { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
+.logo-mark {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(32px,5vw,52px); font-weight: 800;
+  letter-spacing: .2em; color: var(--tx); line-height: 1;
+}
+.logo-mark span { color: var(--ac); }
+.logo-div { width: 1px; height: 40px; background: linear-gradient(180deg,transparent,var(--bd),transparent); }
+.logo-right { display: flex; flex-direction: column; gap: 3px; }
+.logo-subtitle { font-family: 'Syne',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--ac); }
+.logo-tagline { font-size: 9px; letter-spacing: .1em; color: var(--mu); }
+.header-rule { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
+.header-rule-line { flex: 1; height: 1px; background: var(--bd); }
+.header-rule-text { font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: var(--mu); }
+.header-tagline { font-size: 11px; color: var(--mu); margin-top: 10px; }
+
+/* ── Tool Grid ── */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 60px;
+}
+
+/* ── Tool Card ── */
+.tool-card {
+  background: var(--sf);
+  border: 1px solid var(--bd);
+  cursor: pointer;
+  transition: border-color .2s, transform .15s, box-shadow .2s;
+  position: relative;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.tool-card:hover {
+  border-color: var(--ac);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(200,240,96,.07);
+}
+.tool-card:hover .card-open { background: var(--ac); color: #0a0a0b; }
+
+/* Preview area */
+.card-preview {
+  height: 130px;
+  background: #08090a;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--bd);
+  flex-shrink: 0;
+}
+.card-preview canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.card-preview-icon {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Card Body */
+.card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; }
+.card-link { color: inherit; text-decoration: none; }
+.card-link:hover { color: var(--ac); }
+.card-name { font-family: 'Syne',sans-serif; font-size: 14px; font-weight: 700; color: var(--tx); margin-bottom: 6px; line-height: 1.2; }
+.card-desc { font-size: 10px; color: var(--mu); line-height: 1.6; flex: 1; }
+.card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
+.card-open {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: .1em; text-transform: uppercase;
+  padding: 5px 12px; border: 1px solid var(--ac);
+  color: var(--ac); background: none; cursor: pointer;
+  transition: all .15s;
+}
+.card-badge { font-size: 8px; color: var(--mu); letter-spacing: .06em; }
+
+/* Donate card special */
+.tool-card.donate-card { border-color: rgba(200,240,96,.2); }
+.tool-card.donate-card:hover { border-color: var(--ac); }
+.donate-card .card-preview { background: linear-gradient(135deg, #0d150a, #0a0a0b); }
+
+/* ── Modal System ── */
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.9);
+  backdrop-filter: blur(6px);
+  z-index: 100;
+  display: none;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0;
+}
+.modal-backdrop.open { display: flex; }
+
+.modal-window {
+  background: #0d0d10;
+  border: none;
+  width: 100%;
+  height: 100%;
+  display: flex; flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+@keyframes modal-in { from { opacity:0; transform:scale(.98); } to { opacity:1; transform:none; } }
+
+.modal-bar {
+  display: flex; align-items: center; gap: 12px;
+  padding: 0 16px; height: 38px;
+  background: var(--sf);
+  border-bottom: 1px solid var(--bd);
+  flex-shrink: 0;
+}
+.modal-dots { display: flex; gap: 6px; }
+.modal-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--bd);
+}
+.modal-dot.close { background: #ff5f57; cursor: pointer; }
+.modal-dot.close:hover { background: #ff3b30; }
+.modal-dot.min   { background: #febc2e; }
+.modal-dot.max   { background: #28c840; }
+.modal-title {
+  font-family: 'Syne', sans-serif; font-size: 11px;
+  font-weight: 600; letter-spacing: .08em;
+  color: var(--mu); margin: 0 auto;
+}
+.modal-close {
+  background: none; border: none; color: var(--mu);
+  cursor: pointer; font-size: 16px; padding: 4px 8px;
+  transition: color .12s; line-height: 1;
+}
+.modal-close:hover { color: var(--tx); }
+
+.modal-iframe-wrap {
+  flex: 1; overflow: hidden; min-height: 0;
+  display: flex; flex-direction: column;
+  scrollbar-width: none;
+}
+.modal-iframe-wrap::-webkit-scrollbar { display: none; }
+.modal-iframe-wrap iframe {
+  width: 100%; height: 100%; flex: 1;
+  border: none;
+  background: var(--bg);
+  overflow: hidden;
+  scrollbar-width: none;
+}
+.modal-iframe-wrap iframe::-webkit-scrollbar { display: none; }
+}
+
+/* ── Footer ── */
+.site-footer { background: var(--sf); border-top: 1px solid var(--bd); margin-top: 40px; }
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  padding: 20px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-left { display: flex; align-items: center; gap: 20px; }
+.footer-logo { font-family:'Syne',sans-serif; font-size:15px; font-weight:800; letter-spacing:.2em; color:var(--ac); }
+.footer-copy { font-size:10px; color:var(--mu); }
+.footer-links { display: flex; gap: 20px; align-items: center; }
+.footer-link {
+  font-size: 9px; letter-spacing: .08em; color: var(--mu);
+  text-decoration: none; transition: color .12s;
+  background: none; border: none; padding: 0; cursor: pointer;
+  font-family: 'DM Mono', monospace;
+}
+.footer-link:hover { color: var(--tx); }
+
+/* ── SEO Textblock ── */
+.seo-section { padding: 40px 32px 8px; position: relative; z-index: 1; }
+.seo-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: start; }
+.seo-h2 { font-family: 'Syne',sans-serif; font-size: 14px; font-weight: 700; color: var(--tx); letter-spacing: .06em; margin-bottom: 14px; }
+.seo-h3 { font-family: 'Syne',sans-serif; font-size: 11px; font-weight: 700; color: var(--ac); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
+.seo-text p { font-size: 11px; color: var(--mu); line-height: 1.8; margin-bottom: 10px; }
+.seo-text a { color: rgba(200,240,96,.7); text-decoration: none; }
+.seo-text a:hover { color: var(--ac); }
+.seo-audience { background: var(--sf); border: 1px solid var(--bd); padding: 20px; }
+.audience-list { list-style: none; padding: 0; }
+.audience-list li { font-size: 10px; color: var(--mu); line-height: 1.7; padding: 5px 0; border-bottom: 1px solid var(--bd); }
+.audience-list li:last-child { border-bottom: none; }
+.audience-list strong { color: var(--tx); display: block; font-size: 10px; }
+@media (max-width: 900px) { .seo-inner { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .seo-section { padding: 24px 16px 0; } }
+@media (max-width: 900px) { .tool-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 540px) {
+  .tool-grid { grid-template-columns: 1fr; }
+  .wrapper { padding: 24px 14px 50px; }
+  .modal-backdrop { padding: 0; }
+  .modal-bar { height: 34px; padding: 0 10px; }
+  .modal-title { font-size: 10px; }
+}
+
+/* ── Language Switcher ── */
+.lang-nav {
+  margin-left: auto;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+.lang-link {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #3a3a46;
+  cursor: pointer;
+  user-select: none;
+  padding: 2px 0;
+  position: relative;
+  transition: color .2s;
+}
+.lang-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 1px;
+  background: #c8f060;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .2s ease;
+}
+.lang-link:hover { color: #9a9aaa; }
+.lang-link.active { color: #e8e8ec; }
+.lang-link.active::after { transform: scaleX(1); }
+@keyframes langFlash {
+  0%   { opacity: 1; }
+  30%  { opacity: .3; }
+  100% { opacity: 1; }
+}
+.lang-link.switching { animation: langFlash .25s ease; }
+.lang-sep-txt {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #2a2a36;
+  padding: 0 5px;
+  user-select: none;
+}
+
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Was ist SATK?",
+      "acceptedAnswer": {"@type": "Answer", "text": "SATK (Sascha's Audio Toolkit) ist eine kostenlose Sammlung professioneller Audiowerkzeuge die vollständig im Browser laufen — ohne Installation, ohne Konto, ohne Uploads. Audiodaten verlassen niemals das Gerät."}
+    },
+    {
+      "@type": "Question",
+      "name": "Welche Audioformate kann der Format Wandler konvertieren?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Der SATK Format Wandler konvertiert zwischen WAV (16-bit, 24-bit, 32-bit), MP3 (bis 320 kbps), OGG Vorbis, M4A (AAC), Opus, WebM und AIFF — kostenlos im Browser ohne Upload."}
+    },
+    {
+      "@type": "Question",
+      "name": "Auf welchen LUFS-Wert normalisiert der R128 Normalizer?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Der SATK R128 Normalizer normalisiert auf wählbare Zielwerte: TV/Broadcast −23 LUFS, Podcast −16 LUFS, Online/YouTube −14 LUFS — mit True Peak Limiter nach ITU-R BS.1770-4."}
+    },
+    {
+      "@type": "Question",
+      "name": "Funktioniert SATK auf iPad und iPhone?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Ja, alle SATK Tools sind für Desktop, iPad und iPhone optimiert und laufen in Safari, Chrome und anderen modernen Browsern."}
+    },
+    {
+      "@type": "Question",
+      "name": "Kostet SATK etwas?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Die Browser-Tools sind vollständig kostenlos und werbefrei. Im SATK Shop gibt es zusätzlich professionelle Standalone-Software und Plugins für Mac und Windows."}
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="wrapper">
+
+
+
+  <header role="banner">
+    <div class="logo-row">
+      <a href="index.html" style="text-decoration:none;color:inherit" aria-label="Zurück zu SATK Pro Software"><h1 class="logo-mark">S<span>A</span>TK</h1></a>
+      <div class="logo-div"></div>
+      <div class="logo-right">
+        <span class="logo-subtitle">Sascha's Audio Toolkit</span>
+        <span class="logo-tagline">Professional Broadcast &amp; Post Production Tools</span>
+      </div>
+      <nav class="lang-nav" aria-label="Language">
+        <a href="index.html" style="color:#c8f060;text-decoration:none;font-size:10px;letter-spacing:1px;margin-right:16px;" data-i18n-pro="pro_link">← Pro Software</a>
+        <span class="lang-link active" id="btnDE" onclick="setLang('de')" role="button" tabindex="0">DE</span>
+        <span class="lang-sep-txt"> · </span>
+        <span class="lang-link" id="btnEN" onclick="setLang('en')" role="button" tabindex="0">EN</span>
+      </nav>
+    </div>
+    <div class="header-rule">
+      <div class="header-rule-line"></div>
+      <span class="header-rule-text" data-i18n="header_rule">Browser-Native · Keine Installation · 100% Lokal</span>
+      <div class="header-rule-line"></div>
+    </div>
+  </header>
+
+  <!-- Tool Grid -->
+  <main id="tools" role="main">
+  <h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Audio Tools</h2>
+  <div class="tool-grid" id="toolGrid" role="list">
+    <!-- R128 Normalizer -->
+    <div class="tool-card" data-tool="r128-normalizer.html" data-tool-id="r128" data-name="R128 Loudness Normalizer" role="listitem" aria-label="R128 Loudness Normalizer öffnen">
+      <div class="card-preview">
+        <canvas id="prev-r128"></canvas>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">Normalisierung · EBU R128</span>
+        <div class="card-name"><a href="r128-normalizer.html" class="card-link" onclick="event.preventDefault()">R128 Loudness Normalizer</a></div>
+        <div class="card-desc">Batch-Normalisierung nach ITU-R BS.1770-4. TV −23 · Online −14 · Podcast −16 LUFS. True Peak Limiter.</div>
+        <div class="card-footer">
+          <button class="card-open">Öffnen</button>
+          <span class="card-badge" data-i18n="badge_batch">Batch · WAV MP3</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- VoiceOver Processor -->
+    <div class="tool-card" data-tool="voiceover-processor.html" data-tool-id="voiceover" data-name="VoiceOver Processor" role="listitem" aria-label="VoiceOver Processor öffnen">
+      <div class="card-preview">
+        <canvas id="prev-vo"></canvas>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">Processing · KI-Entrauschung</span>
+        <div class="card-name"><a href="voiceover-processor.html" class="card-link" onclick="event.preventDefault()">VoiceOver Processor</a></div>
+        <div class="card-desc">Denoise · Gate · EQ · Kompressor · R128. Vollautomatische Sprachoptimierung für TV, Radio und Podcast.</div>
+        <div class="card-footer">
+          <button class="card-open">Öffnen</button>
+          <span class="card-badge" data-i18n="badge_4prof">4 Profile</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Auto-Mixer -->
+    <div class="tool-card" data-tool="auto-mixer.html" data-tool-id="mixer" data-name="Auto-Mixer" role="listitem" aria-label="Auto-Mixer öffnen">
+      <div class="card-preview">
+        <canvas id="prev-mixer"></canvas>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">Ducking · Side-Chain · R128</span>
+        <div class="card-name"><a href="auto-mixer.html" class="card-link" onclick="event.preventDefault()">Auto-Mixer</a></div>
+        <div class="card-desc">Sprecher + Beitrag automatisch mischen. Side-Chain Ducking, konfigurierbarer Attack/Release, EBU R128 konformer Mix-Output.</div>
+        <div class="card-footer">
+          <button class="card-open">Öffnen</button>
+          <span class="card-badge" data-i18n="badge_offline">Offline · WAV</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-card" data-tool="podcast-recorder.html" data-tool-id="recorder" data-name="Podcast Recorder" role="listitem" aria-label="Podcast Recorder öffnen">
+      <div class="card-preview">
+        <canvas id="prev-podcast"></canvas>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">4 Kanäle · Dynamics · Timecode</span>
+        <div class="card-name"><a href="podcast-recorder.html" class="card-link" onclick="event.preventDefault()">Podcast Recorder</a></div>
+        <div class="card-desc">4-Kanal Aufnahme mit blauen Peak-Metern, Dynamics-Presets, Fader und Timecode. Sprecher 1–3 + Aux-Stereo.</div>
+        <div class="card-footer">
+          <button class="card-open">Öffnen</button>
+          <span class="card-badge" data-i18n="badge_webm">WebM Recording</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Audio Editor -->
+    <div class="tool-card" data-tool="audio-editor.html" data-tool-id="editor" data-name="Audio Editor" role="listitem" aria-label="Audio Editor öffnen">
+      <div class="card-preview">
+        <canvas id="prev-editor"></canvas>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">Schnitt · Trim · Export</span>
+        <div class="card-name"><a href="audio-editor.html" class="card-link" onclick="event.preventDefault()">Audio Editor</a></div>
+        <div class="card-desc">Schneiden, Trimmen und Exportieren. Wellenform-Ansicht, Zoom, In/Out-Punkte, Mehrfachschnitte, Undo, R128-Export.</div>
+        <div class="card-footer">
+          <button class="card-open">Öffnen</button>
+          <span class="card-badge">WAV Export</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instant Player -->
+    <div class="tool-card" data-tool="instant-player.html" data-tool-id="player" data-name="Instant Player" role="listitem" aria-label="Instant Player öffnen">
+      <div class="card-preview">
+        <canvas id="prev-player"></canvas>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">Playback · Live</span>
+        <div class="card-name"><a href="instant-player.html" class="card-link" onclick="event.preventDefault()">Instant Player</a></div>
+        <div class="card-desc">16 Pads × 4 Bänke = 64 Slots. Tastatur-Steuerung, Loop, Fade, Auto-Cue, Wellenform-Vorschau.</div>
+        <div class="card-footer">
+          <button class="card-open">Öffnen</button>
+          <span class="card-badge" data-i18n="badge_64">64 Slots · Live</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-card" data-tool="format-wandler.html" data-tool-id="format" data-name="Format Wandler" role="listitem" aria-label="Format Wandler öffnen">
+      <div class="card-preview">
+        <canvas id="prev-format"></canvas>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">WAV · MP3 · OGG · M4A · Opus</span>
+        <div class="card-name"><a href="format-wandler.html" class="card-link" onclick="event.preventDefault()">Format Wandler</a></div>
+        <div class="card-desc">Audiodateien ins gewünschte Format konvertieren. Drag &amp; Drop, Qualitätswahl, sofortiger Download — 100% im Browser.</div>
+        <div class="card-footer">
+          <button class="card-open">Öffnen</button>
+          <span class="card-badge" data-i18n="badge_noupload">Browser · Kein Upload</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-card donate-card" data-tool="index.html" data-name="SATK Shop" role="listitem" aria-label="SATK Shop – Pro Software">
+      <div class="card-preview">
+        <canvas id="prev-donate"></canvas>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">Pro Software · VST3 · AU · Standalone</span>
+        <div class="card-name">SATK Shop</div>
+        <div class="card-desc">Professionelle Audio-Software: Broadcast Meter, VoiceOver Studio, R128 Normalizer usw.</div>
+        <div class="card-footer">
+          <button class="card-open">Zum Shop</button>
+          <span class="card-badge">Mac · Windows</span>
+        </div>
+      </div>
+    </div>
+
+
+    </div><!-- /.tool-grid -->
+  </main>
+
+  <!-- ── SEO-Textblock ─────────────────────────────────────────────────────── -->
+  <section class="seo-section" aria-label="Über SATK">
+    <div class="seo-inner">
+
+      <div class="seo-text">
+        <h2 class="seo-h2" data-i18n="seo_h2">Professionelle Audiowerkzeuge — kostenlos im Browser</h2>
+        <p data-i18n-html="seo_p0">SATK (Sascha's Audio Toolkit) ist eine wachsende Sammlung professioneller, browserbasierter Audiowerkzeuge für TV, Broadcast, Podcast, Radio und Online-Produktion. Alle Tools laufen vollständig lokal — Audiodaten verlassen niemals das Gerät. Keine Installation, kein Konto, keine Cloud-Uploads. Kostenlos und werbefrei. Optimiert für Desktop, iPad und iPhone.</p>
+
+        <p data-i18n-html="seo_p1">Der <a href="voiceover-processor.html" onclick="openTool('voiceover-processor.html','VoiceOver Processor')">VoiceOver Processor</a> ist ein vollautomatischer Klangoptimierer und Entrauscher für Sprachaufnahmen: spektraler Wiener-Filter-Denoiser, 5-Band-EQ, Kompressor, De-Esser und R128-Normalisierung — für TV (−23 LUFS), YouTube (−14 LUFS) und Podcast (−16 LUFS). Der <a href="r128-normalizer.html" onclick="openTool('r128-normalizer.html','R128 Loudness Normalizer')">R128 Loudness Normalizer</a> normalisiert Audiodateien mit Doppel-Gating und True-Peak-Limiter nach EBU R128 — direkt im Browser, ohne Upload. Im <a href="index.html">SATK Shop</a> gibt es zusätzlich professionelle Standalone-Software und Plugins für Mac und Windows.</p>
+
+        <p data-i18n-html="seo_p2">Das <a href="podcast-recorder.html" onclick="openTool('podcast-recorder.html','Podcast Recorder')">kostenlose Podcast Studio</a> bietet 4-Kanal-Aufnahme mit Denoiser, EQ, Kompressor, De-Esser und automatischer R128-Normalisierung. Der <a href="auto-mixer.html" onclick="openTool('auto-mixer.html','Auto-Mixer')">Auto-Mixer</a> mischt Sprecher und Beiträge automatisch mit Side-Chain Ducking. Alle Tools laufen direkt im Browser — ohne Installation, ohne Upload, kostenlos und werbefrei.</p>
+
+        <p data-i18n-html="seo_p3">Der <a href="auto-mixer.html" onclick="openTool('auto-mixer.html','Auto-Mixer')">kostenlose Automixer</a> mischt Sprecher- und Beitrags-Spur automatisch mit Side-Chain Ducking und EBU R128 Output. Das kostenlose <a href="audio-editor.html" onclick="openTool('audio-editor.html','Audio Editor')">Audio-Schnittprogramm</a> schneidet und trimmt mit Wellenform-Ansicht, Zoom, Undo und R128-Export. Der <a href="instant-player.html" onclick="openTool('instant-player.html','Instant Player')">Instant Player</a> ist Sampler, Soundbox und Instant-Replay-Player in einem: 64 Cue-Slots in 4 Bänken mit Keyboard-Steuerung für Live-Einsatz. Der <a href="format-wandler.html" onclick="openTool('format-wandler.html','Format Wandler')">Audio Formatwandler</a> konvertiert kostenlos zwischen WAV (16/24/32-bit), MP3, OGG, M4A, Opus, WebM und AIFF — Drag &amp; Drop, Qualitätswahl, sofortiger Download, kein Upload nötig.</p>
+
+        <p data-i18n-html="seo_p4">SATK ist eine kostenlose Browser-Alternative zu kommerziellen Audio-Tools wie Auphonic, iZotope RX, Youlean Loudness Meter, Nugen VisLM, Adobe Audition, Logic Pro, GarageBand oder Reaper — keine Installation, kein Konto, keine Lizenz. Alle Tools laufen lokal im Browser auf Desktop (Windows, macOS, Linux), iPad und iPhone. Audiodaten verlassen niemals das Gerät — 100% datenschutzkonform, DSGVO-freundlich. Kostenlos, werbefrei, für immer.</p>
+
+        <p data-i18n-html="seo_p5">Technische Basis: Web Audio API mit eigenentwickelten DSP-Algorithmen — Polyphasen-FIR True-Peak-Metering (4× Oversampling, ITU-R BS.1770-4), FFT-Spectral-Denoiser (Wiener-Filter, N=512, 75% Overlap-Add), zweistufige EBU-R128-K-Weighted-Normalisierung, Brickwall-Lookahead-Limiter, CSS-basierte Echtzeit-Metering-Grafiken und vollständige Overlap-Add-Signalkette. Entwickelt von Sascha Hömske.</p>
+      </div>
+
+      <div class="seo-audience">
+        <h3 class="seo-h3" data-i18n="seo_forwhom">Für wen?</h3>
+        <ul class="audience-list">
+          <li data-i18n-html="aud-0"><strong>TV- &amp; Broadcast-Redakteur:innen</strong> — VoiceOver Processor, R128 −23 LUFS</li>
+          <li data-i18n-html="aud-1"><strong>Radio- &amp; Podcast-Produzent:innen</strong> — Podcast Recorder, Auto-Mixer, R128 −16 LUFS, Denoiser</li>
+          <li data-i18n-html="aud-2"><strong>Online-Video &amp; YouTube</strong> — VoiceOver −14 LUFS, Format Wandler, Audio Editor</li>
+          <li data-i18n-html="aud-3"><strong>Sprecher:innen &amp; Voice-over Artists</strong> — VoiceOver Processor, R128 Normalizer</li>
+          <li data-i18n-html="aud-4"><strong>Live &amp; Beschallung</strong> — Instant Player mit 64 Cue-Slots und Keyboard-Steuerung</li>
+          <li data-i18n-html="aud-5"><strong>Alle</strong> — Kostenlos, werbefrei, ohne Anmeldung, auf Desktop, iPad und iPhone</li>
+          <li data-i18n-html="aud-6"><strong>Redakteure &amp; Journalisten</strong> — O-Ton aufnehmen, Beiträge mischen, normalisieren</li>
+          <li data-i18n-html="aud-7"><strong>Musikproduktion &amp; Mastering</strong> — LUFS-Metering, LRA, Spektralanalyse, Lautheitsstandards</li>
+          <li data-i18n-html="aud-8"><strong>Entwickler &amp; Studenten</strong> — Web Audio API, DSP, EBU R128 — alles Open in Browser</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+</div><!-- /.wrapper -->
+
+<!-- Modal -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal-window" id="modalWindow">
+    <div class="modal-bar">
+      <div class="modal-dots">
+        <div class="modal-dot close" id="modalClose" title="Schließen" data-i18n-title="modal_close"></div>
+        <div class="modal-dot min"></div>
+        <div class="modal-dot max"></div>
+      </div>
+      <div class="modal-title" id="modalTitle">—</div>
+    </div>
+    <div class="modal-iframe-wrap">
+      <iframe id="toolFrame" src="" allow="microphone; autoplay; camera" sandbox="allow-scripts allow-same-origin allow-downloads allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox"></iframe>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <strong class="footer-logo" aria-label="SATK – Sascha's Audio Toolkit">SATK</strong>
+      <address class="footer-copy" id="footerCopy" style="font-style:normal;">&copy; 2026 Sascha Hömske · Siegburg · kostenlos &amp; werbefrei</address>
+    </div>
+    <div class="footer-links">
+      <a class="footer-link" href="impressum.html" target="_blank" data-i18n="footer_imprint">Impressum</a>
+      <a class="footer-link" href="datenschutz.html" target="_blank" data-i18n="footer_privacy">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Modal System ──────────────────────────────────────────────────────────────
+const backdrop = document.getElementById('modalBackdrop');
+const frame    = document.getElementById('toolFrame');
+const titleEl  = document.getElementById('modalTitle');
+const closeBtn = document.getElementById('modalClose');
+
+function openTool(src, name) {
+  // Übersetze den Modal-Titel wenn EN aktiv
+  const t = T[currentLang] || T.de;
+  // Suche passenden Tool-Namen über data-tool-id
+  const card = document.querySelector(`[data-tool="${src}"]`);
+  const tid = card ? card.dataset.toolId : null;
+  const translatedName = tid && t['name-'+tid] ? t['name-'+tid] : name;
+  titleEl.textContent = translatedName;
+  frame.src = src;
+  backdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeTool() {
+  backdrop.classList.remove('open');
+  document.body.style.overflow = '';
+  // Clear iframe to kill AudioContext in tool
+  setTimeout(() => { frame.src = ''; }, 200);
+}
+
+closeBtn.addEventListener('click', () => {
+  // Sicherheitsabfrage damit keine Aufnahmen verloren gehen
+  if(frame.src && frame.src !== '' && frame.src !== 'about:blank'){
+    if(!confirm('Tool schließen? Nicht gespeicherte Daten gehen verloren.')) return;
+  }
+  closeTool();
+});
+// Kein Backdrop-Click-to-Close (zu gefährlich — Aufnahmen gehen verloren)
+// Kein Escape-to-Close (Tools verwenden Escape selbst)
+
+// Tool cards
+document.querySelectorAll('.tool-card[data-tool]').forEach(card => {
+  card.addEventListener('click', () => {
+    if (card.dataset.tool === 'index.html') {
+      window.location.href = 'index.html';
+      return;
+    }
+    openTool(card.dataset.tool, card.dataset.name);
+  });
+});
+
+// ── Card Preview Animations ───────────────────────────────────────────────────
+function startPreviews() {
+  animMeter();
+  animVO();
+  animR128();
+  animPlayer();
+  animDonate();
+  animPodcast();
+}
+
+// Shop card preview — PPM bars + goniometer dots
+function animMeter() {
+  const cv = document.getElementById('prev-meter');
+  if (!cv) return;
+  cv.width = cv.offsetWidth; cv.height = cv.offsetHeight;
+  const c = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  let t = 0;
+  const dots = [];
+
+  (function draw() {
+    requestAnimationFrame(draw); t++;
+    c.fillStyle = '#08090a'; c.fillRect(0,0,W,H);
+
+    // L/R PPM bars
+    const bw = 16, bh = H - 20, by = 8;
+    [W/2-40, W/2+24].forEach((bx, i) => {
+      // Bar bg
+      c.fillStyle = '#0d1a0d'; c.fillRect(bx,by,bw,bh);
+      // Signal level (animated)
+      const lv = 0.4 + 0.35*Math.sin(t*0.04 + i*1.2) + 0.1*Math.sin(t*0.11+i);
+      const bfh = bh * lv;
+      const gr = c.createLinearGradient(0,by+bh,0,by);
+      gr.addColorStop(0,'#40d060'); gr.addColorStop(0.7,'#ffcc30'); gr.addColorStop(1,'#ff3040');
+      c.fillStyle = gr; c.fillRect(bx, by+bh-bfh, bw, bfh);
+      // Peak hold
+      const phY = by + bh * (1 - lv - 0.05);
+      c.fillStyle = '#fff'; c.fillRect(bx, phY, bw, 1);
+      // Label
+      c.fillStyle = '#5a5a6a'; c.font = '8px DM Mono, monospace'; c.textAlign = 'center';
+      c.fillText(i===0?'L':'R', bx+bw/2, by+bh+10);
+    });
+
+    // Mini goniometer
+    const cx = W/2, cy = H/2, r = 36;
+    // Circle
+    c.strokeStyle = '#1e1e24'; c.lineWidth = 1;
+    c.beginPath(); c.arc(cx,cy,r,0,Math.PI*2); c.stroke();
+    // Cross
+    c.strokeStyle = '#2a2a35'; c.lineWidth = 0.5;
+    c.beginPath(); c.moveTo(cx-r,cy); c.lineTo(cx+r,cy); c.stroke();
+    c.beginPath(); c.moveTo(cx,cy-r); c.lineTo(cx,cy+r); c.stroke();
+    // Diagonal
+    c.setLineDash([2,3]);
+    c.beginPath(); c.moveTo(cx-r*0.7,cy-r*0.7); c.lineTo(cx+r*0.7,cy+r*0.7); c.stroke();
+    c.beginPath(); c.moveTo(cx+r*0.7,cy-r*0.7); c.lineTo(cx-r*0.7,cy+r*0.7); c.stroke();
+    c.setLineDash([]);
+    // Dots
+    if (t%2===0) {
+      const ang = (Math.random()-0.5)*1.4, dist = Math.random()*r*0.85;
+      dots.push({x:cx+Math.cos(ang)*dist, y:cy-Math.abs(dist*0.6), a:0.9});
+    }
+    for (let i=dots.length-1;i>=0;i--) {
+      c.fillStyle = `rgba(200,240,96,${dots[i].a})`;
+      c.fillRect(dots[i].x-1, dots[i].y-1, 2, 2);
+      dots[i].a -= 0.04;
+      if (dots[i].a <= 0) dots.splice(i,1);
+    }
+    // Labels
+    c.fillStyle = '#3a3a4a'; c.font = '7px DM Mono,monospace'; c.textAlign='center';
+    c.fillText('M',cx,cy-r-3); c.fillText('S',cx,cy+r+8);
+    c.textAlign='right'; c.fillText('L',cx-r-3,cy+3);
+    c.textAlign='left';  c.fillText('R',cx+r+3,cy+3);
+  })();
+}
+
+// VoiceOver preview — processing pipeline animation
+function animVO() {
+  const cv = document.getElementById('prev-vo');
+  if (!cv) return;
+  cv.width = cv.offsetWidth; cv.height = cv.offsetHeight;
+  const c = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  let t = 0;
+  const wave = new Float32Array(W);
+  const waveProc = new Float32Array(W);
+  for (let i=0;i<W;i++) {
+    wave[i] = (Math.sin(i*0.15)*0.4 + Math.sin(i*0.31)*0.2 + Math.sin(i*0.07)*0.3) * (Math.random()*0.3+0.7);
+  }
+
+  (function draw() {
+    requestAnimationFrame(draw); t++;
+    c.fillStyle = '#08090a'; c.fillRect(0,0,W,H);
+    const h2 = H/2;
+
+    // Original waveform (top half)
+    c.strokeStyle = 'rgba(200,240,96,.4)'; c.lineWidth=1;
+    c.beginPath();
+    for (let x=0;x<W;x++) {
+      const y = h2*0.5 + wave[(x+t)%W] * (h2*0.4);
+      x===0 ? c.moveTo(x,y) : c.lineTo(x,y);
+    }
+    c.stroke();
+
+    // Processed waveform (bottom half, more uniform)
+    c.strokeStyle = 'rgba(96,212,240,.6)'; c.lineWidth=1;
+    c.beginPath();
+    for (let x=0;x<W;x++) {
+      const raw = wave[(x+t)%W];
+      const processed = Math.tanh(raw*2)*0.7; // compressed
+      const y = h2*1.5 + processed*(h2*0.35);
+      x===0 ? c.moveTo(x,y) : c.lineTo(x,y);
+    }
+    c.stroke();
+
+    // Center divider
+    c.strokeStyle = '#1e1e24'; c.lineWidth=1;
+    c.beginPath(); c.moveTo(0,h2); c.lineTo(W,h2); c.stroke();
+
+    // Labels
+    c.fillStyle = 'rgba(90,90,106,.6)'; c.font='8px DM Mono,monospace';
+    c.textAlign='left'; c.fillText('ORIGINAL',4,10);
+    c.fillText('PROCESSED',4,h2+10);
+  })();
+}
+
+// R128 preview — LUFS bars
+function animR128() {
+  const cv = document.getElementById('prev-r128');
+  if (!cv) return;
+  cv.width = cv.offsetWidth; cv.height = cv.offsetHeight;
+  const c = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  let t = 0;
+
+  (function draw() {
+    requestAnimationFrame(draw); t++;
+    c.fillStyle = '#08090a'; c.fillRect(0,0,W,H);
+
+    const bars = ['M','S','I'];
+    const levels = [
+      0.3 + 0.4*Math.sin(t*0.05),
+      0.35 + 0.3*Math.sin(t*0.03+1),
+      0.55
+    ];
+    const colors = ['#42a5f5','#26a269','#c8f060'];
+    const bw = (W-40)/3 - 8;
+
+    bars.forEach((label, i) => {
+      const bx = 16 + i*(bw+8);
+      const bh = H-30; const by = 8;
+      c.fillStyle = '#0d1520'; c.fillRect(bx,by,bw,bh);
+      const lv = levels[i]; const fh = bh*lv;
+      c.fillStyle = colors[i]; c.globalAlpha=0.8;
+      c.fillRect(bx, by+bh-fh, bw, fh);
+      c.globalAlpha=1;
+      // Target line at 55% (−23 LUFS region)
+      c.strokeStyle='rgba(200,240,96,.4)'; c.lineWidth=1; c.setLineDash([2,2]);
+      c.beginPath(); c.moveTo(bx,by+bh*0.45); c.lineTo(bx+bw,by+bh*0.45); c.stroke();
+      c.setLineDash([]);
+      c.fillStyle='#5a5a6a'; c.font='8px DM Mono,monospace'; c.textAlign='center';
+      c.fillText(label, bx+bw/2, by+bh+10);
+    });
+  })();
+}
+
+// Instant Player preview — pad grid
+function animPlayer() {
+  const cv = document.getElementById('prev-player');
+  if (!cv) return;
+  cv.width = cv.offsetWidth; cv.height = cv.offsetHeight;
+  const c = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  let t = 0;
+  const pads = Array(16).fill(0).map((_,i)=>({active:false,timer:0,color:['#c8f060','#60d4f0','#f0a060','#f06060'][i%4]}));
+  setInterval(()=>{ const p=pads[Math.floor(Math.random()*16)]; p.active=true; p.timer=8; },400);
+
+  (function draw() {
+    requestAnimationFrame(draw); t++;
+    c.fillStyle='#08090a'; c.fillRect(0,0,W,H);
+    const cols=4, rows=4;
+    const pw=(W-28)/cols, ph=(H-28)/rows;
+    pads.forEach((pad,i) => {
+      const col=i%cols, row=Math.floor(i/cols);
+      const x=8+col*(pw+4), y=8+row*(ph+4);
+      if(pad.timer>0){pad.timer--;}else{pad.active=false;}
+      c.fillStyle = pad.active ? pad.color+'33' : '#111118';
+      c.fillRect(x,y,pw-2,ph-2);
+      c.strokeStyle = pad.active ? pad.color : '#1e1e24';
+      c.lineWidth=1; c.strokeRect(x,y,pw-2,ph-2);
+      if(pad.active){
+        c.fillStyle=pad.color; c.globalAlpha=0.7;
+        c.fillRect(x+2,y+2,pw-6,ph-6);
+        c.globalAlpha=1;
+      }
+    });
+  })();
+}
+
+// Auto-Mixer preview — zwei Spuren + Duck-Kurve
+function animMixer() {
+  const cv = document.getElementById('prev-mixer');
+  if (!cv) return;
+  cv.width = cv.offsetWidth; cv.height = cv.offsetHeight;
+  const c = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  let t = 0;
+
+  (function draw() {
+    requestAnimationFrame(draw); t++;
+    c.fillStyle = '#08090a'; c.fillRect(0,0,W,H);
+    const h3 = H/3;
+
+    // Voice track (top)
+    c.strokeStyle = 'rgba(200,240,96,.5)'; c.lineWidth=1;
+    c.beginPath();
+    for(let x=0;x<W;x++){
+      const phase=(x/W+t/300)%1;
+      // Simulate speech: bursts of activity
+      const speaking = Math.sin(phase*Math.PI*4)>0.2 && Math.sin(phase*Math.PI*7)>-0.3;
+      const amp = speaking ? (0.3+0.2*Math.sin(x*0.3+t*0.1)) : 0.02;
+      const y = h3*0.5 + (Math.random()-0.5)*amp*h3*0.8;
+      x===0?c.moveTo(x,y):c.lineTo(x,y);
+    }
+    c.stroke();
+
+    // Duck gain curve (middle)
+    c.strokeStyle='rgba(96,212,240,.6)'; c.lineWidth=1.5;
+    c.beginPath();
+    for(let x=0;x<W;x++){
+      const phase=(x/W+t/300)%1;
+      const speaking=Math.sin(phase*Math.PI*4)>0.2&&Math.sin(phase*Math.PI*7)>-0.3;
+      const duck=speaking?0.25:1;
+      const y=h3 + (1-duck)*h3*0.7;
+      x===0?c.moveTo(x,y):c.lineTo(x,y);
+    }
+    c.stroke();
+
+    // Background track (ducked, bottom)
+    c.strokeStyle='rgba(96,212,240,.3)'; c.lineWidth=1;
+    c.beginPath();
+    for(let x=0;x<W;x++){
+      const phase=(x/W+t/300)%1;
+      const speaking=Math.sin(phase*Math.PI*4)>0.2&&Math.sin(phase*Math.PI*7)>-0.3;
+      const amp=(speaking?0.08:0.3)*(0.7+0.3*Math.sin(x*0.15+t*0.05));
+      const y=h3*2.5+(Math.random()-0.5)*amp*h3*0.6;
+      x===0?c.moveTo(x,y):c.lineTo(x,y);
+    }
+    c.stroke();
+
+    // Labels
+    c.fillStyle='rgba(90,90,106,.6)';c.font='7px DM Mono,monospace';c.textAlign='left';
+    c.fillText('VOICE',4,10);
+    c.fillStyle='rgba(96,212,240,.4)';
+    c.fillText('DUCK',4,h3+10);
+    c.fillText('BG',4,h3*2+10);
+  })();
+}
+
+// Audio Editor preview — waveform with cut markers
+function animEditor() {
+  const cv = document.getElementById('prev-editor');
+  if (!cv) return;
+  cv.width = cv.offsetWidth; cv.height = cv.offsetHeight;
+  const c = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  let t = 0;
+
+  (function draw() {
+    requestAnimationFrame(draw); t++;
+    c.fillStyle = '#08090a'; c.fillRect(0,0,W,H);
+
+    // Waveform
+    c.strokeStyle = 'rgba(200,240,96,.6)'; c.lineWidth = 1;
+    c.beginPath();
+    for (let x=0; x<W; x++) {
+      const phase = x/W;
+      // Simulate a voice recording with pauses
+      const active = Math.sin(phase*Math.PI*6)>0 && Math.sin(phase*Math.PI*11)>-0.5;
+      const amp = active ? (0.3+0.2*Math.sin(x*0.4+t*0.05)) : 0.02;
+      const y = H/2 + (Math.random()-0.5)*amp*H*0.7;
+      x===0 ? c.moveTo(x,y) : c.lineTo(x,y);
+    }
+    c.stroke();
+
+    // Cut markers (red vertical lines)
+    [0.28, 0.55, 0.72].forEach(pos => {
+      const x = pos * W;
+      c.strokeStyle='rgba(240,96,96,.7)'; c.lineWidth=1.5;
+      c.setLineDash([3,2]);
+      c.beginPath(); c.moveTo(x,0); c.lineTo(x,H); c.stroke();
+      c.setLineDash([]);
+    });
+
+    // Cut-out region shading
+    const r1x=0.28*W, r1w=(0.55-0.28)*W;
+    c.fillStyle='rgba(240,96,96,.1)'; c.fillRect(r1x,0,r1w,H);
+
+    // Playhead
+    const phx = ((t*0.5)%W);
+    c.strokeStyle='rgba(200,240,96,.8)'; c.lineWidth=1.5; c.setLineDash([]);
+    c.beginPath(); c.moveTo(phx,0); c.lineTo(phx,H); c.stroke();
+
+    // Ruler ticks
+    c.strokeStyle='rgba(255,255,255,.1)'; c.lineWidth=0.5;
+    for(let i=1; i<8; i++){const x=i*W/8;c.beginPath();c.moveTo(x,H-6);c.lineTo(x,H);c.stroke();}
+  })();
+}
+
+// Donate preview — heartbeat
+function animDonate() {
+  const cv = document.getElementById('prev-donate');
+  if (!cv) return;
+  cv.width = cv.offsetWidth; cv.height = cv.offsetHeight;
+  const c = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  let t = 0;
+
+  (function draw() {
+    requestAnimationFrame(draw); t++;
+    c.fillStyle = '#08090a'; c.fillRect(0,0,W,H);
+
+    // Mini plugin window frame
+    const px=W*0.12, py=H*0.15, pw=W*0.76, ph=H*0.7;
+    c.strokeStyle = 'rgba(200,240,96,.08)'; c.lineWidth=0.5;
+    c.strokeRect(px,py,pw,ph);
+    // Title bar dots
+    c.fillStyle='rgba(255,80,80,.35)'; c.beginPath(); c.arc(px+8,py+6,2.5,0,Math.PI*2); c.fill();
+    c.fillStyle='rgba(255,200,48,.35)'; c.beginPath(); c.arc(px+16,py+6,2.5,0,Math.PI*2); c.fill();
+    c.fillStyle='rgba(80,200,96,.35)'; c.beginPath(); c.arc(px+24,py+6,2.5,0,Math.PI*2); c.fill();
+
+    // 7 meter bars inside
+    for(let i=0;i<7;i++){
+      const bx = px + 10 + i*(pw-20)/7;
+      const bw = (pw-20)/7 - 4;
+      const maxH = ph-22;
+      const lv = 0.25 + 0.55*Math.pow(Math.sin(i*0.45+1.2),2) * (0.8+0.2*Math.sin(t*0.03+i*0.7));
+      const barH = maxH * lv;
+      const by = py+14+maxH-barH;
+      // Gradient bar
+      const gr = c.createLinearGradient(0,py+14+maxH,0,py+14);
+      gr.addColorStop(0,'rgba(80,170,20,.5)');
+      gr.addColorStop(0.6,'rgba(200,240,96,.5)');
+      gr.addColorStop(0.85,'rgba(255,208,0,.5)');
+      gr.addColorStop(1,'rgba(255,56,16,.5)');
+      c.fillStyle=gr;
+      c.fillRect(bx,by,bw,barH);
+      // Peak hold
+      c.fillStyle='rgba(255,100,80,.6)';
+      c.fillRect(bx,by-2,bw,1.5);
+    }
+    // -23 LUFS target line
+    const lineY = py+14+(ph-22)*0.56;
+    c.setLineDash([3,3]);
+    c.strokeStyle='rgba(200,240,96,.2)'; c.lineWidth=0.5;
+    c.beginPath(); c.moveTo(px+6,lineY); c.lineTo(px+pw-6,lineY); c.stroke();
+    c.setLineDash([]);
+  })();
+}
+
+// Start all previews after fonts/layout ready
+requestAnimationFrame(()=>{ setTimeout(startPreviews, 100);});
+
+function startPreviews() {
+  animMeter();
+  animVO();
+  animR128();
+  animPlayer();
+  animMixer();
+  animEditor();
+  animDonate();
+  animPodcast();
+  animFormat();
+}
+// Resize previews on window resize
+window.addEventListener('resize', ()=>{
+  document.querySelectorAll('.card-preview canvas').forEach(cv=>{
+    cv.width=cv.offsetWidth; cv.height=cv.offsetHeight;
+  });
+});
+
+// Impressum und Datenschutz: eigene Seiten (impressum.html / datenschutz.html)
+// Podcast Recorder preview — 4-channel mixer with faders, meters, REC blink
+function animPodcast() {
+  const cv = document.getElementById('prev-podcast');
+  if (!cv) return;
+  cv.width = cv.offsetWidth; cv.height = cv.offsetHeight;
+  const c = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  let t = 0;
+
+  // Channel definitions: name, hue offset for meter colour
+  const CHANNELS = [
+    { lbl:'SP1', color:'#c8f060', signal:() => 0.3+0.4*Math.abs(Math.sin(t*0.07)) },
+    { lbl:'SP2', color:'#c8f060', signal:() => 0.2+0.35*Math.abs(Math.sin(t*0.05+1.2)) },
+    { lbl:'SP3', color:'#c8f060', signal:() => 0.15+0.3*Math.abs(Math.sin(t*0.06+2.4)) },
+    { lbl:'MST', color:'#60d4f0', signal:() => 0  }, // derived from sum
+  ];
+
+  // Fader positions (0=bottom/inf, 1=top/+6) — slowly drift
+  const faderPct = [0.78, 0.72, 0.75, 0.82];
+  const faderDir = [1, -1, 1, 1];
+
+  // Peak hold per channel
+  const pkHold = [0,0,0,0];
+  const pkDecay = [0,0,0,0];
+
+  // REC state
+  let recActive = false;
+  let recTimer = 0;
+
+  // Toggle REC every ~3s
+  setInterval(() => { recActive = !recActive; }, 3000);
+
+  (function draw() {
+    requestAnimationFrame(draw); t++;
+
+    // Clear
+    c.fillStyle = '#08090a'; c.fillRect(0,0,W,H);
+
+    const CH_COUNT = 4;
+    const PAD = 6;
+    const CH_W = (W - PAD * (CH_COUNT+1)) / CH_COUNT;
+    const METER_H = H * 0.42;
+    const FADER_H = H * 0.32;
+    const LABEL_H = 10;
+    const REC_H = 12;
+    const TOP_Y = PAD;
+
+    // Gently drift faders
+    faderPct.forEach((p, i) => {
+      faderPct[i] += faderDir[i] * 0.0008;
+      if (faderPct[i] > 0.88) faderDir[i] = -1;
+      if (faderPct[i] < 0.55) faderDir[i] =  1;
+    });
+
+    CHANNELS.forEach((ch, i) => {
+      const x = PAD + i * (CH_W + PAD);
+
+      // ── Meter bar ─────────────────────────────────────────────────────
+      const meterY = TOP_Y;
+      const meterW = CH_W;
+
+      // Background
+      c.fillStyle = '#0c0e10';
+      c.fillRect(x, meterY, meterW, METER_H);
+
+      // Compute signal level
+      let level = i < 3 ? ch.signal() : (CHANNELS[0].signal()+CHANNELS[1].signal()+CHANNELS[2].signal()) * 0.38;
+      const fdrGain = Math.pow(10, (-60 + faderPct[i]*66) / 20);
+      level *= Math.min(1, fdrGain * 0.4);
+
+      // Peak hold
+      if (level > pkHold[i]) { pkHold[i] = level; pkDecay[i] = 0; }
+      else { pkDecay[i]++; if (pkDecay[i] > 30) pkHold[i] = Math.max(0, pkHold[i]-0.01); }
+
+      // Bar gradient: blue→green→yellow→red
+      const bh = level * METER_H;
+      if (bh > 0) {
+        const g = c.createLinearGradient(0, meterY+METER_H, 0, meterY);
+        g.addColorStop(0.0,  '#1a78e0');
+        g.addColorStop(0.45, '#40a810');
+        g.addColorStop(0.70, '#d0c808');
+        g.addColorStop(0.85, '#ff7a14');
+        g.addColorStop(1.0,  '#ff1a1a');
+        c.fillStyle = g;
+        c.fillRect(x, meterY + METER_H - bh, meterW, bh);
+      }
+
+      // Peak hold line
+      if (pkHold[i] > 0.02) {
+        const py = meterY + METER_H - pkHold[i]*METER_H;
+        c.fillStyle = pkHold[i] > 0.85 ? '#ff2020' : pkHold[i] > 0.6 ? '#ffd000' : '#88d0ff';
+        c.fillRect(x, py, meterW, 2);
+      }
+
+      // Reference line at −23 LUFS (≈ 45% from top)
+      const refY = meterY + METER_H * 0.45;
+      c.strokeStyle = 'rgba(200,240,96,.25)';
+      c.lineWidth = 1; c.setLineDash([2,2]);
+      c.beginPath(); c.moveTo(x, refY); c.lineTo(x+meterW, refY); c.stroke();
+      c.setLineDash([]);
+
+      // ── Fader track ───────────────────────────────────────────────────
+      const faderY = meterY + METER_H + 4;
+      const trackX = x + meterW/2 - 1;
+      c.fillStyle = '#0a0c10';
+      c.fillRect(trackX-1, faderY, 3, FADER_H);
+
+      // Unity notch
+      const unityY = faderY + FADER_H * 0.091;
+      c.fillStyle = 'rgba(200,240,96,.25)';
+      c.fillRect(trackX-4, unityY, 9, 1);
+
+      // Fader cap
+      const capH = 8, capW = meterW - 2;
+      const capY = faderY + (1-faderPct[i]) * (FADER_H - capH);
+      const capX = x + 1;
+
+      // Cap body — dark for SP, lighter for MASTER
+      const isMaster = i === 3;
+      const capGrad = c.createLinearGradient(capX, capY, capX, capY+capH);
+      if (isMaster) {
+        capGrad.addColorStop(0, '#b0b0b8');
+        capGrad.addColorStop(0.5, '#888890');
+        capGrad.addColorStop(1, '#a0a0a8');
+      } else {
+        capGrad.addColorStop(0, '#2a2a30');
+        capGrad.addColorStop(0.5, '#1a1a20');
+        capGrad.addColorStop(1, '#222228');
+      }
+      c.fillStyle = capGrad;
+      c.fillRect(capX, capY, capW, capH);
+
+      // Cap ribs
+      c.strokeStyle = isMaster ? 'rgba(0,0,0,.2)' : 'rgba(0,0,0,.4)';
+      c.lineWidth = 0.5;
+      for (let r=1; r<capH-1; r+=2) {
+        c.beginPath();
+        c.moveTo(capX+1, capY+r);
+        c.lineTo(capX+capW-1, capY+r);
+        c.stroke();
+      }
+
+      // Center line on cap
+      const centerY = capY + capH/2;
+      c.strokeStyle = isMaster ? 'rgba(0,0,0,.5)' : 'rgba(200,240,96,.6)';
+      c.lineWidth = 1;
+      c.beginPath();
+      c.moveTo(capX+3, centerY);
+      c.lineTo(capX+capW-3, centerY);
+      c.stroke();
+
+      // ── Channel label + REC dot ───────────────────────────────────────
+      const labelY = faderY + FADER_H + 3;
+      c.fillStyle = isMaster ? '#60d4f0' : '#5a5a6a';
+      c.font = 'bold 7px DM Mono,monospace';
+      c.textAlign = 'center';
+      c.fillText(ch.lbl, x + meterW/2, labelY + 8);
+
+      // REC dot per channel
+      const dotX = x + meterW/2;
+      const dotY = labelY + 12;
+      const isArmed = i < 3; // SP channels armed
+      if (isArmed && recActive) {
+        const blink = Math.floor(t/18) % 2 === 0;
+        c.fillStyle = blink ? '#ff2020' : '#330000';
+        c.globalAlpha = blink ? 1 : 0.3;
+      } else {
+        c.fillStyle = '#1e1e24';
+        c.globalAlpha = 1;
+      }
+      c.beginPath();
+      c.arc(dotX, dotY, 2.5, 0, Math.PI*2);
+      c.fill();
+      c.globalAlpha = 1;
+    });
+
+    // ── Timecode at top ───────────────────────────────────────────────────
+    const tcSec = Math.floor(t / 60);
+    const tcMin = Math.floor(tcSec / 60);
+    const tcFr  = t % 25;
+    const p2 = n => String(n).padStart(2,'0');
+    const tcStr = `${p2(tcMin)}:${p2(tcSec%60)}:${p2(tcFr)}`;
+
+    // TC background
+    const tcW = 68, tcH = 13, tcX = W/2 - tcW/2, tcY = 3;
+    c.fillStyle = '#040608';
+    c.fillRect(tcX, tcY, tcW, tcH);
+    c.strokeStyle = recActive ? 'rgba(255,32,32,.4)' : 'rgba(20,26,16,.8)';
+    c.lineWidth = 1;
+    c.strokeRect(tcX, tcY, tcW, tcH);
+
+    // TC text
+    c.fillStyle = recActive ? '#52e010' : '#2a3a20';
+    c.font = '9px DM Mono,monospace';
+    c.textAlign = 'center';
+    c.fillText(tcStr, W/2, tcY + 9);
+
+    // REC indicator dot next to TC
+    if (recActive) {
+      const blink = Math.floor(t/18)%2===0;
+      c.fillStyle = blink ? '#ff2020' : 'transparent';
+      c.globalAlpha = blink ? 1 : 0;
+      c.beginPath(); c.arc(tcX-5, tcY+6.5, 2.5, 0, Math.PI*2); c.fill();
+      c.globalAlpha = 1;
+    }
+
+  })();
+}
+
+function animFormat() {
+  const cv = document.getElementById('prev-format');
+  if (!cv) return;
+  cv.width = cv.offsetWidth; cv.height = cv.offsetHeight;
+  const c = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  let t = 0;
+
+  // Zeige Konvertierungs-Animation: Balken die Format wechseln
+  const FORMATS = ['WAV','MP3','OGG','M4A','OPUS'];
+  let fromFmt = 0, toFmt = 1, morphPct = 0;
+  const BARS = 24;
+  const barW = (W - 8) / BARS;
+  // Jedes Format hat ein eigenes Spektrum-Profil
+  const profiles = [
+    Array.from({length:BARS},(_,i)=>0.3+0.6*Math.exp(-Math.pow((i-8)/6,2))),  // WAV  — breite Glocke
+    Array.from({length:BARS},(_,i)=>0.2+0.7*Math.exp(-Math.pow((i-6)/5,2))),  // MP3  — schmäler
+    Array.from({length:BARS},(_,i)=>0.15+0.75*Math.exp(-Math.pow((i-7)/7,2))), // OGG
+    Array.from({length:BARS},(_,i)=>0.25+0.65*Math.exp(-Math.pow((i-9)/6,2))), // M4A
+    Array.from({length:BARS},(_,i)=>0.1+0.8*Math.exp(-Math.pow((i-7)/4,2))),  // OPUS
+  ];
+
+  (function draw() {
+    requestAnimationFrame(draw); t++;
+
+    c.fillStyle = '#08090a'; c.fillRect(0, 0, W, H);
+
+    // Morph-Fortschritt
+    morphPct += 0.008;
+    if (morphPct >= 1) {
+      morphPct = 0;
+      fromFmt = toFmt;
+      toFmt = (toFmt + 1) % FORMATS.length;
+    }
+    const ease = morphPct < 0.5 ? 2*morphPct*morphPct : 1-Math.pow(-2*morphPct+2,2)/2;
+
+    // Balken zeichnen
+    for (let i = 0; i < BARS; i++) {
+      const from = profiles[fromFmt][i];
+      const to   = profiles[toFmt][i];
+      const h    = (from + (to - from) * ease) * (H * 0.55);
+      const wave = 1 + 0.08 * Math.sin(t * 0.04 + i * 0.4);
+      const bh   = h * wave;
+      const x    = 4 + i * barW;
+      const y    = H - 14 - bh;
+      const alpha = 0.5 + 0.4 * ease;
+
+      // Hauptbalken
+      c.globalAlpha = alpha;
+      c.fillStyle = i % 5 === 0 ? '#60d4f0' : '#c8f060';
+      c.fillRect(x, y, barW - 1.5, bh);
+
+      // Spiegelung unten
+      c.globalAlpha = alpha * 0.15;
+      c.fillRect(x, H - 14, barW - 1.5, bh * 0.3);
+      c.globalAlpha = 1;
+    }
+
+    // Format-Labels
+    const fromLabel = FORMATS[fromFmt];
+    const toLabel   = FORMATS[toFmt];
+    c.font = `bold 9px 'DM Mono', monospace`;
+    c.textAlign = 'left';
+
+    // Pfeil-Animation
+    const arrowX = W * 0.5;
+    const labelY = H - 4;
+
+    c.globalAlpha = 1 - ease;
+    c.fillStyle = '#c8f060';
+    c.fillText(fromLabel, 6, labelY);
+    c.globalAlpha = 1;
+
+    c.fillStyle = '#5a5a6a';
+    c.fillText('→', arrowX - 8, labelY);
+
+    c.globalAlpha = ease;
+    c.fillStyle = '#60d4f0';
+    c.textAlign = 'right';
+    c.fillText(toLabel, W - 6, labelY);
+    c.globalAlpha = 1;
+    c.textAlign = 'left';
+
+  })();
+}
+
+
+// ── Browser-Empfehlung ────────────────────────────────────────────────────────
+// ── Browser-Empfehlung ────────────────────────────────────────────────────────
+(function(){
+  const ua = navigator.userAgent;
+  const isIOS    = /iPad|iPhone|iPod/.test(ua)
+                || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); // iPadOS 13+
+  const isChrome = /Chrome/.test(ua) && !/Edg/.test(ua) && !/OPR/.test(ua);
+  const isEdge   = /Edg/.test(ua);
+  if(isIOS || isChrome || isEdge) return; // kein Toast nötig
+
+  // Nur einmal pro Session zeigen
+  if(sessionStorage.getItem('satk-browser-hint')) return;
+  sessionStorage.setItem('satk-browser-hint', '1');
+
+  const toast = document.createElement('div');
+  toast.style.cssText = [
+    'position:fixed','top:20px','left:50%','transform:translateX(-50%)',
+    'background:#0e1a0a','border:1px solid rgba(200,240,96,.35)',
+    'color:#c8f060','font-family:DM Mono,monospace','font-size:10px',
+    'letter-spacing:.06em','line-height:1.6','padding:10px 18px',
+    'border-radius:3px','z-index:9999','pointer-events:none',
+    'max-width:420px','text-align:center',
+    'box-shadow:0 4px 24px rgba(0,0,0,.6)',
+    'opacity:0','transition:opacity .4s'
+  ].join(';');
+  const lang = localStorage.getItem('satk_lang') || 'de';
+  toast.innerHTML = lang === 'en'
+    ? '<span style="opacity:.6;font-size:8px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:3px">Browser Note</span>' +
+      'For best performance we recommend <strong>Chrome</strong>.<br>' +
+      '<span style="opacity:.6">All modern browsers work fine too.</span>'
+    : '<span style="opacity:.6;font-size:8px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:3px">Browser-Hinweis</span>' +
+      'Für optimale Performance empfehlen wir <strong>Chrome</strong>.<br>' +
+      '<span style="opacity:.6">Alle gängigen und aktuellen Browser funktionieren aber auch.</span>';
+  document.body.appendChild(toast);
+
+  // Einblenden
+  requestAnimationFrame(() => {
+    toast.style.opacity = '1';
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      setTimeout(() => toast.remove(), 400);
+    }, 6000);
+  });
+})();
+
+
+
+// ══════════════════════════════════════════════════════════════════════════════
+// SATK i18n — Sprachumschalter (nur Startseite)
+// ══════════════════════════════════════════════════════════════════════════════
+const T = {
+  de: {
+    // Header
+    header_rule:    'Browser-Native · Keine Installation · 100% Lokal',
+    header_tagline: '// Werkzeuge für Audio-Produktion, Broadcast und Podcasting',
+    // SEO
+    seo_h2:      'Professionelle Audiowerkzeuge — kostenlos im Browser',
+    seo_forwhom: 'Für wen?',
+    // Footer
+    footer_imprint: 'Impressum',
+    footer_privacy: 'Datenschutz',
+    // Tool Karten — Tags
+    'tag-voiceover':         'Live · Datei Processing · KI-Entrauschung',
+    'tag-r128':              'Normalisierung · EBU R128',
+    'tag-player':            'Playback · Live',
+    'tag-mixer':             'Ducking · Side-Chain · R128',
+    'tag-editor':            'Schnitt · Trim · Export',
+    'tag-recorder':          '4 Kanäle · Dynamics · Timecode',
+    'tag-format':            'WAV · MP3 · OGG · M4A · Opus',
+    'tag-donate':            'Support · PayPal',
+    // Tool Karten — Namen
+    'name-voiceover':        'VoiceOver Processor',
+    'name-r128':             'R128 Loudness Normalizer',
+    'name-player':           'Instant Player',
+    'name-mixer':            'Auto-Mixer',
+    'name-editor':           'Audio Editor',
+    'name-recorder':         'Podcast Recorder',
+    'name-format':           'Format Wandler',
+    'name-donate':           'Unterstützen',
+    // Tool Karten — Beschreibungen
+    'desc-voiceover':        'Vollautomatische Sprachoptimierung für TV, Radio und Podcast.',
+    'desc-r128':             'Batch-Normalisierung nach ITU-R BS.1770-4. TV −23 · Online −14 · Podcast −16 LUFS. True Peak Limiter.',
+    'desc-player':           '16 Pads × 4 Bänke = 64 Slots. Tastatur-Steuerung, Loop, Fade, Auto-Cue, Wellenform-Vorschau.',
+    'desc-mixer':            'Sprecher + Beitrag automatisch mischen. Side-Chain Ducking, EBU R128 konformer Mix-Output.',
+    'desc-editor':           'Schneiden, Trimmen und Exportieren. Wellenform-Ansicht, Zoom, In/Out-Punkte, Undo, R128-Export.',
+    'desc-recorder':         '4-Kanal Aufnahme mit Denoiser, Dynamics-Presets und automatischer R128-Normalisierung.',
+    'desc-format':           'Audiodateien ins gewünschte Format konvertieren. Drag & Drop, Qualitätswahl, sofortiger Download.',
+    'desc-donate':           'SATK ist kostenlos, werbefrei und wird in der Freizeit entwickelt. Über eine Spende freue ich mich sehr.',
+    // Buttons
+    'btn-open':  'Öffnen',
+    'modal_close': 'Schließen',
+    'footer_copy': '© 2026 Sascha Hömske · Siegburg · kostenlos & werbefrei',
+    'header_rule': 'Browser-Native · Keine Installation · 100% Lokal',
+    'header_tagline': '// Werkzeuge für Audio-Produktion, Broadcast und Podcasting',
+    'badge_batch': 'Batch · WAV MP3',
+    'badge_4prof': '4 Profile',
+    'badge_offline': 'Offline · WAV',
+    'badge_64': '64 Slots · Live',
+    'badge_webm': 'WebM Recording',
+    'badge_noupload': 'Browser · Kein Upload',
+    'badge_videosync': 'Video Sync',
+    'badge_paypal': 'PayPal',
+    'donate_name': 'Unterstützen',
+    // Audience
+    'aud-0': '<strong>TV- &amp; Broadcast-Redakteur:innen</strong> — VoiceOver Processor, R128 −23 LUFS',
+    'aud-1': '<strong>Radio- &amp; Podcast-Produzent:innen</strong> — Podcast Recorder, Auto-Mixer, R128 −16 LUFS, Denoiser',
+    'aud-2': '<strong>Online-Video &amp; YouTube</strong> — VoiceOver −14 LUFS, Format Wandler, Audio Editor',
+    'aud-3': '<strong>Sprecher:innen &amp; Voice-over Artists</strong> — VoiceOver Processor, R128 Normalizer',
+    'aud-4': '<strong>Live &amp; Beschallung</strong> — Instant Player mit 64 Cue-Slots und Keyboard-Steuerung',
+    'aud-5': '<strong>Alle</strong> — Kostenlos, werbefrei, ohne Anmeldung, auf Desktop, iPad und iPhone',
+    'aud-6': '<strong>Redakteure &amp; Journalisten</strong> — O-Ton aufnehmen, Beiträge mischen, normalisieren',
+    'aud-7': '<strong>Musikproduktion &amp; Mastering</strong> — LUFS-Metering, LRA, Spektralanalyse, Lautheitsstandards',
+    'aud-8': '<strong>Entwickler &amp; Studenten</strong> — Web Audio API, DSP, EBU R128 — alles Open in Browser',
+    'seo_p0': `SATK (Sascha's Audio Toolkit) ist eine wachsende Sammlung professioneller, browserbasierter Audiowerkzeuge für TV, Broadcast, Podcast, Radio und Online-Produktion. Alle Tools laufen vollständig lokal — Audiodaten verlassen niemals das Gerät. Keine Installation, kein Konto, keine Cloud-Uploads. Kostenlos und werbefrei. Optimiert für Desktop, iPad und iPhone.`,
+    'seo_p1': `Der <a href="voiceover-processor.html" onclick="openTool('voiceover-processor.html','VoiceOver Processor')">VoiceOver Processor</a> ist ein vollautomatischer Klangoptimierer und Entrauscher für Sprachaufnahmen: spektraler Wiener-Filter-Denoiser, 5-Band-EQ, Kompressor, De-Esser und R128-Normalisierung — für TV (−23 LUFS), YouTube (−14 LUFS) und Podcast (−16 LUFS). Der <a href="r128-normalizer.html" onclick="openTool('r128-normalizer.html','R128 Loudness Normalizer')">R128 Loudness Normalizer</a> normalisiert Audiodateien mit Doppel-Gating und True-Peak-Limiter nach EBU R128 — direkt im Browser. Im <a href="index.html">SATK Shop</a> gibt es professionelle Standalone-Software und Plugins.`,
+    'seo_p2': `Das <a href="podcast-recorder.html" onclick="openTool('podcast-recorder.html','Podcast Recorder')">kostenlose Podcast Studio</a> bietet 4-Kanal-Aufnahme mit Denoiser, EQ, Kompressor, De-Esser und R128-Normalisierung. Alle Tools laufen direkt im Browser — kostenlos und werbefrei.`,
+    'seo_p3': `Der <a href="auto-mixer.html" onclick="openTool('auto-mixer.html','Auto-Mixer')">kostenlose Automixer</a> mischt Sprecher- und Beitrags-Spur automatisch mit Side-Chain Ducking und EBU R128 Output. Das kostenlose <a href="audio-editor.html" onclick="openTool('audio-editor.html','Audio Editor')">Audio-Schnittprogramm</a> schneidet und trimmt mit Wellenform-Ansicht, Zoom, Undo und R128-Export. Der <a href="instant-player.html" onclick="openTool('instant-player.html','Instant Player')">Instant Player</a> ist Sampler, Soundbox und Instant-Replay-Player in einem: 64 Cue-Slots in 4 Bänken mit Keyboard-Steuerung für Live-Einsatz. Der <a href="format-wandler.html" onclick="openTool('format-wandler.html','Format Wandler')">Audio Formatwandler</a> konvertiert kostenlos zwischen WAV (16/24/32-bit), MP3, OGG, M4A, Opus, WebM und AIFF — Drag &amp; Drop, Qualitätswahl, sofortiger Download, kein Upload nötig.`,
+    'seo_p4': `SATK ist eine kostenlose Browser-Alternative zu kommerziellen Audio-Tools wie Auphonic, iZotope RX, Youlean Loudness Meter, Nugen VisLM, Adobe Audition, Logic Pro, GarageBand oder Reaper — keine Installation, kein Konto, keine Lizenz. Alle Tools laufen lokal im Browser auf Desktop (Windows, macOS, Linux), iPad und iPhone. Audiodaten verlassen niemals das Gerät — 100% datenschutzkonform, DSGVO-freundlich. Kostenlos, werbefrei, für immer.`,
+    'seo_p5': `Technische Basis: Web Audio API mit eigenentwickelten DSP-Algorithmen — Polyphasen-FIR True-Peak-Metering (4× Oversampling, ITU-R BS.1770-4), FFT-Spectral-Denoiser (Wiener-Filter, N=512, 75% Overlap-Add), zweistufige EBU-R128-K-Weighted-Normalisierung, Brickwall-Lookahead-Limiter, CSS-basierte Echtzeit-Metering-Grafiken und vollständige Overlap-Add-Signalkette. Entwickelt von Sascha Hömske.`,
+  },
+  en: {
+    // Header
+    header_rule:    'Browser-Native · No Installation · 100% Local',
+    header_tagline: '// Tools for Audio Production, Broadcast and Podcasting',
+    // SEO
+    seo_h2:      'Professional Audio Tools — Free in Your Browser',
+    seo_forwhom: 'Who is it for?',
+    // Footer
+    footer_imprint: 'Imprint',
+    footer_privacy: 'Privacy Policy',
+    // Tool Karten — Tags
+    'tag-voiceover':        'Live · File Processing · AI Denoising',
+    'tag-r128':             'Normalization · EBU R128',
+    'tag-player':           'Playback · Live',
+    'tag-mixer':            'Ducking · Side-Chain · R128',
+    'tag-editor':           'Cut · Trim · Export',
+    'tag-recorder':         '4 Channels · Dynamics · Timecode',
+    'tag-format':           'WAV · MP3 · OGG · M4A · Opus',
+    'tag-donate':           'Support · PayPal',
+    // Tool Karten — Namen
+    'name-voiceover':       'VoiceOver Processor',
+    'name-r128':            'R128 Loudness Normalizer',
+    'name-player':          'Instant Player',
+    'name-mixer':           'Auto-Mixer',
+    'name-editor':          'Audio Editor',
+    'name-recorder':        'Podcast Recorder',
+    'name-format':          'Format Converter',
+    'name-donate':          'Support SATK',
+    // Tool Karten — Beschreibungen
+    'desc-voiceover':       'Fully automatic voice processing for TV, radio and podcast.',
+    'desc-r128':            'Batch normalization to ITU-R BS.1770-4. TV −23 · Online −14 · Podcast −16 LUFS. True Peak Limiter.',
+    'desc-player':          '16 pads × 4 banks = 64 slots. Keyboard control, loop, fade, auto-cue, waveform preview.',
+    'desc-mixer':           'Automatically mix presenter + report. Side-chain ducking, EBU R128 compliant output.',
+    'desc-editor':          'Cut, trim and export. Waveform view, zoom, in/out points, undo, R128 export.',
+    'desc-recorder':        '4-channel recording with denoiser, dynamics presets and automatic R128 normalization.',
+    'desc-format':          'Convert audio files to any format. Drag & drop, quality selection, instant download.',
+    'desc-donate':          'SATK is free and ad-free, developed in spare time. Donations are greatly appreciated.',
+    // Buttons
+    'btn-open': 'Open',
+    'modal_close': 'Close',
+    'footer_copy': '© 2026 Sascha Hömske · Siegburg · free & ad-free',
+    'header_rule': 'Browser-Native · No Installation · 100% Local',
+    'header_tagline': '// Tools for Audio Production, Broadcast and Podcasting',
+    'badge_batch': 'Batch · WAV MP3',
+    'badge_4prof': '4 Profiles',
+    'badge_offline': 'Offline · WAV',
+    'badge_64': '64 Slots · Live',
+    'badge_webm': 'WebM Recording',
+    'badge_noupload': 'Browser · No Upload',
+    'badge_videosync': 'Video Sync',
+    'badge_paypal': 'PayPal',
+    'donate_name': 'Support SATK',
+    // Audience
+    'aud-0': '<strong>TV &amp; Broadcast Editors</strong> — VoiceOver Processor, R128 −23 LUFS',
+    'aud-1': '<strong>Radio &amp; Podcast Producers</strong> — Podcast Recorder, Auto-Mixer, R128 −16 LUFS, Denoiser',
+    'aud-2': '<strong>Online Video &amp; YouTube</strong> — VoiceOver −14 LUFS, Format Converter, Audio Editor',
+    'aud-3': '<strong>Voice-over Artists</strong> — VoiceOver Processor, R128 Normalizer',
+    'aud-4': '<strong>Live &amp; Sound Reinforcement</strong> — Instant Player with 64 cue slots, keyboard control',
+    'aud-5': '<strong>Everyone</strong> — Free, ad-free, no sign-up, on desktop, iPad and iPhone',
+    'aud-6': '<strong>Journalists &amp; Editors</strong> — record audio, mix reports, normalize loudness',
+    'aud-7': '<strong>Music Production &amp; Mastering</strong> — LUFS metering, LRA, spectrum analysis',
+    'aud-8': '<strong>Developers &amp; Students</strong> — Web Audio API, DSP, EBU R128 — all open in browser',
+    'seo_p0': `SATK (Sascha's Audio Toolkit) is a collection of professional, browser-based audio tools for TV, broadcast, podcast, radio and online production. All tools run completely locally in your browser — audio data never leaves your device. No installation, no account, no cloud uploads. Optimized for desktop, iPad and iPhone.`,
+    'seo_p1': `The <a href="voiceover-processor.html" onclick="openTool('voiceover-processor.html','VoiceOver Processor')">VoiceOver Processor</a> processes speech files automatically: spectral Wiener-filter denoiser, EQ, compressor, de-esser and R128 normalization — for TV (−23 LUFS), YouTube (−14 LUFS) and podcast (−16 LUFS). The <a href="r128-normalizer.html" onclick="openTool('r128-normalizer.html','R128 Loudness Normalizer')">R128 Loudness Normalizer</a> normalizes audio files with double gating and true-peak limiter. Visit the <a href="index.html">SATK Shop</a> for professional standalone software and plugins.`,
+    'seo_p2': `The <a href="podcast-recorder.html" onclick="openTool('podcast-recorder.html','Podcast Recorder')">Podcast Recorder</a> provides 4-channel recording with denoiser, EQ, compressor, de-esser and R128 normalization. All tools run directly in the browser — free and ad-free.`,
+    'seo_p3': `The <a href="auto-mixer.html" onclick="openTool('auto-mixer.html','Auto-Mixer')">Auto-Mixer</a> mixes presenter and report tracks automatically with side-chain ducking. The <a href="audio-editor.html" onclick="openTool('audio-editor.html','Audio Editor')">Audio Editor</a> cuts and trims audio with waveform view, undo and R128 export. The <a href="instant-player.html" onclick="openTool('instant-player.html','Instant Player')">Instant Player</a> offers 64 cue slots across 4 banks with keyboard control for live use. The <a href="format-wandler.html" onclick="openTool('format-wandler.html','Format Converter')">Format Converter</a> converts audio between WAV (16/24/32-bit), MP3, OGG, M4A, Opus, WebM and AIFF — quality selection, drag & drop, instant download.`,
+    'seo_p4': `SATK is a free browser alternative to commercial tools like Auphonic, iZotope RX, Youlean Loudness Meter, Nugen VisLM, Adobe Audition, Logic Pro or GarageBand — no installation, no account, no license. All tools run locally in the browser on desktop (Windows, macOS, Linux), iPad and iPhone. Audio data never leaves your device — 100% privacy-compliant, GDPR-friendly. Free, ad-free, forever.`,
+    'seo_p5': `Technical basis: Web Audio API with custom-developed DSP algorithms — polyphase-FIR true-peak metering (4× oversampling, ITU-R BS.1770-4), FFT spectral denoiser (Wiener filter, N=512, 75% overlap-add), two-stage EBU R128 K-weighted normalization, brickwall lookahead limiter, and complete overlap-add signal chain for low-latency real-time audio processing. Developed by Sascha Hömske.`,
+  }
+};
+
+let currentLang = localStorage.getItem('satk_lang') || 'de';
+
+function setLang(lang) {
+  if(lang === currentLang) return;
+  // Flash-Animation auf den angeklickten Link
+  const clickedBtn = lang === 'de' ? document.getElementById('btnDE') : document.getElementById('btnEN');
+  if(clickedBtn) {
+    clickedBtn.classList.add('switching');
+    clickedBtn.addEventListener('animationend', () => clickedBtn.classList.remove('switching'), {once:true});
+  }
+  currentLang = lang;
+  localStorage.setItem('satk_lang', lang);
+  applyLang();
+}
+
+function applyLang() {
+  const t = T[currentLang] || T.de;
+
+  // data-i18n Elemente
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = t[el.dataset.i18n];
+    if(v !== undefined) el.textContent = v;
+  });
+
+  // data-i18n-html Elemente (für HTML-Inhalt)
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const v = t[el.dataset.i18nHtml];
+    if(v !== undefined) el.innerHTML = v;
+  });
+
+  // Links aktiv markieren
+  document.getElementById('btnDE')?.classList.toggle('active', currentLang === 'de');
+  document.getElementById('btnEN')?.classList.toggle('active', currentLang === 'en');
+
+  // HTML lang-Attribut
+  document.documentElement.lang = currentLang;
+
+  // Footer-Copy
+  const fc = document.getElementById('footerCopy');
+  if(fc && t['footer_copy']) fc.innerHTML = t['footer_copy'];
+
+  // Tool-Karten dynamisch übersetzen (werden per JS generiert)
+  translateToolCards();
+}
+
+function translateToolCards() {
+  const t = T[currentLang] || T.de;
+  // Tool-Karten übersetzen
+  document.querySelectorAll('[data-tool-id]').forEach(card => {
+    const id = card.dataset.toolId;
+    const tag  = card.querySelector('.card-tag');
+    const name = card.querySelector('.card-name a, .card-link');
+    const desc = card.querySelector('.card-desc');
+    const btn  = card.querySelector('.card-open');
+    if(tag  && t['tag-'+id])  tag.textContent  = t['tag-'+id];
+    if(name && t['name-'+id]) name.textContent  = t['name-'+id];
+    if(desc && t['desc-'+id]) desc.textContent  = t['desc-'+id];
+    if(btn  && t['btn-open']) btn.textContent   = t['btn-open'];
+  });
+  // Donate-Karte (kein data-tool-id weil kein Tool)
+  const donateCard = document.querySelector('[data-tool="donate.html"]');
+  if(donateCard) {
+    const name = donateCard.querySelector('.card-name a, .card-link');
+    const desc = donateCard.querySelector('.card-desc');
+    const btn  = donateCard.querySelector('.card-open');
+    if(name && t['donate_name']) name.textContent = t['donate_name'];
+    if(desc && t['desc-donate']) desc.textContent = t['desc-donate'];
+    if(btn  && t['btn-open'])   btn.textContent  = t['btn-open'];
+  }
+  // data-i18n-title Elemente (z.B. Modal-Close)
+  document.querySelectorAll('[data-i18n-title]').forEach(el => {
+    const v = t[el.dataset.i18nTitle];
+    if(v !== undefined) el.title = v;
+  });
+}
+
+// Beim Laden anwenden
+window.addEventListener('DOMContentLoaded', () => {
+  applyLang();
+  // Keyboard support für lang-links (Enter/Space)
+  document.querySelectorAll('.lang-link').forEach(el => {
+    el.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const lang = el.id === 'btnDE' ? 'de' : 'en';
+        setLang(lang);
+      }
+    });
+  });
+});
+
+</script>
+</body>
+</html>

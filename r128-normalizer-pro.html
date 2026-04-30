@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SATK R128 Normalizer Pro – Batch Loudness Normalisierung</title>
+<meta name="description" content="R128 Normalizer Pro: Batch-Normalisierung nach EBU R128 / ITU-R BS.1770-4. Doppel-Gating, True-Peak-Limiter, CLI für Pipelines. Standalone macOS & Windows.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#c8f060;--tx:#e8e8ec;--mu:#6e6e7a;--mu2:#9a9aaa}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:'DM Mono',monospace;-webkit-font-smoothing:antialiased}
+
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:16px 48px;background:rgba(10,10,11,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.04)}
+.nav-logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;line-height:1}
+.nav-logo-mark{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--ac);letter-spacing:4px}
+.nav-logo-accent{color:var(--tx)}
+.nav-logo-sub{font-family:'DM Mono',monospace;font-size:8px;color:var(--mu);letter-spacing:1.5px;text-transform:uppercase;font-weight:300;white-space:nowrap}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{color:var(--mu2);text-decoration:none;font-size:11px;letter-spacing:.5px;transition:color .2s}
+.nav-links a:hover{color:var(--tx)}
+.nav-back{color:var(--mu);font-size:10px;letter-spacing:.5px;text-decoration:none;opacity:.6;transition:opacity .2s}
+.nav-back:hover{opacity:1}
+.lang-sw{display:flex;align-items:center;gap:6px}
+.lang{font-size:10px;letter-spacing:1px;color:var(--mu);cursor:pointer;transition:color .2s}
+.lang:hover{color:var(--tx)}
+.lang.active{color:var(--ac)}
+.lang-sep{color:var(--mu);font-size:10px}
+
+.product-hero{text-align:center;padding:80px 32px 32px;max-width:920px;margin:0 auto}
+.product-eyebrow{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.4em;color:var(--ac);text-transform:uppercase;margin-bottom:18px}
+.product-hero h1{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:800;letter-spacing:-1px;line-height:1.05;text-transform:uppercase;margin-bottom:18px}
+.product-hero .tagline{color:var(--mu2);font-size:14px;letter-spacing:.3px;line-height:1.7;max-width:640px;margin:0 auto}
+
+.hero-img-wrap{max-width:1120px;margin:32px auto 0;padding:0 32px}
+.hero-img{width:100%;border:1px solid var(--bd);border-radius:10px;display:block;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+
+.section{max-width:1120px;margin:0 auto;padding:96px 32px 0}
+.section-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:16px;text-align:center}
+.section-h2{font-family:'Syne',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-.5px;line-height:1.1;text-align:center;margin-bottom:14px;text-transform:uppercase}
+.section-intro{color:var(--mu2);font-size:13px;line-height:1.7;text-align:center;max-width:680px;margin:0 auto 56px}
+
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feature{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:32px 28px;transition:transform .3s ease,border-color .3s ease}
+.feature:hover{transform:translateY(-3px);border-color:rgba(200,240,96,.2)}
+.feature-icon{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.25em;color:var(--ac);margin-bottom:14px;text-transform:uppercase}
+.feature h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.2px;margin-bottom:10px;color:var(--tx)}
+.feature p{font-size:12px;color:var(--mu2);line-height:1.7}
+
+.workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+.workflow-step{position:relative;padding:28px 24px;background:var(--sf);border-radius:10px;border:1px solid var(--bd)}
+.workflow-num{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--ac);line-height:1;margin-bottom:14px}
+.workflow-step h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px;color:var(--tx)}
+.workflow-step p{font-size:11px;color:var(--mu2);line-height:1.7}
+
+.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.spec-col{padding:32px 28px;border-right:1px solid var(--bd)}
+.spec-col:last-child{border-right:none}
+.spec-col h4{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:14px}
+.spec-col ul{list-style:none}
+.spec-col li{font-size:11px;color:var(--tx);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);letter-spacing:.2px}
+.spec-col li:last-child{border-bottom:none}
+.spec-col li b{color:var(--ac);font-weight:500;display:inline-block;min-width:90px}
+
+footer{text-align:center;padding:72px 32px 48px;margin-top:96px;border-top:1px solid rgba(255,255,255,.03)}
+footer p{font-size:9px;color:var(--mu);letter-spacing:.3px}
+footer a{color:var(--mu2);text-decoration:none}
+footer a:hover{color:var(--ac)}
+footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:3px;margin-bottom:10px}
+
+@media(max-width:900px){
+  nav{padding:14px 20px}
+  .nav-links{gap:18px}
+  .features,.workflow,.specs{grid-template-columns:1fr}
+  .spec-col{border-right:none;border-bottom:1px solid var(--bd)}
+  .spec-col:last-child{border-bottom:none}
+  .product-hero{padding:48px 20px 24px}
+  .hero-img-wrap{padding:0 20px}
+  .section{padding:64px 20px 0}
+}
+@media(max-width:600px){
+  .nav-links a:not(.nav-back){display:none}
+}
+
+.feature,.workflow-step{opacity:0;animation:rise .6s ease forwards}
+.feature:nth-child(1),.workflow-step:nth-child(1){animation-delay:.1s}
+.feature:nth-child(2),.workflow-step:nth-child(2){animation-delay:.18s}
+.feature:nth-child(3),.workflow-step:nth-child(3){animation-delay:.26s}
+.feature:nth-child(4),.workflow-step:nth-child(4){animation-delay:.34s}
+.feature:nth-child(5){animation-delay:.42s}
+.feature:nth-child(6){animation-delay:.5s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-mark">S<span class="nav-logo-accent">A</span>TK</span>
+    <span class="nav-logo-sub">Sascha&rsquo;s Audio Tool Kit</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_shop">Shop</a>
+    <a href="index.html#info" data-i18n="nav_info">Lizenz &amp; Support</a>
+    <div class="lang-sw">
+      <span class="lang active" id="btnDE" onclick="setLang('de')">DE</span>
+      <span class="lang-sep">·</span>
+      <span class="lang" id="btnEN" onclick="setLang('en')">EN</span>
+    </div>
+    <a href="index.html" class="nav-back" data-i18n="nav_back">← Zurück zum Shop</a>
+  </div>
+</nav>
+
+<section class="product-hero">
+  <div class="product-eyebrow" data-i18n="r128_eyebrow">Standalone · macOS · Windows · CLI</div>
+  <h1>R128 Normalizer Pro</h1>
+  <p class="tagline" data-i18n="r128_tagline">Batch-Normalisierung nach EBU R128 / ITU-R BS.1770-4. Hunderte Files auf einmal — gegated, true-peak-limited, in deinem Wunsch-Korridor. Mit CLI für Pipelines.</p>
+</section>
+
+<div class="hero-img-wrap">
+  <img class="hero-img" src="img-r128-normalizer.png" alt="SATK R128 Normalizer Pro Interface">
+</div>
+
+<section class="section">
+  <div class="section-label" data-i18n="r128_features_label">Highlights</div>
+  <h2 class="section-h2" data-i18n="r128_features_title">Loudness im Akkord</h2>
+  <p class="section-intro" data-i18n="r128_features_intro">Drag-and-Drop oder Skript-Pipeline — der Normalizer arbeitet im Hintergrund weiter, während du am nächsten Beitrag sitzt.</p>
+
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">Batch</div>
+      <h3 data-i18n="r128_f1_h">Hunderte Files parallel</h3>
+      <p data-i18n="r128_f1_p">Drop einen ganzen Ordner — der Normalizer queued auf, parallelisiert auf alle CPU-Kerne und schreibt in den Ziel-Ordner deiner Wahl.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">Double Gating</div>
+      <h3 data-i18n="r128_f2_h">ITU-R BS.1770-4</h3>
+      <p data-i18n="r128_f2_p">Absolute -70 LUFS und relatives -10 LU Gating. 400-ms-Blocks mit 75% Overlap, Power-Domain-Berechnung — exakt nach Norm.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">True Peak</div>
+      <h3 data-i18n="r128_f3_h">ISP-Limiter</h3>
+      <p data-i18n="r128_f3_p">4-fach polyphaser True-Peak-Limiter mit 5-ms-Lookahead. -1 dBTP per Default — kein Inter-Sample-Clipping bei Codec-Konvertierung.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">Presets</div>
+      <h3 data-i18n="r128_f4_h">16 Broadcast-Targets</h3>
+      <p data-i18n="r128_f4_p">TV (-23), Streaming (-14), Podcast (-16), Spotify, Apple Music, YouTube, Amazon, Atmos. Plus Custom-Targets mit eigenem LRA-Reshape.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">CLI</div>
+      <h3 data-i18n="r128_f5_h">Pipeline-fähig</h3>
+      <p data-i18n="r128_f5_p">Aufruf aus Shell-Scripts, MAM-Workflows, Continuous-Delivery. Exit-Codes, JSON-Reports, Watch-Folder mit Inotify.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">Multi-Format</div>
+      <h3 data-i18n="r128_f6_h">WAV bis Atmos</h3>
+      <p data-i18n="r128_f6_p">Stereo, 5.1, 7.1, ADM-BWF (Dolby Atmos). WAV, FLAC, MP3, AAC, OGG. Sample-Rate-Konvertierung optional integriert.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label" data-i18n="r128_wf_label">Funktionsweise</div>
+  <h2 class="section-h2" data-i18n="r128_wf_title">In 4 Schritten zur Norm</h2>
+  <p class="section-intro" data-i18n="r128_wf_intro">Egal ob ein File oder ein ganzer Sendetag — der Workflow bleibt der gleiche.</p>
+
+  <div class="workflow">
+    <div class="workflow-step">
+      <div class="workflow-num">01</div>
+      <h3 data-i18n="r128_w1_h">Files droppen</h3>
+      <p data-i18n="r128_w1_p">Einzelne Files, Ordner, ganze Trees. Stapel-Liste mit Datei-Info, geschätzter Loudness und Auffälligkeiten.</p>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">02</div>
+      <h3 data-i18n="r128_w2_h">Preset wählen</h3>
+      <p data-i18n="r128_w2_p">TV, Streaming, Podcast, Custom. LRA-Reshape und True-Peak-Ceiling justierbar pro Job.</p>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">03</div>
+      <h3 data-i18n="r128_w3_h">Normalisieren</h3>
+      <p data-i18n="r128_w3_p">Zwei-Pass-Verarbeitung: Analyse, Gain-Berechnung, Limiter-Run, Verify. Multi-Core, alle Sicherheitsnetze aktiv.</p>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">04</div>
+      <h3 data-i18n="r128_w4_h">Reports</h3>
+      <p data-i18n="r128_w4_p">CSV mit allen Werten vorher/nachher, optional PDF-Sammelreport. JSON-Output für CI-Pipelines.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label" data-i18n="r128_specs_label">Technische Details</div>
+  <h2 class="section-h2" data-i18n="r128_specs_title">Built for Production</h2>
+  <p class="section-intro" data-i18n="r128_specs_intro">Saubere DSP, deterministisch, normgerecht.</p>
+
+  <div class="specs">
+    <div class="spec-col">
+      <h4 data-i18n="r128_specs_dsp">DSP</h4>
+      <ul>
+        <li><b>K-Weight</b> ITU-R BS.1770-4</li>
+        <li><b>Gating</b> Abs -70 / Rel -10</li>
+        <li><b>Blocks</b> 400 ms / 75% OL</li>
+        <li><b>True Peak</b> 4× polyphase</li>
+        <li><b>Lookahead</b> 5 ms</li>
+      </ul>
+    </div>
+    <div class="spec-col">
+      <h4 data-i18n="r128_specs_targets">Targets</h4>
+      <ul>
+        <li><b>TV</b> -23 LUFS</li>
+        <li><b>Streaming</b> -14 LUFS</li>
+        <li><b>Podcast</b> -16 LUFS</li>
+        <li><b>Atmos</b> -18 LUFS</li>
+        <li><b>Custom</b> ±0.1 LU</li>
+      </ul>
+    </div>
+    <div class="spec-col">
+      <h4 data-i18n="r128_specs_io">I/O</h4>
+      <ul>
+        <li><b>Input</b> WAV, FLAC, MP3</li>
+        <li><b>Output</b> WAV, FLAC, AAC</li>
+        <li><b>Channel</b> Stereo / 5.1 / 7.1</li>
+        <li><b>Atmos</b> ADM-BWF</li>
+        <li><b>Plattform</b> macOS, Windows</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">SATK</div>
+  <p>Sascha&rsquo;s Audio Tool Kit · <a href="index.html" data-i18n="f_shop">Shop</a> · <a href="tools.html" data-i18n="f_tools">Browser-Tools</a> · <a href="impressum.html" data-i18n="f_imprint">Impressum</a> · <a href="datenschutz.html" data-i18n="f_privacy">Datenschutz</a> · © 2026</p>
+</footer>
+
+<script>
+const i18n = {
+  de: {
+    nav_shop: 'Shop',
+    nav_info: 'Lizenz & Support',
+    nav_back: '← Zurück zum Shop',
+    r128_eyebrow: 'Standalone · macOS · Windows · CLI',
+    r128_tagline: 'Batch-Normalisierung nach EBU R128 / ITU-R BS.1770-4. Hunderte Files auf einmal — gegated, true-peak-limited, in deinem Wunsch-Korridor. Mit CLI für Pipelines.',
+    r128_features_label: 'Highlights',
+    r128_features_title: 'Loudness im Akkord',
+    r128_features_intro: 'Drag-and-Drop oder Skript-Pipeline — der Normalizer arbeitet im Hintergrund weiter, während du am nächsten Beitrag sitzt.',
+    r128_f1_h: 'Hunderte Files parallel',
+    r128_f1_p: 'Drop einen ganzen Ordner — der Normalizer queued auf, parallelisiert auf alle CPU-Kerne und schreibt in den Ziel-Ordner deiner Wahl.',
+    r128_f2_h: 'ITU-R BS.1770-4',
+    r128_f2_p: 'Absolute -70 LUFS und relatives -10 LU Gating. 400-ms-Blocks mit 75% Overlap, Power-Domain-Berechnung — exakt nach Norm.',
+    r128_f3_h: 'ISP-Limiter',
+    r128_f3_p: '4-fach polyphaser True-Peak-Limiter mit 5-ms-Lookahead. -1 dBTP per Default — kein Inter-Sample-Clipping bei Codec-Konvertierung.',
+    r128_f4_h: '16 Broadcast-Targets',
+    r128_f4_p: 'TV (-23), Streaming (-14), Podcast (-16), Spotify, Apple Music, YouTube, Amazon, Atmos. Plus Custom-Targets mit eigenem LRA-Reshape.',
+    r128_f5_h: 'Pipeline-fähig',
+    r128_f5_p: 'Aufruf aus Shell-Scripts, MAM-Workflows, Continuous-Delivery. Exit-Codes, JSON-Reports, Watch-Folder mit Inotify.',
+    r128_f6_h: 'WAV bis Atmos',
+    r128_f6_p: 'Stereo, 5.1, 7.1, ADM-BWF (Dolby Atmos). WAV, FLAC, MP3, AAC, OGG. Sample-Rate-Konvertierung optional integriert.',
+    r128_wf_label: 'Funktionsweise',
+    r128_wf_title: 'In 4 Schritten zur Norm',
+    r128_wf_intro: 'Egal ob ein File oder ein ganzer Sendetag — der Workflow bleibt der gleiche.',
+    r128_w1_h: 'Files droppen',
+    r128_w1_p: 'Einzelne Files, Ordner, ganze Trees. Stapel-Liste mit Datei-Info, geschätzter Loudness und Auffälligkeiten.',
+    r128_w2_h: 'Preset wählen',
+    r128_w2_p: 'TV, Streaming, Podcast, Custom. LRA-Reshape und True-Peak-Ceiling justierbar pro Job.',
+    r128_w3_h: 'Normalisieren',
+    r128_w3_p: 'Zwei-Pass-Verarbeitung: Analyse, Gain-Berechnung, Limiter-Run, Verify. Multi-Core, alle Sicherheitsnetze aktiv.',
+    r128_w4_h: 'Reports',
+    r128_w4_p: 'CSV mit allen Werten vorher/nachher, optional PDF-Sammelreport. JSON-Output für CI-Pipelines.',
+    r128_specs_label: 'Technische Details',
+    r128_specs_title: 'Built for Production',
+    r128_specs_intro: 'Saubere DSP, deterministisch, normgerecht.',
+    r128_specs_dsp: 'DSP',
+    r128_specs_targets: 'Targets',
+    r128_specs_io: 'I/O',
+    f_shop: 'Shop',
+    f_tools: 'Browser-Tools',
+    f_imprint: 'Impressum',
+    f_privacy: 'Datenschutz'
+  },
+  en: {
+    nav_shop: 'Shop',
+    nav_info: 'License & Support',
+    nav_back: '← Back to Shop',
+    r128_eyebrow: 'Standalone · macOS · Windows · CLI',
+    r128_tagline: 'Batch normalization to EBU R128 / ITU-R BS.1770-4. Hundreds of files at once — gated, true-peak-limited, inside your chosen corridor. Includes a CLI for pipelines.',
+    r128_features_label: 'Highlights',
+    r128_features_title: 'Loudness at scale',
+    r128_features_intro: 'Drag-and-drop or script pipeline — the Normalizer keeps working in the background while you move on to the next package.',
+    r128_f1_h: 'Hundreds of files in parallel',
+    r128_f1_p: 'Drop an entire folder — the Normalizer queues up, parallelises across all CPU cores and writes to the output folder of your choice.',
+    r128_f2_h: 'ITU-R BS.1770-4',
+    r128_f2_p: 'Absolute -70 LUFS and relative -10 LU gating. 400 ms blocks with 75% overlap, power-domain calculation — exactly per spec.',
+    r128_f3_h: 'ISP limiter',
+    r128_f3_p: '4× polyphase true-peak limiter with 5 ms lookahead. -1 dBTP by default — no inter-sample clipping after codec conversion.',
+    r128_f4_h: '16 broadcast targets',
+    r128_f4_p: 'TV (-23), streaming (-14), podcast (-16), Spotify, Apple Music, YouTube, Amazon, Atmos. Plus custom targets with their own LRA reshape.',
+    r128_f5_h: 'Pipeline-ready',
+    r128_f5_p: 'Call from shell scripts, MAM workflows, continuous delivery. Exit codes, JSON reports, watch folders via inotify.',
+    r128_f6_h: 'WAV to Atmos',
+    r128_f6_p: 'Stereo, 5.1, 7.1, ADM-BWF (Dolby Atmos). WAV, FLAC, MP3, AAC, OGG. Sample-rate conversion optional.',
+    r128_wf_label: 'How it works',
+    r128_wf_title: 'Four steps to spec',
+    r128_wf_intro: 'One file or a whole broadcast day — the workflow stays the same.',
+    r128_w1_h: 'Drop files',
+    r128_w1_p: 'Single files, folders, whole trees. Batch list with file info, estimated loudness and red flags.',
+    r128_w2_h: 'Pick preset',
+    r128_w2_p: 'TV, streaming, podcast, custom. LRA reshape and true-peak ceiling adjustable per job.',
+    r128_w3_h: 'Normalise',
+    r128_w3_p: 'Two-pass processing: analysis, gain calculation, limiter run, verify. Multi-core, all safeties on.',
+    r128_w4_h: 'Reports',
+    r128_w4_p: 'CSV with all before/after values, optional PDF batch report. JSON output for CI pipelines.',
+    r128_specs_label: 'Technical Details',
+    r128_specs_title: 'Built for Production',
+    r128_specs_intro: 'Clean DSP, deterministic, spec-compliant.',
+    r128_specs_dsp: 'DSP',
+    r128_specs_targets: 'Targets',
+    r128_specs_io: 'I/O',
+    f_shop: 'Shop',
+    f_tools: 'Browser Tools',
+    f_imprint: 'Legal Notice',
+    f_privacy: 'Privacy Policy'
+  }
+};
+
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.getElementById('btnDE').classList.toggle('active', lang==='de');
+  document.getElementById('btnEN').classList.toggle('active', lang==='en');
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    if (t[k]) el.textContent = t[k];
+  });
+  try { localStorage.setItem('satk-lang', lang); } catch(e){}
+}
+
+try {
+  const saved = localStorage.getItem('satk-lang');
+  if (saved === 'en') setLang('en');
+} catch(e){}
+</script>
+
+</body>
+</html>

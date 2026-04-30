@@ -43,7 +43,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 /* ── Card ────────────────────────── */
 .card{background:var(--sf);border-radius:10px;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease;cursor:default;position:relative}
 .card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.5)}
-.card-img{width:100%;aspect-ratio:16/9;overflow:hidden;position:relative;background:#08090a}
+.card-img{display:block;width:100%;aspect-ratio:16/9;overflow:hidden;position:relative;background:#08090a;text-decoration:none}
 .card-img img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s ease}
 .card:hover .card-img img{transform:scale(1.03)}
 .card-tag{position:absolute;top:14px;left:14px;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;
@@ -155,9 +155,9 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 
     <!-- ╔══ Broadcast Meter (Plugin · Mac · iPad · iPhone Mini) ═══╗ -->
     <div class="card">
-      <div class="card-img">
-        <img src="img-broadcast-meter.png" alt="SATK Broadcast Meter">
-      </div>
+      <a href="broadcast-meter-pro.html" class="card-img">
+        <img src="img-broadcast-meter.png" alt="SATK Broadcast Meter — zur Detailseite">
+      </a>
       <div class="card-body">
         <div class="card-name">Broadcast Meter</div>
         <div class="card-sub" data-i18n="bm_sub">PPM · LUFS · True Peak · FFT · Goniometer · Radar · Sprachklarheit · Prognose</div>
@@ -210,9 +210,9 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 
     <!-- ╔══ VoiceOver Studio (Standalone Mac/Win + Mac App) ══════╗ -->
     <div class="card">
-      <div class="card-img">
-        <img src="img-voiceover-studio.png" alt="SATK VoiceOver Studio">
-      </div>
+      <a href="voiceover-studio.html" class="card-img">
+        <img src="img-voiceover-studio.png" alt="SATK VoiceOver Studio — zur Detailseite">
+      </a>
       <div class="card-body">
         <div class="card-name">VoiceOver Studio</div>
         <div class="card-sub" data-i18n="vo_sub">Video-Sync · Denoiser · EQ · Kompressor · De-Esser · R128 Export</div>
@@ -241,9 +241,9 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 
     <!-- ╔══ R128 Normalizer Pro (Standalone Mac/Win + Mac App) ═══╗ -->
     <div class="card">
-      <div class="card-img">
-        <img src="img-r128-normalizer.png" alt="SATK R128 Normalizer Pro">
-      </div>
+      <a href="r128-normalizer-pro.html" class="card-img">
+        <img src="img-r128-normalizer.png" alt="SATK R128 Normalizer Pro — zur Detailseite">
+      </a>
       <div class="card-body">
         <div class="card-name">R128 Normalizer Pro</div>
         <div class="card-sub" data-i18n="r128_sub">Batch-Normalisierung · Double-Gating · True Peak Limiter · CLI</div>

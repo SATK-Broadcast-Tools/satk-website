@@ -188,7 +188,7 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
               </div>
             </div>
             <div class="store-row">
-              <a class="appstore-badge" href="https://apps.apple.com/app/id6762224279" target="_blank" rel="noopener" aria-label="Im App Store laden">
+              <a class="appstore-badge" data-app-id="6762224279" href="https://apps.apple.com/de/app/id6762224279" target="_blank" rel="noopener" aria-label="Im App Store laden">
                 <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
               </a>
               <div class="store-meta">
@@ -196,7 +196,7 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
               </div>
             </div>
             <div class="store-row">
-              <a class="appstore-badge" href="https://apps.apple.com/app/id6763360069" target="_blank" rel="noopener" aria-label="Im App Store laden">
+              <a class="appstore-badge" data-app-id="6763360069" href="https://apps.apple.com/de/app/id6763360069" target="_blank" rel="noopener" aria-label="Im App Store laden">
                 <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
               </a>
               <div class="store-meta">
@@ -399,6 +399,23 @@ try {
   const saved = localStorage.getItem('satk-lang');
   if (saved === 'en') setLang('en');
 } catch(e){}
+
+// Localize App Store URLs by browser locale (de-DE → de, en-GB → gb, etc.)
+(function localizeAppStoreUrls() {
+  const langs = navigator.languages || [navigator.language || 'de-DE'];
+  let country = null;
+  for (const lang of langs) {
+    const m = lang.match(/-([a-z]{2})$/i);
+    if (m) { country = m[1].toLowerCase(); break; }
+  }
+  if (!country) {
+    const primary = (navigator.language || 'de').split('-')[0].toLowerCase();
+    country = primary === 'en' ? 'us' : primary;
+  }
+  document.querySelectorAll('.appstore-badge[data-app-id]').forEach(a => {
+    a.href = `https://apps.apple.com/${country}/app/id${a.dataset.appId}`;
+  });
+})();
 </script>
 
 </body>

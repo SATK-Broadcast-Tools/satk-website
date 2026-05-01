@@ -50,6 +50,8 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .product-eyebrow{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.4em;color:var(--ac);text-transform:uppercase;margin-bottom:18px}
 .product-hero h1{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:800;letter-spacing:-1px;line-height:1.05;text-transform:uppercase;margin-bottom:18px}
 .product-hero .tagline{color:var(--mu2);font-size:14px;letter-spacing:.3px;line-height:1.7;max-width:640px;margin:0 auto}
+.product-price-chip{display:inline-block;font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.3px;color:var(--ac);border:1px solid rgba(200,240,96,.3);padding:10px 24px;border-radius:8px;margin-top:30px}
+.product-price-chip .vat{font-size:10px;color:var(--mu);font-weight:300;letter-spacing:.4px;margin-left:10px;text-transform:uppercase}
 
 .hero-img-wrap{max-width:1120px;margin:32px auto 0;padding:0 32px}
 .hero-img{width:100%;border:1px solid var(--bd);border-radius:10px;display:block;box-shadow:0 30px 80px rgba(0,0,0,.5)}
@@ -78,9 +80,9 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .spec-col:last-child{border-right:none}
 .spec-col h4{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:14px}
 .spec-col ul{list-style:none}
-.spec-col li{display:flex;align-items:flex-start;gap:14px;font-size:11px;color:var(--tx);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);letter-spacing:.2px}
+.spec-col li{display:flex;align-items:center;gap:12px;font-size:11px;color:var(--tx);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .spec-col li:last-child{border-bottom:none}
-.spec-col li b{color:var(--ac);font-weight:500;flex:0 0 90px}
+.spec-col li b{color:var(--ac);font-weight:500;flex:0 0 88px}
 
 footer{text-align:center;padding:72px 32px 48px;margin-top:96px;border-top:1px solid rgba(255,255,255,.03)}
 footer p{font-size:9px;color:var(--mu);letter-spacing:.3px}
@@ -134,7 +136,8 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 <section class="product-hero">
   <div class="product-eyebrow" data-i18n="od_eyebrow">Standalone · macOS · Universal Binary</div>
   <h1>Overdub Studio</h1>
-  <p class="tagline" data-i18n="od_tagline">Broadcast-grade Voice-Over gegen Bewegtbild. Eine App ersetzt den klassischen Workflow „Video schneiden im NLE → Sprecher in der DAW → Mix in der dritten App". Hier: Video laden → Skript laden → Sprechen → fertig.</p>
+  <p class="tagline" data-i18n="od_tagline">Sprechen, mischen, fertig — alles in einer App. Vom Skript bis zum sendefertigen Mix gegen Bewegtbild: Video laden → Skript laden → Sprechen → fertig.</p>
+  <div class="product-price-chip">199 <span class="cur">€</span> <span class="vat" data-i18n="vat">inkl. MwSt.</span></div>
 </section>
 
 <div class="hero-img-wrap">
@@ -270,7 +273,8 @@ const i18n = {
     nav_info: 'Supportanfrage',
     nav_back: '← Zurück zum Shop',
     od_eyebrow: 'Standalone · macOS · Universal Binary',
-    od_tagline: 'Broadcast-grade Voice-Over gegen Bewegtbild. Eine App ersetzt den klassischen Workflow „Video schneiden im NLE → Sprecher in der DAW → Mix in der dritten App". Hier: Video laden → Skript laden → Sprechen → fertig.',
+    od_tagline: 'Sprechen, mischen, fertig — alles in einer App. Vom Skript bis zum sendefertigen Mix gegen Bewegtbild: Video laden → Skript laden → Sprechen → fertig.',
+    vat: 'inkl. MwSt.',
     od_features_label: 'Highlights',
     od_features_title: 'Eine Sache richtig',
     od_features_intro: 'Pro Tools, Reaper und Studio One können alles — aber nichts davon ist auf den video-synchronen Voice-Over-Workflow zugeschnitten. Overdub Studio schon. Vier Top-Features übernehmen das Handwerk, damit du dich aufs Sprechen konzentrieren kannst.',
@@ -316,7 +320,8 @@ const i18n = {
     nav_info: 'Support request',
     nav_back: '← Back to Shop',
     od_eyebrow: 'Standalone · macOS · Universal Binary',
-    od_tagline: 'Broadcast-grade voiceover against picture. One app replaces the classic workflow "edit video in the NLE → record voice in the DAW → mix in a third app". Here: load video → load script → speak → done.',
+    od_tagline: 'Speak, mix, done — all in one app. From script to broadcast-ready mix against picture: load video → load script → speak → done.',
+    vat: 'incl. VAT',
     od_features_label: 'Highlights',
     od_features_title: 'One thing, done right',
     od_features_intro: 'Pro Tools, Reaper and Studio One can do everything — but none of them are tailored for the video-synchronous voiceover workflow. Overdub Studio is. Four top features take care of the craft so you can focus on speaking.',

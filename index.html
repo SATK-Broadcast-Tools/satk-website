@@ -23,6 +23,7 @@
 <meta name="twitter:image" content="https://satk.tech/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <style>
 :root{--bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#c8f060;--tx:#e8e8ec;--mu:#6e6e7a;--mu2:#9a9aaa}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -185,13 +186,14 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
         <div class="format-section">
           <div class="format-label" data-i18n="fmt_standalone_mac">Standalone · macOS</div>
           <div class="card-price">89 <span class="cur">€</span></div>
-          <div class="card-vat" data-i18n="vat">inkl. MwSt.</div>
+          <div class="card-vat" data-i18n="vat">inkl. MwSt. · Einführungspreis</div>
+          <button class="card-btn buy" data-i18n="btn_buy" onclick="openCheckout(PRICES.bm)">Kaufen</button>
         </div>
 
         <div class="format-section">
           <div class="format-label" data-i18n="fmt_plugin">Plugin · VST3 · AU</div>
           <div class="card-price">59 <span class="cur">€</span></div>
-          <div class="card-vat" data-i18n="vat">inkl. MwSt.</div>
+          <div class="card-vat" data-i18n="vat">inkl. MwSt. · Einführungspreis</div>
           <button class="card-btn soon" data-i18n="btn_soon">Bald verfügbar</button>
           <!-- TODO: Plugin Boutique URL -->
           <a class="card-appstore" href="#" data-i18n="also_pluginboutique" target="_blank" rel="noopener">Auch bei Plugin Boutique →</a>
@@ -245,8 +247,8 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
         <div class="format-section">
           <div class="format-label" data-i18n="fmt_standalone_mac">Standalone · macOS</div>
           <div class="card-price">199 <span class="cur">€</span></div>
-          <div class="card-vat" data-i18n="vat">inkl. MwSt.</div>
-          <button class="card-btn soon" data-i18n="btn_soon">Bald verfügbar</button>
+          <div class="card-vat" data-i18n="vat">inkl. MwSt. · Einführungspreis</div>
+          <button class="card-btn buy" data-i18n="btn_buy" onclick="openCheckout(PRICES.od)">Kaufen</button>
         </div>
 
         <div class="format-section">
@@ -276,7 +278,8 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
         <div class="format-section">
           <div class="format-label" data-i18n="fmt_standalone_mac">Standalone · macOS</div>
           <div class="card-price">49 <span class="cur">€</span></div>
-          <div class="card-vat" data-i18n="vat">inkl. MwSt.</div>
+          <div class="card-vat" data-i18n="vat">inkl. MwSt. · Einführungspreis</div>
+          <button class="card-btn buy" data-i18n="btn_buy" onclick="openCheckout(PRICES.lc)">Kaufen</button>
         </div>
 
         <div class="format-section">
@@ -336,6 +339,50 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 </footer>
 
 <script>
+// ── Paddle (Sandbox auf localhost, deaktiviert auf Live) ──
+// Switch auf 'production' sobald Live-Token + Delivery-Pipeline stehen.
+const HOSTNAME = window.location.hostname;
+const IS_LOCAL = HOSTNAME === 'localhost' || HOSTNAME === '127.0.0.1' || HOSTNAME === '';
+const PADDLE_ENV = IS_LOCAL ? 'sandbox' : 'disabled';
+const PADDLE_TOKEN = 'test_a65ecd48de16da666e6cc143342';
+const PRICES = {
+  bm: 'pri_01kqj02k8cwdj70b04ajthffqj',
+  od: 'pri_01kqj0fp74z9m4mg9y4z3xhbfp',
+  lc: 'pri_01kqj0qm3v1tv8e1s5tgv4j9q2'
+};
+
+window.addEventListener('load', () => {
+  if (PADDLE_ENV === 'disabled') {
+    // Live: Buy-Buttons auf "Bald verfügbar" zurücksetzen, bis Delivery-Stack steht
+    const lang = document.documentElement.lang || 'de';
+    const fallback = (i18n[lang] || i18n.de).btn_soon;
+    document.querySelectorAll('.card-btn.buy').forEach(btn => {
+      btn.classList.remove('buy');
+      btn.classList.add('soon');
+      btn.removeAttribute('onclick');
+      btn.setAttribute('data-i18n', 'btn_soon');
+      btn.textContent = fallback;
+    });
+    return;
+  }
+  if (typeof Paddle === 'undefined') return;
+  if (PADDLE_ENV === 'sandbox') Paddle.Environment.set('sandbox');
+  Paddle.Initialize({ token: PADDLE_TOKEN });
+});
+
+function openCheckout(priceId) {
+  if (PADDLE_ENV === 'disabled' || typeof Paddle === 'undefined' || !priceId) {
+    return;
+  }
+  Paddle.Checkout.open({
+    items: [{ priceId, quantity: 1 }],
+    settings: {
+      theme: 'dark',
+      locale: document.documentElement.lang || 'de'
+    }
+  });
+}
+
 const i18n = {
   de: {
     nav_info: 'Supportanfrage',
@@ -352,8 +399,9 @@ const i18n = {
     lc_sub: 'Offline R128 · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6',
     fmt_standalone_mac: 'Standalone · macOS',
     r128_sub: 'Batch-Normalisierung · Double-Gating · True Peak Limiter · CLI',
-    vat: 'inkl. MwSt.',
+    vat: 'inkl. MwSt. · Einführungspreis',
     btn_soon: 'Bald verfügbar',
+    btn_buy: 'Kaufen',
     also_appstore: 'Auch im Mac App Store →',
     also_pluginboutique: 'Auch bei Plugin Boutique →',
     fmt_plugin: 'Plugin · VST3 · AU',
@@ -389,8 +437,9 @@ const i18n = {
     lc_sub: 'Offline R128 · 16 delivery presets · verify-and-refine · mono to 9.1.6',
     fmt_standalone_mac: 'Standalone · macOS',
     r128_sub: 'Batch Normalization · Double Gating · True Peak Limiter · CLI',
-    vat: 'incl. VAT',
+    vat: 'incl. VAT · Launch price',
     btn_soon: 'Coming soon',
+    btn_buy: 'Buy',
     also_appstore: 'Also on the Mac App Store →',
     also_pluginboutique: 'Also on Plugin Boutique →',
     fmt_plugin: 'Plugin · VST3 · AU',

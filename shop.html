@@ -22,6 +22,7 @@
 <meta name="twitter:image" content="https://satk.tech/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <style>
 :root{--bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#c8f060;--tx:#e8e8ec;--mu:#6e6e7a;--mu2:#9a9aaa}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -159,8 +160,8 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
           <span>Plugin</span><span>macOS</span><span>iPad</span><span>iPhone</span>
         </div>
         <div class="card-price">89 <span class="cur">€</span></div>
-        <div class="card-vat" data-i18n="vat">inkl. MwSt.</div>
-        <button class="card-btn soon" data-i18n="btn_soon">Bald verfügbar</button>
+        <div class="card-vat" data-i18n="vat">inkl. MwSt. · Einführungspreis</div>
+        <button class="card-btn buy" data-i18n="btn_buy" onclick="openCheckout(PRICES.bm)">Kaufen</button>
       </div>
     </div>
 
@@ -176,8 +177,8 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
           <span>macOS</span><span>Universal Binary</span><span>Standalone</span>
         </div>
         <div class="card-price">199 <span class="cur">€</span></div>
-        <div class="card-vat" data-i18n="vat">inkl. MwSt.</div>
-        <button class="card-btn soon" data-i18n="btn_soon">Bald verfügbar</button>
+        <div class="card-vat" data-i18n="vat">inkl. MwSt. · Einführungspreis</div>
+        <button class="card-btn buy" data-i18n="btn_buy" onclick="openCheckout(PRICES.od)">Kaufen</button>
       </div>
     </div>
 
@@ -193,8 +194,8 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
           <span>macOS</span><span>iPad</span><span>Universal</span>
         </div>
         <div class="card-price">49 <span class="cur">€</span></div>
-        <div class="card-vat" data-i18n="vat">inkl. MwSt.</div>
-        <button class="card-btn soon" data-i18n="btn_soon">Bald verfügbar</button>
+        <div class="card-vat" data-i18n="vat">inkl. MwSt. · Einführungspreis</div>
+        <button class="card-btn buy" data-i18n="btn_buy" onclick="openCheckout(PRICES.lc)">Kaufen</button>
       </div>
     </div>
 
@@ -229,6 +230,50 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 </footer>
 
 <script>
+// ── Paddle (Sandbox auf localhost, deaktiviert auf Live) ──
+// Switch auf 'production' sobald Live-Token + Delivery-Pipeline stehen.
+const HOSTNAME = window.location.hostname;
+const IS_LOCAL = HOSTNAME === 'localhost' || HOSTNAME === '127.0.0.1' || HOSTNAME === '';
+const PADDLE_ENV = IS_LOCAL ? 'sandbox' : 'disabled';
+const PADDLE_TOKEN = 'test_a65ecd48de16da666e6cc143342';
+const PRICES = {
+  bm: 'pri_01kqj02k8cwdj70b04ajthffqj',
+  od: 'pri_01kqj0fp74z9m4mg9y4z3xhbfp',
+  lc: 'pri_01kqj0qm3v1tv8e1s5tgv4j9q2'
+};
+
+window.addEventListener('load', () => {
+  if (PADDLE_ENV === 'disabled') {
+    // Live: Buy-Buttons auf "Bald verfügbar" zurücksetzen, bis Delivery-Stack steht
+    const lang = document.documentElement.lang || 'de';
+    const fallback = (i18n[lang] || i18n.de).btn_soon;
+    document.querySelectorAll('.card-btn.buy').forEach(btn => {
+      btn.classList.remove('buy');
+      btn.classList.add('soon');
+      btn.removeAttribute('onclick');
+      btn.setAttribute('data-i18n', 'btn_soon');
+      btn.textContent = fallback;
+    });
+    return;
+  }
+  if (typeof Paddle === 'undefined') return;
+  if (PADDLE_ENV === 'sandbox') Paddle.Environment.set('sandbox');
+  Paddle.Initialize({ token: PADDLE_TOKEN });
+});
+
+function openCheckout(priceId) {
+  if (PADDLE_ENV === 'disabled' || typeof Paddle === 'undefined' || !priceId) {
+    return;
+  }
+  Paddle.Checkout.open({
+    items: [{ priceId, quantity: 1 }],
+    settings: {
+      theme: 'dark',
+      locale: document.documentElement.lang || 'de'
+    }
+  });
+}
+
 const i18n = {
   de: {
     nav_info: 'Supportanfrage',
@@ -237,8 +282,9 @@ const i18n = {
     bm_sub: 'PPM · LUFS · True Peak · FFT · Goniometer · Radar · Sprachklarheit · Prognose',
     vo_sub: 'Video-Sync · Denoiser · EQ · Kompressor · De-Esser · R128 Export',
     r128_sub: 'Batch-Normalisierung · Double-Gating · True Peak Limiter · CLI',
-    vat: 'inkl. MwSt.',
+    vat: 'inkl. MwSt. · Einführungspreis',
     btn_soon: 'Bald verfügbar',
+    btn_buy: 'Kaufen',
     info_title: 'Lizenz & Support',
     info_lic_h: 'Lizenz',
     info_lic_p: 'Jede Lizenz gilt für 2 Rechner. Einmalige Zahlung, kein Abo. Sichere Bezahlung über Paddle.',
@@ -256,8 +302,9 @@ const i18n = {
     bm_sub: 'PPM · LUFS · True Peak · FFT · Vectorscope · Radar · Speech Clarity · Prediction',
     vo_sub: 'Video Sync · Denoiser · EQ · Compressor · De-Esser · R128 Export',
     r128_sub: 'Batch Normalization · Double Gating · True Peak Limiter · CLI',
-    vat: 'incl. VAT',
+    vat: 'incl. VAT · Launch price',
     btn_soon: 'Coming soon',
+    btn_buy: 'Buy',
     info_title: 'License & Support',
     info_lic_h: 'License',
     info_lic_p: 'Each license covers 2 computers. One-time payment, no subscription. Secure checkout via Paddle.',

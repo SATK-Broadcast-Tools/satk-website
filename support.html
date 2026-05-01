@@ -62,6 +62,10 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .form-select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='%236e6e7a'><path d='M6 8L0 0h12z'/></svg>");background-repeat:no-repeat;background-position:right 14px center;background-size:10px;padding-right:36px}
 .form-row-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px}
 .form-row-grid .form-row{margin-bottom:0}
+.form-section{margin-top:28px;padding-top:28px;border-top:1px solid var(--bd)}
+.form-section:first-of-type{margin-top:0;padding-top:0;border-top:none}
+.form-section-h{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:18px}
+.form-label .opt{color:var(--mu);font-weight:300;letter-spacing:0;text-transform:none;font-size:9px;margin-left:6px}
 
 .form-submit{display:inline-block;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
   padding:14px 36px;border-radius:6px;border:none;cursor:pointer;font-weight:500;transition:all .25s;
@@ -142,33 +146,49 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 
   <form class="form-wrap" action="mailto:info@satk.tech" method="post" enctype="text/plain" id="supportForm">
     <h2 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.2px;color:var(--tx);margin-bottom:8px" data-i18n="sup_form_h2">Support-Anfrage</h2>
-    <p style="font-size:12px;color:var(--mu2);margin-bottom:28px;line-height:1.6" data-i18n="sup_form_intro">Schreib mir hier oder direkt per E-Mail. Bitte beschreibe das Problem so konkret wie möglich — Betriebssystem-Version, Tool-Version und (falls vorhanden) Schritte zur Reproduktion helfen sehr.</p>
+    <p style="font-size:12px;color:var(--mu2);margin-bottom:28px;line-height:1.6" data-i18n="sup_form_intro">Bitte fülle die Felder so vollständig wie möglich aus — App- und OS-Version sind für Bug-Tracking entscheidend. Screenshots, Crash-Logs oder Audio-Beispiele kannst du gerne als Anhang in deiner Antwort-Mail nachreichen.</p>
 
-    <div class="form-row-grid">
-      <div class="form-row">
-        <label class="form-label" for="name" data-i18n="sup_label_name">Name</label>
-        <input class="form-input" type="text" id="name" name="Name" required>
-      </div>
-      <div class="form-row">
-        <label class="form-label" for="email" data-i18n="sup_label_email">E-Mail</label>
-        <input class="form-input" type="email" id="email" name="E-Mail" required>
+    <!-- ╔══ Kontakt ═══════════════════════════════════════════╗ -->
+    <div class="form-section">
+      <div class="form-section-h" data-i18n="sup_sec_contact">Kontakt</div>
+      <div class="form-row-grid">
+        <div class="form-row">
+          <label class="form-label" for="name" data-i18n="sup_label_name">Name</label>
+          <input class="form-input" type="text" id="name" name="Name" required>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="email" data-i18n="sup_label_email">E-Mail</label>
+          <input class="form-input" type="email" id="email" name="E-Mail" required>
+        </div>
       </div>
     </div>
 
-    <div class="form-row-grid">
-      <div class="form-row">
-        <label class="form-label" for="product" data-i18n="sup_label_product">Produkt</label>
-        <select class="form-select" id="product" name="Produkt">
-          <option value="Broadcast Meter">Broadcast Meter</option>
-          <option value="Overdub Studio">Overdub Studio</option>
-          <option value="Loudness Correct">Loudness Correct</option>
-          <option value="Browser-Tool">Browser-Tool</option>
-          <option value="Allgemein">Allgemein / Sonstiges</option>
-        </select>
+    <!-- ╔══ Software ══════════════════════════════════════════╗ -->
+    <div class="form-section">
+      <div class="form-section-h" data-i18n="sup_sec_software">Software</div>
+      <div class="form-row-grid">
+        <div class="form-row">
+          <label class="form-label" for="product" data-i18n="sup_label_product">App</label>
+          <select class="form-select" id="product" name="App" required>
+            <option value="Broadcast Meter (Plugin)">Broadcast Meter — Plugin (VST3 / AU / AAX)</option>
+            <option value="Broadcast Meter (macOS App)">Broadcast Meter — macOS App</option>
+            <option value="Broadcast Meter (iPad)">Broadcast Meter — iPad</option>
+            <option value="Broadcast Meter Mini (iPhone)">Broadcast Meter Mini — iPhone</option>
+            <option value="Overdub Studio">Overdub Studio (macOS)</option>
+            <option value="Loudness Correct (macOS)">Loudness Correct — macOS</option>
+            <option value="Loudness Correct (iPad)">Loudness Correct — iPad</option>
+            <option value="Browser-Tool">Browser-Tool (kostenlos)</option>
+            <option value="Allgemein">Allgemein / Sonstiges</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="appversion" data-i18n="sup_label_appversion">App-Version</label>
+          <input class="form-input" type="text" id="appversion" name="App-Version" placeholder="z. B. 1.0.3 (12)" required>
+        </div>
       </div>
       <div class="form-row">
         <label class="form-label" for="topic" data-i18n="sup_label_topic">Anliegen</label>
-        <select class="form-select" id="topic" name="Anliegen">
+        <select class="form-select" id="topic" name="Anliegen" required>
           <option value="Bug / Crash">Bug / Crash</option>
           <option value="Frage / Wie geht...">Frage / Wie geht…</option>
           <option value="Feature-Wunsch">Feature-Wunsch</option>
@@ -178,18 +198,57 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
       </div>
     </div>
 
-    <div class="form-row">
-      <label class="form-label" for="subject" data-i18n="sup_label_subject">Betreff</label>
-      <input class="form-input" type="text" id="subject" name="Betreff" required>
+    <!-- ╔══ System ════════════════════════════════════════════╗ -->
+    <div class="form-section">
+      <div class="form-section-h" data-i18n="sup_sec_system">System</div>
+      <div class="form-row-grid">
+        <div class="form-row">
+          <label class="form-label" for="os" data-i18n="sup_label_os">Betriebssystem</label>
+          <select class="form-select" id="os" name="Betriebssystem" required>
+            <option value="macOS">macOS</option>
+            <option value="Windows">Windows</option>
+            <option value="iPadOS">iPadOS</option>
+            <option value="iOS">iOS (iPhone)</option>
+            <option value="Linux">Linux</option>
+            <option value="Andere">Andere</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="osversion" data-i18n="sup_label_osversion">OS-Version</label>
+          <input class="form-input" type="text" id="osversion" name="OS-Version" placeholder="z. B. macOS 14.5 Sonoma" required>
+        </div>
+      </div>
+      <div class="form-row-grid">
+        <div class="form-row">
+          <label class="form-label" for="daw">DAW <span class="opt" data-i18n="sup_optional">(optional, nur bei Plugin)</span></label>
+          <input class="form-input" type="text" id="daw" name="DAW" placeholder="z. B. Pro Tools 2024.3">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="iface">Audio-Interface <span class="opt" data-i18n="sup_optional2">(optional)</span></label>
+          <input class="form-input" type="text" id="iface" name="Audio-Interface" placeholder="z. B. RME UCX II">
+        </div>
+      </div>
     </div>
 
-    <div class="form-row">
-      <label class="form-label" for="message" data-i18n="sup_label_message">Nachricht</label>
-      <textarea class="form-textarea" id="message" name="Nachricht" required></textarea>
+    <!-- ╔══ Anliegen ══════════════════════════════════════════╗ -->
+    <div class="form-section">
+      <div class="form-section-h" data-i18n="sup_sec_request">Beschreibung</div>
+      <div class="form-row">
+        <label class="form-label" for="subject" data-i18n="sup_label_subject">Betreff</label>
+        <input class="form-input" type="text" id="subject" name="Betreff" required>
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="message" data-i18n="sup_label_message">Fehlerbeschreibung / Frage</label>
+        <textarea class="form-textarea" id="message" name="Nachricht" required></textarea>
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="repro">Reproduktionsschritte <span class="opt" data-i18n="sup_optional3">(optional, hilft enorm bei Bugs)</span></label>
+        <textarea class="form-textarea" id="repro" name="Reproduktion" placeholder="1. ...&#10;2. ...&#10;3. ..." style="min-height:110px"></textarea>
+      </div>
     </div>
 
     <button class="form-submit" type="submit" data-i18n="sup_submit">Senden</button>
-    <p class="form-note" data-i18n="sup_form_note">Beim Klick auf „Senden" öffnet sich dein E-Mail-Programm mit allen Daten vorausgefüllt. Du kannst die Nachricht dort noch einmal prüfen und dann absenden.</p>
+    <p class="form-note" data-i18n="sup_form_note">Beim Klick auf „Senden" öffnet sich dein E-Mail-Programm mit allen Daten vorausgefüllt. Du kannst dort noch Anhänge (Screenshots, Logs, Audio) hinzufügen und absenden.</p>
   </form>
 
   <div class="faq">
@@ -234,15 +293,25 @@ const i18n = {
     sup_lang_h: 'Sprachen',
     sup_lang_p: 'Deutsch und Englisch.',
     sup_form_h2: 'Support-Anfrage',
-    sup_form_intro: 'Schreib mir hier oder direkt per E-Mail. Bitte beschreibe das Problem so konkret wie möglich — Betriebssystem-Version, Tool-Version und (falls vorhanden) Schritte zur Reproduktion helfen sehr.',
+    sup_form_intro: 'Bitte fülle die Felder so vollständig wie möglich aus — App- und OS-Version sind für Bug-Tracking entscheidend. Screenshots, Crash-Logs oder Audio-Beispiele kannst du gerne als Anhang in deiner Antwort-Mail nachreichen.',
+    sup_sec_contact: 'Kontakt',
+    sup_sec_software: 'Software',
+    sup_sec_system: 'System',
+    sup_sec_request: 'Beschreibung',
     sup_label_name: 'Name',
     sup_label_email: 'E-Mail',
-    sup_label_product: 'Produkt',
+    sup_label_product: 'App',
+    sup_label_appversion: 'App-Version',
+    sup_label_os: 'Betriebssystem',
+    sup_label_osversion: 'OS-Version',
     sup_label_topic: 'Anliegen',
     sup_label_subject: 'Betreff',
-    sup_label_message: 'Nachricht',
+    sup_label_message: 'Fehlerbeschreibung / Frage',
+    sup_optional: '(optional, nur bei Plugin)',
+    sup_optional2: '(optional)',
+    sup_optional3: '(optional, hilft enorm bei Bugs)',
     sup_submit: 'Senden',
-    sup_form_note: 'Beim Klick auf „Senden" öffnet sich dein E-Mail-Programm mit allen Daten vorausgefüllt. Du kannst die Nachricht dort noch einmal prüfen und dann absenden.',
+    sup_form_note: 'Beim Klick auf „Senden" öffnet sich dein E-Mail-Programm mit allen Daten vorausgefüllt. Du kannst dort noch Anhänge (Screenshots, Logs, Audio) hinzufügen und absenden.',
     sup_faq_h: 'Häufige Fragen',
     sup_q1_h: 'Wo finde ich meine Lizenz?',
     sup_q1_p: 'Lizenzschlüssel kommen direkt nach dem Kauf per E-Mail von Paddle (für Plugin-Käufe) bzw. sind im Apple-App-Store-Konto hinterlegt (für Mac- und iPad-Apps).',
@@ -270,15 +339,25 @@ const i18n = {
     sup_lang_h: 'Languages',
     sup_lang_p: 'German and English.',
     sup_form_h2: 'Support request',
-    sup_form_intro: 'Write here or directly by email. Please describe the issue as concretely as possible — OS version, tool version and (if available) reproduction steps help a lot.',
+    sup_form_intro: 'Please fill in the fields as completely as possible — app and OS version are essential for bug tracking. Screenshots, crash logs or audio samples can be attached to your reply mail.',
+    sup_sec_contact: 'Contact',
+    sup_sec_software: 'Software',
+    sup_sec_system: 'System',
+    sup_sec_request: 'Description',
     sup_label_name: 'Name',
     sup_label_email: 'Email',
-    sup_label_product: 'Product',
+    sup_label_product: 'App',
+    sup_label_appversion: 'App version',
+    sup_label_os: 'Operating system',
+    sup_label_osversion: 'OS version',
     sup_label_topic: 'Topic',
     sup_label_subject: 'Subject',
-    sup_label_message: 'Message',
+    sup_label_message: 'Bug description / question',
+    sup_optional: '(optional, plugin only)',
+    sup_optional2: '(optional)',
+    sup_optional3: '(optional, hugely helps for bugs)',
     sup_submit: 'Send',
-    sup_form_note: 'Clicking "Send" opens your email client with all fields pre-filled. You can review the message there before sending.',
+    sup_form_note: 'Clicking "Send" opens your email client with all fields pre-filled. Add attachments (screenshots, logs, audio) there before sending.',
     sup_faq_h: 'Frequently asked',
     sup_q1_h: 'Where do I find my licence?',
     sup_q1_p: 'Licence keys arrive by email right after purchase from Paddle (for plugin purchases) or are stored in your Apple App Store account (for Mac and iPad apps).',

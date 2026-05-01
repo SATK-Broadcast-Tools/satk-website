@@ -77,7 +77,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .store-status{font-size:9px;color:var(--mu);letter-spacing:.5px;text-transform:uppercase}
 .appstore-badge{display:inline-block;transition:opacity .25s,transform .25s;border-radius:6px;overflow:hidden}
 .appstore-badge:hover{opacity:.85;transform:scale(1.02)}
-.appstore-badge img{display:block;height:40px;width:auto}
+.appstore-badge img{display:block;height:30px;width:auto}
 .format-status{font-size:9px;color:var(--mu);margin-top:10px;letter-spacing:.5px}
 
 /* ── Info ────────────────────────── */
@@ -101,10 +101,12 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
   .grid{grid-template-columns:1fr}
   .info-row{grid-template-columns:1fr 1fr}
   .hero{padding:48px 20px 32px}
+  .appstore-badge img{height:26px}
 }
 @media(max-width:600px){
   .info-row{grid-template-columns:1fr}
   .nav-links{display:none}
+  .appstore-badge img{height:24px}
 }
 
 /* ── Fade in ─────────────────────── */

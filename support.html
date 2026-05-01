@@ -159,6 +159,9 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
     </div>
   </div>
 
+  <!-- Erfolgs-Banner (außerhalb des Forms, damit er nicht mit ausgeblendet wird) -->
+  <div id="sentBanner" style="display:none;padding:24px 28px;border:1px solid var(--ac);border-radius:10px;background:rgba(200,240,96,.06);color:var(--ac);font-family:'Syne',sans-serif;font-size:14px;font-weight:600;letter-spacing:.3px;margin-bottom:32px;text-align:center;line-height:1.6" data-i18n="sup_sent">✓ Vielen Dank — deine Anfrage ist eingegangen. Du erhältst gleich eine Bestätigungs-Mail. Ich melde mich werktags meist innerhalb von 24 Stunden.</div>
+
   <form class="form-wrap" action="https://formsubmit.co/ajax/info@satk.tech" method="POST" id="supportForm">
     <!-- Formsubmit.co Konfiguration (AJAX-Variante: kein Redirect, Besucher bleibt auf der Seite) -->
     <input type="hidden" name="_subject" value="SATK Support-Anfrage">
@@ -170,8 +173,6 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 
     <h2 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.2px;color:var(--tx);margin-bottom:8px" data-i18n="sup_form_h2">Support-Anfrage</h2>
     <p style="font-size:12px;color:var(--mu2);margin-bottom:28px;line-height:1.6" data-i18n="sup_form_intro">Bitte fülle die Felder so vollständig wie möglich aus — App- und OS-Version sind für Bug-Tracking entscheidend. Screenshots, Crash-Logs oder Audio-Beispiele kannst du in einer Antwort-Mail nachreichen.</p>
-
-    <div id="sentBanner" style="display:none;padding:14px 18px;border:1px solid var(--ac);border-radius:8px;background:rgba(200,240,96,.06);color:var(--ac);font-size:12px;letter-spacing:.3px;margin-bottom:24px;text-align:center" data-i18n="sup_sent">✓ Vielen Dank — die Anfrage ist eingegangen. Du erhältst gleich eine Bestätigungs-Mail.</div>
 
     <!-- ╔══ Kontakt ═══════════════════════════════════════════╗ -->
     <div class="form-section">
@@ -370,7 +371,7 @@ const i18n = {
     sup_optional3: '(optional, hilft enorm bei Bugs)',
     sup_submit: 'Senden',
     sup_form_note: 'Die Anfrage geht direkt per E-Mail an info@satk.tech. Du erhältst eine automatische Bestätigung. Anhänge (Screenshots, Logs, Audio) kannst du in einer Antwort-Mail nachreichen.',
-    sup_sent: '✓ Vielen Dank — die Anfrage ist eingegangen. Du erhältst gleich eine Bestätigungs-Mail.',
+    sup_sent: '✓ Vielen Dank — deine Anfrage ist eingegangen. Du erhältst gleich eine Bestätigungs-Mail. Ich melde mich werktags meist innerhalb von 24 Stunden.',
     sup_faq_h: 'Häufige Fragen',
     sup_q1_h: 'Wo finde ich meine Lizenz?',
     sup_q1_p: 'Lizenzschlüssel kommen direkt nach dem Kauf per E-Mail von Paddle (für Plugin-Käufe) bzw. sind im Apple-App-Store-Konto hinterlegt (für Mac- und iPad-Apps).',
@@ -417,7 +418,7 @@ const i18n = {
     sup_optional3: '(optional, hugely helps for bugs)',
     sup_submit: 'Send',
     sup_form_note: 'The request is sent directly to info@satk.tech. You will get an automatic confirmation. Attachments (screenshots, logs, audio) can follow in your reply mail.',
-    sup_sent: '✓ Thank you — your request has been received. A confirmation email is on its way.',
+    sup_sent: '✓ Thank you — your request has been received. A confirmation email is on its way. I usually reply within 24 hours on working days.',
     sup_faq_h: 'Frequently asked',
     sup_q1_h: 'Where do I find my licence?',
     sup_q1_p: 'Licence keys arrive by email right after purchase from Paddle (for plugin purchases) or are stored in your Apple App Store account (for Mac and iPad apps).',

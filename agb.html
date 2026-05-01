@@ -28,6 +28,14 @@ strong{color:var(--tx);font-weight:500;}
 .highlight{font-size:11px;color:rgba(232,232,236,.85);line-height:1.85;padding:14px 18px;border:1px solid var(--bd);background:rgba(200,240,96,.025);margin:18px 0;}
 .note{font-size:10px;color:var(--mu);line-height:1.8;padding:12px 14px;border:1px solid var(--bd);margin-top:32px;}
 </style>
+<script>
+// Auto-redirect to EN version if user's global language is EN
+try {
+  if (localStorage.getItem('satk-lang') === 'en') {
+    location.replace('agb-en.html');
+  }
+} catch(e){}
+</script>
 </head>
 <body>
 <div class="wrap">

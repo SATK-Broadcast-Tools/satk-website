@@ -335,7 +335,10 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 // Switch auf 'production' sobald Live-Token + Delivery-Pipeline stehen.
 const HOSTNAME = window.location.hostname;
 const IS_LOCAL = HOSTNAME === 'localhost' || HOSTNAME === '127.0.0.1' || HOSTNAME === '';
-const PADDLE_ENV = IS_LOCAL ? 'sandbox' : 'disabled';
+// KILL-SWITCH: aktuell überall deaktiviert bis Delivery-Pipeline steht.
+// Zum Wiederaktivieren auf Localhost (Sandbox-Test): Zeile drunter durch die kommentierte ersetzen.
+// const PADDLE_ENV = IS_LOCAL ? 'sandbox' : 'disabled';
+const PADDLE_ENV = 'disabled';
 const PADDLE_TOKEN = 'test_a65ecd48de16da666e6cc143342';
 const PRICES = {
   bm: 'pri_01kqj02k8cwdj70b04ajthffqj',

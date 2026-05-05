@@ -123,7 +123,14 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
   padding:9px 24px;border-radius:5px;border:none;cursor:pointer;transition:all .25s;font-weight:500}
 .card-btn.buy{background:var(--ac);color:#0a0a0b}
 .card-btn.buy:hover{background:#d4f880;transform:scale(1.03)}
+.card-btn.trial{background:var(--ac);color:#0a0a0b;width:100%;padding:11px 24px}
+.card-btn.trial:hover{background:#d4f880;transform:scale(1.02)}
 .card-btn.soon{background:transparent;color:var(--mu);border:1px solid var(--bd);cursor:default}
+.card-cta{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:8px}
+.card-btn-link{font-family:'DM Mono',monospace;font-size:10px;color:var(--mu2);text-decoration:underline;text-decoration-color:rgba(255,255,255,.18);
+  text-underline-offset:3px;cursor:pointer;background:none;border:none;padding:2px 4px;letter-spacing:.3px;transition:color .2s}
+.card-btn-link:hover{color:var(--ac)}
+.card-claim{font-size:9px;color:var(--mu);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
 .card-appstore{display:inline-block;font-size:10px;color:var(--mu2);margin-top:10px;text-decoration:none;letter-spacing:.5px;transition:color .2s}
 .card-appstore:hover{color:var(--ac)}
 .format-section{margin-top:16px;padding-top:16px;border-top:1px solid var(--bd)}
@@ -238,7 +245,11 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
             <div class="format-label" data-i18n="fmt_standalone_mac">Standalone · macOS</div>
             <div class="card-price">89 <span class="cur">€</span></div>
             <div class="card-vat" data-i18n="vat">inkl. MwSt. · Einführungspreis</div>
-            <button class="card-btn buy" data-i18n="btn_buy" onclick="openCheckout(PRICES.bm)">Kaufen</button>
+            <div class="card-cta">
+              <button class="card-btn trial" data-i18n="btn_trial" onclick="openTrial(TRIAL_URLS.bm)">Kostenlos 7 Tage testen</button>
+              <button class="card-btn-link" data-i18n="btn_trial_buy" onclick="openCheckout(PRICES.bm)">oder direkt kaufen</button>
+              <div class="card-claim" data-i18n="trial_claim">Kein Konto · keine Email</div>
+            </div>
           </div>
 
           <div class="format-section">
@@ -289,7 +300,11 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
           <div class="format-label" data-i18n="fmt_standalone_mac">Standalone · macOS</div>
           <div class="card-price">199 <span class="cur">€</span></div>
           <div class="card-vat" data-i18n="vat">inkl. MwSt. · Einführungspreis</div>
-          <button class="card-btn buy" data-i18n="btn_buy" onclick="openCheckout(PRICES.od)">Kaufen</button>
+          <div class="card-cta">
+            <button class="card-btn trial" data-i18n="btn_trial" onclick="openTrial(TRIAL_URLS.od)">Kostenlos 7 Tage testen</button>
+            <button class="card-btn-link" data-i18n="btn_trial_buy" onclick="openCheckout(PRICES.od)">oder direkt kaufen</button>
+            <div class="card-claim" data-i18n="trial_claim">Kein Konto · keine Email</div>
+          </div>
         </div>
 
         <div class="format-section">
@@ -325,7 +340,11 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
           <div class="format-label" data-i18n="fmt_standalone_mac">Standalone · macOS</div>
           <div class="card-price">49 <span class="cur">€</span></div>
           <div class="card-vat" data-i18n="vat">inkl. MwSt. · Einführungspreis</div>
-          <button class="card-btn buy" data-i18n="btn_buy" onclick="openCheckout(PRICES.lc)">Kaufen</button>
+          <div class="card-cta">
+            <button class="card-btn trial" data-i18n="btn_trial" onclick="openTrial(TRIAL_URLS.lc)">Kostenlos 7 Tage testen</button>
+            <button class="card-btn-link" data-i18n="btn_trial_buy" onclick="openCheckout(PRICES.lc)">oder direkt kaufen</button>
+            <div class="card-claim" data-i18n="trial_claim">Kein Konto · keine Email</div>
+          </div>
         </div>
 
         <div class="format-section">
@@ -391,6 +410,15 @@ const PRICES = {
   lc: 'pri_01kqj0qm3v1tv8e1s5tgv4j9q2'
 };
 
+// Trial-Download-URLs (R2). null = noch nicht verfuegbar (Pre-Launch),
+// Klick zeigt dann eine "Bald verfuegbar"-Meldung. Sobald der DMG-Build
+// in R2 liegt, hier eintragen, fertig.
+const TRIAL_URLS = {
+  bm: null,
+  od: null,
+  lc: null
+};
+
 window.addEventListener('load', () => {
   if (PADDLE_ENV === 'disabled') {
     // Live: Buy-Buttons auf "Bald verfügbar" zurücksetzen, bis Delivery-Stack steht
@@ -403,6 +431,8 @@ window.addEventListener('load', () => {
       btn.setAttribute('data-i18n', 'btn_soon');
       btn.textContent = fallback;
     });
+    // Sekundaerer "oder direkt kaufen"-Link aus, solange Paddle disabled ist
+    document.querySelectorAll('.card-btn-link').forEach(el => { el.style.display = 'none'; });
     return;
   }
   if (typeof Paddle === 'undefined') return;
@@ -421,6 +451,15 @@ function openCheckout(priceId) {
       locale: document.documentElement.lang || 'de'
     }
   });
+}
+
+function openTrial(url) {
+  if (!url) {
+    const lang = document.documentElement.lang || 'de';
+    alert((i18n[lang] || i18n.de).trial_pending);
+    return;
+  }
+  window.location.href = url;
 }
 
 const i18n = {
@@ -442,6 +481,10 @@ const i18n = {
     vat: 'inkl. MwSt. · Einführungspreis',
     btn_soon: 'Bald verfügbar',
     btn_buy: 'Kaufen',
+    btn_trial: 'Kostenlos 7 Tage testen',
+    btn_trial_buy: 'oder direkt kaufen',
+    trial_claim: 'Kein Konto · keine Email',
+    trial_pending: 'Der Download wird in Kürze freigeschaltet. Du kannst die App dann ohne Konto und ohne Email-Eingabe 7 Tage kostenlos testen.',
     also_appstore: 'Auch im Mac App Store →',
     fmt_plugin: 'Plugin · VST3 · AU',
     fmt_standalone: 'Standalone · macOS & Windows',
@@ -477,6 +520,10 @@ const i18n = {
     vat: 'incl. VAT · Launch price',
     btn_soon: 'Coming soon',
     btn_buy: 'Buy',
+    btn_trial: 'Free 7-day trial',
+    btn_trial_buy: 'or buy directly',
+    trial_claim: 'No account · no email',
+    trial_pending: 'The download will be unlocked shortly. You will then be able to test the app for 7 days without an account or email signup.',
     also_appstore: 'Also on the Mac App Store →',
     fmt_plugin: 'Plugin · VST3 · AU',
     fmt_standalone: 'Standalone · macOS & Windows',

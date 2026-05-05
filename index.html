@@ -399,15 +399,25 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 // Switch auf 'production' sobald Live-Token + Delivery-Pipeline stehen.
 const HOSTNAME = window.location.hostname;
 const IS_LOCAL = HOSTNAME === 'localhost' || HOSTNAME === '127.0.0.1' || HOSTNAME === '';
-// KILL-SWITCH: aktuell überall deaktiviert bis Delivery-Pipeline steht.
-// Zum Wiederaktivieren auf Localhost (Sandbox-Test): Zeile drunter durch die kommentierte ersetzen.
-// const PADDLE_ENV = IS_LOCAL ? 'sandbox' : 'disabled';
-const PADDLE_ENV = 'disabled';
-const PADDLE_TOKEN = 'test_a65ecd48de16da666e6cc143342';
-const PRICES = {
+// LIVE: Paddle ist scharfgeschaltet auf Production-Daten.
+// Sandbox bleibt fuer lokale Tests aktiv (localhost). Overdub Studio
+// und Loudness Correct haben noch keine Live-Produkte in Paddle —
+// "oder direkt kaufen" macht dort nichts (graceful), bis Live-Price-IDs
+// hier ergaenzt werden.
+const PADDLE_ENV = IS_LOCAL ? 'sandbox' : 'production';
+const PADDLE_TOKEN = IS_LOCAL
+  ? 'test_a65ecd48de16da666e6cc143342'   // Sandbox (localhost)
+  : 'live_73dc04023c2afceffdc2b231e5e';  // Live (production)
+const PRICES = IS_LOCAL ? {
+  // Sandbox-Price-IDs (localhost-Tests)
   bm: 'pri_01kqj02k8cwdj70b04ajthffqj',
   od: 'pri_01kqj0fp74z9m4mg9y4z3xhbfp',
   lc: 'pri_01kqj0qm3v1tv8e1s5tgv4j9q2'
+} : {
+  // Live-Price-IDs (production)
+  bm: 'pri_01kqwjjadxp4j7exrc841d7d8z',
+  od: null,  // Live-Produkt noch nicht angelegt
+  lc: null
 };
 
 // Trial-Download-URLs (R2). null = noch nicht verfuegbar (Pre-Launch),

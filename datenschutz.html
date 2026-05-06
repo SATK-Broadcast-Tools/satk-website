@@ -71,8 +71,10 @@ a:hover{text-decoration:underline;}
 
   <h2>6. Bestellung / Zahlungsabwicklung (Desktop-Software)</h2>
   <p>Der Verkauf der Desktop-Apps (macOS- und Windows-Versionen außerhalb des App Stores) erfolgt über unseren Zahlungsabwickler <strong>Paddle</strong> (Paddle.com Market Ltd., Judd House, 18–29 Mora Street, London EC1V 8BT, United Kingdom), der als "Merchant of Record" auftritt. Paddle verarbeitet Name, E-Mail, Rechnungsadresse und Zahlungsinformationen zur Abwicklung des Kaufs und zur Erstellung einer korrekten Rechnung inkl. Umsatzsteuer.</p>
+  <p>Paddle.js wird auf dieser Website erst dann nachgeladen, wenn der Besucher aktiv auf den Kaufen-Button klickt — vorher findet keinerlei Verbindung zu Paddle-Servern statt.</p>
   <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung). Es gelten die Datenschutzbestimmungen von Paddle: <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener">paddle.com/legal/privacy</a>.</p>
   <p>Wir erhalten von Paddle lediglich die E-Mail-Adresse des Käufers zur Auslieferung des Lizenzschlüssels und für Support-Zwecke. Speicherdauer: für die gesetzliche Aufbewahrungsfrist bei Rechnungen (10 Jahre) bzw. bis zum Widerruf für Support-Kontakt.</p>
+  <p>Der Versand der Lizenz-E-Mail nach erfolgreichem Kauf erfolgt über den E-Mail-Anbieter <strong>Resend</strong> (Resend Inc., 2261 Market Street #5039, San Francisco, CA 94114, USA). Resend verarbeitet ausschließlich die E-Mail-Adresse des Käufers sowie den Inhalt der Versandnachricht (Lizenzschlüssel + Aktivierungs-Link) zur einmaligen Zustellung. Es besteht ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO; EU-Standardvertragsklauseln sind hinterlegt. Datenschutzerklärung Resend: <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">resend.com/legal/privacy-policy</a>.</p>
 
   <h2>7. Zugriffsdaten / Server-Logs</h2>
   <p>Beim Abruf dieser Website werden durch den Hosting-Anbieter (IONOS SE, Elgendorfer Str. 57, 56410 Montabaur) automatisch Zugriffsdaten in Server-Logfiles gespeichert. Diese umfassen:</p>
@@ -91,12 +93,15 @@ a:hover{text-decoration:underline;}
   <h2>9. Schriftarten</h2>
   <p>Diese Website lädt alle verwendeten Schriftarten (DM Mono, Syne) ausschließlich aus dem eigenen Webserver. Es findet keine Verbindung zu externen Schrift-CDNs (z.B. Google Fonts) statt. Die IP-Adresse des Besuchers wird zu keinem Zeitpunkt an Drittanbieter übermittelt, um Schriften zu laden.</p>
 
-  <h2>10. PayPal (Spendenlink)</h2>
-  <p>Auf der Spendenseite wird ein Link zu PayPal (PayPal Holdings, Inc., 2211 North First Street, San Jose, CA 95131, USA) bereitgestellt. Erst beim Klick auf diesen Link wird eine Verbindung zu PayPal hergestellt. Bis zu diesem Klick findet keinerlei Datenübermittlung an PayPal statt. Die Nutzung von PayPal erfolgt auf freiwilliger Basis. Es gelten die Datenschutzbestimmungen von PayPal: <a href="https://www.paypal.com/de/webapps/mpp/ua/privacy-full" target="_blank" rel="noopener">paypal.com/privacy</a></p>
-
-  <h2>11. Cloudflare-Reverse-Proxy</h2>
-  <p>Diese Website wird über Cloudflare (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA) als Reverse-Proxy ausgeliefert. Cloudflare verarbeitet im Rahmen der Auslieferung IP-Adresse, User-Agent und Request-Daten zur Bereitstellung der Inhalte sowie zum Schutz vor Angriffen (DDoS, Bot-Filter). Mit Cloudflare besteht ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO; EU-Standardvertragsklauseln sind hinterlegt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem stabilen, abgesicherten Webauftritt).</p>
+  <h2>10. Cloudflare (Reverse-Proxy & Download-Auslieferung)</h2>
+  <p>Diese Website wird über Cloudflare (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA) als Reverse-Proxy ausgeliefert. Cloudflare verarbeitet im Rahmen der Auslieferung IP-Adresse, User-Agent und Request-Daten zur Bereitstellung der Inhalte sowie zum Schutz vor Angriffen (DDoS, Bot-Filter).</p>
+  <p>Zusätzlich werden Trial-Downloads (z.B. das DMG-Paket der Pro-Apps) über den Cloudflare-Dienst R2 unter der Subdomain <code>download.satk.tech</code> ausgeliefert. Beim Klick auf den Trial-Download-Button wird Ihre IP-Adresse an Cloudflare R2 übermittelt. Es findet keine zusätzliche Erfassung von personenbezogenen Daten statt — der Download ist anonym, ohne Konto- oder E-Mail-Eingabe.</p>
+  <p>Mit Cloudflare besteht ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO; EU-Standardvertragsklauseln sind hinterlegt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem stabilen, abgesicherten Webauftritt und schneller Datei-Auslieferung).</p>
   <p>Datenschutzerklärung Cloudflare: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">cloudflare.com/privacypolicy</a></p>
+
+  <h2>11. Lokale Speicherung im Browser (localStorage)</h2>
+  <p>Diese Website nutzt den lokalen Browser-Speicher (<code>localStorage</code>) ausschließlich zum Speichern Ihrer gewählten Sprache (Schlüssel <code>satk-lang</code>, Werte <code>de</code> oder <code>en</code>). Der Eintrag wird ausschließlich auf Ihrem Gerät gespeichert, niemals an einen Server übertragen, und dient allein dazu, dass Sie beim nächsten Besuch wieder in derselben Sprache landen.</p>
+  <p>Rechtsgrundlage: § 25 Abs. 2 Nr. 2 TTDSG (technisch unbedingt erforderlich, um die ausdrücklich vom Nutzer gewünschte Funktion bereitzustellen) — eine Einwilligung ist daher nicht erforderlich. Sie können den Eintrag jederzeit über die Browser-Einstellungen (Datenspeicher / Lokale Daten) löschen.</p>
 
   <h2>12. Ihre Rechte (DSGVO)</h2>
   <p>Sie haben gemäß DSGVO folgende Rechte:</p>

@@ -50,4 +50,19 @@ RewriteRule ^([^.]+)$ $1.html [L]
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(self \"https://buy.paddle.com\")"
   Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
+
+  # Content-Security-Policy:
+  # - default-src 'self'         — alles lokal
+  # - script-src + 'unsafe-inline' — die Site hat Inline-JS-Bloecke + onclick-Handler;
+  #   Paddle's CDN whitelisten (cdn.paddle.com, buy.paddle.com)
+  # - style-src + 'unsafe-inline' — Inline-<style>-Bloecke
+  # - img-src 'self' data: https: — Logos, Screenshots, App-Store-Badges (data: fuer Inline-SVGs)
+  # - font-src 'self'             — Schriften lokal in /fonts/
+  # - connect-src                 — Paddle-API + R2-Download
+  # - frame-src buy.paddle.com    — Paddle-Checkout-iframe
+  # - frame-ancestors 'none'      — Clickjacking (parallel zu X-Frame-Options)
+  # - form-action                 — Forms nur lokal + Paddle
+  # - base-uri 'self'             — kein <base>-Hijack
+  # - object-src 'none'           — kein <object>/<embed> erlaubt
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.paddle.com https://buy.paddle.com https://*.paddle.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://*.paddle.com https://*.paddle.io https://download.satk.tech; frame-src https://buy.paddle.com https://*.paddle.com; frame-ancestors 'none'; form-action 'self' https://buy.paddle.com; base-uri 'self'; object-src 'none'"
 </IfModule>

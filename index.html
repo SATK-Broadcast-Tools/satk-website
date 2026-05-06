@@ -27,9 +27,7 @@
 <meta name="twitter:title" content="SATK – Pro Audio Software für Broadcast &amp; Postproduktion">
 <meta name="twitter:description" content="Apps und Plugins für professionelle Medienproduktionen. Broadcast Meter, Overdub Studio, Loudness Correct.">
 <meta name="twitter:image" content="https://satk.tech/og-image.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+<link href="fonts.css" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -429,6 +427,28 @@ const TRIAL_URLS = {
   lc: null
 };
 
+// DSGVO-Lazy-Load: Paddle.js wird NICHT im <head> geladen, sondern erst
+// beim ersten Klick auf "oder direkt kaufen". Damit gehen IP/User-Agent
+// erst dann an cdn.paddle.com, wenn der Besucher tatsaechlich kaufen will.
+let paddleLoadPromise = null;
+function ensurePaddle() {
+  if (paddleLoadPromise) return paddleLoadPromise;
+  paddleLoadPromise = new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = 'https://cdn.paddle.com/paddle/v2/paddle.js';
+    s.async = true;
+    s.onload = () => {
+      if (typeof Paddle === 'undefined') return reject(new Error('Paddle nicht geladen'));
+      if (PADDLE_ENV === 'sandbox') Paddle.Environment.set('sandbox');
+      Paddle.Initialize({ token: PADDLE_TOKEN });
+      resolve();
+    };
+    s.onerror = () => reject(new Error('Paddle.js konnte nicht geladen werden'));
+    document.head.appendChild(s);
+  });
+  return paddleLoadPromise;
+}
+
 window.addEventListener('load', () => {
   if (PADDLE_ENV === 'disabled') {
     // Live: Buy-Buttons auf "Bald verfügbar" zurücksetzen, bis Delivery-Stack steht
@@ -443,15 +463,16 @@ window.addEventListener('load', () => {
     });
     // Sekundaerer "oder direkt kaufen"-Link aus, solange Paddle disabled ist
     document.querySelectorAll('.card-btn-link').forEach(el => { el.style.display = 'none'; });
-    return;
   }
-  if (typeof Paddle === 'undefined') return;
-  if (PADDLE_ENV === 'sandbox') Paddle.Environment.set('sandbox');
-  Paddle.Initialize({ token: PADDLE_TOKEN });
+  // Hinweis: Paddle.Initialize passiert nicht mehr hier — siehe ensurePaddle().
 });
 
-function openCheckout(priceId) {
-  if (PADDLE_ENV === 'disabled' || typeof Paddle === 'undefined' || !priceId) {
+async function openCheckout(priceId) {
+  if (PADDLE_ENV === 'disabled' || !priceId) return;
+  try {
+    await ensurePaddle();
+  } catch (e) {
+    console.warn('Paddle konnte nicht geladen werden:', e);
     return;
   }
   Paddle.Checkout.open({

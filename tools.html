@@ -302,11 +302,6 @@ header { margin-bottom: 56px; }
 }
 .card-badge { font-size: 8px; color: var(--mu); letter-spacing: .06em; }
 
-/* Donate card special */
-.tool-card.donate-card { border-color: rgba(200,240,96,.2); }
-.tool-card.donate-card:hover { border-color: var(--ac); }
-.donate-card .card-preview { background: linear-gradient(135deg, #0d150a, #0a0a0b); }
-
 /* ── Modal System ── */
 .modal-backdrop {
   position: fixed; inset: 0;
@@ -753,7 +748,6 @@ function startPreviews() {
   animVO();
   animR128();
   animPlayer();
-  animDonate();
   animPodcast();
 }
 
@@ -1056,57 +1050,6 @@ function animEditor() {
   })();
 }
 
-// Donate preview — heartbeat
-function animDonate() {
-  const cv = document.getElementById('prev-donate');
-  if (!cv) return;
-  cv.width = cv.offsetWidth; cv.height = cv.offsetHeight;
-  const c = cv.getContext('2d');
-  const W = cv.width, H = cv.height;
-  let t = 0;
-
-  (function draw() {
-    requestAnimationFrame(draw); t++;
-    c.fillStyle = '#08090a'; c.fillRect(0,0,W,H);
-
-    // Mini plugin window frame
-    const px=W*0.12, py=H*0.15, pw=W*0.76, ph=H*0.7;
-    c.strokeStyle = 'rgba(200,240,96,.08)'; c.lineWidth=0.5;
-    c.strokeRect(px,py,pw,ph);
-    // Title bar dots
-    c.fillStyle='rgba(255,80,80,.35)'; c.beginPath(); c.arc(px+8,py+6,2.5,0,Math.PI*2); c.fill();
-    c.fillStyle='rgba(255,200,48,.35)'; c.beginPath(); c.arc(px+16,py+6,2.5,0,Math.PI*2); c.fill();
-    c.fillStyle='rgba(80,200,96,.35)'; c.beginPath(); c.arc(px+24,py+6,2.5,0,Math.PI*2); c.fill();
-
-    // 7 meter bars inside
-    for(let i=0;i<7;i++){
-      const bx = px + 10 + i*(pw-20)/7;
-      const bw = (pw-20)/7 - 4;
-      const maxH = ph-22;
-      const lv = 0.25 + 0.55*Math.pow(Math.sin(i*0.45+1.2),2) * (0.8+0.2*Math.sin(t*0.03+i*0.7));
-      const barH = maxH * lv;
-      const by = py+14+maxH-barH;
-      // Gradient bar
-      const gr = c.createLinearGradient(0,py+14+maxH,0,py+14);
-      gr.addColorStop(0,'rgba(80,170,20,.5)');
-      gr.addColorStop(0.6,'rgba(200,240,96,.5)');
-      gr.addColorStop(0.85,'rgba(255,208,0,.5)');
-      gr.addColorStop(1,'rgba(255,56,16,.5)');
-      c.fillStyle=gr;
-      c.fillRect(bx,by,bw,barH);
-      // Peak hold
-      c.fillStyle='rgba(255,100,80,.6)';
-      c.fillRect(bx,by-2,bw,1.5);
-    }
-    // -23 LUFS target line
-    const lineY = py+14+(ph-22)*0.56;
-    c.setLineDash([3,3]);
-    c.strokeStyle='rgba(200,240,96,.2)'; c.lineWidth=0.5;
-    c.beginPath(); c.moveTo(px+6,lineY); c.lineTo(px+pw-6,lineY); c.stroke();
-    c.setLineDash([]);
-  })();
-}
-
 // Start all previews after fonts/layout ready
 requestAnimationFrame(()=>{ setTimeout(startPreviews, 100);});
 
@@ -1117,7 +1060,6 @@ function startPreviews() {
   animPlayer();
   animMixer();
   animEditor();
-  animDonate();
   animPodcast();
   animFormat();
 }
@@ -1495,7 +1437,6 @@ const T = {
     'tag-editor':            'Schnitt · Trim · Export',
     'tag-recorder':          '4 Kanäle · Dynamics · Timecode',
     'tag-format':            'WAV · MP3 · OGG · M4A · Opus',
-    'tag-donate':            'Support · PayPal',
     // Tool Karten — Namen
     'name-voiceover':        'VoiceOver Processor',
     'name-r128':             'R128 Loudness Normalizer',
@@ -1504,7 +1445,6 @@ const T = {
     'name-editor':           'Audio Editor',
     'name-recorder':         'Podcast Recorder',
     'name-format':           'Format Wandler',
-    'name-donate':           'Unterstützen',
     // Tool Karten — Beschreibungen
     'desc-voiceover':        'Vollautomatische Sprachoptimierung für TV, Radio und Podcast.',
     'desc-r128':             'Batch-Normalisierung nach ITU-R BS.1770-4. TV −23 · Online −14 · Podcast −16 LUFS. True Peak Limiter.',
@@ -1513,7 +1453,6 @@ const T = {
     'desc-editor':           'Schneiden, Trimmen und Exportieren. Wellenform-Ansicht, Zoom, In/Out-Punkte, Undo, R128-Export.',
     'desc-recorder':         '4-Kanal Aufnahme mit Denoiser, Dynamics-Presets und automatischer R128-Normalisierung.',
     'desc-format':           'Audiodateien ins gewünschte Format konvertieren. Drag & Drop, Qualitätswahl, sofortiger Download.',
-    'desc-donate':           'SATK ist kostenlos, werbefrei und wird in der Freizeit entwickelt. Über eine Spende freue ich mich sehr.',
     // Buttons
     'btn-open':  'Öffnen',
     'modal_close': 'Schließen',
@@ -1527,8 +1466,6 @@ const T = {
     'badge_webm': 'WebM Recording',
     'badge_noupload': 'Browser · Kein Upload',
     'badge_videosync': 'Video Sync',
-    'badge_paypal': 'PayPal',
-    'donate_name': 'Unterstützen',
     // Audience
     'aud-0': '<strong>TV- &amp; Broadcast-Redakteur:innen</strong> — R128 −23 LUFS, Auto-Mixer',
     'aud-1': '<strong>Radio- &amp; Podcast-Produzent:innen</strong> — Podcast Recorder, Auto-Mixer, R128 −16 LUFS, Denoiser',
@@ -1565,7 +1502,6 @@ const T = {
     'tag-editor':           'Cut · Trim · Export',
     'tag-recorder':         '4 Channels · Dynamics · Timecode',
     'tag-format':           'WAV · MP3 · OGG · M4A · Opus',
-    'tag-donate':           'Support · PayPal',
     // Tool Karten — Namen
     'name-voiceover':       'VoiceOver Processor',
     'name-r128':            'R128 Loudness Normalizer',
@@ -1574,7 +1510,6 @@ const T = {
     'name-editor':          'Audio Editor',
     'name-recorder':        'Podcast Recorder',
     'name-format':          'Format Converter',
-    'name-donate':          'Support SATK',
     // Tool Karten — Beschreibungen
     'desc-voiceover':       'Fully automatic voice processing for TV, radio and podcast.',
     'desc-r128':            'Batch normalization to ITU-R BS.1770-4. TV −23 · Online −14 · Podcast −16 LUFS. True Peak Limiter.',
@@ -1583,7 +1518,6 @@ const T = {
     'desc-editor':          'Cut, trim and export. Waveform view, zoom, in/out points, undo, R128 export.',
     'desc-recorder':        '4-channel recording with denoiser, dynamics presets and automatic R128 normalization.',
     'desc-format':          'Convert audio files to any format. Drag & drop, quality selection, instant download.',
-    'desc-donate':          'SATK is free and ad-free, developed in spare time. Donations are greatly appreciated.',
     // Buttons
     'btn-open': 'Open',
     'modal_close': 'Close',
@@ -1597,8 +1531,6 @@ const T = {
     'badge_webm': 'WebM Recording',
     'badge_noupload': 'Browser · No Upload',
     'badge_videosync': 'Video Sync',
-    'badge_paypal': 'PayPal',
-    'donate_name': 'Support SATK',
     // Audience
     'aud-0': '<strong>TV &amp; Broadcast Editors</strong> — R128 −23 LUFS, Auto-Mixer',
     'aud-1': '<strong>Radio &amp; Podcast Producers</strong> — Podcast Recorder, Auto-Mixer, R128 −16 LUFS, Denoiser',
@@ -1677,16 +1609,6 @@ function translateToolCards() {
     if(desc && t['desc-'+id]) desc.textContent  = t['desc-'+id];
     if(btn  && t['btn-open']) btn.textContent   = t['btn-open'];
   });
-  // Donate-Karte (kein data-tool-id weil kein Tool)
-  const donateCard = document.querySelector('[data-tool="donate.html"]');
-  if(donateCard) {
-    const name = donateCard.querySelector('.card-name a, .card-link');
-    const desc = donateCard.querySelector('.card-desc');
-    const btn  = donateCard.querySelector('.card-open');
-    if(name && t['donate_name']) name.textContent = t['donate_name'];
-    if(desc && t['desc-donate']) desc.textContent = t['desc-donate'];
-    if(btn  && t['btn-open'])   btn.textContent  = t['btn-open'];
-  }
   // data-i18n-title Elemente (z.B. Modal-Close)
   document.querySelectorAll('[data-i18n-title]').forEach(el => {
     const v = t[el.dataset.i18nTitle];

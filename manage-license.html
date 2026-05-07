@@ -89,10 +89,14 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 
 .devices-h{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:16px}
 .device-row{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:var(--bg);border:1px solid var(--bd);border-radius:6px;margin-bottom:8px;flex-wrap:wrap;gap:8px}
-.device-info{font-size:12px;color:var(--tx)}
+.device-info{font-size:12px;color:var(--tx);flex:1;min-width:0}
 .device-name{font-weight:600}
 .device-meta{font-size:10px;color:var(--mu);margin-top:2px}
 .device-empty{padding:14px 16px;background:var(--bg);border:1px dashed var(--bd);border-radius:6px;font-size:12px;color:var(--mu);text-align:center}
+.device-deactivate{background:transparent;color:var(--mu2);border:1px solid var(--bd);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.2px;text-transform:uppercase;
+  padding:7px 14px;border-radius:5px;cursor:pointer;transition:all .2s;flex-shrink:0}
+.device-deactivate:hover:not(:disabled){border-color:var(--err);color:var(--err)}
+.device-deactivate:disabled{opacity:.4;cursor:not-allowed}
 
 /* Banners */
 .banner{padding:18px 22px;border-radius:8px;font-size:13px;line-height:1.55;letter-spacing:.2px;margin-bottom:24px}
@@ -230,10 +234,14 @@ const i18n = {
     err_rate_limit: 'Zu viele Anfragen — versuche es in {min} Minuten erneut.',
     err_email: 'Mail-Versand fehlgeschlagen. Bitte später nochmal probieren oder info@satk.tech kontaktieren.',
     err_network: 'Verbindung zum Server fehlgeschlagen. Bitte Internet-Verbindung prüfen.',
+    err_deactivate: 'Gerät konnte nicht freigegeben werden. Bitte später probieren.',
     ok_resend: '✓ Aktivierungs-Mail erneut versendet an {email}. Schau auch im Spam-Ordner nach (neue Domain — Reputation baut sich noch auf).',
+    ok_deactivate: '✓ Gerät „{name}" freigegeben. Slot ist wieder verfügbar — du kannst die App jetzt auf einem anderen Mac aktivieren.',
     status_active: 'Aktiv', status_revoked: 'Widerrufen',
     devices_empty: 'Noch keine Geräte aktiviert — klicke den „Mit einem Klick aktivieren"-Button in der Lizenz-Mail.',
     device_lastseen: 'Zuletzt aktiv',
+    btn_device_deactivate: 'Freigeben',
+    confirm_deactivate: 'Gerät „{name}" freigeben? Die Aktivierung wird vom Server entfernt — du kannst danach einen anderen Mac aktivieren. Die App auf diesem Gerät läuft bis zum nächsten Status-Check weiter.',
     f_shop: 'Shop', f_support: 'Support', f_terms: 'AGB', f_refund: 'Widerruf', f_imprint: 'Impressum', f_privacy: 'Datenschutz',
   },
   en: {
@@ -256,10 +264,14 @@ const i18n = {
     err_rate_limit: 'Too many requests — please try again in {min} minutes.',
     err_email: 'Sending the email failed. Please try later or contact info@satk.tech.',
     err_network: 'Connection to server failed. Please check your internet.',
+    err_deactivate: 'Could not release device. Please try again later.',
     ok_resend: '✓ Activation email resent to {email}. Check the spam folder too (we are a new domain still building reputation).',
+    ok_deactivate: '✓ Device "{name}" released. The slot is free — you can now activate the app on another Mac.',
     status_active: 'Active', status_revoked: 'Revoked',
     devices_empty: 'No devices activated yet — click the "Activate with one click" button in the license mail.',
     device_lastseen: 'Last seen',
+    btn_device_deactivate: 'Release',
+    confirm_deactivate: 'Release device "{name}"? The activation will be removed from the server — you can then activate another Mac. The app on this device will keep running until the next status check.',
     f_shop: 'Shop', f_support: 'Support', f_terms: 'Terms', f_refund: 'Refund', f_imprint: 'Legal', f_privacy: 'Privacy',
   }
 };
@@ -341,8 +353,14 @@ function renderResult(data) {
           <div class="device-name">${escapeHtml(d.device_name || d.device_id_short)}</div>
           <div class="device-meta">${t.device_lastseen}: ${fmtDate(d.last_seen_at)}</div>
         </div>
+        <button class="device-deactivate" data-device-id="${escapeHtml(d.device_id)}" data-device-name="${escapeHtml(d.device_name || d.device_id_short)}" ${data.license.revoked ? 'disabled' : ''}>${t.btn_device_deactivate}</button>
       </div>
     `).join('');
+
+    // Event-Listener auf alle Freigeben-Buttons
+    list.querySelectorAll('.device-deactivate').forEach(btn => {
+      btn.addEventListener('click', () => deactivateDevice(btn.dataset.deviceId, btn.dataset.deviceName, btn));
+    });
   }
 
   document.getElementById('lookupForm').style.display = 'none';
@@ -422,6 +440,42 @@ document.getElementById('btnResend').addEventListener('click', async () => {
     btn.textContent = orig;
   }
 });
+
+async function deactivateDevice(deviceId, deviceName, btn) {
+  const t = i18n[currentLang];
+  if (!confirm(t.confirm_deactivate.replace('{name}', deviceName))) return;
+
+  hideBanners();
+  btn.disabled = true;
+  const orig = btn.textContent;
+  btn.textContent = '…';
+
+  try {
+    const r = await fetch(WORKER + '/portal/deactivate', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...getCreds(), device_id: deviceId }),
+    });
+    const data = await r.json();
+    if (!r.ok || !data.ok) {
+      showError(t.err_deactivate);
+      btn.disabled = false;
+      btn.textContent = orig;
+      return;
+    }
+    showOk(t.ok_deactivate.replace('{name}', deviceName));
+    // Geräte-Liste neu laden
+    const lookupResp = await fetch(WORKER + '/lookup', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(getCreds()),
+    });
+    const lookupData = await lookupResp.json();
+    if (lookupData.ok) renderResult(lookupData);
+  } catch (e) {
+    showError(t.err_network);
+    btn.disabled = false;
+    btn.textContent = orig;
+  }
+}
 
 document.getElementById('btnNew').addEventListener('click', () => {
   document.getElementById('resultWrap').style.display = 'none';

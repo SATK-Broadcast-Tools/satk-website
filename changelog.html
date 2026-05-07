@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://satk.tech/changelog">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SATK Changelog – Was sich in den letzten Releases geändert hat</title>
+<meta name="description" content="Release-Notes und Roadmap für SATK Pro Audio Software: Broadcast Meter, Overdub Studio, Loudness Correct.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="SATK Changelog & Roadmap">
+<meta property="og:description" content="Release-Notes und Roadmap für SATK Pro Audio Software.">
+<meta property="og:url" content="https://satk.tech/changelog">
+<meta property="og:site_name" content="SATK – Sascha&rsquo;s Audio Tool Kit">
+<meta property="og:locale" content="de_DE">
+
+<link href="fonts.css" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#c8f060;--tx:#e8e8ec;--mu:#6e6e7a;--mu2:#9a9aaa}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:'DM Mono',monospace;-webkit-font-smoothing:antialiased}
+
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:16px 48px;background:rgba(10,10,11,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.04)}
+.nav-logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;line-height:1}
+.nav-logo-mark{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--ac);letter-spacing:4px}
+.nav-logo-accent{color:var(--tx)}
+.nav-logo-sub{font-family:'DM Mono',monospace;font-size:8px;color:var(--mu);letter-spacing:1.5px;text-transform:uppercase;font-weight:300;white-space:nowrap}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{color:var(--mu2);text-decoration:none;font-size:11px;letter-spacing:.5px;transition:color .2s}
+.nav-links a:hover{color:var(--tx)}
+.nav-back{color:var(--mu);font-size:10px;letter-spacing:.5px;text-decoration:none;opacity:.6;transition:opacity .2s}
+.nav-back:hover{opacity:1}
+.lang-sw{display:flex;align-items:center;gap:6px}
+.lang{font-size:10px;letter-spacing:1px;color:var(--mu);cursor:pointer;transition:color .2s}
+.lang:hover{color:var(--tx)}
+.lang.active{color:var(--ac)}
+.lang-sep{color:var(--mu);font-size:10px}
+
+.page-hero{text-align:center;padding:80px 32px 32px;max-width:680px;margin:0 auto}
+.page-eyebrow{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.4em;color:var(--ac);text-transform:uppercase;margin-bottom:18px}
+.page-hero h1{font-family:'Syne',sans-serif;font-size:clamp(32px,4.5vw,48px);font-weight:800;letter-spacing:-.5px;line-height:1.05;text-transform:uppercase;margin-bottom:18px}
+.page-hero .tagline{color:var(--mu2);font-size:14px;letter-spacing:.3px;line-height:1.7}
+
+.section{max-width:780px;margin:0 auto;padding:32px 32px 0}
+.section h2{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--mu);margin:48px 0 24px}
+
+.product-block{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:32px 32px;margin-bottom:24px}
+.product-name{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.2px;color:var(--tx);margin-bottom:24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px}
+.product-status{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--ac);background:rgba(200,240,96,.08);padding:5px 12px;border-radius:4px}
+.product-status.beta{color:#e8b85c;background:rgba(232,184,92,.08)}
+.product-status.soon{color:var(--mu2);background:transparent;border:1px dashed var(--bd)}
+
+.release{position:relative;padding:14px 0 14px 28px;border-left:1px solid var(--bd)}
+.release:last-child{padding-bottom:0}
+.release::before{content:'';position:absolute;left:-5px;top:18px;width:9px;height:9px;background:var(--ac);border-radius:50%}
+.release.older::before{background:var(--mu);width:7px;height:7px;left:-4px}
+.release-version{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--tx);display:inline-block;margin-right:12px}
+.release-date{font-size:10px;color:var(--mu);letter-spacing:.5px}
+.release-title{font-size:12px;color:var(--mu2);margin-top:6px;line-height:1.55}
+.release-list{margin:8px 0 0 0;padding-left:16px;font-size:11px;color:var(--mu2);line-height:1.7}
+.release-list li{margin-bottom:2px}
+
+.roadmap-line{font-size:12px;color:var(--mu2);line-height:1.7;margin-bottom:10px}
+.roadmap-line strong{color:var(--tx);font-weight:600}
+
+.note{font-size:11px;color:var(--mu);line-height:1.7;text-align:center;padding:36px 32px 0;max-width:600px;margin:0 auto}
+.note a{color:var(--ac);text-decoration:none}
+
+footer{text-align:center;padding:60px 32px 40px;margin-top:60px;border-top:1px solid rgba(255,255,255,.03)}
+footer p{font-size:9px;color:var(--mu);letter-spacing:.3px}
+footer a{color:var(--mu2);text-decoration:none}
+footer a:hover{color:var(--ac)}
+footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:3px;margin-bottom:10px}
+
+@media(max-width:600px){
+  nav{padding:14px 20px}
+  .nav-links{gap:14px}
+  .nav-links a:not(.nav-back){display:none}
+  .page-hero{padding:48px 20px 24px}
+  .section{padding:24px 20px 0}
+  .product-block{padding:24px 22px}
+}
+</style>
+<script defer data-domain="satk.tech" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-mark">S<span class="nav-logo-accent">A</span>TK</span>
+    <span class="nav-logo-sub">Sascha&rsquo;s Audio Tool Kit</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav_shop">Shop</a>
+    <a href="support.html" data-i18n="nav_info">Supportanfrage</a>
+    <a href="manage-license.html" data-i18n="nav_manage">Lizenz</a>
+    <div class="lang-sw">
+      <span class="lang active" id="btnDE" onclick="setLang('de')">DE</span>
+      <span class="lang-sep">·</span>
+      <span class="lang" id="btnEN" onclick="setLang('en')">EN</span>
+    </div>
+    <a href="index.html" class="nav-back" data-i18n="nav_back">← Zurück zum Shop</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-eyebrow" data-i18n="cl_eyebrow">Changelog &amp; Roadmap</div>
+  <h1 data-i18n="cl_title">Was sich entwickelt</h1>
+  <p class="tagline" data-i18n="cl_tagline">Release-Notes der bestehenden Tools und ein Blick auf das, was als Nächstes kommt.</p>
+</section>
+
+<section class="section">
+
+  <h2 data-i18n="cl_h_releases">Aktuelle Releases</h2>
+
+  <!-- ── Broadcast Meter ──────────── -->
+  <div class="product-block">
+    <div class="product-name">SATK Broadcast Meter <span class="product-status" data-i18n="cl_st_live">Live</span></div>
+
+    <div class="release">
+      <span class="release-version">1.0.5</span><span class="release-date">2026-05-06</span>
+      <div class="release-title" data-i18n="cl_bm_105_t">Stabilisierung der One-Click-Aktivierung</div>
+      <ul class="release-list">
+        <li data-i18n="cl_bm_105_1">Method-Swizzling auf NSAppleEventManager — One-Click aus der Lizenz-Mail funktioniert jetzt zuverlässig auch bei kalt gestarteter App auf macOS 13+.</li>
+        <li data-i18n="cl_bm_105_2">Drei-Schicht-Defence für URL-Scheme-Handler (load + willFinishLaunching + Method-Swizzle) als Standard-Pattern für alle künftigen SATK-Tools dokumentiert.</li>
+      </ul>
+    </div>
+
+    <div class="release older">
+      <span class="release-version">1.0.4</span><span class="release-date">2026-05-06</span>
+      <div class="release-title" data-i18n="cl_bm_104_t">Zwischenrelease (von 1.0.5 abgelöst)</div>
+    </div>
+
+    <div class="release older">
+      <span class="release-version">1.0.3</span><span class="release-date">2026-05-06</span>
+      <div class="release-title" data-i18n="cl_bm_103_t">Zwischenrelease (von 1.0.5 abgelöst)</div>
+    </div>
+
+    <div class="release older">
+      <span class="release-version">1.0.2</span><span class="release-date">2026-05-04</span>
+      <div class="release-title" data-i18n="cl_bm_102_t">Erste öffentliche Direct-Sales-Version</div>
+      <ul class="release-list">
+        <li data-i18n="cl_bm_102_1">Architektur in Anlehnung an Rogue Amoeba — Plain-File-Lizenz-Speicher (kein Keychain-Prompt), Multi-Location-Trial mit Hardware-HMAC.</li>
+        <li data-i18n="cl_bm_102_2">7-Tage-Trial ohne Konto und ohne E-Mail-Adresse — Vollversion direkt downloadbar, Trial-Status server-getrackt gegen Reset-Versuche.</li>
+        <li data-i18n="cl_bm_102_3">Watermarking der Käufer-E-Mail im About-Window und in der Toolbar.</li>
+        <li data-i18n="cl_bm_102_4">PDF- und CSV-Reports mit Loudness-Timeline und Speech-Clarity-Bewertung.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 data-i18n="cl_h_roadmap">Was als Nächstes kommt</h2>
+
+  <!-- ── Overdub Studio ──────────── -->
+  <div class="product-block">
+    <div class="product-name">SATK Overdub Studio <span class="product-status soon" data-i18n="cl_st_soon">In Entwicklung</span></div>
+    <p class="roadmap-line" data-i18n="cl_od_p"><strong>Video-Sync · Auto-Edit · AutoMix R128 · Smart Prompter · MXF-Round-Trip.</strong> Beta-Version befindet sich in der internen Erprobung. Veröffentlichung geplant sobald die Stabilitätstests abgeschlossen sind.</p>
+  </div>
+
+  <!-- ── Loudness Correct ──────────── -->
+  <div class="product-block">
+    <div class="product-name">SATK Loudness Correct <span class="product-status soon" data-i18n="cl_st_soon">In Entwicklung</span></div>
+    <p class="roadmap-line" data-i18n="cl_lc_p"><strong>Offline R128-Korrektur · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6.</strong> Engine ist funktionsfähig, derzeit Feinarbeit am Preset-System und der Batch-Pipeline.</p>
+  </div>
+
+  <p class="note" data-i18n-html="cl_note">Hinweis: Wir veröffentlichen erst, wenn ein Tool zuverlässig im Workflow läuft — keine fixen Termine, keine Vorbestellungen. Wenn du benachrichtigt werden möchtest sobald ein Tool live geht, schreib eine kurze Mail an <a href="mailto:info@satk.tech?subject=Launch-Notification">info@satk.tech</a> mit dem Tool-Namen.</p>
+
+</section>
+
+<footer>
+  <div class="fl">SATK</div>
+  <p>Sascha&rsquo;s Audio Tool Kit · <a href="index.html" data-i18n="f_shop">Shop</a> · <a href="support.html" data-i18n="f_support">Support</a> · <a href="manage-license.html" data-i18n="f_manage">Lizenz verwalten</a> · <a href="agb.html" data-i18n="f_terms">AGB</a> · <a href="widerruf.html" data-i18n="f_refund">Widerruf</a> · <a href="impressum.html" data-i18n="f_imprint">Impressum</a> · <a href="datenschutz.html" data-i18n="f_privacy">Datenschutz</a> · © 2026</p>
+</footer>
+
+<script>
+const i18n = {
+  de: {
+    nav_shop: 'Shop', nav_info: 'Supportanfrage', nav_manage: 'Lizenz', nav_back: '← Zurück zum Shop',
+    cl_eyebrow: 'Changelog & Roadmap',
+    cl_title: 'Was sich entwickelt',
+    cl_tagline: 'Release-Notes der bestehenden Tools und ein Blick auf das, was als Nächstes kommt.',
+    cl_h_releases: 'Aktuelle Releases',
+    cl_h_roadmap: 'Was als Nächstes kommt',
+    cl_st_live: 'Live', cl_st_soon: 'In Entwicklung',
+    cl_bm_105_t: 'Stabilisierung der One-Click-Aktivierung',
+    cl_bm_105_1: 'Method-Swizzling auf NSAppleEventManager — One-Click aus der Lizenz-Mail funktioniert jetzt zuverlässig auch bei kalt gestarteter App auf macOS 13+.',
+    cl_bm_105_2: 'Drei-Schicht-Defence für URL-Scheme-Handler (load + willFinishLaunching + Method-Swizzle) als Standard-Pattern für alle künftigen SATK-Tools dokumentiert.',
+    cl_bm_104_t: 'Zwischenrelease (von 1.0.5 abgelöst)',
+    cl_bm_103_t: 'Zwischenrelease (von 1.0.5 abgelöst)',
+    cl_bm_102_t: 'Erste öffentliche Direct-Sales-Version',
+    cl_bm_102_1: 'Architektur in Anlehnung an Rogue Amoeba — Plain-File-Lizenz-Speicher (kein Keychain-Prompt), Multi-Location-Trial mit Hardware-HMAC.',
+    cl_bm_102_2: '7-Tage-Trial ohne Konto und ohne E-Mail-Adresse — Vollversion direkt downloadbar, Trial-Status server-getrackt gegen Reset-Versuche.',
+    cl_bm_102_3: 'Watermarking der Käufer-E-Mail im About-Window und in der Toolbar.',
+    cl_bm_102_4: 'PDF- und CSV-Reports mit Loudness-Timeline und Speech-Clarity-Bewertung.',
+    cl_od_p: '<strong>Video-Sync · Auto-Edit · AutoMix R128 · Smart Prompter · MXF-Round-Trip.</strong> Beta-Version befindet sich in der internen Erprobung. Veröffentlichung geplant sobald die Stabilitätstests abgeschlossen sind.',
+    cl_lc_p: '<strong>Offline R128-Korrektur · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6.</strong> Engine ist funktionsfähig, derzeit Feinarbeit am Preset-System und der Batch-Pipeline.',
+    cl_note: 'Hinweis: Wir veröffentlichen erst, wenn ein Tool zuverlässig im Workflow läuft — keine fixen Termine, keine Vorbestellungen. Wenn du benachrichtigt werden möchtest sobald ein Tool live geht, schreib eine kurze Mail an <a href="mailto:info@satk.tech?subject=Launch-Notification">info@satk.tech</a> mit dem Tool-Namen.',
+    f_shop: 'Shop', f_support: 'Support', f_manage: 'Lizenz verwalten', f_terms: 'AGB', f_refund: 'Widerruf', f_imprint: 'Impressum', f_privacy: 'Datenschutz',
+  },
+  en: {
+    nav_shop: 'Shop', nav_info: 'Support', nav_manage: 'License', nav_back: '← Back to Shop',
+    cl_eyebrow: 'Changelog & Roadmap',
+    cl_title: 'What\'s evolving',
+    cl_tagline: 'Release notes for the existing tools and a look at what\'s coming next.',
+    cl_h_releases: 'Current releases',
+    cl_h_roadmap: 'What\'s coming next',
+    cl_st_live: 'Live', cl_st_soon: 'In development',
+    cl_bm_105_t: 'One-click activation hardened',
+    cl_bm_105_1: 'Method-swizzling on NSAppleEventManager — one-click activation from the license mail now works reliably even on cold-started apps on macOS 13+.',
+    cl_bm_105_2: 'Three-layer defence for URL-scheme handler (load + willFinishLaunching + method-swizzle) documented as the standard pattern for all future SATK tools.',
+    cl_bm_104_t: 'Interim release (superseded by 1.0.5)',
+    cl_bm_103_t: 'Interim release (superseded by 1.0.5)',
+    cl_bm_102_t: 'First public direct-sales release',
+    cl_bm_102_1: 'Architecture inspired by Rogue Amoeba — plain-file license storage (no Keychain prompt), multi-location trial with hardware HMAC.',
+    cl_bm_102_2: '7-day trial without account and without email — full version download, trial state server-tracked against reset attempts.',
+    cl_bm_102_3: 'Buyer email watermarked in the About window and the toolbar.',
+    cl_bm_102_4: 'PDF and CSV reports with loudness timeline and speech-clarity rating.',
+    cl_od_p: '<strong>Video sync · Auto Edit · AutoMix R128 · Smart Prompter · MXF round-trip.</strong> Beta version is in internal testing. Release planned once stability checks are complete.',
+    cl_lc_p: '<strong>Offline R128 correction · 16 delivery presets · verify-and-refine · mono to 9.1.6.</strong> Engine is functional, currently fine-tuning the preset system and batch pipeline.',
+    cl_note: 'Note: We release only when a tool runs reliably in the workflow — no fixed dates, no pre-orders. If you want to be notified when a tool goes live, send a short email to <a href="mailto:info@satk.tech?subject=Launch-Notification">info@satk.tech</a> with the tool name.',
+    f_shop: 'Shop', f_support: 'Support', f_manage: 'Manage License', f_terms: 'Terms', f_refund: 'Refund', f_imprint: 'Legal', f_privacy: 'Privacy',
+  }
+};
+
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.getElementById('btnDE').classList.toggle('active', lang==='de');
+  document.getElementById('btnEN').classList.toggle('active', lang==='en');
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    if (t[k]) el.textContent = t[k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const k = el.dataset.i18nHtml;
+    if (t[k]) el.innerHTML = t[k];
+  });
+  try { localStorage.setItem('satk-lang', lang); } catch(e){}
+}
+
+try {
+  const saved = localStorage.getItem('satk-lang');
+  if (saved === 'en') setLang('en');
+  else if (!saved && navigator.language && !navigator.language.startsWith('de')) setLang('en');
+} catch(e){}
+</script>
+
+</body>
+</html>

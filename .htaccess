@@ -54,5 +54,5 @@ RewriteRule ^([^.]+)$ $1.html [L]
   # Content-Security-Policy — ueber mehrere Zeilen aufgeteilt mit Backslash,
   # weil IONOS Apache lange Single-Line-Werte mit vielen Sonderzeichen
   # nicht zuverlaessig akzeptiert.
-  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.paddle.com https://buy.paddle.com https://*.paddle.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://*.paddle.com https://*.paddle.io https://download.satk.tech https://satk-license-worker.weathered-lake-eea9.workers.dev; frame-src https://buy.paddle.com https://*.paddle.com; frame-ancestors 'none'; form-action 'self' https://buy.paddle.com; base-uri 'self'; object-src 'none'"
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.paddle.com https://buy.paddle.com https://*.paddle.com https://plausible.io; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://*.paddle.com https://*.paddle.io https://download.satk.tech https://satk-license-worker.weathered-lake-eea9.workers.dev https://plausible.io; frame-src https://buy.paddle.com https://*.paddle.com; frame-ancestors 'none'; form-action 'self' https://buy.paddle.com; base-uri 'self'; object-src 'none'"
 </IfModule>

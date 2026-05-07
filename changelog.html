@@ -161,6 +161,33 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
     </div>
   </div>
 
+  <!-- ╔═════════════════════════════════════════════════════════════
+       LC 1.0.0 RELEASE-BLOCK (vorbereitet, einkommentieren wenn live)
+       Schritte zum Aktivieren:
+         1. Diesen ganzen Block aus dem HTML-Kommentar nehmen
+         2. <UNDER VERSION> + <UNDER DATUM> mit echten Werten ersetzen
+         3. Den LC-Block in der Roadmap-Sektion unten loeschen
+         4. cl_lc_100_t / cl_lc_100_1..4 i18n-Strings im JS-Block am
+            Ende der Datei einkommentieren (auch dort vorbereitet)
+       ═════════════════════════════════════════════════════════════ ╗
+
+  <div class="product-block">
+    <div class="product-name">SATK Loudness Correct <span class="product-status" data-i18n="cl_st_live">Live</span></div>
+
+    <div class="release">
+      <span class="release-version"><UNDER VERSION></span><span class="release-date"><UNDER DATUM></span>
+      <div class="release-title" data-i18n="cl_lc_100_t">Erste öffentliche Direct-Sales-Version</div>
+      <ul class="release-list">
+        <li data-i18n="cl_lc_100_1">Offline R128-Korrektur mit 16 Delivery-Presets — von EBU R128 (-23 LUFS) über ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP bis Streaming (Netflix, Spotify, Apple Podcasts, Amazon Music, YouTube) und Kino-Leq(m).</li>
+        <li data-i18n="cl_lc_100_2">Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.</li>
+        <li data-i18n="cl_lc_100_3">3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor — ohne Pumpen, ohne Phasen-Artefakte.</li>
+        <li data-i18n="cl_lc_100_4">Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum SATK Broadcast Meter — Messen und Korrigieren mit derselben Wahrheit.</li>
+      </ul>
+    </div>
+  </div>
+
+  ═════════════════════════════════════════════════════════════ -->
+
   <h2 data-i18n="cl_h_roadmap">Was als Nächstes kommt</h2>
 
   <!-- ── Overdub Studio ──────────── -->
@@ -169,7 +196,7 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
     <p class="roadmap-line" data-i18n="cl_od_p"><strong>Video-Sync · Auto-Edit · AutoMix R128 · Smart Prompter · MXF-Round-Trip.</strong> Beta-Version befindet sich in der internen Erprobung. Veröffentlichung geplant sobald die Stabilitätstests abgeschlossen sind.</p>
   </div>
 
-  <!-- ── Loudness Correct ──────────── -->
+  <!-- ── Loudness Correct (in Roadmap-Block — entfernen wenn LC live geht) ──────────── -->
   <div class="product-block">
     <div class="product-name">SATK Loudness Correct <span class="product-status soon" data-i18n="cl_st_soon">In Entwicklung</span></div>
     <p class="roadmap-line" data-i18n="cl_lc_p"><strong>Offline R128-Korrektur · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6.</strong> Engine ist funktionsfähig, derzeit Feinarbeit am Preset-System und der Batch-Pipeline.</p>
@@ -204,6 +231,13 @@ const i18n = {
     cl_bm_102_2: '7-Tage-Trial ohne Konto und ohne E-Mail-Adresse — Vollversion direkt downloadbar, Trial-Status server-getrackt gegen Reset-Versuche.',
     cl_bm_102_3: 'Watermarking der Käufer-E-Mail im About-Window und in der Toolbar.',
     cl_bm_102_4: 'PDF- und CSV-Reports mit Loudness-Timeline und Speech-Clarity-Bewertung.',
+    /* LC 1.0.0 Release-Notes — bei Go-Live einkommentieren:
+    cl_lc_100_t: 'Erste öffentliche Direct-Sales-Version',
+    cl_lc_100_1: 'Offline R128-Korrektur mit 16 Delivery-Presets — von EBU R128 (-23 LUFS) über ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP bis Streaming (Netflix, Spotify, Apple Podcasts, Amazon Music, YouTube) und Kino-Leq(m).',
+    cl_lc_100_2: 'Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.',
+    cl_lc_100_3: '3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor — ohne Pumpen, ohne Phasen-Artefakte.',
+    cl_lc_100_4: 'Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum SATK Broadcast Meter — Messen und Korrigieren mit derselben Wahrheit.',
+    */
     cl_od_p: '<strong>Video-Sync · Auto-Edit · AutoMix R128 · Smart Prompter · MXF-Round-Trip.</strong> Beta-Version befindet sich in der internen Erprobung. Veröffentlichung geplant sobald die Stabilitätstests abgeschlossen sind.',
     cl_lc_p: '<strong>Offline R128-Korrektur · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6.</strong> Engine ist funktionsfähig, derzeit Feinarbeit am Preset-System und der Batch-Pipeline.',
     cl_note: 'Hinweis: Wir veröffentlichen erst, wenn ein Tool zuverlässig im Workflow läuft — keine fixen Termine, keine Vorbestellungen. Wenn du benachrichtigt werden möchtest sobald ein Tool live geht, schreib eine kurze Mail an <a href="mailto:info@satk.tech?subject=Launch-Notification">info@satk.tech</a> mit dem Tool-Namen.',
@@ -227,6 +261,13 @@ const i18n = {
     cl_bm_102_2: '7-day trial without account and without email — full version download, trial state server-tracked against reset attempts.',
     cl_bm_102_3: 'Buyer email watermarked in the About window and the toolbar.',
     cl_bm_102_4: 'PDF and CSV reports with loudness timeline and speech-clarity rating.',
+    /* LC 1.0.0 Release-Notes EN — uncomment when LC goes live:
+    cl_lc_100_t: 'First public direct-sales release',
+    cl_lc_100_1: 'Offline R128 correction with 16 delivery presets — from EBU R128 (-23 LUFS) through ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP to streaming (Netflix, Spotify, Apple Podcasts, Amazon Music, YouTube) and cinema Leq(m).',
+    cl_lc_100_2: 'Two-pass with automatic refine: pass 1 measures, pass 2 corrects, pass 3 verifies. If the residual is above 0.1 LU, correction runs again with trimmed gain.',
+    cl_lc_100_3: '3-band LRA processor (Linkwitz-Riley 4th order with perfect reconstruction) pulls every LRA into the broadcast corridor — no pumping, no phase artefacts.',
+    cl_lc_100_4: 'Mono to 9.1.6 with BS.1770-compliant LFE weighting. DSP engine byte-identical to SATK Broadcast Meter — measure and correct with the same truth.',
+    */
     cl_od_p: '<strong>Video sync · Auto Edit · AutoMix R128 · Smart Prompter · MXF round-trip.</strong> Beta version is in internal testing. Release planned once stability checks are complete.',
     cl_lc_p: '<strong>Offline R128 correction · 16 delivery presets · verify-and-refine · mono to 9.1.6.</strong> Engine is functional, currently fine-tuning the preset system and batch pipeline.',
     cl_note: 'Note: We release only when a tool runs reliably in the workflow — no fixed dates, no pre-orders. If you want to be notified when a tool goes live, send a short email to <a href="mailto:info@satk.tech?subject=Launch-Notification">info@satk.tech</a> with the tool name.',

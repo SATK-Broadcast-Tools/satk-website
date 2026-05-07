@@ -101,6 +101,15 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .hero-img-wrap{max-width:1120px;margin:32px auto 0;padding:0 32px}
 .hero-img{width:100%;border:1px solid var(--bd);border-radius:10px;display:block;box-shadow:0 30px 80px rgba(0,0,0,.5)}
 
+/* ── Trust-Strip ───────────────── */
+.trust-strip{max-width:1120px;margin:48px auto 0;padding:0 32px}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:10px;overflow:hidden}
+.trust-pillar{background:var(--sf);padding:28px 26px;text-align:center}
+.trust-icon{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(200,240,96,.08);color:var(--ac);margin-bottom:14px}
+.trust-h{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.05em;color:var(--tx);margin-bottom:8px}
+.trust-p{font-size:12px;color:var(--mu2);line-height:1.65}
+@media(max-width:760px){.trust-grid{grid-template-columns:1fr;gap:1px}}
+
 /* ── Section ─────────────────── */
 .section{max-width:1120px;margin:0 auto;padding:96px 32px 0}
 .section-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:16px;text-align:center}
@@ -214,6 +223,7 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 .feature:nth-child(6){animation-delay:.5s}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 </style>
+<script defer data-domain="satk.tech" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
 
@@ -245,6 +255,39 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 <div class="hero-img-wrap">
   <img class="hero-img" src="img-broadcast-meter.webp" alt="SATK Broadcast Meter Interface">
 </div>
+
+<!-- ╔══ Trust-Block ══════════════════════════════════════════╗
+     Drei Saulen ueber die Conversion-Hilfe vor dem Kauf gibt:
+       1. USP (Made by an engineer)
+       2. Risk-free trial (kein Account)
+       3. Direkter Entwickler-Support (kein Bot)
+     Wenn du ein echtes Kunden-Zitat hast, fuege es als 4. Block
+     unter dem Trust-Strip ein. Bis dahin ehrlich ohne Fake. -->
+<section class="trust-strip">
+  <div class="trust-grid">
+    <div class="trust-pillar">
+      <div class="trust-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
+      </div>
+      <div class="trust-h" data-i18n="trust_p1_h">Vom Sendetontechniker</div>
+      <div class="trust-p" data-i18n="trust_p1_p">Entwickelt von einem aktiven Broadcast-Engineer für Broadcast-Engineers. Keine Marketing-Features — nur was im Studio wirklich gebraucht wird.</div>
+    </div>
+    <div class="trust-pillar">
+      <div class="trust-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v6l4 2"/><circle cx="12" cy="14" r="8"/></svg>
+      </div>
+      <div class="trust-h" data-i18n="trust_p2_h">7 Tage testen, ohne Risiko</div>
+      <div class="trust-p" data-i18n="trust_p2_p">Vollversion herunterladen, eine Woche im echten Workflow nutzen — kein Konto, keine E-Mail, keine Kreditkarte. Erst dann entscheiden.</div>
+    </div>
+    <div class="trust-pillar">
+      <div class="trust-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v12H7l-3 4z"/><path d="M8 9h8M8 12h6"/></svg>
+      </div>
+      <div class="trust-h" data-i18n="trust_p3_h">Antwort vom Entwickler</div>
+      <div class="trust-p" data-i18n="trust_p3_p">Support-Mails landen direkt im Posteingang des Entwicklers, nicht bei einem Ticket-System. Werktags meist innerhalb von 24 Stunden.</div>
+    </div>
+  </div>
+</section>
 
 <!-- ╔══ Highlights ════════════════════════════════════════════╗ -->
 <section class="section">
@@ -419,7 +462,7 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 
 <footer>
   <div class="fl">SATK</div>
-  <p>Sascha&rsquo;s Audio Tool Kit · <a href="index.html" data-i18n="f_shop">Shop</a> · <a href="tools.html" data-i18n="f_tools">Browser-Tools</a> · <a href="manage-license.html" data-i18n="f_manage">Lizenz verwalten</a> · <a href="agb.html" data-i18n="f_terms">AGB</a> · <a href="widerruf.html" data-i18n="f_refund">Widerruf</a> · <a href="impressum.html" data-i18n="f_imprint">Impressum</a> · <a href="datenschutz.html" data-i18n="f_privacy">Datenschutz</a> · © 2026</p>
+  <p>Sascha&rsquo;s Audio Tool Kit · <a href="index.html" data-i18n="f_shop">Shop</a> · <a href="tools.html" data-i18n="f_tools">Browser-Tools</a> · <a href="manage-license.html" data-i18n="f_manage">Lizenz verwalten</a> · <a href="changelog.html" data-i18n="f_changelog">Changelog</a> · <a href="agb.html" data-i18n="f_terms">AGB</a> · <a href="widerruf.html" data-i18n="f_refund">Widerruf</a> · <a href="impressum.html" data-i18n="f_imprint">Impressum</a> · <a href="datenschutz.html" data-i18n="f_privacy">Datenschutz</a> · © 2026</p>
 </footer>
 
 <script>
@@ -431,6 +474,12 @@ const i18n = {
     nav_back: '← Zurück zum Shop',
     ph_eyebrow: 'Plugin · Standalone · iPad · iPhone Mini',
     ph_tagline: 'Der professionelle Loudness-Meter für Sendung, Postproduktion und Live-Broadcast — EBU R128 / ITU-R BS.1770-4 konform, mit KI-gestützter Sprachanalyse.',
+    trust_p1_h: 'Vom Sendetontechniker',
+    trust_p1_p: 'Entwickelt von einem aktiven Broadcast-Engineer für Broadcast-Engineers. Keine Marketing-Features — nur was im Studio wirklich gebraucht wird.',
+    trust_p2_h: '7 Tage testen, ohne Risiko',
+    trust_p2_p: 'Vollversion herunterladen, eine Woche im echten Workflow nutzen — kein Konto, keine E-Mail, keine Kreditkarte. Erst dann entscheiden.',
+    trust_p3_h: 'Antwort vom Entwickler',
+    trust_p3_p: 'Support-Mails landen direkt im Posteingang des Entwicklers, nicht bei einem Ticket-System. Werktags meist innerhalb von 24 Stunden.',
     bm_features_label: 'Highlights',
     bm_features_title: 'Mehr als ein Loudness-Meter',
     bm_features_intro: 'Ob du eine Nachrichtensendung mischt, einen Hörspiel-Master abnimmst oder eine Live-Show fährst — der Broadcast Meter zeigt dir nicht nur, ob dein Pegel stimmt. Er zeigt dir, wie verständlich deine Sprache ankommt, wie sich dein Programm bis zum Sendeende entwickelt, und ob deine Dynamik im erlaubten Korridor bleibt. Alles in Echtzeit, in einer einzigen klaren Oberfläche.',
@@ -505,6 +554,7 @@ const i18n = {
     f_shop: 'Shop',
     f_tools: 'Browser-Tools',
     f_manage: 'Lizenz verwalten',
+    f_changelog: 'Changelog',
     f_imprint: 'Impressum',
     f_privacy: 'Datenschutz'
   },
@@ -515,6 +565,12 @@ const i18n = {
     nav_back: '← Back to Shop',
     ph_eyebrow: 'Plugin · Standalone · iPad · iPhone Mini',
     ph_tagline: 'The professional loudness meter for broadcast, post and live shows — EBU R128 / ITU-R BS.1770-4 compliant, with AI-powered speech analysis.',
+    trust_p1_h: 'By a broadcast engineer',
+    trust_p1_p: 'Built by an active broadcast engineer for broadcast engineers. No marketing features — only what actually gets used in the studio.',
+    trust_p2_h: '7-day risk-free trial',
+    trust_p2_p: 'Download the full version, use it for a week in your real workflow — no account, no email, no credit card. Decide afterwards.',
+    trust_p3_h: 'Reply from the developer',
+    trust_p3_p: 'Support emails go straight to the developer\'s inbox, not into a ticket system. Usually within 24 hours on working days.',
     bm_features_label: 'Highlights',
     bm_features_title: 'More than a loudness meter',
     bm_features_intro: 'Whether you are mixing a news show, signing off an audio drama master or running a live programme — the Broadcast Meter does not just tell you whether your level is right. It tells you how intelligible your speech actually sounds, how your programme is shaping up to broadcast end, and whether your dynamics stay inside the allowed corridor. All in realtime, in one clear interface.',
@@ -589,6 +645,7 @@ const i18n = {
     f_shop: 'Shop',
     f_tools: 'Browser Tools',
     f_manage: 'Manage License',
+    f_changelog: 'Changelog',
     f_imprint: 'Legal Notice',
     f_privacy: 'Privacy Policy'
   }

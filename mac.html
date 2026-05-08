@@ -145,18 +145,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .format-row .format-section + .format-section{border-left:1px solid var(--bd);padding-left:20px}
 @media(max-width:600px){.format-row{grid-template-columns:1fr}.format-row .format-section + .format-section{border-left:none;padding-left:0;margin-top:16px;padding-top:16px;border-top:1px solid var(--bd)}}
 .format-label{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:10px}
-.card-stores{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:4px}
-.card-stores.list{flex-direction:row;align-items:flex-start;justify-content:center;gap:20px;flex-wrap:wrap}
-.store-row{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
-.store-meta{display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center}
-.store-platform{font-size:10px;color:var(--tx);letter-spacing:.3px;font-weight:500}
-.store-price{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--tx);letter-spacing:-.2px;margin-top:1px}
-.store-price .cur{font-size:10px;color:var(--mu2);font-weight:400;margin-left:1px}
-.store-status{font-size:9px;color:var(--mu);letter-spacing:.5px;text-transform:uppercase}
-.appstore-badge{display:inline-block;transition:opacity .25s,transform .25s;border-radius:6px;overflow:hidden}
-.appstore-badge:hover{opacity:.85;transform:scale(1.02)}
-.appstore-badge img{display:block;height:30px;width:auto}
-.format-status{font-size:9px;color:var(--mu);margin-top:10px;letter-spacing:.5px}
 
 /* ── Info ────────────────────────── */
 .info-section{max-width:1120px;margin:0 auto;padding:72px 32px 0}
@@ -181,9 +169,7 @@ footer{padding:64px 48px 32px;margin-top:96px;border-top:1px solid rgba(255,255,
   nav{padding:14px 20px;gap:12px}
   .grid{grid-template-columns:1fr}
   .info-row{grid-template-columns:1fr 1fr}
-  .hero{padding:48px 20px 32px}
-  .appstore-badge img{height:26px}
-  .nav-platforms a{font-size:9px;padding:6px 12px;letter-spacing:1px}
+  .hero{padding:48px 20px 32px}  .nav-platforms a{font-size:9px;padding:6px 12px;letter-spacing:1px}
 }
 @media(max-width:720px){
   .footer-grid{grid-template-columns:repeat(3,1fr);gap:24px}
@@ -191,9 +177,7 @@ footer{padding:64px 48px 32px;margin-top:96px;border-top:1px solid rgba(255,255,
 }
 @media(max-width:600px){
   .info-row{grid-template-columns:1fr}
-  .nav-links{display:none}
-  .appstore-badge img{height:24px}
-  nav{padding:12px 16px;gap:8px}
+  .nav-links{display:none}  nav{padding:12px 16px;gap:8px}
   .nav-platforms a{font-size:8px;padding:5px 10px;letter-spacing:.8px}
   footer{padding:48px 24px 24px}
 }
@@ -597,10 +581,6 @@ function setLang(lang) {
     const k = el.dataset.i18nHtml;
     if (t[k]) el.innerHTML = t[k];
   });
-  document.querySelectorAll('.appstore-badge img').forEach(img => {
-    const src = lang === 'de' ? img.dataset.srcDe : img.dataset.srcEn;
-    if (src) img.src = src;
-  });
   try { localStorage.setItem('satk-lang', lang); } catch(e){}
 }
 
@@ -609,23 +589,6 @@ try {
   const saved = localStorage.getItem('satk-lang');
   if (saved === 'en') setLang('en');
 } catch(e){}
-
-// Localize App Store URLs by browser locale (de-DE → de, en-GB → gb, etc.)
-(function localizeAppStoreUrls() {
-  const langs = navigator.languages || [navigator.language || 'de-DE'];
-  let country = null;
-  for (const lang of langs) {
-    const m = lang.match(/-([a-z]{2})$/i);
-    if (m) { country = m[1].toLowerCase(); break; }
-  }
-  if (!country) {
-    const primary = (navigator.language || 'de').split('-')[0].toLowerCase();
-    country = primary === 'en' ? 'us' : primary;
-  }
-  document.querySelectorAll('.appstore-badge[data-app-id]').forEach(a => {
-    a.href = `https://apps.apple.com/${country}/app/id${a.dataset.appId}`;
-  });
-})();
 </script>
 
 </body>

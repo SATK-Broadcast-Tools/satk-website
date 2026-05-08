@@ -38,6 +38,12 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .nav-links a:hover{color:var(--tx)}
 .nav-back{color:var(--mu);font-size:10px;letter-spacing:.5px;text-decoration:none;opacity:.6;transition:opacity .2s}
 .nav-back:hover{opacity:1}
+
+/* ── Nav Platforms (Pill-Tabs) ─────── */
+.nav-platforms{display:flex;gap:2px;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:999px;padding:3px}
+.nav-platforms a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:999px;color:var(--mu2);text-decoration:none;transition:all .2s}
+.nav-platforms a.active{background:var(--ac);color:#0a0a0b}
+.nav-platforms a:hover:not(.active){color:var(--tx);background:rgba(255,255,255,.04)}
 .lang-sw{display:flex;align-items:center;gap:6px}
 .lang{font-size:10px;letter-spacing:1px;color:var(--mu);cursor:pointer;transition:color .2s}
 .lang:hover{color:var(--tx)}
@@ -88,6 +94,19 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
   .section{padding:24px 20px 0}
   .product-block{padding:24px 22px}
 }
+/* ── Footer (3-spaltig) ──────────── */
+footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255,255,.06);background:#15161a;text-align:left}
+.footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1120px;margin:0 auto 48px}
+.footer-col h4{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
+.footer-col a{display:block;font-family:'DM Mono',monospace;font-size:11px;color:var(--mu2);text-decoration:none;letter-spacing:.3px;padding:5px 0;transition:color .2s}
+.footer-col a:hover{color:var(--ac)}
+.footer-bar{display:flex;justify-content:space-between;align-items:center;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
+.footer-brand{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:3px}
+.footer-meta{color:var(--mu2);text-transform:none;letter-spacing:.3px}
+@media(max-width:720px){.footer-grid{grid-template-columns:repeat(3,1fr);gap:24px}.footer-bar{flex-direction:column;gap:12px;text-align:center}}
+@media(max-width:600px){footer{padding:48px 24px 24px;margin-top:64px}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:32px;text-align:center}}
+
 </style>
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-gqR5BLYgrx9BycGkSCWbt.js"></script>
@@ -99,20 +118,23 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">
+  <a href="/" class="nav-logo">
     <span class="nav-logo-mark">S<span class="nav-logo-accent">A</span>TK</span>
     <span class="nav-logo-sub">Sascha&rsquo;s Audio Tool Kit</span>
   </a>
+  <div class="nav-platforms">
+    <a href="/mac">Mac</a>
+    <a href="/ios">iOS</a>
+    <a href="/tools">Web</a>
+  </div>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav_shop">Shop</a>
-    <a href="support.html" data-i18n="nav_info">Supportanfrage</a>
-    <a href="manage-license.html" data-i18n="nav_manage">Lizenz</a>
+    <a href="/support" data-i18n="nav_info">Supportanfrage</a>
+    <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
     <div class="lang-sw">
       <span class="lang active" id="btnDE" onclick="setLang('de')">DE</span>
       <span class="lang-sep">·</span>
       <span class="lang" id="btnEN" onclick="setLang('en')">EN</span>
     </div>
-    <a href="index.html" class="nav-back" data-i18n="nav_back">← Zurück zum Shop</a>
   </div>
 </nav>
 
@@ -207,8 +229,31 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 </section>
 
 <footer>
-  <div class="fl">SATK</div>
-  <p>Sascha&rsquo;s Audio Tool Kit · <a href="index.html" data-i18n="f_shop">Shop</a> · <a href="support.html" data-i18n="f_support">Support</a> · <a href="manage-license.html" data-i18n="f_manage">Lizenz verwalten</a> · <a href="agb.html" data-i18n="f_terms">AGB</a> · <a href="widerruf.html" data-i18n="f_refund">Widerruf</a> · <a href="impressum.html" data-i18n="f_imprint">Impressum</a> · <a href="datenschutz.html" data-i18n="f_privacy">Datenschutz</a> · © 2026</p>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4 data-i18n="f_col_products">Produkte</h4>
+      <a href="/mac" data-i18n="nav_mac">Mac Apps</a>
+      <a href="/ios" data-i18n="nav_ios">iOS Apps</a>
+      <a href="/tools" data-i18n="nav_tools">Browser-Tools</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="f_col_support">Support</h4>
+      <a href="/support" data-i18n="nav_info">Supportanfrage</a>
+      <a href="/manage-license" data-i18n="f_manage">Lizenz verwalten</a>
+      <a href="/changelog" data-i18n="f_changelog">Changelog</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="f_col_legal">Rechtliches</h4>
+      <a href="/impressum" data-i18n="f_imprint_contact">Kontakt &amp; Impressum</a>
+      <a href="/agb" data-i18n="f_terms">AGB</a>
+      <a href="/widerruf" data-i18n="f_refund">Widerruf</a>
+      <a href="/datenschutz" data-i18n="f_privacy">Datenschutz</a>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span class="footer-brand">SATK</span>
+    <span class="footer-meta">Sascha&rsquo;s Audio Toolkit · © 2026</span>
+  </div>
 </footer>
 
 <script>
@@ -241,7 +286,14 @@ const i18n = {
     cl_od_p: '<strong>Video-Sync · Auto-Edit · AutoMix R128 · Smart Prompter · MXF-Round-Trip.</strong> Beta-Version befindet sich in der internen Erprobung. Veröffentlichung geplant sobald die Stabilitätstests abgeschlossen sind.',
     cl_lc_p: '<strong>Offline R128-Korrektur · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6.</strong> Engine ist funktionsfähig, derzeit Feinarbeit am Preset-System und der Batch-Pipeline.',
     cl_note: 'Hinweis: Wir veröffentlichen erst, wenn ein Tool zuverlässig im Workflow läuft — keine fixen Termine, keine Vorbestellungen. Wenn du benachrichtigt werden möchtest sobald ein Tool live geht, schreib eine kurze Mail an <a href="mailto:info@satk.tech?subject=Launch-Notification">info@satk.tech</a> mit dem Tool-Namen.',
-    f_shop: 'Shop', f_support: 'Support', f_manage: 'Lizenz verwalten', f_terms: 'AGB', f_refund: 'Widerruf', f_imprint: 'Impressum', f_privacy: 'Datenschutz',
+    f_shop: 'Shop', f_support: 'Support', f_manage: 'Lizenz verwalten', f_terms: 'AGB', f_refund: 'Widerruf', f_imprint: 'Impressum', f_privacy: 'Datenschutz',,
+    nav_mac: 'Mac Apps',
+    nav_ios: 'iOS Apps',
+    nav_tools: 'Browser-Tools',
+    f_col_products: 'Produkte',
+    f_col_support: 'Support',
+    f_col_legal: 'Rechtliches',
+    f_imprint_contact: 'Kontakt & Impressum'
   },
   en: {
     nav_shop: 'Shop', nav_info: 'Support', nav_manage: 'License', nav_back: '← Back to Shop',
@@ -271,7 +323,14 @@ const i18n = {
     cl_od_p: '<strong>Video sync · Auto Edit · AutoMix R128 · Smart Prompter · MXF round-trip.</strong> Beta version is in internal testing. Release planned once stability checks are complete.',
     cl_lc_p: '<strong>Offline R128 correction · 16 delivery presets · verify-and-refine · mono to 9.1.6.</strong> Engine is functional, currently fine-tuning the preset system and batch pipeline.',
     cl_note: 'Note: We release only when a tool runs reliably in the workflow — no fixed dates, no pre-orders. If you want to be notified when a tool goes live, send a short email to <a href="mailto:info@satk.tech?subject=Launch-Notification">info@satk.tech</a> with the tool name.',
-    f_shop: 'Shop', f_support: 'Support', f_manage: 'Manage License', f_terms: 'Terms', f_refund: 'Refund', f_imprint: 'Legal', f_privacy: 'Privacy',
+    f_shop: 'Shop', f_support: 'Support', f_manage: 'Manage License', f_terms: 'Terms', f_refund: 'Refund', f_imprint: 'Legal', f_privacy: 'Privacy',,
+    nav_mac: 'Mac Apps',
+    nav_ios: 'iOS Apps',
+    nav_tools: 'Browser Tools',
+    f_col_products: 'Products',
+    f_col_support: 'Support',
+    f_col_legal: 'Legal',
+    f_imprint_contact: 'Contact & Legal Notice'
   }
 };
 

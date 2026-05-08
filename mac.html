@@ -7,16 +7,16 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="canonical" href="https://satk.tech/">
+<link rel="canonical" href="https://satk.tech/mac">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SATK – Pro Audio Software für Broadcast &amp; Postproduktion</title>
-<meta name="description" content="Pro Audio-Software für Broadcast: SATK Broadcast Meter, Overdub Studio, Loudness Correct mit EBU R128, LUFS, True Peak und PPM. VST3/AU-Plugin, macOS, iPad.">
+<title>SATK Mac Apps – Broadcast Meter, Overdub Studio, Loudness Correct</title>
+<meta name="description" content="Native macOS-Apps für Broadcast und Postproduktion: Broadcast Meter, Overdub Studio, Loudness Correct mit EBU R128, LUFS, True Peak und PPM. Einmalkauf via Paddle, 7-Tage-Trial, Lizenz für 2 Macs.">
 
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="SATK – Pro Audio Software für Broadcast &amp; Postproduktion">
-<meta property="og:description" content="Apps und Plugins für professionelle Medienproduktionen. Broadcast Meter, Overdub Studio, Loudness Correct.">
-<meta property="og:url" content="https://satk.tech/">
+<meta property="og:title" content="SATK Mac Apps – Broadcast Meter, Overdub Studio, Loudness Correct">
+<meta property="og:description" content="Native macOS-Apps für Broadcast und Postproduktion. Einmalkauf, 7-Tage-Trial, Lizenz für 2 Macs.">
+<meta property="og:url" content="https://satk.tech/mac">
 <meta property="og:image" content="https://satk.tech/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -92,18 +92,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .nav-platforms a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:999px;color:var(--mu2);text-decoration:none;transition:all .2s}
 .nav-platforms a.active{background:var(--ac);color:#0a0a0b}
 .nav-platforms a:hover:not(.active){color:var(--tx);background:rgba(255,255,255,.04)}
-
-/* ── Hub Platform Cards ──────────── */
-.platforms{max-width:1120px;margin:0 auto;padding:24px 32px 0}
-.platforms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.platform-card{display:flex;flex-direction:column;background:var(--sf);border-radius:10px;padding:32px 28px;text-decoration:none;color:var(--tx);transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;border:1px solid var(--bd);cursor:pointer;position:relative;overflow:hidden}
-.platform-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.5);border-color:rgba(200,240,96,.2)}
-.platform-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ac);margin-bottom:14px;display:block}
-.platform-card h3{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.3px;margin-bottom:12px}
-.platform-card p{font-size:11px;color:var(--mu2);line-height:1.7;margin-bottom:20px;flex:1}
-.platform-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ac);transition:transform .2s;display:inline-block}
-.platform-card:hover .platform-link{transform:translateX(4px)}
-@media(max-width:900px){.platforms-grid{grid-template-columns:1fr;gap:16px}.platform-card{padding:24px 22px}}
 
 /* ── Hero ────────────────────────── */
 .hero{text-align:center;padding:72px 32px 48px;position:relative}
@@ -243,7 +231,7 @@ footer{padding:64px 48px 32px;margin-top:96px;border-top:1px solid rgba(255,255,
     <span class="nav-logo-sub">Sascha&rsquo;s Audio Tool Kit</span>
   </a>
   <div class="nav-platforms">
-    <a href="/mac">Mac</a>
+    <a href="/mac" class="active">Mac</a>
     <a href="/ios">iOS</a>
     <a href="/tools">Web</a>
   </div>
@@ -259,31 +247,151 @@ footer{padding:64px 48px 32px;margin-top:96px;border-top:1px solid rgba(255,255,
 </nav>
 
 <div class="hero">
-  <h1>Pro <em>Audio Software</em></h1>
-  <p data-i18n="hero_sub">Apps und Plugins für professionelle Medienproduktionen.</p>
+  <h1>Mac <em>Apps</em></h1>
+  <p data-i18n="hero_mac_sub">Native Standalone-Apps für macOS. Einmalkauf, 7-Tage-Trial, Lizenz für 2 Macs.</p>
   <div class="hero-line"></div>
 </div>
 
-<section class="platforms" id="platforms">
-  <div class="platforms-grid">
-    <a href="/mac" class="platform-card">
-      <span class="platform-tag">macOS</span>
-      <h3 data-i18n="hub_mac_h">Mac Apps</h3>
-      <p data-i18n="hub_mac_p">Native Standalone-Apps für macOS — Broadcast Meter, Overdub Studio, Loudness Correct. Einmalkauf via Paddle, 7-Tage-Trial, Lizenz für 2 Macs.</p>
-      <span class="platform-link" data-i18n="hub_mac_cta">Mac Apps ansehen →</span>
-    </a>
-    <a href="/ios" class="platform-card">
-      <span class="platform-tag">iOS</span>
-      <h3 data-i18n="hub_ios_h">iOS Apps</h3>
-      <p data-i18n="hub_ios_p">iPhone- und iPad-Apps direkt aus dem Apple App Store: Broadcast Meter, Voiceover Studio, Loudness Correct, Easy Editor und Instant Player.</p>
-      <span class="platform-link" data-i18n="hub_ios_cta">iOS Apps ansehen →</span>
-    </a>
-    <a href="/tools" class="platform-card">
-      <span class="platform-tag">Web</span>
-      <h3 data-i18n="hub_web_h">Browser-Tools</h3>
-      <p data-i18n="hub_web_p">Sechs kostenlose Tools direkt im Browser: R128 Normalizer, Audio-Editor, Format-Wandler, Voiceover-Processor, Auto-Mixer, Instant-Player. Kein Account, kein Login.</p>
-      <span class="platform-link" data-i18n="hub_web_cta">Tools nutzen →</span>
-    </a>
+<section class="shop-section" id="software">
+  <h2>Software</h2>
+  <div class="grid">
+
+    <!-- ╔══ Broadcast Meter (Plugin · Mac · iPad · iPhone Mini) ═══╗ -->
+    <div class="card">
+      <a href="broadcast-meter-pro.html" class="card-img">
+        <img src="img-broadcast-meter.webp" alt="SATK Broadcast Meter — zur Detailseite">
+      </a>
+      <div class="card-body">
+        <div class="card-name">Broadcast Meter</div>
+        <div class="card-sub" data-i18n="bm_sub">PPM · LUFS · True Peak · FFT · Goniometer · Radar · Sprachklarheit · Prognose</div>
+        <div class="card-platforms">
+          <span>VST3</span><span>AU</span><span>macOS</span><span>iPad</span><span>iPhone</span>
+        </div>
+
+        <div class="format-row">
+          <div class="format-section">
+            <div class="format-label" data-i18n="fmt_standalone_mac">Standalone · macOS</div>
+            <div class="card-price">89 <span class="cur">€</span></div>
+            <div class="card-vat" data-i18n="vat">inkl. MwSt. · Einführungspreis</div>
+            <div class="card-cta">
+              <button class="card-btn trial" data-i18n="btn_trial" onclick="openTrial(TRIAL_URLS.bm)">Kostenlos 7 Tage testen</button>
+              <button class="card-btn-link" data-i18n="btn_trial_buy" onclick="openCheckout(PRICES.bm)">oder direkt kaufen</button>
+              <div class="card-claim" data-i18n="trial_claim">Kein Konto · keine Email</div>
+            </div>
+          </div>
+
+          <div class="format-section">
+            <div class="format-label" data-i18n="fmt_plugin">Plugin · VST3 · AU</div>
+            <div class="card-price">59 <span class="cur">€</span></div>
+            <div class="card-vat" data-i18n="vat">inkl. MwSt. · Einführungspreis</div>
+            <button class="card-btn soon" data-i18n="btn_soon">Bald verfügbar</button>
+          </div>
+        </div>
+
+        <div class="format-section">
+          <div class="format-label" data-i18n="fmt_apps">Apple Apps</div>
+          <div class="card-stores list">
+            <div class="store-row">
+              <a class="appstore-badge" data-app-id="6762224279" href="https://apps.apple.com/de/app/id6762224279" target="_blank" rel="noopener" aria-label="Im App Store laden">
+                <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
+              </a>
+              <div class="store-meta">
+                <span class="store-platform" data-i18n="store_ipad">iPad App</span>
+              </div>
+            </div>
+            <div class="store-row">
+              <a class="appstore-badge" data-app-id="6763360069" href="https://apps.apple.com/de/app/id6763360069" target="_blank" rel="noopener" aria-label="Im App Store laden">
+                <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
+              </a>
+              <div class="store-meta">
+                <span class="store-platform" data-i18n="store_iphone">iPhone App</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ╔══ Overdub Studio (Standalone macOS + Mac App) ══════════╗ -->
+    <div class="card">
+      <a href="overdub-studio-pro.html" class="card-img">
+        <img src="img-overdub-studio.webp" alt="SATK Overdub Studio — zur Detailseite">
+      </a>
+      <div class="card-body">
+        <div class="card-name">Overdub Studio</div>
+        <div class="card-sub" data-i18n="od_sub">Video-Sync · Auto Edit · AutoMix R128 · Smart Prompter · MXF Round-Trip</div>
+        <div class="card-platforms">
+          <span>macOS</span><span>iPad</span><span>Universal Binary</span><span>Standalone</span>
+        </div>
+
+        <div class="format-section">
+          <div class="format-label" data-i18n="fmt_standalone_mac">Standalone · macOS</div>
+          <div class="card-price">199 <span class="cur">€</span></div>
+          <div class="card-vat" data-i18n="vat">inkl. MwSt. · Einführungspreis</div>
+          <div class="card-cta">
+            <button class="card-btn trial" data-i18n="btn_trial" onclick="openTrial(TRIAL_URLS.od)">Kostenlos 7 Tage testen</button>
+            <button class="card-btn-link" data-i18n="btn_trial_buy" onclick="openCheckout(PRICES.od)">oder direkt kaufen</button>
+            <div class="card-claim" data-i18n="trial_claim">Kein Konto · keine Email</div>
+          </div>
+        </div>
+
+        <div class="format-section">
+          <div class="format-label" data-i18n="fmt_apps">Apple Apps</div>
+          <div class="card-stores list">
+            <div class="store-row">
+              <!-- TODO: iPad App Store URL für Overdub Studio (Lite) -->
+              <a class="appstore-badge" href="#" target="_blank" rel="noopener" aria-label="Im App Store laden">
+                <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
+              </a>
+              <div class="store-meta">
+                <span class="store-platform" data-i18n="store_ipad">iPad App</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ╔══ Loudness Correct (iPad App) ══════════════════════════╗ -->
+    <div class="card">
+      <a href="loudness-correct.html" class="card-img">
+        <img src="img-loudness-correct.webp" alt="SATK Loudness Correct — zur Detailseite">
+      </a>
+      <div class="card-body">
+        <div class="card-name">Loudness Correct</div>
+        <div class="card-sub" data-i18n="lc_sub">Offline R128 · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6</div>
+        <div class="card-platforms">
+          <span>macOS</span><span>iPad</span><span>Universal</span>
+        </div>
+
+        <div class="format-section">
+          <div class="format-label" data-i18n="fmt_standalone_mac">Standalone · macOS</div>
+          <div class="card-price">49 <span class="cur">€</span></div>
+          <div class="card-vat" data-i18n="vat">inkl. MwSt. · Einführungspreis</div>
+          <div class="card-cta">
+            <button class="card-btn trial" data-i18n="btn_trial" onclick="openTrial(TRIAL_URLS.lc)">Kostenlos 7 Tage testen</button>
+            <button class="card-btn-link" data-i18n="btn_trial_buy" onclick="openCheckout(PRICES.lc)">oder direkt kaufen</button>
+            <div class="card-claim" data-i18n="trial_claim">Kein Konto · keine Email</div>
+          </div>
+        </div>
+
+        <div class="format-section">
+          <div class="format-label" data-i18n="fmt_apps">Apple Apps</div>
+          <div class="card-stores list">
+            <div class="store-row">
+              <!-- TODO: iPad App Store URL für Loudness Correct -->
+              <a class="appstore-badge" href="#" target="_blank" rel="noopener" aria-label="Im App Store laden">
+                <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
+              </a>
+              <div class="store-meta">
+                <span class="store-platform" data-i18n="store_ipad">iPad App</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 

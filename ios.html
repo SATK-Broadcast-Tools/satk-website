@@ -7,16 +7,16 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="canonical" href="https://satk.tech/">
+<link rel="canonical" href="https://satk.tech/ios">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SATK – Pro Audio Software für Broadcast &amp; Postproduktion</title>
-<meta name="description" content="Pro Audio-Software für Broadcast: SATK Broadcast Meter, Overdub Studio, Loudness Correct mit EBU R128, LUFS, True Peak und PPM. VST3/AU-Plugin, macOS, iPad.">
+<title>SATK iOS Apps – iPhone und iPad im App Store</title>
+<meta name="description" content="iOS-Apps für iPhone und iPad direkt im App Store: Broadcast Meter, Voiceover Studio, Loudness Correct, Easy Editor und Instant Player. Sofort einsatzbereit ohne Account.">
 
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="SATK – Pro Audio Software für Broadcast &amp; Postproduktion">
-<meta property="og:description" content="Apps und Plugins für professionelle Medienproduktionen. Broadcast Meter, Overdub Studio, Loudness Correct.">
-<meta property="og:url" content="https://satk.tech/">
+<meta property="og:title" content="SATK iOS Apps – iPhone und iPad im App Store">
+<meta property="og:description" content="iOS-Apps für iPhone und iPad direkt im App Store. Sofort einsatzbereit ohne Account.">
+<meta property="og:url" content="https://satk.tech/ios">
 <meta property="og:image" content="https://satk.tech/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -24,8 +24,8 @@
 <meta property="og:locale" content="de_DE">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SATK – Pro Audio Software für Broadcast &amp; Postproduktion">
-<meta name="twitter:description" content="Apps und Plugins für professionelle Medienproduktionen. Broadcast Meter, Overdub Studio, Loudness Correct.">
+<meta name="twitter:title" content="SATK iOS Apps – iPhone und iPad im App Store">
+<meta name="twitter:description" content="iOS-Apps für iPhone und iPad direkt im App Store.">
 <meta name="twitter:image" content="https://satk.tech/og-image.png">
 <link href="fonts.css" rel="stylesheet">
 <script type="application/ld+json">
@@ -92,18 +92,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .nav-platforms a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:999px;color:var(--mu2);text-decoration:none;transition:all .2s}
 .nav-platforms a.active{background:var(--ac);color:#0a0a0b}
 .nav-platforms a:hover:not(.active){color:var(--tx);background:rgba(255,255,255,.04)}
-
-/* ── Hub Platform Cards ──────────── */
-.platforms{max-width:1120px;margin:0 auto;padding:24px 32px 0}
-.platforms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.platform-card{display:flex;flex-direction:column;background:var(--sf);border-radius:10px;padding:32px 28px;text-decoration:none;color:var(--tx);transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;border:1px solid var(--bd);cursor:pointer;position:relative;overflow:hidden}
-.platform-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.5);border-color:rgba(200,240,96,.2)}
-.platform-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ac);margin-bottom:14px;display:block}
-.platform-card h3{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.3px;margin-bottom:12px}
-.platform-card p{font-size:11px;color:var(--mu2);line-height:1.7;margin-bottom:20px;flex:1}
-.platform-link{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ac);transition:transform .2s;display:inline-block}
-.platform-card:hover .platform-link{transform:translateX(4px)}
-@media(max-width:900px){.platforms-grid{grid-template-columns:1fr;gap:16px}.platform-card{padding:24px 22px}}
 
 /* ── Hero ────────────────────────── */
 .hero{text-align:center;padding:72px 32px 48px;position:relative}
@@ -244,7 +232,7 @@ footer{padding:64px 48px 32px;margin-top:96px;border-top:1px solid rgba(255,255,
   </a>
   <div class="nav-platforms">
     <a href="/mac">Mac</a>
-    <a href="/ios">iOS</a>
+    <a href="/ios" class="active">iOS</a>
     <a href="/tools">Web</a>
   </div>
   <div class="nav-links">
@@ -259,52 +247,174 @@ footer{padding:64px 48px 32px;margin-top:96px;border-top:1px solid rgba(255,255,
 </nav>
 
 <div class="hero">
-  <h1>Pro <em>Audio Software</em></h1>
-  <p data-i18n="hero_sub">Apps und Plugins für professionelle Medienproduktionen.</p>
+  <h1>iOS <em>Apps</em></h1>
+  <p data-i18n="hero_ios_sub">Apps für iPhone und iPad direkt aus dem Apple App Store.</p>
   <div class="hero-line"></div>
 </div>
 
-<section class="platforms" id="platforms">
-  <div class="platforms-grid">
-    <a href="/mac" class="platform-card">
-      <span class="platform-tag">macOS</span>
-      <h3 data-i18n="hub_mac_h">Mac Apps</h3>
-      <p data-i18n="hub_mac_p">Native Standalone-Apps für macOS — Broadcast Meter, Overdub Studio, Loudness Correct. Einmalkauf via Paddle, 7-Tage-Trial, Lizenz für 2 Macs.</p>
-      <span class="platform-link" data-i18n="hub_mac_cta">Mac Apps ansehen →</span>
-    </a>
-    <a href="/ios" class="platform-card">
-      <span class="platform-tag">iOS</span>
-      <h3 data-i18n="hub_ios_h">iOS Apps</h3>
-      <p data-i18n="hub_ios_p">iPhone- und iPad-Apps direkt aus dem Apple App Store: Broadcast Meter, Voiceover Studio, Loudness Correct, Easy Editor und Instant Player.</p>
-      <span class="platform-link" data-i18n="hub_ios_cta">iOS Apps ansehen →</span>
-    </a>
-    <a href="/tools" class="platform-card">
-      <span class="platform-tag">Web</span>
-      <h3 data-i18n="hub_web_h">Browser-Tools</h3>
-      <p data-i18n="hub_web_p">Sechs kostenlose Tools direkt im Browser: R128 Normalizer, Audio-Editor, Format-Wandler, Voiceover-Processor, Auto-Mixer, Instant-Player. Kein Account, kein Login.</p>
-      <span class="platform-link" data-i18n="hub_web_cta">Tools nutzen →</span>
-    </a>
+<section class="shop-section" id="ios-apps">
+  <h2 data-i18n="ios_section_h">Apple App Store</h2>
+  <div class="grid">
+
+    <!-- ╔══ Broadcast Meter (iPhone + iPad — beide live) ═════════╗ -->
+    <div class="card">
+      <a href="broadcast-meter.html" class="card-img">
+        <img src="img-bm-ipad.webp" alt="SATK Broadcast Meter — iPad und iPhone">
+      </a>
+      <div class="card-body">
+        <div class="card-name">Broadcast Meter</div>
+        <div class="card-sub" data-i18n="bm_ios_sub">PPM · LUFS · True Peak · FFT · Goniometer · Sprachklarheit. Auf iPad und iPhone.</div>
+        <div class="card-platforms">
+          <span>iPhone</span><span>iPad</span><span>Universal</span>
+        </div>
+
+        <div class="format-section">
+          <div class="format-label" data-i18n="fmt_apps">Apple Apps</div>
+          <div class="card-stores list">
+            <div class="store-row">
+              <a class="appstore-badge" data-app-id="6762224279" href="https://apps.apple.com/de/app/id6762224279" target="_blank" rel="noopener" aria-label="iPad-App im App Store laden">
+                <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
+              </a>
+              <div class="store-meta">
+                <span class="store-platform" data-i18n="store_ipad">iPad App</span>
+                <span class="store-price" data-i18n="store_free">gratis</span>
+              </div>
+            </div>
+            <div class="store-row">
+              <a class="appstore-badge" data-app-id="6763360069" href="https://apps.apple.com/de/app/id6763360069" target="_blank" rel="noopener" aria-label="iPhone-App im App Store laden">
+                <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
+              </a>
+              <div class="store-meta">
+                <span class="store-platform" data-i18n="store_iphone">iPhone App</span>
+                <span class="store-price" data-i18n="store_free">gratis</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ╔══ Voiceover Studio (iPad) — App Store URL TODO ═══════╗ -->
+    <div class="card">
+      <a href="overdub-studio.html" class="card-img">
+        <img src="img-overdub-studio.webp" alt="SATK Voiceover Studio — iPad">
+      </a>
+      <div class="card-body">
+        <div class="card-name">Voiceover Studio</div>
+        <div class="card-sub" data-i18n="vs_ios_sub">Voice-Over gegen Video · K-Loudness · Channel Strip · Ducking · R128-Export. iPad-App.</div>
+        <div class="card-platforms">
+          <span>iPad</span>
+        </div>
+
+        <div class="format-section">
+          <div class="format-label" data-i18n="fmt_apps">Apple App</div>
+          <div class="card-stores list">
+            <div class="store-row">
+              <!-- TODO: App-Store-ID fuer Voiceover Studio iPad -->
+              <a class="appstore-badge" href="#" target="_blank" rel="noopener" aria-label="Im App Store laden">
+                <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
+              </a>
+              <div class="store-meta">
+                <span class="store-platform" data-i18n="store_ipad">iPad App</span>
+                <span class="store-status" data-i18n="store_soon">In Vorbereitung</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ╔══ Loudness Correct (iPad) — App Store URL TODO ══════╗ -->
+    <div class="card">
+      <a href="loudness-correct.html" class="card-img">
+        <img src="img-loudness-correct.webp" alt="SATK Loudness Correct — iPad">
+      </a>
+      <div class="card-body">
+        <div class="card-name">Loudness Correct</div>
+        <div class="card-sub" data-i18n="lc_ios_sub">Offline R128 · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6. iPad-App.</div>
+        <div class="card-platforms">
+          <span>iPad</span>
+        </div>
+
+        <div class="format-section">
+          <div class="format-label" data-i18n="fmt_apps">Apple App</div>
+          <div class="card-stores list">
+            <div class="store-row">
+              <!-- TODO: App-Store-ID fuer Loudness Correct iPad -->
+              <a class="appstore-badge" href="#" target="_blank" rel="noopener" aria-label="Im App Store laden">
+                <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
+              </a>
+              <div class="store-meta">
+                <span class="store-platform" data-i18n="store_ipad">iPad App</span>
+                <span class="store-status" data-i18n="store_soon">In Vorbereitung</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ╔══ Easy Editor + Instant Player Combi ═════════════════╗ -->
+    <div class="card">
+      <div class="card-img" style="background:#08090a;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;color:var(--mu);font-size:14px;letter-spacing:2px;text-transform:uppercase">
+        Easy Editor &amp; Instant Player
+      </div>
+      <div class="card-body">
+        <div class="card-name">Easy Editor &amp; Instant Player</div>
+        <div class="card-sub" data-i18n="ee_ip_sub">Universal-Apps für iPhone und iPad: schneller Editor und 64-Pad-Soundboard, die ineinandergreifen.</div>
+        <div class="card-platforms">
+          <span>iPhone</span><span>iPad</span><span>Universal</span>
+        </div>
+
+        <div class="format-section">
+          <div class="format-label" data-i18n="fmt_apps">Apple Apps</div>
+          <div class="card-stores list">
+            <div class="store-row">
+              <!-- TODO: App-Store-ID fuer Easy Editor (4,99 EUR) -->
+              <a class="appstore-badge" href="#" target="_blank" rel="noopener" aria-label="Easy Editor im App Store laden">
+                <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
+              </a>
+              <div class="store-meta">
+                <span class="store-platform">Easy Editor</span>
+                <span class="store-price">4,99 <span class="cur">€</span></span>
+              </div>
+            </div>
+            <div class="store-row">
+              <!-- TODO: App-Store-ID fuer Instant Player (gratis) -->
+              <a class="appstore-badge" href="#" target="_blank" rel="noopener" aria-label="Instant Player im App Store laden">
+                <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
+              </a>
+              <div class="store-meta">
+                <span class="store-platform">Instant Player</span>
+                <span class="store-price" data-i18n="store_free">gratis</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <section class="info-section" id="info">
-  <h2 data-i18n="info_title">Lizenz &amp; Support</h2>
+  <h2 data-i18n="info_title_ios">Apple App Store</h2>
   <div class="info-row">
     <div class="info-item">
-      <h3 data-i18n="info_lic_h">Lizenz</h3>
-      <p data-i18n="info_lic_p">Jede Lizenz gilt für 2 Rechner. Einmalige Zahlung, kein Abo. Sichere Bezahlung über Paddle.</p>
+      <h3 data-i18n="info_ios_buy_h">Kauf &amp; Updates</h3>
+      <p data-i18n="info_ios_buy_p">Kauf und Updates laufen über deinen Apple-Account. Kein zusätzliches Konto, keine separate Lizenzierung.</p>
     </div>
     <div class="info-item">
-      <h3>Updates</h3>
-      <p data-i18n="info_upd_p">Alle Minor-Updates kostenlos. Major-Updates zum vergünstigten Upgrade-Preis.</p>
+      <h3 data-i18n="info_ios_family_h">Familienfreigabe</h3>
+      <p data-i18n="info_ios_family_p">Bezahlte Apps lassen sich über die Apple-Familienfreigabe mit bis zu 5 weiteren Familienmitgliedern teilen.</p>
     </div>
     <div class="info-item">
-      <h3>Support</h3>
-      <p data-i18n="info_sup_p">E-Mail-Support direkt vom Entwickler. Keine Warteschlangen, keine Chatbots.</p>
+      <h3 data-i18n="info_ios_sup_h">Support</h3>
+      <p data-i18n="info_ios_sup_p">E-Mail-Support direkt vom Entwickler. Keine Warteschlangen, keine Chatbots.</p>
     </div>
     <div class="info-item">
-      <h3 data-i18n="info_free_h">Browser-Tools</h3>
-      <p data-i18n-html="info_free_p">R128 Normalizer und 5 weitere Tools <a href="tools.html">kostenlos</a>.</p>
+      <h3 data-i18n="info_ios_mac_h">Auch für Mac</h3>
+      <p data-i18n-html="info_ios_mac_p">Brauchst du Standalone-macOS-Versionen? <a href="/mac">Mac Apps ansehen</a>.</p>
     </div>
   </div>
 </section>

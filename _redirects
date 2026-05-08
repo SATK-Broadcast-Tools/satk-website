@@ -6,6 +6,10 @@
 # index.html → / (kanonische Homepage)
 /index.html / 301
 
+# Plattform-Hubs
+/mac.html /mac 301
+/ios.html /ios 301
+
 # Alle anderen .html → ohne Extension
 /agb.html /agb 301
 /agb-en.html /agb-en 301

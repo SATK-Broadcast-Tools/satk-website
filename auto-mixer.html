@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta name="description" content="Kostenloser Automixer im Browser: Sprecher- und Beitrags-Spur automatisch mischen mit Side-Chain Ducking, EBU R128 konformer Output.">
+<meta name="description" content="Sprecher- und Beitrags-Spur automatisch mischen. Side-Chain-Ducking mit konfigurierbarem Attack &amp; Release, EBU-R128-konformer Output. Lokal im Browser, ohne Upload.">
 <meta name="keywords" content="Auto-Mixer, Automixer, Side-Chain Ducking, Sprecher Beitrag mischen, O-Ton Atmo, Radio Mix, TV Mix, Podcast Mix, EBU R128, automatisch mischen, Browser Mixer, kostenlos, kein Download">
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SATK Auto-Mixer – Sprecher & Beitrag automatisch mischen kostenlos</title>
+<title>SATK Auto-Mixer · Side-Chain-Ducking, EBU R128 im Browser</title>
 <style>
 @import url('fonts.css');
 :root {
@@ -262,21 +262,35 @@ input[type=range]::-moz-range-thumb{
 @keyframes satkDlIn{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
 @keyframes satkDlOut{from{opacity:1;}to{opacity:0;transform:translateX(-50%) translateY(8px);}}
 
+/* ── Shop-Back-Link im Header ── */
+.hdr-back{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--mu);text-decoration:none;padding:2px 0;margin-bottom:4px;transition:color .15s;}
+.hdr-back:hover{color:var(--ac);}
+@media (max-width:540px){.hdr-back{font-size:8px;}}
+
+/* ── Site-Footer (Impressum/Datenschutz, TMG/DSGVO) ── */
+.site-footer{flex-shrink:0;background:var(--sf);border-top:1px solid var(--bd);}
+.footer-inner{padding:6px 20px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+.footer-logo{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;letter-spacing:.18em;color:var(--ac);}
+.footer-copy{font-size:8px;color:var(--mu);}
+.footer-copy a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--bd);}
+.footer-copy a:hover{color:var(--ac);text-decoration-color:var(--ac);}
+@media (max-width:540px){.footer-inner{padding:5px 10px;gap:6px;}.footer-copy{font-size:7px;}.footer-logo{font-size:10px;}}
+
 </style>
   <link rel="canonical" href="https://satk.tech/auto-mixer.html">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://satk.tech/auto-mixer.html">
-<meta property="og:title" content="SATK Auto-Mixer – Sprecher & Beitrag automatisch mischen mit Side-Chain">
-<meta property="og:description" content="Sprecher- und Beitrags-Spur automatisch mischen mit Side-Chain Ducking und EBU R128 Output. Kostenlos für Radio, TV und Podcast im Browser.">
+<meta property="og:title" content="SATK Auto-Mixer · Side-Chain-Ducking, EBU R128 im Browser">
+<meta property="og:description" content="Sprecher- und Beitrags-Spur automatisch mischen. Side-Chain-Ducking mit konfigurierbarem Attack &amp; Release, EBU-R128-konformer Output. Lokal im Browser, ohne Upload.">
 <meta property="og:image" content="https://satk.tech/og-image.png">
 <meta property="og:locale" content="de_DE">
-<meta property="og:site_name" content="SATK – Sascha's Audio Toolkit">
+<meta property="og:site_name" content="SATK – Sascha&rsquo;s Audio Tool Kit">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SATK Auto-Mixer – Sprecher & Beitrag automatisch mischen mit Side-Chain">
-<meta name="twitter:description" content="Sprecher- und Beitrags-Spur automatisch mischen mit Side-Chain Ducking und EBU R128 Output. Kostenlos für Radio, TV und Podcast im Browser.">
+<meta name="twitter:title" content="SATK Auto-Mixer · Side-Chain-Ducking, EBU R128 im Browser">
+<meta name="twitter:description" content="Sprecher- und Beitrags-Spur automatisch mischen. Side-Chain-Ducking mit konfigurierbarem Attack &amp; Release, EBU-R128-konformer Output. Lokal im Browser, ohne Upload.">
 <meta name="twitter:image" content="https://satk.tech/og-image.png">
 
 <script type="application/ld+json">
@@ -287,10 +301,10 @@ input[type=range]::-moz-range-thumb{
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Web Browser, iOS, Android",
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
-  "description": "Kostenloser Automixer im Browser: Sprecher- und Beitrags-Spur automatisch mischen mit Side-Chain Ducking. Konfigurierbarer Attack/Release, EBU R128 konformer Mix-Output. Für Radio, TV und Podcast.",
+  "description": "Sprecher- und Beitrags-Spur automatisch mischen. Side-Chain-Ducking mit konfigurierbarem Attack und Release, EBU-R128-konformer Mix-Output. Lokal im Browser, ohne Upload.",
   "url": "https://satk.tech/auto-mixer.html",
   "creator": {"@type": "Person", "name": "Sascha Hömske"},
-  "isPartOf": {"@type": "WebSite", "name": "SATK – Sascha's Audio Toolkit", "url": "https://satk.tech/"}
+  "isPartOf": {"@type": "WebSite", "name": "SATK – Sascha’s Audio Tool Kit", "url": "https://satk.tech/"}
 }
 </script>
 <!-- Privacy-friendly analytics by Plausible -->
@@ -313,11 +327,12 @@ window.addEventListener('message', function(e){
 
 <header>
   <div class="hdr-brand">
+    <a class="hdr-back" href="/" aria-label="Zurück zum SATK-Shop">← Zurück zum Shop</a>
     <div class="hdr-top">
       <span class="hdr-main">Auto</span>
       <span class="hdr-green">Mixer</span>
     </div>
-    <div class="hdr-tag">SATK — Side-Chain Ducking · EBU R128 · Broadcast-Qualität</div>
+    <div class="hdr-tag">Voice + Beitrag laden, automatisch ducken &middot; Side-Chain &middot; EBU R128 &middot; Broadcast-Qualität</div>
   </div>
 </header>
 
@@ -568,6 +583,7 @@ window.addEventListener('message', function(e){
   <span class="tb-info" id="tbInfo">Beide Spuren laden, dann Mix erstellen</span>
 </div>
 
+<div class="site-footer"><div class="footer-inner"><span class="footer-logo">SATK</span><span class="footer-copy">&copy; 2026 Sascha H&ouml;mske &middot; <a href="/">Shop</a> &middot; <a href="/tools.html">Tools</a> &middot; <a href="/impressum.html">Impressum</a> &middot; <a href="/datenschutz.html">Datenschutz</a></span></div></div>
 </div><!-- /.app -->
 
 <script>

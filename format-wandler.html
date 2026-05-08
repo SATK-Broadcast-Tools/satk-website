@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta name="description" content="Kostenloser Audio Formatwandler im Browser: WAV (16/24/32-bit), MP3, OGG, M4A, Opus, WebM, AIFF. Drag & Drop, kein Upload, sofortiger Download.">
+<meta name="description" content="Audiodateien zwischen WAV (16/24/32 Bit), MP3, FLAC, OGG, M4A, Opus, AIFF konvertieren. Drag &amp; Drop, Qualitätswahl, sofortiger Download — lokal im Browser, ohne Upload.">
 <meta name="keywords" content="Audio Format Wandler, Formatwandler, Audio konvertieren, WAV in MP3, MP3 in WAV, OGG konvertieren, M4A konvertieren, AIFF konvertieren, Opus konvertieren, WebM Audio, 24-bit WAV, WAV Konverter, Audio Konverter online, kostenlos, kein Upload, Browser, sofortiger Download">
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>SATK Format Wandler – Audio kostenlos konvertieren: WAV, MP3, OGG, M4A</title>
+<title>SATK Format-Wandler · WAV / MP3 / FLAC / OGG / M4A im Browser</title>
 <style>
   @import url('fonts.css');
 
@@ -138,10 +138,17 @@
     letter-spacing:.18em;color:var(--mu);}
   .footer-copy{font-size:9px;color:var(--mu);opacity:.5;}
 
+  /* ── Shop-Back-Link ── */
+  .shop-back{position:fixed;top:16px;right:20px;z-index:100;display:inline-flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--mu);text-decoration:none;padding:7px 12px;border:1px solid var(--bd);background:rgba(10,10,11,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:color .2s,border-color .2s;}
+  .shop-back:hover{color:var(--ac);border-color:var(--ac);}
+
   /* ── Responsive ── */
   @media(max-width:600px){
     .wrapper{padding:72px 16px 60px;}
     .format-grid{grid-template-columns:repeat(3,1fr);}
+  }
+  @media(max-width:540px){
+    .shop-back{top:10px;right:10px;font-size:10px;padding:5px 9px;}
   }
 </style>
   <link rel="canonical" href="https://satk.tech/format-wandler.html">
@@ -149,15 +156,15 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://satk.tech/format-wandler.html">
-<meta property="og:title" content="SATK Format Wandler – Audio kostenlos konvertieren: WAV MP3 OGG M4A AIFF">
-<meta property="og:description" content="WAV (16/24/32-bit), MP3, OGG, M4A, Opus, WebM, AIFF konvertieren. Drag & Drop, Qualitätswahl, sofortiger Download — 100% Browser, kein Upload.">
+<meta property="og:title" content="SATK Format-Wandler · WAV / MP3 / FLAC / OGG / M4A im Browser">
+<meta property="og:description" content="Audiodateien zwischen WAV (16/24/32 Bit), MP3, FLAC, OGG, M4A, Opus, AIFF konvertieren. Drag &amp; Drop, Qualitätswahl, sofortiger Download — lokal im Browser, ohne Upload.">
 <meta property="og:image" content="https://satk.tech/og-image.png">
 <meta property="og:locale" content="de_DE">
-<meta property="og:site_name" content="SATK – Sascha's Audio Toolkit">
+<meta property="og:site_name" content="SATK – Sascha&rsquo;s Audio Tool Kit">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SATK Format Wandler – Audio kostenlos konvertieren: WAV MP3 OGG M4A AIFF">
-<meta name="twitter:description" content="WAV (16/24/32-bit), MP3, OGG, M4A, Opus, WebM, AIFF konvertieren. Drag & Drop, Qualitätswahl, sofortiger Download — 100% Browser, kein Upload.">
+<meta name="twitter:title" content="SATK Format-Wandler · WAV / MP3 / FLAC / OGG / M4A im Browser">
+<meta name="twitter:description" content="Audiodateien zwischen WAV (16/24/32 Bit), MP3, FLAC, OGG, M4A, Opus, AIFF konvertieren. Drag &amp; Drop, Qualitätswahl, sofortiger Download — lokal im Browser, ohne Upload.">
 <meta name="twitter:image" content="https://satk.tech/og-image.png">
 
 <script type="application/ld+json">
@@ -168,10 +175,10 @@
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Web Browser, iOS, Android",
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
-  "description": "Kostenloser Audio Formatwandler im Browser: WAV 16/24/32-bit, MP3 (bis 320 kbps), OGG Vorbis, M4A AAC, Opus, WebM, AIFF. Drag & Drop, Qualitätswahl, sofortiger Download. Kein Upload, keine Installation.",
+  "description": "Audiodateien zwischen WAV (16/24/32 Bit), MP3 bis 320 kbps, OGG Vorbis, M4A AAC, Opus, FLAC, AIFF konvertieren. Drag & Drop, Qualitätswahl, sofortiger Download. Lokal im Browser, ohne Upload.",
   "url": "https://satk.tech/format-wandler.html",
   "creator": {"@type": "Person", "name": "Sascha Hömske"},
-  "isPartOf": {"@type": "WebSite", "name": "SATK – Sascha's Audio Toolkit", "url": "https://satk.tech/"}
+  "isPartOf": {"@type": "WebSite", "name": "SATK – Sascha’s Audio Tool Kit", "url": "https://satk.tech/"}
 }
 </script>
 <!-- Privacy-friendly analytics by Plausible -->
@@ -183,6 +190,8 @@
 </head>
 <body>
 
+<a href="/" class="shop-back" aria-label="Zurück zum SATK-Shop">← Zurück zum Shop</a>
+
 <div class="wrapper">
 
   <!-- Header -->
@@ -193,7 +202,7 @@
         <div class="logo-divider"></div>
         <div class="logo-right">
           <span class="logo-sub-word">Wandler</span>
-          <span class="logo-standard">SATK · Sascha's Audio Toolkit</span>
+          <span class="logo-standard">SATK · Sascha’s Audio Tool Kit</span>
         </div>
       </div>
       <div class="logo-bottom-row">
@@ -202,7 +211,7 @@
         <div class="logo-rule"></div>
       </div>
     </div>
-    <p class="subtitle">// Audiodateien im Browser konvertieren · Kein Upload · Keine Limits</p>
+    <p class="subtitle">// Datei droppen, Format wählen, exportieren — lokal im Browser, ohne Upload, ohne Limits.</p>
   </header>
 
   <!-- Drop Zone -->
@@ -322,7 +331,7 @@
 
   <footer class="site-footer">
     <span class="footer-logo">SATK</span>
-    <span class="footer-copy">&copy; 2026 Sascha Hömske · Sascha's Audio Toolkit · kostenlos &amp; werbefrei</span>
+    <span class="footer-copy">&copy; 2026 Sascha Hömske · Sascha&rsquo;s Audio Tool Kit · <a href="/" style="color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--bd);">Shop</a> · <a href="/tools.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--bd);">Tools</a></span>
   </footer>
 
 </div><!-- /.wrapper -->

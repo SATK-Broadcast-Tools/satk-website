@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta name="description" content="Kostenloses Podcast Studio im Browser: 4-Kanal-Aufnahme, Denoiser, EQ, Kompressor, R128-Normalisierung. Kein Download, kein Konto, keine Uploads.">
+<meta name="description" content="4-Kanal-Aufnahme mit Spectral-Denoiser (Auto-Learn), 5-Band-EQ, Kompressor, De-Esser, True-Peak/LUFS-Metering und R128-Export. Lokal im Browser, ohne Konto, ohne Upload.">
 <meta name="keywords" content="Podcast Recorder, Podcast aufnehmen, 4-Kanal Recorder, Mehrkanal Aufnahme, Podcast Studio, Denoiser, EQ, Kompressor, De-Esser, R128, LUFS, True Peak, WAV Aufnahme, Podcast Software kostenlos, Browser Recorder, kein Download, kein Upload, Podcast produzieren">
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SATK Podcast Recorder – 4-Kanal Aufnahme mit R128 kostenlos im Browser</title>
+<title>SATK Podcast Recorder · 4-Kanal-Aufnahme, Denoiser, R128 im Browser</title>
 <style>
 @import url('fonts.css');
 :root{--bg:#0a0a0b;--sf:#0e0e11;--sf2:#111114;--bd:#1e1e24;--ac:#c8f060;--tx:#e8e8ec;--mu:#5a5a6a;--red:#f06060;}
@@ -192,9 +192,10 @@ input.master-fdr::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 
 .site-footer{flex-shrink:0;background:var(--sf);border-top:1px solid var(--bd);}
-.footer-inner{padding:6px 20px;display:flex;align-items:center;justify-content:space-between;}
+.footer-inner{padding:6px 20px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;}
 .footer-logo{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;letter-spacing:.18em;color:var(--ac);}
 .footer-copy{font-size:8px;color:var(--mu);}
+@media (max-width:540px){.footer-inner{padding:5px 10px;gap:6px;}.footer-copy{font-size:7px;}.footer-logo{font-size:10px;}}
 #hwToast{position:fixed;bottom:60px;left:50%;transform:translateX(-50%);background:#1a2010;border:1px solid rgba(200,240,96,.3);color:var(--ac);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;padding:6px 14px;border-radius:2px;z-index:999;pointer-events:none;opacity:0;transition:opacity .3s;}
 
 /* ── Onboarding Toast ─── */
@@ -242,21 +243,26 @@ input.master-fdr::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height
   /* Master */
   .master-strip{padding:4px 8px;gap:6px;}
 }
+
+/* ── Shop-Back-Link im Header ── */
+.hdr-back{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--mu);text-decoration:none;padding:2px 0;margin-bottom:3px;transition:color .15s;}
+.hdr-back:hover{color:var(--ac);}
+@media (max-width:540px){.hdr-back{font-size:8px;margin-bottom:2px;}}
 </style>
   <link rel="canonical" href="https://satk.tech/podcast-recorder.html">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://satk.tech/podcast-recorder.html">
-<meta property="og:title" content="SATK Podcast Recorder – 4-Kanal Podcast aufnehmen & normalisieren">
-<meta property="og:description" content="4-Kanal-Aufnahme mit Denoiser, EQ, Kompressor, De-Esser und automatischer R128-Normalisierung. Kostenlos im Browser — kein Download, kein Konto.">
+<meta property="og:title" content="SATK Podcast Recorder · 4-Kanal-Aufnahme, Denoiser, R128 im Browser">
+<meta property="og:description" content="4-Kanal-Aufnahme mit Spectral-Denoiser (Auto-Learn), 5-Band-EQ, Kompressor, De-Esser, True-Peak/LUFS-Metering und R128-Export. Lokal im Browser, ohne Konto, ohne Upload.">
 <meta property="og:image" content="https://satk.tech/og-image.png">
 <meta property="og:locale" content="de_DE">
-<meta property="og:site_name" content="SATK – Sascha's Audio Toolkit">
+<meta property="og:site_name" content="SATK – Sascha&rsquo;s Audio Tool Kit">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SATK Podcast Recorder – 4-Kanal Podcast aufnehmen & normalisieren">
-<meta name="twitter:description" content="4-Kanal-Aufnahme mit Denoiser, EQ, Kompressor, De-Esser und automatischer R128-Normalisierung. Kostenlos im Browser — kein Download, kein Konto.">
+<meta name="twitter:title" content="SATK Podcast Recorder · 4-Kanal-Aufnahme, Denoiser, R128 im Browser">
+<meta name="twitter:description" content="4-Kanal-Aufnahme mit Spectral-Denoiser (Auto-Learn), 5-Band-EQ, Kompressor, De-Esser, True-Peak/LUFS-Metering und R128-Export. Lokal im Browser, ohne Konto, ohne Upload.">
 <meta name="twitter:image" content="https://satk.tech/og-image.png">
 
 <script type="application/ld+json">
@@ -267,10 +273,10 @@ input.master-fdr::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Web Browser, iOS, Android",
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
-  "description": "Kostenloses Podcast Studio im Browser: 4-Kanal-Aufnahme mit Spectral Denoiser Auto-Learn, 5-Band-EQ, Kompressor, De-Esser, True-Peak/LUFS-Metering, R128-Normalisierung. Kein Download, kein Konto.",
+  "description": "4-Kanal-Aufnahme mit Spectral-Denoiser (Auto-Learn), 5-Band-EQ, Kompressor, De-Esser, True-Peak/LUFS-Metering und R128-Export. Lokal im Browser, ohne Konto, ohne Upload.",
   "url": "https://satk.tech/podcast-recorder.html",
   "creator": {"@type": "Person", "name": "Sascha Hömske"},
-  "isPartOf": {"@type": "WebSite", "name": "SATK – Sascha's Audio Toolkit", "url": "https://satk.tech/"}
+  "isPartOf": {"@type": "WebSite", "name": "SATK – Sascha’s Audio Tool Kit", "url": "https://satk.tech/"}
 }
 </script>
 <!-- Privacy-friendly analytics by Plausible -->
@@ -284,8 +290,9 @@ input.master-fdr::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height
 <div class="app">
   <header>
     <div class="hdr-brand">
+      <a class="hdr-back" href="/" aria-label="Zurück zum SATK-Shop">← Zurück zum Shop</a>
       <div class="hdr-top"><span class="hdr-main">Podcast</span><span class="hdr-green">Recorder</span></div>
-      <div class="hdr-tag">4 Kanäle · True Peak · LUFS-M · R128-Export</div>
+      <div class="hdr-tag">4 Kanäle &middot; Spectral-Denoiser &middot; EQ &middot; Kompressor &middot; True-Peak / LUFS &middot; R128-Export</div>
     </div>
     <div class="hdr-right">
       <div class="hdr-status" id="hSt">BEREIT</div>
@@ -327,7 +334,7 @@ input.master-fdr::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height
     </div>
 
   </div>
-  <div class="site-footer"><div class="footer-inner"><span class="footer-logo">SATK</span><span class="footer-copy">&copy; 2026 Sascha Hömske &middot; Sascha's Audio Toolkit &middot; kostenlos &amp; werbefrei</span></div></div>
+  <div class="site-footer"><div class="footer-inner"><span class="footer-logo">SATK</span><span class="footer-copy">&copy; 2026 Sascha Hömske &middot; Sascha&rsquo;s Audio Tool Kit &middot; <a href="/" style="color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--bd);">Shop</a> &middot; <a href="/tools.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--bd);">Tools</a> &middot; <a href="/impressum.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--bd);">Impressum</a> &middot; <a href="/datenschutz.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--bd);">Datenschutz</a></span></div></div>
 </div>
 
 <!-- Onboarding Toast -->

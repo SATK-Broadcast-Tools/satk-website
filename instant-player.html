@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta name="description" content="Kostenloser Sampler, Soundbox und Instant Replay Player im Browser: 64 Cue-Slots in 4 Bänken, Tastatursteuerung, Loop, Fade. Für Live und Broadcast.">
+<meta name="description" content="64 Cue-Slots in 4 Bänken, Tastatur-Trigger, Loop, Fade, Auto-Cue, Wellenform-Vorschau. Sampler und Instant-Replay-Player für Live, Broadcast und Studio — lokal im Browser, ohne Upload.">
 <meta name="keywords" content="Instant Player, Soundboard, Cue Player, Sampler Browser, Instant Replay, Jingle Player, Stinger Player, 64 Slots, Keyboard Steuerung, Loop, Fade, Live Audio, Broadcast Player, Studio Playout, kostenlos, kein Download, Browser Soundboard">
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>SATK Instant Player – 64 Cue-Slots Soundboard kostenlos im Browser</title>
+<title>SATK Instant Player · 64 Cue-Slots, Tastatur-Trigger, Loop &amp; Fade</title>
 <style>
   @import url('fonts.css');
 
@@ -695,21 +695,26 @@ html, body, * { scrollbar-width: none; -ms-overflow-style: none; }
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
+
+/* ── Shop-Back-Link ── */
+.shop-back{position:fixed;top:16px;right:20px;z-index:100;display:inline-flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--muted);text-decoration:none;padding:7px 12px;border:1px solid var(--border);background:rgba(10,10,11,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:color .2s,border-color .2s;}
+.shop-back:hover{color:var(--accent);border-color:var(--accent);}
+@media (max-width:540px){.shop-back{top:10px;right:10px;font-size:10px;padding:5px 9px;}}
 </style>
   <link rel="canonical" href="https://satk.tech/instant-player.html">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://satk.tech/instant-player.html">
-<meta property="og:title" content="SATK Instant Player – Soundboard mit 64 Cue-Slots kostenlos im Browser">
-<meta property="og:description" content="64 Cue-Slots in 4 Bänken, Keyboard-Steuerung, Loop, Fade — für Live, Broadcast und Studio. Kostenloser Sampler und Instant-Replay-Player im Browser.">
+<meta property="og:title" content="SATK Instant Player · 64 Cue-Slots, Tastatur-Trigger, Loop &amp; Fade">
+<meta property="og:description" content="64 Cue-Slots in 4 Bänken, Tastatur-Trigger, Loop, Fade, Auto-Cue, Wellenform-Vorschau. Sampler und Instant-Replay-Player für Live, Broadcast und Studio — lokal im Browser, ohne Upload.">
 <meta property="og:image" content="https://satk.tech/og-image.png">
 <meta property="og:locale" content="de_DE">
-<meta property="og:site_name" content="SATK – Sascha's Audio Toolkit">
+<meta property="og:site_name" content="SATK – Sascha&rsquo;s Audio Tool Kit">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SATK Instant Player – Soundboard mit 64 Cue-Slots kostenlos im Browser">
-<meta name="twitter:description" content="64 Cue-Slots in 4 Bänken, Keyboard-Steuerung, Loop, Fade — für Live, Broadcast und Studio. Kostenloser Sampler und Instant-Replay-Player im Browser.">
+<meta name="twitter:title" content="SATK Instant Player · 64 Cue-Slots, Tastatur-Trigger, Loop &amp; Fade">
+<meta name="twitter:description" content="64 Cue-Slots in 4 Bänken, Tastatur-Trigger, Loop, Fade, Auto-Cue, Wellenform-Vorschau. Sampler und Instant-Replay-Player für Live, Broadcast und Studio — lokal im Browser, ohne Upload.">
 <meta name="twitter:image" content="https://satk.tech/og-image.png">
 
 <script type="application/ld+json">
@@ -720,10 +725,10 @@ html, body, * { scrollbar-width: none; -ms-overflow-style: none; }
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Web Browser, iOS, Android",
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
-  "description": "Kostenloser Sampler, Soundboard und Instant-Replay-Player im Browser: 64 Cue-Slots in 4 Bänken, Keyboard-Steuerung, Loop, Fade, Auto-Cue, Wellenform-Vorschau. Für Live, Broadcast und Studio.",
+  "description": "64 Cue-Slots in 4 Bänken, Tastatur-Trigger, Loop, Fade, Auto-Cue, Wellenform-Vorschau. Sampler und Instant-Replay-Player für Live, Broadcast und Studio. Lokal im Browser, ohne Upload.",
   "url": "https://satk.tech/instant-player.html",
   "creator": {"@type": "Person", "name": "Sascha Hömske"},
-  "isPartOf": {"@type": "WebSite", "name": "SATK – Sascha's Audio Toolkit", "url": "https://satk.tech/"}
+  "isPartOf": {"@type": "WebSite", "name": "SATK – Sascha’s Audio Tool Kit", "url": "https://satk.tech/"}
 }
 </script>
 <!-- Privacy-friendly analytics by Plausible -->
@@ -734,6 +739,8 @@ html, body, * { scrollbar-width: none; -ms-overflow-style: none; }
 </script>
 </head>
 <body>
+
+<a href="/" class="shop-back" aria-label="Zurück zum SATK-Shop">← Zurück zum Shop</a>
 
 <!-- SATK: Audio-Stop vom Launcher -->
 <script>
@@ -753,7 +760,7 @@ window.addEventListener('message', function(e) {
         <div class="logo-divider"></div>
         <div class="logo-right">
           <span class="logo-sub-word">Replay</span>
-          <span class="logo-standard">SATK — Sascha's Audio Toolkit</span>
+          <span class="logo-standard">SATK — Sascha’s Audio Tool Kit</span>
         </div>
       </div>
       <div class="logo-bottom-row">
@@ -762,7 +769,7 @@ window.addEventListener('message', function(e) {
         <div class="logo-rule"></div>
       </div>
     </div>
-    <p class="subtitle">// Audiodateien auf Pads laden und per Klick oder Taste abspielen</p>
+    <p class="subtitle">// Audio auf Pads laden, per Klick oder Taste triggern. 64 Slots in 4 Bänken &middot; Loop &middot; Fade &middot; Auto-Cue &mdash; lokal im Browser.</p>
   </header>
 
   <!-- Transport Bar -->
@@ -856,7 +863,7 @@ window.addEventListener('message', function(e) {
 <footer class="site-footer">
   <div class="footer-inner">
     <span class="footer-logo">SATK</span>
-    <span class="footer-copy">&copy; 2026 Sascha Hömske · Sascha's Audio Toolkit · kostenlos &amp; werbefrei</span>
+    <span class="footer-copy">&copy; 2026 Sascha Hömske · Sascha&rsquo;s Audio Tool Kit · <a href="/" style="color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--border);">Shop</a> · <a href="/tools.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--border);">Tools</a></span>
   </div>
 </footer>
 

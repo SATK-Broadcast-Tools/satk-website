@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta name="description" content="Kostenloser Voiceover-Klangoptimierer im Browser: KI-Entrauscher, EQ, Kompressor, De-Esser, R128-Normalisierung für TV −23 LUFS, Podcast −16 LUFS, YouTube −14 LUFS.">
+<meta name="description" content="Profil wählen, Datei laden, optimieren. Spectral-Denoiser, High-Pass, 5-Band-Tube-EQ, Kompressor, De-Esser, Limiter, R128-Normalisierung auf −23 / −16 / −14 LUFS — lokal im Browser.">
 <meta name="keywords" content="VoiceOver Processor, Stimme optimieren, Sprachoptimierung, Entrauscher, KI Denoiser, Spectral Denoiser, Wiener Filter, Rauschunterdrückung, EQ Equalizer, Kompressor, De-Esser, R128 Normalisierung, TV Audio, Podcast Audio, YouTube Audio, LUFS, True Peak, kostenlos, Browser, kein Download">
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>SATK VoiceOver Processor – Stimme optimieren, R128 normalisieren, kostenlos</title>
+<title>SATK VoiceOver Processor · Stimme optimieren, R128 im Browser</title>
 <style>
 @import url('fonts.css');
 :root{--bg:#0a0a0b;--sf:#111114;--sf2:#16161a;--bd:#1e1e24;--ac:#c8f060;--ac2:#60d4f0;--warn:#f0a060;--red:#f06060;--tx:#e8e8ec;--mu:#5a5a6a;}
@@ -204,21 +204,26 @@ body { overflow: hidden; height: 100vh; }
   -ms-overflow-style: none;
 }
 .wrapper::-webkit-scrollbar { display: none; width: 0; }
+
+/* ── Shop-Back-Link ── */
+.shop-back{position:fixed;top:16px;right:20px;z-index:100;display:inline-flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--mu);text-decoration:none;padding:7px 12px;border:1px solid var(--bd);background:rgba(10,10,11,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:color .2s,border-color .2s;}
+.shop-back:hover{color:var(--ac);border-color:var(--ac);}
+@media (max-width:540px){.shop-back{top:10px;right:10px;font-size:10px;padding:5px 9px;}}
 </style>
   <link rel="canonical" href="https://satk.tech/voiceover-processor.html">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://satk.tech/voiceover-processor.html">
-<meta property="og:title" content="SATK VoiceOver Processor – Stimme automatisch optimieren & normalisieren">
-<meta property="og:description" content="KI-Entrauscher, EQ, Kompressor, De-Esser und R128-Normalisierung in einem: TV −23 LUFS, YouTube −14 LUFS, Podcast −16 LUFS. Kostenlos im Browser.">
+<meta property="og:title" content="SATK VoiceOver Processor · Stimme optimieren, R128 im Browser">
+<meta property="og:description" content="Profil wählen, Datei laden, optimieren. Spectral-Denoiser, High-Pass, 5-Band-Tube-EQ, Kompressor, De-Esser, Limiter, R128-Normalisierung auf −23 / −16 / −14 LUFS — lokal im Browser.">
 <meta property="og:image" content="https://satk.tech/og-image.png">
 <meta property="og:locale" content="de_DE">
-<meta property="og:site_name" content="SATK – Sascha's Audio Toolkit">
+<meta property="og:site_name" content="SATK – Sascha&rsquo;s Audio Tool Kit">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SATK VoiceOver Processor – Stimme automatisch optimieren & normalisieren">
-<meta name="twitter:description" content="KI-Entrauscher, EQ, Kompressor, De-Esser und R128-Normalisierung in einem: TV −23 LUFS, YouTube −14 LUFS, Podcast −16 LUFS. Kostenlos im Browser.">
+<meta name="twitter:title" content="SATK VoiceOver Processor · Stimme optimieren, R128 im Browser">
+<meta name="twitter:description" content="Profil wählen, Datei laden, optimieren. Spectral-Denoiser, High-Pass, 5-Band-Tube-EQ, Kompressor, De-Esser, Limiter, R128-Normalisierung auf −23 / −16 / −14 LUFS — lokal im Browser.">
 <meta name="twitter:image" content="https://satk.tech/og-image.png">
 
 <script type="application/ld+json">
@@ -229,10 +234,10 @@ body { overflow: hidden; height: 100vh; }
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Web Browser, iOS, Android",
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
-  "description": "Vollautomatischer Voiceover-Processor im Browser: Spektraler KI-Denoiser, High-Pass, 5-Band Tube-EQ, Kompressor, De-Esser, Brickwall-Limiter, R128-Normalisierung für TV −23, YouTube −14, Podcast −16 LUFS.",
+  "description": "Profil wählen, Datei laden, optimieren. Spectral-Denoiser, High-Pass, 5-Band-Tube-EQ, Kompressor, De-Esser, Brickwall-Limiter und R128-Normalisierung auf −23, −16 oder −14 LUFS. Lokal im Browser, ohne Upload.",
   "url": "https://satk.tech/voiceover-processor.html",
   "creator": {"@type": "Person", "name": "Sascha Hömske"},
-  "isPartOf": {"@type": "WebSite", "name": "SATK – Sascha's Audio Toolkit", "url": "https://satk.tech/"}
+  "isPartOf": {"@type": "WebSite", "name": "SATK – Sascha’s Audio Tool Kit", "url": "https://satk.tech/"}
 }
 </script>
 <!-- Privacy-friendly analytics by Plausible -->
@@ -243,6 +248,8 @@ body { overflow: hidden; height: 100vh; }
 </script>
 </head>
 <body>
+
+<a href="/" class="shop-back" aria-label="Zurück zum SATK-Shop">← Zurück zum Shop</a>
 
 <!-- SATK: Audio-Stop vom Launcher -->
 <script>
@@ -261,7 +268,7 @@ window.addEventListener('message', function(e) {
     <div class="logo-div"></div>
     <div class="logo-r">
       <span class="logo-sub">Processor</span>
-      <span class="logo-std">SATK — Sascha's Audio Toolkit</span>
+      <span class="logo-std">SATK — Sascha’s Audio Tool Kit</span>
     </div>
   </div>
   <div class="logo-bot">
@@ -269,7 +276,7 @@ window.addEventListener('message', function(e) {
     <span class="logo-tag">4 Profile · Denoise · Gate · EQ · Kompressor · R128</span>
     <div class="logo-rule"></div>
   </div>
-  <p class="subtitle">// Profil wählen → Datei laden → Optimieren. Automatisch. Kein Einrichten.</p>
+  <p class="subtitle">// Profil wählen, Datei laden, optimieren. Denoiser, EQ, Kompressor, De-Esser, R128-Normalisierung &mdash; lokal im Browser, ohne Upload.</p>
 </header>
 
 <!-- Profile -->
@@ -401,7 +408,7 @@ window.addEventListener('message', function(e) {
 <footer class="site-footer">
   <div class="footer-inner">
     <span class="footer-logo">SATK</span>
-    <span class="footer-copy">&copy; 2026 Sascha Hömske · Sascha's Audio Toolkit · kostenlos &amp; werbefrei</span>
+    <span class="footer-copy">&copy; 2026 Sascha Hömske · Sascha&rsquo;s Audio Tool Kit · <a href="/" style="color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--bd);">Shop</a> · <a href="/tools.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--bd);">Tools</a></span>
   </div>
 </footer>
 

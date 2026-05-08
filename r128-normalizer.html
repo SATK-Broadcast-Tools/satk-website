@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta name="description" content="Kostenloser R128 Normalizer nach EBU R128 / ITU-R BS.1770-4. TV −23 LUFS, Podcast −16 LUFS, Online −14 LUFS. True Peak Limiter. Keine Installation, kein Upload.">
+<meta name="description" content="Lautheitsnormalisierung nach EBU R128 / ITU-R BS.1770-4. Datei droppen, Target wählen, normalisieren. K-Filter mit Double-Gating, 4× Polyphase TP-Limiter — lokale Verarbeitung im Browser, ohne Upload.">
 <meta name="keywords" content="R128 Normalizer, EBU R128, Loudness Normalizer, LUFS normalisieren, Lautheit normalisieren, TV Audio normalisieren, Podcast normalisieren, YouTube normalisieren, -23 LUFS, -16 LUFS, -14 LUFS, True Peak, ITU-R BS.1770-4, K-Weighted, Auphonic Alternative, kostenlos, Browser, kein Upload">
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>SATK R128 Normalizer – EBU R128 Lautheit normalisieren kostenlos</title>
+<title>SATK R128 Normalizer · EBU R128 / ITU-R BS.1770-4 im Browser</title>
 <style>
   @import url('fonts.css');
 
@@ -689,6 +689,32 @@ body { overflow: hidden; height: 100vh; }
 /* Scrollbalken unsichtbar — Scroll-Funktion bleibt erhalten */
 .wrapper { scrollbar-width: none; -ms-overflow-style: none; }
 .wrapper::-webkit-scrollbar { display: none; width: 0; }
+
+/* Shop-Back-Link, fixed top-right */
+.shop-back {
+  position: fixed;
+  top: 16px;
+  right: 20px;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  background: rgba(10,10,11,0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: color 0.2s, border-color 0.2s;
+}
+.shop-back:hover { color: var(--accent); border-color: var(--accent); }
+@media (max-width: 540px) {
+  .shop-back { top: 10px; right: 10px; font-size: 10px; padding: 5px 9px; }
+}
 </style>
 
   <link rel="canonical" href="https://satk.tech/r128-normalizer.html">
@@ -696,15 +722,15 @@ body { overflow: hidden; height: 100vh; }
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://satk.tech/r128-normalizer.html">
-<meta property="og:title" content="SATK R128 Normalizer – Lautheit auf EBU R128 normalisieren kostenlos">
-<meta property="og:description" content="Audio auf TV −23 LUFS, Podcast −16 LUFS oder YouTube −14 LUFS normalisieren. K-Weighted, True Peak Limiter. Kostenlose Auphonic-Alternative im Browser.">
+<meta property="og:title" content="SATK R128 Normalizer · EBU R128 / ITU-R BS.1770-4 im Browser">
+<meta property="og:description" content="Lautheitsnormalisierung nach EBU R128 / ITU-R BS.1770-4. Datei droppen, Target wählen, normalisieren. K-Filter, Double-Gating, 4× Polyphase TP-Limiter — lokal im Browser, ohne Upload.">
 <meta property="og:image" content="https://satk.tech/og-image.png">
 <meta property="og:locale" content="de_DE">
-<meta property="og:site_name" content="SATK – Sascha's Audio Toolkit">
+<meta property="og:site_name" content="SATK – Sascha&rsquo;s Audio Tool Kit">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SATK R128 Normalizer – Lautheit auf EBU R128 normalisieren kostenlos">
-<meta name="twitter:description" content="Audio auf TV −23 LUFS, Podcast −16 LUFS oder YouTube −14 LUFS normalisieren. K-Weighted, True Peak Limiter. Kostenlose Auphonic-Alternative im Browser.">
+<meta name="twitter:title" content="SATK R128 Normalizer · EBU R128 / ITU-R BS.1770-4 im Browser">
+<meta name="twitter:description" content="Lautheitsnormalisierung nach EBU R128 / ITU-R BS.1770-4. Datei droppen, Target wählen, normalisieren. K-Filter, Double-Gating, 4× Polyphase TP-Limiter — lokal im Browser, ohne Upload.">
 <meta name="twitter:image" content="https://satk.tech/og-image.png">
 
 <script type="application/ld+json">
@@ -715,7 +741,7 @@ body { overflow: hidden; height: 100vh; }
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Web Browser, iOS, Android",
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
-  "description": "Kostenloser EBU R128 Loudness Normalizer nach ITU-R BS.1770-4: TV −23 LUFS, Podcast −16 LUFS, Online −14 LUFS. K-Weighted Messung, Doppel-Gating, True Peak Limiter. Alternative zu Auphonic. Kein Upload.",
+  "description": "Lautheitsnormalisierung nach EBU R128 / ITU-R BS.1770-4. Datei droppen, Target wählen, normalisieren. K-Filter mit Double-Gating, 4× Polyphase True-Peak-Limiter. Lokal im Browser, ohne Upload.",
   "url": "https://satk.tech/r128-normalizer.html",
   "creator": {"@type": "Person", "name": "Sascha Hömske"},
   "isPartOf": {"@type": "WebSite", "name": "SATK – Sascha's Audio Toolkit", "url": "https://satk.tech/"}
@@ -729,6 +755,8 @@ body { overflow: hidden; height: 100vh; }
 </script>
 </head>
 <body>
+
+<a href="/" class="shop-back" aria-label="Zurück zum SATK-Shop">← Zurück zum Shop</a>
 
 <!-- SATK: Audio-Stop vom Launcher -->
 <script>
@@ -757,7 +785,7 @@ window.addEventListener('message', function(e) {
         <div class="logo-rule"></div>
       </div>
     </div>
-    <p class="subtitle">// Automatische Pegelnormalisierung nach EBU R128 / ITU-R BS.1770 im Browser</p>
+    <p class="subtitle">// Datei droppen, Target wählen, normalisieren. K-Filter, Double-Gating, 4× Polyphase TP-Limiter — lokal im Browser, ohne Upload.</p>
   </header>
 
   <!-- Drop Zone -->
@@ -834,7 +862,7 @@ window.addEventListener('message', function(e) {
     </div>
     <div class="info-item">
       <dt>Verarbeitung</dt>
-      <dd>100% im Browser, kein Upload</dd>
+      <dd>Lokal im Browser&nbsp;· kein Upload</dd>
     </div>
     <div class="info-item">
       <dt>Algorithmus</dt>
@@ -1363,6 +1391,10 @@ processBtn.addEventListener('click', async () => {
       &copy; 2026 by SATK &mdash; Sascha's Audio Toolkit. Alle Rechte vorbehalten.
     </div>
     <div class="footer-links">
+      <a class="footer-link" href="/">Shop</a>
+      <span class="footer-sep">·</span>
+      <a class="footer-link" href="/tools.html">Browser-Tools</a>
+      <span class="footer-sep">·</span>
       <button class="footer-link" onclick="openModal('impressum')">Impressum</button>
       <span class="footer-sep">·</span>
       <button class="footer-link" onclick="openModal('datenschutz')">Datenschutz</button>

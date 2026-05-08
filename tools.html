@@ -614,6 +614,22 @@ header { margin-bottom: 56px; }
       </div>
     </div>
 
+    <!-- VoiceOver Processor -->
+    <div class="tool-card" data-tool="voiceover-processor.html" data-tool-id="voiceover" data-name="VoiceOver Processor" role="listitem" aria-label="VoiceOver Processor öffnen">
+      <div class="card-preview">
+        <canvas id="prev-vo"></canvas>
+      </div>
+      <div class="card-body">
+        <span class="card-tag">Stimme · Denoiser · R128</span>
+        <div class="card-name"><a href="voiceover-processor.html" class="card-link" onclick="event.preventDefault()">VoiceOver Processor</a></div>
+        <div class="card-desc">Profil wählen, Datei laden, optimieren. Spectral-Denoiser, EQ, Kompressor, De-Esser, Limiter, R128-Normalisierung auf &minus;23 / &minus;16 / &minus;14 LUFS.</div>
+        <div class="card-footer">
+          <button class="card-open">Öffnen</button>
+          <span class="card-badge" data-i18n="badge_voice">Voice · R128</span>
+        </div>
+      </div>
+    </div>
+
     <div class="tool-card" data-tool="format-wandler.html" data-tool-id="format" data-name="Format Wandler" role="listitem" aria-label="Format Wandler öffnen">
       <div class="card-preview">
         <canvas id="prev-format"></canvas>
@@ -1438,7 +1454,7 @@ const T = {
     footer_imprint: 'Impressum',
     footer_privacy: 'Datenschutz',
     // Tool Karten — Tags
-    'tag-voiceover':         'Live · Datei Processing · KI-Entrauschung',
+    'tag-voiceover':         'Stimme · Denoiser · R128',
     'tag-r128':              'Normalisierung · EBU R128',
     'tag-player':            'Playback · Live',
     'tag-mixer':             'Ducking · Side-Chain · R128',
@@ -1454,7 +1470,7 @@ const T = {
     'name-recorder':         'Podcast Recorder',
     'name-format':           'Format Wandler',
     // Tool Karten — Beschreibungen
-    'desc-voiceover':        'Vollautomatische Sprachoptimierung für TV, Radio und Podcast.',
+    'desc-voiceover':        'Profil wählen, Datei laden, optimieren. Spectral-Denoiser, EQ, Kompressor, De-Esser, Limiter, R128-Normalisierung auf −23 / −16 / −14 LUFS.',
     'desc-r128':             'Batch-Normalisierung nach ITU-R BS.1770-4. TV −23 · Online −14 · Podcast −16 LUFS. True Peak Limiter.',
     'desc-player':           '16 Pads × 4 Bänke = 64 Slots. Tastatur-Steuerung, Loop, Fade, Auto-Cue, Wellenform-Vorschau.',
     'desc-mixer':            'Sprecher + Beitrag automatisch mischen. Side-Chain Ducking, EBU R128 konformer Mix-Output.',
@@ -1474,6 +1490,7 @@ const T = {
     'badge_webm': 'WebM Recording',
     'badge_noupload': 'Browser · Kein Upload',
     'badge_videosync': 'Video Sync',
+    'badge_voice':    'Voice · R128',
     // Audience
     'aud-0': '<strong>TV- &amp; Broadcast-Redaktion</strong> — R128 −23 LUFS, Auto-Mixer, Audio Editor',
     'aud-1': '<strong>Radio &amp; Podcast</strong> — Podcast Recorder, Auto-Mixer, Spectral-Denoiser, R128 −16 LUFS',
@@ -1504,7 +1521,7 @@ const T = {
     footer_imprint: 'Imprint',
     footer_privacy: 'Privacy Policy',
     // Tool Karten — Tags
-    'tag-voiceover':        'Live · File Processing · AI Denoising',
+    'tag-voiceover':        'Voice · Denoiser · R128',
     'tag-r128':             'Normalization · EBU R128',
     'tag-player':           'Playback · Live',
     'tag-mixer':            'Ducking · Side-Chain · R128',
@@ -1520,7 +1537,7 @@ const T = {
     'name-recorder':        'Podcast Recorder',
     'name-format':          'Format Converter',
     // Tool Karten — Beschreibungen
-    'desc-voiceover':       'Fully automatic voice processing for TV, radio and podcast.',
+    'desc-voiceover':       'Pick a profile, load a file, process. Spectral denoiser, EQ, compressor, de-esser, limiter, R128 normalization to −23 / −16 / −14 LUFS.',
     'desc-r128':            'Batch normalization to ITU-R BS.1770-4. TV −23 · Online −14 · Podcast −16 LUFS. True Peak Limiter.',
     'desc-player':          '16 pads × 4 banks = 64 slots. Keyboard control, loop, fade, auto-cue, waveform preview.',
     'desc-mixer':           'Automatically mix presenter + report. Side-chain ducking, EBU R128 compliant output.',
@@ -1540,6 +1557,7 @@ const T = {
     'badge_webm': 'WebM Recording',
     'badge_noupload': 'Browser · No Upload',
     'badge_videosync': 'Video Sync',
+    'badge_voice':    'Voice · R128',
     // Audience
     'aud-0': '<strong>TV &amp; Broadcast Editors</strong> — R128 −23 LUFS, Auto-Mixer, Audio Editor',
     'aud-1': '<strong>Radio &amp; Podcast</strong> — Podcast Recorder, Auto-Mixer, spectral denoiser, R128 −16 LUFS',

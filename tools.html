@@ -470,6 +470,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 .footer-col a:hover{color:var(--ac)}
 .footer-bar{display:flex;justify-content:space-between;align-items:center;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
 .footer-brand{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:3px}
+.footer-brand-accent{color:var(--tx)}
 .footer-meta{color:var(--mu2);text-transform:none;letter-spacing:.3px}
 @media(max-width:720px){.footer-grid{grid-template-columns:repeat(3,1fr);gap:24px}.footer-bar{flex-direction:column;gap:12px;text-align:center}}
 @media(max-width:600px){footer{padding:48px 24px 24px;margin-top:64px}}
@@ -739,7 +740,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
     </div>
   </div>
   <div class="footer-bar">
-    <span class="footer-brand">SATK</span>
+    <span class="footer-brand">S<span class="footer-brand-accent">A</span>TK</span>
     <span class="footer-meta">Sascha&rsquo;s Audio Toolkit · © 2026</span>
   </div>
 </footer>
@@ -1533,7 +1534,7 @@ const T = {
     'seo_p2': `Der <a href="podcast-recorder.html" onclick="openTool('podcast-recorder.html','Podcast Recorder')">Podcast Recorder</a> nimmt vier Kanäle gleichzeitig auf, mit Spectral-Denoiser (Auto-Learn), 5-Band-EQ, Kompressor, De-Esser, True-Peak/LUFS-Metering und R128-Export. Der <a href="auto-mixer.html" onclick="openTool('auto-mixer.html','Auto-Mixer')">Auto-Mixer</a> duckt Beitrag unter Voice mit konfigurierbarem Attack und Release, EBU-R128-konform.`,
     'seo_p3': `Der <a href="audio-editor.html" onclick="openTool('audio-editor.html','Audio Editor')">Audio Editor</a> schneidet und trimmt mit Wellenform-Ansicht, Zoom, Fade In/Out, Zero-Crossing-Snap und R128-WAV-Export. Der <a href="instant-player.html" onclick="openTool('instant-player.html','Instant Player')">Instant Player</a> liefert 64 Cue-Slots in 4 Bänken mit Tastatur-Trigger, Loop und Auto-Cue — für Live, Broadcast und Studio. Der <a href="voiceover-processor.html" onclick="openTool('voiceover-processor.html','VoiceOver Processor')">VoiceOver Processor</a> optimiert Stimme über Profile: Spectral-Denoiser, EQ, Kompressor, De-Esser, Limiter und R128-Normalisierung. Der <a href="format-wandler.html" onclick="openTool('format-wandler.html','Format-Wandler')">Format-Wandler</a> konvertiert zwischen WAV (16/24/32 Bit), MP3, FLAC, OGG, M4A, Opus und AIFF mit Qualitätswahl und sofortigem Download.`,
     'seo_p4': `Browser-Alternative zu Auphonic, iZotope RX, Youlean Loudness Meter, Nugen VisLM, Adobe Audition, Logic Pro, GarageBand oder Reaper — ohne Installation, ohne Konto, ohne Lizenz. Läuft auf Windows, macOS, Linux, iPad und iPhone. Audiodaten bleiben auf dem Gerät, DSGVO-konform.`,
-    'seo_p5': `Technische Basis: Web Audio API mit eigenen DSP-Algorithmen — Polyphasen-FIR True-Peak-Metering (4× Oversampling, ITU-R BS.1770-4), FFT-Spectral-Denoiser (Wiener-Filter, N=512, 75 % Overlap-Add), zweistufige EBU-R128-K-Weighted-Normalisierung, Brickwall-Lookahead-Limiter, vollständige Overlap-Add-Signalkette. Entwickelt von Sascha Hömske.`,,
+    'seo_p5': `Technische Basis: Web Audio API mit eigenen DSP-Algorithmen — Polyphasen-FIR True-Peak-Metering (4× Oversampling, ITU-R BS.1770-4), FFT-Spectral-Denoiser (Wiener-Filter, N=512, 75 % Overlap-Add), zweistufige EBU-R128-K-Weighted-Normalisierung, Brickwall-Lookahead-Limiter, vollständige Overlap-Add-Signalkette. Entwickelt von Sascha Hömske.`,
     nav_mac: 'Mac Apps',
     nav_ios: 'iOS Apps',
     nav_tools: 'Browser-Tools',
@@ -1607,7 +1608,7 @@ const T = {
     'seo_p2': `The <a href="podcast-recorder.html" onclick="openTool('podcast-recorder.html','Podcast Recorder')">Podcast Recorder</a> records four channels in parallel, with spectral denoiser (auto-learn), 5-band EQ, compressor, de-esser, true-peak / LUFS metering and R128 export. The <a href="auto-mixer.html" onclick="openTool('auto-mixer.html','Auto-Mixer')">Auto-Mixer</a> ducks the report track under voice with configurable attack and release, EBU R128-compliant.`,
     'seo_p3': `The <a href="audio-editor.html" onclick="openTool('audio-editor.html','Audio Editor')">Audio Editor</a> cuts and trims with waveform view, zoom, fade in/out, zero-crossing snap and R128 WAV export. The <a href="instant-player.html" onclick="openTool('instant-player.html','Instant Player')">Instant Player</a> offers 64 cue slots across 4 banks with keyboard triggers, loop and auto-cue — for live, broadcast and studio. The <a href="voiceover-processor.html" onclick="openTool('voiceover-processor.html','VoiceOver Processor')">VoiceOver Processor</a> shapes voice via profiles: spectral denoiser, EQ, compressor, de-esser, limiter and R128 normalization. The <a href="format-wandler.html" onclick="openTool('format-wandler.html','Format Converter')">Format Converter</a> converts between WAV (16/24/32 bit), MP3, FLAC, OGG, M4A, Opus and AIFF, with quality selection and instant download.`,
     'seo_p4': `Browser alternative to Auphonic, iZotope RX, Youlean Loudness Meter, Nugen VisLM, Adobe Audition, Logic Pro, GarageBand or Reaper — no installation, no account, no license. Runs on Windows, macOS, Linux, iPad and iPhone. Audio data stays on your device, GDPR-compliant.`,
-    'seo_p5': `Technical basis: Web Audio API with custom DSP — polyphase-FIR true-peak metering (4× oversampling, ITU-R BS.1770-4), FFT spectral denoiser (Wiener filter, N=512, 75 % overlap-add), two-stage EBU R128 K-weighted normalization, brickwall lookahead limiter, full overlap-add signal chain. Built by Sascha Hömske.`,,
+    'seo_p5': `Technical basis: Web Audio API with custom DSP — polyphase-FIR true-peak metering (4× oversampling, ITU-R BS.1770-4), FFT spectral denoiser (Wiener filter, N=512, 75 % overlap-add), two-stage EBU R128 K-weighted normalization, brickwall lookahead limiter, full overlap-add signal chain. Built by Sascha Hömske.`,
     nav_mac: 'Mac Apps',
     nav_ios: 'iOS Apps',
     nav_tools: 'Browser Tools',

@@ -1,0 +1,56 @@
+# Cloudflare Pages — _headers
+# Übersetzung von .htaccess Header- und mod_expires-Regeln
+# Format: ein URL-Pattern pro Block, Header darunter mit zwei Spaces eingerückt
+
+# ─── Globale Security-Header für ALLE Responses ───
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(self "https://buy.paddle.com")
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.paddle.com https://buy.paddle.com https://*.paddle.com https://plausible.io; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://*.paddle.com https://*.paddle.io https://download.satk.tech https://satk-license-worker.weathered-lake-eea9.workers.dev https://plausible.io; frame-src https://buy.paddle.com https://*.paddle.com; frame-ancestors 'none'; form-action 'self' https://buy.paddle.com; base-uri 'self'; object-src 'none'
+
+# ─── HTML: 1h Cache (zum schnellen Updates-Sehen, aber Edge-Cache via CF Page Rules läuft länger) ───
+/*.html
+  Cache-Control: public, max-age=3600
+
+# Pretty URLs (ohne Extension) ebenfalls 1h
+# CF Pages serviert /<name> aus <name>.html, der HTML-Header gilt automatisch
+
+# ─── Statische Assets: lange Cache-Zeit ───
+/*.png
+  Cache-Control: public, max-age=2592000, immutable
+/*.jpg
+  Cache-Control: public, max-age=2592000, immutable
+/*.jpeg
+  Cache-Control: public, max-age=2592000, immutable
+/*.webp
+  Cache-Control: public, max-age=2592000, immutable
+/*.svg
+  Cache-Control: public, max-age=2592000, immutable
+/*.ico
+  Cache-Control: public, max-age=2592000, immutable
+
+/*.css
+  Cache-Control: public, max-age=604800, immutable
+/*.js
+  Cache-Control: public, max-age=604800, immutable
+
+# Fonts mit langer Cache-Zeit + CORS-frei (für direkte Verwendung)
+/*.woff
+  Cache-Control: public, max-age=2592000, immutable
+  Access-Control-Allow-Origin: *
+/*.woff2
+  Cache-Control: public, max-age=2592000, immutable
+  Access-Control-Allow-Origin: *
+/*.ttf
+  Cache-Control: public, max-age=2592000, immutable
+  Access-Control-Allow-Origin: *
+
+# robots.txt + sitemap.xml: 1h
+/robots.txt
+  Cache-Control: public, max-age=3600
+/sitemap.xml
+  Cache-Control: public, max-age=3600

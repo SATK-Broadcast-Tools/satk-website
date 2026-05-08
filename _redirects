@@ -1,0 +1,35 @@
+# Cloudflare Pages — _redirects
+# Übersetzung von .htaccess RewriteRules
+# Format: <from> <to> <status>
+# Wildcards: :splat erfasst den Rest
+
+# index.html → / (kanonische Homepage)
+/index.html / 301
+
+# Alle anderen .html → ohne Extension
+/agb.html /agb 301
+/agb-en.html /agb-en 301
+/audio-editor.html /audio-editor 301
+/auto-mixer.html /auto-mixer 301
+/broadcast-meter.html /broadcast-meter 301
+/broadcast-meter-pro.html /broadcast-meter-pro 301
+/changelog.html /changelog 301
+/datenschutz.html /datenschutz 301
+/format-wandler.html /format-wandler 301
+/impressum.html /impressum 301
+/instant-player.html /instant-player 301
+/loudness-correct.html /loudness-correct 301
+/manage-license.html /manage-license 301
+/overdub-studio.html /overdub-studio 301
+/overdub-studio-pro.html /overdub-studio-pro 301
+/podcast-recorder.html /podcast-recorder 301
+/r128-normalizer.html /r128-normalizer 301
+/support.html /support 301
+/tools.html /tools 301
+/voiceover-processor.html /voiceover-processor 301
+/widerruf.html /widerruf 301
+/widerruf-en.html /widerruf-en 301
+
+# Pretty-URL → .html-File rewrites passieren AUTOMATISCH bei CF Pages
+# wenn die Datei `<name>.html` existiert. Kein expliziter Redirect nötig.
+# Beispiel: GET /support → liefert support.html mit URL bleibt /support

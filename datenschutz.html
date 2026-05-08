@@ -59,7 +59,8 @@ a:hover{text-decoration:underline;}
   <p>Sascha's Audio Toolkit (SATK) ist ein datenschutzfreundliches Angebot. Wir erheben und verarbeiten personenbezogene Daten nur in dem Umfang, der für die Bereitstellung des Dienstes technisch unbedingt erforderlich ist.</p>
 
   <h2>3. Audio-Verarbeitung (Browser-Tools)</h2>
-  <p>Alle Audio-Verarbeitungen der Browser-Tools — einschließlich Lautheits-Normalisierung, Spektralanalyse, Encoding und Schnitt — werden vollständig lokal im Browser des Nutzers durchgeführt (Web Audio API, OfflineAudioContext). Audiodaten verlassen das Gerät zu keinem Zeitpunkt. Es werden keine Audiodateien auf Servern gespeichert oder übermittelt.</p>
+  <p>Alle Audio-Verarbeitungen der Browser-Tools — einschließlich Lautheits-Normalisierung, Spektralanalyse, Encoding, Schnitt und Mischung — werden vollständig lokal im Browser des Nutzers durchgeführt (Web Audio API, OfflineAudioContext). Audiodaten verlassen das Gerät zu keinem Zeitpunkt. Es werden keine Audiodateien auf Servern gespeichert oder übermittelt.</p>
+  <p><strong>Mikrofon-Zugriff:</strong> Einzelne Browser-Tools (z.&nbsp;B. der Podcast Recorder) benötigen Zugriff auf das Mikrofon, um Audio direkt aufzunehmen. Der Zugriff erfolgt ausschließlich über die Browser-eigene Berechtigungs-Abfrage (<code>getUserMedia</code>) und muss aktiv erlaubt werden. Sie können die Erlaubnis jederzeit über die Browser-Einstellungen widerrufen. Die aufgenommenen Audio-Daten werden ausschließlich lokal im Browser-Speicher verarbeitet, nicht an Server übermittelt und beim Schließen des Tabs verworfen — sofern Sie die Aufnahme nicht selbst auf Ihr Gerät exportieren.</p>
 
   <h2>4. Native Apps (SATK-BM, Overdub Studio, Loudness Correct)</h2>
   <p>Die nativen SATK-Apps für iPad, iPhone, macOS und Windows verarbeiten Audio ausschließlich lokal auf dem Endgerät. Es werden keine Audio-Daten, Mess­ergebnisse oder personenbezogenen Daten an Server übermittelt oder dauerhaft gespeichert.</p>
@@ -83,7 +84,7 @@ a:hover{text-decoration:underline;}
   <p>Der Versand der Lizenz-E-Mail nach erfolgreichem Kauf erfolgt über den E-Mail-Anbieter <strong>Resend</strong> (Resend Inc., 2261 Market Street #5039, San Francisco, CA 94114, USA). Resend verarbeitet ausschließlich die E-Mail-Adresse des Käufers sowie den Inhalt der Versandnachricht (Lizenzschlüssel + Aktivierungs-Link) zur einmaligen Zustellung. Es besteht ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO; EU-Standardvertragsklauseln sind hinterlegt. Datenschutzerklärung Resend: <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">resend.com/legal/privacy-policy</a>.</p>
 
   <h2>7. Zugriffsdaten / Server-Logs</h2>
-  <p>Beim Abruf dieser Website werden durch den Hosting-Anbieter (IONOS SE, Elgendorfer Str. 57, 56410 Montabaur) automatisch Zugriffsdaten in Server-Logfiles gespeichert. Diese umfassen:</p>
+  <p>Diese Website wird über <strong>Cloudflare Pages</strong> ausgeliefert (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA). Beim Abruf werden durch Cloudflare automatisch Zugriffsdaten in Logfiles erfasst. Diese umfassen typischerweise:</p>
   <ul>
     <li>IP-Adresse des anfragenden Geräts</li>
     <li>Datum und Uhrzeit des Abrufs</li>
@@ -91,7 +92,7 @@ a:hover{text-decoration:underline;}
     <li>Übertragene Datenmenge</li>
     <li>Browser-Typ und Betriebssystem</li>
   </ul>
-  <p>Diese Daten werden ausschließlich zur Sicherstellung des Betriebs und zur Fehleranalyse genutzt und nach spätestens 7 Tagen automatisch gelöscht. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).</p>
+  <p>Diese Daten werden ausschließlich zur Sicherstellung des Betriebs, zur Fehleranalyse und zum Schutz vor Angriffen (DDoS, Bot-Filter) genutzt. Die Speicherdauer richtet sich nach den Cloudflare-Standardeinstellungen für Pages-Logs. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse). Zur Auftragsverarbeitung mit Cloudflare und zu den hinterlegten EU-Standardvertragsklauseln siehe §10. Die DNS-Verwaltung der Domain <code>satk.tech</code> erfolgt über IONOS SE, Elgendorfer Str. 57, 56410 Montabaur — bei der reinen Namensauflösung fallen keine darüber hinausgehenden Logs an.</p>
 
   <h2>8. Cookies und Tracking</h2>
   <p>Diese Website verwendet keine Cookies. Es werden keine Tracking-Technologien, Analyse-Dienste (wie Google Analytics), Werbenetzwerke oder Social-Media-Plugins eingesetzt. Es werden keine Nutzerprofile erstellt.</p>
@@ -128,12 +129,12 @@ a:hover{text-decoration:underline;}
   </ul>
   <p>Da SATK keine personenbezogenen Daten erhebt, liegen in der Regel keine Daten über Sie vor, auf die sich diese Rechte beziehen könnten. Bei Fragen wenden Sie sich an: info@satk.tech</p>
 
-  <h2>13. Zuständige Aufsichtsbehörde</h2>
+  <h2>14. Zuständige Aufsichtsbehörde</h2>
   <p>Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen<br>
   Postfach 20 04 44, 40102 Düsseldorf<br>
   <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener">www.ldi.nrw.de</a></p>
 
-  <p style="margin-top:32px;font-size:10px;color:var(--mu)">Stand: April 2026 · Bei Fragen zum Datenschutz: <a href="mailto:info@satk.tech">info@satk.tech</a></p>
+  <p style="margin-top:32px;font-size:10px;color:var(--mu)">Stand: Mai 2026 · Bei Fragen zum Datenschutz: <a href="mailto:info@satk.tech">info@satk.tech</a></p>
 
   <footer style="margin-top:48px;padding-top:24px;border-top:1px solid var(--bd);text-align:center">
     <div style="font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:13px;letter-spacing:.22em;margin-bottom:10px">SATK</div>

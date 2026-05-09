@@ -122,10 +122,15 @@ try {
   <h2>9. Fonts</h2>
   <p>This website loads all used fonts (DM Mono, Syne) exclusively from our own web server. No connection to external font CDNs (e.g. Google Fonts) is established. The visitor&rsquo;s IP address is at no point transmitted to third parties for font loading.</p>
 
-  <h2>10. Cloudflare (Reverse Proxy &amp; Download Delivery)</h2>
-  <p>This website is delivered via Cloudflare (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA) as a reverse proxy. As part of delivery, Cloudflare processes IP address, user agent and request data to provide content and protect against attacks (DDoS, bot filtering).</p>
-  <p>Additionally, trial downloads (e.g. the DMG package for the Pro apps) are delivered via the Cloudflare R2 service under the subdomain <code>download.satk.tech</code>. When clicking the trial-download button, your IP address is transmitted to Cloudflare R2. No additional collection of personal data occurs — the download is anonymous, without account or email entry.</p>
-  <p>A data processing agreement under Art. 28 GDPR is in place with Cloudflare; EU standard contractual clauses are filed. Legal basis: Art. 6 (1) (f) GDPR (legitimate interest in a stable, secure web presence and fast file delivery).</p>
+  <h2>10. Cloudflare Infrastructure (Pages, R2, Workers, D1)</h2>
+  <p>This website and several backend services run entirely on Cloudflare infrastructure (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA):</p>
+  <ul>
+    <li><strong>Cloudflare Pages</strong> serves the website and acts as a reverse proxy. Processes IP address, user agent and request data to provide content and protect against attacks (DDoS, bot filtering).</li>
+    <li><strong>Cloudflare R2</strong> delivers trial downloads (e.&nbsp;g. the DMG package for the Pro apps) under the subdomain <code>download.satk.tech</code>. When you click the trial-download button, your IP address is transmitted to R2; no additional collection — the download is anonymous, without account or email entry.</li>
+    <li><strong>Cloudflare Workers</strong> run the licence backend (activation, self-service portal, trial tracking) and the support-form backend at <code>satk-license-worker.weathered-lake-eea9.workers.dev</code>. Worker invocations process request data (IP, headers, body) ephemerally to answer the request; Cloudflare logs invocations short-term for error analysis by default.</li>
+    <li><strong>Cloudflare D1</strong> is the SQLite-based database for licences (licence ID, buyer email from Paddle, activated devices), trials (anonymous device IDs) and support-form rate limits (SHA-256 hash of the IP address plus timestamp — no plaintext IPs). Data does not leave the Cloudflare infrastructure.</li>
+  </ul>
+  <p>A data processing agreement under Art. 28 GDPR is in place with Cloudflare; EU standard contractual clauses are filed. Legal basis: Art. 6 (1) (f) GDPR (legitimate interest in a stable, secure web presence and efficient backend processing) and Art. 6 (1) (b) GDPR (contract performance for licence activation).</p>
   <p>Cloudflare privacy policy: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">cloudflare.com/privacypolicy</a></p>
 
   <h2>11. Local Storage in the Browser (localStorage)</h2>
@@ -138,7 +143,19 @@ try {
   <p>Legal basis: Art. 6 (1) (f) GDPR (legitimate interest in statistical analysis of website usage to optimise the service). Because Plausible operates without cookies and without personal identifiers, no consent under § 25 TTDSG is required.</p>
   <p>Plausible privacy policy: <a href="https://plausible.io/privacy" target="_blank" rel="noopener">plausible.io/privacy</a> · Data Processing Agreement (DPA): <a href="https://plausible.io/dpa" target="_blank" rel="noopener">plausible.io/dpa</a></p>
 
-  <h2>13. Your Rights (GDPR)</h2>
+  <h2>13. Support Requests / Contact Form</h2>
+  <p>The page <a href="https://satk.tech/support">satk.tech/support</a> provides a contact form for support requests. The data you enter is processed:</p>
+  <ul>
+    <li>Name, email address</li>
+    <li>App, app version, operating system, OS version, optionally DAW and audio interface</li>
+    <li>Topic category, subject, description and optionally reproduction steps</li>
+  </ul>
+  <p><strong>Data flow:</strong> The form sends the data to a Cloudflare Worker (see §10). The Worker validates the input, checks for spam and forwards the request to our email service <strong>Resend</strong> (see §6 for provider details and data processing agreement). Resend delivers the request as an email to <code>info@satk.tech</code>; an automatic confirmation goes to your sender address in parallel.</p>
+  <p><strong>Rate limiting:</strong> To prevent abuse, the Worker stores a <strong>SHA-256 hash</strong> of your IP address together with a timestamp in a Cloudflare D1 database (see §10). The plaintext IP is not stored. The original IP cannot be derived from the hash. Hash entries are not actively deleted but are functionally irrelevant after &gt; 1 hour and contain no personal data in the strict sense.</p>
+  <p><strong>Retention:</strong> The delivered email in the <code>info@satk.tech</code> mailbox is retained as long as needed to answer your request and meet any statutory retention obligations. We will delete the email thread on request — informal request is sufficient.</p>
+  <p><strong>Legal basis:</strong> Art. 6 (1) (b) GDPR (pre-contractual / contract performance for licence- or order-related requests) or Art. 6 (1) (f) GDPR (legitimate interest in providing organised support).</p>
+
+  <h2>14. Your Rights (GDPR)</h2>
   <p>Under the GDPR, you have the following rights:</p>
   <ul>
     <li>Right of access to stored data (Art. 15 GDPR)</li>
@@ -149,9 +166,9 @@ try {
     <li>Right to object to processing (Art. 21 GDPR)</li>
     <li>Right to lodge a complaint with the competent supervisory authority</li>
   </ul>
-  <p>As SATK does not collect personal data, there is generally no data about you to which these rights would apply. For questions, contact: info@satk.tech</p>
+  <p>Outside of the processing operations described above (licence purchase, support request), SATK does not collect personal data. For questions or to exercise your rights, contact: info@satk.tech</p>
 
-  <h2>14. Competent Supervisory Authority</h2>
+  <h2>15. Competent Supervisory Authority</h2>
   <p>Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen<br>
   Postfach 20 04 44, 40102 Düsseldorf, Germany<br>
   <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener">www.ldi.nrw.de</a></p>

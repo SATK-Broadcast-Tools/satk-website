@@ -121,10 +121,15 @@ try {
   <h2>9. Schriftarten</h2>
   <p>Diese Website lädt alle verwendeten Schriftarten (DM Mono, Syne) ausschließlich aus dem eigenen Webserver. Es findet keine Verbindung zu externen Schrift-CDNs (z.B. Google Fonts) statt. Die IP-Adresse des Besuchers wird zu keinem Zeitpunkt an Drittanbieter übermittelt, um Schriften zu laden.</p>
 
-  <h2>10. Cloudflare (Reverse-Proxy & Download-Auslieferung)</h2>
-  <p>Diese Website wird über Cloudflare (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA) als Reverse-Proxy ausgeliefert. Cloudflare verarbeitet im Rahmen der Auslieferung IP-Adresse, User-Agent und Request-Daten zur Bereitstellung der Inhalte sowie zum Schutz vor Angriffen (DDoS, Bot-Filter).</p>
-  <p>Zusätzlich werden Trial-Downloads (z.B. das DMG-Paket der Pro-Apps) über den Cloudflare-Dienst R2 unter der Subdomain <code>download.satk.tech</code> ausgeliefert. Beim Klick auf den Trial-Download-Button wird Ihre IP-Adresse an Cloudflare R2 übermittelt. Es findet keine zusätzliche Erfassung von personenbezogenen Daten statt — der Download ist anonym, ohne Konto- oder E-Mail-Eingabe.</p>
-  <p>Mit Cloudflare besteht ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO; EU-Standardvertragsklauseln sind hinterlegt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem stabilen, abgesicherten Webauftritt und schneller Datei-Auslieferung).</p>
+  <h2>10. Cloudflare-Infrastruktur (Pages, R2, Workers, D1)</h2>
+  <p>Diese Website und mehrere Backend-Dienste laufen vollständig auf Cloudflare-Infrastruktur (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA):</p>
+  <ul>
+    <li><strong>Cloudflare Pages</strong> liefert die Webseite aus und arbeitet als Reverse-Proxy. Verarbeitet IP-Adresse, User-Agent und Request-Daten zur Bereitstellung der Inhalte sowie zum Schutz vor Angriffen (DDoS, Bot-Filter).</li>
+    <li><strong>Cloudflare R2</strong> liefert Trial-Downloads (z.&nbsp;B. das DMG-Paket der Pro-Apps) unter der Subdomain <code>download.satk.tech</code>. Beim Klick auf den Trial-Download-Button wird die IP-Adresse an R2 übermittelt; keine zusätzliche Erfassung — der Download ist anonym, ohne Konto- oder E-Mail-Eingabe.</li>
+    <li><strong>Cloudflare Workers</strong> betreiben das Lizenz-Backend (Aktivierung, Self-Service-Portal, Trial-Tracking) und das Support-Form-Backend unter <code>satk-license-worker.weathered-lake-eea9.workers.dev</code>. Worker-Aufrufe verarbeiten kurzlebig Request-Daten (IP, Header, Body) zur Beantwortung der Anfrage; Cloudflare protokolliert Worker-Invocations standardmäßig kurzfristig zur Fehleranalyse.</li>
+    <li><strong>Cloudflare D1</strong> ist die SQLite-basierte Datenbank für Lizenzen (Lizenz-ID, Käufer-E-Mail aus Paddle, aktivierte Geräte), Trials (anonyme Geräte-IDs) und Support-Form-Rate-Limits (SHA-256-Hash der IP-Adresse plus Zeitstempel — keine Klartext-IPs). Die Daten verlassen die Cloudflare-Infrastruktur nicht.</li>
+  </ul>
+  <p>Mit Cloudflare besteht ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO; EU-Standardvertragsklauseln sind hinterlegt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem stabilen, abgesicherten Webauftritt und einer effizienten Backend-Verarbeitung) sowie Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung bei Lizenz-Aktivierung).</p>
   <p>Datenschutzerklärung Cloudflare: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">cloudflare.com/privacypolicy</a></p>
 
   <h2>11. Lokale Speicherung im Browser (localStorage)</h2>
@@ -137,7 +142,19 @@ try {
   <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der statistischen Auswertung der Webseiten-Nutzung zur Optimierung des Angebots). Da Plausible cookiefrei und ohne personenbezogene Identifier arbeitet, ist eine Einwilligung nach § 25 TTDSG nicht erforderlich.</p>
   <p>Datenschutzerklärung Plausible: <a href="https://plausible.io/privacy" target="_blank" rel="noopener">plausible.io/privacy</a> · Daten-Verarbeitungs-Vereinbarung (DPA): <a href="https://plausible.io/dpa" target="_blank" rel="noopener">plausible.io/dpa</a></p>
 
-  <h2>13. Ihre Rechte (DSGVO)</h2>
+  <h2>13. Support-Anfragen / Kontaktformular</h2>
+  <p>Auf der Seite <a href="https://satk.tech/support">satk.tech/support</a> kann ein Kontaktformular genutzt werden, um Support-Anfragen einzureichen. Verarbeitet werden dabei die von Ihnen eingegebenen Daten:</p>
+  <ul>
+    <li>Name, E-Mail-Adresse</li>
+    <li>App, App-Version, Betriebssystem, OS-Version, optional DAW und Audio-Interface</li>
+    <li>Anliegen-Kategorie, Betreff, Beschreibung und ggf. Reproduktions-Schritte</li>
+  </ul>
+  <p><strong>Datenfluss:</strong> Das Formular sendet die Daten an einen Cloudflare Worker (siehe §10). Der Worker validiert die Eingaben, prüft auf Spam und übergibt die Anfrage an unseren E-Mail-Versanddienst <strong>Resend</strong> (siehe §6 für Anbieter-Details und Auftragsverarbeitungsvertrag). Resend stellt die Anfrage als E-Mail an <code>info@satk.tech</code> zu; eine automatische Empfangsbestätigung geht parallel an die von Ihnen angegebene Absender-Adresse.</p>
+  <p><strong>Rate-Limit:</strong> Zur Spam-Abwehr speichert der Worker einen <strong>SHA-256-Hash</strong> Ihrer IP-Adresse zusammen mit einem Zeitstempel in einer Cloudflare-D1-Datenbank (siehe §10). Die Klartext-IP wird nicht abgelegt. Aus dem Hash kann die ursprüngliche IP-Adresse nicht zurückgerechnet werden. Hash-Einträge werden nicht aktiv gelöscht, sind aber nach &gt; 1 Stunde technisch ohne Funktion und enthalten keine personenbezogenen Daten im engeren Sinn.</p>
+  <p><strong>Aufbewahrungsdauer:</strong> Die zugestellte E-Mail im Postfach <code>info@satk.tech</code> wird so lange aufbewahrt, wie zur Beantwortung Ihrer Anfrage und ggf. zur Erfüllung gesetzlicher Aufbewahrungspflichten erforderlich. Auf Wunsch löschen wir den E-Mail-Verlauf jederzeit — formlose Anfrage genügt.</p>
+  <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung / -erfüllung bei lizenz- oder bestellbezogenen Anfragen) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer geordneten Bereitstellung von Support).</p>
+
+  <h2>14. Ihre Rechte (DSGVO)</h2>
   <p>Sie haben gemäß DSGVO folgende Rechte:</p>
   <ul>
     <li>Auskunft über gespeicherte Daten (Art. 15 DSGVO)</li>
@@ -148,9 +165,9 @@ try {
     <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
     <li>Beschwerde bei der zuständigen Aufsichtsbehörde</li>
   </ul>
-  <p>Da SATK keine personenbezogenen Daten erhebt, liegen in der Regel keine Daten über Sie vor, auf die sich diese Rechte beziehen könnten. Bei Fragen wenden Sie sich an: info@satk.tech</p>
+  <p>Außerhalb der oben beschriebenen Verarbeitungen (Lizenzkauf, Support-Anfrage) erhebt SATK keine personenbezogenen Daten. Bei Fragen oder zur Wahrnehmung Ihrer Rechte wenden Sie sich an: info@satk.tech</p>
 
-  <h2>14. Zuständige Aufsichtsbehörde</h2>
+  <h2>15. Zuständige Aufsichtsbehörde</h2>
   <p>Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen<br>
   Postfach 20 04 44, 40102 Düsseldorf<br>
   <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener">www.ldi.nrw.de</a></p>

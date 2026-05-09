@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://satk.tech/easy-editor">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SATK Easy Editor – Wellenform-Editor für iPhone und iPad</title>
+<meta name="description" content="Audio-Editor für iPhone und iPad: Schneiden, Trimmen, Fade In/Out, Zero-Crossing-Snap, R128-normalisierter WAV/AIFF-Export. Files-App, iCloud Drive, AirDrop. 4,99 € im App Store.">
+
+<!-- Open Graph / Social -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="SATK Easy Editor – Wellenform-Editor für iPhone und iPad">
+<meta property="og:description" content="Schneller Audio-Editor: Schneiden, Trimmen, Fade, Zero-Crossing-Snap, R128-Export. Multi-Touch-Wellenform, Files / iCloud Drive / AirDrop. 4,99 €.">
+<meta property="og:url" content="https://satk.tech/easy-editor">
+<meta property="og:image" content="https://satk.tech/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="SATK – Sascha&rsquo;s Audio Tool Kit">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SATK Easy Editor – Wellenform-Editor für iPhone und iPad">
+<meta name="twitter:description" content="Schneiden, Trimmen, Fade, Zero-Crossing, R128-Export. iPhone &amp; iPad. 4,99 €.">
+<meta name="twitter:image" content="https://satk.tech/og-image.png">
+<link href="fonts.css" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "SATK Easy Editor",
+  "description": "Audio-Editor für iPhone und iPad: Schneiden, Trimmen, Fade In/Out, Zero-Crossing-Snap, R128-normalisierter WAV/AIFF-Export. Files-App, iCloud Drive, AirDrop.",
+  "applicationCategory": "MultimediaApplication",
+  "applicationSubCategory": "Audio Editor",
+  "operatingSystem": "iOS 16+, iPadOS 16+",
+  "url": "https://satk.tech/easy-editor",
+  "image": "https://satk.tech/img-easy-editor.png",
+  "screenshot": "https://satk.tech/img-easy-editor.png",
+  "offers": {
+    "@type": "Offer",
+    "name": "Apple App Store",
+    "price": "4.99",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/PreOrder",
+    "category": "Software License"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SATK",
+    "url": "https://satk.tech",
+    "logo": "https://satk.tech/og-image.png"
+  },
+  "inLanguage": ["de", "en"]
+}
+</script>
+<style>
+:root{--bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#c8f060;--tx:#e8e8ec;--mu:#6e6e7a;--mu2:#9a9aaa}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:'DM Mono',monospace;-webkit-font-smoothing:antialiased}
+
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:16px 48px;background:rgba(10,10,11,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.04)}
+.nav-logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;line-height:1}
+.nav-logo-mark{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--ac);letter-spacing:4px}
+.nav-logo-accent{color:var(--tx)}
+.nav-logo-sub{font-family:'DM Mono',monospace;font-size:8px;color:var(--mu);letter-spacing:1.5px;text-transform:uppercase;font-weight:300;white-space:nowrap}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{color:var(--mu2);text-decoration:none;font-size:11px;letter-spacing:.5px;transition:color .2s}
+.nav-links a:hover{color:var(--tx)}
+.nav-back{color:var(--mu);font-size:10px;letter-spacing:.5px;text-decoration:none;opacity:.6;transition:opacity .2s}
+.nav-back:hover{opacity:1}
+
+/* ── Nav Platforms (Pill-Tabs) ─────── */
+.nav-platforms{display:flex;gap:2px;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:999px;padding:3px}
+.nav-platforms a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:999px;color:var(--mu2);text-decoration:none;transition:all .2s}
+.nav-platforms a.active{background:var(--ac);color:#0a0a0b}
+.nav-platforms a:hover:not(.active){color:var(--tx);background:rgba(255,255,255,.04)}
+.lang-sw{display:flex;align-items:center;gap:6px}
+.lang{font-size:10px;letter-spacing:1px;color:var(--mu);cursor:pointer;transition:color .2s}
+.lang:hover{color:var(--tx)}
+.lang.active{color:var(--ac)}
+.lang-sep{color:var(--mu);font-size:10px}
+
+.product-hero{text-align:center;padding:80px 32px 32px;max-width:920px;margin:0 auto}
+.product-eyebrow{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.4em;color:var(--ac);text-transform:uppercase;margin-bottom:18px}
+.product-hero h1{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:800;letter-spacing:-1px;line-height:1.05;text-transform:uppercase;margin-bottom:18px}
+.product-hero .tagline{color:var(--mu2);font-size:14px;letter-spacing:.3px;line-height:1.7;max-width:640px;margin:0 auto}
+.product-price-chip{display:inline-block;font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.3px;color:var(--ac);border:1px solid rgba(200,240,96,.3);padding:10px 24px;border-radius:8px;margin-top:30px}
+.product-price-chip .vat{font-size:10px;color:var(--mu);font-weight:300;letter-spacing:.4px;margin-left:10px;text-transform:uppercase}
+
+.hero-img-wrap{max-width:1120px;margin:32px auto 0;padding:0 32px;text-align:center}
+.hero-img{display:inline-block;max-width:560px;width:100%;height:auto;border:1px solid var(--bd);border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+
+/* ── App Store CTA-Block ──────────────── */
+.appstore-cta{max-width:760px;margin:40px auto 0;padding:0 32px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.appstore-cta a{display:inline-block;line-height:0;transition:transform .15s}
+.appstore-cta a:hover{transform:translateY(-2px)}
+.appstore-cta img{height:42px;width:auto}
+
+/* ── Trust-Strip ───────────────── */
+.trust-strip{max-width:1120px;margin:48px auto 0;padding:0 32px}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:10px;overflow:hidden}
+.trust-pillar{background:var(--sf);padding:28px 26px;text-align:center}
+.trust-icon{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(200,240,96,.08);color:var(--ac);margin-bottom:14px}
+.trust-h{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.05em;color:var(--tx);margin-bottom:8px}
+.trust-p{font-size:12px;color:var(--mu2);line-height:1.65}
+@media(max-width:760px){.trust-grid{grid-template-columns:1fr;gap:1px}}
+
+.section{max-width:1120px;margin:0 auto;padding:96px 32px 0}
+.section-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:16px;text-align:center}
+.section-h2{font-family:'Syne',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-.5px;line-height:1.1;text-align:center;margin-bottom:14px;text-transform:uppercase}
+.section-intro{color:var(--mu2);font-size:13px;line-height:1.7;text-align:center;max-width:680px;margin:0 auto 56px}
+
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feature{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:32px 28px;transition:transform .3s ease,border-color .3s ease}
+.feature:hover{transform:translateY(-3px);border-color:rgba(200,240,96,.2)}
+.feature-icon{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.25em;color:var(--ac);margin-bottom:14px;text-transform:uppercase}
+.feature h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.2px;margin-bottom:10px;color:var(--tx)}
+.feature p{font-size:12px;color:var(--mu2);line-height:1.7}
+
+.workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+.workflow-step{position:relative;padding:28px 24px;background:var(--sf);border-radius:10px;border:1px solid var(--bd)}
+.workflow-num{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--ac);line-height:1;margin-bottom:14px}
+.workflow-step h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px;color:var(--tx)}
+.workflow-step p{font-size:11px;color:var(--mu2);line-height:1.7}
+
+.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.spec-col{padding:32px 28px;border-right:1px solid var(--bd)}
+.spec-col:last-child{border-right:none}
+.spec-col h4{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:14px}
+.spec-col ul{list-style:none}
+.spec-col li{display:flex;align-items:center;gap:12px;font-size:11px;color:var(--tx);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.spec-col li:last-child{border-bottom:none}
+.spec-col li b{color:var(--ac);font-weight:500;flex:0 0 88px}
+
+footer{text-align:center;padding:72px 32px 48px;margin-top:96px;border-top:1px solid rgba(255,255,255,.03)}
+footer p{font-size:9px;color:var(--mu);letter-spacing:.3px}
+footer a{color:var(--mu2);text-decoration:none}
+footer a:hover{color:var(--ac)}
+footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:3px;margin-bottom:10px}
+
+@media(max-width:900px){
+  nav{padding:14px 20px}
+  .nav-links{gap:18px}
+  .features,.workflow,.specs{grid-template-columns:1fr}
+  .spec-col{border-right:none;border-bottom:1px solid var(--bd)}
+  .spec-col:last-child{border-bottom:none}
+  .product-hero{padding:48px 20px 24px}
+  .hero-img-wrap{padding:0 20px}
+  .section{padding:64px 20px 0}
+}
+@media(max-width:600px){
+  .nav-links a:not(.nav-back){display:none}
+}
+
+.feature,.workflow-step{opacity:0;animation:rise .6s ease forwards}
+.feature:nth-child(1),.workflow-step:nth-child(1){animation-delay:.1s}
+.feature:nth-child(2),.workflow-step:nth-child(2){animation-delay:.18s}
+.feature:nth-child(3),.workflow-step:nth-child(3){animation-delay:.26s}
+.feature:nth-child(4),.workflow-step:nth-child(4){animation-delay:.34s}
+.feature:nth-child(5){animation-delay:.42s}
+.feature:nth-child(6){animation-delay:.5s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Footer (3-spaltig) ──────────── */
+footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255,255,.06);background:#15161a;text-align:left}
+.footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1120px;margin:0 auto 48px}
+.footer-col h4{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
+.footer-col a{display:block;font-family:'DM Mono',monospace;font-size:11px;color:var(--mu2);text-decoration:none;letter-spacing:.3px;padding:5px 0;transition:color .2s}
+.footer-col a:hover{color:var(--ac)}
+.footer-bar{display:flex;justify-content:space-between;align-items:center;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
+.footer-brand{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:3px}
+.footer-brand-accent{color:var(--tx)}
+.footer-meta{color:var(--mu2);text-transform:none;letter-spacing:.3px}
+@media(max-width:720px){.footer-grid{grid-template-columns:repeat(3,1fr);gap:24px}.footer-bar{flex-direction:column;gap:12px;text-align:center}}
+@media(max-width:600px){footer{padding:48px 24px 24px;margin-top:64px}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:32px;text-align:center}}
+
+</style>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-gqR5BLYgrx9BycGkSCWbt.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <span class="nav-logo-mark">S<span class="nav-logo-accent">A</span>TK</span>
+    <span class="nav-logo-sub">Sascha&rsquo;s Audio Tool Kit</span>
+  </a>
+  <div class="nav-platforms">
+    <a href="/mac">Mac</a>
+    <a href="/ios" class="active">iOS</a>
+    <a href="/tools">Web</a>
+  </div>
+  <div class="nav-links">
+    <a href="/support" data-i18n="nav_info">Supportanfrage</a>
+    <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
+    <div class="lang-sw">
+      <span class="lang active" id="btnDE" onclick="setLang('de')">DE</span>
+      <span class="lang-sep">·</span>
+      <span class="lang" id="btnEN" onclick="setLang('en')">EN</span>
+    </div>
+  </div>
+</nav>
+
+<section class="product-hero">
+  <div class="product-eyebrow" data-i18n="ee_eyebrow">iPhone · iPad · iOS App</div>
+  <h1>Easy Editor</h1>
+  <p class="tagline" data-i18n="ee_tagline">Wellenform-Editor für iPhone und iPad. Datei aus Files oder iCloud Drive laden, Bereich markieren, schneiden oder trimmen, Fade In/Out anlegen — und R128-normalisiert wieder ausgeben. Multi-Touch-Zoom, Zero-Crossing-Snap, Undo. Kein Cloud-Upload, alles auf dem Gerät.</p>
+  <div class="product-price-chip">4,99 €<span class="vat" data-i18n="vat">inkl. MwSt. · App Store</span></div>
+</section>
+
+<div class="hero-img-wrap">
+  <img class="hero-img" src="img-easy-editor.png" alt="SATK Easy Editor — Wellenform-Editor für iPhone und iPad">
+</div>
+
+<!-- App-Store-Badges -->
+<div class="appstore-cta">
+  <!-- TODO: App-Store-ID für Easy Editor iPad -->
+  <a href="#" target="_blank" rel="noopener" aria-label="Easy Editor iPad im App Store laden">
+    <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
+  </a>
+  <!-- TODO: App-Store-ID für Easy Editor iPhone -->
+  <a href="#" target="_blank" rel="noopener" aria-label="Easy Editor iPhone im App Store laden">
+    <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
+  </a>
+</div>
+
+<section class="section">
+  <div class="section-label" data-i18n="ee_features_label">Highlights</div>
+  <h2 class="section-h2" data-i18n="ee_features_title">Schneiden ohne Zwischenstation.</h2>
+  <p class="section-intro" data-i18n="ee_features_intro">Easy Editor ist die fokussierte Single-File-Lösung für schnelle Audioschnitte am iPhone und iPad. Datei rein, Bereich markiert, Schnitt durch — fertig zum Versand. Keine Spuren, keine Sessions, kein DAW-Overhead. Verzahnt mit Instant Player für direkten Pad-Transfer.</p>
+
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">Waveform</div>
+      <h3 data-i18n="ee_f1_h">Multi-Touch-Wellenform</h3>
+      <p data-i18n="ee_f1_p">Pinch-to-Zoom bis auf Sample-Ebene, Zwei-Finger-Pan, Tap-to-Position. Vorschau läuft an der Touch-Position. Sample-genaue Selektion mit ziehbaren In-/Out-Handles. Frame- und Millisekunden-Anzeige am Cursor.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">Snap</div>
+      <h3 data-i18n="ee_f2_h">Zero-Crossing-Snap</h3>
+      <p data-i18n="ee_f2_p">Schnitte rasten automatisch auf Nulldurchgänge — keine Klicks an den Rändern. Einzeln pro Marker abschaltbar. Beim Trimmen wird der nächste Zero Crossing in Richtung Stille gewählt, beim Schneiden der nächstliegende.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">Fade</div>
+      <h3 data-i18n="ee_f3_h">Fade-Kurven</h3>
+      <p data-i18n="ee_f3_p">Linear, equal-power, exponentiell, logarithmisch. Fade-Länge per Drag oder Numeric-Input in ms. Fade In/Out und Crossfade an Schnittkanten. Kurven sind in der Wellenform sichtbar — keine Überraschung beim Export.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">R128</div>
+      <h3 data-i18n="ee_f4_h">R128-Export</h3>
+      <p data-i18n="ee_f4_p">Optionale Lautheitsnormalisierung beim Export auf −23, −16 oder −14 LUFS-I (Broadcast / Podcast / Streaming). True-Peak-Limiter auf −1 dBTP nach ITU-R BS.1770-4. Dieselbe Engine wie Loudness Correct.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">I/O</div>
+      <h3 data-i18n="ee_f5_h">Files, iCloud, AirDrop</h3>
+      <p data-i18n="ee_f5_p">Voll integriert in die Files-App: iCloud Drive, Dropbox, Google Drive, USB-C-Sticks und SMB-Shares. AirDrop direkt aus dem Share-Sheet. WAV, AIFF, FLAC, MP3, M4A. Output WAV/AIFF in 16, 24 oder 32 Bit.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">Undo</div>
+      <h3 data-i18n="ee_f6_h">Unbegrenztes Undo</h3>
+      <p data-i18n="ee_f6_p">Jeder Schnitt, jeder Fade, jede Selektion lässt sich rückgängig machen — bis zum Ladestand. Non-destruktiv: das Original bleibt unangetastet, bis du explizit überschreibst oder eine neue Datei exportierst.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══ Trust-Block ══════════════════════════════════════════╗ -->
+<section class="trust-strip">
+  <div class="trust-grid">
+    <div class="trust-pillar">
+      <div class="trust-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
+      </div>
+      <div class="trust-h" data-i18n="trust_p1_h">Vom erfahrenen Toningenieur</div>
+      <div class="trust-p" data-i18n="trust_p1_p">Entwickelt von einem aktiven Broadcast-Engineer für Broadcast-Engineers. Keine nutzlosen Marketing-Features — nur was im Studio wirklich gebraucht wird.</div>
+    </div>
+    <div class="trust-pillar">
+      <div class="trust-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+      </div>
+      <div class="trust-h" data-i18n="trust_p2_h">Universal-App, ein Kauf</div>
+      <div class="trust-p" data-i18n="trust_p2_p">Einmal kaufen, auf iPhone und iPad nutzen. Apple-Familienfreigabe für bis zu 5 weitere Personen. Updates über deinen Apple-Account, kein Zweitkonto bei SATK.</div>
+    </div>
+    <div class="trust-pillar">
+      <div class="trust-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v12H7l-3 4z"/><path d="M8 9h8M8 12h6"/></svg>
+      </div>
+      <div class="trust-h" data-i18n="trust_p3_h">Antwort vom Entwickler</div>
+      <div class="trust-p" data-i18n="trust_p3_p">Support-Mails landen direkt im Posteingang des Entwicklers, nicht bei einem Ticket-System. Werktags meist innerhalb von 24 Stunden.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label" data-i18n="ee_wf_label">Funktionsweise</div>
+  <h2 class="section-h2" data-i18n="ee_wf_title">In 4 Schritten zur fertigen Datei</h2>
+  <p class="section-intro" data-i18n="ee_wf_intro">Importieren, schneiden, exportieren — ohne Sessions, ohne Settings-Marathon. Auf iPhone und iPad gleich bedienbar, im Layout an die jeweilige Bildschirmgröße angepasst.</p>
+
+  <div class="workflow">
+    <div class="workflow-step">
+      <div class="workflow-num">01</div>
+      <h3 data-i18n="ee_w1_h">Datei laden</h3>
+      <p data-i18n="ee_w1_p">Aus der Files-App, iCloud Drive, Dropbox oder per AirDrop. WAV, AIFF, FLAC, MP3, M4A. Mono oder Stereo. Rendert sofort eine Wellenform — keine Hintergrund-Cloud-Verarbeitung.</p>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">02</div>
+      <h3 data-i18n="ee_w2_h">Bereich markieren</h3>
+      <p data-i18n="ee_w2_p">Pinch-to-Zoom auf den Schnittpunkt, In-/Out-Handles ziehen. Zero-Crossing-Snap aktiv (abschaltbar). Loop-Vorschau über die Selektion zur Kontrolle, bevor du schneidest.</p>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">03</div>
+      <h3 data-i18n="ee_w3_h">Schneiden oder trimmen</h3>
+      <p data-i18n="ee_w3_p">Cut entfernt die Selektion, Trim behält sie. Optional Fade In/Out an die Schnittkanten. Jeder Schritt undo-bar. Solo-Audition zur Auswahl-Vorschau.</p>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">04</div>
+      <h3 data-i18n="ee_w4_h">Exportieren</h3>
+      <p data-i18n="ee_w4_p">WAV oder AIFF in 16/24/32 Bit, optional R128-Normalisierung auf −23 / −16 / −14 LUFS. Ziel: Files-App, AirDrop, Mail oder direkt in den Instant Player als Pad-Audio.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label" data-i18n="ee_specs_label">Technische Details</div>
+  <h2 class="section-h2" data-i18n="ee_specs_title">Built for iOS</h2>
+  <p class="section-intro" data-i18n="ee_specs_intro">Native iOS-App, keine Web-Wrapper, keine Cloud-Pflicht. R128-Engine geteilt mit Loudness Correct.</p>
+
+  <div class="specs">
+    <div class="spec-col">
+      <h4 data-i18n="ee_specs_edit">Edit-Engine</h4>
+      <ul>
+        <li><b>Resolution</b> Sample-genau</li>
+        <li><b>Snap</b> Zero-Crossing</li>
+        <li><b>Fades</b> Lin · EP · Exp · Log</li>
+        <li><b>Crossfade</b> An Schnittkanten</li>
+        <li><b>Undo</b> Unbegrenzt</li>
+        <li><b>Modus</b> Non-destruktiv</li>
+      </ul>
+    </div>
+    <div class="spec-col">
+      <h4 data-i18n="ee_specs_export">Export &amp; R128</h4>
+      <ul>
+        <li><b>Standard</b> ITU-R BS.1770-4</li>
+        <li><b>Targets</b> −23 / −16 / −14 LUFS-I</li>
+        <li><b>True Peak</b> 4× polyphase FIR</li>
+        <li><b>Limiter</b> −1 dBTP, 5 ms LA</li>
+        <li><b>Output</b> WAV / AIFF</li>
+        <li><b>Bits</b> 16 / 24 / 32</li>
+      </ul>
+    </div>
+    <div class="spec-col">
+      <h4 data-i18n="ee_specs_io">Plattform &amp; I/O</h4>
+      <ul>
+        <li><b>iOS</b> 16+ iPhone Universal</li>
+        <li><b>iPadOS</b> 16+ Landscape + Portrait</li>
+        <li><b>Input</b> WAV · AIFF · FLAC · MP3 · M4A</li>
+        <li><b>Channels</b> Mono · Stereo</li>
+        <li><b>Storage</b> Files · iCloud · USB-C</li>
+        <li><b>Share</b> AirDrop · Mail · Files</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══ Closing Credo ═════════════════════════════════════════╗ -->
+<section class="section">
+  <div class="section-label" data-i18n="ee_credo_label">Was es besonders macht</div>
+  <h2 class="section-h2" data-i18n-html="ee_credo_title">Schneller Schnitt.<br>Kein Workflow-Overhead.</h2>
+  <p class="section-intro" data-i18n="ee_credo_p">Vollwertige DAWs auf iOS sind beeindruckend, aber für einen 30-Sekunden-Schnitt überdimensioniert. Easy Editor macht genau drei Dinge richtig: laden, schneiden, exportieren. Mit Zero-Crossing-Snap, Fade-Kurven und R128-Normalisierung in Broadcast-Qualität — und ohne Cloud-Pflicht. Verzahnt mit Instant Player für direkten Pad-Transfer.</p>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4 data-i18n="f_col_products">Produkte</h4>
+      <a href="/mac" data-i18n="nav_mac">Mac Apps</a>
+      <a href="/ios" data-i18n="nav_ios">iOS Apps</a>
+      <a href="/tools" data-i18n="nav_tools">Browser-Tools</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="f_col_support">Support</h4>
+      <a href="/support" data-i18n="nav_info">Supportanfrage</a>
+      <a href="/manage-license" data-i18n="f_manage">Lizenz verwalten</a>
+      <a href="/changelog" data-i18n="f_changelog">Changelog</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="f_col_legal">Rechtliches</h4>
+      <a href="/impressum" data-i18n="f_imprint_contact">Kontakt &amp; Impressum</a>
+      <a href="/agb" data-i18n="f_terms">AGB</a>
+      <a href="/widerruf" data-i18n="f_refund">Widerruf</a>
+      <a href="/datenschutz" data-i18n="f_privacy">Datenschutz</a>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span class="footer-brand">S<span class="footer-brand-accent">A</span>TK</span>
+    <span class="footer-meta">Sascha&rsquo;s Audio Toolkit · © 2026</span>
+  </div>
+</footer>
+
+<script>
+const i18n = {
+  de: {
+    nav_shop: 'Shop',
+    nav_manage: 'Lizenz',
+    nav_info: 'Supportanfrage',
+    nav_back: '← Zurück zum Shop',
+    trust_p1_h: 'Vom erfahrenen Toningenieur',
+    trust_p1_p: 'Entwickelt von einem aktiven Broadcast-Engineer für Broadcast-Engineers. Keine nutzlosen Marketing-Features — nur was im Studio wirklich gebraucht wird.',
+    trust_p2_h: 'Universal-App, ein Kauf',
+    trust_p2_p: 'Einmal kaufen, auf iPhone und iPad nutzen. Apple-Familienfreigabe für bis zu 5 weitere Personen. Updates über deinen Apple-Account, kein Zweitkonto bei SATK.',
+    trust_p3_h: 'Antwort vom Entwickler',
+    trust_p3_p: 'Support-Mails landen direkt im Posteingang des Entwicklers, nicht bei einem Ticket-System. Werktags meist innerhalb von 24 Stunden.',
+    ee_eyebrow: 'iPhone · iPad · iOS App',
+    ee_tagline: 'Wellenform-Editor für iPhone und iPad. Datei aus Files oder iCloud Drive laden, Bereich markieren, schneiden oder trimmen, Fade In/Out anlegen — und R128-normalisiert wieder ausgeben. Multi-Touch-Zoom, Zero-Crossing-Snap, Undo. Kein Cloud-Upload, alles auf dem Gerät.',
+    vat: 'inkl. MwSt. · App Store',
+    ee_features_label: 'Highlights',
+    ee_features_title: 'Schneiden ohne Zwischenstation.',
+    ee_features_intro: 'Easy Editor ist die fokussierte Single-File-Lösung für schnelle Audioschnitte am iPhone und iPad. Datei rein, Bereich markiert, Schnitt durch — fertig zum Versand. Keine Spuren, keine Sessions, kein DAW-Overhead. Verzahnt mit Instant Player für direkten Pad-Transfer.',
+    ee_f1_h: 'Multi-Touch-Wellenform',
+    ee_f1_p: 'Pinch-to-Zoom bis auf Sample-Ebene, Zwei-Finger-Pan, Tap-to-Position. Vorschau läuft an der Touch-Position. Sample-genaue Selektion mit ziehbaren In-/Out-Handles. Frame- und Millisekunden-Anzeige am Cursor.',
+    ee_f2_h: 'Zero-Crossing-Snap',
+    ee_f2_p: 'Schnitte rasten automatisch auf Nulldurchgänge — keine Klicks an den Rändern. Einzeln pro Marker abschaltbar. Beim Trimmen wird der nächste Zero Crossing in Richtung Stille gewählt, beim Schneiden der nächstliegende.',
+    ee_f3_h: 'Fade-Kurven',
+    ee_f3_p: 'Linear, equal-power, exponentiell, logarithmisch. Fade-Länge per Drag oder Numeric-Input in ms. Fade In/Out und Crossfade an Schnittkanten. Kurven sind in der Wellenform sichtbar — keine Überraschung beim Export.',
+    ee_f4_h: 'R128-Export',
+    ee_f4_p: 'Optionale Lautheitsnormalisierung beim Export auf −23, −16 oder −14 LUFS-I (Broadcast / Podcast / Streaming). True-Peak-Limiter auf −1 dBTP nach ITU-R BS.1770-4. Dieselbe Engine wie Loudness Correct.',
+    ee_f5_h: 'Files, iCloud, AirDrop',
+    ee_f5_p: 'Voll integriert in die Files-App: iCloud Drive, Dropbox, Google Drive, USB-C-Sticks und SMB-Shares. AirDrop direkt aus dem Share-Sheet. WAV, AIFF, FLAC, MP3, M4A. Output WAV/AIFF in 16, 24 oder 32 Bit.',
+    ee_f6_h: 'Unbegrenztes Undo',
+    ee_f6_p: 'Jeder Schnitt, jeder Fade, jede Selektion lässt sich rückgängig machen — bis zum Ladestand. Non-destruktiv: das Original bleibt unangetastet, bis du explizit überschreibst oder eine neue Datei exportierst.',
+    ee_wf_label: 'Funktionsweise',
+    ee_wf_title: 'In 4 Schritten zur fertigen Datei',
+    ee_wf_intro: 'Importieren, schneiden, exportieren — ohne Sessions, ohne Settings-Marathon. Auf iPhone und iPad gleich bedienbar, im Layout an die jeweilige Bildschirmgröße angepasst.',
+    ee_w1_h: 'Datei laden',
+    ee_w1_p: 'Aus der Files-App, iCloud Drive, Dropbox oder per AirDrop. WAV, AIFF, FLAC, MP3, M4A. Mono oder Stereo. Rendert sofort eine Wellenform — keine Hintergrund-Cloud-Verarbeitung.',
+    ee_w2_h: 'Bereich markieren',
+    ee_w2_p: 'Pinch-to-Zoom auf den Schnittpunkt, In-/Out-Handles ziehen. Zero-Crossing-Snap aktiv (abschaltbar). Loop-Vorschau über die Selektion zur Kontrolle, bevor du schneidest.',
+    ee_w3_h: 'Schneiden oder trimmen',
+    ee_w3_p: 'Cut entfernt die Selektion, Trim behält sie. Optional Fade In/Out an die Schnittkanten. Jeder Schritt undo-bar. Solo-Audition zur Auswahl-Vorschau.',
+    ee_w4_h: 'Exportieren',
+    ee_w4_p: 'WAV oder AIFF in 16/24/32 Bit, optional R128-Normalisierung auf −23 / −16 / −14 LUFS. Ziel: Files-App, AirDrop, Mail oder direkt in den Instant Player als Pad-Audio.',
+    ee_specs_label: 'Technische Details',
+    ee_specs_title: 'Built for iOS',
+    ee_specs_intro: 'Native iOS-App, keine Web-Wrapper, keine Cloud-Pflicht. R128-Engine geteilt mit Loudness Correct.',
+    ee_specs_edit: 'Edit-Engine',
+    ee_specs_export: 'Export & R128',
+    ee_specs_io: 'Plattform & I/O',
+    ee_credo_label: 'Was es besonders macht',
+    ee_credo_title: 'Schneller Schnitt.<br>Kein Workflow-Overhead.',
+    ee_credo_p: 'Vollwertige DAWs auf iOS sind beeindruckend, aber für einen 30-Sekunden-Schnitt überdimensioniert. Easy Editor macht genau drei Dinge richtig: laden, schneiden, exportieren. Mit Zero-Crossing-Snap, Fade-Kurven und R128-Normalisierung in Broadcast-Qualität — und ohne Cloud-Pflicht. Verzahnt mit Instant Player für direkten Pad-Transfer.',
+    f_shop: 'Shop',
+    f_tools: 'Browser-Tools',
+    f_manage: 'Lizenz verwalten',
+    f_changelog: 'Changelog',
+    f_imprint: 'Impressum',
+    f_privacy: 'Datenschutz',
+    f_terms: 'AGB',
+    f_refund: 'Widerruf',
+    nav_mac: 'Mac Apps',
+    nav_ios: 'iOS Apps',
+    nav_tools: 'Browser-Tools',
+    f_col_products: 'Produkte',
+    f_col_support: 'Support',
+    f_col_legal: 'Rechtliches',
+    f_imprint_contact: 'Kontakt & Impressum'
+  },
+  en: {
+    nav_shop: 'Shop',
+    nav_manage: 'License',
+    nav_info: 'Support request',
+    nav_back: '← Back to Shop',
+    trust_p1_h: 'By an experienced sound engineer',
+    trust_p1_p: 'Built by an active broadcast engineer for broadcast engineers. No useless marketing features — only what actually gets used in the studio.',
+    trust_p2_h: 'Universal app, single purchase',
+    trust_p2_p: 'Buy once, use on iPhone and iPad. Apple Family Sharing for up to 5 additional people. Updates through your Apple account, no second account at SATK.',
+    trust_p3_h: 'Reply from the developer',
+    trust_p3_p: 'Support emails go straight to the developer\'s inbox, not into a ticket system. Usually within 24 hours on working days.',
+    ee_eyebrow: 'iPhone · iPad · iOS App',
+    ee_tagline: 'Waveform editor for iPhone and iPad. Load a file from Files or iCloud Drive, mark a range, cut or trim, add fade in/out — and write it back R128-normalized. Multi-touch zoom, zero-crossing snap, undo. No cloud upload, everything stays on the device.',
+    vat: 'incl. VAT · App Store',
+    ee_features_label: 'Highlights',
+    ee_features_title: 'Edit without a detour.',
+    ee_features_intro: 'Easy Editor is the focused single-file solution for fast audio edits on iPhone and iPad. File in, range marked, cut through — done and ready to send. No tracks, no sessions, no DAW overhead. Tied into Instant Player for direct pad transfer.',
+    ee_f1_h: 'Multi-touch waveform',
+    ee_f1_p: 'Pinch-to-zoom down to sample level, two-finger pan, tap-to-position. Preview plays from the touch position. Sample-accurate selection with draggable in/out handles. Frame and millisecond readout at the cursor.',
+    ee_f2_h: 'Zero-crossing snap',
+    ee_f2_p: 'Cuts snap to zero crossings automatically — no clicks at the edges. Toggleable per marker. When trimming, the next zero crossing toward silence is chosen; when cutting, the closest one.',
+    ee_f3_h: 'Fade curves',
+    ee_f3_p: 'Linear, equal-power, exponential, logarithmic. Fade length by drag or numeric input in ms. Fade in/out and crossfade at cut edges. Curves are visible in the waveform — no surprise at export.',
+    ee_f4_h: 'R128 export',
+    ee_f4_p: 'Optional loudness normalization at export to −23, −16 or −14 LUFS-I (broadcast / podcast / streaming). True-peak limiter at −1 dBTP per ITU-R BS.1770-4. Same engine as Loudness Correct.',
+    ee_f5_h: 'Files, iCloud, AirDrop',
+    ee_f5_p: 'Fully integrated with the Files app: iCloud Drive, Dropbox, Google Drive, USB-C drives and SMB shares. AirDrop right from the share sheet. WAV, AIFF, FLAC, MP3, M4A. Output WAV/AIFF in 16, 24 or 32 bit.',
+    ee_f6_h: 'Unlimited undo',
+    ee_f6_p: 'Every cut, every fade, every selection can be reverted — back to load state. Non-destructive: the original stays untouched until you explicitly overwrite or export a new file.',
+    ee_wf_label: 'How it works',
+    ee_wf_title: 'Four steps to the finished file',
+    ee_wf_intro: 'Import, edit, export — no sessions, no settings marathon. Identical handling on iPhone and iPad, layout adapted to the screen.',
+    ee_w1_h: 'Load file',
+    ee_w1_p: 'From Files, iCloud Drive, Dropbox or via AirDrop. WAV, AIFF, FLAC, MP3, M4A. Mono or stereo. Renders the waveform immediately — no background cloud processing.',
+    ee_w2_h: 'Mark range',
+    ee_w2_p: 'Pinch to zoom in on the cut, drag the in/out handles. Zero-crossing snap on (toggleable). Loop preview across the selection to verify before cutting.',
+    ee_w3_h: 'Cut or trim',
+    ee_w3_p: 'Cut removes the selection, trim keeps it. Optional fade in/out on cut edges. Every step undoable. Solo audition for selection preview.',
+    ee_w4_h: 'Export',
+    ee_w4_p: 'WAV or AIFF in 16/24/32 bit, optional R128 normalization at −23 / −16 / −14 LUFS. Destination: Files, AirDrop, Mail or straight into Instant Player as pad audio.',
+    ee_specs_label: 'Technical Details',
+    ee_specs_title: 'Built for iOS',
+    ee_specs_intro: 'Native iOS app, no web wrapper, no cloud lock-in. R128 engine shared with Loudness Correct.',
+    ee_specs_edit: 'Edit Engine',
+    ee_specs_export: 'Export & R128',
+    ee_specs_io: 'Platform & I/O',
+    ee_credo_label: 'What sets it apart',
+    ee_credo_title: 'Quick edit.<br>No workflow overhead.',
+    ee_credo_p: 'Full-featured iOS DAWs are impressive but overkill for a 30-second edit. Easy Editor does exactly three things right: load, edit, export. With zero-crossing snap, fade curves and R128 normalization at broadcast quality — and no cloud lock-in. Tied into Instant Player for direct pad transfer.',
+    f_shop: 'Shop',
+    f_tools: 'Browser Tools',
+    f_manage: 'Manage License',
+    f_changelog: 'Changelog',
+    f_imprint: 'Legal Notice',
+    f_privacy: 'Privacy Policy',
+    f_terms: 'Terms',
+    f_refund: 'Right of Withdrawal',
+    nav_mac: 'Mac Apps',
+    nav_ios: 'iOS Apps',
+    nav_tools: 'Browser Tools',
+    f_col_products: 'Products',
+    f_col_support: 'Support',
+    f_col_legal: 'Legal',
+    f_imprint_contact: 'Contact & Legal Notice'
+  }
+};
+
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.getElementById('btnDE').classList.toggle('active', lang==='de');
+  document.getElementById('btnEN').classList.toggle('active', lang==='en');
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    if (t[k]) el.textContent = t[k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const k = el.dataset.i18nHtml;
+    if (t[k]) el.innerHTML = t[k];
+  });
+  // Swap App-Store-Badge zwischen DE/EN
+  document.querySelectorAll('img[data-src-de][data-src-en]').forEach(img => {
+    img.src = lang === 'en' ? img.dataset.srcEn : img.dataset.srcDe;
+  });
+  try { localStorage.setItem('satk-lang', lang); } catch(e){}
+}
+
+try {
+  const saved = localStorage.getItem('satk-lang');
+  if (saved === 'en') setLang('en');
+} catch(e){}
+</script>
+
+</body>
+</html>

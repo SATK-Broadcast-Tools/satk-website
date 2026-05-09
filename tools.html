@@ -216,7 +216,7 @@ body::before {
 
 /* ── Header ── */
 header { margin-bottom: 56px; }
-.logo-row { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
+.logo-row { display: flex; align-items: baseline; gap: 16px; margin-bottom: 10px; }
 .logo-mark {
   font-family: 'Syne', sans-serif;
   font-size: clamp(32px,5vw,52px); font-weight: 800;
@@ -335,41 +335,36 @@ header { margin-bottom: 56px; }
 .mobile-notice {
   background: var(--sf);
   border: 1px solid var(--bd);
-  padding: 36px 22px 30px;
-  margin: 0 0 32px;
+  padding: 32px 22px 26px;
+  margin: 0 0 24px;
   text-align: center;
   border-radius: 2px;
 }
-.mobile-notice .mn-eyebrow {
-  font-family: 'DM Mono', monospace;
-  font-size: 9px;
-  letter-spacing: .25em;
-  text-transform: uppercase;
-  color: var(--ac);
-  margin-bottom: 14px;
-}
 .mobile-notice h2 {
   font-family: 'Syne', sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 800;
-  letter-spacing: .02em;
+  letter-spacing: .01em;
   color: var(--tx);
   margin-bottom: 14px;
-  line-height: 1.25;
+  line-height: 1.3;
+  max-width: 22ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 .mobile-notice p {
   font-size: 13px;
   color: #9a9aaa;
-  line-height: 1.65;
-  margin: 0 auto 22px;
-  max-width: 38ch;
+  line-height: 1.6;
+  margin: 0 auto 18px;
+  max-width: 36ch;
 }
 .mobile-notice .ctas {
   display: flex;
   gap: 10px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 22px;
+  margin-bottom: 16px;
 }
 .mobile-notice .cta {
   display: inline-flex;
@@ -395,18 +390,18 @@ header { margin-bottom: 56px; }
   font-size: 10px;
   letter-spacing: .04em;
   color: var(--mu);
-  margin-top: 4px;
+  margin: 0 auto;
   max-width: none;
 }
 
 @media (max-width: 540px) {
   .tool-grid { grid-template-columns: 1fr; }
   .wrapper { padding: 24px 14px 50px; }
-  /* Header umbruchsicher: Logo-Row darf wrappen, Lang-Nav rückt auf neue Zeile. */
+  /* Header kompakt: Logo + DE/EN auf einer Zeile, Subtitle wraps darunter. */
   header { margin-bottom: 32px; }
   .logo-row { flex-wrap: wrap; gap: 10px; }
-  .lang-nav { margin-left: 0; width: 100%; justify-content: flex-end; padding-top: 4px; }
   .logo-div { display: none; }
+  .logo-right { flex-basis: 100%; }
   .header-rule { gap: 8px; margin-top: 12px; }
   .header-rule-text { font-size: 8px; letter-spacing: .12em; }
   /* Card-Vorschau auf Mobile flacher, Texte etwas größer für Lesbarkeit. */
@@ -423,9 +418,8 @@ header { margin-bottom: 56px; }
   .footer-links { flex-wrap: wrap; gap: 14px; }
 }
 
-/* ── Language Switcher ── */
+/* ── Language Switcher (klebt direkt am SATK-Logo, baseline-aligned) ── */
 .lang-nav {
-  margin-left: auto;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -535,17 +529,16 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
   <header role="banner">
     <div class="logo-row">
       <a href="index.html" style="text-decoration:none;color:inherit" aria-label="Zurück zu SATK Pro Software"><h1 class="logo-mark">S<span>A</span>TK</h1></a>
+      <nav class="lang-nav" aria-label="Language">
+        <span class="lang-link active" id="btnDE" onclick="setLang('de')" role="button" tabindex="0">DE</span>
+        <span class="lang-sep-txt"> · </span>
+        <span class="lang-link" id="btnEN" onclick="setLang('en')" role="button" tabindex="0">EN</span>
+      </nav>
       <div class="logo-div"></div>
       <div class="logo-right">
         <span class="logo-subtitle">Sascha&rsquo;s Audio Tool Kit</span>
         <span class="logo-tagline">Professional Broadcast &amp; Post Production Tools</span>
       </div>
-      <nav class="lang-nav" aria-label="Language">
-        <a href="index.html" style="font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#c8f060;text-decoration:none;margin-right:18px;transition:opacity .2s" aria-label="Zurück zum SATK Shop" data-i18n="back_shop">← Zurück zum Shop</a>
-        <span class="lang-link active" id="btnDE" onclick="setLang('de')" role="button" tabindex="0">DE</span>
-        <span class="lang-sep-txt"> · </span>
-        <span class="lang-link" id="btnEN" onclick="setLang('en')" role="button" tabindex="0">EN</span>
-      </nav>
     </div>
     <div class="header-rule">
       <div class="header-rule-line"></div>
@@ -560,15 +553,13 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 
   <!-- Mobile-Notice: nur ≤ 768 px sichtbar (CSS-gesteuert). Browser-Tools sind fuer Desktop ausgelegt. -->
   <aside class="mobile-notice" aria-label="Hinweis fuer mobile Geraete">
-    <div class="mn-eyebrow" data-i18n="mn_eyebrow">Auf Mobile eingeschränkt</div>
     <h2 data-i18n="mn_title">Browser-Tools sind für den Desktop gemacht</h2>
-    <p data-i18n="mn_text">File-Drop, Multi-Channel-Audio und große Wellenform-Darstellung brauchen Platz und Maus. Auf iPhone und iPad-Portrait läuft nur ein Teil der Funktionalität.</p>
-    <p data-i18n="mn_text2">Für unterwegs gibt es native SATK-Apps:</p>
+    <p data-i18n="mn_text">File-Drop, Multi-Channel-Audio und große Wellenform-Darstellung brauchen Platz und Maus. Für mobile Geräte gibt es native SATK-Apps:</p>
     <div class="ctas">
       <a class="cta" href="/mac" data-i18n="mn_mac">→ Mac Apps</a>
       <a class="cta" href="/ios" data-i18n="mn_ios">→ iOS Apps</a>
     </div>
-    <p class="mn-foot" data-i18n="mn_foot">Browser-Tools nutzen: am Desktop wieder aufrufen.</p>
+    <p class="mn-foot" data-i18n="mn_foot">Für die Browser-Tools: am Desktop öffnen.</p>
   </aside>
 
   <div class="tool-grid" id="toolGrid" role="list">
@@ -1170,13 +1161,11 @@ const T = {
     'seo_p4': `Browser-Alternative zu Auphonic, iZotope RX, Youlean Loudness Meter, Nugen VisLM, Adobe Audition, Logic Pro, GarageBand oder Reaper — ohne Installation, ohne Konto, ohne Lizenz. Läuft auf Windows, macOS, Linux, iPad und iPhone. Audiodaten bleiben auf dem Gerät, DSGVO-konform.`,
     'seo_p5': `Technische Basis: Web Audio API mit eigenen DSP-Algorithmen — Polyphasen-FIR True-Peak-Metering (4× Oversampling, ITU-R BS.1770-4), FFT-Spectral-Denoiser (Wiener-Filter, N=512, 75 % Overlap-Add), zweistufige EBU-R128-K-Weighted-Normalisierung, Brickwall-Lookahead-Limiter, vollständige Overlap-Add-Signalkette. Entwickelt von Sascha Hömske.`,
     // Mobile-Notice
-    mn_eyebrow: 'Auf Mobile eingeschränkt',
     mn_title: 'Browser-Tools sind für den Desktop gemacht',
-    mn_text: 'File-Drop, Multi-Channel-Audio und große Wellenform-Darstellung brauchen Platz und Maus. Auf iPhone und iPad-Portrait läuft nur ein Teil der Funktionalität.',
-    mn_text2: 'Für unterwegs gibt es native SATK-Apps:',
+    mn_text: 'File-Drop, Multi-Channel-Audio und große Wellenform-Darstellung brauchen Platz und Maus. Für mobile Geräte gibt es native SATK-Apps:',
     mn_mac: '→ Mac Apps',
     mn_ios: '→ iOS Apps',
-    mn_foot: 'Browser-Tools nutzen: am Desktop wieder aufrufen.',
+    mn_foot: 'Für die Browser-Tools: am Desktop öffnen.',
     nav_mac: 'Mac Apps',
     nav_ios: 'iOS Apps',
     nav_tools: 'Browser-Tools',
@@ -1249,13 +1238,11 @@ const T = {
     'seo_p4': `Browser alternative to Auphonic, iZotope RX, Youlean Loudness Meter, Nugen VisLM, Adobe Audition, Logic Pro, GarageBand or Reaper — no installation, no account, no license. Runs on Windows, macOS, Linux, iPad and iPhone. Audio data stays on your device, GDPR-compliant.`,
     'seo_p5': `Technical basis: Web Audio API with custom DSP — polyphase-FIR true-peak metering (4× oversampling, ITU-R BS.1770-4), FFT spectral denoiser (Wiener filter, N=512, 75 % overlap-add), two-stage EBU R128 K-weighted normalization, brickwall lookahead limiter, full overlap-add signal chain. Built by Sascha Hömske.`,
     // Mobile-Notice
-    mn_eyebrow: 'Limited on mobile',
     mn_title: 'Browser tools are built for desktop',
-    mn_text: 'File drop, multi-channel audio and large waveform displays need screen real-estate and a mouse. On iPhone and iPad portrait only some of the functionality runs.',
-    mn_text2: 'For mobile, the native SATK apps are made:',
+    mn_text: 'File drop, multi-channel audio and large waveform displays need screen real-estate and a mouse. For mobile use, the native SATK apps:',
     mn_mac: '→ Mac Apps',
     mn_ios: '→ iOS Apps',
-    mn_foot: 'For the browser tools, come back on desktop.',
+    mn_foot: 'For the browser tools, open on desktop.',
     nav_mac: 'Mac Apps',
     nav_ios: 'iOS Apps',
     nav_tools: 'Browser Tools',

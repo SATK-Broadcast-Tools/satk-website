@@ -215,22 +215,16 @@ body::before {
 .wrapper { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 48px 28px 80px; }
 
 /* ── Header ── */
-header { margin-bottom: 56px; }
-.logo-row { display: flex; align-items: baseline; gap: 16px; margin-bottom: 10px; }
-.logo-mark {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(32px,5vw,52px); font-weight: 800;
-  letter-spacing: .2em; color: var(--tx); line-height: 1;
-}
-.logo-mark span { color: var(--ac); }
-.logo-div { width: 1px; height: 40px; background: linear-gradient(180deg,transparent,var(--bd),transparent); }
-.logo-right { display: flex; flex-direction: column; gap: 3px; }
-.logo-subtitle { font-family: 'Syne',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--ac); }
-.logo-tagline { font-size: 9px; letter-spacing: .1em; color: var(--mu); }
+header { margin-bottom: 40px; }
+.logo-row { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+/* SATK-CI-Logo (identisch zu index.html / Pro-App-Pages) */
+.nav-logo { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 3px; text-decoration: none; line-height: 1; }
+.nav-logo-mark { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 20px; color: var(--ac); letter-spacing: 4px; }
+.nav-logo-accent { color: var(--tx); }
+.nav-logo-sub { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--mu); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 300; white-space: nowrap; }
 .header-rule { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
 .header-rule-line { flex: 1; height: 1px; background: var(--bd); }
 .header-rule-text { font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: var(--mu); }
-.header-tagline { font-size: 11px; color: var(--mu); margin-top: 10px; }
 
 /* ── Tool Grid ── */
 .tool-grid {
@@ -397,12 +391,9 @@ header { margin-bottom: 56px; }
 @media (max-width: 540px) {
   .tool-grid { grid-template-columns: 1fr; }
   .wrapper { padding: 24px 14px 50px; }
-  /* Header kompakt: Logo + DE/EN auf einer Zeile, Subtitle wraps darunter. */
-  header { margin-bottom: 32px; }
-  .logo-row { flex-wrap: wrap; gap: 10px; }
-  .logo-div { display: none; }
-  .logo-right { flex-basis: 100%; order: 1; }
-  .lang-nav { order: 0; }
+  /* Header kompakt: SATK-Logo links, DE/EN rechts auf einer Zeile. */
+  header { margin-bottom: 28px; }
+  .logo-row { gap: 10px; margin-bottom: 10px; }
   .header-rule { gap: 8px; margin-top: 12px; }
   .header-rule-text { font-size: 8px; letter-spacing: .12em; }
   /* Card-Vorschau auf Mobile flacher, Texte etwas größer für Lesbarkeit. */
@@ -530,12 +521,10 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 
   <header role="banner">
     <div class="logo-row">
-      <a href="index.html" style="text-decoration:none;color:inherit" aria-label="Zurück zu SATK Pro Software"><h1 class="logo-mark">S<span>A</span>TK</h1></a>
-      <div class="logo-div"></div>
-      <div class="logo-right">
-        <span class="logo-subtitle">Sascha&rsquo;s Audio Tool Kit</span>
-        <span class="logo-tagline">Professional Broadcast &amp; Post Production Tools</span>
-      </div>
+      <a href="/" class="nav-logo" aria-label="Zurück zu SATK">
+        <span class="nav-logo-mark">S<span class="nav-logo-accent">A</span>TK</span>
+        <span class="nav-logo-sub">Sascha&rsquo;s Audio Tool Kit</span>
+      </a>
       <nav class="lang-nav" aria-label="Language">
         <span class="lang-link active" id="btnDE" onclick="setLang('de')" role="button" tabindex="0">DE</span>
         <span class="lang-sep-txt"> · </span>

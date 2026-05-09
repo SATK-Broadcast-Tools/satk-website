@@ -216,6 +216,18 @@ body::before {
 
 /* ── Header ── */
 header { margin-bottom: 40px; }
+/* Back-Link "Zurück zum Shop" oben links — klein, dezent. */
+.nav-back {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  color: var(--mu);
+  text-decoration: none;
+  margin-bottom: 14px;
+  transition: color .15s;
+}
+.nav-back:hover { color: var(--ac); }
 .logo-row { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
 /* SATK-CI-Logo (identisch zu index.html / Pro-App-Pages) */
 .nav-logo { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 3px; text-decoration: none; line-height: 1; }
@@ -520,6 +532,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 
 
   <header role="banner">
+    <a href="/" class="nav-back" data-i18n="back_shop">← Zurück zum Shop</a>
     <div class="logo-row">
       <a href="/" class="nav-logo" aria-label="Zurück zu SATK">
         <span class="nav-logo-mark">S<span class="nav-logo-accent">A</span>TK</span>

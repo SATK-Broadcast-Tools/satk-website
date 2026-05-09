@@ -1269,7 +1269,7 @@ videoEl.addEventListener('seeked', ()=>{
 });
 function showMovWarning(){
   document.getElementById('movWarning')?.remove();
-  const lang = localStorage.getItem('satk_lang') || 'de';
+  const lang = localStorage.getItem('satk-lang') || 'de';
   const msg = lang === 'en'
     ? '<b>MOV files</b> are not supported in Firefox — please use <b>MP4</b> or <b>WebM</b> instead.'
     : '<b>MOV-Dateien</b> werden von Firefox nicht unterstützt — bitte <b>MP4</b> oder <b>WebM</b> verwenden.';
@@ -3962,7 +3962,7 @@ document.getElementById('undoBtn')?.addEventListener('click', doUndo);
 document.getElementById('redoBtn')?.addEventListener('click', doRedo);
 
 
-// ── Quickstart Toast (DE/EN via satk_lang localStorage) ──────────────────────
+// ── Quickstart Toast (DE/EN via satk-lang localStorage) ──────────────────────
 (function(){
   const toast = document.getElementById('odToast');
   const inner = document.getElementById('odToastInner');
@@ -4038,7 +4038,7 @@ document.getElementById('redoBtn')?.addEventListener('click', doRedo);
   }
 
   function renderToast(){
-    var lang = localStorage.getItem('satk_lang') || 'de';
+    var lang = localStorage.getItem('satk-lang') || 'de';
     var t = TX[lang] || TX.de;
     inner.innerHTML = buildHTML(t);
     var cb = document.getElementById('odToastClose');
@@ -4060,7 +4060,7 @@ document.getElementById('redoBtn')?.addEventListener('click', doRedo);
 
   // Sprache wechseln während Toast sichtbar
   window.addEventListener('storage', function(e){
-    if(e.key === 'satk_lang' && toast.style.display !== 'none') renderToast();
+    if(e.key === 'satk-lang' && toast.style.display !== 'none') renderToast();
   });
 
   document.addEventListener('satk:videoloaded', hide);

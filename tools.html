@@ -401,7 +401,8 @@ header { margin-bottom: 56px; }
   header { margin-bottom: 32px; }
   .logo-row { flex-wrap: wrap; gap: 10px; }
   .logo-div { display: none; }
-  .logo-right { flex-basis: 100%; }
+  .logo-right { flex-basis: 100%; order: 1; }
+  .lang-nav { order: 0; }
   .header-rule { gap: 8px; margin-top: 12px; }
   .header-rule-text { font-size: 8px; letter-spacing: .12em; }
   /* Card-Vorschau auf Mobile flacher, Texte etwas größer für Lesbarkeit. */
@@ -418,22 +419,23 @@ header { margin-bottom: 56px; }
   .footer-links { flex-wrap: wrap; gap: 14px; }
 }
 
-/* ── Language Switcher (klebt direkt am SATK-Logo, baseline-aligned) ── */
+/* ── Language Switcher (rechts in der Logo-Row, kompakt) ── */
 .lang-nav {
   flex-shrink: 0;
   display: flex;
   align-items: center;
+  margin-left: auto;
 }
 .lang-link {
   font-family: 'Syne', sans-serif;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: .2em;
+  letter-spacing: .18em;
   text-transform: uppercase;
   color: #6e6e7a;
   cursor: pointer;
   user-select: none;
-  padding: 2px 4px;
+  padding: 2px 3px;
   position: relative;
   transition: color .2s;
 }
@@ -458,16 +460,16 @@ header { margin-bottom: 56px; }
 .lang-link.switching { animation: langFlash .25s ease; }
 .lang-sep-txt {
   font-family: 'Syne', sans-serif;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
   color: #4a4a56;
-  padding: 0 4px;
+  padding: 0 3px;
   user-select: none;
 }
 @media (max-width: 540px) {
-  .lang-link { font-size: 13px; padding: 8px 10px; letter-spacing: .15em; }
-  .lang-link::after { bottom: 4px; left: 10px; right: 10px; }
-  .lang-sep-txt { font-size: 13px; padding: 0 2px; }
+  .lang-link { font-size: 11px; padding: 6px 6px; letter-spacing: .14em; }
+  .lang-link::after { bottom: 3px; left: 6px; right: 6px; }
+  .lang-sep-txt { font-size: 11px; padding: 0 2px; }
 }
 
 /* ── Footer (3-spaltig) ──────────── */
@@ -529,16 +531,16 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
   <header role="banner">
     <div class="logo-row">
       <a href="index.html" style="text-decoration:none;color:inherit" aria-label="Zurück zu SATK Pro Software"><h1 class="logo-mark">S<span>A</span>TK</h1></a>
-      <nav class="lang-nav" aria-label="Language">
-        <span class="lang-link active" id="btnDE" onclick="setLang('de')" role="button" tabindex="0">DE</span>
-        <span class="lang-sep-txt"> · </span>
-        <span class="lang-link" id="btnEN" onclick="setLang('en')" role="button" tabindex="0">EN</span>
-      </nav>
       <div class="logo-div"></div>
       <div class="logo-right">
         <span class="logo-subtitle">Sascha&rsquo;s Audio Tool Kit</span>
         <span class="logo-tagline">Professional Broadcast &amp; Post Production Tools</span>
       </div>
+      <nav class="lang-nav" aria-label="Language">
+        <span class="lang-link active" id="btnDE" onclick="setLang('de')" role="button" tabindex="0">DE</span>
+        <span class="lang-sep-txt"> · </span>
+        <span class="lang-link" id="btnEN" onclick="setLang('en')" role="button" tabindex="0">EN</span>
+      </nav>
     </div>
     <div class="header-rule">
       <div class="header-rule-line"></div>
@@ -1077,7 +1079,7 @@ window.addEventListener('resize', ()=>{
     'box-shadow:0 4px 24px rgba(0,0,0,.6)',
     'opacity:0','transition:opacity .4s'
   ].join(';');
-  const lang = localStorage.getItem('satk_lang') || 'de';
+  const lang = localStorage.getItem('satk-lang') || 'de';
   toast.innerHTML = lang === 'en'
     ? '<span style="opacity:.6;font-size:8px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:3px">Browser Note</span>' +
       'For best performance we recommend <strong>Chrome</strong>.<br>' +
@@ -1259,7 +1261,7 @@ const T = {
   }
 };
 
-let currentLang = localStorage.getItem('satk_lang') || 'de';
+let currentLang = localStorage.getItem('satk-lang') || 'de';
 
 function setLang(lang) {
   if(lang === currentLang) return;
@@ -1270,7 +1272,7 @@ function setLang(lang) {
     clickedBtn.addEventListener('animationend', () => clickedBtn.classList.remove('switching'), {once:true});
   }
   currentLang = lang;
-  localStorage.setItem('satk_lang', lang);
+  localStorage.setItem('satk-lang', lang);
   applyLang();
 }
 

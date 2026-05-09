@@ -46,6 +46,14 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 @media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:32px;text-align:center}}
 
 </style>
+<script>
+// Auto-redirect to EN version if user's global language is EN
+try {
+  if (localStorage.getItem('satk-lang') === 'en') {
+    location.replace('datenschutz-en.html');
+  }
+} catch(e){}
+</script>
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-gqR5BLYgrx9BycGkSCWbt.js"></script>
 <script>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -7,12 +7,13 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="canonical" href="https://satk.tech/impressum">
+<link rel="canonical" href="https://satk.tech/impressum-en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Impressum — SATK</title>
+<title>Legal Notice — SATK</title>
+<meta name="description" content="Legal notice (Impressum) and contact details for SATK — Sascha's Audio Tool Kit.">
 <style>
 @import url('fonts.css');
-:root{--bg:#0a0a0b;--sf:#111114;--bd:#1e1e24;--ac:#c8f060;--tx:#e8e8ec;--mu:#5a5a6a;}
+:root{--bg:#0a0a0b;--sf:#111114;--bd:#1e1e24;--ac:#c8f060;--tx:#e8e8ec;--mu:#5a5a6a;--mu2:#9a9aaa;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html,body{background:var(--bg);color:var(--tx);font-family:'DM Mono',monospace;min-height:100%;}
 html{scrollbar-width:thin;scrollbar-color:rgba(200,240,96,.25) transparent;}
@@ -44,10 +45,11 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 
 </style>
 <script>
-// Auto-redirect to EN version if user's global language is EN
+// Auto-redirect to DE version only if user's global language is explicitly DE
+// (null/unset = stay here, since user landed on EN URL deliberately)
 try {
-  if (localStorage.getItem('satk-lang') === 'en') {
-    location.replace('impressum-en.html');
+  if (localStorage.getItem('satk-lang') === 'de') {
+    location.replace('impressum.html');
   }
 } catch(e){}
 </script>
@@ -62,68 +64,68 @@ try {
 <div class="wrap">
   <a class="back" href="index.html">
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-    Zurück zu SATK
+    Back to SATK
   </a>
   <div class="logo">SATK</div>
-  <h1>Impressum</h1>
+  <h1>Legal Notice</h1>
 
-  <h2>Angaben gemäß § 5 TMG</h2>
-  <p>Sascha Hömske<br>Alte Poststr. 34<br>53721 Siegburg<br>Deutschland</p>
+  <h2>Information pursuant to § 5 TMG (German Telemedia Act)</h2>
+  <p>Sascha Hömske<br>Alte Poststr. 34<br>53721 Siegburg<br>Germany</p>
 
-  <h2>Kontakt</h2>
-  <p>E-Mail: info@satk.tech</p>
+  <h2>Contact</h2>
+  <p>Email: info@satk.tech</p>
 
-  <h2>Steuerliche Angaben</h2>
-  <p>Steuernummer: 221/5183/2225</p>
+  <h2>Tax Information</h2>
+  <p>Tax number: 221/5183/2225</p>
 
-  <h2>Verantwortlich für den Inhalt gemäß § 18 Abs. 2 MStV</h2>
-  <p>Sascha Hömske, Alte Poststr. 34, 53721 Siegburg</p>
+  <h2>Responsible for Content pursuant to § 18 (2) MStV</h2>
+  <p>Sascha Hömske, Alte Poststr. 34, 53721 Siegburg, Germany</p>
 
-  <h2>Hinweis zum Angebot</h2>
-  <p>Sascha's Audio Toolkit (SATK) stellt professionelle Audio-Software für Broadcast, Mastering und Produktion bereit — als Standalone-Applikationen, Audio-Plugins (VST3/AU) und native iPad-/iPhone-Apps. Zusätzlich werden kostenlose Browser-Tools angeboten, deren Audio-Verarbeitung vollständig lokal im Browser (Web Audio API) erfolgt. Es werden keine Audiodaten übertragen oder gespeichert.</p>
+  <h2>About the Service</h2>
+  <p>Sascha&rsquo;s Audio Tool Kit (SATK) provides professional audio software for broadcast, mastering and production — as standalone applications, audio plug-ins (VST3 / AU) and native iPad / iPhone apps. In addition, free browser tools are offered whose audio processing runs entirely locally in the browser (Web Audio API). No audio data is transmitted or stored on our servers.</p>
 
-  <h2>Zahlungsabwicklung</h2>
-  <p>Die Abwicklung des Verkaufs der Desktop-Software erfolgt über Paddle.com Market Ltd. (Judd House, 18–29 Mora Street, London EC1V 8BT, United Kingdom) als Merchant of Record. Apps für iPad, iPhone und Mac werden über den Apple App Store vertrieben.</p>
+  <h2>Payment Processing</h2>
+  <p>Sales of desktop software are processed by Paddle.com Market Ltd. (Judd House, 18–29 Mora Street, London EC1V 8BT, United Kingdom) acting as Merchant of Record. Apps for iPad, iPhone and Mac are distributed through the Apple App Store.</p>
 
-  <h2>Online-Streitbeilegung</h2>
-  <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>. Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+  <h2>Online Dispute Resolution</h2>
+  <p>The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>. We are neither obliged nor willing to participate in dispute resolution proceedings before a consumer arbitration board.</p>
 
-  <h2>Haftungsausschluss</h2>
-  <p>Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte wird keine Haftung übernommen. Als private Dienstleistung sind die Inhalte nach den allgemeinen Gesetzen nach § 7 Abs. 1 TMG verantwortlich.</p>
+  <h2>Disclaimer</h2>
+  <p>The contents of this website have been compiled with the greatest possible care. However, no liability is accepted for the accuracy, completeness or timeliness of the content. As an individual service provider, contents are subject to liability under general laws pursuant to § 7 (1) TMG.</p>
 
-  <h2>Externe Links</h2>
-  <p>Diese Website enthält Links zu externen Websites. Für die Inhalte verlinkter Seiten ist stets der jeweilige Anbieter verantwortlich. Zum Zeitpunkt der Verlinkung waren keine Rechtsverstöße erkennbar.</p>
+  <h2>External Links</h2>
+  <p>This website contains links to external websites. The respective provider is solely responsible for the content of any linked pages. No legal violations were apparent at the time the links were created.</p>
 
-  <h2>Urheberrecht</h2>
-  <p>Die durch den Seitenbetreiber erstellten Inhalte und Werke unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der Zustimmung des Autors.</p>
+  <h2>Copyright</h2>
+  <p>The content and works created by the site operator are subject to German copyright law. Reproduction, processing, distribution and any form of exploitation outside the limits of copyright law require the author&rsquo;s consent.</p>
 
-  <p style="margin-top:32px;font-size:10px;color:var(--mu)">Stand: April 2026 · Kontakt: <a href="mailto:info@satk.tech">info@satk.tech</a></p>
+  <p style="margin-top:32px;font-size:10px;color:var(--mu)">Last updated: April 2026 · Contact: <a href="mailto:info@satk.tech">info@satk.tech</a> · The German version of this document is legally binding.</p>
 
   <footer>
   <div class="footer-grid">
     <div class="footer-col">
-      <h4 data-i18n="f_col_products">Produkte</h4>
-      <a href="/mac" data-i18n="nav_mac">Mac Apps</a>
-      <a href="/ios" data-i18n="nav_ios">iOS Apps</a>
-      <a href="/tools" data-i18n="nav_tools">Browser-Tools</a>
+      <h4>Products</h4>
+      <a href="/mac">Mac Apps</a>
+      <a href="/ios">iOS Apps</a>
+      <a href="/tools">Browser Tools</a>
     </div>
     <div class="footer-col">
-      <h4 data-i18n="f_col_support">Support</h4>
-      <a href="/support" data-i18n="nav_info">Supportanfrage</a>
-      <a href="/manage-license" data-i18n="f_manage">Lizenz verwalten</a>
-      <a href="/changelog" data-i18n="f_changelog">Changelog</a>
+      <h4>Support</h4>
+      <a href="/support">Support request</a>
+      <a href="/manage-license">Manage License</a>
+      <a href="/changelog">Changelog</a>
     </div>
     <div class="footer-col">
-      <h4 data-i18n="f_col_legal">Rechtliches</h4>
-      <a href="/impressum" data-i18n="f_imprint_contact">Kontakt &amp; Impressum</a>
-      <a href="/agb" data-i18n="f_terms">AGB</a>
-      <a href="/widerruf" data-i18n="f_refund">Widerruf</a>
-      <a href="/datenschutz" data-i18n="f_privacy">Datenschutz</a>
+      <h4>Legal</h4>
+      <a href="/impressum-en">Contact &amp; Legal Notice</a>
+      <a href="/agb-en">Terms</a>
+      <a href="/widerruf-en">Right of Withdrawal</a>
+      <a href="/datenschutz-en">Privacy Policy</a>
     </div>
   </div>
   <div class="footer-bar">
     <span class="footer-brand">S<span class="footer-brand-accent">A</span>TK</span>
-    <span class="footer-meta">Sascha&rsquo;s Audio Toolkit · © 2026</span>
+    <span class="footer-meta">Sascha&rsquo;s Audio Tool Kit · © 2026</span>
   </div>
 </footer>
 </div>

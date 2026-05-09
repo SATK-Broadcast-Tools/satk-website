@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://satk.tech/datenschutz-en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — SATK</title>
+<meta name="description" content="GDPR-compliant privacy policy for SATK — local processing, no tracking, cookieless analytics.">
+<style>
+@import url('fonts.css');
+:root{--bg:#0a0a0b;--sf:#111114;--bd:#1e1e24;--ac:#c8f060;--tx:#e8e8ec;--mu:#5a5a6a;--mu2:#9a9aaa;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--bg);color:var(--tx);font-family:'DM Mono',monospace;min-height:100%;}
+html{scrollbar-width:thin;scrollbar-color:rgba(200,240,96,.25) transparent;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:rgba(200,240,96,.2);}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(200,240,96,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(200,240,96,.018) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:40px 24px 60px;}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.08em;color:var(--mu);text-decoration:none;margin-bottom:32px;transition:color .12s;}
+.back:hover{color:var(--ac);}
+.logo{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);margin-bottom:8px;}
+h1{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--tx);letter-spacing:.06em;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--bd);}
+h2{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);margin:28px 0 10px;}
+p{font-size:11px;color:rgba(232,232,236,.75);line-height:1.9;margin-bottom:10px;}
+ul{font-size:11px;color:rgba(232,232,236,.75);line-height:1.9;margin:0 0 10px 18px;}
+li{margin-bottom:4px;}
+a{color:var(--ac);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.highlight{padding:12px 14px;border:1px solid rgba(200,240,96,.2);margin:12px 0;font-size:11px;color:rgba(200,240,96,.8);line-height:1.8;}
+.note{font-size:10px;color:var(--mu);line-height:1.8;padding:12px 14px;border:1px solid var(--bd);margin-top:24px;}
+/* ── Footer (3-spaltig) ──────────── */
+footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255,255,.06);background:#15161a;text-align:left}
+.footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1120px;margin:0 auto 48px}
+.footer-col h4{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
+.footer-col a{display:block;font-family:'DM Mono',monospace;font-size:11px;color:var(--mu2);text-decoration:none;letter-spacing:.3px;padding:5px 0;transition:color .2s}
+.footer-col a:hover{color:var(--ac)}
+.footer-bar{display:flex;justify-content:space-between;align-items:center;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
+.footer-brand{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:3px}
+.footer-brand-accent{color:var(--tx)}
+.footer-meta{color:var(--mu2);text-transform:none;letter-spacing:.3px}
+@media(max-width:720px){.footer-grid{grid-template-columns:repeat(3,1fr);gap:24px}.footer-bar{flex-direction:column;gap:12px;text-align:center}}
+@media(max-width:600px){footer{padding:48px 24px 24px;margin-top:64px}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:32px;text-align:center}}
+
+</style>
+<script>
+// Auto-redirect to DE version only if user's global language is explicitly DE
+try {
+  if (localStorage.getItem('satk-lang') === 'de') {
+    location.replace('datenschutz.html');
+  }
+} catch(e){}
+</script>
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-gqR5BLYgrx9BycGkSCWbt.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="index.html">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to SATK
+  </a>
+  <div class="logo">SATK</div>
+  <h1>Privacy Policy</h1>
+
+  <div class="highlight">
+    Summary: SATK processes personal data only to the extent technically necessary. Browser tools and native apps (SATK-BM, Overdub Studio, Loudness Correct) process audio entirely locally — no upload, no cloud. On the website we use Plausible Analytics for anonymous, cookieless audience measurement (no IP storage, no user tracking, no profiles, no cookie banner needed — see §12). No advertising cookies, no cross-site tracking.
+  </div>
+
+  <h2>1. Controller</h2>
+  <p>Sascha Hömske<br>Alte Poststr. 34<br>53721 Siegburg, Germany<br>Email: info@satk.tech</p>
+
+  <h2>2. General Information on Data Processing</h2>
+  <p>Sascha&rsquo;s Audio Tool Kit (SATK) is a privacy-friendly service. We collect and process personal data only to the extent technically necessary for providing the service.</p>
+
+  <h2>3. Audio Processing (Browser Tools)</h2>
+  <p>All audio processing in the browser tools — including loudness normalisation, spectral analysis, encoding, editing and mixing — is performed entirely locally in the user&rsquo;s browser (Web Audio API, OfflineAudioContext). Audio data never leaves the device. No audio files are stored on or transmitted to servers.</p>
+
+  <h2>4. Native Apps (SATK-BM, Overdub Studio, Loudness Correct)</h2>
+  <p>The native SATK apps for iPad, iPhone, macOS and Windows process audio exclusively on the local device. No audio data, measurement results or personal data is transmitted to servers or permanently stored.</p>
+  <p>Depending on functionality, the apps require the following system permissions:</p>
+  <ul>
+    <li><strong>Microphone / audio input:</strong> for real-time measurement of loudness, true peak and spectrum. Audio signals are read into device memory only, analysed and discarded. No recording, no upload.</li>
+    <li><strong>Bluetooth (SATK-BM only):</strong> used solely to connect Bluetooth MIDI controllers. No data is read, transmitted or forwarded.</li>
+    <li><strong>File access:</strong> users can select audio files for analysis via the &ldquo;Open file&rdquo; dialog. These files are opened locally and read-only — never copied, modified or transmitted. Exported PDF and CSV reports are saved only to the user-chosen storage location.</li>
+  </ul>
+  <p>The apps contain no analytics, no crash-tracking SDK, no advertising libraries and no third-party network communication. Internet access is not required for operation.</p>
+
+  <h2>5. App Store Distribution</h2>
+  <p>SATK-BM is distributed through the Apple App Store (for iPad, iPhone, Mac). When purchasing, installing, updating or accepting optional TestFlight invitations, Apple processes data independently (Apple ID, purchase history, device tokens). We have no control over this. Apple&rsquo;s privacy policy applies: <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">apple.com/legal/privacy</a>.</p>
+  <p>Apple provides us with aggregated, anonymised sales and crash statistics. These contain no information traceable to individual users.</p>
+
+  <h2>6. Orders / Payment Processing (Desktop Software)</h2>
+  <p>Sales of the desktop apps (macOS and Windows versions outside the App Store) are processed by our payment provider <strong>Paddle</strong> (Paddle.com Market Ltd., Judd House, 18–29 Mora Street, London EC1V 8BT, United Kingdom), acting as &ldquo;Merchant of Record&rdquo;. Paddle processes name, email, billing address and payment details for processing the purchase and issuing a correct invoice including VAT.</p>
+  <p>Paddle.js is loaded on this website only when the visitor actively clicks the &ldquo;Buy&rdquo; button — no connection to Paddle servers is established before that.</p>
+  <p>Legal basis: Art. 6 (1) (b) GDPR (contract performance). Paddle&rsquo;s privacy policy applies: <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener">paddle.com/legal/privacy</a>.</p>
+  <p>From Paddle, we only receive the buyer&rsquo;s email address for delivery of the licence key and for support purposes. Retention period: for the statutory retention period for invoices (10 years) or until withdrawal for support contact.</p>
+  <p>The licence email after a successful purchase is sent via the email service provider <strong>Resend</strong> (Resend Inc., 2261 Market Street #5039, San Francisco, CA 94114, USA). Resend processes only the buyer&rsquo;s email address and the message content (licence key + activation link) for one-time delivery. A data processing agreement under Art. 28 GDPR is in place; EU standard contractual clauses are filed. Resend privacy policy: <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">resend.com/legal/privacy-policy</a>.</p>
+
+  <h2>7. Access Data / Server Logs</h2>
+  <p>This website is served via <strong>Cloudflare Pages</strong> (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA). When pages are requested, Cloudflare automatically records access data in log files. These typically include:</p>
+  <ul>
+    <li>IP address of the requesting device</li>
+    <li>Date and time of the request</li>
+    <li>Name and URL of the file requested</li>
+    <li>Amount of data transferred</li>
+    <li>Browser type and operating system</li>
+  </ul>
+  <p>This data is used solely to ensure operation, for error analysis and to protect against attacks (DDoS, bot filtering). Retention follows Cloudflare&rsquo;s default settings for Pages logs. Legal basis: Art. 6 (1) (f) GDPR (legitimate interest). For the data processing agreement with Cloudflare and the EU standard contractual clauses on file, see §10. DNS management for the domain <code>satk.tech</code> is handled by IONOS SE, Elgendorfer Str. 57, 56410 Montabaur, Germany — pure name resolution does not produce additional logs.</p>
+
+  <h2>8. Cookies and Tracking</h2>
+  <p>This website uses no cookies. No tracking technologies, analytics services (such as Google Analytics), advertising networks or social-media plug-ins are deployed. No user profiles are created.</p>
+
+  <h2>9. Fonts</h2>
+  <p>This website loads all used fonts (DM Mono, Syne) exclusively from our own web server. No connection to external font CDNs (e.g. Google Fonts) is established. The visitor&rsquo;s IP address is at no point transmitted to third parties for font loading.</p>
+
+  <h2>10. Cloudflare (Reverse Proxy &amp; Download Delivery)</h2>
+  <p>This website is delivered via Cloudflare (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA) as a reverse proxy. As part of delivery, Cloudflare processes IP address, user agent and request data to provide content and protect against attacks (DDoS, bot filtering).</p>
+  <p>Additionally, trial downloads (e.g. the DMG package for the Pro apps) are delivered via the Cloudflare R2 service under the subdomain <code>download.satk.tech</code>. When clicking the trial-download button, your IP address is transmitted to Cloudflare R2. No additional collection of personal data occurs — the download is anonymous, without account or email entry.</p>
+  <p>A data processing agreement under Art. 28 GDPR is in place with Cloudflare; EU standard contractual clauses are filed. Legal basis: Art. 6 (1) (f) GDPR (legitimate interest in a stable, secure web presence and fast file delivery).</p>
+  <p>Cloudflare privacy policy: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">cloudflare.com/privacypolicy</a></p>
+
+  <h2>11. Local Storage in the Browser (localStorage)</h2>
+  <p>This website uses local browser storage (<code>localStorage</code>) exclusively to remember your selected language (key <code>satk-lang</code>, values <code>de</code> or <code>en</code>). The entry is stored only on your device, never transmitted to a server, and serves only to load the same language on your next visit.</p>
+  <p>Legal basis: § 25 (2) no. 2 TTDSG (technically necessary to provide the function explicitly requested by the user) — no consent is required. You can delete the entry at any time via your browser settings (data storage / local data).</p>
+
+  <h2>12. Audience Measurement with Plausible Analytics</h2>
+  <p>This website uses Plausible Analytics (Plausible Insights OÜ, Västriku tn 2, 50403 Tartu, Estonia) for anonymous audience measurement. Plausible records aggregated, non-personal statistics about the use of this website (e.g. number of visitors per page, time on page, geographic region at country level, referring websites).</p>
+  <p>Plausible sets <strong>no cookies</strong>, stores <strong>no IP addresses</strong> persistently (only a hashed daily identifier for return-visit detection, which is renewed every day) and uses <strong>no cross-site tracking</strong>. No profiling occurs, and the data is not shared with third parties. Processing takes place entirely on EU servers in Germany.</p>
+  <p>Legal basis: Art. 6 (1) (f) GDPR (legitimate interest in statistical analysis of website usage to optimise the service). Because Plausible operates without cookies and without personal identifiers, no consent under § 25 TTDSG is required.</p>
+  <p>Plausible privacy policy: <a href="https://plausible.io/privacy" target="_blank" rel="noopener">plausible.io/privacy</a> · Data Processing Agreement (DPA): <a href="https://plausible.io/dpa" target="_blank" rel="noopener">plausible.io/dpa</a></p>
+
+  <h2>13. Your Rights (GDPR)</h2>
+  <p>Under the GDPR, you have the following rights:</p>
+  <ul>
+    <li>Right of access to stored data (Art. 15 GDPR)</li>
+    <li>Right to rectification of incorrect data (Art. 16 GDPR)</li>
+    <li>Right to erasure of your data (Art. 17 GDPR)</li>
+    <li>Right to restriction of processing (Art. 18 GDPR)</li>
+    <li>Right to data portability (Art. 20 GDPR)</li>
+    <li>Right to object to processing (Art. 21 GDPR)</li>
+    <li>Right to lodge a complaint with the competent supervisory authority</li>
+  </ul>
+  <p>As SATK does not collect personal data, there is generally no data about you to which these rights would apply. For questions, contact: info@satk.tech</p>
+
+  <h2>14. Competent Supervisory Authority</h2>
+  <p>Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen<br>
+  Postfach 20 04 44, 40102 Düsseldorf, Germany<br>
+  <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener">www.ldi.nrw.de</a></p>
+
+  <p style="margin-top:32px;font-size:10px;color:var(--mu)">Last updated: May 2026 · Privacy questions: <a href="mailto:info@satk.tech">info@satk.tech</a> · The German version of this document is legally binding.</p>
+
+  <footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a href="/mac">Mac Apps</a>
+      <a href="/ios">iOS Apps</a>
+      <a href="/tools">Browser Tools</a>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <a href="/support">Support request</a>
+      <a href="/manage-license">Manage License</a>
+      <a href="/changelog">Changelog</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="/impressum-en">Contact &amp; Legal Notice</a>
+      <a href="/agb-en">Terms</a>
+      <a href="/widerruf-en">Right of Withdrawal</a>
+      <a href="/datenschutz-en">Privacy Policy</a>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span class="footer-brand">S<span class="footer-brand-accent">A</span>TK</span>
+    <span class="footer-meta">Sascha&rsquo;s Audio Tool Kit · © 2026</span>
+  </div>
+</footer>
+</div>
+</body>
+</html>

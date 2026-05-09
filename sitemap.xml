@@ -87,8 +87,20 @@
     <priority>0.2</priority>
   </url>
   <url>
+    <loc>https://satk.tech/impressum-en</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
     <loc>https://satk.tech/datenschutz</loc>
     <lastmod>2026-05-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://satk.tech/datenschutz-en</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>

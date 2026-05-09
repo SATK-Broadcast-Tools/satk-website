@@ -197,14 +197,10 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
     <a id="mailtoFallback" href="mailto:info@satk.tech" style="display:inline-block;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;background:var(--ac);color:#0a0a0b;text-decoration:none;font-weight:500;transition:transform .15s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'" data-i18n="sup_err_btn">📧 Per E-Mail senden</a>
   </div>
 
-  <form class="form-wrap" action="https://formsubmit.co/ajax/info@satk.tech" method="POST" id="supportForm">
-    <!-- Formsubmit.co Konfiguration (AJAX-Variante: kein Redirect, Besucher bleibt auf der Seite) -->
-    <input type="hidden" name="_subject" value="SATK Support-Anfrage">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_autoresponse" value="Vielen Dank für deine Anfrage an SATK Support. Ich melde mich werktags meist innerhalb von 24 Stunden. — Sascha / SATK">
-    <!-- Honeypot gegen Spam-Bots -->
-    <input type="text" name="_honey" style="display:none">
+  <form class="form-wrap" action="https://satk-license-worker.weathered-lake-eea9.workers.dev/support" method="POST" id="supportForm">
+    <!-- Honeypot gegen Spam-Bots: bleibt visuell versteckt, Bots fuellen es trotzdem aus.
+         Worker erkennt nicht-leeres _honey und antwortet "silent success" ohne Mail. -->
+    <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
 
     <h2 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.2px;color:var(--tx);margin-bottom:8px" data-i18n="sup_form_h2">Support-Anfrage</h2>
     <p style="font-size:12px;color:var(--mu2);margin-bottom:28px;line-height:1.6" data-i18n="sup_form_intro">Bitte fülle die Felder so vollständig wie möglich aus — App- und OS-Version sind für Bug-Tracking entscheidend. Screenshots, Crash-Logs oder Audio-Beispiele kannst du in einer Antwort-Mail nachreichen.</p>

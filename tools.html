@@ -374,25 +374,25 @@ header { margin-bottom: 56px; }
   font-weight: 700;
   letter-spacing: .2em;
   text-transform: uppercase;
-  color: #3a3a46;
+  color: #6e6e7a;
   cursor: pointer;
   user-select: none;
-  padding: 2px 0;
+  padding: 2px 4px;
   position: relative;
   transition: color .2s;
 }
 .lang-link::after {
   content: '';
   position: absolute;
-  bottom: -2px; left: 0; right: 0;
+  bottom: -2px; left: 4px; right: 4px;
   height: 1px;
   background: #c8f060;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform .2s ease;
 }
-.lang-link:hover { color: #9a9aaa; }
-.lang-link.active { color: #e8e8ec; }
+.lang-link:hover { color: #e8e8ec; }
+.lang-link.active { color: #c8f060; }
 .lang-link.active::after { transform: scaleX(1); }
 @keyframes langFlash {
   0%   { opacity: 1; }
@@ -404,9 +404,14 @@ header { margin-bottom: 56px; }
   font-family: 'Syne', sans-serif;
   font-size: 10px;
   font-weight: 700;
-  color: #2a2a36;
-  padding: 0 5px;
+  color: #4a4a56;
+  padding: 0 4px;
   user-select: none;
+}
+@media (max-width: 540px) {
+  .lang-link { font-size: 13px; padding: 8px 10px; letter-spacing: .15em; }
+  .lang-link::after { bottom: 4px; left: 10px; right: 10px; }
+  .lang-sep-txt { font-size: 13px; padding: 0 2px; }
 }
 
 /* ── Footer (3-spaltig) ──────────── */

@@ -19,8 +19,9 @@
 /broadcast-meter-pro.html /broadcast-meter-pro 301
 /changelog.html /changelog 301
 /datenschutz.html /datenschutz 301
-/format-wandler.html /format-wandler 301
 /impressum.html /impressum 301
+/format-wandler /tools 301
+/format-wandler.html /tools 301
 /instant-player.html /instant-player 301
 /loudness-correct.html /loudness-correct 301
 /manage-license.html /manage-license 301

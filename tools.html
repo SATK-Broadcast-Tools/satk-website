@@ -340,6 +340,25 @@ header { margin-bottom: 56px; }
 @media (max-width: 540px) {
   .tool-grid { grid-template-columns: 1fr; }
   .wrapper { padding: 24px 14px 50px; }
+  /* Header umbruchsicher: Logo-Row darf wrappen, Lang-Nav rückt auf neue Zeile. */
+  header { margin-bottom: 32px; }
+  .logo-row { flex-wrap: wrap; gap: 10px; }
+  .lang-nav { margin-left: 0; width: 100%; justify-content: flex-end; padding-top: 4px; }
+  .logo-div { display: none; }
+  .header-rule { gap: 8px; margin-top: 12px; }
+  .header-rule-text { font-size: 8px; letter-spacing: .12em; }
+  /* Card-Vorschau auf Mobile flacher, Texte etwas größer für Lesbarkeit. */
+  .card-preview { height: 100px; }
+  .card-name { font-size: 13px; }
+  .card-desc { font-size: 11px; }
+  /* SEO-Block ohne harte Kanten am Bildrand. */
+  .seo-section { padding: 24px 14px 0; }
+  .seo-text p { font-size: 12px; line-height: 1.7; }
+  .audience-list li { font-size: 11px; }
+  .audience-list strong { font-size: 11px; }
+  /* Footer-Inner umbricht bei wenig Platz; Links bleiben tippbar. */
+  .footer-inner { padding: 16px 18px; }
+  .footer-links { flex-wrap: wrap; gap: 14px; }
 }
 
 /* ── Language Switcher ── */
@@ -400,9 +419,9 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 .footer-brand{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:3px}
 .footer-brand-accent{color:var(--tx)}
 .footer-meta{color:var(--mu2);text-transform:none;letter-spacing:.3px}
-@media(max-width:720px){.footer-grid{grid-template-columns:repeat(3,1fr);gap:24px}.footer-bar{flex-direction:column;gap:12px;text-align:center}}
+@media(max-width:720px){.footer-grid{grid-template-columns:repeat(2,1fr);gap:28px}.footer-bar{flex-direction:column;gap:12px;text-align:center}}
 @media(max-width:600px){footer{padding:48px 24px 24px;margin-top:64px}}
-@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:32px;text-align:center}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:24px;text-align:center}}
 
 </style>
 
@@ -1301,10 +1320,16 @@ const T = {
     nav_mac: 'Mac Apps',
     nav_ios: 'iOS Apps',
     nav_tools: 'Browser-Tools',
+    nav_info: 'Supportanfrage',
     f_col_products: 'Produkte',
     f_col_support: 'Support',
     f_col_legal: 'Rechtliches',
-    f_imprint_contact: 'Kontakt & Impressum'
+    f_imprint_contact: 'Kontakt & Impressum',
+    f_manage: 'Lizenz verwalten',
+    f_changelog: 'Changelog',
+    f_terms: 'AGB',
+    f_refund: 'Widerruf',
+    f_privacy: 'Datenschutz'
   },
   en: {
     // Header
@@ -1370,10 +1395,16 @@ const T = {
     nav_mac: 'Mac Apps',
     nav_ios: 'iOS Apps',
     nav_tools: 'Browser Tools',
+    nav_info: 'Support request',
     f_col_products: 'Products',
     f_col_support: 'Support',
     f_col_legal: 'Legal',
-    f_imprint_contact: 'Contact & Legal Notice'
+    f_imprint_contact: 'Contact & Legal Notice',
+    f_manage: 'Manage License',
+    f_changelog: 'Changelog',
+    f_terms: 'Terms',
+    f_refund: 'Right of Withdrawal',
+    f_privacy: 'Privacy Policy'
   }
 };
 

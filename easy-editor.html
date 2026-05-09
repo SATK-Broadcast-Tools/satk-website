@@ -9,13 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="canonical" href="https://satk.tech/easy-editor">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SATK Easy Editor – Wellenform-Editor für iPhone und iPad</title>
-<meta name="description" content="Audio-Editor für iPhone und iPad: Schneiden, Trimmen, Fade In/Out, Zero-Crossing-Snap, R128-normalisierter WAV/AIFF-Export. Files-App, iCloud Drive, AirDrop. 4,99 € im App Store.">
+<title>SATK Easy Editor – Audio trimmen und auf EBU R128 −23 LUFS bringen</title>
+<meta name="description" content="Gratis-Audio-Editor für iPhone und iPad: Datei öffnen, trimmen, auf EBU R128 −23 LUFS mit True-Peak-Limiter normalisieren, als 24-Bit-WAV exportieren. Round-Trip mit SATK Instant Player.">
 
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="SATK Easy Editor – Wellenform-Editor für iPhone und iPad">
-<meta property="og:description" content="Schneller Audio-Editor: Schneiden, Trimmen, Fade, Zero-Crossing-Snap, R128-Export. Multi-Touch-Wellenform, Files / iCloud Drive / AirDrop. 4,99 €.">
+<meta property="og:title" content="SATK Easy Editor – Audio trimmen und auf EBU R128 −23 LUFS bringen">
+<meta property="og:description" content="Gratis-Editor für iPhone und iPad. Trimmen, R128 −23 LUFS, True-Peak-Limiter, 24-Bit-WAV-Export. Round-Trip mit SATK Instant Player.">
 <meta property="og:url" content="https://satk.tech/easy-editor">
 <meta property="og:image" content="https://satk.tech/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -23,8 +23,8 @@
 <meta property="og:site_name" content="SATK – Sascha&rsquo;s Audio Tool Kit">
 <meta property="og:locale" content="de_DE">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SATK Easy Editor – Wellenform-Editor für iPhone und iPad">
-<meta name="twitter:description" content="Schneiden, Trimmen, Fade, Zero-Crossing, R128-Export. iPhone &amp; iPad. 4,99 €.">
+<meta name="twitter:title" content="SATK Easy Editor – Audio trimmen und auf R128 bringen">
+<meta name="twitter:description" content="Gratis. iPhone &amp; iPad. Trimmen, R128 −23 LUFS, TP-Limiter, 24-Bit-WAV. Round-Trip mit Instant Player.">
 <meta name="twitter:image" content="https://satk.tech/og-image.png">
 <link href="fonts.css" rel="stylesheet">
 <script type="application/ld+json">
@@ -32,20 +32,20 @@
   "@context": "https://schema.org",
   "@type": "MobileApplication",
   "name": "SATK Easy Editor",
-  "description": "Audio-Editor für iPhone und iPad: Schneiden, Trimmen, Fade In/Out, Zero-Crossing-Snap, R128-normalisierter WAV/AIFF-Export. Files-App, iCloud Drive, AirDrop.",
+  "description": "Gratis-Audio-Editor für iPhone und iPad. Audio aus der Dateien-App öffnen, trimmen, auf EBU R128 −23 LUFS mit True-Peak-Limiter normalisieren, als 24-Bit-WAV exportieren. Round-Trip mit SATK Instant Player.",
   "applicationCategory": "MultimediaApplication",
   "applicationSubCategory": "Audio Editor",
-  "operatingSystem": "iOS 16+, iPadOS 16+",
+  "operatingSystem": "iOS, iPadOS",
   "url": "https://satk.tech/easy-editor",
   "image": "https://satk.tech/img-easy-editor.png",
   "screenshot": "https://satk.tech/img-easy-editor.png",
   "offers": {
     "@type": "Offer",
     "name": "Apple App Store",
-    "price": "4.99",
+    "price": "0.00",
     "priceCurrency": "EUR",
     "availability": "https://schema.org/PreOrder",
-    "category": "Software License"
+    "category": "Free Software"
   },
   "publisher": {
     "@type": "Organization",
@@ -75,7 +75,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .nav-back{color:var(--mu);font-size:10px;letter-spacing:.5px;text-decoration:none;opacity:.6;transition:opacity .2s}
 .nav-back:hover{opacity:1}
 
-/* ── Nav Platforms (Pill-Tabs) ─────── */
 .nav-platforms{display:flex;gap:2px;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:999px;padding:3px}
 .nav-platforms a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:999px;color:var(--mu2);text-decoration:none;transition:all .2s}
 .nav-platforms a.active{background:var(--ac);color:#0a0a0b}
@@ -96,13 +95,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .hero-img-wrap{max-width:1120px;margin:32px auto 0;padding:0 32px;text-align:center}
 .hero-img{display:inline-block;max-width:560px;width:100%;height:auto;border:1px solid var(--bd);border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
 
-/* ── App Store CTA-Block ──────────────── */
-.appstore-cta{max-width:760px;margin:40px auto 0;padding:0 32px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
-.appstore-cta a{display:inline-block;line-height:0;transition:transform .15s}
-.appstore-cta a:hover{transform:translateY(-2px)}
-.appstore-cta img{height:42px;width:auto}
-
-/* ── Trust-Strip ───────────────── */
 .trust-strip{max-width:1120px;margin:48px auto 0;padding:0 32px}
 .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:10px;overflow:hidden}
 .trust-pillar{background:var(--sf);padding:28px 26px;text-align:center}
@@ -167,7 +159,6 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 .feature:nth-child(6){animation-delay:.5s}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── Footer (3-spaltig) ──────────── */
 footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255,255,.06);background:#15161a;text-align:left}
 .footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1120px;margin:0 auto 48px}
 .footer-col h4{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
@@ -215,66 +206,53 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 <section class="product-hero">
   <div class="product-eyebrow" data-i18n="ee_eyebrow">iPhone · iPad · iOS App</div>
   <h1>Easy Editor</h1>
-  <p class="tagline" data-i18n="ee_tagline">Wellenform-Editor für iPhone und iPad. Datei aus Files oder iCloud Drive laden, Bereich markieren, schneiden oder trimmen, Fade In/Out anlegen — und R128-normalisiert wieder ausgeben. Multi-Touch-Zoom, Zero-Crossing-Snap, Undo. Kein Cloud-Upload, alles auf dem Gerät.</p>
-  <div class="product-price-chip">4,99 €<span class="vat" data-i18n="vat">inkl. MwSt. · App Store</span></div>
+  <p class="tagline" data-i18n="ee_tagline">Audiodatei aus der Dateien-App öffnen, auf den gewünschten Bereich trimmen, auf EBU R128 (−23 LUFS) mit Inter-Sample-Peak-Schutz normalisieren und eine saubere 24-Bit-WAV exportieren — alles auf dem iPhone oder iPad, alles offline.</p>
+  <div class="product-price-chip"><span data-i18n="ee_price">gratis</span><span class="vat" data-i18n="vat">App Store · keine In-App-Käufe</span></div>
 </section>
 
 <div class="hero-img-wrap">
   <img class="hero-img" src="img-easy-editor.png" alt="SATK Easy Editor — Wellenform-Editor für iPhone und iPad">
 </div>
 
-<!-- App-Store-Badges -->
-<div class="appstore-cta">
-  <!-- TODO: App-Store-ID für Easy Editor iPad -->
-  <a href="#" target="_blank" rel="noopener" aria-label="Easy Editor iPad im App Store laden">
-    <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
-  </a>
-  <!-- TODO: App-Store-ID für Easy Editor iPhone -->
-  <a href="#" target="_blank" rel="noopener" aria-label="Easy Editor iPhone im App Store laden">
-    <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
-  </a>
-</div>
-
 <section class="section">
   <div class="section-label" data-i18n="ee_features_label">Highlights</div>
-  <h2 class="section-h2" data-i18n="ee_features_title">Schneiden ohne Zwischenstation.</h2>
-  <p class="section-intro" data-i18n="ee_features_intro">Easy Editor ist die fokussierte Single-File-Lösung für schnelle Audioschnitte am iPhone und iPad. Datei rein, Bereich markiert, Schnitt durch — fertig zum Versand. Keine Spuren, keine Sessions, kein DAW-Overhead. Verzahnt mit Instant Player für direkten Pad-Transfer.</p>
+  <h2 class="section-h2" data-i18n="ee_features_title">Trimmen. Normalisieren. Fertig.</h2>
+  <p class="section-intro" data-i18n="ee_features_intro">Easy Editor ist ein fokussierter Audio-Cutter für Radio, Podcast und Post-Production. Kein Multitrack, keine Plug-ins, kein MIDI — nur Trimmen, Cutten, R128-Normalisieren und Exportieren. Dafür bündig sauber, mit derselben True-Peak-Engine, die auch SATK Loudness Correct verwendet.</p>
 
   <div class="features">
     <div class="feature">
-      <div class="feature-icon">Waveform</div>
-      <h3 data-i18n="ee_f1_h">Multi-Touch-Wellenform</h3>
-      <p data-i18n="ee_f1_p">Pinch-to-Zoom bis auf Sample-Ebene, Zwei-Finger-Pan, Tap-to-Position. Vorschau läuft an der Touch-Position. Sample-genaue Selektion mit ziehbaren In-/Out-Handles. Frame- und Millisekunden-Anzeige am Cursor.</p>
+      <div class="feature-icon">Trim · Cut</div>
+      <h3 data-i18n="ee_f1_h">Trimmen, Cutten, Undo</h3>
+      <p data-i18n="ee_f1_p">In- und Out-Handles auf der orangefarbenen Selektion ziehen. <b>Trim</b> behält die Selektion, <b>Cut</b> entfernt sie. Volles Undo bis zum Ladestand. Das Original bleibt unangetastet, bis du explizit exportierst.</p>
     </div>
     <div class="feature">
-      <div class="feature-icon">Snap</div>
-      <h3 data-i18n="ee_f2_h">Zero-Crossing-Snap</h3>
-      <p data-i18n="ee_f2_p">Schnitte rasten automatisch auf Nulldurchgänge — keine Klicks an den Rändern. Einzeln pro Marker abschaltbar. Beim Trimmen wird der nächste Zero Crossing in Richtung Stille gewählt, beim Schneiden der nächstliegende.</p>
+      <div class="feature-icon">Preview</div>
+      <h3 data-i18n="ee_f2_h">PLAY IN / PLAY OUT</h3>
+      <p data-i18n="ee_f2_p">Drei Vorschau-Modi: PLAY (komplett ab Cursor), PLAY IN (ab In-Punkt), PLAY OUT (1,5 s vor Out-Punkt). Genau die Vorschauen, die man beim Schnitt-Check wirklich braucht — ohne erst Loop-Selektionen aktivieren zu müssen.</p>
     </div>
     <div class="feature">
-      <div class="feature-icon">Fade</div>
-      <h3 data-i18n="ee_f3_h">Fade-Kurven</h3>
-      <p data-i18n="ee_f3_p">Linear, equal-power, exponentiell, logarithmisch. Fade-Länge per Drag oder Numeric-Input in ms. Fade In/Out und Crossfade an Schnittkanten. Kurven sind in der Wellenform sichtbar — keine Überraschung beim Export.</p>
+      <div class="feature-icon">Zoom</div>
+      <h3 data-i18n="ee_f3_h">Vier Zoom-Modi</h3>
+      <p data-i18n="ee_f3_p">Fit (ganze Datei), Detail, Zoom-to-In, Zoom-to-Out. Ein Tap und du bist auf dem Schnittpunkt — keine Pinch-Akrobatik, kein Verlieren in der Wellenform.</p>
     </div>
     <div class="feature">
-      <div class="feature-icon">R128</div>
-      <h3 data-i18n="ee_f4_h">R128-Export</h3>
-      <p data-i18n="ee_f4_p">Optionale Lautheitsnormalisierung beim Export auf −23, −16 oder −14 LUFS-I (Broadcast / Podcast / Streaming). True-Peak-Limiter auf −1 dBTP nach ITU-R BS.1770-4. Dieselbe Engine wie Loudness Correct.</p>
+      <div class="feature-icon">EBU R128</div>
+      <h3 data-i18n="ee_f4_h">−23 LUFS, two-pass</h3>
+      <p data-i18n="ee_f4_p">EBU-R128-Normalisierung nach ITU-R BS.1770-4. Pass 1 misst Integrated LUFS, Pass 2 schreibt mit Korrektur-Gain. Zwei-Pass-Refinement, falls die erste Korrektur nicht exakt sitzt — Ergebnis: sauber auf −23 LUFS-I.</p>
     </div>
     <div class="feature">
-      <div class="feature-icon">I/O</div>
-      <h3 data-i18n="ee_f5_h">Files, iCloud, AirDrop</h3>
-      <p data-i18n="ee_f5_p">Voll integriert in die Files-App: iCloud Drive, Dropbox, Google Drive, USB-C-Sticks und SMB-Shares. AirDrop direkt aus dem Share-Sheet. WAV, AIFF, FLAC, MP3, M4A. Output WAV/AIFF in 16, 24 oder 32 Bit.</p>
+      <div class="feature-icon">True Peak</div>
+      <h3 data-i18n="ee_f5_h">4× Polyphase TP-Limiter</h3>
+      <p data-i18n="ee_f5_p">Inter-Sample-Peak-Schutz mit 4-fach oversampelndem Polyphase-Filter. Hält Output unter −1 dBTP — ITU-R BS.1770-4-konform, identisch zur Engine in SATK Loudness Correct.</p>
     </div>
     <div class="feature">
-      <div class="feature-icon">Undo</div>
-      <h3 data-i18n="ee_f6_h">Unbegrenztes Undo</h3>
-      <p data-i18n="ee_f6_p">Jeder Schnitt, jeder Fade, jede Selektion lässt sich rückgängig machen — bis zum Ladestand. Non-destruktiv: das Original bleibt unangetastet, bis du explizit überschreibst oder eine neue Datei exportierst.</p>
+      <div class="feature-icon">Round-Trip</div>
+      <h3 data-i18n="ee_f6_h">Roundtrip mit Instant Player</h3>
+      <p data-i18n="ee_f6_p">Pad in SATK Instant Player wählen → an Easy Editor übergeben → trimmen, normalisieren → SEND BACK landet das Ergebnis im selben Pad. Standalone heißt der Button stattdessen EXPORT WAV. URL-Scheme-basiert, keine manuelle Datei-Wirtschaft.</p>
     </div>
   </div>
 </section>
 
-<!-- ╔══ Trust-Block ══════════════════════════════════════════╗ -->
 <section class="trust-strip">
   <div class="trust-grid">
     <div class="trust-pillar">
@@ -286,10 +264,10 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
     </div>
     <div class="trust-pillar">
       <div class="trust-icon" aria-hidden="true">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v6l4 2"/><circle cx="12" cy="14" r="8"/></svg>
       </div>
-      <div class="trust-h" data-i18n="trust_p2_h">Universal-App, ein Kauf</div>
-      <div class="trust-p" data-i18n="trust_p2_p">Einmal kaufen, auf iPhone und iPad nutzen. Apple-Familienfreigabe für bis zu 5 weitere Personen. Updates über deinen Apple-Account, kein Zweitkonto bei SATK.</div>
+      <div class="trust-h" data-i18n="trust_p2_h">Gratis, keine In-App-Käufe</div>
+      <div class="trust-p" data-i18n="trust_p2_p">Voller Funktionsumfang ab dem ersten Start. Kein Abo, keine Pro-Freischaltung, keine Werbung, kein Konto. Der Code von außen kontaktiert keinen Server, das Audio bleibt auf deinem Gerät.</div>
     </div>
     <div class="trust-pillar">
       <div class="trust-icon" aria-hidden="true">
@@ -304,28 +282,28 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 <section class="section">
   <div class="section-label" data-i18n="ee_wf_label">Funktionsweise</div>
   <h2 class="section-h2" data-i18n="ee_wf_title">In 4 Schritten zur fertigen Datei</h2>
-  <p class="section-intro" data-i18n="ee_wf_intro">Importieren, schneiden, exportieren — ohne Sessions, ohne Settings-Marathon. Auf iPhone und iPad gleich bedienbar, im Layout an die jeweilige Bildschirmgröße angepasst.</p>
+  <p class="section-intro" data-i18n="ee_wf_intro">Importieren, schneiden, normalisieren, exportieren — keine Sessions, keine Spuren. Auf iPhone (Hoch- und Querformat) und iPad (alle vier Orientierungen) gleich bedienbar.</p>
 
   <div class="workflow">
     <div class="workflow-step">
       <div class="workflow-num">01</div>
-      <h3 data-i18n="ee_w1_h">Datei laden</h3>
-      <p data-i18n="ee_w1_p">Aus der Files-App, iCloud Drive, Dropbox oder per AirDrop. WAV, AIFF, FLAC, MP3, M4A. Mono oder Stereo. Rendert sofort eine Wellenform — keine Hintergrund-Cloud-Verarbeitung.</p>
+      <h3 data-i18n="ee_w1_h">Datei öffnen</h3>
+      <p data-i18n="ee_w1_p">WAV, MP3, M4A, FLAC, AIFF oder OGG — aus der Dateien-App, iCloud, „Auf meinem Gerät" oder per AirDrop. Wellenform mit In/Out-Handles erscheint sofort.</p>
     </div>
     <div class="workflow-step">
       <div class="workflow-num">02</div>
       <h3 data-i18n="ee_w2_h">Bereich markieren</h3>
-      <p data-i18n="ee_w2_p">Pinch-to-Zoom auf den Schnittpunkt, In-/Out-Handles ziehen. Zero-Crossing-Snap aktiv (abschaltbar). Loop-Vorschau über die Selektion zur Kontrolle, bevor du schneidest.</p>
+      <p data-i18n="ee_w2_p">In- und Out-Handles ziehen. Zoom-to-In und Zoom-to-Out für sample-genaue Schnittposition. PLAY IN / PLAY OUT zur Vorschau der Übergänge.</p>
     </div>
     <div class="workflow-step">
       <div class="workflow-num">03</div>
-      <h3 data-i18n="ee_w3_h">Schneiden oder trimmen</h3>
-      <p data-i18n="ee_w3_p">Cut entfernt die Selektion, Trim behält sie. Optional Fade In/Out an die Schnittkanten. Jeder Schritt undo-bar. Solo-Audition zur Auswahl-Vorschau.</p>
+      <h3 data-i18n="ee_w3_h">Trim oder Cut</h3>
+      <p data-i18n="ee_w3_p">Trim behält die Selektion, Cut entfernt sie. Hintergrund-Render, damit die UI auch bei langen Dateien reagiert. Jeder Schritt undo-bar.</p>
     </div>
     <div class="workflow-step">
       <div class="workflow-num">04</div>
-      <h3 data-i18n="ee_w4_h">Exportieren</h3>
-      <p data-i18n="ee_w4_p">WAV oder AIFF in 16/24/32 Bit, optional R128-Normalisierung auf −23 / −16 / −14 LUFS. Ziel: Files-App, AirDrop, Mail — oder zurück auf das Instant-Player-Pad, von dem der Schnitt kam.</p>
+      <h3 data-i18n="ee_w4_h">Export oder Send Back</h3>
+      <p data-i18n="ee_w4_p">EXPORT WAV speichert eine 24-Bit-WAV (native Sample-Rate, optional R128-normalisiert) via Files-Picker. Bei Round-Trip aus Instant Player heißt der Button SEND BACK und das Ergebnis landet im ursprünglichen Pad.</p>
     </div>
   </div>
 </section>
@@ -333,50 +311,49 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 <section class="section">
   <div class="section-label" data-i18n="ee_specs_label">Technische Details</div>
   <h2 class="section-h2" data-i18n="ee_specs_title">Built for iOS</h2>
-  <p class="section-intro" data-i18n="ee_specs_intro">Native iOS-App, keine Web-Wrapper, keine Cloud-Pflicht. R128-Engine geteilt mit Loudness Correct.</p>
+  <p class="section-intro" data-i18n="ee_specs_intro">Native iOS-App auf JUCE-Audio. R128-Engine geteilt mit SATK Loudness Correct.</p>
 
   <div class="specs">
     <div class="spec-col">
       <h4 data-i18n="ee_specs_edit">Edit-Engine</h4>
       <ul>
-        <li><b>Resolution</b> Sample-genau</li>
-        <li><b>Snap</b> Zero-Crossing</li>
-        <li><b>Fades</b> Lin · EP · Exp · Log</li>
-        <li><b>Crossfade</b> An Schnittkanten</li>
-        <li><b>Undo</b> Unbegrenzt</li>
-        <li><b>Modus</b> Non-destruktiv</li>
+        <li><b>Aktionen</b> Trim · Cut · Undo</li>
+        <li><b>Selection</b> In/Out-Drag-Handles</li>
+        <li><b>Preview</b> Play · Play In · Play Out (1,5 s)</li>
+        <li><b>Zoom</b> Fit · Detail · zu In · zu Out</li>
+        <li><b>Render</b> Hintergrund-Thread</li>
+        <li><b>Channels</b> Mono · Stereo</li>
       </ul>
     </div>
     <div class="spec-col">
       <h4 data-i18n="ee_specs_export">Export &amp; R128</h4>
       <ul>
         <li><b>Standard</b> ITU-R BS.1770-4</li>
-        <li><b>Targets</b> −23 / −16 / −14 LUFS-I</li>
-        <li><b>True Peak</b> 4× polyphase FIR</li>
-        <li><b>Limiter</b> −1 dBTP, 5 ms LA</li>
-        <li><b>Output</b> WAV / AIFF</li>
-        <li><b>Bits</b> 16 / 24 / 32</li>
+        <li><b>Target</b> EBU R128 −23 LUFS-I</li>
+        <li><b>TP-Limiter</b> 4× Polyphase</li>
+        <li><b>Limit</b> −1 dBTP</li>
+        <li><b>Output</b> WAV 24-Bit</li>
+        <li><b>Rate</b> Native (unverändert)</li>
       </ul>
     </div>
     <div class="spec-col">
       <h4 data-i18n="ee_specs_io">Plattform &amp; I/O</h4>
       <ul>
-        <li><b>iOS</b> 16+ iPhone Universal</li>
-        <li><b>iPadOS</b> 16+ Landscape + Portrait</li>
-        <li><b>Input</b> WAV · AIFF · FLAC · MP3 · M4A</li>
-        <li><b>Channels</b> Mono · Stereo</li>
-        <li><b>Storage</b> Files · iCloud · USB-C</li>
-        <li><b>Share</b> AirDrop · Mail · Files</li>
+        <li><b>iPhone</b> Hoch + Quer</li>
+        <li><b>iPad</b> alle 4 Orientierungen</li>
+        <li><b>Input</b> WAV · MP3 · M4A · FLAC · AIFF · OGG</li>
+        <li><b>Storage</b> Dateien · iCloud · AirDrop</li>
+        <li><b>URL-Scheme</b> easyeditor://</li>
+        <li><b>Privacy</b> kein Server, keine Analytics</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- ╔══ Closing Credo ═════════════════════════════════════════╗ -->
 <section class="section">
-  <div class="section-label" data-i18n="ee_credo_label">Was es besonders macht</div>
-  <h2 class="section-h2" data-i18n-html="ee_credo_title">Schneller Schnitt.<br>Kein Workflow-Overhead.</h2>
-  <p class="section-intro" data-i18n="ee_credo_p">Vollwertige DAWs auf iOS sind beeindruckend, aber für einen 30-Sekunden-Schnitt überdimensioniert. Easy Editor macht genau drei Dinge richtig: laden, schneiden, exportieren. Mit Zero-Crossing-Snap, Fade-Kurven und R128-Normalisierung in Broadcast-Qualität — und ohne Cloud-Pflicht. Verzahnt mit Instant Player für direkten Pad-Transfer.</p>
+  <div class="section-label" data-i18n="ee_credo_label">Was es nicht ist</div>
+  <h2 class="section-h2" data-i18n-html="ee_credo_title">Keine DAW.<br>Sondern ein Cutter.</h2>
+  <p class="section-intro" data-i18n="ee_credo_p">Kein Multitrack, keine Plug-ins, kein MIDI — wer das braucht, nimmt eine DAW. Easy Editor ist für den Fall, dass du auf dem Handy oder Tablet schnell schneiden, trimmen und auf Sendekorridor-Lautheit normalisieren willst. Genau drei Aktionen, dafür sauber.</p>
 </section>
 
 <footer>
@@ -416,48 +393,49 @@ const i18n = {
     nav_back: '← Zurück zum Shop',
     trust_p1_h: 'Vom erfahrenen Toningenieur',
     trust_p1_p: 'Entwickelt von einem aktiven Broadcast-Engineer für Broadcast-Engineers. Keine nutzlosen Marketing-Features — nur was im Studio wirklich gebraucht wird.',
-    trust_p2_h: 'Universal-App, ein Kauf',
-    trust_p2_p: 'Einmal kaufen, auf iPhone und iPad nutzen. Apple-Familienfreigabe für bis zu 5 weitere Personen. Updates über deinen Apple-Account, kein Zweitkonto bei SATK.',
+    trust_p2_h: 'Gratis, keine In-App-Käufe',
+    trust_p2_p: 'Voller Funktionsumfang ab dem ersten Start. Kein Abo, keine Pro-Freischaltung, keine Werbung, kein Konto. Der Code kontaktiert keinen Server, das Audio bleibt auf deinem Gerät.',
     trust_p3_h: 'Antwort vom Entwickler',
     trust_p3_p: 'Support-Mails landen direkt im Posteingang des Entwicklers, nicht bei einem Ticket-System. Werktags meist innerhalb von 24 Stunden.',
     ee_eyebrow: 'iPhone · iPad · iOS App',
-    ee_tagline: 'Wellenform-Editor für iPhone und iPad. Datei aus Files oder iCloud Drive laden, Bereich markieren, schneiden oder trimmen, Fade In/Out anlegen — und R128-normalisiert wieder ausgeben. Multi-Touch-Zoom, Zero-Crossing-Snap, Undo. Kein Cloud-Upload, alles auf dem Gerät.',
-    vat: 'inkl. MwSt. · App Store',
+    ee_tagline: 'Audiodatei aus der Dateien-App öffnen, auf den gewünschten Bereich trimmen, auf EBU R128 (−23 LUFS) mit Inter-Sample-Peak-Schutz normalisieren und eine saubere 24-Bit-WAV exportieren — alles auf dem iPhone oder iPad, alles offline.',
+    ee_price: 'gratis',
+    vat: 'App Store · keine In-App-Käufe',
     ee_features_label: 'Highlights',
-    ee_features_title: 'Schneiden ohne Zwischenstation.',
-    ee_features_intro: 'Easy Editor ist die fokussierte Single-File-Lösung für schnelle Audioschnitte am iPhone und iPad. Datei rein, Bereich markiert, Schnitt durch — fertig zum Versand. Keine Spuren, keine Sessions, kein DAW-Overhead. Verzahnt mit Instant Player für direkten Pad-Transfer.',
-    ee_f1_h: 'Multi-Touch-Wellenform',
-    ee_f1_p: 'Pinch-to-Zoom bis auf Sample-Ebene, Zwei-Finger-Pan, Tap-to-Position. Vorschau läuft an der Touch-Position. Sample-genaue Selektion mit ziehbaren In-/Out-Handles. Frame- und Millisekunden-Anzeige am Cursor.',
-    ee_f2_h: 'Zero-Crossing-Snap',
-    ee_f2_p: 'Schnitte rasten automatisch auf Nulldurchgänge — keine Klicks an den Rändern. Einzeln pro Marker abschaltbar. Beim Trimmen wird der nächste Zero Crossing in Richtung Stille gewählt, beim Schneiden der nächstliegende.',
-    ee_f3_h: 'Fade-Kurven',
-    ee_f3_p: 'Linear, equal-power, exponentiell, logarithmisch. Fade-Länge per Drag oder Numeric-Input in ms. Fade In/Out und Crossfade an Schnittkanten. Kurven sind in der Wellenform sichtbar — keine Überraschung beim Export.',
-    ee_f4_h: 'R128-Export',
-    ee_f4_p: 'Optionale Lautheitsnormalisierung beim Export auf −23, −16 oder −14 LUFS-I (Broadcast / Podcast / Streaming). True-Peak-Limiter auf −1 dBTP nach ITU-R BS.1770-4. Dieselbe Engine wie Loudness Correct.',
-    ee_f5_h: 'Files, iCloud, AirDrop',
-    ee_f5_p: 'Voll integriert in die Files-App: iCloud Drive, Dropbox, Google Drive, USB-C-Sticks und SMB-Shares. AirDrop direkt aus dem Share-Sheet. WAV, AIFF, FLAC, MP3, M4A. Output WAV/AIFF in 16, 24 oder 32 Bit.',
-    ee_f6_h: 'Unbegrenztes Undo',
-    ee_f6_p: 'Jeder Schnitt, jeder Fade, jede Selektion lässt sich rückgängig machen — bis zum Ladestand. Non-destruktiv: das Original bleibt unangetastet, bis du explizit überschreibst oder eine neue Datei exportierst.',
+    ee_features_title: 'Trimmen. Normalisieren. Fertig.',
+    ee_features_intro: 'Easy Editor ist ein fokussierter Audio-Cutter für Radio, Podcast und Post-Production. Kein Multitrack, keine Plug-ins, kein MIDI — nur Trimmen, Cutten, R128-Normalisieren und Exportieren. Dafür bündig sauber, mit derselben True-Peak-Engine, die auch SATK Loudness Correct verwendet.',
+    ee_f1_h: 'Trimmen, Cutten, Undo',
+    ee_f1_p: 'In- und Out-Handles auf der orangefarbenen Selektion ziehen. Trim behält die Selektion, Cut entfernt sie. Volles Undo bis zum Ladestand. Das Original bleibt unangetastet, bis du explizit exportierst.',
+    ee_f2_h: 'PLAY IN / PLAY OUT',
+    ee_f2_p: 'Drei Vorschau-Modi: PLAY (komplett ab Cursor), PLAY IN (ab In-Punkt), PLAY OUT (1,5 s vor Out-Punkt). Genau die Vorschauen, die man beim Schnitt-Check wirklich braucht — ohne erst Loop-Selektionen aktivieren zu müssen.',
+    ee_f3_h: 'Vier Zoom-Modi',
+    ee_f3_p: 'Fit (ganze Datei), Detail, Zoom-to-In, Zoom-to-Out. Ein Tap und du bist auf dem Schnittpunkt — keine Pinch-Akrobatik, kein Verlieren in der Wellenform.',
+    ee_f4_h: '−23 LUFS, two-pass',
+    ee_f4_p: 'EBU-R128-Normalisierung nach ITU-R BS.1770-4. Pass 1 misst Integrated LUFS, Pass 2 schreibt mit Korrektur-Gain. Zwei-Pass-Refinement, falls die erste Korrektur nicht exakt sitzt — Ergebnis: sauber auf −23 LUFS-I.',
+    ee_f5_h: '4× Polyphase TP-Limiter',
+    ee_f5_p: 'Inter-Sample-Peak-Schutz mit 4-fach oversampelndem Polyphase-Filter. Hält Output unter −1 dBTP — ITU-R BS.1770-4-konform, identisch zur Engine in SATK Loudness Correct.',
+    ee_f6_h: 'Roundtrip mit Instant Player',
+    ee_f6_p: 'Pad in SATK Instant Player wählen → an Easy Editor übergeben → trimmen, normalisieren → SEND BACK landet das Ergebnis im selben Pad. Standalone heißt der Button stattdessen EXPORT WAV. URL-Scheme-basiert, keine manuelle Datei-Wirtschaft.',
     ee_wf_label: 'Funktionsweise',
     ee_wf_title: 'In 4 Schritten zur fertigen Datei',
-    ee_wf_intro: 'Importieren, schneiden, exportieren — ohne Sessions, ohne Settings-Marathon. Auf iPhone und iPad gleich bedienbar, im Layout an die jeweilige Bildschirmgröße angepasst.',
-    ee_w1_h: 'Datei laden',
-    ee_w1_p: 'Aus der Files-App, iCloud Drive, Dropbox oder per AirDrop. WAV, AIFF, FLAC, MP3, M4A. Mono oder Stereo. Rendert sofort eine Wellenform — keine Hintergrund-Cloud-Verarbeitung.',
+    ee_wf_intro: 'Importieren, schneiden, normalisieren, exportieren — keine Sessions, keine Spuren. Auf iPhone (Hoch- und Querformat) und iPad (alle vier Orientierungen) gleich bedienbar.',
+    ee_w1_h: 'Datei öffnen',
+    ee_w1_p: 'WAV, MP3, M4A, FLAC, AIFF oder OGG — aus der Dateien-App, iCloud, „Auf meinem Gerät" oder per AirDrop. Wellenform mit In/Out-Handles erscheint sofort.',
     ee_w2_h: 'Bereich markieren',
-    ee_w2_p: 'Pinch-to-Zoom auf den Schnittpunkt, In-/Out-Handles ziehen. Zero-Crossing-Snap aktiv (abschaltbar). Loop-Vorschau über die Selektion zur Kontrolle, bevor du schneidest.',
-    ee_w3_h: 'Schneiden oder trimmen',
-    ee_w3_p: 'Cut entfernt die Selektion, Trim behält sie. Optional Fade In/Out an die Schnittkanten. Jeder Schritt undo-bar. Solo-Audition zur Auswahl-Vorschau.',
-    ee_w4_h: 'Exportieren',
-    ee_w4_p: 'WAV oder AIFF in 16/24/32 Bit, optional R128-Normalisierung auf −23 / −16 / −14 LUFS. Ziel: Files-App, AirDrop, Mail — oder zurück auf das Instant-Player-Pad, von dem der Schnitt kam.',
+    ee_w2_p: 'In- und Out-Handles ziehen. Zoom-to-In und Zoom-to-Out für sample-genaue Schnittposition. PLAY IN / PLAY OUT zur Vorschau der Übergänge.',
+    ee_w3_h: 'Trim oder Cut',
+    ee_w3_p: 'Trim behält die Selektion, Cut entfernt sie. Hintergrund-Render, damit die UI auch bei langen Dateien reagiert. Jeder Schritt undo-bar.',
+    ee_w4_h: 'Export oder Send Back',
+    ee_w4_p: 'EXPORT WAV speichert eine 24-Bit-WAV (native Sample-Rate, optional R128-normalisiert) via Files-Picker. Bei Round-Trip aus Instant Player heißt der Button SEND BACK und das Ergebnis landet im ursprünglichen Pad.',
     ee_specs_label: 'Technische Details',
     ee_specs_title: 'Built for iOS',
-    ee_specs_intro: 'Native iOS-App, keine Web-Wrapper, keine Cloud-Pflicht. R128-Engine geteilt mit Loudness Correct.',
+    ee_specs_intro: 'Native iOS-App auf JUCE-Audio. R128-Engine geteilt mit SATK Loudness Correct.',
     ee_specs_edit: 'Edit-Engine',
     ee_specs_export: 'Export & R128',
     ee_specs_io: 'Plattform & I/O',
-    ee_credo_label: 'Was es besonders macht',
-    ee_credo_title: 'Schneller Schnitt.<br>Kein Workflow-Overhead.',
-    ee_credo_p: 'Vollwertige DAWs auf iOS sind beeindruckend, aber für einen 30-Sekunden-Schnitt überdimensioniert. Easy Editor macht genau drei Dinge richtig: laden, schneiden, exportieren. Mit Zero-Crossing-Snap, Fade-Kurven und R128-Normalisierung in Broadcast-Qualität — und ohne Cloud-Pflicht. Verzahnt mit Instant Player für direkten Pad-Transfer.',
+    ee_credo_label: 'Was es nicht ist',
+    ee_credo_title: 'Keine DAW.<br>Sondern ein Cutter.',
+    ee_credo_p: 'Kein Multitrack, keine Plug-ins, kein MIDI — wer das braucht, nimmt eine DAW. Easy Editor ist für den Fall, dass du auf dem Handy oder Tablet schnell schneiden, trimmen und auf Sendekorridor-Lautheit normalisieren willst. Genau drei Aktionen, dafür sauber.',
     f_shop: 'Shop',
     f_tools: 'Browser-Tools',
     f_manage: 'Lizenz verwalten',
@@ -481,48 +459,49 @@ const i18n = {
     nav_back: '← Back to Shop',
     trust_p1_h: 'By an experienced sound engineer',
     trust_p1_p: 'Built by an active broadcast engineer for broadcast engineers. No useless marketing features — only what actually gets used in the studio.',
-    trust_p2_h: 'Universal app, single purchase',
-    trust_p2_p: 'Buy once, use on iPhone and iPad. Apple Family Sharing for up to 5 additional people. Updates through your Apple account, no second account at SATK.',
+    trust_p2_h: 'Free, no in-app purchases',
+    trust_p2_p: 'Full feature set from first launch. No subscription, no pro unlock, no ads, no account. The app contacts no server, audio stays on your device.',
     trust_p3_h: 'Reply from the developer',
     trust_p3_p: 'Support emails go straight to the developer\'s inbox, not into a ticket system. Usually within 24 hours on working days.',
     ee_eyebrow: 'iPhone · iPad · iOS App',
-    ee_tagline: 'Waveform editor for iPhone and iPad. Load a file from Files or iCloud Drive, mark a range, cut or trim, add fade in/out — and write it back R128-normalized. Multi-touch zoom, zero-crossing snap, undo. No cloud upload, everything stays on the device.',
-    vat: 'incl. VAT · App Store',
+    ee_tagline: 'Open a file from the Files app, trim to the section you want, normalise to EBU R128 (−23 LUFS) with inter-sample peak protection, export a clean 24-bit WAV — all on iPhone or iPad, all on-device.',
+    ee_price: 'free',
+    vat: 'App Store · no in-app purchases',
     ee_features_label: 'Highlights',
-    ee_features_title: 'Edit without a detour.',
-    ee_features_intro: 'Easy Editor is the focused single-file solution for fast audio edits on iPhone and iPad. File in, range marked, cut through — done and ready to send. No tracks, no sessions, no DAW overhead. Tied into Instant Player for direct pad transfer.',
-    ee_f1_h: 'Multi-touch waveform',
-    ee_f1_p: 'Pinch-to-zoom down to sample level, two-finger pan, tap-to-position. Preview plays from the touch position. Sample-accurate selection with draggable in/out handles. Frame and millisecond readout at the cursor.',
-    ee_f2_h: 'Zero-crossing snap',
-    ee_f2_p: 'Cuts snap to zero crossings automatically — no clicks at the edges. Toggleable per marker. When trimming, the next zero crossing toward silence is chosen; when cutting, the closest one.',
-    ee_f3_h: 'Fade curves',
-    ee_f3_p: 'Linear, equal-power, exponential, logarithmic. Fade length by drag or numeric input in ms. Fade in/out and crossfade at cut edges. Curves are visible in the waveform — no surprise at export.',
-    ee_f4_h: 'R128 export',
-    ee_f4_p: 'Optional loudness normalization at export to −23, −16 or −14 LUFS-I (broadcast / podcast / streaming). True-peak limiter at −1 dBTP per ITU-R BS.1770-4. Same engine as Loudness Correct.',
-    ee_f5_h: 'Files, iCloud, AirDrop',
-    ee_f5_p: 'Fully integrated with the Files app: iCloud Drive, Dropbox, Google Drive, USB-C drives and SMB shares. AirDrop right from the share sheet. WAV, AIFF, FLAC, MP3, M4A. Output WAV/AIFF in 16, 24 or 32 bit.',
-    ee_f6_h: 'Unlimited undo',
-    ee_f6_p: 'Every cut, every fade, every selection can be reverted — back to load state. Non-destructive: the original stays untouched until you explicitly overwrite or export a new file.',
+    ee_features_title: 'Trim. Normalise. Done.',
+    ee_features_intro: 'Easy Editor is a focused audio cutter for radio, podcast and post-production. No multitrack, no plug-ins, no MIDI — just trim, cut, R128-normalise and export. Tightly clean, with the same true-peak engine SATK Loudness Correct uses.',
+    ee_f1_h: 'Trim, cut, undo',
+    ee_f1_p: 'Drag in/out handles on the orange selection. Trim keeps the selection, Cut removes it. Full undo back to load state. The original stays untouched until you explicitly export.',
+    ee_f2_h: 'PLAY IN / PLAY OUT',
+    ee_f2_p: 'Three preview modes: PLAY (full from cursor), PLAY IN (from in point), PLAY OUT (1.5 s before out point). Exactly the previews you need to verify a cut — without forcing loop selections.',
+    ee_f3_h: 'Four zoom modes',
+    ee_f3_p: 'Fit (whole file), detail, zoom-to-in, zoom-to-out. One tap puts you on the cut point — no pinch acrobatics, no getting lost in the waveform.',
+    ee_f4_h: '−23 LUFS, two-pass',
+    ee_f4_p: 'EBU R128 normalisation per ITU-R BS.1770-4. Pass 1 measures integrated LUFS, pass 2 writes with correction gain. Two-pass refinement if the first correction misses — result: cleanly on −23 LUFS-I.',
+    ee_f5_h: '4× polyphase TP limiter',
+    ee_f5_p: 'Inter-sample peak protection with a 4× oversampling polyphase filter. Holds output below −1 dBTP — ITU-R BS.1770-4 compliant, identical to the engine in SATK Loudness Correct.',
+    ee_f6_h: 'Round-trip with Instant Player',
+    ee_f6_p: 'Pick a pad in SATK Instant Player → hand off to Easy Editor → trim, normalise → SEND BACK lands the result on the same pad. Standalone the button reads EXPORT WAV instead. URL-scheme-based, no manual file shuffling.',
     ee_wf_label: 'How it works',
     ee_wf_title: 'Four steps to the finished file',
-    ee_wf_intro: 'Import, edit, export — no sessions, no settings marathon. Identical handling on iPhone and iPad, layout adapted to the screen.',
-    ee_w1_h: 'Load file',
-    ee_w1_p: 'From Files, iCloud Drive, Dropbox or via AirDrop. WAV, AIFF, FLAC, MP3, M4A. Mono or stereo. Renders the waveform immediately — no background cloud processing.',
+    ee_wf_intro: 'Import, edit, normalise, export — no sessions, no tracks. Identical handling on iPhone (portrait + landscape) and iPad (all four orientations).',
+    ee_w1_h: 'Open file',
+    ee_w1_p: 'WAV, MP3, M4A, FLAC, AIFF or OGG — from Files, iCloud, On My Device or via AirDrop. Waveform with in/out handles appears immediately.',
     ee_w2_h: 'Mark range',
-    ee_w2_p: 'Pinch to zoom in on the cut, drag the in/out handles. Zero-crossing snap on (toggleable). Loop preview across the selection to verify before cutting.',
-    ee_w3_h: 'Cut or trim',
-    ee_w3_p: 'Cut removes the selection, trim keeps it. Optional fade in/out on cut edges. Every step undoable. Solo audition for selection preview.',
-    ee_w4_h: 'Export',
-    ee_w4_p: 'WAV or AIFF in 16/24/32 bit, optional R128 normalization at −23 / −16 / −14 LUFS. Destination: Files, AirDrop, Mail — or back to the Instant Player pad the edit came from.',
+    ee_w2_p: 'Drag in and out handles. Zoom-to-in and zoom-to-out for sample-accurate cut placement. PLAY IN / PLAY OUT to preview transitions.',
+    ee_w3_h: 'Trim or cut',
+    ee_w3_p: 'Trim keeps the selection, Cut removes it. Background-thread render keeps the UI responsive on long files. Every step undoable.',
+    ee_w4_h: 'Export or send back',
+    ee_w4_p: 'EXPORT WAV writes a 24-bit WAV (native sample rate, optional R128 normalisation) via the Files picker. On a round-trip from Instant Player the button reads SEND BACK and the result lands in the originating pad.',
     ee_specs_label: 'Technical Details',
     ee_specs_title: 'Built for iOS',
-    ee_specs_intro: 'Native iOS app, no web wrapper, no cloud lock-in. R128 engine shared with Loudness Correct.',
+    ee_specs_intro: 'Native iOS app on JUCE audio. R128 engine shared with SATK Loudness Correct.',
     ee_specs_edit: 'Edit Engine',
     ee_specs_export: 'Export & R128',
     ee_specs_io: 'Platform & I/O',
-    ee_credo_label: 'What sets it apart',
-    ee_credo_title: 'Quick edit.<br>No workflow overhead.',
-    ee_credo_p: 'Full-featured iOS DAWs are impressive but overkill for a 30-second edit. Easy Editor does exactly three things right: load, edit, export. With zero-crossing snap, fade curves and R128 normalization at broadcast quality — and no cloud lock-in. Tied into Instant Player for direct pad transfer.',
+    ee_credo_label: 'What it is not',
+    ee_credo_title: 'Not a DAW.<br>A cutter.',
+    ee_credo_p: 'No multitrack, no plug-ins, no MIDI — if you need that, get a DAW. Easy Editor is for when you want to trim, cut and broadcast-normalise audio quickly on a phone or tablet. Exactly three actions, but cleanly done.',
     f_shop: 'Shop',
     f_tools: 'Browser Tools',
     f_manage: 'Manage License',
@@ -553,10 +532,6 @@ function setLang(lang) {
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const k = el.dataset.i18nHtml;
     if (t[k]) el.innerHTML = t[k];
-  });
-  // Swap App-Store-Badge zwischen DE/EN
-  document.querySelectorAll('img[data-src-de][data-src-en]').forEach(img => {
-    img.src = lang === 'en' ? img.dataset.srcEn : img.dataset.srcDe;
   });
   try { localStorage.setItem('satk-lang', lang); } catch(e){}
 }

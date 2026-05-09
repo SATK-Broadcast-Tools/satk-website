@@ -9,13 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="canonical" href="https://satk.tech/instant-player-app">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SATK Instant Player – 64-Pad-Soundboard für iPhone und iPad</title>
-<meta name="description" content="Sampler &amp; Instant-Replay-Player für iPhone und iPad: 64 Cue-Slots in 4 Bänken, Tastatur-Trigger, Loop, Fade, Auto-Cue, Wellenform-Vorschau. Live, Broadcast, Studio. Gratis im App Store.">
+<title>SATK Instant Player – 64-Pad-Soundboard für Live, Theater und Studio</title>
+<meta name="description" content="Gratis-Soundboard für iPhone und iPad: 64 Pads in 4 Banks, MULTI/SINGLE-Mode mit Cross-Fade, AUTO-CUE, LOOP, ganze Show als .satkip-Bundle speichern. Round-Trip mit SATK Easy Editor.">
 
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="SATK Instant Player – 64-Pad-Soundboard für iPhone und iPad">
-<meta property="og:description" content="64 Cue-Slots in 4 Bänken. Tastatur-Trigger, Loop, Fade, Auto-Cue, Wellenform-Vorschau. Für Live, Broadcast, Studio. Gratis im Apple App Store.">
+<meta property="og:title" content="SATK Instant Player – 64-Pad-Soundboard für Live, Theater und Studio">
+<meta property="og:description" content="64 Pads in 4 Banks. MULTI/SINGLE-Mode, Cross-Fade, AUTO-CUE, LOOP. Ganze Show als .satkip-Bundle. Round-Trip mit SATK Easy Editor. Gratis im App Store.">
 <meta property="og:url" content="https://satk.tech/instant-player-app">
 <meta property="og:image" content="https://satk.tech/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -23,8 +23,8 @@
 <meta property="og:site_name" content="SATK – Sascha&rsquo;s Audio Tool Kit">
 <meta property="og:locale" content="de_DE">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SATK Instant Player – 64-Pad-Soundboard für iPhone und iPad">
-<meta name="twitter:description" content="64 Cue-Slots, 4 Bänke, Tastatur-Trigger, Loop, Auto-Cue. Live, Broadcast, Studio. Gratis.">
+<meta name="twitter:title" content="SATK Instant Player – 64-Pad-Soundboard">
+<meta name="twitter:description" content="64 Pads, 4 Banks, MULTI/SINGLE, Cross-Fade, .satkip-Bundle, Round-Trip mit Easy Editor. Gratis.">
 <meta name="twitter:image" content="https://satk.tech/og-image.png">
 <link href="fonts.css" rel="stylesheet">
 <script type="application/ld+json">
@@ -32,10 +32,10 @@
   "@context": "https://schema.org",
   "@type": "MobileApplication",
   "name": "SATK Instant Player",
-  "description": "Sampler und Instant-Replay-Player für iPhone und iPad. 64 Cue-Slots in 4 Bänken, Tastatur-Trigger, Loop, Fade, Auto-Cue, Wellenform-Vorschau. Für Live, Broadcast und Studio.",
+  "description": "Gratis-Soundboard für iPhone und iPad. 64 Pads in 4 Banks, MULTI/SINGLE-Mode mit Cross-Fade, AUTO-CUE, LOOP, .satkip-Show-Bundle. Round-Trip mit SATK Easy Editor.",
   "applicationCategory": "MultimediaApplication",
   "applicationSubCategory": "Soundboard / Cue Player",
-  "operatingSystem": "iOS 16+, iPadOS 16+",
+  "operatingSystem": "iOS, iPadOS",
   "url": "https://satk.tech/instant-player-app",
   "image": "https://satk.tech/img-instant-player.png",
   "screenshot": "https://satk.tech/img-instant-player.png",
@@ -75,7 +75,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .nav-back{color:var(--mu);font-size:10px;letter-spacing:.5px;text-decoration:none;opacity:.6;transition:opacity .2s}
 .nav-back:hover{opacity:1}
 
-/* ── Nav Platforms (Pill-Tabs) ─────── */
 .nav-platforms{display:flex;gap:2px;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:999px;padding:3px}
 .nav-platforms a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:999px;color:var(--mu2);text-decoration:none;transition:all .2s}
 .nav-platforms a.active{background:var(--ac);color:#0a0a0b}
@@ -96,13 +95,6 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .hero-img-wrap{max-width:1120px;margin:32px auto 0;padding:0 32px;text-align:center}
 .hero-img{display:inline-block;max-width:560px;width:100%;height:auto;border:1px solid var(--bd);border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
 
-/* ── App Store CTA-Block ──────────────── */
-.appstore-cta{max-width:760px;margin:40px auto 0;padding:0 32px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
-.appstore-cta a{display:inline-block;line-height:0;transition:transform .15s}
-.appstore-cta a:hover{transform:translateY(-2px)}
-.appstore-cta img{height:42px;width:auto}
-
-/* ── Trust-Strip ───────────────── */
 .trust-strip{max-width:1120px;margin:48px auto 0;padding:0 32px}
 .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:10px;overflow:hidden}
 .trust-pillar{background:var(--sf);padding:28px 26px;text-align:center}
@@ -129,10 +121,10 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .workflow-step h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px;color:var(--tx)}
 .workflow-step p{font-size:11px;color:var(--mu2);line-height:1.7}
 
-.bank-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.bank-pill{padding:14px 16px;background:var(--sf);border:1px solid var(--bd);border-radius:8px;text-align:center}
-.bank-pill .bank-name{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.5px;color:var(--tx);text-transform:uppercase;margin-bottom:4px}
-.bank-pill .bank-target{font-size:10px;color:var(--ac);letter-spacing:.3px}
+.usecase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.usecase-pill{padding:14px 16px;background:var(--sf);border:1px solid var(--bd);border-radius:8px;text-align:center}
+.usecase-pill .uc-name{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.5px;color:var(--tx);text-transform:uppercase;margin-bottom:4px}
+.usecase-pill .uc-target{font-size:10px;color:var(--ac);letter-spacing:.3px}
 
 .specs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
 .spec-col{padding:32px 28px;border-right:1px solid var(--bd)}
@@ -153,7 +145,7 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
   nav{padding:14px 20px}
   .nav-links{gap:18px}
   .features,.workflow,.specs{grid-template-columns:1fr}
-  .bank-grid{grid-template-columns:repeat(2,1fr)}
+  .usecase-grid{grid-template-columns:repeat(2,1fr)}
   .spec-col{border-right:none;border-bottom:1px solid var(--bd)}
   .spec-col:last-child{border-bottom:none}
   .product-hero{padding:48px 20px 24px}
@@ -162,7 +154,7 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 }
 @media(max-width:600px){
   .nav-links a:not(.nav-back){display:none}
-  .bank-grid{grid-template-columns:1fr}
+  .usecase-grid{grid-template-columns:1fr}
 }
 
 .feature,.workflow-step{opacity:0;animation:rise .6s ease forwards}
@@ -174,7 +166,6 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 .feature:nth-child(6){animation-delay:.5s}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── Footer (3-spaltig) ──────────── */
 footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255,255,.06);background:#15161a;text-align:left}
 .footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1120px;margin:0 auto 48px}
 .footer-col h4{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
@@ -222,66 +213,53 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 <section class="product-hero">
   <div class="product-eyebrow" data-i18n="ip_eyebrow">iPhone · iPad · iOS App</div>
   <h1>Instant Player</h1>
-  <p class="tagline" data-i18n="ip_tagline">Sampler und Instant-Replay-Player für iPhone und iPad. 64 Cue-Slots in 4 Bänken, Tastatur-Trigger, Loop, Fade, Auto-Cue, Wellenform-Vorschau. Live-tauglich, latenzarm, ohne Cloud-Pflicht. Spielt mit Easy Editor zusammen.</p>
-  <div class="product-price-chip"><span data-i18n="ip_price">gratis</span><span class="vat" data-i18n="vat">Apple App Store · keine In-App-Käufe</span></div>
+  <p class="tagline" data-i18n="ip_tagline">64-Pad-Soundboard für Live-Show, Theater, Podcast und Studio. Tippen heißt spielen, nochmal tippen heißt stoppen. Stimmen stapeln im MULTI-Mode, mit Cross-Fade ablösen im SINGLE-Mode. Die ganze Show in einer .satkip-Datei speichern und auf einem anderen iPad in Sekunden wieder laden.</p>
+  <div class="product-price-chip"><span data-i18n="ip_price">gratis</span><span class="vat" data-i18n="vat">App Store · keine In-App-Käufe</span></div>
 </section>
 
 <div class="hero-img-wrap">
   <img class="hero-img" src="img-instant-player.png" alt="SATK Instant Player — 64-Pad-Soundboard für iPhone und iPad">
 </div>
 
-<!-- App-Store-Badges -->
-<div class="appstore-cta">
-  <!-- TODO: App-Store-ID für Instant Player iPad -->
-  <a href="#" target="_blank" rel="noopener" aria-label="Instant Player iPad im App Store laden">
-    <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
-  </a>
-  <!-- TODO: App-Store-ID für Instant Player iPhone -->
-  <a href="#" target="_blank" rel="noopener" aria-label="Instant Player iPhone im App Store laden">
-    <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
-  </a>
-</div>
-
 <section class="section">
   <div class="section-label" data-i18n="ip_features_label">Highlights</div>
-  <h2 class="section-h2" data-i18n="ip_features_title">64 Slots. Ein Tap. Sofort Ton.</h2>
-  <p class="section-intro" data-i18n="ip_features_intro">Instant Player ist der fokussierte Cue-Player für Live, Broadcast und Studio. 16 Pads pro Bank, 4 Bänke, alle Slots mit eigenen Loop-, Fade- und Trigger-Einstellungen. Voice-Coil-genaue Wiedergabe ab dem ersten Sample, ohne erst auf Lade-Spinner zu warten.</p>
+  <h2 class="section-h2" data-i18n="ip_features_title">64 Pads. Tippen. Cue läuft.</h2>
+  <p class="section-intro" data-i18n="ip_features_intro">Instant Player ist ein 64-Pad-Soundboard im Studio-Cart-Stil. 16 Pads pro Bank, 4 Bänke, MULTI- und SINGLE-Mode, AUTO-CUE, LOOP, optionaler Cross-Fade. Komplette Show als ein .satkip-Bundle portabel — per AirDrop aufs nächste iPad und sofort einsatzbereit.</p>
 
   <div class="features">
     <div class="feature">
-      <div class="feature-icon">64 Slots</div>
-      <h3 data-i18n="ip_f1_h">16 Pads × 4 Bänke</h3>
-      <p data-i18n="ip_f1_p">64 unabhängige Cue-Slots, organisiert in 4 Bänken mit je 16 Pads. Bankwechsel per Swipe oder Hardware-Shortcut. Pro Slot eigener Name, Farbe, Loop-Flag, Fade-In/Out, Trigger-Mode, Volume.</p>
+      <div class="feature-icon">64 Pads</div>
+      <h3 data-i18n="ip_f1_h">16 Pads × 4 Banks</h3>
+      <p data-i18n="ip_f1_p">64 Cue-Slots, organisiert in vier Banks (A / B / C / D) mit je 16 Pads. Pro Pad: Name, Farbe (7-Farben-Palette), Lautstärke-Slider, LOOP-Toggle, AUTO-CUE-Toggle. Mini-Wellenform mit Cue-Marker direkt auf jedem Pad.</p>
     </div>
     <div class="feature">
-      <div class="feature-icon">Latenz</div>
-      <h3 data-i18n="ip_f2_h">Pre-Loaded ab Sample 1</h3>
-      <p data-i18n="ip_f2_p">Alle 64 Slots werden beim Bank-Wechsel in den Speicher gelesen. Trigger-zu-Ton-Latenz unter 10 ms auf modernen iPads. Kein Streaming, kein Buffer-Underrun, kein Stottern bei vielen gleichzeitigen Triggern.</p>
+      <div class="feature-icon">Multi · Single</div>
+      <h3 data-i18n="ip_f2_h">MULTI- oder SINGLE-Mode</h3>
+      <p data-i18n="ip_f2_p">MULTI: Pads stapeln Stimmen — jeder Tipp legt eine weitere drauf. SINGLE: jeder Tipp stoppt zuerst alles andere, wie eine klassische Studio-Cart-Maschine. SINGLE plus FADE > 0 ergibt einen sauberen Cross-Fade zwischen Cues.</p>
     </div>
     <div class="feature">
-      <div class="feature-icon">Trigger</div>
-      <h3 data-i18n="ip_f3_h">Touch + Tastatur + MIDI</h3>
-      <p data-i18n="ip_f3_p">Touch-Pads, externe Bluetooth-/USB-Tastatur (1–9, Q–U, A–J, Z–M), MIDI-Note-On, MIDI-Program-Change für Bank-Wechsel. CoreMIDI über Lightning/USB-C oder Netzwerk. Konfigurierbar pro Pad.</p>
+      <div class="feature-icon">Fade</div>
+      <h3 data-i18n="ip_f3_h">Vier FADE-Stufen</h3>
+      <p data-i18n="ip_f3_p">FADE-Knopf zyklt OFF / SHORT / MEDIUM / LONG (0,5 / 1,5 / 4 s) — global für alle Pads. Im SINGLE-Mode wird das automatisch zum Cross-Fade. Kein Klick beim Stoppen, kein hartes Cut bei Stings.</p>
     </div>
     <div class="feature">
-      <div class="feature-icon">Modes</div>
-      <h3 data-i18n="ip_f4_h">Trigger-Modi pro Pad</h3>
-      <p data-i18n="ip_f4_p">Play (Fire-and-Forget), Hold (gehalten = spielt), Toggle (Tap = Start/Stop), Loop (endlos bis Stop), Auto-Cue (springt nach Stille zurück auf Cue-Punkt). Choke-Gruppen für Stinger-Sets.</p>
+      <div class="feature-icon">Auto-Cue</div>
+      <h3 data-i18n="ip_f4_h">AUTO-CUE + LOOP</h3>
+      <p data-i18n="ip_f4_p">AUTO-CUE überspringt Anfangsstille — Cues feuern beim ersten hörbaren Sample, nicht beim Datei-Anfang. LOOP-Toggle für Beds und Ambient-Material, Wraparound zum Cue-Punkt. Beides pro Pad zuschaltbar.</p>
     </div>
     <div class="feature">
-      <div class="feature-icon">Wave</div>
-      <h3 data-i18n="ip_f5_h">Wellenform-Vorschau</h3>
-      <p data-i18n="ip_f5_p">Großes Display über dem aktiven Pad mit Wellenform, Position, Restzeit. Cue-Punkt und Out-Punkt per Drag setzen. Fade-Kurven sichtbar. Tap-to-Cue auf der Wellenform für Spot-Replay.</p>
+      <div class="feature-icon">Show-Bundle</div>
+      <h3 data-i18n="ip_f5_h">.satkip-Bundle</h3>
+      <p data-i18n="ip_f5_p">Komplette Show — Manifest und alle 24-Bit-WAVs — in einer einzigen .satkip-ZIP-Datei. Per AirDrop aufs nächste iPad, dort öffnen, Show ist sofort einsatzbereit. Kein Re-Upload, keine Cloud, kein Account.</p>
     </div>
     <div class="feature">
-      <div class="feature-icon">I/O</div>
-      <h3 data-i18n="ip_f6_h">Files-Import &amp; Easy Editor</h3>
-      <p data-i18n="ip_f6_p">Audio aus der Files-App, iCloud Drive oder per AirDrop direkt auf ein Pad ziehen. Pad-Audio per Tap an Easy Editor übergeben — der bearbeitete Schnitt kommt automatisch auf denselben Slot zurück, kein manuelles Re-Assign. WAV, AIFF, FLAC, MP3, M4A.</p>
+      <div class="feature-icon">Round-Trip</div>
+      <h3 data-i18n="ip_f6_h">Roundtrip mit Easy Editor</h3>
+      <p data-i18n="ip_f6_p">CHOOSE-Button schickt das aktive Pad an SATK Easy Editor. Dort trimmen oder R128-normalisieren, mit SEND BACK kommt das Ergebnis automatisch ins selbe Pad zurück. Ohne Easy Editor erscheint stattdessen ein App-Store-Hinweis.</p>
     </div>
   </div>
 </section>
 
-<!-- ╔══ Trust-Block ══════════════════════════════════════════╗ -->
 <section class="trust-strip">
   <div class="trust-grid">
     <div class="trust-pillar">
@@ -296,7 +274,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
       </div>
       <div class="trust-h" data-i18n="trust_p2_h">Gratis, keine In-App-Käufe</div>
-      <div class="trust-p" data-i18n="trust_p2_p">Voller Funktionsumfang ab dem ersten Start. Kein Abo, keine Pro-Bank-Freischaltung, keine Werbung. Wenn dir Instant Player gefällt, hilft eine Bewertung im App Store mehr als jeder Kauf.</div>
+      <div class="trust-p" data-i18n="trust_p2_p">Voller Funktionsumfang ab dem ersten Start. Kein Abo, keine Bank-Freischaltung, keine Werbung, kein Konto. Audio bleibt auf deinem Gerät, die App kontaktiert keinen Server.</div>
     </div>
     <div class="trust-pillar">
       <div class="trust-icon" aria-hidden="true">
@@ -309,43 +287,43 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 </section>
 
 <section class="section">
-  <div class="section-label" data-i18n="ip_banks_label">Bank-Konzept</div>
-  <h2 class="section-h2" data-i18n="ip_banks_title">4 Bänke für 4 Szenarien</h2>
-  <p class="section-intro" data-i18n="ip_banks_intro">Bänke sind komplette Sets — typischerweise pro Show, Sendung oder Theaterstück eine. Per Swipe oder MIDI-Program-Change in unter 100 ms umschaltbar.</p>
+  <div class="section-label" data-i18n="ip_uc_label">Einsatzgebiete</div>
+  <h2 class="section-h2" data-i18n="ip_uc_title">Wofür Cue-Player gebaut werden</h2>
+  <p class="section-intro" data-i18n="ip_uc_intro">Eine App, vier typische Show-Szenarien. Pad-Layout, Mode und FADE-Stufe entscheiden — der Rest ist Audio und ein Tipp.</p>
 
-  <div class="bank-grid">
-    <div class="bank-pill"><div class="bank-name" data-i18n="ip_b1_name">Bank A</div><div class="bank-target" data-i18n="ip_b1_target">Stinger / Jingle</div></div>
-    <div class="bank-pill"><div class="bank-name" data-i18n="ip_b2_name">Bank B</div><div class="bank-target" data-i18n="ip_b2_target">Atmos / Loops</div></div>
-    <div class="bank-pill"><div class="bank-name" data-i18n="ip_b3_name">Bank C</div><div class="bank-target" data-i18n="ip_b3_target">SFX / Spot</div></div>
-    <div class="bank-pill"><div class="bank-name" data-i18n="ip_b4_name">Bank D</div><div class="bank-target" data-i18n="ip_b4_target">Beds / Music</div></div>
+  <div class="usecase-grid">
+    <div class="usecase-pill"><div class="uc-name" data-i18n="ip_uc1_name">Theater</div><div class="uc-target" data-i18n="ip_uc1_target">SFX mit Cross-Fade</div></div>
+    <div class="usecase-pill"><div class="uc-name" data-i18n="ip_uc2_name">Podcast</div><div class="uc-target" data-i18n="ip_uc2_target">Jingles · Stings · Beds</div></div>
+    <div class="usecase-pill"><div class="uc-name" data-i18n="ip_uc3_name">Studio</div><div class="uc-target" data-i18n="ip_uc3_target">Cues für Remote-Sessions</div></div>
+    <div class="usecase-pill"><div class="uc-name" data-i18n="ip_uc4_name">Probenraum</div><div class="uc-target" data-i18n="ip_uc4_target">Backing-Tracks · One-Tap-Stop</div></div>
   </div>
 </section>
 
 <section class="section">
   <div class="section-label" data-i18n="ip_wf_label">Funktionsweise</div>
-  <h2 class="section-h2" data-i18n="ip_wf_title">In 4 Schritten zur Live-Bank</h2>
-  <p class="section-intro" data-i18n="ip_wf_intro">Audio rein, Pad belegen, Trigger-Modus wählen, los. Auf iPhone (4×4 Grid) und iPad (4×4 mit großer Wellenform) gleich bedienbar.</p>
+  <h2 class="section-h2" data-i18n="ip_wf_title">In 4 Schritten zur Show</h2>
+  <p class="section-intro" data-i18n="ip_wf_intro">Pad antippen, Audio wählen, Mode setzen, Show speichern. Auf iPhone (Hoch- und Querformat) und iPad (alle vier Orientierungen) gleich bedienbar.</p>
 
   <div class="workflow">
     <div class="workflow-step">
       <div class="workflow-num">01</div>
       <h3 data-i18n="ip_w1_h">Pad belegen</h3>
-      <p data-i18n="ip_w1_p">Audio aus Files, iCloud Drive oder AirDrop auf ein Pad ziehen. Direkt-Import aus Easy Editor. WAV, AIFF, FLAC, MP3, M4A. Bis 2 GB pro Bank.</p>
+      <p data-i18n="ip_w1_p">Leeres Pad antippen — der Files-Picker öffnet sich. Audio aus Dateien-App, iCloud Drive oder per AirDrop wählen. Pad zeigt sofort eine Wellenform-Vorschau mit Cue-Marker.</p>
     </div>
     <div class="workflow-step">
       <div class="workflow-num">02</div>
-      <h3 data-i18n="ip_w2_h">Cue + Out setzen</h3>
-      <p data-i18n="ip_w2_p">Auf der Wellenform Cue-Punkt (Startpunkt) und Out-Punkt setzen. Fade-In/Out in ms eingeben. Volume und Trim per Slider, Pan optional.</p>
+      <h3 data-i18n="ip_w2_h">Pad einstellen</h3>
+      <p data-i18n="ip_w2_p">Lautstärke per Slider, eine der 7 Farben für die Pad-Kachel, LOOP für Beds, AUTO-CUE für saubere Cue-Starts. Optional an Easy Editor zum Trimmen schicken.</p>
     </div>
     <div class="workflow-step">
       <div class="workflow-num">03</div>
-      <h3 data-i18n="ip_w3_h">Modus wählen</h3>
-      <p data-i18n="ip_w3_p">Play, Hold, Toggle, Loop, Auto-Cue. Choke-Gruppe optional (gleichzeitiges Triggern stoppt andere Pads in derselben Gruppe — perfekt für Stinger).</p>
+      <h3 data-i18n="ip_w3_h">Mode wählen</h3>
+      <p data-i18n="ip_w3_p">MULTI-Mode für Stacking, SINGLE-Mode für Cart-Machine-Logik. FADE auf SHORT / MEDIUM / LONG für Cross-Fades zwischen Cues. ESC stoppt alles, Fade-All zieht alle laufenden Pads sauber raus.</p>
     </div>
     <div class="workflow-step">
       <div class="workflow-num">04</div>
-      <h3 data-i18n="ip_w4_h">Triggern</h3>
-      <p data-i18n="ip_w4_p">Pad antippen, Tastaturkürzel drücken, MIDI-Note senden. Mehrere Pads gleichzeitig, polyphon. Master-Stop und Master-Fade in der Toolbar für Notabbrüche.</p>
+      <h3 data-i18n="ip_w4_h">Show speichern</h3>
+      <p data-i18n="ip_w4_p">SAVE schreibt eine .satkip-Datei mit Manifest und allen Audios als 24-Bit-WAV. Per AirDrop oder Files aufs nächste iPad — dort doppelklicken, Show steht.</p>
     </div>
   </div>
 </section>
@@ -353,50 +331,49 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 <section class="section">
   <div class="section-label" data-i18n="ip_specs_label">Technische Details</div>
   <h2 class="section-h2" data-i18n="ip_specs_title">Built for Live</h2>
-  <p class="section-intro" data-i18n="ip_specs_intro">Native iOS-App mit AVAudioEngine. Latenzarm, polyphon, ohne Cloud-Pflicht.</p>
+  <p class="section-intro" data-i18n="ip_specs_intro">Native iOS-App auf JUCE-Audio. Background-Audio aktiviert, damit Cues bei gesperrtem Display weiterlaufen.</p>
 
   <div class="specs">
     <div class="spec-col">
-      <h4 data-i18n="ip_specs_play">Playback-Engine</h4>
+      <h4 data-i18n="ip_specs_pad">Pad-Engine</h4>
       <ul>
-        <li><b>Slots</b> 64 (4 Bänke × 16)</li>
-        <li><b>Polyphony</b> Unbegrenzt</li>
-        <li><b>Latenz</b> &lt; 10 ms (iPad M-Serie)</li>
-        <li><b>Buffer</b> 64 / 128 / 256 Samples</li>
-        <li><b>Sample-Rate</b> 44.1 / 48 / 96 kHz</li>
-        <li><b>Engine</b> AVAudioEngine</li>
+        <li><b>Slots</b> 64 (4 Banks × 16)</li>
+        <li><b>Voices</b> 64 (1 pro Slot)</li>
+        <li><b>Per-Pad</b> Name · Farbe · Vol</li>
+        <li><b>LOOP</b> Wraparound zum Cue-Punkt</li>
+        <li><b>AUTO-CUE</b> Stille-Skip am Anfang</li>
+        <li><b>Wellenform</b> Mini-Preview mit Cue-Marker</li>
       </ul>
     </div>
     <div class="spec-col">
-      <h4 data-i18n="ip_specs_modes">Trigger &amp; Modi</h4>
+      <h4 data-i18n="ip_specs_modes">Modes &amp; Steuerung</h4>
       <ul>
-        <li><b>Modi</b> Play · Hold · Toggle · Loop</li>
-        <li><b>Auto-Cue</b> Springt nach Stop zurück</li>
-        <li><b>Choke</b> 4 Choke-Gruppen</li>
-        <li><b>Tastatur</b> 1-9, Q-U, A-J, Z-M</li>
-        <li><b>MIDI</b> Note-On + Program-Change</li>
-        <li><b>Fade</b> Per Slot, in ms</li>
+        <li><b>Mode</b> MULTI · SINGLE</li>
+        <li><b>FADE</b> OFF · 0,5 · 1,5 · 4 s</li>
+        <li><b>Tastatur</b> 1234 · QWER · ASDF · ZXCV</li>
+        <li><b>Banks</b> F5 · F6 · F7 · F8</li>
+        <li><b>Stop All</b> ESC</li>
+        <li><b>Master-Vol</b> iPad (iPhone via HW-Tasten)</li>
       </ul>
     </div>
     <div class="spec-col">
       <h4 data-i18n="ip_specs_io">Plattform &amp; I/O</h4>
       <ul>
-        <li><b>iOS</b> 16+ iPhone Universal</li>
-        <li><b>iPadOS</b> 16+ Landscape + Portrait</li>
-        <li><b>Input</b> WAV · AIFF · FLAC · MP3 · M4A</li>
-        <li><b>Storage</b> Files · iCloud · USB-C</li>
-        <li><b>MIDI</b> CoreMIDI · BLE · USB-C</li>
-        <li><b>Output</b> System · Audio-Interface</li>
+        <li><b>iPhone</b> Hoch + Quer</li>
+        <li><b>iPad</b> alle 4 Orientierungen</li>
+        <li><b>Input</b> WAV · AIFF · MP3 · M4A · FLAC · OGG</li>
+        <li><b>Show</b> .satkip (ZIP mit 24-Bit-WAVs)</li>
+        <li><b>Background</b> Audio-Mode aktiv</li>
+        <li><b>URL-Scheme</b> instantplayer://</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- ╔══ Closing Credo ═════════════════════════════════════════╗ -->
 <section class="section">
   <div class="section-label" data-i18n="ip_credo_label">Was es besonders macht</div>
-  <h2 class="section-h2" data-i18n-html="ip_credo_title">Sofort spielbar.<br>Ohne Lade-Spinner.</h2>
-  <p class="section-intro" data-i18n="ip_credo_p">Soundboards in der Praxis scheitern meistens an einem Detail: das Pad zündet nicht sofort, weil die Datei erst gestreamt wird. Instant Player lädt eine komplette Bank ins RAM, hält 64 Slots vorgebufft und triggert ab dem ersten Sample. Latenz unter 10 ms auf neueren iPads — schnell genug für Live-Beschallung, Studiomoderation und Theater-Cues.</p>
+  <h2 class="section-h2" data-i18n-html="ip_credo_title">Eine Show.<br>Eine Datei.</h2>
+  <p class="section-intro" data-i18n="ip_credo_p">Der Unterschied zu generischen Soundboards ist das .satkip-Bundle: Manifest plus alle 24-Bit-WAVs in einer ZIP. Ein Theater-Abend, eine Podcast-Folge, ein Live-Set — komplett portabel. Vergiss nicht den USB-Stick, vergiss „welche Audios gehören zu welcher Show", AirDrop einfach das Bundle und das Setup ist da, wo es sein muss.</p>
 </section>
 
 <footer>
@@ -437,59 +414,59 @@ const i18n = {
     trust_p1_h: 'Vom erfahrenen Toningenieur',
     trust_p1_p: 'Entwickelt von einem aktiven Broadcast-Engineer für Broadcast-Engineers. Keine nutzlosen Marketing-Features — nur was im Studio wirklich gebraucht wird.',
     trust_p2_h: 'Gratis, keine In-App-Käufe',
-    trust_p2_p: 'Voller Funktionsumfang ab dem ersten Start. Kein Abo, keine Pro-Bank-Freischaltung, keine Werbung. Wenn dir Instant Player gefällt, hilft eine Bewertung im App Store mehr als jeder Kauf.',
+    trust_p2_p: 'Voller Funktionsumfang ab dem ersten Start. Kein Abo, keine Bank-Freischaltung, keine Werbung, kein Konto. Audio bleibt auf deinem Gerät, die App kontaktiert keinen Server.',
     trust_p3_h: 'Antwort vom Entwickler',
     trust_p3_p: 'Support-Mails landen direkt im Posteingang des Entwicklers, nicht bei einem Ticket-System. Werktags meist innerhalb von 24 Stunden.',
     ip_eyebrow: 'iPhone · iPad · iOS App',
-    ip_tagline: 'Sampler und Instant-Replay-Player für iPhone und iPad. 64 Cue-Slots in 4 Bänken, Tastatur-Trigger, Loop, Fade, Auto-Cue, Wellenform-Vorschau. Live-tauglich, latenzarm, ohne Cloud-Pflicht. Spielt mit Easy Editor zusammen.',
+    ip_tagline: '64-Pad-Soundboard für Live-Show, Theater, Podcast und Studio. Tippen heißt spielen, nochmal tippen heißt stoppen. Stimmen stapeln im MULTI-Mode, mit Cross-Fade ablösen im SINGLE-Mode. Die ganze Show in einer .satkip-Datei speichern und auf einem anderen iPad in Sekunden wieder laden.',
     ip_price: 'gratis',
-    vat: 'Apple App Store · keine In-App-Käufe',
+    vat: 'App Store · keine In-App-Käufe',
     ip_features_label: 'Highlights',
-    ip_features_title: '64 Slots. Ein Tap. Sofort Ton.',
-    ip_features_intro: 'Instant Player ist der fokussierte Cue-Player für Live, Broadcast und Studio. 16 Pads pro Bank, 4 Bänke, alle Slots mit eigenen Loop-, Fade- und Trigger-Einstellungen. Voice-Coil-genaue Wiedergabe ab dem ersten Sample, ohne erst auf Lade-Spinner zu warten.',
-    ip_f1_h: '16 Pads × 4 Bänke',
-    ip_f1_p: '64 unabhängige Cue-Slots, organisiert in 4 Bänken mit je 16 Pads. Bankwechsel per Swipe oder Hardware-Shortcut. Pro Slot eigener Name, Farbe, Loop-Flag, Fade-In/Out, Trigger-Mode, Volume.',
-    ip_f2_h: 'Pre-Loaded ab Sample 1',
-    ip_f2_p: 'Alle 64 Slots werden beim Bank-Wechsel in den Speicher gelesen. Trigger-zu-Ton-Latenz unter 10 ms auf modernen iPads. Kein Streaming, kein Buffer-Underrun, kein Stottern bei vielen gleichzeitigen Triggern.',
-    ip_f3_h: 'Touch + Tastatur + MIDI',
-    ip_f3_p: 'Touch-Pads, externe Bluetooth-/USB-Tastatur (1–9, Q–U, A–J, Z–M), MIDI-Note-On, MIDI-Program-Change für Bank-Wechsel. CoreMIDI über Lightning/USB-C oder Netzwerk. Konfigurierbar pro Pad.',
-    ip_f4_h: 'Trigger-Modi pro Pad',
-    ip_f4_p: 'Play (Fire-and-Forget), Hold (gehalten = spielt), Toggle (Tap = Start/Stop), Loop (endlos bis Stop), Auto-Cue (springt nach Stille zurück auf Cue-Punkt). Choke-Gruppen für Stinger-Sets.',
-    ip_f5_h: 'Wellenform-Vorschau',
-    ip_f5_p: 'Großes Display über dem aktiven Pad mit Wellenform, Position, Restzeit. Cue-Punkt und Out-Punkt per Drag setzen. Fade-Kurven sichtbar. Tap-to-Cue auf der Wellenform für Spot-Replay.',
-    ip_f6_h: 'Files-Import & Easy Editor',
-    ip_f6_p: 'Audio aus der Files-App, iCloud Drive oder per AirDrop direkt auf ein Pad ziehen. Pad-Audio per Tap an Easy Editor übergeben — der bearbeitete Schnitt kommt automatisch auf denselben Slot zurück, kein manuelles Re-Assign. WAV, AIFF, FLAC, MP3, M4A.',
-    ip_banks_label: 'Bank-Konzept',
-    ip_banks_title: '4 Bänke für 4 Szenarien',
-    ip_banks_intro: 'Bänke sind komplette Sets — typischerweise pro Show, Sendung oder Theaterstück eine. Per Swipe oder MIDI-Program-Change in unter 100 ms umschaltbar.',
-    ip_b1_name: 'Bank A',
-    ip_b1_target: 'Stinger / Jingle',
-    ip_b2_name: 'Bank B',
-    ip_b2_target: 'Atmos / Loops',
-    ip_b3_name: 'Bank C',
-    ip_b3_target: 'SFX / Spot',
-    ip_b4_name: 'Bank D',
-    ip_b4_target: 'Beds / Music',
+    ip_features_title: '64 Pads. Tippen. Cue läuft.',
+    ip_features_intro: 'Instant Player ist ein 64-Pad-Soundboard im Studio-Cart-Stil. 16 Pads pro Bank, 4 Bänke, MULTI- und SINGLE-Mode, AUTO-CUE, LOOP, optionaler Cross-Fade. Komplette Show als ein .satkip-Bundle portabel — per AirDrop aufs nächste iPad und sofort einsatzbereit.',
+    ip_f1_h: '16 Pads × 4 Banks',
+    ip_f1_p: '64 Cue-Slots, organisiert in vier Banks (A / B / C / D) mit je 16 Pads. Pro Pad: Name, Farbe (7-Farben-Palette), Lautstärke-Slider, LOOP-Toggle, AUTO-CUE-Toggle. Mini-Wellenform mit Cue-Marker direkt auf jedem Pad.',
+    ip_f2_h: 'MULTI- oder SINGLE-Mode',
+    ip_f2_p: 'MULTI: Pads stapeln Stimmen — jeder Tipp legt eine weitere drauf. SINGLE: jeder Tipp stoppt zuerst alles andere, wie eine klassische Studio-Cart-Maschine. SINGLE plus FADE > 0 ergibt einen sauberen Cross-Fade zwischen Cues.',
+    ip_f3_h: 'Vier FADE-Stufen',
+    ip_f3_p: 'FADE-Knopf zyklt OFF / SHORT / MEDIUM / LONG (0,5 / 1,5 / 4 s) — global für alle Pads. Im SINGLE-Mode wird das automatisch zum Cross-Fade. Kein Klick beim Stoppen, kein hartes Cut bei Stings.',
+    ip_f4_h: 'AUTO-CUE + LOOP',
+    ip_f4_p: 'AUTO-CUE überspringt Anfangsstille — Cues feuern beim ersten hörbaren Sample, nicht beim Datei-Anfang. LOOP-Toggle für Beds und Ambient-Material, Wraparound zum Cue-Punkt. Beides pro Pad zuschaltbar.',
+    ip_f5_h: '.satkip-Bundle',
+    ip_f5_p: 'Komplette Show — Manifest und alle 24-Bit-WAVs — in einer einzigen .satkip-ZIP-Datei. Per AirDrop aufs nächste iPad, dort öffnen, Show ist sofort einsatzbereit. Kein Re-Upload, keine Cloud, kein Account.',
+    ip_f6_h: 'Roundtrip mit Easy Editor',
+    ip_f6_p: 'CHOOSE-Button schickt das aktive Pad an SATK Easy Editor. Dort trimmen oder R128-normalisieren, mit SEND BACK kommt das Ergebnis automatisch ins selbe Pad zurück. Ohne Easy Editor erscheint stattdessen ein App-Store-Hinweis.',
+    ip_uc_label: 'Einsatzgebiete',
+    ip_uc_title: 'Wofür Cue-Player gebaut werden',
+    ip_uc_intro: 'Eine App, vier typische Show-Szenarien. Pad-Layout, Mode und FADE-Stufe entscheiden — der Rest ist Audio und ein Tipp.',
+    ip_uc1_name: 'Theater',
+    ip_uc1_target: 'SFX mit Cross-Fade',
+    ip_uc2_name: 'Podcast',
+    ip_uc2_target: 'Jingles · Stings · Beds',
+    ip_uc3_name: 'Studio',
+    ip_uc3_target: 'Cues für Remote-Sessions',
+    ip_uc4_name: 'Probenraum',
+    ip_uc4_target: 'Backing-Tracks · One-Tap-Stop',
     ip_wf_label: 'Funktionsweise',
-    ip_wf_title: 'In 4 Schritten zur Live-Bank',
-    ip_wf_intro: 'Audio rein, Pad belegen, Trigger-Modus wählen, los. Auf iPhone (4×4 Grid) und iPad (4×4 mit großer Wellenform) gleich bedienbar.',
+    ip_wf_title: 'In 4 Schritten zur Show',
+    ip_wf_intro: 'Pad antippen, Audio wählen, Mode setzen, Show speichern. Auf iPhone (Hoch- und Querformat) und iPad (alle vier Orientierungen) gleich bedienbar.',
     ip_w1_h: 'Pad belegen',
-    ip_w1_p: 'Audio aus Files, iCloud Drive oder AirDrop auf ein Pad ziehen. Direkt-Import aus Easy Editor. WAV, AIFF, FLAC, MP3, M4A. Bis 2 GB pro Bank.',
-    ip_w2_h: 'Cue + Out setzen',
-    ip_w2_p: 'Auf der Wellenform Cue-Punkt (Startpunkt) und Out-Punkt setzen. Fade-In/Out in ms eingeben. Volume und Trim per Slider, Pan optional.',
-    ip_w3_h: 'Modus wählen',
-    ip_w3_p: 'Play, Hold, Toggle, Loop, Auto-Cue. Choke-Gruppe optional (gleichzeitiges Triggern stoppt andere Pads in derselben Gruppe — perfekt für Stinger).',
-    ip_w4_h: 'Triggern',
-    ip_w4_p: 'Pad antippen, Tastaturkürzel drücken, MIDI-Note senden. Mehrere Pads gleichzeitig, polyphon. Master-Stop und Master-Fade in der Toolbar für Notabbrüche.',
+    ip_w1_p: 'Leeres Pad antippen — der Files-Picker öffnet sich. Audio aus Dateien-App, iCloud Drive oder per AirDrop wählen. Pad zeigt sofort eine Wellenform-Vorschau mit Cue-Marker.',
+    ip_w2_h: 'Pad einstellen',
+    ip_w2_p: 'Lautstärke per Slider, eine der 7 Farben für die Pad-Kachel, LOOP für Beds, AUTO-CUE für saubere Cue-Starts. Optional an Easy Editor zum Trimmen schicken.',
+    ip_w3_h: 'Mode wählen',
+    ip_w3_p: 'MULTI-Mode für Stacking, SINGLE-Mode für Cart-Machine-Logik. FADE auf SHORT / MEDIUM / LONG für Cross-Fades zwischen Cues. ESC stoppt alles, Fade-All zieht alle laufenden Pads sauber raus.',
+    ip_w4_h: 'Show speichern',
+    ip_w4_p: 'SAVE schreibt eine .satkip-Datei mit Manifest und allen Audios als 24-Bit-WAV. Per AirDrop oder Files aufs nächste iPad — dort doppelklicken, Show steht.',
     ip_specs_label: 'Technische Details',
     ip_specs_title: 'Built for Live',
-    ip_specs_intro: 'Native iOS-App mit AVAudioEngine. Latenzarm, polyphon, ohne Cloud-Pflicht.',
-    ip_specs_play: 'Playback-Engine',
-    ip_specs_modes: 'Trigger & Modi',
+    ip_specs_intro: 'Native iOS-App auf JUCE-Audio. Background-Audio aktiviert, damit Cues bei gesperrtem Display weiterlaufen.',
+    ip_specs_pad: 'Pad-Engine',
+    ip_specs_modes: 'Modes & Steuerung',
     ip_specs_io: 'Plattform & I/O',
     ip_credo_label: 'Was es besonders macht',
-    ip_credo_title: 'Sofort spielbar.<br>Ohne Lade-Spinner.',
-    ip_credo_p: 'Soundboards in der Praxis scheitern meistens an einem Detail: das Pad zündet nicht sofort, weil die Datei erst gestreamt wird. Instant Player lädt eine komplette Bank ins RAM, hält 64 Slots vorgebufft und triggert ab dem ersten Sample. Latenz unter 10 ms auf neueren iPads — schnell genug für Live-Beschallung, Studiomoderation und Theater-Cues.',
+    ip_credo_title: 'Eine Show.<br>Eine Datei.',
+    ip_credo_p: 'Der Unterschied zu generischen Soundboards ist das .satkip-Bundle: Manifest plus alle 24-Bit-WAVs in einer ZIP. Ein Theater-Abend, eine Podcast-Folge, ein Live-Set — komplett portabel. Vergiss nicht den USB-Stick, vergiss „welche Audios gehören zu welcher Show", AirDrop einfach das Bundle und das Setup ist da, wo es sein muss.',
     f_shop: 'Shop',
     f_tools: 'Browser-Tools',
     f_manage: 'Lizenz verwalten',
@@ -514,59 +491,59 @@ const i18n = {
     trust_p1_h: 'By an experienced sound engineer',
     trust_p1_p: 'Built by an active broadcast engineer for broadcast engineers. No useless marketing features — only what actually gets used in the studio.',
     trust_p2_h: 'Free, no in-app purchases',
-    trust_p2_p: 'Full feature set from first launch. No subscription, no pro-bank unlock, no ads. If you like Instant Player, an App Store rating helps more than any purchase.',
+    trust_p2_p: 'Full feature set from first launch. No subscription, no bank unlock, no ads, no account. Audio stays on your device, the app contacts no server.',
     trust_p3_h: 'Reply from the developer',
     trust_p3_p: 'Support emails go straight to the developer\'s inbox, not into a ticket system. Usually within 24 hours on working days.',
     ip_eyebrow: 'iPhone · iPad · iOS App',
-    ip_tagline: 'Sampler and instant-replay player for iPhone and iPad. 64 cue slots across 4 banks, keyboard triggers, loop, fade, auto-cue, waveform preview. Live-ready, low-latency, no cloud lock-in. Plays nicely with Easy Editor.',
+    ip_tagline: '64-pad soundboard for live show, theatre, podcast and studio. Tap to play, tap again to stop. Stack voices in MULTI mode, cross-fade replace in SINGLE mode. Save the entire show — every audio file, every setting — into a single .satkip bundle and reload it on a different iPad in seconds.',
     ip_price: 'free',
-    vat: 'Apple App Store · no in-app purchases',
+    vat: 'App Store · no in-app purchases',
     ip_features_label: 'Highlights',
-    ip_features_title: '64 slots. One tap. Instant audio.',
-    ip_features_intro: 'Instant Player is the focused cue player for live, broadcast and studio. 16 pads per bank, 4 banks, every slot with its own loop, fade and trigger settings. Voice-coil-accurate playback from sample one, no waiting on a load spinner.',
+    ip_features_title: '64 pads. Tap. Cue plays.',
+    ip_features_intro: 'Instant Player is a 64-pad soundboard in studio cart style. 16 pads per bank, 4 banks, MULTI and SINGLE mode, AUTO-CUE, LOOP, optional cross-fade. Save the whole show as one .satkip bundle — AirDrop it to the next iPad and it\'s ready.',
     ip_f1_h: '16 pads × 4 banks',
-    ip_f1_p: '64 independent cue slots, organized into 4 banks of 16 pads each. Bank switch by swipe or hardware shortcut. Per slot: name, color, loop flag, fade in/out, trigger mode, volume.',
-    ip_f2_h: 'Pre-loaded from sample one',
-    ip_f2_p: 'All 64 slots are read into memory on bank switch. Trigger-to-sound latency under 10 ms on modern iPads. No streaming, no buffer underrun, no stutter on simultaneous triggers.',
-    ip_f3_h: 'Touch + keyboard + MIDI',
-    ip_f3_p: 'Touch pads, external Bluetooth/USB keyboard (1–9, Q–U, A–J, Z–M), MIDI Note On, MIDI Program Change for bank switching. CoreMIDI over Lightning/USB-C or network. Configurable per pad.',
-    ip_f4_h: 'Trigger modes per pad',
-    ip_f4_p: 'Play (fire-and-forget), Hold (held = playing), Toggle (tap = start/stop), Loop (endless until stop), Auto-Cue (jumps back to cue point on stop). Choke groups for stinger sets.',
-    ip_f5_h: 'Waveform preview',
-    ip_f5_p: 'Large display above the active pad with waveform, position, remaining time. Set cue point and out point by drag. Fade curves visible. Tap-to-cue on the waveform for spot replay.',
-    ip_f6_h: 'Files import & Easy Editor',
-    ip_f6_p: 'Drag audio from Files, iCloud Drive or AirDrop straight onto a pad. Hand off pad audio to Easy Editor with one tap — the edited result returns to the same slot automatically, no manual re-assign. WAV, AIFF, FLAC, MP3, M4A.',
-    ip_banks_label: 'Bank concept',
-    ip_banks_title: '4 banks for 4 scenarios',
-    ip_banks_intro: 'Banks are complete sets — typically one per show, broadcast or theatre play. Switch via swipe or MIDI Program Change in under 100 ms.',
-    ip_b1_name: 'Bank A',
-    ip_b1_target: 'Stinger / Jingle',
-    ip_b2_name: 'Bank B',
-    ip_b2_target: 'Atmos / Loops',
-    ip_b3_name: 'Bank C',
-    ip_b3_target: 'SFX / Spot',
-    ip_b4_name: 'Bank D',
-    ip_b4_target: 'Beds / Music',
+    ip_f1_p: '64 cue slots, organised in four banks (A / B / C / D) with 16 pads each. Per pad: name, colour (7-colour palette), volume slider, LOOP toggle, AUTO-CUE toggle. Mini waveform with cue marker on every pad.',
+    ip_f2_h: 'MULTI or SINGLE mode',
+    ip_f2_p: 'MULTI: pads stack voices — every tap adds another. SINGLE: any tap stops everything else first, like a classic studio cart machine. SINGLE plus FADE > 0 yields a clean cross-fade between cues.',
+    ip_f3_h: 'Four FADE stages',
+    ip_f3_p: 'FADE button cycles OFF / SHORT / MEDIUM / LONG (0.5 / 1.5 / 4 s) — global for all pads. In SINGLE mode this becomes the cross-fade. No click on stop, no hard cut on stings.',
+    ip_f4_h: 'AUTO-CUE + LOOP',
+    ip_f4_p: 'AUTO-CUE skips leading silence — cues fire on the first audible sample, not at the file start. LOOP toggle for beds and ambient material, wraparound to the cue point. Both per-pad toggleable.',
+    ip_f5_h: '.satkip bundle',
+    ip_f5_p: 'A complete show — manifest plus all 24-bit WAVs — in a single .satkip ZIP file. AirDrop to the next iPad, open, show is ready. No re-upload, no cloud, no account.',
+    ip_f6_h: 'Round-trip with Easy Editor',
+    ip_f6_p: 'The CHOOSE button hands the active pad off to SATK Easy Editor. Trim or R128-normalise it there; SEND BACK lands the result on the same pad. Without Easy Editor an App Store hint is shown instead.',
+    ip_uc_label: 'Use cases',
+    ip_uc_title: 'What cue players are built for',
+    ip_uc_intro: 'One app, four typical show scenarios. Pad layout, mode and FADE stage decide — the rest is audio and a tap.',
+    ip_uc1_name: 'Theatre',
+    ip_uc1_target: 'SFX with cross-fade',
+    ip_uc2_name: 'Podcast',
+    ip_uc2_target: 'Jingles · stings · beds',
+    ip_uc3_name: 'Studio',
+    ip_uc3_target: 'Cues for remote sessions',
+    ip_uc4_name: 'Practice room',
+    ip_uc4_target: 'Backing tracks · one-tap stop',
     ip_wf_label: 'How it works',
-    ip_wf_title: 'Four steps to a live bank',
-    ip_wf_intro: 'Audio in, pad assigned, trigger mode picked, go. Identical handling on iPhone (4×4 grid) and iPad (4×4 with large waveform).',
+    ip_wf_title: 'Four steps to a show',
+    ip_wf_intro: 'Tap pad, pick audio, set mode, save show. Identical handling on iPhone (portrait + landscape) and iPad (all four orientations).',
     ip_w1_h: 'Assign pad',
-    ip_w1_p: 'Drag audio from Files, iCloud Drive or AirDrop onto a pad. Direct import from Easy Editor. WAV, AIFF, FLAC, MP3, M4A. Up to 2 GB per bank.',
-    ip_w2_h: 'Set cue + out',
-    ip_w2_p: 'Set cue point (start) and out point on the waveform. Enter fade in/out in ms. Volume and trim by slider, pan optional.',
+    ip_w1_p: 'Tap an empty pad — the Files picker opens. Pick audio from Files, iCloud Drive or via AirDrop. Pad shows a waveform thumbnail with cue marker immediately.',
+    ip_w2_h: 'Configure pad',
+    ip_w2_p: 'Volume by slider, one of 7 colours for the pad tile, LOOP for beds, AUTO-CUE for clean cue starts. Optionally hand off to Easy Editor for trimming.',
     ip_w3_h: 'Pick mode',
-    ip_w3_p: 'Play, Hold, Toggle, Loop, Auto-Cue. Optional choke group (simultaneous trigger stops other pads in the same group — perfect for stingers).',
-    ip_w4_h: 'Trigger',
-    ip_w4_p: 'Tap pad, press keyboard shortcut, send MIDI note. Multiple pads simultaneously, polyphonic. Master Stop and Master Fade in the toolbar for emergencies.',
+    ip_w3_p: 'MULTI for stacking, SINGLE for cart-machine logic. FADE at SHORT / MEDIUM / LONG for cross-fades between cues. ESC stops everything, Fade-All gracefully fades all running pads.',
+    ip_w4_h: 'Save show',
+    ip_w4_p: 'SAVE writes a .satkip file with manifest and all audio as 24-bit WAVs. Via AirDrop or Files to the next iPad — open it there, show is up.',
     ip_specs_label: 'Technical Details',
     ip_specs_title: 'Built for Live',
-    ip_specs_intro: 'Native iOS app on AVAudioEngine. Low latency, polyphonic, no cloud lock-in.',
-    ip_specs_play: 'Playback engine',
-    ip_specs_modes: 'Trigger & Modes',
+    ip_specs_intro: 'Native iOS app on JUCE audio. Background-audio enabled so cues keep playing when the screen locks.',
+    ip_specs_pad: 'Pad engine',
+    ip_specs_modes: 'Modes & Control',
     ip_specs_io: 'Platform & I/O',
     ip_credo_label: 'What sets it apart',
-    ip_credo_title: 'Instantly playable.<br>No load spinner.',
-    ip_credo_p: 'Soundboards in practice usually fail on one detail: the pad doesn\'t fire instantly because the file streams first. Instant Player loads an entire bank into RAM, keeps 64 slots pre-buffered and triggers from sample one. Latency under 10 ms on recent iPads — fast enough for live sound reinforcement, studio presenting and theatre cues.',
+    ip_credo_title: 'One show.<br>One file.',
+    ip_credo_p: 'What separates it from generic soundboards is the .satkip bundle: manifest plus all 24-bit WAVs in one ZIP. A theatre night, a podcast episode, a live set — fully portable. No more "which audio belongs to which show", no missing USB stick — AirDrop the bundle and the setup is where it needs to be.',
     f_shop: 'Shop',
     f_tools: 'Browser Tools',
     f_manage: 'Manage License',
@@ -597,10 +574,6 @@ function setLang(lang) {
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const k = el.dataset.i18nHtml;
     if (t[k]) el.innerHTML = t[k];
-  });
-  // Swap App-Store-Badge zwischen DE/EN
-  document.querySelectorAll('img[data-src-de][data-src-en]').forEach(img => {
-    img.src = lang === 'en' ? img.dataset.srcEn : img.dataset.srcDe;
   });
   try { localStorage.setItem('satk-lang', lang); } catch(e){}
 }

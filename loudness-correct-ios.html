@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://satk.tech/loudness-correct-ios">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SATK loudness CORRECT – EBU-R128-Korrektur auf dem iPad</title>
+<meta name="description" content="Offline EBU-R128-Korrektur auf dem iPad. 16 Delivery-Presets, Two-Pass mit Verify-and-Refine, 4× Polyphase TP-Limiter, Mono bis 9.1.6 Surround. Files-App-Workflow. App-Store-Release in Vorbereitung.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="SATK loudness CORRECT – iPad">
+<meta property="og:description" content="EBU R128 / ITU-R BS.1770-4 offline auf dem iPad. 16 Presets von R128 bis Netflix und YouTube, Surround bis 9.1.6. In Vorbereitung für den App Store.">
+<meta property="og:url" content="https://satk.tech/loudness-correct-ios">
+<meta property="og:image" content="https://satk.tech/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="SATK – Sascha&rsquo;s Audio Tool Kit">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SATK loudness CORRECT – iPad">
+<meta name="twitter:description" content="EBU R128 offline auf dem iPad. 16 Presets, Mono–9.1.6, Two-Pass. In Vorbereitung.">
+<meta name="twitter:image" content="https://satk.tech/og-image.png">
+<link href="fonts.css" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "SATK loudness CORRECT",
+  "description": "Offline EBU-R128-Korrektur auf dem iPad. 16 Delivery-Presets, Two-Pass mit Verify-and-Refine, 4× Polyphase TP-Limiter, Mono bis 9.1.6 Surround.",
+  "applicationCategory": "MultimediaApplication",
+  "applicationSubCategory": "Loudness Correction",
+  "operatingSystem": "iPadOS 16+",
+  "url": "https://satk.tech/loudness-correct-ios",
+  "image": "https://satk.tech/img-loudness-correct.webp",
+  "screenshot": "https://satk.tech/img-loudness-correct.webp",
+  "offers": {
+    "@type": "Offer",
+    "name": "Apple App Store",
+    "availability": "https://schema.org/PreOrder"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SATK",
+    "url": "https://satk.tech",
+    "logo": "https://satk.tech/og-image.png"
+  },
+  "inLanguage": ["de", "en"]
+}
+</script>
+<style>
+:root{--bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#c8f060;--tx:#e8e8ec;--mu:#6e6e7a;--mu2:#9a9aaa;--warn:#f0a060}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:'DM Mono',monospace;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(10,10,11,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.04)}
+.nav-logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;line-height:1}
+.nav-logo-mark{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--ac);letter-spacing:4px}
+.nav-logo-accent{color:var(--tx)}
+.nav-logo-sub{font-family:'DM Mono',monospace;font-size:8px;color:var(--mu);letter-spacing:1.5px;text-transform:uppercase;font-weight:300;white-space:nowrap}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{color:var(--mu2);text-decoration:none;font-size:11px;letter-spacing:.5px;transition:color .2s}
+.nav-links a:hover{color:var(--tx)}
+.nav-platforms{display:flex;gap:2px;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:999px;padding:3px}
+.nav-platforms a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:999px;color:var(--mu2);text-decoration:none;transition:all .2s}
+.nav-platforms a.active{background:var(--ac);color:#0a0a0b}
+.nav-platforms a:hover:not(.active){color:var(--tx);background:rgba(255,255,255,.04)}
+.lang-sw{display:flex;align-items:center;gap:6px}
+.lang{font-size:10px;letter-spacing:1px;color:var(--mu);cursor:pointer;transition:color .2s}
+.lang:hover{color:var(--tx)}
+.lang.active{color:var(--ac)}
+.lang-sep{color:var(--mu);font-size:10px}
+.product-hero{text-align:center;padding:80px 32px 32px;max-width:920px;margin:0 auto}
+.product-eyebrow{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.4em;color:var(--ac);text-transform:uppercase;margin-bottom:18px}
+.product-hero h1{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:800;letter-spacing:-1px;line-height:1.05;margin-bottom:18px}
+.product-hero .tagline{color:var(--mu2);font-size:14px;letter-spacing:.3px;line-height:1.7;max-width:640px;margin:0 auto}
+.status-badge{display:inline-block;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.15em;color:var(--warn);border:1px solid rgba(240,160,96,.3);background:rgba(240,160,96,.06);padding:10px 22px;border-radius:8px;margin-top:30px;text-transform:uppercase}
+.hero-img-wrap{max-width:1120px;margin:32px auto 0;padding:0 32px;text-align:center}
+.hero-img{display:inline-block;max-width:760px;width:100%;height:auto;border:1px solid var(--bd);border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.hero-caption{margin-top:12px;font-size:10px;letter-spacing:.5px;color:var(--mu);text-transform:uppercase;text-align:center}
+.trust-strip{max-width:1120px;margin:48px auto 0;padding:0 32px}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:10px;overflow:hidden}
+.trust-pillar{background:var(--sf);padding:28px 26px;text-align:center}
+.trust-icon{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(200,240,96,.08);color:var(--ac);margin-bottom:14px}
+.trust-h{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.05em;color:var(--tx);margin-bottom:8px}
+.trust-p{font-size:12px;color:var(--mu2);line-height:1.65}
+@media(max-width:760px){.trust-grid{grid-template-columns:1fr;gap:1px}}
+.section{max-width:1120px;margin:0 auto;padding:96px 32px 0}
+.section-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:16px;text-align:center}
+.section-h2{font-family:'Syne',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-.5px;line-height:1.1;text-align:center;margin-bottom:14px;text-transform:uppercase}
+.section-intro{color:var(--mu2);font-size:13px;line-height:1.7;text-align:center;max-width:680px;margin:0 auto 56px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feature{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:32px 28px;transition:transform .3s ease,border-color .3s ease}
+.feature:hover{transform:translateY(-3px);border-color:rgba(200,240,96,.2)}
+.feature-icon{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.25em;color:var(--ac);margin-bottom:14px;text-transform:uppercase}
+.feature h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.2px;margin-bottom:10px;color:var(--tx)}
+.feature p{font-size:12px;color:var(--mu2);line-height:1.7}
+.workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.workflow-step{padding:28px 24px;background:var(--sf);border-radius:10px;border:1px solid var(--bd)}
+.workflow-num{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--ac);line-height:1;margin-bottom:14px}
+.workflow-step h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
+.workflow-step p{font-size:11px;color:var(--mu2);line-height:1.7}
+.preset-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px}
+.preset-pill{padding:14px 16px;background:var(--sf);border:1px solid var(--bd);border-radius:8px;text-align:center}
+.preset-pill .preset-name{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.5px;color:var(--tx);text-transform:uppercase;margin-bottom:4px}
+.preset-pill .preset-target{font-size:10px;color:var(--ac);letter-spacing:.3px}
+.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.spec-col{padding:32px 28px;border-right:1px solid var(--bd)}
+.spec-col:last-child{border-right:none}
+.spec-col h4{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:14px}
+.spec-col ul{list-style:none}
+.spec-col li{display:flex;align-items:center;gap:12px;font-size:11px;color:var(--tx);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);letter-spacing:.2px}
+.spec-col li:last-child{border-bottom:none}
+.spec-col li b{color:var(--ac);font-weight:500;flex:0 0 88px;font-size:10px;letter-spacing:.15em;text-transform:uppercase}
+footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255,255,.06);background:#15161a}
+.footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1120px;margin:0 auto 48px}
+.footer-col h4{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
+.footer-col a{display:block;font-family:'DM Mono',monospace;font-size:11px;color:var(--mu2);text-decoration:none;letter-spacing:.3px;padding:5px 0;transition:color .2s}
+.footer-col a:hover{color:var(--ac)}
+.footer-bar{display:flex;justify-content:space-between;align-items:center;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
+.footer-brand{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:3px}
+.footer-brand-accent{color:var(--tx)}
+.footer-meta{color:var(--mu2);text-transform:none;letter-spacing:.3px}
+@media(max-width:900px){nav{padding:14px 20px}.nav-links{gap:18px}.features,.workflow,.specs{grid-template-columns:1fr}.preset-grid{grid-template-columns:repeat(2,1fr)}.spec-col{border-right:none;border-bottom:1px solid var(--bd)}.spec-col:last-child{border-bottom:none}.product-hero{padding:48px 20px 24px}.hero-img-wrap{padding:0 20px}.section{padding:64px 20px 0}}
+@media(max-width:600px){.nav-links a:not(.nav-back){display:none}.preset-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.footer-grid{grid-template-columns:repeat(3,1fr);gap:24px}.footer-bar{flex-direction:column;gap:12px;text-align:center}}
+@media(max-width:600px){footer{padding:48px 24px 24px;margin-top:64px}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:32px;text-align:center}}
+.feature,.workflow-step{opacity:0;animation:rise .6s ease forwards}
+.feature:nth-child(1),.workflow-step:nth-child(1){animation-delay:.1s}
+.feature:nth-child(2),.workflow-step:nth-child(2){animation-delay:.18s}
+.feature:nth-child(3),.workflow-step:nth-child(3){animation-delay:.26s}
+.feature:nth-child(4),.workflow-step:nth-child(4){animation-delay:.34s}
+.feature:nth-child(5){animation-delay:.42s}
+.feature:nth-child(6){animation-delay:.5s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+</style>
+<script async src="https://plausible.io/js/pa-gqR5BLYgrx9BycGkSCWbt.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <span class="nav-logo-mark">S<span class="nav-logo-accent">A</span>TK</span>
+    <span class="nav-logo-sub">Sascha&rsquo;s Audio Tool Kit</span>
+  </a>
+  <div class="nav-platforms">
+    <a href="/mac">Mac</a>
+    <a href="/ios" class="active">iOS</a>
+    <a href="/tools">Web</a>
+  </div>
+  <div class="nav-links">
+    <a href="/support" data-i18n="nav_info">Supportanfrage</a>
+    <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
+    <div class="lang-sw">
+      <span class="lang active" id="btnDE" onclick="setLang('de')">DE</span>
+      <span class="lang-sep">·</span>
+      <span class="lang" id="btnEN" onclick="setLang('en')">EN</span>
+    </div>
+  </div>
+</nav>
+
+<section class="product-hero">
+  <div class="product-eyebrow" data-i18n="lc_eyebrow">iPad · iOS App · in Vorbereitung</div>
+  <h1 data-i18n="lc_h1">loudness CORRECT</h1>
+  <p class="tagline" data-i18n="lc_tagline">Offline EBU-R128-Korrektur auf dem iPad. 16 Delivery-Presets von R128 bis Netflix und YouTube, Two-Pass mit Verify-and-Refine, Mono bis 9.1.6 Surround. Files-App rein, korrigierte Datei in „Dateien" raus.</p>
+  <div class="status-badge" data-i18n="lc_status">App-Store-Release in Vorbereitung</div>
+</section>
+
+<div class="hero-img-wrap">
+  <img class="hero-img" src="img-loudness-correct.webp?v=2" alt="SATK loudness CORRECT — iPad-Layout-Mockup (Mac-Version dargestellt)">
+  <div class="hero-caption" data-i18n="lc_hero_caption">Mockup mit Mac-Layout · iPad-Landscape-Screenshots folgen mit der ersten Beta</div>
+</div>
+
+<section class="trust-strip">
+  <div class="trust-grid">
+    <div class="trust-pillar">
+      <div class="trust-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
+      </div>
+      <div class="trust-h" data-i18n="trust_p1_h">Vom erfahrenen Toningenieur</div>
+      <div class="trust-p" data-i18n="trust_p1_p">Identische Korrektur-Engine wie die Desktop-Version. K-Weighting, LUFS-Meter, TruePeak-Limiter, LRA-Processor — bit-exakt das gleiche Verhalten auf iPad und Mac.</div>
+    </div>
+    <div class="trust-pillar">
+      <div class="trust-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v12H4z"/><path d="M4 8h16M9 13h2"/></svg>
+      </div>
+      <div class="trust-h" data-i18n="trust_p2_h">Files-App-First</div>
+      <div class="trust-p" data-i18n="trust_p2_p">Eingabe per Files-App, iCloud Drive oder AirDrop. Korrigierte Datei landet in den App-Documents — sofort über die Files-App teilbar. Kein Cloud-Zwang.</div>
+    </div>
+    <div class="trust-pillar">
+      <div class="trust-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v12H7l-3 4z"/><path d="M8 9h8M8 12h6"/></svg>
+      </div>
+      <div class="trust-h" data-i18n="trust_p3_h">Antwort vom Entwickler</div>
+      <div class="trust-p" data-i18n="trust_p3_p">Support-Mails landen direkt im Posteingang des Entwicklers, nicht bei einem Ticket-System. Werktags meist innerhalb von 24 Stunden.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label" data-i18n="lc_features_label">Highlights</div>
+  <h2 class="section-h2" data-i18n="lc_features_title">Datei rein, Datei raus.</h2>
+  <p class="section-intro" data-i18n="lc_features_intro">loudness CORRECT auf dem iPad ist die mobile Variante des Desktop-Tools — gleiche Engine, gleiche Presets, gleiche Surround-Layouts. Im Landscape-Layout für sample-genaue Kontrolle.</p>
+
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">16 Presets</div>
+      <h3 data-i18n="lc_f1_h">Von R128 bis YouTube</h3>
+      <p data-i18n="lc_f1_p">EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, FreeTV OP-59, DPP, Portaria 354, Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube, Leq(m)−85, Leq(a)−85 und Custom — alle Targets in einer Liste.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">Two-Pass</div>
+      <h3 data-i18n="lc_f2_h">Verify-and-Refine</h3>
+      <p data-i18n="lc_f2_p">Pass 1 misst, Pass 2 schreibt mit Korrektur-Gain. Wenn das Ergebnis um mehr als 0,1 LU vom Target abweicht, läuft automatisch ein weiterer Refine-Pass. Kein „ungefähr".</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">True Peak</div>
+      <h3 data-i18n="lc_f3_h">4× Polyphase Limiter</h3>
+      <p data-i18n="lc_f3_p">Inter-Sample-Peak-Schutz mit 5 ms Lookahead und 50 ms exponentiellem Release. Dual-Time-Constant-Hüllkurve — keine Pump-Artefakte, kein Distortion an Transienten.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">Surround</div>
+      <h3 data-i18n="lc_f4_h">Mono bis 9.1.6</h3>
+      <p data-i18n="lc_f4_p">Bis zu 16 Kanäle: Mono, Stereo, 5.1, 6.1, 7.1, 7.1.2, 7.1.4, 9.1.4, 9.1.6. Vier Routing-Layouts (Auto/ITU, Film L-C-R, DTS, Raw/Stems). LFE BS.1770-konform mit Gewicht 0, Surrounds mit 1,41 — exakt nach Spec.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">LRA</div>
+      <h3 data-i18n="lc_f5_h">3-Band Reshape</h3>
+      <p data-i18n="lc_f5_p">Optional aktivierbar bei zu hoher LRA. Linkwitz-Riley 4. Ordnung splittet bei ≤ 150 Hz und ≥ 3 kHz. Per-Band Soft-Knee-Kompression mit bandspezifischen Zeitkonstanten — perfekte Rekonstruktion.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">Files</div>
+      <h3 data-i18n="lc_f6_h">Files-App Workflow</h3>
+      <p data-i18n="lc_f6_p">Input über die Dateien-App, iCloud Drive oder per AirDrop. Output landet in den App-Documents — sofort über die Files-App teilbar oder per AirDrop weiter. Naming: <code>&lt;input&gt;_&lt;preset&gt;.wav</code>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label" data-i18n="lc_presets_label">Delivery-Presets</div>
+  <h2 class="section-h2" data-i18n="lc_presets_title">16 Targets, ein Tap</h2>
+  <p class="section-intro" data-i18n="lc_presets_intro">Aus dem Code: alle Standards die in der Praxis vorkommen, plus einen frei wählbaren Custom-Preset für Spezialfälle.</p>
+
+  <div class="preset-grid">
+    <div class="preset-pill"><div class="preset-name">EBU R128</div><div class="preset-target">−23 LUFS · −1 dBTP</div></div>
+    <div class="preset-pill"><div class="preset-name">R128 S1</div><div class="preset-target">−23 · LRA ≤ 10</div></div>
+    <div class="preset-pill"><div class="preset-name">ATSC A/85</div><div class="preset-target">−24 LUFS · −2 dBTP</div></div>
+    <div class="preset-pill"><div class="preset-name">ARIB TR-B32</div><div class="preset-target">−24 LUFS · −1 dBTP</div></div>
+    <div class="preset-pill"><div class="preset-name">AGCOM</div><div class="preset-target">−24 LUFS · −2 dBTP</div></div>
+    <div class="preset-pill"><div class="preset-name">FreeTV OP-59</div><div class="preset-target">−24 LUFS · −2 dBTP</div></div>
+    <div class="preset-pill"><div class="preset-name">DPP</div><div class="preset-target">−23 LUFS · −1 dBTP</div></div>
+    <div class="preset-pill"><div class="preset-name">Portaria 354</div><div class="preset-target">−23 LUFS · −2 dBTP</div></div>
+    <div class="preset-pill"><div class="preset-name">Netflix</div><div class="preset-target">−27 LUFS · −2 dBTP</div></div>
+    <div class="preset-pill"><div class="preset-name">Apple Podcasts</div><div class="preset-target">−16 LUFS · −1 dBTP</div></div>
+    <div class="preset-pill"><div class="preset-name">Spotify</div><div class="preset-target">−14 LUFS · −1 dBTP</div></div>
+    <div class="preset-pill"><div class="preset-name">Amazon Music</div><div class="preset-target">−14 LUFS · −2 dBTP</div></div>
+    <div class="preset-pill"><div class="preset-name">YouTube</div><div class="preset-target">−14 LUFS · −1 dBTP</div></div>
+    <div class="preset-pill"><div class="preset-name">Leq(m) −85</div><div class="preset-target">Kino · TASA</div></div>
+    <div class="preset-pill"><div class="preset-name">Leq(a) −85</div><div class="preset-target">Kino</div></div>
+    <div class="preset-pill"><div class="preset-name" data-i18n="lc_preset_custom">Custom</div><div class="preset-target" data-i18n="lc_preset_custom_target">Frei wählbar</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label" data-i18n="lc_wf_label">Funktionsweise</div>
+  <h2 class="section-h2" data-i18n="lc_wf_title">In 4 Schritten zur abnahmesicheren Datei</h2>
+  <p class="section-intro" data-i18n="lc_wf_intro">Datei wählen, Layout und Preset setzen, ANALYZE → CORRECT — fertig. Verify-and-Refine läuft im Hintergrund.</p>
+
+  <div class="workflow">
+    <div class="workflow-step">
+      <div class="workflow-num">01</div>
+      <h3 data-i18n="lc_w1_h">Datei wählen</h3>
+      <p data-i18n="lc_w1_p">WAV, AIFF, FLAC, MP3 aus der Dateien-App, iCloud Drive oder per AirDrop. Bis 9.1.6 (16 Kanäle).</p>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">02</div>
+      <h3 data-i18n="lc_w2_h">Layout &amp; Preset</h3>
+      <p data-i18n="lc_w2_p">Auto/ITU für Standard-Multichannel, Film/DTS/Raw bei Spezialfällen. Preset aus 16 Targets oder Custom.</p>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">03</div>
+      <h3 data-i18n="lc_w3_h">ANALYZE → CORRECT</h3>
+      <p data-i18n="lc_w3_p">Pass 1 misst Integrated LUFS und Max TP. Pass 2 schreibt mit Korrektur-Gain und TP-Limiter. Refine-Pass falls Abweichung &gt; 0,1 LU.</p>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">04</div>
+      <h3 data-i18n="lc_w4_h">Output in Files</h3>
+      <p data-i18n="lc_w4_p">Korrigierte Datei landet in den App-Documents. Über die Files-App sofort teilbar — AirDrop, Mail, USB-C-Stick.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label" data-i18n="lc_specs_label">Technische Details</div>
+  <h2 class="section-h2" data-i18n="lc_specs_title">Built for Broadcast</h2>
+  <p class="section-intro" data-i18n="lc_specs_intro">Identische DSP-Engine wie die Desktop-Version. Sample-akkurat reproduzierbar, alle Werte am Pass-2-Ende erneut gegen Spec geprüft.</p>
+
+  <div class="specs">
+    <div class="spec-col">
+      <h4 data-i18n="lc_specs_dsp">Standards &amp; DSP</h4>
+      <ul>
+        <li><b>Loudness</b> ITU-R BS.1770-4</li>
+        <li><b>K-Weight</b> Pre + RLB</li>
+        <li><b>Gating</b> 400 ms · 75 % Overlap</li>
+        <li><b>LRA</b> EBU Tech 3342</li>
+        <li><b>TP-Limiter</b> 4× polyphase FIR</li>
+        <li><b>Lookahead</b> 5 ms · Release 50 ms</li>
+      </ul>
+    </div>
+    <div class="spec-col">
+      <h4 data-i18n="lc_specs_routing">Channels &amp; Routing</h4>
+      <ul>
+        <li><b>Channels</b> Mono bis 9.1.6 (16)</li>
+        <li><b>Layouts</b> Auto · Film · DTS · Raw</li>
+        <li><b>LFE-Gewicht</b> 0 (BS.1770-konform)</li>
+        <li><b>Surround</b> 1,41 (Power-Domain)</li>
+        <li><b>LRA-Bands</b> ≤ 150 / 150–3000 / &gt; 3000 Hz</li>
+        <li><b>Filter</b> Linkwitz-Riley 4. Ordnung</li>
+      </ul>
+    </div>
+    <div class="spec-col">
+      <h4 data-i18n="lc_specs_io">Plattform &amp; I/O</h4>
+      <ul>
+        <li><b>OS</b> iPadOS 16+ (iPad-only)</li>
+        <li><b>Bundle</b> com.satk.loudnesscorrect</li>
+        <li><b>Orient.</b> Landscape (Left + Right)</li>
+        <li><b>Input</b> WAV · AIFF · FLAC · MP3</li>
+        <li><b>Output</b> WAV · AIFF · 16/24/32-Bit</li>
+        <li><b>UI</b> Dark, Full-Screen, English</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label" data-i18n="lc_credo_label">Was es nicht ist</div>
+  <h2 class="section-h2" data-i18n="lc_credo_title">Kein Echtzeit-Meter.</h2>
+  <p class="section-intro" data-i18n="lc_credo_p">loudness CORRECT ist ein Offline-Korrektur-Tool, kein Live-Meter. Es misst die ganze Datei, plant die Korrektur, schreibt neu, verifiziert. Wer Echtzeit-Loudness braucht, nimmt SATK broadcast METER. Wer eine fertige Mischung auf den korrekten Lautheits-Korridor bringen will, nimmt das hier.</p>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4 data-i18n="f_col_products">Produkte</h4>
+      <a href="/mac" data-i18n="nav_mac">Mac Apps</a>
+      <a href="/ios" data-i18n="nav_ios">iOS Apps</a>
+      <a href="/tools" data-i18n="nav_tools">Browser-Tools</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="f_col_support">Support</h4>
+      <a href="/support" data-i18n="nav_info">Supportanfrage</a>
+      <a href="/manage-license" data-i18n="f_manage">Lizenz verwalten</a>
+      <a href="/changelog" data-i18n="f_changelog">Changelog</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="f_col_legal">Rechtliches</h4>
+      <a href="/impressum" data-i18n="f_imprint_contact">Kontakt &amp; Impressum</a>
+      <a href="/agb" data-i18n="f_terms">AGB</a>
+      <a href="/widerruf" data-i18n="f_refund">Widerruf</a>
+      <a href="/datenschutz" data-i18n="f_privacy">Datenschutz</a>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span class="footer-brand">S<span class="footer-brand-accent">A</span>TK</span>
+    <span class="footer-meta">Sascha&rsquo;s Audio Toolkit · © 2026</span>
+  </div>
+</footer>
+
+<script>
+const i18n = {
+  de: {
+    nav_manage: 'Lizenz',
+    nav_info: 'Supportanfrage',
+    nav_mac: 'Mac Apps',
+    nav_ios: 'iOS Apps',
+    nav_tools: 'Browser-Tools',
+    trust_p1_h: 'Vom erfahrenen Toningenieur',
+    trust_p1_p: 'Identische Korrektur-Engine wie die Desktop-Version. K-Weighting, LUFS-Meter, TruePeak-Limiter, LRA-Processor — bit-exakt das gleiche Verhalten auf iPad und Mac.',
+    trust_p2_h: 'Files-App-First',
+    trust_p2_p: 'Eingabe per Files-App, iCloud Drive oder AirDrop. Korrigierte Datei landet in den App-Documents — sofort über die Files-App teilbar. Kein Cloud-Zwang.',
+    trust_p3_h: 'Antwort vom Entwickler',
+    trust_p3_p: 'Support-Mails landen direkt im Posteingang des Entwicklers, nicht bei einem Ticket-System. Werktags meist innerhalb von 24 Stunden.',
+    lc_eyebrow: 'iPad · iOS App · in Vorbereitung',
+    lc_h1: 'loudness CORRECT',
+    lc_tagline: 'Offline EBU-R128-Korrektur auf dem iPad. 16 Delivery-Presets von R128 bis Netflix und YouTube, Two-Pass mit Verify-and-Refine, Mono bis 9.1.6 Surround. Files-App rein, korrigierte Datei in „Dateien" raus.',
+    lc_status: 'App-Store-Release in Vorbereitung',
+    lc_hero_caption: 'Mockup mit Mac-Layout · iPad-Landscape-Screenshots folgen mit der ersten Beta',
+    lc_features_label: 'Highlights',
+    lc_features_title: 'Datei rein, Datei raus.',
+    lc_features_intro: 'loudness CORRECT auf dem iPad ist die mobile Variante des Desktop-Tools — gleiche Engine, gleiche Presets, gleiche Surround-Layouts. Im Landscape-Layout für sample-genaue Kontrolle.',
+    lc_f1_h: 'Von R128 bis YouTube',
+    lc_f1_p: 'EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, FreeTV OP-59, DPP, Portaria 354, Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube, Leq(m)−85, Leq(a)−85 und Custom — alle Targets in einer Liste.',
+    lc_f2_h: 'Verify-and-Refine',
+    lc_f2_p: 'Pass 1 misst, Pass 2 schreibt mit Korrektur-Gain. Wenn das Ergebnis um mehr als 0,1 LU vom Target abweicht, läuft automatisch ein weiterer Refine-Pass. Kein „ungefähr".',
+    lc_f3_h: '4× Polyphase Limiter',
+    lc_f3_p: 'Inter-Sample-Peak-Schutz mit 5 ms Lookahead und 50 ms exponentiellem Release. Dual-Time-Constant-Hüllkurve — keine Pump-Artefakte, kein Distortion an Transienten.',
+    lc_f4_h: 'Mono bis 9.1.6',
+    lc_f4_p: 'Bis zu 16 Kanäle: Mono, Stereo, 5.1, 6.1, 7.1, 7.1.2, 7.1.4, 9.1.4, 9.1.6. Vier Routing-Layouts (Auto/ITU, Film L-C-R, DTS, Raw/Stems). LFE BS.1770-konform mit Gewicht 0, Surrounds mit 1,41 — exakt nach Spec.',
+    lc_f5_h: '3-Band Reshape',
+    lc_f5_p: 'Optional aktivierbar bei zu hoher LRA. Linkwitz-Riley 4. Ordnung splittet bei ≤ 150 Hz und ≥ 3 kHz. Per-Band Soft-Knee-Kompression mit bandspezifischen Zeitkonstanten — perfekte Rekonstruktion.',
+    lc_f6_h: 'Files-App Workflow',
+    lc_f6_p: 'Input über die Dateien-App, iCloud Drive oder per AirDrop. Output landet in den App-Documents — sofort über die Files-App teilbar oder per AirDrop weiter. Naming: <input>_<preset>.wav.',
+    lc_presets_label: 'Delivery-Presets',
+    lc_presets_title: '16 Targets, ein Tap',
+    lc_presets_intro: 'Aus dem Code: alle Standards die in der Praxis vorkommen, plus einen frei wählbaren Custom-Preset für Spezialfälle.',
+    lc_preset_custom: 'Custom',
+    lc_preset_custom_target: 'Frei wählbar',
+    lc_wf_label: 'Funktionsweise',
+    lc_wf_title: 'In 4 Schritten zur abnahmesicheren Datei',
+    lc_wf_intro: 'Datei wählen, Layout und Preset setzen, ANALYZE → CORRECT — fertig. Verify-and-Refine läuft im Hintergrund.',
+    lc_w1_h: 'Datei wählen',
+    lc_w1_p: 'WAV, AIFF, FLAC, MP3 aus der Dateien-App, iCloud Drive oder per AirDrop. Bis 9.1.6 (16 Kanäle).',
+    lc_w2_h: 'Layout & Preset',
+    lc_w2_p: 'Auto/ITU für Standard-Multichannel, Film/DTS/Raw bei Spezialfällen. Preset aus 16 Targets oder Custom.',
+    lc_w3_h: 'ANALYZE → CORRECT',
+    lc_w3_p: 'Pass 1 misst Integrated LUFS und Max TP. Pass 2 schreibt mit Korrektur-Gain und TP-Limiter. Refine-Pass falls Abweichung > 0,1 LU.',
+    lc_w4_h: 'Output in Files',
+    lc_w4_p: 'Korrigierte Datei landet in den App-Documents. Über die Files-App sofort teilbar — AirDrop, Mail, USB-C-Stick.',
+    lc_specs_label: 'Technische Details',
+    lc_specs_title: 'Built for Broadcast',
+    lc_specs_intro: 'Identische DSP-Engine wie die Desktop-Version. Sample-akkurat reproduzierbar, alle Werte am Pass-2-Ende erneut gegen Spec geprüft.',
+    lc_specs_dsp: 'Standards & DSP',
+    lc_specs_routing: 'Channels & Routing',
+    lc_specs_io: 'Plattform & I/O',
+    lc_credo_label: 'Was es nicht ist',
+    lc_credo_title: 'Kein Echtzeit-Meter.',
+    lc_credo_p: 'loudness CORRECT ist ein Offline-Korrektur-Tool, kein Live-Meter. Es misst die ganze Datei, plant die Korrektur, schreibt neu, verifiziert. Wer Echtzeit-Loudness braucht, nimmt SATK broadcast METER. Wer eine fertige Mischung auf den korrekten Lautheits-Korridor bringen will, nimmt das hier.',
+    f_manage: 'Lizenz verwalten',
+    f_changelog: 'Changelog',
+    f_imprint_contact: 'Kontakt & Impressum',
+    f_terms: 'AGB',
+    f_refund: 'Widerruf',
+    f_privacy: 'Datenschutz',
+    f_col_products: 'Produkte',
+    f_col_support: 'Support',
+    f_col_legal: 'Rechtliches'
+  },
+  en: {
+    nav_manage: 'License',
+    nav_info: 'Support request',
+    nav_mac: 'Mac Apps',
+    nav_ios: 'iOS Apps',
+    nav_tools: 'Browser Tools',
+    trust_p1_h: 'By an experienced sound engineer',
+    trust_p1_p: 'Identical correction engine to the desktop version. K-weighting, LUFS meter, true-peak limiter, LRA processor — bit-exact same behaviour on iPad and Mac.',
+    trust_p2_h: 'Files-first',
+    trust_p2_p: 'Input from Files, iCloud Drive or via AirDrop. Corrected file lands in the app\'s Documents — share via Files immediately. No cloud lock-in.',
+    trust_p3_h: 'Reply from the developer',
+    trust_p3_p: 'Support emails go straight to the developer\'s inbox, not into a ticket system. Usually within 24 hours on working days.',
+    lc_eyebrow: 'iPad · iOS App · in preparation',
+    lc_h1: 'loudness CORRECT',
+    lc_tagline: 'Offline EBU R128 correction on iPad. 16 delivery presets from R128 to Netflix and YouTube, two-pass with verify-and-refine, mono to 9.1.6 surround. Files in, corrected file out — via Files.',
+    lc_status: 'App Store release in preparation',
+    lc_hero_caption: 'Mockup with Mac layout · iPad landscape screenshots will follow with the first beta',
+    lc_features_label: 'Highlights',
+    lc_features_title: 'File in, file out.',
+    lc_features_intro: 'loudness CORRECT on iPad is the mobile version of the desktop tool — same engine, same presets, same surround layouts. In landscape for sample-accurate control.',
+    lc_f1_h: 'From R128 to YouTube',
+    lc_f1_p: 'EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, FreeTV OP-59, DPP, Portaria 354, Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube, Leq(m)−85, Leq(a)−85 and Custom — all targets in one list.',
+    lc_f2_h: 'Verify-and-refine',
+    lc_f2_p: 'Pass 1 measures, pass 2 writes with correction gain. If the result deviates by more than 0.1 LU from target, an additional refine pass runs automatically. No "approximately".',
+    lc_f3_h: '4× polyphase limiter',
+    lc_f3_p: 'Inter-sample peak protection with 5 ms lookahead and 50 ms exponential release. Dual-time-constant envelope — no pumping, no distortion on transients.',
+    lc_f4_h: 'Mono to 9.1.6',
+    lc_f4_p: 'Up to 16 channels: mono, stereo, 5.1, 6.1, 7.1, 7.1.2, 7.1.4, 9.1.4, 9.1.6. Four routing layouts (Auto/ITU, Film L-C-R, DTS, Raw/Stems). LFE BS.1770-compliant with weight 0, surrounds at 1.41 — exactly per spec.',
+    lc_f5_h: '3-band reshape',
+    lc_f5_p: 'Optional when source LRA is too high. Linkwitz-Riley 4th order splits at ≤ 150 Hz and ≥ 3 kHz. Per-band soft-knee compression with band-specific time constants — perfect reconstruction.',
+    lc_f6_h: 'Files workflow',
+    lc_f6_p: 'Input via Files, iCloud Drive or AirDrop. Output lands in app Documents — share via Files instantly or AirDrop onward. Naming: <input>_<preset>.wav.',
+    lc_presets_label: 'Delivery presets',
+    lc_presets_title: '16 targets, one tap',
+    lc_presets_intro: 'From the code: every standard that comes up in practice, plus a freely configurable Custom preset for special cases.',
+    lc_preset_custom: 'Custom',
+    lc_preset_custom_target: 'User-defined',
+    lc_wf_label: 'How it works',
+    lc_wf_title: 'Four steps to a deliverable file',
+    lc_wf_intro: 'Pick file, set layout and preset, ANALYZE → CORRECT — done. Verify-and-refine runs in the background.',
+    lc_w1_h: 'Pick file',
+    lc_w1_p: 'WAV, AIFF, FLAC, MP3 from Files, iCloud Drive or via AirDrop. Up to 9.1.6 (16 channels).',
+    lc_w2_h: 'Layout & preset',
+    lc_w2_p: 'Auto/ITU for standard multichannel, Film/DTS/Raw for special cases. Preset from 16 targets or Custom.',
+    lc_w3_h: 'ANALYZE → CORRECT',
+    lc_w3_p: 'Pass 1 measures integrated LUFS and max TP. Pass 2 writes with correction gain and TP limiter. Refine pass when deviation > 0.1 LU.',
+    lc_w4_h: 'Output to Files',
+    lc_w4_p: 'Corrected file lands in app Documents. Share via Files instantly — AirDrop, Mail, USB-C stick.',
+    lc_specs_label: 'Technical Details',
+    lc_specs_title: 'Built for Broadcast',
+    lc_specs_intro: 'Identical DSP engine to the desktop version. Sample-accurate, reproducible — every value verified against spec at the end of pass 2.',
+    lc_specs_dsp: 'Standards & DSP',
+    lc_specs_routing: 'Channels & Routing',
+    lc_specs_io: 'Platform & I/O',
+    lc_credo_label: 'What it is not',
+    lc_credo_title: 'Not a real-time meter.',
+    lc_credo_p: 'loudness CORRECT is an offline correction tool, not a live meter. It measures the whole file, plans the correction, writes new audio, verifies. If you need real-time loudness, get SATK broadcast METER. If you need to land a finished mix on the correct loudness corridor, get this one.',
+    f_manage: 'Manage License',
+    f_changelog: 'Changelog',
+    f_imprint_contact: 'Contact & Legal Notice',
+    f_terms: 'Terms',
+    f_refund: 'Right of Withdrawal',
+    f_privacy: 'Privacy Policy',
+    f_col_products: 'Products',
+    f_col_support: 'Support',
+    f_col_legal: 'Legal'
+  }
+};
+
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.getElementById('btnDE').classList.toggle('active', lang==='de');
+  document.getElementById('btnEN').classList.toggle('active', lang==='en');
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    if (t[k]) el.textContent = t[k];
+  });
+  try { localStorage.setItem('satk-lang', lang); } catch(e){}
+}
+
+try {
+  const saved = localStorage.getItem('satk-lang');
+  if (saved === 'en') setLang('en');
+} catch(e){}
+</script>
+
+</body>
+</html>

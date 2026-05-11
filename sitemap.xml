@@ -48,6 +48,24 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://satk.tech/broadcast-meter-ios</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://satk.tech/overdub-studio-ios</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://satk.tech/loudness-correct-ios</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
   <!-- Browser-Tools (kostenlos) -->
   <url>

@@ -16,3 +16,20 @@ dist/
 .env
 .env.*
 !.env.example
+
+# === SATK Security Baseline (Audit 2026-05-11) =============================
+# Lokale Secrets und Signing-Material — niemals committen.
+*.p8
+*.p12
+*.cer
+*.mobileprovision
+*.provisionprofile
+fastlane/.env
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+.appstoreconnect/
+.env
+.env.*
+# ===========================================================================

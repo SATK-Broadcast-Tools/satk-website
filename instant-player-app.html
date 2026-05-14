@@ -44,8 +44,9 @@
     "name": "Apple App Store",
     "price": "0.00",
     "priceCurrency": "EUR",
-    "availability": "https://schema.org/PreOrder",
-    "category": "Free Software"
+    "availability": "https://schema.org/InStock",
+    "category": "Free Software",
+    "url": "https://apps.apple.com/app/id6768668895"
   },
   "publisher": {
     "@type": "Organization",
@@ -134,6 +135,10 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .spec-col li{display:flex;align-items:center;gap:12px;font-size:11px;color:var(--tx);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .spec-col li:last-child{border-bottom:none}
 .spec-col li b{color:var(--ac);font-weight:500;flex:0 0 88px}
+
+.appstore-cta{margin:48px auto 0;text-align:center}
+.appstore-cta img.appstore-badge{height:50px;width:auto}
+.cta-note{margin-top:14px;font-size:11px;color:var(--mu);letter-spacing:.3px}
 
 footer{text-align:center;padding:72px 32px 48px;margin-top:96px;border-top:1px solid rgba(255,255,255,.03)}
 footer p{font-size:9px;color:var(--mu);letter-spacing:.3px}
@@ -374,6 +379,13 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
   <div class="section-label" data-i18n="ip_credo_label">Was es besonders macht</div>
   <h2 class="section-h2" data-i18n-html="ip_credo_title">Eine Show.<br>Eine Datei.</h2>
   <p class="section-intro" data-i18n="ip_credo_p">Der Unterschied zu generischen Soundboards ist das .satkip-Bundle: Manifest plus alle 24-Bit-WAVs in einer ZIP. Ein Theater-Abend, eine Podcast-Folge, ein Live-Set — komplett portabel. Vergiss den USB-Stick, vergiss „welche Audios gehören zu welcher Show", AirDrop einfach das Bundle und das Setup ist da, wo es sein muss.</p>
+
+  <div class="appstore-cta">
+    <a class="appstore-badge-link" data-app-id="6768668895" href="https://apps.apple.com/app/id6768668895" target="_blank" rel="noopener" aria-label="instant PLAYER im App Store">
+      <img class="appstore-badge" src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store laden">
+    </a>
+    <div class="cta-note" data-i18n="ip_cta_note">iPhone &amp; iPad · iOS 16+ · gratis · Universal-App, keine In-App-Käufe</div>
+  </div>
 </section>
 
 <footer>
@@ -467,6 +479,7 @@ const i18n = {
     ip_credo_label: 'Was es besonders macht',
     ip_credo_title: 'Eine Show.<br>Eine Datei.',
     ip_credo_p: 'Der Unterschied zu generischen Soundboards ist das .satkip-Bundle: Manifest plus alle 24-Bit-WAVs in einer ZIP. Ein Theater-Abend, eine Podcast-Folge, ein Live-Set — komplett portabel. Vergiss den USB-Stick, vergiss „welche Audios gehören zu welcher Show", AirDrop einfach das Bundle und das Setup ist da, wo es sein muss.',
+    ip_cta_note: 'iPhone & iPad · iOS 16+ · gratis · Universal-App, keine In-App-Käufe',
     f_shop: 'Shop',
     f_tools: 'Browser-Tools',
     f_manage: 'Lizenz verwalten',
@@ -544,6 +557,7 @@ const i18n = {
     ip_credo_label: 'What sets it apart',
     ip_credo_title: 'One show.<br>One file.',
     ip_credo_p: 'What separates it from generic soundboards is the .satkip bundle: manifest plus all 24-bit WAVs in one ZIP. A theatre night, a podcast episode, a live set — fully portable. Forget the USB stick, forget "which audio belongs to which show" — AirDrop the bundle and the setup is where it needs to be.',
+    ip_cta_note: 'iPhone & iPad · iOS 16+ · free · Universal app, no in-app purchases',
     f_shop: 'Shop',
     f_tools: 'Browser Tools',
     f_manage: 'Manage License',
@@ -574,6 +588,11 @@ function setLang(lang) {
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const k = el.dataset.i18nHtml;
     if (t[k]) el.innerHTML = t[k];
+  });
+  // App-Store-Badge sprachabhängig
+  document.querySelectorAll('img.appstore-badge').forEach(img => {
+    const src = lang==='en' ? img.dataset.srcEn : img.dataset.srcDe;
+    if (src) img.src = src;
   });
   try { localStorage.setItem('satk-lang', lang); } catch(e){}
 }

@@ -45,7 +45,7 @@
     "priceCurrency": "EUR",
     "availability": "https://schema.org/InStock",
     "category": "Software License",
-    "url": "https://apps.apple.com/de/app/id6768704949"
+    "url": "https://apps.apple.com/app/id6768704949"
   },
   "publisher": {
     "@type": "Organization",
@@ -355,7 +355,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
   <p class="section-intro" data-i18n="lc_credo_p">loudness CORRECT ist ein Offline-Korrektur-Tool, kein Live-Meter. Es misst die ganze Datei, plant die Korrektur, schreibt neu, verifiziert. Wer Echtzeit-Loudness braucht, nimmt SATK broadcast METER. Wer eine fertige Mischung auf den korrekten Lautheits-Korridor bringen will, nimmt das hier.</p>
 
   <div class="appstore-cta">
-    <a class="appstore-badge-link" data-app-id="6768704949" href="https://apps.apple.com/de/app/id6768704949" target="_blank" rel="noopener" aria-label="loudness CORRECT im App Store">
+    <a class="appstore-badge-link" data-app-id="6768704949" href="https://apps.apple.com/app/id6768704949" target="_blank" rel="noopener" aria-label="loudness CORRECT im App Store">
       <img class="appstore-badge" src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store laden">
     </a>
     <div class="cta-note" data-i18n="lc_cta_note">iPadOS 16+ · 19,99 € · Einmal kaufen, Familienfreigabe inklusive</div>
@@ -551,23 +551,6 @@ try {
   const saved = localStorage.getItem('satk-lang');
   if (saved === 'en') setLang('en');
 } catch(e){}
-
-// Localize App-Store-URLs nach Browser-Locale (de-DE → de, en-GB → gb, en-US → us)
-(function localizeAppStoreUrls() {
-  const langs = navigator.languages || [navigator.language || 'de-DE'];
-  let country = null;
-  for (const lang of langs) {
-    const m = lang.match(/-([a-z]{2})$/i);
-    if (m) { country = m[1].toLowerCase(); break; }
-  }
-  if (!country) {
-    const primary = (navigator.language || 'de').split('-')[0].toLowerCase();
-    country = primary === 'en' ? 'us' : primary;
-  }
-  document.querySelectorAll('a[data-app-id]').forEach(a => {
-    a.href = `https://apps.apple.com/${country}/app/id${a.dataset.appId}`;
-  });
-})();
 </script>
 
 </body>

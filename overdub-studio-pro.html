@@ -95,7 +95,9 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 
 .hero-img-wrap{max-width:1120px;margin:32px auto 0;padding:0 32px}
 .hero-img{width:100%;border:1px solid var(--bd);border-radius:10px;display:block;box-shadow:0 30px 80px rgba(0,0,0,.5)}
-.prompter-figure{max-width:720px;margin:48px auto 0;padding:0 32px}
+.prompter-figure{max-width:720px;margin:64px auto 0;padding:0 32px;text-align:center}
+.prompter-figure .prompter-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:10px}
+.prompter-figure .prompter-sub{font-size:12px;color:var(--mu2);line-height:1.7;letter-spacing:.2px;max-width:540px;margin:0 auto 24px}
 .prompter-figure img{width:100%;border:1px solid var(--bd);border-radius:8px;display:block;box-shadow:0 20px 50px rgba(0,0,0,.4)}
 .prompter-figure figcaption{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mu);text-align:center;margin-top:14px}
 
@@ -249,8 +251,10 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
   </div>
 
   <figure class="prompter-figure">
+    <div class="prompter-eyebrow" data-i18n="od_prompter_eyebrow">Smart Prompter · Detailansicht</div>
+    <p class="prompter-sub" data-i18n="od_prompter_sub">Skript links, Video rechts. Der Text scrollt automatisch mit deiner Stimme – du behältst die Leseposition, ohne mit der Maus zu navigieren.</p>
     <img src="img-overdub-studio-prompter.webp" loading="lazy" alt="SATK Overdub Studio — Prompter-Ansicht: Skript links, Video rechts, Text läuft mit der Stimme mit">
-    <figcaption data-i18n="od_prompter_caption">Prompter-Ansicht — Text läuft mit deiner Stimme</figcaption>
+    <figcaption data-i18n="od_prompter_caption">Aufgenommen im SATK Overdub Studio — macOS-Version</figcaption>
   </figure>
 </section>
 
@@ -384,7 +388,9 @@ const i18n = {
     od_f5_p: 'Video laden, abspielen, vertonen. MXF bleibt beim Import und Export vollständig erhalten. Alles bleibt synchron, der Timecode ist immer im Blick.',
     od_f6_h: 'Aufnehmen ohne Umwege',
     od_f6_p: 'Pre-Roll, klare Pegelanzeige und direktes Monitoring – so einfach wie ein Take im Studio.',
-    od_prompter_caption: 'Prompter-Ansicht — Text läuft mit deiner Stimme',
+    od_prompter_eyebrow: 'Smart Prompter · Detailansicht',
+    od_prompter_sub: 'Skript links, Video rechts. Der Text scrollt automatisch mit deiner Stimme – du behältst die Leseposition, ohne mit der Maus zu navigieren.',
+    od_prompter_caption: 'Aufgenommen im SATK Overdub Studio — macOS-Version',
     od_wf_label: 'Funktionsweise',
     od_wf_title: 'In 4 Schritten zum fertigen Beitrag',
     od_w1_h: 'Video laden',
@@ -443,7 +449,9 @@ const i18n = {
     od_f5_p: 'Load video, play, voice it. MXF stays fully intact on import and export. Everything stays in sync, timecode always visible.',
     od_f6_h: 'Recording without detours',
     od_f6_p: 'Pre-roll, clear level meter, direct monitoring — as simple as a take in the studio.',
-    od_prompter_caption: 'Prompter view — script scrolls with your voice',
+    od_prompter_eyebrow: 'Smart Prompter · Detail view',
+    od_prompter_sub: 'Script on the left, video on the right. The text scrolls with your voice — keep your reading position without touching the mouse.',
+    od_prompter_caption: 'Captured in SATK Overdub Studio — macOS version',
     od_wf_label: 'How it works',
     od_wf_title: 'From video to finished segment in 4 steps',
     od_w1_h: 'Load video',

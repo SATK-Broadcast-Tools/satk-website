@@ -16,7 +16,9 @@
 /audio-editor.html /audio-editor 301
 /auto-mixer.html /auto-mixer 301
 /easy-editor.html /easy-editor 301
-/broadcast-meter.html /broadcast-meter 301
+# Alte Broadcast-Meter-Standalone-Page → Pro-Marketing-Page (Schutz vor alten Backlinks)
+/broadcast-meter.html /broadcast-meter-pro 301
+/broadcast-meter /broadcast-meter-pro 301
 /broadcast-meter-pro.html /broadcast-meter-pro 301
 /broadcast-meter-ios.html /broadcast-meter-ios 301
 /changelog.html /changelog 301

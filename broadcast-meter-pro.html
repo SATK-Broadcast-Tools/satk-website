@@ -145,7 +145,8 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .workflow-step p{font-size:11px;color:var(--mu2);line-height:1.7}
 
 /* ── Platform Compare ─────────── */
-.platform-table{width:100%;border-collapse:collapse;font-size:11px;background:var(--sf);border-radius:10px;overflow:hidden;border:1px solid var(--bd)}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:10px;border:1px solid var(--bd);background:var(--sf)}
+.platform-table{width:100%;min-width:560px;border-collapse:collapse;font-size:11px;background:var(--sf)}
 .platform-table th{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ac);padding:18px 14px;text-align:center;background:rgba(200,240,96,.04);border-bottom:1px solid var(--bd)}
 .platform-table th:first-child{text-align:left;color:var(--mu)}
 .platform-table td{padding:14px 14px;text-align:center;border-bottom:1px solid rgba(255,255,255,.03);color:var(--mu2);font-size:11px;letter-spacing:.2px}
@@ -232,6 +233,10 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 }
 @media(max-width:600px){
   .nav-links a:not(.nav-back){display:none}
+  .platform-table{font-size:10px;min-width:480px}
+  .platform-table th{padding:12px 8px;font-size:9px;letter-spacing:.15em}
+  .platform-table td{padding:10px 8px;font-size:10px}
+  .platform-table .price{font-size:11px}
 }
 
 /* ── Fade-in ─────────────────── */
@@ -370,6 +375,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
   <h2 class="section-h2" data-i18n="bm_pc_title">Eine Engine, drei Stufen</h2>
   <p class="section-intro" data-i18n="bm_pc_intro">Dieselbe DSP läuft auf jeder Plattform. Der Funktionsumfang skaliert mit dem Einsatzgebiet — vom mobilen Quick-Check bis zur Vollproduktion.</p>
 
+  <div class="table-scroll">
   <table class="platform-table">
     <thead>
       <tr>
@@ -397,6 +403,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
       <tr><td data-i18n="pc_pdf">PDF / CSV Reports</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
     </tbody>
   </table>
+  </div>
 
   <div class="ipad-frame">
     <img src="img-bm-ipad.webp" alt="Broadcast Meter — iPad App">

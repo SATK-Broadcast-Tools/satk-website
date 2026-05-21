@@ -38,6 +38,10 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .nav-links{display:flex;gap:32px;align-items:center}
 .nav-links a{color:var(--mu2);text-decoration:none;font-size:11px;letter-spacing:.5px;transition:color .2s}
 .nav-links a:hover{color:var(--tx)}
+.nav-platforms{display:flex;gap:2px;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:999px;padding:3px}
+.nav-platforms a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:999px;color:var(--mu2);text-decoration:none;transition:all .2s}
+.nav-platforms a.active{background:var(--ac);color:#0a0a0b}
+.nav-platforms a:hover:not(.active){color:var(--tx);background:rgba(255,255,255,.04)}
 .lang-sw{display:flex;align-items:center;gap:6px}
 .lang{font-size:10px;letter-spacing:1px;color:var(--mu);cursor:pointer;transition:color .2s;background:none;border:0;font-family:'DM Mono',monospace}
 .lang:hover{color:var(--tx)}
@@ -112,14 +116,18 @@ footer{padding:72px 48px 36px;margin-top:96px;border-top:1px solid rgba(255,255,
     <span class="nav-logo-mark">S<span class="nav-logo-accent">A</span>TK</span>
     <span class="nav-logo-sub">Sascha&rsquo;s Audio Tool Kit</span>
   </a>
+  <div class="nav-platforms">
+    <a href="/mac">Mac</a>
+    <a href="/ios">iOS</a>
+    <a href="/tools">Web</a>
+  </div>
   <div class="nav-links">
-    <a href="/" data-i18n="nav_home">Startseite</a>
-    <a href="/changelog" data-i18n="nav_changelog">Changelog</a>
-    <a href="/support" data-i18n="nav_support">Support</a>
+    <a href="/support" data-i18n="nav_info">Supportanfrage</a>
+    <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
     <div class="lang-sw">
-      <button class="lang active" id="btnDE" onclick="setLang('de')">DE</button>
+      <span class="lang active" id="btnDE" onclick="setLang('de')">DE</span>
       <span class="lang-sep">·</span>
-      <button class="lang" id="btnEN" onclick="setLang('en')">EN</button>
+      <span class="lang" id="btnEN" onclick="setLang('en')">EN</span>
     </div>
   </div>
 </nav>

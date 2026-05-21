@@ -31,7 +31,9 @@
 /loudness-correct.html /loudness-correct 301
 /loudness-correct-ios.html /loudness-correct-ios 301
 /manage-license.html /manage-license 301
-/overdub-studio.html /overdub-studio 301
+# Alte Overdub-Studio-Prototyp-Page → Pro-Marketing-Page (Schutz vor alten Backlinks)
+/overdub-studio.html /overdub-studio-pro 301
+/overdub-studio /overdub-studio-pro 301
 /overdub-studio-pro.html /overdub-studio-pro 301
 /overdub-studio-ios.html /overdub-studio-ios 301
 /podcast-recorder /tools 301

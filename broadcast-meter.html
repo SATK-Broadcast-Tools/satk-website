@@ -29,6 +29,9 @@ header{flex-shrink:0;padding:12px 22px 10px;border-bottom:1px solid var(--bd);di
 .hdr-green{font-family:'Syne',sans-serif;font-size:clamp(11px,1.2vw,14px);font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);line-height:1;}
 .hdr-tag{font-size:9px;letter-spacing:.1em;color:var(--mu);margin-top:5px;}
 .hdr-right{display:flex;align-items:center;gap:7px;flex-wrap:wrap;}@media(max-width:700px){.hdr-status{display:none;}}
+.hdr-back{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--mu);text-decoration:none;padding:2px 0;margin-bottom:4px;transition:color .15s;}
+.hdr-back:hover{color:var(--ac);}
+@media (max-width:540px){.hdr-back{font-size:8px;}}
 .hdr-status{font-size:9px;letter-spacing:.06em;color:var(--mu);min-width:120px;text-align:right;}
 .hdr-status.on{color:var(--ac);}
 .cbtn{background:none;border:1px solid var(--bd);color:var(--mu);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.07em;text-transform:uppercase;padding:5px 12px;cursor:pointer;transition:all .12s;display:flex;align-items:center;gap:5px;white-space:nowrap;}
@@ -259,6 +262,7 @@ window.addEventListener('message',function(e){if(e.data&&e.data.type==='satk-sus
 
 <header>
   <div class="hdr-brand">
+    <a class="hdr-back" href="/mac" aria-label="Zurück zum SATK-Shop (Mac Apps)">← Zurück zum Shop</a>
     <div class="hdr-top">
       <span class="hdr-main">Broadcast</span>
       <span class="hdr-green">Meter</span>

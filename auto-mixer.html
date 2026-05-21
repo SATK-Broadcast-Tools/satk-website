@@ -266,6 +266,15 @@ input[type=range]::-moz-range-thumb{
 .hdr-back{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--mu);text-decoration:none;padding:2px 0;margin-bottom:4px;transition:color .15s;}
 .hdr-back:hover{color:var(--ac);}
 @media (max-width:540px){.hdr-back{font-size:8px;}}
+.hdr-right{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.hdr-right a{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--mu);text-decoration:none;transition:color .15s;}
+.hdr-right a:hover{color:var(--ac);}
+.lang-sw{display:inline-flex;align-items:center;gap:4px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.07em;}
+.lang-sw .lang{color:var(--mu);cursor:pointer;transition:color .15s;}
+.lang-sw .lang:hover{color:var(--ac);}
+.lang-sw .lang.active{color:var(--ac);}
+.lang-sw .lang-sep{color:var(--bd);}
+@media (max-width:540px){.hdr-right{gap:8px;}.hdr-right a,.lang-sw{font-size:8px;}}
 
 /* ── Site-Footer (Impressum/Datenschutz, TMG/DSGVO) ── */
 .site-footer{flex-shrink:0;background:var(--sf);border-top:1px solid var(--bd);}
@@ -335,6 +344,18 @@ window.addEventListener('message', function(e){
     try{ if(previewSrc){previewSrc.stop();previewSrc=null;} }catch(e){}
   }
 });
+function setLang(lang){
+  try{localStorage.setItem('satk-lang',lang);}catch(e){}
+  document.documentElement.lang=lang;
+  var de=document.getElementById('btnDE'),en=document.getElementById('btnEN');
+  if(de)de.classList.toggle('active',lang==='de');
+  if(en)en.classList.toggle('active',lang==='en');
+}
+(function(){
+  var stored=null;try{stored=localStorage.getItem('satk-lang');}catch(e){}
+  var lang=stored||((navigator.language||'').toLowerCase().startsWith('en')?'en':'de');
+  setLang(lang);
+})();
 </script>
 
 <div class="app">
@@ -347,6 +368,15 @@ window.addEventListener('message', function(e){
       <span class="hdr-green">Mixer</span>
     </div>
     <div class="hdr-tag">Voice + Beitrag laden, automatisch ducken &middot; Side-Chain &middot; EBU R128 &middot; Broadcast-Qualität</div>
+  </div>
+  <div class="hdr-right">
+    <a href="/support" data-i18n="nav_info">Supportanfrage</a>
+    <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
+    <div class="lang-sw">
+      <span class="lang active" id="btnDE" onclick="setLang('de')">DE</span>
+      <span class="lang-sep">·</span>
+      <span class="lang" id="btnEN" onclick="setLang('en')">EN</span>
+    </div>
   </div>
 </header>
 

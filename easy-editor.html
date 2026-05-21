@@ -86,7 +86,11 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .lang.active{color:var(--ac)}
 .lang-sep{color:var(--mu);font-size:10px}
 
-.product-hero{text-align:center;padding:80px 32px 32px;max-width:920px;margin:0 auto}
+.product-back{max-width:1120px;margin:0 auto;padding:18px 32px 0}
+.product-back a{display:inline-flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--mu2);text-decoration:none;text-transform:uppercase;transition:color .15s}
+.product-back a:hover{color:var(--ac)}
+@media(max-width:600px){.product-back{padding:14px 20px 0}.product-back a{font-size:9px}}
+.product-hero{text-align:center;padding:40px 32px 32px;max-width:920px;margin:0 auto}
 .product-eyebrow{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.4em;color:var(--ac);text-transform:uppercase;margin-bottom:18px}
 .product-hero h1{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:800;letter-spacing:-1px;line-height:1.05;text-transform:uppercase;margin-bottom:18px}
 .product-hero .tagline{color:var(--mu2);font-size:14px;letter-spacing:.3px;line-height:1.7;max-width:640px;margin:0 auto}
@@ -207,6 +211,10 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
     </div>
   </div>
 </nav>
+
+<div class="product-back">
+  <a href="/ios" data-i18n="nav_back">← Zurück zum Shop</a>
+</div>
 
 <section class="product-hero">
   <div class="product-eyebrow" data-i18n="ee_eyebrow">iPhone · iPad · iOS App</div>

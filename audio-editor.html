@@ -36,6 +36,15 @@ header{flex-shrink:0;padding:10px 18px 8px;border-bottom:1px solid var(--bd);dis
 .hdr-green{font-family:'Syne',sans-serif;font-size:clamp(9px,1vw,12px);font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);}
 .hdr-tag{font-size:8px;letter-spacing:.08em;color:var(--mu);margin-top:3px;}
 .hdr-right{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.hdr-meta{display:inline-flex;align-items:center;gap:10px;padding-right:10px;margin-right:4px;border-right:1px solid var(--bd);}
+.hdr-meta a{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--mu);text-decoration:none;transition:color .15s;}
+.hdr-meta a:hover{color:var(--ac);}
+.lang-sw{display:inline-flex;align-items:center;gap:4px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.07em;}
+.lang-sw .lang{color:var(--mu);cursor:pointer;transition:color .15s;}
+.lang-sw .lang:hover{color:var(--ac);}
+.lang-sw .lang.active{color:var(--ac);}
+.lang-sw .lang-sep{color:var(--bd);}
+@media (max-width:540px){.hdr-meta{gap:8px;padding-right:6px;}.hdr-meta a,.lang-sw{font-size:8px;}}
 
 /* ── Buttons ── */
 .btn{background:none;border:1px solid var(--bd);color:var(--mu);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.07em;text-transform:uppercase;padding:5px 11px;cursor:pointer;transition:all .12s;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;}
@@ -258,6 +267,18 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 window.addEventListener('message',function(e){
   if(e.data&&e.data.type==='satk-suspend-audio'){try{stopPlay();}catch(e){}}
 });
+function setLang(lang){
+  try{localStorage.setItem('satk-lang',lang);}catch(e){}
+  document.documentElement.lang=lang;
+  var de=document.getElementById('btnDE'),en=document.getElementById('btnEN');
+  if(de)de.classList.toggle('active',lang==='de');
+  if(en)en.classList.toggle('active',lang==='en');
+}
+(function(){
+  var stored=null;try{stored=localStorage.getItem('satk-lang');}catch(e){}
+  var lang=stored||((navigator.language||'').toLowerCase().startsWith('en')?'en':'de');
+  setLang(lang);
+})();
 </script>
 <div class="app">
 
@@ -279,6 +300,15 @@ window.addEventListener('message',function(e){
     <div class="hdr-tag">Wellenform laden, Bereich markieren, schneiden &middot; Zoom &middot; Fade In/Out &middot; R128-Export</div>
   </div>
   <div class="hdr-right">
+    <div class="hdr-meta">
+      <a href="/support" data-i18n="nav_info">Supportanfrage</a>
+      <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
+      <div class="lang-sw">
+        <span class="lang active" id="btnDE" onclick="setLang('de')">DE</span>
+        <span class="lang-sep">·</span>
+        <span class="lang" id="btnEN" onclick="setLang('en')">EN</span>
+      </div>
+    </div>
     <div class="timecode" id="tcNow">0:00:00<span>.</span>000</div>
     <div class="tc-dur" id="tcDur">/ —</div>
     <button class="btn primary" onclick="document.getElementById('fileIn').click()">

@@ -185,6 +185,43 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
     </div>
   </div>
 
+  <!-- ── Overdub Studio ──────────── -->
+  <div class="product-block">
+    <div class="product-name">SATK Overdub Studio <span class="product-status" data-i18n="cl_st_live">Live</span></div>
+
+    <div class="release">
+      <span class="release-version">1.0.2</span><span class="release-date">2026-05-22</span>
+      <div class="release-title" data-i18n="cl_od_102_t">Polish-Release: Save/Open, kleine Bildschirme, Export-Korrektheit</div>
+      <ul class="release-list">
+        <li data-i18n="cl_od_102_1">Save/Open — gespeicherte Sessions laden wieder zuverlässig (Schema-Inkonsistenz behoben), Dialog merkt sich den letzten Ordner, .satkproj-Bundles erscheinen direkt als auswählbare Items.</li>
+        <li data-i18n="cl_od_102_2">Export — Voice-Stem-WAV hat jetzt die volle Clip-Länge (statt nur Voice-Take-Dauer), MXF wird nicht mehr auf die längste Sprachaufnahme gecapt.</li>
+        <li data-i18n="cl_od_102_3">Kleine Bildschirme (13"-MacBooks) — Header-Subtitle skaliert ohne Überlappung, Voice 2 Lane vollständig sichtbar, MIXTYP-Slider 78 px breiter, Prompter-Schrift adaptiv (22/25/28 pt), Mindest-Fenstergröße 1100×700.</li>
+        <li data-i18n="cl_od_102_4">Timeline & Prompter — Scrollbar reicht bis zum Video-Ende, Bed-Region-Kontextmenü wirkt sofort sichtbar, Fullscreen + REC verschiebt die App nicht mehr seitlich, Prompter läuft nur noch bei echter Sprache (nicht mehr bei Lüftergeräuschen oder Tippen).</li>
+      </ul>
+    </div>
+
+    <div class="release older">
+      <span class="release-version">1.0.1</span><span class="release-date">2026-05-21</span>
+      <div class="release-title" data-i18n="cl_od_101_t">Prompter-Polish &amp; On-Device-Speech-Recognition</div>
+      <ul class="release-list">
+        <li data-i18n="cl_od_101_1">Prompter-Scrolling per Maus wiederhergestellt, Text-Umbruch garantiert vollständige Sichtbarkeit auch bei sehr langen Wörtern.</li>
+        <li data-i18n="cl_od_101_2">Speech-Recognition läuft on-device (kein Netz-Roundtrip mehr), Partials triggern den Auto-Advance synchroner zur Stimme.</li>
+      </ul>
+    </div>
+
+    <div class="release older">
+      <span class="release-version">1.0.0</span><span class="release-date">2026-05-20</span>
+      <div class="release-title" data-i18n="cl_od_100_t">Erste öffentliche Direct-Sales-Version</div>
+      <ul class="release-list">
+        <li data-i18n="cl_od_100_1">DAW-Style Timeline mit Multi-Take-Aufnahmen — Split, Trim, Drag, Strip-Silence, Bed-Region-Ducking, alles sample-genau am Video-Sync.</li>
+        <li data-i18n="cl_od_100_2">AutoMix in einem Klick — Voice Channel Strip (HP80, EQ, Comp, Sat) + Ducker (-4 dB, 150 ms Release) + Bus Glue + R128-Normalisierung auf −23 LUFS.</li>
+        <li data-i18n="cl_od_100_3">Smart Prompter mit On-Device Speech Recognition — der Text-Highlight folgt automatisch der Sprache, kein manuelles Scrollen während der Aufnahme.</li>
+        <li data-i18n="cl_od_100_4">Export — Stereo-WAV (Mix + Voice-Stem), Video-Mux mit MXF-Round-Trip für Broadcast-Workflows, MP4 für Streaming.</li>
+        <li data-i18n="cl_od_100_5">Lizenz-Architektur identisch zum Broadcast Meter — Plain-File-Lizenz-Speicher (kein Keychain-Prompt), 7-Tage-Trial ohne Account, Watermarking der Käufer-E-Mail im About-Window.</li>
+      </ul>
+    </div>
+  </div>
+
   <!-- ╔═════════════════════════════════════════════════════════════
        LC 1.0.0 RELEASE-BLOCK (vorbereitet, einkommentieren wenn live)
        Schritte zum Aktivieren:
@@ -213,12 +250,6 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
   ═════════════════════════════════════════════════════════════ -->
 
   <h2 data-i18n="cl_h_roadmap">Was als Nächstes kommt</h2>
-
-  <!-- ── Overdub Studio ──────────── -->
-  <div class="product-block">
-    <div class="product-name">SATK Overdub Studio <span class="product-status soon" data-i18n="cl_st_soon">In Entwicklung</span></div>
-    <p class="roadmap-line" data-i18n="cl_od_p"><strong>Video-Sync · Auto-Edit · AutoMix R128 · Smart Prompter · MXF-Round-Trip.</strong> Beta-Version befindet sich in der internen Erprobung. Veröffentlichung geplant sobald die Stabilitätstests abgeschlossen sind.</p>
-  </div>
 
   <!-- ── Loudness Correct (in Roadmap-Block — entfernen wenn LC live geht) ──────────── -->
   <div class="product-block">
@@ -286,7 +317,20 @@ const i18n = {
     cl_lc_100_3: '3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor — ohne Pumpen, ohne Phasen-Artefakte.',
     cl_lc_100_4: 'Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum SATK Broadcast Meter — Messen und Korrigieren mit derselben Wahrheit.',
     */
-    cl_od_p: '<strong>Video-Sync · Auto-Edit · AutoMix R128 · Smart Prompter · MXF-Round-Trip.</strong> Beta-Version befindet sich in der internen Erprobung. Veröffentlichung geplant sobald die Stabilitätstests abgeschlossen sind.',
+    cl_od_102_t: 'Polish-Release: Save/Open, kleine Bildschirme, Export-Korrektheit',
+    cl_od_102_1: 'Save/Open — gespeicherte Sessions laden wieder zuverlässig (Schema-Inkonsistenz behoben), Dialog merkt sich den letzten Ordner, .satkproj-Bundles erscheinen direkt als auswählbare Items.',
+    cl_od_102_2: 'Export — Voice-Stem-WAV hat jetzt die volle Clip-Länge (statt nur Voice-Take-Dauer), MXF wird nicht mehr auf die längste Sprachaufnahme gecapt.',
+    cl_od_102_3: 'Kleine Bildschirme (13"-MacBooks) — Header-Subtitle skaliert ohne Überlappung, Voice 2 Lane vollständig sichtbar, MIXTYP-Slider 78 px breiter, Prompter-Schrift adaptiv (22/25/28 pt), Mindest-Fenstergröße 1100×700.',
+    cl_od_102_4: 'Timeline & Prompter — Scrollbar reicht bis zum Video-Ende, Bed-Region-Kontextmenü wirkt sofort sichtbar, Fullscreen + REC verschiebt die App nicht mehr seitlich, Prompter läuft nur noch bei echter Sprache (nicht mehr bei Lüftergeräuschen oder Tippen).',
+    cl_od_101_t: 'Prompter-Polish & On-Device-Speech-Recognition',
+    cl_od_101_1: 'Prompter-Scrolling per Maus wiederhergestellt, Text-Umbruch garantiert vollständige Sichtbarkeit auch bei sehr langen Wörtern.',
+    cl_od_101_2: 'Speech-Recognition läuft on-device (kein Netz-Roundtrip mehr), Partials triggern den Auto-Advance synchroner zur Stimme.',
+    cl_od_100_t: 'Erste öffentliche Direct-Sales-Version',
+    cl_od_100_1: 'DAW-Style Timeline mit Multi-Take-Aufnahmen — Split, Trim, Drag, Strip-Silence, Bed-Region-Ducking, alles sample-genau am Video-Sync.',
+    cl_od_100_2: 'AutoMix in einem Klick — Voice Channel Strip (HP80, EQ, Comp, Sat) + Ducker (-4 dB, 150 ms Release) + Bus Glue + R128-Normalisierung auf −23 LUFS.',
+    cl_od_100_3: 'Smart Prompter mit On-Device Speech Recognition — der Text-Highlight folgt automatisch der Sprache, kein manuelles Scrollen während der Aufnahme.',
+    cl_od_100_4: 'Export — Stereo-WAV (Mix + Voice-Stem), Video-Mux mit MXF-Round-Trip für Broadcast-Workflows, MP4 für Streaming.',
+    cl_od_100_5: 'Lizenz-Architektur identisch zum Broadcast Meter — Plain-File-Lizenz-Speicher (kein Keychain-Prompt), 7-Tage-Trial ohne Account, Watermarking der Käufer-E-Mail im About-Window.',
     cl_lc_p: '<strong>Offline R128-Korrektur · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6.</strong> Engine ist funktionsfähig, derzeit Feinarbeit am Preset-System und der Batch-Pipeline.',
     cl_note: 'Hinweis: Wir veröffentlichen erst, wenn ein Tool zuverlässig im Workflow läuft — keine fixen Termine, keine Vorbestellungen. Wenn du benachrichtigt werden möchtest sobald ein Tool live geht, schreib eine kurze Mail an <a href="mailto:info@satk.tech?subject=Launch-Notification">info@satk.tech</a> mit dem Tool-Namen.',
     f_shop: 'Shop', f_support: 'Support', f_manage: 'Lizenz verwalten', f_terms: 'AGB', f_refund: 'Widerruf', f_imprint: 'Impressum', f_privacy: 'Datenschutz',
@@ -323,7 +367,20 @@ const i18n = {
     cl_lc_100_3: '3-band LRA processor (Linkwitz-Riley 4th order with perfect reconstruction) pulls every LRA into the broadcast corridor — no pumping, no phase artefacts.',
     cl_lc_100_4: 'Mono to 9.1.6 with BS.1770-compliant LFE weighting. DSP engine byte-identical to SATK Broadcast Meter — measure and correct with the same truth.',
     */
-    cl_od_p: '<strong>Video sync · Auto Edit · AutoMix R128 · Smart Prompter · MXF round-trip.</strong> Beta version is in internal testing. Release planned once stability checks are complete.',
+    cl_od_102_t: 'Polish release: save/open, small screens, export-length correctness',
+    cl_od_102_1: 'Save/open — saved sessions load reliably again (schema inconsistency fixed), dialog remembers the last folder, .satkproj bundles appear directly as selectable items.',
+    cl_od_102_2: 'Export — voice-stem WAV now has the full clip length (instead of only the voice-take duration), MXF is no longer capped to the longest voice recording.',
+    cl_od_102_3: 'Small screens (13" MacBooks) — header subtitle scales without overlap, Voice 2 lane fully visible, MIXTYP slider 78 px wider, prompter font adaptive (22/25/28 pt), minimum window size 1100×700.',
+    cl_od_102_4: 'Timeline & prompter — scrollbar reaches the end of the video, bed-region context menu takes effect immediately, fullscreen + REC no longer slides the app sideways, prompter only runs on actual speech (no more fan noise or typing triggers).',
+    cl_od_101_t: 'Prompter polish & on-device speech recognition',
+    cl_od_101_1: 'Prompter scrolling via mouse restored, text wrapping guarantees full visibility even for very long words.',
+    cl_od_101_2: 'Speech recognition runs on-device (no network round-trip), partials trigger auto-advance more synchronously with the voice.',
+    cl_od_100_t: 'First public direct-sales release',
+    cl_od_100_1: 'DAW-style timeline with multi-take recording — split, trim, drag, strip-silence, bed-region ducking, all sample-accurate to the video sync.',
+    cl_od_100_2: 'One-click AutoMix — voice channel strip (HP80, EQ, comp, sat) + ducker (-4 dB, 150 ms release) + bus glue + R128 normalisation to −23 LUFS.',
+    cl_od_100_3: 'Smart Prompter with on-device speech recognition — the text highlight follows the voice automatically, no manual scrolling during recording.',
+    cl_od_100_4: 'Export — stereo WAV (mix + voice stem), video mux with MXF round-trip for broadcast workflows, MP4 for streaming.',
+    cl_od_100_5: 'License architecture identical to Broadcast Meter — plain-file license storage (no Keychain prompt), 7-day trial without account, buyer email watermarked in the About window.',
     cl_lc_p: '<strong>Offline R128 correction · 16 delivery presets · verify-and-refine · mono to 9.1.6.</strong> Engine is functional, currently fine-tuning the preset system and batch pipeline.',
     cl_note: 'Note: We release only when a tool runs reliably in the workflow — no fixed dates, no pre-orders. If you want to be notified when a tool goes live, send a short email to <a href="mailto:info@satk.tech?subject=Launch-Notification">info@satk.tech</a> with the tool name.',
     f_shop: 'Shop', f_support: 'Support', f_manage: 'Manage License', f_terms: 'Terms', f_refund: 'Refund', f_imprint: 'Legal', f_privacy: 'Privacy',

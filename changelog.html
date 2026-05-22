@@ -190,6 +190,17 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
     <div class="product-name">SATK Overdub Studio <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
     <div class="release">
+      <span class="release-version">1.0.3</span><span class="release-date">2026-05-22</span>
+      <div class="release-title" data-i18n="cl_od_103_t">Polish-Release: Take-Edit-UX und Preroll-Visual</div>
+      <ul class="release-list">
+        <li data-i18n="cl_od_103_1">Auto-Scroll beim Take-Drag — beim Verschieben oder Trimmen scrollt die Timeline jetzt automatisch mit, sobald der Cursor an den linken oder rechten Rand kommt (DAW-Standard wie Pro Tools / Logic).</li>
+        <li data-i18n="cl_od_103_2">Preroll-Countdown auf Intel und iPad wiederhergestellt — der Countdown war auf Geräten mit geladenem Video unsichtbar, weil AVPlayerLayer auf macOS und iOS den separaten Overlay überdeckte.</li>
+        <li data-i18n="cl_od_103_3">Neue Preroll-Anzeige: der Timecode zählt jetzt negativ runter (-00:00:04:00 → -00:00:01:00) und ist rot, schaltet beim Aufnahme-Start automatisch auf Weiß. Pro-Tools-/Avid-Standard "TC counts down through zero".</li>
+        <li data-i18n="cl_od_103_4">Overdub-Preroll zeigt korrekt 4 Sekunden vor — vorher startete der Preroll beim Overdub-Ansetzen mitten im Video entweder verkürzt oder gar nicht visuell.</li>
+      </ul>
+    </div>
+
+    <div class="release older">
       <span class="release-version">1.0.2</span><span class="release-date">2026-05-22</span>
       <div class="release-title" data-i18n="cl_od_102_t">Polish-Release: Save/Open, kleine Bildschirme, Export-Korrektheit</div>
       <ul class="release-list">
@@ -317,6 +328,11 @@ const i18n = {
     cl_lc_100_3: '3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor — ohne Pumpen, ohne Phasen-Artefakte.',
     cl_lc_100_4: 'Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum SATK Broadcast Meter — Messen und Korrigieren mit derselben Wahrheit.',
     */
+    cl_od_103_t: 'Polish-Release: Take-Edit-UX und Preroll-Visual',
+    cl_od_103_1: 'Auto-Scroll beim Take-Drag — beim Verschieben oder Trimmen scrollt die Timeline jetzt automatisch mit, sobald der Cursor an den linken oder rechten Rand kommt (DAW-Standard wie Pro Tools / Logic).',
+    cl_od_103_2: 'Preroll-Countdown auf Intel und iPad wiederhergestellt — der Countdown war auf Geräten mit geladenem Video unsichtbar, weil AVPlayerLayer auf macOS und iOS den separaten Overlay überdeckte.',
+    cl_od_103_3: 'Neue Preroll-Anzeige: der Timecode zählt jetzt negativ runter (-00:00:04:00 → -00:00:01:00) und ist rot, schaltet beim Aufnahme-Start automatisch auf Weiß. Pro-Tools-/Avid-Standard "TC counts down through zero".',
+    cl_od_103_4: 'Overdub-Preroll zeigt korrekt 4 Sekunden vor — vorher startete der Preroll beim Overdub-Ansetzen mitten im Video entweder verkürzt oder gar nicht visuell.',
     cl_od_102_t: 'Polish-Release: Save/Open, kleine Bildschirme, Export-Korrektheit',
     cl_od_102_1: 'Save/Open — gespeicherte Sessions laden wieder zuverlässig (Schema-Inkonsistenz behoben), Dialog merkt sich den letzten Ordner, .satkproj-Bundles erscheinen direkt als auswählbare Items.',
     cl_od_102_2: 'Export — Voice-Stem-WAV hat jetzt die volle Clip-Länge (statt nur Voice-Take-Dauer), MXF wird nicht mehr auf die längste Sprachaufnahme gecapt.',
@@ -367,6 +383,11 @@ const i18n = {
     cl_lc_100_3: '3-band LRA processor (Linkwitz-Riley 4th order with perfect reconstruction) pulls every LRA into the broadcast corridor — no pumping, no phase artefacts.',
     cl_lc_100_4: 'Mono to 9.1.6 with BS.1770-compliant LFE weighting. DSP engine byte-identical to SATK Broadcast Meter — measure and correct with the same truth.',
     */
+    cl_od_103_t: 'Polish release: take edit UX and preroll visual',
+    cl_od_103_1: 'Auto-scroll while dragging takes — when moving or trimming a take, the timeline now scrolls automatically once the cursor hits the left or right edge (DAW standard like Pro Tools / Logic).',
+    cl_od_103_2: 'Preroll countdown restored on Intel and iPad — the countdown was invisible on devices with a loaded video because macOS and iOS AVPlayerLayer covered the separate overlay.',
+    cl_od_103_3: 'New preroll display: the timecode now counts down negatively (-00:00:04:00 → -00:00:01:00) in red, switching to white at recording start. Pro Tools / Avid standard "TC counts down through zero".',
+    cl_od_103_4: 'Overdub preroll correctly counts down a full 4 seconds — previously the preroll when starting an overdub mid-video either shortened or never showed visually.',
     cl_od_102_t: 'Polish release: save/open, small screens, export-length correctness',
     cl_od_102_1: 'Save/open — saved sessions load reliably again (schema inconsistency fixed), dialog remembers the last folder, .satkproj bundles appear directly as selectable items.',
     cl_od_102_2: 'Export — voice-stem WAV now has the full clip length (instead of only the voice-take duration), MXF is no longer capped to the longest voice recording.',

@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta name="description" content="Sprecher- und Beitrags-Spur automatisch mischen. Side-Chain-Ducking mit konfigurierbarem Attack &amp; Release, EBU-R128-konformer Output. Lokal im Browser, ohne Upload.">
-<meta name="keywords" content="Auto-Mixer, Automixer, Side-Chain Ducking, Sprecher Beitrag mischen, O-Ton Atmo, Radio Mix, TV Mix, Podcast Mix, EBU R128, automatisch mischen, Browser Mixer, kostenlos, kein Download">
+<meta name="keywords" content="auto MIXER, Automixer, Side-Chain Ducking, Sprecher Beitrag mischen, O-Ton Atmo, Radio Mix, TV Mix, Podcast Mix, EBU R128, automatisch mischen, Browser Mixer, kostenlos, kein Download">
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SATK Auto-Mixer · Side-Chain-Ducking, EBU R128 im Browser</title>
+<title>SATK auto MIXER · Side-Chain-Ducking, EBU R128 im Browser</title>
 <style>
 @import url('fonts.css');
 :root {
@@ -306,14 +306,14 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://satk.tech/auto-mixer.html">
-<meta property="og:title" content="SATK Auto-Mixer · Side-Chain-Ducking, EBU R128 im Browser">
+<meta property="og:title" content="SATK auto MIXER · Side-Chain-Ducking, EBU R128 im Browser">
 <meta property="og:description" content="Sprecher- und Beitrags-Spur automatisch mischen. Side-Chain-Ducking mit konfigurierbarem Attack &amp; Release, EBU-R128-konformer Output. Lokal im Browser, ohne Upload.">
 <meta property="og:image" content="https://satk.tech/og-image.png">
 <meta property="og:locale" content="de_DE">
 <meta property="og:site_name" content="SATK – Sascha&rsquo;s Audio Tool Kit">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SATK Auto-Mixer · Side-Chain-Ducking, EBU R128 im Browser">
+<meta name="twitter:title" content="SATK auto MIXER · Side-Chain-Ducking, EBU R128 im Browser">
 <meta name="twitter:description" content="Sprecher- und Beitrags-Spur automatisch mischen. Side-Chain-Ducking mit konfigurierbarem Attack &amp; Release, EBU-R128-konformer Output. Lokal im Browser, ohne Upload.">
 <meta name="twitter:image" content="https://satk.tech/og-image.png">
 
@@ -321,7 +321,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Auto-Mixer",
+  "name": "auto MIXER",
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Web Browser, iOS, Android",
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
@@ -624,7 +624,7 @@ function setLang(lang){
 
 <div class="toolbar">
   <div class="status-dot" id="statusDot"></div>
-  <span style="font-size:8px;color:var(--mu);">SATK Auto-Mixer · Side-Chain Ducking · EBU R128</span>
+  <span style="font-size:8px;color:var(--mu);">SATK auto MIXER · Side-Chain Ducking · EBU R128</span>
   <span class="tb-info" id="tbInfo">Beide Spuren laden, dann Mix erstellen</span>
 </div>
 </div><!-- /.app -->
@@ -888,7 +888,7 @@ function encodeWav(buf) {
   return new Blob([bytes],{type:'audio/wav'});
 }
 
-// ── Core: Auto-Mixer DSP ───────────────────────────────────────────────────────
+// ── Core: auto MIXER DSP ───────────────────────────────────────────────────────
 async function runMix() {
   const targetLufs = parseFloat(document.getElementById('slTarget').value);
   const duckDepthDb= parseFloat(document.getElementById('slDepth').value);
@@ -1671,7 +1671,7 @@ function showDurationWarning(buf, label) {
   const icon     = level === 'kritisch' ? '⚠' : 'ℹ';
   const msg      = level === 'kritisch'
     ? `${icon} ${label}: ${Math.floor(mins)} Min ist sehr lang — Verarbeitung kann mehrere Minuten dauern und viel RAM benötigen.`
-    : `${icon} ${label}: ${Math.floor(mins)} Min — Verarbeitung dauert ca. ${estSecs}s. Für lange Produktionen ggf. Audio Editor nutzen.`;
+    : `${icon} ${label}: ${Math.floor(mins)} Min — Verarbeitung dauert ca. ${estSecs}s. Für lange Produktionen ggf. audio EDITOR nutzen.`;
 
   // Alten Toast entfernen
   document.getElementById('satkDurWarn')?.remove();

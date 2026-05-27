@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <link rel="canonical" href="https://satk.tech/manage-license">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SATK Lizenz verwalten – Self-Service</title>
+<title>SATK Lizenz verwalten - Self-Service</title>
 <meta name="description" content="Self-Service-Portal für SATK-Lizenzen. Aktivierungs-Mail erneut senden, aktive Geräte einsehen, Geräte freigeben.">
 <meta name="robots" content="noindex,follow">
 
@@ -18,7 +18,7 @@
 <meta property="og:title" content="SATK Lizenz verwalten">
 <meta property="og:description" content="Self-Service-Portal für SATK-Lizenzen.">
 <meta property="og:url" content="https://satk.tech/manage-license">
-<meta property="og:site_name" content="SATK – Sascha&rsquo;s Audio Tool Kit">
+<meta property="og:site_name" content="SATK - Sascha's Audio Tool Kit">
 <meta property="og:locale" content="de_DE">
 
 <link href="fonts.css" rel="stylesheet">
@@ -29,8 +29,8 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--tx);font-family:'DM Mono',monospace;-webkit-font-smoothing:antialiased}
 
 nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
-  padding:16px 48px;background:rgba(10,10,11,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,255,255,.04)}
+ padding:16px 48px;background:rgba(10,10,11,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+ border-bottom:1px solid rgba(255,255,255,.04)}
 .nav-logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;line-height:1}
 .nav-logo-mark{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--ac);letter-spacing:4px}
 .nav-logo-accent{color:var(--tx)}
@@ -65,15 +65,15 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .form-row{margin-bottom:22px}
 .form-row:last-child{margin-bottom:0}
 .form-input{
-  width:100%;background:var(--bg);border:1px solid var(--bd);border-radius:6px;
-  padding:12px 14px;color:var(--tx);font-family:'DM Mono',monospace;font-size:13px;
-  letter-spacing:.2px;line-height:1.5;transition:border-color .2s
+ width:100%;background:var(--bg);border:1px solid var(--bd);border-radius:6px;
+ padding:12px 14px;color:var(--tx);font-family:'DM Mono',monospace;font-size:13px;
+ letter-spacing:.2px;line-height:1.5;transition:border-color .2s
 }
 .form-input:focus{outline:none;border-color:var(--ac)}
 .form-hint{font-size:10px;color:var(--mu);margin-top:6px;letter-spacing:.2px;line-height:1.5}
 .form-actions{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
 .btn{display:inline-block;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
-  padding:14px 28px;border-radius:6px;border:none;cursor:pointer;font-weight:500;transition:all .25s;text-decoration:none}
+ padding:14px 28px;border-radius:6px;border:none;cursor:pointer;font-weight:500;transition:all .25s;text-decoration:none}
 .btn-primary{background:var(--ac);color:#0a0a0b}
 .btn-primary:hover:not(:disabled){background:#d4f880;transform:scale(1.02)}
 .btn-secondary{background:transparent;color:var(--tx);border:1px solid var(--bd)}
@@ -100,7 +100,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .device-meta{font-size:10px;color:var(--mu);margin-top:2px}
 .device-empty{padding:14px 16px;background:var(--bg);border:1px dashed var(--bd);border-radius:6px;font-size:12px;color:var(--mu);text-align:center}
 .device-deactivate{background:transparent;color:var(--mu2);border:1px solid var(--bd);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.2px;text-transform:uppercase;
-  padding:7px 14px;border-radius:5px;cursor:pointer;transition:all .2s;flex-shrink:0}
+ padding:7px 14px;border-radius:5px;cursor:pointer;transition:all .2s;flex-shrink:0}
 .device-deactivate:hover:not(:disabled){border-color:var(--err);color:var(--err)}
 .device-deactivate:disabled{opacity:.4;cursor:not-allowed}
 
@@ -118,13 +118,13 @@ footer a:hover{color:var(--ac)}
 footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:3px;margin-bottom:10px}
 
 @media(max-width:600px){
-  nav{padding:14px 20px}
-  .nav-links{gap:14px}
-  .nav-links a:not(.nav-back){display:none}
-  .page-hero{padding:48px 20px 24px}
-  .section{padding:24px 20px 0}
-  .form-wrap,.result-wrap{padding:24px 22px}
-  .result-header{flex-direction:column}
+ nav{padding:14px 20px}
+ .nav-links{gap:14px}
+ .nav-links a:not(.nav-back){display:none}
+ .page-hero{padding:48px 20px 24px}
+ .section{padding:24px 20px 0}
+ .form-wrap,.result-wrap{padding:24px 22px}
+ .result-header{flex-direction:column}
 }
 /* ── Footer (3-spaltig) ──────────── */
 footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255,255,.06);background:#15161a;text-align:left}
@@ -145,429 +145,429 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-gqR5BLYgrx9BycGkSCWbt.js"></script>
 <script>
-  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
+ window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+ plausible.init()
 </script>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="nav-logo">
-    <span class="nav-logo-mark">S<span class="nav-logo-accent">A</span>TK</span>
-    <span class="nav-logo-sub">Sascha&rsquo;s Audio Tool Kit</span>
-  </a>
-  <div class="nav-platforms">
-    <a href="/mac">Mac</a>
-    <a href="/ios">iOS</a>
-    <a href="/tools">Web</a>
-  </div>
-  <div class="nav-links">
-    <a href="/support" data-i18n="nav_info">Supportanfrage</a>
-    <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
-    <div class="lang-sw">
-      <span class="lang active" id="btnDE" onclick="setLang('de')">DE</span>
-      <span class="lang-sep">·</span>
-      <span class="lang" id="btnEN" onclick="setLang('en')">EN</span>
-    </div>
-  </div>
+ <a href="/" class="nav-logo">
+ <span class="nav-logo-mark">S<span class="nav-logo-accent">A</span>TK</span>
+ <span class="nav-logo-sub">Sascha's Audio Tool Kit</span>
+ </a>
+ <div class="nav-platforms">
+ <a href="/mac">Mac</a>
+ <a href="/ios">iOS</a>
+ <a href="/tools">Web</a>
+ </div>
+ <div class="nav-links">
+ <a href="/support" data-i18n="nav_info">Supportanfrage</a>
+ <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
+ <div class="lang-sw">
+ <span class="lang active" id="btnDE" onclick="setLang('de')">DE</span>
+ <span class="lang-sep">·</span>
+ <span class="lang" id="btnEN" onclick="setLang('en')">EN</span>
+ </div>
+ </div>
 </nav>
 
 <section class="page-hero">
-  <div class="page-eyebrow" data-i18n="hero_eyebrow">Self-Service-Portal</div>
-  <h1 data-i18n="hero_title">Lizenz verwalten</h1>
-  <p class="tagline" data-i18n="hero_tagline">Aktivierungs-Mail erneut senden, aktivierte Geräte einsehen oder freigeben — alles ohne Support-Anfrage.</p>
+ <div class="page-eyebrow" data-i18n="hero_eyebrow">Self-Service-Portal</div>
+ <h1 data-i18n="hero_title">Lizenz verwalten</h1>
+ <p class="tagline" data-i18n="hero_tagline">Aktivierungs-Mail erneut senden, aktivierte Geräte einsehen oder freigeben, alles ohne Support-Anfrage.</p>
 </section>
 
 <section class="section">
 
-  <div id="errBanner" class="banner banner-error" style="display:none"></div>
-  <div id="okBanner"  class="banner banner-success" style="display:none"></div>
+ <div id="errBanner" class="banner banner-error" style="display:none"></div>
+ <div id="okBanner" class="banner banner-success" style="display:none"></div>
 
-  <!-- Lookup-Form (initial sichtbar) -->
-  <form class="form-wrap" id="lookupForm">
-    <div class="form-row">
-      <label class="form-label" for="email" data-i18n="label_email">E-Mail-Adresse aus dem Kauf</label>
-      <input class="form-input" type="email" id="email" name="email" required autocomplete="email">
-      <div class="form-hint" data-i18n="hint_email">Genau die Adresse, an die deine Lizenz-Mail gesendet wurde.</div>
-    </div>
-    <div class="form-row">
-      <label class="form-label" for="license_id" data-i18n="label_license">Lizenz-ID</label>
-      <input class="form-input" type="text" id="license_id" name="license_id" required placeholder="lic_..." pattern="lic_[a-f0-9]+" autocomplete="off">
-      <div class="form-hint" data-i18n="hint_license">Beginnt mit <code>lic_</code> — steht in der Lizenz-Mail.</div>
-    </div>
-    <div class="form-actions">
-      <button class="btn btn-primary" type="submit" id="btnLookup" data-i18n="btn_lookup">Lizenz anzeigen</button>
-    </div>
-  </form>
+ <!-- Lookup-Form (initial sichtbar) -->
+ <form class="form-wrap" id="lookupForm">
+ <div class="form-row">
+ <label class="form-label" for="email" data-i18n="label_email">E-Mail-Adresse aus dem Kauf</label>
+ <input class="form-input" type="email" id="email" name="email" required autocomplete="email">
+ <div class="form-hint" data-i18n="hint_email">Genau die Adresse, an die deine Lizenz-Mail gesendet wurde.</div>
+ </div>
+ <div class="form-row">
+ <label class="form-label" for="license_id" data-i18n="label_license">Lizenz-ID</label>
+ <input class="form-input" type="text" id="license_id" name="license_id" required placeholder="lic_..." pattern="lic_[a-f0-9]+" autocomplete="off">
+ <div class="form-hint" data-i18n="hint_license">Beginnt mit <code>lic_</code>, steht in der Lizenz-Mail.</div>
+ </div>
+ <div class="form-actions">
+ <button class="btn btn-primary" type="submit" id="btnLookup" data-i18n="btn_lookup">Lizenz anzeigen</button>
+ </div>
+ </form>
 
-  <!-- Result-Container (nach erfolgreichem Lookup sichtbar) -->
-  <div id="resultWrap" class="result-wrap" style="display:none">
-    <div class="result-header">
-      <div>
-        <div class="result-product" id="resProduct"></div>
-        <div class="result-licid" id="resLicId"></div>
-      </div>
-      <div class="result-status" id="resStatus"></div>
-    </div>
+ <!-- Result-Container (nach erfolgreichem Lookup sichtbar) -->
+ <div id="resultWrap" class="result-wrap" style="display:none">
+ <div class="result-header">
+ <div>
+ <div class="result-product" id="resProduct"></div>
+ <div class="result-licid" id="resLicId"></div>
+ </div>
+ <div class="result-status" id="resStatus"></div>
+ </div>
 
-    <div class="result-meta">
-      <div class="meta-item">
-        <div class="meta-label" data-i18n="meta_edition">Edition</div>
-        <div class="meta-value" id="resEdition">—</div>
-      </div>
-      <div class="meta-item">
-        <div class="meta-label" data-i18n="meta_max">Max. Geräte</div>
-        <div class="meta-value" id="resMax">—</div>
-      </div>
-      <div class="meta-item">
-        <div class="meta-label" data-i18n="meta_issued">Ausgestellt</div>
-        <div class="meta-value" id="resIssued">—</div>
-      </div>
-    </div>
+ <div class="result-meta">
+ <div class="meta-item">
+ <div class="meta-label" data-i18n="meta_edition">Edition</div>
+ <div class="meta-value" id="resEdition">-</div>
+ </div>
+ <div class="meta-item">
+ <div class="meta-label" data-i18n="meta_max">Max. Geräte</div>
+ <div class="meta-value" id="resMax">-</div>
+ </div>
+ <div class="meta-item">
+ <div class="meta-label" data-i18n="meta_issued">Ausgestellt</div>
+ <div class="meta-value" id="resIssued">-</div>
+ </div>
+ </div>
 
-    <div class="devices-h" data-i18n="devices_h">Aktivierte Geräte</div>
-    <div id="devicesList"></div>
+ <div class="devices-h" data-i18n="devices_h">Aktivierte Geräte</div>
+ <div id="devicesList"></div>
 
-    <div class="form-actions" style="margin-top:28px">
-      <button class="btn btn-primary" type="button" id="btnResend" data-i18n="btn_resend">Aktivierungs-Mail erneut senden</button>
-      <button class="btn btn-secondary" type="button" id="btnNew" data-i18n="btn_new">Andere Lizenz</button>
-    </div>
-  </div>
+ <div class="form-actions" style="margin-top:28px">
+ <button class="btn btn-primary" type="button" id="btnResend" data-i18n="btn_resend">Aktivierungs-Mail erneut senden</button>
+ <button class="btn btn-secondary" type="button" id="btnNew" data-i18n="btn_new">Andere Lizenz</button>
+ </div>
+ </div>
 
 </section>
 
 <footer>
-  <div class="footer-grid">
-    <div class="footer-col">
-      <h4 data-i18n="f_col_products">Produkte</h4>
-      <a href="/mac" data-i18n="nav_mac">Mac Apps</a>
-      <a href="/ios" data-i18n="nav_ios">iOS Apps</a>
-      <a href="/tools" data-i18n="nav_tools">Browser-Tools</a>
-    </div>
-    <div class="footer-col">
-      <h4 data-i18n="f_col_support">Support</h4>
-      <a href="/support" data-i18n="nav_info">Supportanfrage</a>
-      <a href="/manage-license" data-i18n="f_manage">Lizenz verwalten</a>
-      <a href="/changelog" data-i18n="f_changelog">Changelog</a>
-      <a href="/press" data-i18n="f_press">Presse</a>
-    </div>
-    <div class="footer-col">
-      <h4 data-i18n="f_col_legal">Rechtliches</h4>
-      <a href="/agb" data-i18n="f_terms">AGB</a>
-      <a href="/widerruf" data-i18n="f_refund">Widerruf</a>
-      <a href="/datenschutz" data-i18n="f_privacy">Datenschutz</a>
-      <a href="/impressum" data-i18n="f_imprint_contact">Kontakt &amp; Impressum</a>
-    </div>
-  </div>
-  <div class="footer-bar">
-    <span class="footer-brand">S<span class="footer-brand-accent">A</span>TK</span>
-    <span class="footer-meta">Sascha&rsquo;s Audio Toolkit · © 2026</span>
-  </div>
+ <div class="footer-grid">
+ <div class="footer-col">
+ <h4 data-i18n="f_col_products">Produkte</h4>
+ <a href="/mac" data-i18n="nav_mac">Mac Apps</a>
+ <a href="/ios" data-i18n="nav_ios">iOS Apps</a>
+ <a href="/tools" data-i18n="nav_tools">Browser-Tools</a>
+ </div>
+ <div class="footer-col">
+ <h4 data-i18n="f_col_support">Support</h4>
+ <a href="/support" data-i18n="nav_info">Supportanfrage</a>
+ <a href="/manage-license" data-i18n="f_manage">Lizenz verwalten</a>
+ <a href="/changelog" data-i18n="f_changelog">Changelog</a>
+ <a href="/press" data-i18n="f_press">Presse</a>
+ </div>
+ <div class="footer-col">
+ <h4 data-i18n="f_col_legal">Rechtliches</h4>
+ <a href="/agb" data-i18n="f_terms">AGB</a>
+ <a href="/widerruf" data-i18n="f_refund">Widerruf</a>
+ <a href="/datenschutz" data-i18n="f_privacy">Datenschutz</a>
+ <a href="/impressum" data-i18n="f_imprint_contact">Kontakt &amp; Impressum</a>
+ </div>
+ </div>
+ <div class="footer-bar">
+ <span class="footer-brand">S<span class="footer-brand-accent">A</span>TK</span>
+ <span class="footer-meta">Sascha's Audio Toolkit · © 2026</span>
+ </div>
 </footer>
 
 <script>
 const WORKER = 'https://satk-license-worker.weathered-lake-eea9.workers.dev';
 
 const i18n = {
-  de: {
-    nav_shop: 'Shop', nav_support: 'Support', nav_back: '← Zurück zum Shop',
-    hero_eyebrow: 'Self-Service-Portal',
-    hero_title: 'Lizenz verwalten',
-    hero_tagline: 'Aktivierungs-Mail erneut senden, aktivierte Geräte einsehen — alles ohne Support-Anfrage.',
-    label_email: 'E-Mail-Adresse aus dem Kauf',
-    hint_email: 'Genau die Adresse, an die deine Lizenz-Mail gesendet wurde.',
-    label_license: 'Lizenz-ID',
-    hint_license: 'Beginnt mit <code>lic_</code> — steht in der Lizenz-Mail.',
-    btn_lookup: 'Lizenz anzeigen',
-    btn_resend: 'Aktivierungs-Mail erneut senden',
-    btn_new: 'Andere Lizenz',
-    meta_edition: 'Edition', meta_max: 'Max. Geräte', meta_issued: 'Ausgestellt',
-    devices_h: 'Aktivierte Geräte',
-    err_not_found: 'Lizenz-ID und E-Mail passen nicht zusammen. Bitte beide Felder genau aus deiner Lizenz-Mail übernehmen.',
-    err_format: 'E-Mail oder Lizenz-ID hat ein ungültiges Format.',
-    err_revoked: 'Diese Lizenz wurde widerrufen (Refund oder Chargeback).',
-    err_rate_limit: 'Zu viele Anfragen — versuche es in {min} Minuten erneut.',
-    err_email: 'Mail-Versand fehlgeschlagen. Bitte später nochmal probieren oder info@satk.tech kontaktieren.',
-    err_network: 'Verbindung zum Server fehlgeschlagen. Bitte Internet-Verbindung prüfen.',
-    err_deactivate: 'Gerät konnte nicht freigegeben werden. Bitte später probieren.',
-    ok_resend: '✓ Aktivierungs-Mail erneut versendet an {email}. Schau auch im Spam-Ordner nach (neue Domain — Reputation baut sich noch auf).',
-    ok_deactivate: '✓ Gerät „{name}" freigegeben. Slot ist wieder verfügbar — du kannst die App jetzt auf einem anderen Mac aktivieren.',
-    status_active: 'Aktiv', status_revoked: 'Widerrufen',
-    devices_empty: 'Noch keine Geräte aktiviert — klicke den „Mit einem Klick aktivieren"-Button in der Lizenz-Mail.',
-    device_lastseen: 'Zuletzt aktiv',
-    btn_device_deactivate: 'Freigeben',
-    confirm_deactivate: 'Gerät „{name}" freigeben? Die Aktivierung wird vom Server entfernt — du kannst danach einen anderen Mac aktivieren. Die App auf diesem Gerät läuft bis zum nächsten Status-Check weiter.',
-    f_shop: 'Shop', f_support: 'Support', f_terms: 'AGB', f_refund: 'Widerruf', f_imprint: 'Impressum', f_privacy: 'Datenschutz',
-    nav_mac: 'Mac Apps',
-    nav_ios: 'iOS Apps',
-    nav_tools: 'Browser-Tools',
-    nav_info: 'Supportanfrage',
-    f_col_products: 'Produkte',
-    f_col_support: 'Support',
-    f_col_legal: 'Rechtliches',
-    f_changelog: 'Changelog',
-    f_manage: 'Lizenz verwalten',
-    f_press: 'Presse',
-    f_imprint_contact: 'Kontakt & Impressum'
-  },
-  en: {
-    nav_shop: 'Shop', nav_support: 'Support', nav_back: '← Back to Shop',
-    hero_eyebrow: 'Self-Service Portal',
-    hero_title: 'Manage License',
-    hero_tagline: 'Resend activation email, view activated devices — without contacting support.',
-    label_email: 'Email address from your purchase',
-    hint_email: 'Exactly the address your license mail was sent to.',
-    label_license: 'License ID',
-    hint_license: 'Starts with <code>lic_</code> — taken from your license mail.',
-    btn_lookup: 'Show license',
-    btn_resend: 'Resend activation email',
-    btn_new: 'Different license',
-    meta_edition: 'Edition', meta_max: 'Max devices', meta_issued: 'Issued',
-    devices_h: 'Activated devices',
-    err_not_found: 'License ID and email do not match. Please copy both fields exactly from your license mail.',
-    err_format: 'Email or license ID has invalid format.',
-    err_revoked: 'This license has been revoked (refund or chargeback).',
-    err_rate_limit: 'Too many requests — please try again in {min} minutes.',
-    err_email: 'Sending the email failed. Please try later or contact info@satk.tech.',
-    err_network: 'Connection to server failed. Please check your internet.',
-    err_deactivate: 'Could not release device. Please try again later.',
-    ok_resend: '✓ Activation email resent to {email}. Check the spam folder too (we are a new domain still building reputation).',
-    ok_deactivate: '✓ Device "{name}" released. The slot is free — you can now activate the app on another Mac.',
-    status_active: 'Active', status_revoked: 'Revoked',
-    devices_empty: 'No devices activated yet — click the "Activate with one click" button in the license mail.',
-    device_lastseen: 'Last seen',
-    btn_device_deactivate: 'Release',
-    confirm_deactivate: 'Release device "{name}"? The activation will be removed from the server — you can then activate another Mac. The app on this device will keep running until the next status check.',
-    f_shop: 'Shop', f_support: 'Support', f_terms: 'Terms', f_refund: 'Refund', f_imprint: 'Legal', f_privacy: 'Privacy',
-    nav_mac: 'Mac Apps',
-    nav_ios: 'iOS Apps',
-    nav_tools: 'Browser Tools',
-    nav_info: 'Support',
-    f_col_products: 'Products',
-    f_col_support: 'Support',
-    f_col_legal: 'Legal',
-    f_changelog: 'Changelog',
-    f_manage: 'Manage License',
-    f_press: 'Press',
-    f_imprint_contact: 'Contact & Legal Notice'
-  }
+ de: {
+ nav_shop: 'Shop', nav_support: 'Support', nav_back: 'Zurück zum Shop',
+ hero_eyebrow: 'Self-Service-Portal',
+ hero_title: 'Lizenz verwalten',
+ hero_tagline: 'Aktivierungs-Mail erneut senden, aktivierte Geräte einsehen, alles ohne Support-Anfrage.',
+ label_email: 'E-Mail-Adresse aus dem Kauf',
+ hint_email: 'Genau die Adresse, an die deine Lizenz-Mail gesendet wurde.',
+ label_license: 'Lizenz-ID',
+ hint_license: 'Beginnt mit <code>lic_</code>, steht in der Lizenz-Mail.',
+ btn_lookup: 'Lizenz anzeigen',
+ btn_resend: 'Aktivierungs-Mail erneut senden',
+ btn_new: 'Andere Lizenz',
+ meta_edition: 'Edition', meta_max: 'Max. Geräte', meta_issued: 'Ausgestellt',
+ devices_h: 'Aktivierte Geräte',
+ err_not_found: 'Lizenz-ID und E-Mail passen nicht zusammen. Bitte beide Felder genau aus deiner Lizenz-Mail übernehmen.',
+ err_format: 'E-Mail oder Lizenz-ID hat ein ungültiges Format.',
+ err_revoked: 'Diese Lizenz wurde widerrufen (Refund oder Chargeback).',
+ err_rate_limit: 'Zu viele Anfragen, versuche es in {min} Minuten erneut.',
+ err_email: 'Mail-Versand fehlgeschlagen. Bitte später nochmal probieren oder info@satk.tech kontaktieren.',
+ err_network: 'Verbindung zum Server fehlgeschlagen. Bitte Internet-Verbindung prüfen.',
+ err_deactivate: 'Gerät konnte nicht freigegeben werden. Bitte später probieren.',
+ ok_resend: '✓ Aktivierungs-Mail erneut versendet an {email}. Schau auch im Spam-Ordner nach (neue Domain, Reputation baut sich noch auf).',
+ ok_deactivate: '✓ Gerät „{name}" freigegeben. Slot ist wieder verfügbar, du kannst die App jetzt auf einem anderen Mac aktivieren.',
+ status_active: 'Aktiv', status_revoked: 'Widerrufen',
+ devices_empty: 'Noch keine Geräte aktiviert, klicke den „Mit einem Klick aktivieren"-Button in der Lizenz-Mail.',
+ device_lastseen: 'Zuletzt aktiv',
+ btn_device_deactivate: 'Freigeben',
+ confirm_deactivate: 'Gerät „{name}" freigeben? Die Aktivierung wird vom Server entfernt, du kannst danach einen anderen Mac aktivieren. Die App auf diesem Gerät läuft bis zum nächsten Status-Check weiter.',
+ f_shop: 'Shop', f_support: 'Support', f_terms: 'AGB', f_refund: 'Widerruf', f_imprint: 'Impressum', f_privacy: 'Datenschutz',
+ nav_mac: 'Mac Apps',
+ nav_ios: 'iOS Apps',
+ nav_tools: 'Browser-Tools',
+ nav_info: 'Supportanfrage',
+ f_col_products: 'Produkte',
+ f_col_support: 'Support',
+ f_col_legal: 'Rechtliches',
+ f_changelog: 'Changelog',
+ f_manage: 'Lizenz verwalten',
+ f_press: 'Presse',
+ f_imprint_contact: 'Kontakt & Impressum'
+ },
+ en: {
+ nav_shop: 'Shop', nav_support: 'Support', nav_back: 'Back to Shop',
+ hero_eyebrow: 'Self-Service Portal',
+ hero_title: 'Manage License',
+ hero_tagline: 'Resend activation email, view activated devices, without contacting support.',
+ label_email: 'Email address from your purchase',
+ hint_email: 'Exactly the address your license mail was sent to.',
+ label_license: 'License ID',
+ hint_license: 'Starts with <code>lic_</code>, taken from your license mail.',
+ btn_lookup: 'Show license',
+ btn_resend: 'Resend activation email',
+ btn_new: 'Different license',
+ meta_edition: 'Edition', meta_max: 'Max devices', meta_issued: 'Issued',
+ devices_h: 'Activated devices',
+ err_not_found: 'License ID and email do not match. Please copy both fields exactly from your license mail.',
+ err_format: 'Email or license ID has invalid format.',
+ err_revoked: 'This license has been revoked (refund or chargeback).',
+ err_rate_limit: 'Too many requests, please try again in {min} minutes.',
+ err_email: 'Sending the email failed. Please try later or contact info@satk.tech.',
+ err_network: 'Connection to server failed. Please check your internet.',
+ err_deactivate: 'Could not release device. Please try again later.',
+ ok_resend: '✓ Activation email resent to {email}. Check the spam folder too (we are a new domain still building reputation).',
+ ok_deactivate: '✓ Device "{name}" released. The slot is free, you can now activate the app on another Mac.',
+ status_active: 'Active', status_revoked: 'Revoked',
+ devices_empty: 'No devices activated yet, click the "Activate with one click" button in the license mail.',
+ device_lastseen: 'Last seen',
+ btn_device_deactivate: 'Release',
+ confirm_deactivate: 'Release device "{name}"? The activation will be removed from the server, you can then activate another Mac. The app on this device will keep running until the next status check.',
+ f_shop: 'Shop', f_support: 'Support', f_terms: 'Terms', f_refund: 'Refund', f_imprint: 'Legal', f_privacy: 'Privacy',
+ nav_mac: 'Mac Apps',
+ nav_ios: 'iOS Apps',
+ nav_tools: 'Browser Tools',
+ nav_info: 'Support',
+ f_col_products: 'Products',
+ f_col_support: 'Support',
+ f_col_legal: 'Legal',
+ f_changelog: 'Changelog',
+ f_manage: 'Manage License',
+ f_press: 'Press',
+ f_imprint_contact: 'Contact & Legal Notice'
+ }
 };
 
 let currentLang = 'de';
 
 function setLang(lang) {
-  currentLang = lang;
-  document.documentElement.lang = lang;
-  document.getElementById('btnDE').classList.toggle('active', lang==='de');
-  document.getElementById('btnEN').classList.toggle('active', lang==='en');
-  const t = i18n[lang];
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const k = el.dataset.i18n;
-    if (t[k]) el.innerHTML = t[k];
-  });
-  try { localStorage.setItem('satk-lang', lang); } catch(e){}
+ currentLang = lang;
+ document.documentElement.lang = lang;
+ document.getElementById('btnDE').classList.toggle('active', lang==='de');
+ document.getElementById('btnEN').classList.toggle('active', lang==='en');
+ const t = i18n[lang];
+ document.querySelectorAll('[data-i18n]').forEach(el => {
+ const k = el.dataset.i18n;
+ if (t[k]) el.innerHTML = t[k];
+ });
+ try { localStorage.setItem('satk-lang', lang); } catch(e){}
 }
 
 // URL-Param ?license=lic_... vorbefüllen (UX aus Mail-Link)
 const urlParams = new URLSearchParams(window.location.search);
 const prefillLic = urlParams.get('license');
 if (prefillLic && /^lic_[a-f0-9]+$/.test(prefillLic)) {
-  document.getElementById('license_id').value = prefillLic;
+ document.getElementById('license_id').value = prefillLic;
 }
 
 function showError(msg) {
-  const b = document.getElementById('errBanner');
-  b.textContent = msg;
-  b.style.display = 'block';
-  document.getElementById('okBanner').style.display = 'none';
-  b.scrollIntoView({ behavior: 'smooth', block: 'center' });
+ const b = document.getElementById('errBanner');
+ b.textContent = msg;
+ b.style.display = 'block';
+ document.getElementById('okBanner').style.display = 'none';
+ b.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 function showOk(msg) {
-  const b = document.getElementById('okBanner');
-  b.textContent = msg;
-  b.style.display = 'block';
-  document.getElementById('errBanner').style.display = 'none';
-  b.scrollIntoView({ behavior: 'smooth', block: 'center' });
+ const b = document.getElementById('okBanner');
+ b.textContent = msg;
+ b.style.display = 'block';
+ document.getElementById('errBanner').style.display = 'none';
+ b.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 function hideBanners() {
-  document.getElementById('errBanner').style.display = 'none';
-  document.getElementById('okBanner').style.display = 'none';
+ document.getElementById('errBanner').style.display = 'none';
+ document.getElementById('okBanner').style.display = 'none';
 }
 
 function fmtDate(unix) {
-  if (!unix) return '—';
-  const d = new Date(unix * 1000);
-  return d.toLocaleString(currentLang === 'de' ? 'de-DE' : 'en-GB',
-    { year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit' });
+ if (!unix) return '-';
+ const d = new Date(unix * 1000);
+ return d.toLocaleString(currentLang === 'de' ? 'de-DE' : 'en-GB',
+ { year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit' });
 }
 
 function renderResult(data) {
-  const t = i18n[currentLang];
-  document.getElementById('resProduct').textContent = data.license.product_name;
-  document.getElementById('resLicId').textContent = data.license.license_id;
-  document.getElementById('resEdition').textContent = data.license.edition || 'standard';
-  document.getElementById('resMax').textContent = data.license.max_devices;
-  document.getElementById('resIssued').textContent = fmtDate(data.license.issued_at);
+ const t = i18n[currentLang];
+ document.getElementById('resProduct').textContent = data.license.product_name;
+ document.getElementById('resLicId').textContent = data.license.license_id;
+ document.getElementById('resEdition').textContent = data.license.edition || 'standard';
+ document.getElementById('resMax').textContent = data.license.max_devices;
+ document.getElementById('resIssued').textContent = fmtDate(data.license.issued_at);
 
-  const status = document.getElementById('resStatus');
-  if (data.license.revoked) {
-    status.textContent = t.status_revoked;
-    status.className = 'result-status status-revoked';
-    document.getElementById('btnResend').disabled = true;
-  } else {
-    status.textContent = t.status_active;
-    status.className = 'result-status status-ok';
-    document.getElementById('btnResend').disabled = false;
-  }
+ const status = document.getElementById('resStatus');
+ if (data.license.revoked) {
+ status.textContent = t.status_revoked;
+ status.className = 'result-status status-revoked';
+ document.getElementById('btnResend').disabled = true;
+ } else {
+ status.textContent = t.status_active;
+ status.className = 'result-status status-ok';
+ document.getElementById('btnResend').disabled = false;
+ }
 
-  const list = document.getElementById('devicesList');
-  if (!data.devices.length) {
-    list.innerHTML = '<div class="device-empty">' + t.devices_empty + '</div>';
-  } else {
-    list.innerHTML = data.devices.map(d => `
-      <div class="device-row">
-        <div class="device-info">
-          <div class="device-name">${escapeHtml(d.device_name || d.device_id_short)}</div>
-          <div class="device-meta">${t.device_lastseen}: ${fmtDate(d.last_seen_at)}</div>
-        </div>
-        <button class="device-deactivate" data-device-id="${escapeHtml(d.device_id)}" data-device-name="${escapeHtml(d.device_name || d.device_id_short)}" ${data.license.revoked ? 'disabled' : ''}>${t.btn_device_deactivate}</button>
-      </div>
-    `).join('');
+ const list = document.getElementById('devicesList');
+ if (!data.devices.length) {
+ list.innerHTML = '<div class="device-empty">' + t.devices_empty + '</div>';
+ } else {
+ list.innerHTML = data.devices.map(d => `
+ <div class="device-row">
+ <div class="device-info">
+ <div class="device-name">${escapeHtml(d.device_name || d.device_id_short)}</div>
+ <div class="device-meta">${t.device_lastseen}: ${fmtDate(d.last_seen_at)}</div>
+ </div>
+ <button class="device-deactivate" data-device-id="${escapeHtml(d.device_id)}" data-device-name="${escapeHtml(d.device_name || d.device_id_short)}" ${data.license.revoked ? 'disabled' : ''}>${t.btn_device_deactivate}</button>
+ </div>
+ `).join('');
 
-    // Event-Listener auf alle Freigeben-Buttons
-    list.querySelectorAll('.device-deactivate').forEach(btn => {
-      btn.addEventListener('click', () => deactivateDevice(btn.dataset.deviceId, btn.dataset.deviceName, btn));
-    });
-  }
+ // Event-Listener auf alle Freigeben-Buttons
+ list.querySelectorAll('.device-deactivate').forEach(btn => {
+ btn.addEventListener('click', () => deactivateDevice(btn.dataset.deviceId, btn.dataset.deviceName, btn));
+ });
+ }
 
-  document.getElementById('lookupForm').style.display = 'none';
-  document.getElementById('resultWrap').style.display = 'block';
+ document.getElementById('lookupForm').style.display = 'none';
+ document.getElementById('resultWrap').style.display = 'block';
 }
 
 function escapeHtml(s) {
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-                  .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+ .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
 
 function getCreds() {
-  return {
-    email: document.getElementById('email').value.trim(),
-    license_id: document.getElementById('license_id').value.trim(),
-  };
+ return {
+ email: document.getElementById('email').value.trim(),
+ license_id: document.getElementById('license_id').value.trim(),
+ };
 }
 
 document.getElementById('lookupForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  hideBanners();
-  const t = i18n[currentLang];
-  const btn = document.getElementById('btnLookup');
-  btn.disabled = true;
-  const orig = btn.textContent;
-  btn.textContent = '…';
+ e.preventDefault();
+ hideBanners();
+ const t = i18n[currentLang];
+ const btn = document.getElementById('btnLookup');
+ btn.disabled = true;
+ const orig = btn.textContent;
+ btn.textContent = '...';
 
-  try {
-    const r = await fetch(WORKER + '/lookup', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(getCreds()),
-    });
-    const data = await r.json();
-    if (r.status === 404) { showError(t.err_not_found); return; }
-    if (r.status === 400) { showError(t.err_format); return; }
-    if (!data.ok) { showError(data.reason || 'unknown_error'); return; }
-    renderResult(data);
-  } catch (e) {
-    showError(t.err_network);
-  } finally {
-    btn.disabled = false;
-    btn.textContent = orig;
-  }
+ try {
+ const r = await fetch(WORKER + '/lookup', {
+ method: 'POST', headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify(getCreds()),
+ });
+ const data = await r.json();
+ if (r.status === 404) { showError(t.err_not_found); return; }
+ if (r.status === 400) { showError(t.err_format); return; }
+ if (!data.ok) { showError(data.reason || 'unknown_error'); return; }
+ renderResult(data);
+ } catch (e) {
+ showError(t.err_network);
+ } finally {
+ btn.disabled = false;
+ btn.textContent = orig;
+ }
 });
 
 document.getElementById('btnResend').addEventListener('click', async () => {
-  hideBanners();
-  const t = i18n[currentLang];
-  const btn = document.getElementById('btnResend');
-  btn.disabled = true;
-  const orig = btn.textContent;
-  btn.textContent = '…';
+ hideBanners();
+ const t = i18n[currentLang];
+ const btn = document.getElementById('btnResend');
+ btn.disabled = true;
+ const orig = btn.textContent;
+ btn.textContent = '...';
 
-  try {
-    const body = { ...getCreds(), locale: currentLang };
-    const r = await fetch(WORKER + '/resend', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    });
-    const data = await r.json();
-    if (r.status === 429) {
-      const min = Math.ceil((data.retry_after_seconds || 60) / 60);
-      showError(t.err_rate_limit.replace('{min}', min));
-    } else if (r.status === 403 && data.reason === 'revoked') {
-      showError(t.err_revoked);
-    } else if (r.status === 404) {
-      showError(t.err_not_found);
-    } else if (!r.ok || !data.ok) {
-      showError(t.err_email);
-    } else {
-      showOk(t.ok_resend.replace('{email}', data.sent_to));
-    }
-  } catch (e) {
-    showError(t.err_network);
-  } finally {
-    btn.disabled = false;
-    btn.textContent = orig;
-  }
+ try {
+ const body = { ...getCreds(), locale: currentLang };
+ const r = await fetch(WORKER + '/resend', {
+ method: 'POST', headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify(body),
+ });
+ const data = await r.json();
+ if (r.status === 429) {
+ const min = Math.ceil((data.retry_after_seconds || 60) / 60);
+ showError(t.err_rate_limit.replace('{min}', min));
+ } else if (r.status === 403 && data.reason === 'revoked') {
+ showError(t.err_revoked);
+ } else if (r.status === 404) {
+ showError(t.err_not_found);
+ } else if (!r.ok || !data.ok) {
+ showError(t.err_email);
+ } else {
+ showOk(t.ok_resend.replace('{email}', data.sent_to));
+ }
+ } catch (e) {
+ showError(t.err_network);
+ } finally {
+ btn.disabled = false;
+ btn.textContent = orig;
+ }
 });
 
 async function deactivateDevice(deviceId, deviceName, btn) {
-  const t = i18n[currentLang];
-  if (!confirm(t.confirm_deactivate.replace('{name}', deviceName))) return;
+ const t = i18n[currentLang];
+ if (!confirm(t.confirm_deactivate.replace('{name}', deviceName))) return;
 
-  hideBanners();
-  btn.disabled = true;
-  const orig = btn.textContent;
-  btn.textContent = '…';
+ hideBanners();
+ btn.disabled = true;
+ const orig = btn.textContent;
+ btn.textContent = '...';
 
-  try {
-    const r = await fetch(WORKER + '/portal/deactivate', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...getCreds(), device_id: deviceId }),
-    });
-    const data = await r.json();
-    if (!r.ok || !data.ok) {
-      showError(t.err_deactivate);
-      btn.disabled = false;
-      btn.textContent = orig;
-      return;
-    }
-    showOk(t.ok_deactivate.replace('{name}', deviceName));
-    // Geräte-Liste neu laden
-    const lookupResp = await fetch(WORKER + '/lookup', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(getCreds()),
-    });
-    const lookupData = await lookupResp.json();
-    if (lookupData.ok) renderResult(lookupData);
-  } catch (e) {
-    showError(t.err_network);
-    btn.disabled = false;
-    btn.textContent = orig;
-  }
+ try {
+ const r = await fetch(WORKER + '/portal/deactivate', {
+ method: 'POST', headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify({ ...getCreds(), device_id: deviceId }),
+ });
+ const data = await r.json();
+ if (!r.ok || !data.ok) {
+ showError(t.err_deactivate);
+ btn.disabled = false;
+ btn.textContent = orig;
+ return;
+ }
+ showOk(t.ok_deactivate.replace('{name}', deviceName));
+ // Geräte-Liste neu laden
+ const lookupResp = await fetch(WORKER + '/lookup', {
+ method: 'POST', headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify(getCreds()),
+ });
+ const lookupData = await lookupResp.json();
+ if (lookupData.ok) renderResult(lookupData);
+ } catch (e) {
+ showError(t.err_network);
+ btn.disabled = false;
+ btn.textContent = orig;
+ }
 }
 
 document.getElementById('btnNew').addEventListener('click', () => {
-  document.getElementById('resultWrap').style.display = 'none';
-  document.getElementById('lookupForm').style.display = 'block';
-  document.getElementById('email').value = '';
-  document.getElementById('license_id').value = '';
-  hideBanners();
-  document.getElementById('email').focus();
+ document.getElementById('resultWrap').style.display = 'none';
+ document.getElementById('lookupForm').style.display = 'block';
+ document.getElementById('email').value = '';
+ document.getElementById('license_id').value = '';
+ hideBanners();
+ document.getElementById('email').focus();
 });
 
 // Initial-Sprache aus localStorage oder Browser
 try {
-  const saved = localStorage.getItem('satk-lang');
-  if (saved === 'en') setLang('en');
-  else if (!saved && navigator.language && !navigator.language.startsWith('de')) setLang('en');
+ const saved = localStorage.getItem('satk-lang');
+ if (saved === 'en') setLang('en');
+ else if (!saved && navigator.language && !navigator.language.startsWith('de')) setLang('en');
 } catch(e){}
 </script>
 

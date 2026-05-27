@@ -9,14 +9,14 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <link rel="canonical" href="https://satk.tech/changelog">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SATK Changelog – Was sich in den letzten Releases geändert hat</title>
+<title>SATK Changelog - Was sich in den letzten Releases geändert hat</title>
 <meta name="description" content="Release-Notes und Roadmap für SATK Pro Audio Software: broadcast METER, overdub STUDIO, loudness CORRECT.">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="SATK Changelog & Roadmap">
 <meta property="og:description" content="Release-Notes und Roadmap für SATK Pro Audio Software.">
 <meta property="og:url" content="https://satk.tech/changelog">
-<meta property="og:site_name" content="SATK – Sascha&rsquo;s Audio Tool Kit">
+<meta property="og:site_name" content="SATK - Sascha's Audio Tool Kit">
 <meta property="og:locale" content="de_DE">
 
 <link href="fonts.css" rel="stylesheet">
@@ -27,8 +27,8 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--tx);font-family:'DM Mono',monospace;-webkit-font-smoothing:antialiased}
 
 nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
-  padding:16px 48px;background:rgba(10,10,11,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,255,255,.04)}
+ padding:16px 48px;background:rgba(10,10,11,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+ border-bottom:1px solid rgba(255,255,255,.04)}
 .nav-logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;line-height:1}
 .nav-logo-mark{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--ac);letter-spacing:4px}
 .nav-logo-accent{color:var(--tx)}
@@ -87,12 +87,12 @@ footer a:hover{color:var(--ac)}
 footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:3px;margin-bottom:10px}
 
 @media(max-width:600px){
-  nav{padding:14px 20px}
-  .nav-links{gap:14px}
-  .nav-links a:not(.nav-back){display:none}
-  .page-hero{padding:48px 20px 24px}
-  .section{padding:24px 20px 0}
-  .product-block{padding:24px 22px}
+ nav{padding:14px 20px}
+ .nav-links{gap:14px}
+ .nav-links a:not(.nav-back){display:none}
+ .page-hero{padding:48px 20px 24px}
+ .section{padding:24px 20px 0}
+ .product-block{padding:24px 22px}
 }
 /* ── Footer (3-spaltig) ──────────── */
 footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255,255,.06);background:#15161a;text-align:left}
@@ -113,328 +113,328 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-gqR5BLYgrx9BycGkSCWbt.js"></script>
 <script>
-  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
+ window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+ plausible.init()
 </script>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="nav-logo">
-    <span class="nav-logo-mark">S<span class="nav-logo-accent">A</span>TK</span>
-    <span class="nav-logo-sub">Sascha&rsquo;s Audio Tool Kit</span>
-  </a>
-  <div class="nav-platforms">
-    <a href="/mac">Mac</a>
-    <a href="/ios">iOS</a>
-    <a href="/tools">Web</a>
-  </div>
-  <div class="nav-links">
-    <a href="/support" data-i18n="nav_info">Supportanfrage</a>
-    <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
-    <div class="lang-sw">
-      <span class="lang active" id="btnDE" onclick="setLang('de')">DE</span>
-      <span class="lang-sep">·</span>
-      <span class="lang" id="btnEN" onclick="setLang('en')">EN</span>
-    </div>
-  </div>
+ <a href="/" class="nav-logo">
+ <span class="nav-logo-mark">S<span class="nav-logo-accent">A</span>TK</span>
+ <span class="nav-logo-sub">Sascha's Audio Tool Kit</span>
+ </a>
+ <div class="nav-platforms">
+ <a href="/mac">Mac</a>
+ <a href="/ios">iOS</a>
+ <a href="/tools">Web</a>
+ </div>
+ <div class="nav-links">
+ <a href="/support" data-i18n="nav_info">Supportanfrage</a>
+ <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
+ <div class="lang-sw">
+ <span class="lang active" id="btnDE" onclick="setLang('de')">DE</span>
+ <span class="lang-sep">·</span>
+ <span class="lang" id="btnEN" onclick="setLang('en')">EN</span>
+ </div>
+ </div>
 </nav>
 
 <section class="page-hero">
-  <div class="page-eyebrow" data-i18n="cl_eyebrow">Changelog &amp; Roadmap</div>
-  <h1 data-i18n="cl_title">Was sich entwickelt</h1>
-  <p class="tagline" data-i18n="cl_tagline">Release-Notes der bestehenden Tools und ein Blick auf das, was als Nächstes kommt.</p>
+ <div class="page-eyebrow" data-i18n="cl_eyebrow">Changelog &amp; Roadmap</div>
+ <h1 data-i18n="cl_title">Was sich entwickelt</h1>
+ <p class="tagline" data-i18n="cl_tagline">Release-Notes der bestehenden Tools und ein Blick auf das, was als Nächstes kommt.</p>
 </section>
 
 <section class="section">
 
-  <h2 data-i18n="cl_h_releases">Aktuelle Releases</h2>
+ <h2 data-i18n="cl_h_releases">Aktuelle Releases</h2>
 
-  <!-- ── broadcast METER ──────────── -->
-  <div class="product-block">
-    <div class="product-name">SATK broadcast METER <span class="product-status" data-i18n="cl_st_live">Live</span></div>
+ <!-- ── broadcast METER ──────────── -->
+ <div class="product-block">
+ <div class="product-name">SATK broadcast METER <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
-    <div class="release">
-      <span class="release-version">1.0.5</span><span class="release-date">2026-05-06</span>
-      <div class="release-title" data-i18n="cl_bm_105_t">Stabilisierung der One-Click-Aktivierung</div>
-      <ul class="release-list">
-        <li data-i18n="cl_bm_105_1">Method-Swizzling auf NSAppleEventManager — One-Click aus der Lizenz-Mail funktioniert jetzt zuverlässig auch bei kalt gestarteter App auf macOS 13+.</li>
-        <li data-i18n="cl_bm_105_2">Drei-Schicht-Defence für URL-Scheme-Handler (load + willFinishLaunching + Method-Swizzle) als Standard-Pattern für alle künftigen SATK-Tools dokumentiert.</li>
-      </ul>
-    </div>
+ <div class="release">
+ <span class="release-version">1.0.5</span><span class="release-date">2026-05-06</span>
+ <div class="release-title" data-i18n="cl_bm_105_t">Stabilisierung der One-Click-Aktivierung</div>
+ <ul class="release-list">
+ <li data-i18n="cl_bm_105_1">Method-Swizzling auf NSAppleEventManager, One-Click aus der Lizenz-Mail funktioniert jetzt zuverlässig auch bei kalt gestarteter App auf macOS 13+.</li>
+ <li data-i18n="cl_bm_105_2">Drei-Schicht-Defence für URL-Scheme-Handler (load + willFinishLaunching + Method-Swizzle) als Standard-Pattern für alle künftigen SATK-Tools dokumentiert.</li>
+ </ul>
+ </div>
 
-    <div class="release older">
-      <span class="release-version">1.0.4</span><span class="release-date">2026-05-06</span>
-      <div class="release-title" data-i18n="cl_bm_104_t">Zwischenrelease (von 1.0.5 abgelöst)</div>
-    </div>
+ <div class="release older">
+ <span class="release-version">1.0.4</span><span class="release-date">2026-05-06</span>
+ <div class="release-title" data-i18n="cl_bm_104_t">Zwischenrelease (von 1.0.5 abgelöst)</div>
+ </div>
 
-    <div class="release older">
-      <span class="release-version">1.0.3</span><span class="release-date">2026-05-06</span>
-      <div class="release-title" data-i18n="cl_bm_103_t">Zwischenrelease (von 1.0.5 abgelöst)</div>
-    </div>
+ <div class="release older">
+ <span class="release-version">1.0.3</span><span class="release-date">2026-05-06</span>
+ <div class="release-title" data-i18n="cl_bm_103_t">Zwischenrelease (von 1.0.5 abgelöst)</div>
+ </div>
 
-    <div class="release older">
-      <span class="release-version">1.0.2</span><span class="release-date">2026-05-04</span>
-      <div class="release-title" data-i18n="cl_bm_102_t">Erste öffentliche Direct-Sales-Version</div>
-      <ul class="release-list">
-        <li data-i18n="cl_bm_102_1">Architektur in Anlehnung an Rogue Amoeba — Plain-File-Lizenz-Speicher (kein Keychain-Prompt), Multi-Location-Trial mit Hardware-HMAC.</li>
-        <li data-i18n="cl_bm_102_2">7-Tage-Trial ohne Konto und ohne E-Mail-Adresse — Vollversion direkt downloadbar, Trial-Status server-getrackt gegen Reset-Versuche.</li>
-        <li data-i18n="cl_bm_102_3">Watermarking der Käufer-E-Mail im About-Window und in der Toolbar.</li>
-        <li data-i18n="cl_bm_102_4">PDF- und CSV-Reports mit Loudness-Timeline und Speech-Clarity-Bewertung.</li>
-      </ul>
-    </div>
-  </div>
+ <div class="release older">
+ <span class="release-version">1.0.2</span><span class="release-date">2026-05-04</span>
+ <div class="release-title" data-i18n="cl_bm_102_t">Erste öffentliche Direct-Sales-Version</div>
+ <ul class="release-list">
+ <li data-i18n="cl_bm_102_1">Architektur in Anlehnung an Rogue Amoeba, Plain-File-Lizenz-Speicher (kein Keychain-Prompt), Multi-Location-Trial mit Hardware-HMAC.</li>
+ <li data-i18n="cl_bm_102_2">7-Tage-Trial ohne Konto und ohne E-Mail-Adresse, Vollversion direkt downloadbar, Trial-Status server-getrackt gegen Reset-Versuche.</li>
+ <li data-i18n="cl_bm_102_3">Watermarking der Käufer-E-Mail im About-Window und in der Toolbar.</li>
+ <li data-i18n="cl_bm_102_4">PDF- und CSV-Reports mit Loudness-Timeline und Speech-Clarity-Bewertung.</li>
+ </ul>
+ </div>
+ </div>
 
-  <!-- ── overdub STUDIO ──────────── -->
-  <div class="product-block">
-    <div class="product-name">SATK overdub STUDIO <span class="product-status" data-i18n="cl_st_live">Live</span></div>
+ <!-- ── overdub STUDIO ──────────── -->
+ <div class="product-block">
+ <div class="product-name">SATK overdub STUDIO <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
-    <div class="release">
-      <span class="release-version">1.0.3</span><span class="release-date">2026-05-22</span>
-      <div class="release-title" data-i18n="cl_od_103_t">Polish-Release: Take-Edit-UX und Preroll-Visual</div>
-      <ul class="release-list">
-        <li data-i18n="cl_od_103_1">Auto-Scroll beim Take-Drag — beim Verschieben oder Trimmen scrollt die Timeline jetzt automatisch mit, sobald der Cursor an den linken oder rechten Rand kommt (DAW-Standard wie Pro Tools / Logic).</li>
-        <li data-i18n="cl_od_103_2">Preroll-Countdown auf Intel und iPad wiederhergestellt — der Countdown war auf Geräten mit geladenem Video unsichtbar, weil AVPlayerLayer auf macOS und iOS den separaten Overlay überdeckte.</li>
-        <li data-i18n="cl_od_103_3">Neue Preroll-Anzeige: der Timecode zählt jetzt negativ runter (-00:00:04:00 → -00:00:01:00) und ist rot, schaltet beim Aufnahme-Start automatisch auf Weiß. Pro-Tools-/Avid-Standard "TC counts down through zero".</li>
-        <li data-i18n="cl_od_103_4">Overdub-Preroll zeigt korrekt 4 Sekunden vor — vorher startete der Preroll beim Overdub-Ansetzen mitten im Video entweder verkürzt oder gar nicht visuell.</li>
-      </ul>
-    </div>
+ <div class="release">
+ <span class="release-version">1.0.3</span><span class="release-date">2026-05-22</span>
+ <div class="release-title" data-i18n="cl_od_103_t">Polish-Release: Take-Edit-UX und Preroll-Visual</div>
+ <ul class="release-list">
+ <li data-i18n="cl_od_103_1">Auto-Scroll beim Take-Drag, beim Verschieben oder Trimmen scrollt die Timeline jetzt automatisch mit, sobald der Cursor an den linken oder rechten Rand kommt (DAW-Standard wie Pro Tools / Logic).</li>
+ <li data-i18n="cl_od_103_2">Preroll-Countdown auf Intel und iPad wiederhergestellt, der Countdown war auf Geräten mit geladenem Video unsichtbar, weil AVPlayerLayer auf macOS und iOS den separaten Overlay überdeckte.</li>
+ <li data-i18n="cl_od_103_3">Neue Preroll-Anzeige: der Timecode zählt jetzt negativ runter (-00:00:04:00 -00:00:01:00) und ist rot, schaltet beim Aufnahme-Start automatisch auf Weiß. Pro-Tools-/Avid-Standard "TC counts down through zero".</li>
+ <li data-i18n="cl_od_103_4">Overdub-Preroll zeigt korrekt 4 Sekunden vor, vorher startete der Preroll beim Overdub-Ansetzen mitten im Video entweder verkürzt oder gar nicht visuell.</li>
+ </ul>
+ </div>
 
-    <div class="release older">
-      <span class="release-version">1.0.2</span><span class="release-date">2026-05-22</span>
-      <div class="release-title" data-i18n="cl_od_102_t">Polish-Release: Save/Open, kleine Bildschirme, Export-Korrektheit</div>
-      <ul class="release-list">
-        <li data-i18n="cl_od_102_1">Save/Open — gespeicherte Sessions laden wieder zuverlässig (Schema-Inkonsistenz behoben), Dialog merkt sich den letzten Ordner, .satkproj-Bundles erscheinen direkt als auswählbare Items.</li>
-        <li data-i18n="cl_od_102_2">Export — Voice-Stem-WAV hat jetzt die volle Clip-Länge (statt nur Voice-Take-Dauer), MXF wird nicht mehr auf die längste Sprachaufnahme gecapt.</li>
-        <li data-i18n="cl_od_102_3">Kleine Bildschirme (13"-MacBooks) — Header-Subtitle skaliert ohne Überlappung, Voice 2 Lane vollständig sichtbar, MIXTYP-Slider 78 px breiter, Prompter-Schrift adaptiv (22/25/28 pt), Mindest-Fenstergröße 1100×700.</li>
-        <li data-i18n="cl_od_102_4">Timeline & Prompter — Scrollbar reicht bis zum Video-Ende, Bed-Region-Kontextmenü wirkt sofort sichtbar, Fullscreen + REC verschiebt die App nicht mehr seitlich, Prompter läuft nur noch bei echter Sprache (nicht mehr bei Lüftergeräuschen oder Tippen).</li>
-      </ul>
-    </div>
+ <div class="release older">
+ <span class="release-version">1.0.2</span><span class="release-date">2026-05-22</span>
+ <div class="release-title" data-i18n="cl_od_102_t">Polish-Release: Save/Open, kleine Bildschirme, Export-Korrektheit</div>
+ <ul class="release-list">
+ <li data-i18n="cl_od_102_1">Save/Open, gespeicherte Sessions laden wieder zuverlässig (Schema-Inkonsistenz behoben), Dialog merkt sich den letzten Ordner, .satkproj-Bundles erscheinen direkt als auswählbare Items.</li>
+ <li data-i18n="cl_od_102_2">Export, Voice-Stem-WAV hat jetzt die volle Clip-Länge (statt nur Voice-Take-Dauer), MXF wird nicht mehr auf die längste Sprachaufnahme gecapt.</li>
+ <li data-i18n="cl_od_102_3">Kleine Bildschirme (13"-MacBooks), Header-Subtitle skaliert ohne Überlappung, Voice 2 Lane vollständig sichtbar, MIXTYP-Slider 78 px breiter, Prompter-Schrift adaptiv (22/25/28 pt), Mindest-Fenstergröße 1100x700.</li>
+ <li data-i18n="cl_od_102_4">Timeline & Prompter, Scrollbar reicht bis zum Video-Ende, Bed-Region-Kontextmenü wirkt sofort sichtbar, Fullscreen + REC verschiebt die App nicht mehr seitlich, Prompter läuft nur noch bei echter Sprache (nicht mehr bei Lüftergeräuschen oder Tippen).</li>
+ </ul>
+ </div>
 
-    <div class="release older">
-      <span class="release-version">1.0.1</span><span class="release-date">2026-05-21</span>
-      <div class="release-title" data-i18n="cl_od_101_t">Prompter-Polish &amp; On-Device-Speech-Recognition</div>
-      <ul class="release-list">
-        <li data-i18n="cl_od_101_1">Prompter-Scrolling per Maus wiederhergestellt, Text-Umbruch garantiert vollständige Sichtbarkeit auch bei sehr langen Wörtern.</li>
-        <li data-i18n="cl_od_101_2">Speech-Recognition läuft on-device (kein Netz-Roundtrip mehr), Partials triggern den Auto-Advance synchroner zur Stimme.</li>
-      </ul>
-    </div>
+ <div class="release older">
+ <span class="release-version">1.0.1</span><span class="release-date">2026-05-21</span>
+ <div class="release-title" data-i18n="cl_od_101_t">Prompter-Polish &amp; On-Device-Speech-Recognition</div>
+ <ul class="release-list">
+ <li data-i18n="cl_od_101_1">Prompter-Scrolling per Maus wiederhergestellt, Text-Umbruch garantiert vollständige Sichtbarkeit auch bei sehr langen Wörtern.</li>
+ <li data-i18n="cl_od_101_2">Speech-Recognition läuft on-device (kein Netz-Roundtrip mehr), Partials triggern den Auto-Advance synchroner zur Stimme.</li>
+ </ul>
+ </div>
 
-    <div class="release older">
-      <span class="release-version">1.0.0</span><span class="release-date">2026-05-20</span>
-      <div class="release-title" data-i18n="cl_od_100_t">Erste öffentliche Direct-Sales-Version</div>
-      <ul class="release-list">
-        <li data-i18n="cl_od_100_1">DAW-Style Timeline mit Multi-Take-Aufnahmen — Split, Trim, Drag, Strip-Silence, Bed-Region-Ducking, alles sample-genau am Video-Sync.</li>
-        <li data-i18n="cl_od_100_2">AutoMix in einem Klick — Voice Channel Strip (HP80, EQ, Comp, Sat) + Ducker (-4 dB, 150 ms Release) + Bus Glue + R128-Normalisierung auf −23 LUFS.</li>
-        <li data-i18n="cl_od_100_3">smart PROMPTER mit On-Device Speech Recognition — der Text-Highlight folgt automatisch der Sprache, kein manuelles Scrollen während der Aufnahme.</li>
-        <li data-i18n="cl_od_100_4">Export — Stereo-WAV (Mix + Voice-Stem), Video-Mux mit MXF-Round-Trip für Broadcast-Workflows, MP4 für Streaming.</li>
-        <li data-i18n="cl_od_100_5">Lizenz-Architektur identisch zum broadcast METER — Plain-File-Lizenz-Speicher (kein Keychain-Prompt), 7-Tage-Trial ohne Account, Watermarking der Käufer-E-Mail im About-Window.</li>
-      </ul>
-    </div>
-  </div>
+ <div class="release older">
+ <span class="release-version">1.0.0</span><span class="release-date">2026-05-20</span>
+ <div class="release-title" data-i18n="cl_od_100_t">Erste öffentliche Direct-Sales-Version</div>
+ <ul class="release-list">
+ <li data-i18n="cl_od_100_1">DAW-Style Timeline mit Multi-Take-Aufnahmen, Split, Trim, Drag, Strip-Silence, Bed-Region-Ducking, alles sample-genau am Video-Sync.</li>
+ <li data-i18n="cl_od_100_2">AutoMix in einem Klick, Voice Channel Strip (HP80, EQ, Comp, Sat) + Ducker (-4 dB, 150 ms Release) + Bus Glue + R128-Normalisierung auf -23 LUFS.</li>
+ <li data-i18n="cl_od_100_3">smart PROMPTER mit On-Device Speech Recognition, der Text-Highlight folgt automatisch der Sprache, kein manuelles Scrollen während der Aufnahme.</li>
+ <li data-i18n="cl_od_100_4">Export, Stereo-WAV (Mix + Voice-Stem), Video-Mux mit MXF-Round-Trip für Broadcast-Workflows, MP4 für Streaming.</li>
+ <li data-i18n="cl_od_100_5">Lizenz-Architektur identisch zum broadcast METER, Plain-File-Lizenz-Speicher (kein Keychain-Prompt), 7-Tage-Trial ohne Account, Watermarking der Käufer-E-Mail im About-Window.</li>
+ </ul>
+ </div>
+ </div>
 
-  <!-- ╔═════════════════════════════════════════════════════════════
-       LC 1.0.0 RELEASE-BLOCK (vorbereitet, einkommentieren wenn live)
-       Schritte zum Aktivieren:
-         1. Diesen ganzen Block aus dem HTML-Kommentar nehmen
-         2. <UNDER VERSION> + <UNDER DATUM> mit echten Werten ersetzen
-         3. Den LC-Block in der Roadmap-Sektion unten loeschen
-         4. cl_lc_100_t / cl_lc_100_1..4 i18n-Strings im JS-Block am
-            Ende der Datei einkommentieren (auch dort vorbereitet)
-       ═════════════════════════════════════════════════════════════ ╗
+ <!-- ╔═════════════════════════════════════════════════════════════
+ LC 1.0.0 RELEASE-BLOCK (vorbereitet, einkommentieren wenn live)
+ Schritte zum Aktivieren:
+ 1. Diesen ganzen Block aus dem HTML-Kommentar nehmen
+ 2. <UNDER VERSION> + <UNDER DATUM> mit echten Werten ersetzen
+ 3. Den LC-Block in der Roadmap-Sektion unten loeschen
+ 4. cl_lc_100_t / cl_lc_100_1..4 i18n-Strings im JS-Block am
+ Ende der Datei einkommentieren (auch dort vorbereitet)
+ ═════════════════════════════════════════════════════════════ ╗
 
-  <div class="product-block">
-    <div class="product-name">SATK loudness CORRECT <span class="product-status" data-i18n="cl_st_live">Live</span></div>
+ <div class="product-block">
+ <div class="product-name">SATK loudness CORRECT <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
-    <div class="release">
-      <span class="release-version"><UNDER VERSION></span><span class="release-date"><UNDER DATUM></span>
-      <div class="release-title" data-i18n="cl_lc_100_t">Erste öffentliche Direct-Sales-Version</div>
-      <ul class="release-list">
-        <li data-i18n="cl_lc_100_1">Offline R128-Korrektur mit 16 Delivery-Presets — Broadcast (EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354), Streaming (Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube), Kino (Leq(m), Leq(a)) plus Custom.</li>
-        <li data-i18n="cl_lc_100_2">Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.</li>
-        <li data-i18n="cl_lc_100_3">3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor — ohne Pumpen, ohne Phasen-Artefakte.</li>
-        <li data-i18n="cl_lc_100_4">Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum SATK broadcast METER — Messen und Korrigieren mit derselben Wahrheit.</li>
-      </ul>
-    </div>
-  </div>
+ <div class="release">
+ <span class="release-version"><UNDER VERSION></span><span class="release-date"><UNDER DATUM></span>
+ <div class="release-title" data-i18n="cl_lc_100_t">Erste öffentliche Direct-Sales-Version</div>
+ <ul class="release-list">
+ <li data-i18n="cl_lc_100_1">Offline R128-Korrektur mit 16 Delivery-Presets, Broadcast (EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354), Streaming (Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube), Kino (Leq(m), Leq(a)) plus Custom.</li>
+ <li data-i18n="cl_lc_100_2">Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.</li>
+ <li data-i18n="cl_lc_100_3">3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor, ohne Pumpen, ohne Phasen-Artefakte.</li>
+ <li data-i18n="cl_lc_100_4">Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum SATK broadcast METER, Messen und Korrigieren mit derselben Wahrheit.</li>
+ </ul>
+ </div>
+ </div>
 
-  ═════════════════════════════════════════════════════════════ -->
+ ═════════════════════════════════════════════════════════════ -->
 
-  <h2 data-i18n="cl_h_roadmap">Was als Nächstes kommt</h2>
+ <h2 data-i18n="cl_h_roadmap">Was als Nächstes kommt</h2>
 
-  <!-- ── loudness CORRECT (in Roadmap-Block — entfernen wenn LC live geht) ──────────── -->
-  <div class="product-block">
-    <div class="product-name">SATK loudness CORRECT <span class="product-status soon" data-i18n="cl_st_soon">In Entwicklung</span></div>
-    <p class="roadmap-line" data-i18n="cl_lc_p"><strong>Offline R128-Korrektur · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6.</strong> Engine ist funktionsfähig, derzeit Feinarbeit am Preset-System und der Batch-Pipeline.</p>
-  </div>
+ <!-- ── loudness CORRECT (in Roadmap-Block, entfernen wenn LC live geht) ──────────── -->
+ <div class="product-block">
+ <div class="product-name">SATK loudness CORRECT <span class="product-status soon" data-i18n="cl_st_soon">In Entwicklung</span></div>
+ <p class="roadmap-line" data-i18n="cl_lc_p"><strong>Offline R128-Korrektur · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6.</strong> Engine ist funktionsfähig, derzeit Feinarbeit am Preset-System und der Batch-Pipeline.</p>
+ </div>
 
-  <p class="note" data-i18n-html="cl_note">Hinweis: Wir veröffentlichen erst, wenn ein Tool zuverlässig im Workflow läuft — keine fixen Termine, keine Vorbestellungen. Wenn du benachrichtigt werden möchtest sobald ein Tool live geht, schreib eine kurze Mail an <a href="mailto:info@satk.tech?subject=Launch-Notification">info@satk.tech</a> mit dem Tool-Namen.</p>
+ <p class="note" data-i18n-html="cl_note">Hinweis: Wir veröffentlichen erst, wenn ein Tool zuverlässig im Workflow läuft, keine fixen Termine, keine Vorbestellungen. Wenn du benachrichtigt werden möchtest sobald ein Tool live geht, schreib eine kurze Mail an <a href="mailto:info@satk.tech?subject=Launch-Notification">info@satk.tech</a> mit dem Tool-Namen.</p>
 
 </section>
 
 <footer>
-  <div class="footer-grid">
-    <div class="footer-col">
-      <h4 data-i18n="f_col_products">Produkte</h4>
-      <a href="/mac" data-i18n="nav_mac">Mac Apps</a>
-      <a href="/ios" data-i18n="nav_ios">iOS Apps</a>
-      <a href="/tools" data-i18n="nav_tools">Browser-Tools</a>
-    </div>
-    <div class="footer-col">
-      <h4 data-i18n="f_col_support">Support</h4>
-      <a href="/support" data-i18n="nav_info">Supportanfrage</a>
-      <a href="/manage-license" data-i18n="f_manage">Lizenz verwalten</a>
-      <a href="/changelog" data-i18n="f_changelog">Changelog</a>
-      <a href="/press" data-i18n="f_press">Presse</a>
-    </div>
-    <div class="footer-col">
-      <h4 data-i18n="f_col_legal">Rechtliches</h4>
-      <a href="/agb" data-i18n="f_terms">AGB</a>
-      <a href="/widerruf" data-i18n="f_refund">Widerruf</a>
-      <a href="/datenschutz" data-i18n="f_privacy">Datenschutz</a>
-      <a href="/impressum" data-i18n="f_imprint_contact">Kontakt &amp; Impressum</a>
-    </div>
-  </div>
-  <div class="footer-bar">
-    <span class="footer-brand">S<span class="footer-brand-accent">A</span>TK</span>
-    <span class="footer-meta">Sascha&rsquo;s Audio Toolkit · © 2026</span>
-  </div>
+ <div class="footer-grid">
+ <div class="footer-col">
+ <h4 data-i18n="f_col_products">Produkte</h4>
+ <a href="/mac" data-i18n="nav_mac">Mac Apps</a>
+ <a href="/ios" data-i18n="nav_ios">iOS Apps</a>
+ <a href="/tools" data-i18n="nav_tools">Browser-Tools</a>
+ </div>
+ <div class="footer-col">
+ <h4 data-i18n="f_col_support">Support</h4>
+ <a href="/support" data-i18n="nav_info">Supportanfrage</a>
+ <a href="/manage-license" data-i18n="f_manage">Lizenz verwalten</a>
+ <a href="/changelog" data-i18n="f_changelog">Changelog</a>
+ <a href="/press" data-i18n="f_press">Presse</a>
+ </div>
+ <div class="footer-col">
+ <h4 data-i18n="f_col_legal">Rechtliches</h4>
+ <a href="/agb" data-i18n="f_terms">AGB</a>
+ <a href="/widerruf" data-i18n="f_refund">Widerruf</a>
+ <a href="/datenschutz" data-i18n="f_privacy">Datenschutz</a>
+ <a href="/impressum" data-i18n="f_imprint_contact">Kontakt &amp; Impressum</a>
+ </div>
+ </div>
+ <div class="footer-bar">
+ <span class="footer-brand">S<span class="footer-brand-accent">A</span>TK</span>
+ <span class="footer-meta">Sascha's Audio Toolkit · © 2026</span>
+ </div>
 </footer>
 
 <script>
 const i18n = {
-  de: {
-    nav_shop: 'Shop', nav_info: 'Supportanfrage', nav_manage: 'Lizenz', nav_back: '← Zurück zum Shop',
-    cl_eyebrow: 'Changelog & Roadmap',
-    cl_title: 'Was sich entwickelt',
-    cl_tagline: 'Release-Notes der bestehenden Tools und ein Blick auf das, was als Nächstes kommt.',
-    cl_h_releases: 'Aktuelle Releases',
-    cl_h_roadmap: 'Was als Nächstes kommt',
-    cl_st_live: 'Live', cl_st_soon: 'In Entwicklung',
-    cl_bm_105_t: 'Stabilisierung der One-Click-Aktivierung',
-    cl_bm_105_1: 'Method-Swizzling auf NSAppleEventManager — One-Click aus der Lizenz-Mail funktioniert jetzt zuverlässig auch bei kalt gestarteter App auf macOS 13+.',
-    cl_bm_105_2: 'Drei-Schicht-Defence für URL-Scheme-Handler (load + willFinishLaunching + Method-Swizzle) als Standard-Pattern für alle künftigen SATK-Tools dokumentiert.',
-    cl_bm_104_t: 'Zwischenrelease (von 1.0.5 abgelöst)',
-    cl_bm_103_t: 'Zwischenrelease (von 1.0.5 abgelöst)',
-    cl_bm_102_t: 'Erste öffentliche Direct-Sales-Version',
-    cl_bm_102_1: 'Architektur in Anlehnung an Rogue Amoeba — Plain-File-Lizenz-Speicher (kein Keychain-Prompt), Multi-Location-Trial mit Hardware-HMAC.',
-    cl_bm_102_2: '7-Tage-Trial ohne Konto und ohne E-Mail-Adresse — Vollversion direkt downloadbar, Trial-Status server-getrackt gegen Reset-Versuche.',
-    cl_bm_102_3: 'Watermarking der Käufer-E-Mail im About-Window und in der Toolbar.',
-    cl_bm_102_4: 'PDF- und CSV-Reports mit Loudness-Timeline und Speech-Clarity-Bewertung.',
-    /* LC 1.0.0 Release-Notes — bei Go-Live einkommentieren:
-    cl_lc_100_t: 'Erste öffentliche Direct-Sales-Version',
-    cl_lc_100_1: 'Offline R128-Korrektur mit 16 Delivery-Presets — Broadcast (EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354), Streaming (Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube), Kino (Leq(m), Leq(a)) plus Custom.',
-    cl_lc_100_2: 'Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.',
-    cl_lc_100_3: '3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor — ohne Pumpen, ohne Phasen-Artefakte.',
-    cl_lc_100_4: 'Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum SATK broadcast METER — Messen und Korrigieren mit derselben Wahrheit.',
-    */
-    cl_od_103_t: 'Polish-Release: Take-Edit-UX und Preroll-Visual',
-    cl_od_103_1: 'Auto-Scroll beim Take-Drag — beim Verschieben oder Trimmen scrollt die Timeline jetzt automatisch mit, sobald der Cursor an den linken oder rechten Rand kommt (DAW-Standard wie Pro Tools / Logic).',
-    cl_od_103_2: 'Preroll-Countdown auf Intel und iPad wiederhergestellt — der Countdown war auf Geräten mit geladenem Video unsichtbar, weil AVPlayerLayer auf macOS und iOS den separaten Overlay überdeckte.',
-    cl_od_103_3: 'Neue Preroll-Anzeige: der Timecode zählt jetzt negativ runter (-00:00:04:00 → -00:00:01:00) und ist rot, schaltet beim Aufnahme-Start automatisch auf Weiß. Pro-Tools-/Avid-Standard "TC counts down through zero".',
-    cl_od_103_4: 'Overdub-Preroll zeigt korrekt 4 Sekunden vor — vorher startete der Preroll beim Overdub-Ansetzen mitten im Video entweder verkürzt oder gar nicht visuell.',
-    cl_od_102_t: 'Polish-Release: Save/Open, kleine Bildschirme, Export-Korrektheit',
-    cl_od_102_1: 'Save/Open — gespeicherte Sessions laden wieder zuverlässig (Schema-Inkonsistenz behoben), Dialog merkt sich den letzten Ordner, .satkproj-Bundles erscheinen direkt als auswählbare Items.',
-    cl_od_102_2: 'Export — Voice-Stem-WAV hat jetzt die volle Clip-Länge (statt nur Voice-Take-Dauer), MXF wird nicht mehr auf die längste Sprachaufnahme gecapt.',
-    cl_od_102_3: 'Kleine Bildschirme (13"-MacBooks) — Header-Subtitle skaliert ohne Überlappung, Voice 2 Lane vollständig sichtbar, MIXTYP-Slider 78 px breiter, Prompter-Schrift adaptiv (22/25/28 pt), Mindest-Fenstergröße 1100×700.',
-    cl_od_102_4: 'Timeline & Prompter — Scrollbar reicht bis zum Video-Ende, Bed-Region-Kontextmenü wirkt sofort sichtbar, Fullscreen + REC verschiebt die App nicht mehr seitlich, Prompter läuft nur noch bei echter Sprache (nicht mehr bei Lüftergeräuschen oder Tippen).',
-    cl_od_101_t: 'Prompter-Polish & On-Device-Speech-Recognition',
-    cl_od_101_1: 'Prompter-Scrolling per Maus wiederhergestellt, Text-Umbruch garantiert vollständige Sichtbarkeit auch bei sehr langen Wörtern.',
-    cl_od_101_2: 'Speech-Recognition läuft on-device (kein Netz-Roundtrip mehr), Partials triggern den Auto-Advance synchroner zur Stimme.',
-    cl_od_100_t: 'Erste öffentliche Direct-Sales-Version',
-    cl_od_100_1: 'DAW-Style Timeline mit Multi-Take-Aufnahmen — Split, Trim, Drag, Strip-Silence, Bed-Region-Ducking, alles sample-genau am Video-Sync.',
-    cl_od_100_2: 'AutoMix in einem Klick — Voice Channel Strip (HP80, EQ, Comp, Sat) + Ducker (-4 dB, 150 ms Release) + Bus Glue + R128-Normalisierung auf −23 LUFS.',
-    cl_od_100_3: 'smart PROMPTER mit On-Device Speech Recognition — der Text-Highlight folgt automatisch der Sprache, kein manuelles Scrollen während der Aufnahme.',
-    cl_od_100_4: 'Export — Stereo-WAV (Mix + Voice-Stem), Video-Mux mit MXF-Round-Trip für Broadcast-Workflows, MP4 für Streaming.',
-    cl_od_100_5: 'Lizenz-Architektur identisch zum broadcast METER — Plain-File-Lizenz-Speicher (kein Keychain-Prompt), 7-Tage-Trial ohne Account, Watermarking der Käufer-E-Mail im About-Window.',
-    cl_lc_p: '<strong>Offline R128-Korrektur · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6.</strong> Engine ist funktionsfähig, derzeit Feinarbeit am Preset-System und der Batch-Pipeline.',
-    cl_note: 'Hinweis: Wir veröffentlichen erst, wenn ein Tool zuverlässig im Workflow läuft — keine fixen Termine, keine Vorbestellungen. Wenn du benachrichtigt werden möchtest sobald ein Tool live geht, schreib eine kurze Mail an <a href="mailto:info@satk.tech?subject=Launch-Notification">info@satk.tech</a> mit dem Tool-Namen.',
-    f_shop: 'Shop', f_support: 'Support', f_manage: 'Lizenz verwalten', f_terms: 'AGB', f_refund: 'Widerruf', f_imprint: 'Impressum', f_privacy: 'Datenschutz',
-    nav_mac: 'Mac Apps',
-    nav_ios: 'iOS Apps',
-    nav_tools: 'Browser-Tools',
-    f_col_products: 'Produkte',
-    f_col_support: 'Support',
-    f_col_legal: 'Rechtliches',
-    f_imprint_contact: 'Kontakt & Impressum'
-  },
-  en: {
-    nav_shop: 'Shop', nav_info: 'Support', nav_manage: 'License', nav_back: '← Back to Shop',
-    cl_eyebrow: 'Changelog & Roadmap',
-    cl_title: 'What\'s evolving',
-    cl_tagline: 'Release notes for the existing tools and a look at what\'s coming next.',
-    cl_h_releases: 'Current releases',
-    cl_h_roadmap: 'What\'s coming next',
-    cl_st_live: 'Live', cl_st_soon: 'In development',
-    cl_bm_105_t: 'One-click activation hardened',
-    cl_bm_105_1: 'Method-swizzling on NSAppleEventManager — one-click activation from the license mail now works reliably even on cold-started apps on macOS 13+.',
-    cl_bm_105_2: 'Three-layer defence for URL-scheme handler (load + willFinishLaunching + method-swizzle) documented as the standard pattern for all future SATK tools.',
-    cl_bm_104_t: 'Interim release (superseded by 1.0.5)',
-    cl_bm_103_t: 'Interim release (superseded by 1.0.5)',
-    cl_bm_102_t: 'First public direct-sales release',
-    cl_bm_102_1: 'Architecture inspired by Rogue Amoeba — plain-file license storage (no Keychain prompt), multi-location trial with hardware HMAC.',
-    cl_bm_102_2: '7-day trial without account and without email — full version download, trial state server-tracked against reset attempts.',
-    cl_bm_102_3: 'Buyer email watermarked in the About window and the toolbar.',
-    cl_bm_102_4: 'PDF and CSV reports with loudness timeline and speech-clarity rating.',
-    /* LC 1.0.0 Release-Notes EN — uncomment when LC goes live:
-    cl_lc_100_t: 'First public direct-sales release',
-    cl_lc_100_1: 'Offline R128 correction with 16 delivery presets — broadcast (EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354), streaming (Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube), cinema (Leq(m), Leq(a)) plus Custom.',
-    cl_lc_100_2: 'Two-pass with automatic refine: pass 1 measures, pass 2 corrects, pass 3 verifies. If the residual is above 0.1 LU, correction runs again with trimmed gain.',
-    cl_lc_100_3: '3-band LRA processor (Linkwitz-Riley 4th order with perfect reconstruction) pulls every LRA into the broadcast corridor — no pumping, no phase artefacts.',
-    cl_lc_100_4: 'Mono to 9.1.6 with BS.1770-compliant LFE weighting. DSP engine byte-identical to SATK broadcast METER — measure and correct with the same truth.',
-    */
-    cl_od_103_t: 'Polish release: take edit UX and preroll visual',
-    cl_od_103_1: 'Auto-scroll while dragging takes — when moving or trimming a take, the timeline now scrolls automatically once the cursor hits the left or right edge (DAW standard like Pro Tools / Logic).',
-    cl_od_103_2: 'Preroll countdown restored on Intel and iPad — the countdown was invisible on devices with a loaded video because macOS and iOS AVPlayerLayer covered the separate overlay.',
-    cl_od_103_3: 'New preroll display: the timecode now counts down negatively (-00:00:04:00 → -00:00:01:00) in red, switching to white at recording start. Pro Tools / Avid standard "TC counts down through zero".',
-    cl_od_103_4: 'Overdub preroll correctly counts down a full 4 seconds — previously the preroll when starting an overdub mid-video either shortened or never showed visually.',
-    cl_od_102_t: 'Polish release: save/open, small screens, export-length correctness',
-    cl_od_102_1: 'Save/open — saved sessions load reliably again (schema inconsistency fixed), dialog remembers the last folder, .satkproj bundles appear directly as selectable items.',
-    cl_od_102_2: 'Export — voice-stem WAV now has the full clip length (instead of only the voice-take duration), MXF is no longer capped to the longest voice recording.',
-    cl_od_102_3: 'Small screens (13" MacBooks) — header subtitle scales without overlap, Voice 2 lane fully visible, MIXTYP slider 78 px wider, prompter font adaptive (22/25/28 pt), minimum window size 1100×700.',
-    cl_od_102_4: 'Timeline & prompter — scrollbar reaches the end of the video, bed-region context menu takes effect immediately, fullscreen + REC no longer slides the app sideways, prompter only runs on actual speech (no more fan noise or typing triggers).',
-    cl_od_101_t: 'Prompter polish & on-device speech recognition',
-    cl_od_101_1: 'Prompter scrolling via mouse restored, text wrapping guarantees full visibility even for very long words.',
-    cl_od_101_2: 'Speech recognition runs on-device (no network round-trip), partials trigger auto-advance more synchronously with the voice.',
-    cl_od_100_t: 'First public direct-sales release',
-    cl_od_100_1: 'DAW-style timeline with multi-take recording — split, trim, drag, strip-silence, bed-region ducking, all sample-accurate to the video sync.',
-    cl_od_100_2: 'One-click AutoMix — voice channel strip (HP80, EQ, comp, sat) + ducker (-4 dB, 150 ms release) + bus glue + R128 normalisation to −23 LUFS.',
-    cl_od_100_3: 'smart PROMPTER with on-device speech recognition — the text highlight follows the voice automatically, no manual scrolling during recording.',
-    cl_od_100_4: 'Export — stereo WAV (mix + voice stem), video mux with MXF round-trip for broadcast workflows, MP4 for streaming.',
-    cl_od_100_5: 'License architecture identical to broadcast METER — plain-file license storage (no Keychain prompt), 7-day trial without account, buyer email watermarked in the About window.',
-    cl_lc_p: '<strong>Offline R128 correction · 16 delivery presets · verify-and-refine · mono to 9.1.6.</strong> Engine is functional, currently fine-tuning the preset system and batch pipeline.',
-    cl_note: 'Note: We release only when a tool runs reliably in the workflow — no fixed dates, no pre-orders. If you want to be notified when a tool goes live, send a short email to <a href="mailto:info@satk.tech?subject=Launch-Notification">info@satk.tech</a> with the tool name.',
-    f_shop: 'Shop', f_support: 'Support', f_manage: 'Manage License', f_terms: 'Terms', f_refund: 'Refund', f_imprint: 'Legal', f_privacy: 'Privacy',
-    nav_mac: 'Mac Apps',
-    nav_ios: 'iOS Apps',
-    nav_tools: 'Browser Tools',
-    f_col_products: 'Products',
-    f_col_support: 'Support',
-    f_col_legal: 'Legal',
-    f_imprint_contact: 'Contact & Legal Notice'
-  }
+ de: {
+ nav_shop: 'Shop', nav_info: 'Supportanfrage', nav_manage: 'Lizenz', nav_back: 'Zurück zum Shop',
+ cl_eyebrow: 'Changelog & Roadmap',
+ cl_title: 'Was sich entwickelt',
+ cl_tagline: 'Release-Notes der bestehenden Tools und ein Blick auf das, was als Nächstes kommt.',
+ cl_h_releases: 'Aktuelle Releases',
+ cl_h_roadmap: 'Was als Nächstes kommt',
+ cl_st_live: 'Live', cl_st_soon: 'In Entwicklung',
+ cl_bm_105_t: 'Stabilisierung der One-Click-Aktivierung',
+ cl_bm_105_1: 'Method-Swizzling auf NSAppleEventManager, One-Click aus der Lizenz-Mail funktioniert jetzt zuverlässig auch bei kalt gestarteter App auf macOS 13+.',
+ cl_bm_105_2: 'Drei-Schicht-Defence für URL-Scheme-Handler (load + willFinishLaunching + Method-Swizzle) als Standard-Pattern für alle künftigen SATK-Tools dokumentiert.',
+ cl_bm_104_t: 'Zwischenrelease (von 1.0.5 abgelöst)',
+ cl_bm_103_t: 'Zwischenrelease (von 1.0.5 abgelöst)',
+ cl_bm_102_t: 'Erste öffentliche Direct-Sales-Version',
+ cl_bm_102_1: 'Architektur in Anlehnung an Rogue Amoeba, Plain-File-Lizenz-Speicher (kein Keychain-Prompt), Multi-Location-Trial mit Hardware-HMAC.',
+ cl_bm_102_2: '7-Tage-Trial ohne Konto und ohne E-Mail-Adresse, Vollversion direkt downloadbar, Trial-Status server-getrackt gegen Reset-Versuche.',
+ cl_bm_102_3: 'Watermarking der Käufer-E-Mail im About-Window und in der Toolbar.',
+ cl_bm_102_4: 'PDF- und CSV-Reports mit Loudness-Timeline und Speech-Clarity-Bewertung.',
+ /* LC 1.0.0 Release-Notes, bei Go-Live einkommentieren:
+ cl_lc_100_t: 'Erste öffentliche Direct-Sales-Version',
+ cl_lc_100_1: 'Offline R128-Korrektur mit 16 Delivery-Presets, Broadcast (EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354), Streaming (Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube), Kino (Leq(m), Leq(a)) plus Custom.',
+ cl_lc_100_2: 'Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.',
+ cl_lc_100_3: '3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor, ohne Pumpen, ohne Phasen-Artefakte.',
+ cl_lc_100_4: 'Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum SATK broadcast METER, Messen und Korrigieren mit derselben Wahrheit.',
+ */
+ cl_od_103_t: 'Polish-Release: Take-Edit-UX und Preroll-Visual',
+ cl_od_103_1: 'Auto-Scroll beim Take-Drag, beim Verschieben oder Trimmen scrollt die Timeline jetzt automatisch mit, sobald der Cursor an den linken oder rechten Rand kommt (DAW-Standard wie Pro Tools / Logic).',
+ cl_od_103_2: 'Preroll-Countdown auf Intel und iPad wiederhergestellt, der Countdown war auf Geräten mit geladenem Video unsichtbar, weil AVPlayerLayer auf macOS und iOS den separaten Overlay überdeckte.',
+ cl_od_103_3: 'Neue Preroll-Anzeige: der Timecode zählt jetzt negativ runter (-00:00:04:00 -00:00:01:00) und ist rot, schaltet beim Aufnahme-Start automatisch auf Weiß. Pro-Tools-/Avid-Standard "TC counts down through zero".',
+ cl_od_103_4: 'Overdub-Preroll zeigt korrekt 4 Sekunden vor, vorher startete der Preroll beim Overdub-Ansetzen mitten im Video entweder verkürzt oder gar nicht visuell.',
+ cl_od_102_t: 'Polish-Release: Save/Open, kleine Bildschirme, Export-Korrektheit',
+ cl_od_102_1: 'Save/Open, gespeicherte Sessions laden wieder zuverlässig (Schema-Inkonsistenz behoben), Dialog merkt sich den letzten Ordner, .satkproj-Bundles erscheinen direkt als auswählbare Items.',
+ cl_od_102_2: 'Export, Voice-Stem-WAV hat jetzt die volle Clip-Länge (statt nur Voice-Take-Dauer), MXF wird nicht mehr auf die längste Sprachaufnahme gecapt.',
+ cl_od_102_3: 'Kleine Bildschirme (13"-MacBooks), Header-Subtitle skaliert ohne Überlappung, Voice 2 Lane vollständig sichtbar, MIXTYP-Slider 78 px breiter, Prompter-Schrift adaptiv (22/25/28 pt), Mindest-Fenstergröße 1100x700.',
+ cl_od_102_4: 'Timeline & Prompter, Scrollbar reicht bis zum Video-Ende, Bed-Region-Kontextmenü wirkt sofort sichtbar, Fullscreen + REC verschiebt die App nicht mehr seitlich, Prompter läuft nur noch bei echter Sprache (nicht mehr bei Lüftergeräuschen oder Tippen).',
+ cl_od_101_t: 'Prompter-Polish & On-Device-Speech-Recognition',
+ cl_od_101_1: 'Prompter-Scrolling per Maus wiederhergestellt, Text-Umbruch garantiert vollständige Sichtbarkeit auch bei sehr langen Wörtern.',
+ cl_od_101_2: 'Speech-Recognition läuft on-device (kein Netz-Roundtrip mehr), Partials triggern den Auto-Advance synchroner zur Stimme.',
+ cl_od_100_t: 'Erste öffentliche Direct-Sales-Version',
+ cl_od_100_1: 'DAW-Style Timeline mit Multi-Take-Aufnahmen, Split, Trim, Drag, Strip-Silence, Bed-Region-Ducking, alles sample-genau am Video-Sync.',
+ cl_od_100_2: 'AutoMix in einem Klick, Voice Channel Strip (HP80, EQ, Comp, Sat) + Ducker (-4 dB, 150 ms Release) + Bus Glue + R128-Normalisierung auf -23 LUFS.',
+ cl_od_100_3: 'smart PROMPTER mit On-Device Speech Recognition, der Text-Highlight folgt automatisch der Sprache, kein manuelles Scrollen während der Aufnahme.',
+ cl_od_100_4: 'Export, Stereo-WAV (Mix + Voice-Stem), Video-Mux mit MXF-Round-Trip für Broadcast-Workflows, MP4 für Streaming.',
+ cl_od_100_5: 'Lizenz-Architektur identisch zum broadcast METER, Plain-File-Lizenz-Speicher (kein Keychain-Prompt), 7-Tage-Trial ohne Account, Watermarking der Käufer-E-Mail im About-Window.',
+ cl_lc_p: '<strong>Offline R128-Korrektur · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6.</strong> Engine ist funktionsfähig, derzeit Feinarbeit am Preset-System und der Batch-Pipeline.',
+ cl_note: 'Hinweis: Wir veröffentlichen erst, wenn ein Tool zuverlässig im Workflow läuft, keine fixen Termine, keine Vorbestellungen. Wenn du benachrichtigt werden möchtest sobald ein Tool live geht, schreib eine kurze Mail an <a href="mailto:info@satk.tech?subject=Launch-Notification">info@satk.tech</a> mit dem Tool-Namen.',
+ f_shop: 'Shop', f_support: 'Support', f_manage: 'Lizenz verwalten', f_terms: 'AGB', f_refund: 'Widerruf', f_imprint: 'Impressum', f_privacy: 'Datenschutz',
+ nav_mac: 'Mac Apps',
+ nav_ios: 'iOS Apps',
+ nav_tools: 'Browser-Tools',
+ f_col_products: 'Produkte',
+ f_col_support: 'Support',
+ f_col_legal: 'Rechtliches',
+ f_imprint_contact: 'Kontakt & Impressum'
+ },
+ en: {
+ nav_shop: 'Shop', nav_info: 'Support', nav_manage: 'License', nav_back: 'Back to Shop',
+ cl_eyebrow: 'Changelog & Roadmap',
+ cl_title: 'What\'s evolving',
+ cl_tagline: 'Release notes for the existing tools and a look at what\'s coming next.',
+ cl_h_releases: 'Current releases',
+ cl_h_roadmap: 'What\'s coming next',
+ cl_st_live: 'Live', cl_st_soon: 'In development',
+ cl_bm_105_t: 'One-click activation hardened',
+ cl_bm_105_1: 'Method-swizzling on NSAppleEventManager, one-click activation from the license mail now works reliably even on cold-started apps on macOS 13+.',
+ cl_bm_105_2: 'Three-layer defence for URL-scheme handler (load + willFinishLaunching + method-swizzle) documented as the standard pattern for all future SATK tools.',
+ cl_bm_104_t: 'Interim release (superseded by 1.0.5)',
+ cl_bm_103_t: 'Interim release (superseded by 1.0.5)',
+ cl_bm_102_t: 'First public direct-sales release',
+ cl_bm_102_1: 'Architecture inspired by Rogue Amoeba, plain-file license storage (no Keychain prompt), multi-location trial with hardware HMAC.',
+ cl_bm_102_2: '7-day trial without account and without email, full version download, trial state server-tracked against reset attempts.',
+ cl_bm_102_3: 'Buyer email watermarked in the About window and the toolbar.',
+ cl_bm_102_4: 'PDF and CSV reports with loudness timeline and speech-clarity rating.',
+ /* LC 1.0.0 Release-Notes EN, uncomment when LC goes live:
+ cl_lc_100_t: 'First public direct-sales release',
+ cl_lc_100_1: 'Offline R128 correction with 16 delivery presets, broadcast (EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354), streaming (Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube), cinema (Leq(m), Leq(a)) plus Custom.',
+ cl_lc_100_2: 'Two-pass with automatic refine: pass 1 measures, pass 2 corrects, pass 3 verifies. If the residual is above 0.1 LU, correction runs again with trimmed gain.',
+ cl_lc_100_3: '3-band LRA processor (Linkwitz-Riley 4th order with perfect reconstruction) pulls every LRA into the broadcast corridor, no pumping, no phase artefacts.',
+ cl_lc_100_4: 'Mono to 9.1.6 with BS.1770-compliant LFE weighting. DSP engine byte-identical to SATK broadcast METER, measure and correct with the same truth.',
+ */
+ cl_od_103_t: 'Polish release: take edit UX and preroll visual',
+ cl_od_103_1: 'Auto-scroll while dragging takes, when moving or trimming a take, the timeline now scrolls automatically once the cursor hits the left or right edge (DAW standard like Pro Tools / Logic).',
+ cl_od_103_2: 'Preroll countdown restored on Intel and iPad, the countdown was invisible on devices with a loaded video because macOS and iOS AVPlayerLayer covered the separate overlay.',
+ cl_od_103_3: 'New preroll display: the timecode now counts down negatively (-00:00:04:00 -00:00:01:00) in red, switching to white at recording start. Pro Tools / Avid standard "TC counts down through zero".',
+ cl_od_103_4: 'Overdub preroll correctly counts down a full 4 seconds, previously the preroll when starting an overdub mid-video either shortened or never showed visually.',
+ cl_od_102_t: 'Polish release: save/open, small screens, export-length correctness',
+ cl_od_102_1: 'Save/open, saved sessions load reliably again (schema inconsistency fixed), dialog remembers the last folder, .satkproj bundles appear directly as selectable items.',
+ cl_od_102_2: 'Export, voice-stem WAV now has the full clip length (instead of only the voice-take duration), MXF is no longer capped to the longest voice recording.',
+ cl_od_102_3: 'Small screens (13" MacBooks), header subtitle scales without overlap, Voice 2 lane fully visible, MIXTYP slider 78 px wider, prompter font adaptive (22/25/28 pt), minimum window size 1100x700.',
+ cl_od_102_4: 'Timeline & prompter, scrollbar reaches the end of the video, bed-region context menu takes effect immediately, fullscreen + REC no longer slides the app sideways, prompter only runs on actual speech (no more fan noise or typing triggers).',
+ cl_od_101_t: 'Prompter polish & on-device speech recognition',
+ cl_od_101_1: 'Prompter scrolling via mouse restored, text wrapping guarantees full visibility even for very long words.',
+ cl_od_101_2: 'Speech recognition runs on-device (no network round-trip), partials trigger auto-advance more synchronously with the voice.',
+ cl_od_100_t: 'First public direct-sales release',
+ cl_od_100_1: 'DAW-style timeline with multi-take recording, split, trim, drag, strip-silence, bed-region ducking, all sample-accurate to the video sync.',
+ cl_od_100_2: 'One-click AutoMix, voice channel strip (HP80, EQ, comp, sat) + ducker (-4 dB, 150 ms release) + bus glue + R128 normalisation to -23 LUFS.',
+ cl_od_100_3: 'smart PROMPTER with on-device speech recognition, the text highlight follows the voice automatically, no manual scrolling during recording.',
+ cl_od_100_4: 'Export, stereo WAV (mix + voice stem), video mux with MXF round-trip for broadcast workflows, MP4 for streaming.',
+ cl_od_100_5: 'License architecture identical to broadcast METER, plain-file license storage (no Keychain prompt), 7-day trial without account, buyer email watermarked in the About window.',
+ cl_lc_p: '<strong>Offline R128 correction · 16 delivery presets · verify-and-refine · mono to 9.1.6.</strong> Engine is functional, currently fine-tuning the preset system and batch pipeline.',
+ cl_note: 'Note: We release only when a tool runs reliably in the workflow, no fixed dates, no pre-orders. If you want to be notified when a tool goes live, send a short email to <a href="mailto:info@satk.tech?subject=Launch-Notification">info@satk.tech</a> with the tool name.',
+ f_shop: 'Shop', f_support: 'Support', f_manage: 'Manage License', f_terms: 'Terms', f_refund: 'Refund', f_imprint: 'Legal', f_privacy: 'Privacy',
+ nav_mac: 'Mac Apps',
+ nav_ios: 'iOS Apps',
+ nav_tools: 'Browser Tools',
+ f_col_products: 'Products',
+ f_col_support: 'Support',
+ f_col_legal: 'Legal',
+ f_imprint_contact: 'Contact & Legal Notice'
+ }
 };
 
 function setLang(lang) {
-  document.documentElement.lang = lang;
-  document.getElementById('btnDE').classList.toggle('active', lang==='de');
-  document.getElementById('btnEN').classList.toggle('active', lang==='en');
-  const t = i18n[lang];
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const k = el.dataset.i18n;
-    if (t[k]) el.textContent = t[k];
-  });
-  document.querySelectorAll('[data-i18n-html]').forEach(el => {
-    const k = el.dataset.i18nHtml;
-    if (t[k]) el.innerHTML = t[k];
-  });
-  try { localStorage.setItem('satk-lang', lang); } catch(e){}
+ document.documentElement.lang = lang;
+ document.getElementById('btnDE').classList.toggle('active', lang==='de');
+ document.getElementById('btnEN').classList.toggle('active', lang==='en');
+ const t = i18n[lang];
+ document.querySelectorAll('[data-i18n]').forEach(el => {
+ const k = el.dataset.i18n;
+ if (t[k]) el.textContent = t[k];
+ });
+ document.querySelectorAll('[data-i18n-html]').forEach(el => {
+ const k = el.dataset.i18nHtml;
+ if (t[k]) el.innerHTML = t[k];
+ });
+ try { localStorage.setItem('satk-lang', lang); } catch(e){}
 }
 
 try {
-  const saved = localStorage.getItem('satk-lang');
-  if (saved === 'en') setLang('en');
-  else if (!saved && navigator.language && !navigator.language.startsWith('de')) setLang('en');
+ const saved = localStorage.getItem('satk-lang');
+ if (saved === 'en') setLang('en');
+ else if (!saved && navigator.language && !navigator.language.startsWith('de')) setLang('en');
 } catch(e){}
 </script>
 

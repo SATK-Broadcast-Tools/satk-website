@@ -1,7 +1,19 @@
 # satk-website — Claude Context
 
-Statische Marketing-Site für SATK (satk.tech). Reine HTML/CSS/JS,
+Statische Marketing-Site für pegelWERK. Reine HTML/CSS/JS,
 kein Build, kein Framework.
+
+> **Brand-Rebrand SATK zu pegelWERK (seit 2026-05-29):** Alle sichtbaren
+> Texte, Logos, Favicons und Marken-URLs (canonical/og/Links/E-Mail) sind
+> auf pegelWERK bzw. pegelwerk.com umgestellt. **Noch NICHT umgestellt
+> (bewusst, bis DNS-Cutover):** Live-Domain ist weiterhin `satk.tech`,
+> der Download-Host `download.satk.tech`, der Worker-Endpoint
+> `satk-license-worker.weathered-lake-eea9.workers.dev`, das CF-Pages-
+> Projekt `satk-website`, sowie alle nicht-sichtbaren Bezeichner: Apple-
+> Bundle-IDs `com.satk.*`, CSS-Klassen/JS-Vars `satk-*`/`_satkAC`,
+> Datei-Formate `.satkip`/`.satkproj`, App-URL-Schemes `easyeditor://`/
+> `instantplayer://`, Paddle-Price-IDs. Diese NICHT anfassen, sonst
+> bricht Shop/Lizenz/Deploy.
 
 > **Komplementärer Web-/Backend-Chat-Hub:** Das Repo `satk-license-worker`
 > (`SATK-Broadcast-Tools/satk-license-worker`) hat den vollen Operator-

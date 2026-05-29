@@ -2,43 +2,43 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="/favicon.ico?v=2" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
-<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=2">
-<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
-<link rel="canonical" href="https://satk.tech/loudness-correct">
+<link rel="icon" href="/favicon.ico?v=3" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=3">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=3">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<link rel="canonical" href="https://pegelwerk.com/loudness-correct">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SATK loudness CORRECT - EBU R128 / ITU-R BS.1770-4 Loudness-Korrektur</title>
+<title>pegelWERK loudness CORRECT - EBU R128 / ITU-R BS.1770-4 Loudness-Korrektur</title>
 <meta name="description" content="Offline-Lautheitskorrektur nach EBU R128, ATSC A/85, Netflix, Spotify, YouTube & Co. Two-Pass mit Verify-and-Refine auf +/-0,1 LU. macOS Standalone + iPad.">
 
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="SATK loudness CORRECT - EBU R128 Loudness-Korrektur">
+<meta property="og:title" content="pegelWERK loudness CORRECT - EBU R128 Loudness-Korrektur">
 <meta property="og:description" content="Offline-Lautheitskorrektur. Two-Pass mit Verify-and-Refine auf +/-0,1 LU. 16 Delivery-Presets (EBU R128, ATSC A/85, Netflix, Spotify, YouTube). macOS + iPad.">
-<meta property="og:url" content="https://satk.tech/loudness-correct">
-<meta property="og:image" content="https://satk.tech/og-image.png">
+<meta property="og:url" content="https://pegelwerk.com/loudness-correct">
+<meta property="og:image" content="https://pegelwerk.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:site_name" content="SATK - Sascha's Audio Tool Kit">
+<meta property="og:site_name" content="pegelWERK">
 <meta property="og:locale" content="de_DE">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SATK loudness CORRECT - EBU R128 Loudness-Korrektur">
+<meta name="twitter:title" content="pegelWERK loudness CORRECT - EBU R128 Loudness-Korrektur">
 <meta name="twitter:description" content="Offline R128 / ITU-R BS.1770-4. 16 Delivery-Presets, Verify-and-Refine, Mono bis 9.1.6.">
-<meta name="twitter:image" content="https://satk.tech/og-image.png">
+<meta name="twitter:image" content="https://pegelwerk.com/og-image.png">
 <link href="fonts.css" rel="stylesheet">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
  "@type": "SoftwareApplication",
- "name": "SATK loudness CORRECT",
+ "name": "pegelWERK loudness CORRECT",
  "description": "Offline-Lautheitskorrektur nach EBU R128, ATSC A/85, Netflix, Spotify, YouTube. Two-Pass mit Verify-and-Refine auf +/-0,1 LU. macOS Standalone und iPad.",
  "applicationCategory": "MultimediaApplication",
  "applicationSubCategory": "Loudness Normalization",
  "operatingSystem": "macOS 13+, iPadOS 16+",
- "url": "https://satk.tech/loudness-correct",
- "image": "https://satk.tech/img-loudness-correct.webp",
- "screenshot": "https://satk.tech/img-loudness-correct.webp",
+ "url": "https://pegelwerk.com/loudness-correct",
+ "image": "https://pegelwerk.com/img-loudness-correct.webp",
+ "screenshot": "https://pegelwerk.com/img-loudness-correct.webp",
  "offers": {
  "@type": "Offer",
  "name": "Standalone macOS",
@@ -49,9 +49,9 @@
  },
  "publisher": {
  "@type": "Organization",
- "name": "SATK",
- "url": "https://satk.tech",
- "logo": "https://satk.tech/og-image.png"
+ "name": "pegelWERK",
+ "url": "https://pegelwerk.com",
+ "logo": "https://pegelwerk.com/og-image.png"
  },
  "inLanguage": ["de", "en"]
 }
@@ -66,7 +66,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
  padding:16px 48px;background:rgba(10,10,11,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
  border-bottom:1px solid rgba(255,255,255,.04)}
 .nav-logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;line-height:1}
-.nav-logo-mark{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--ac);letter-spacing:4px}
+.nav-logo-mark{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--ac);letter-spacing:1px}
 .nav-logo-accent{color:var(--tx)}
 .nav-logo-sub{font-family:'DM Mono',monospace;font-size:8px;color:var(--mu);letter-spacing:1.5px;text-transform:uppercase;font-weight:300;white-space:nowrap}
 .nav-links{display:flex;gap:32px;align-items:center}
@@ -180,7 +180,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 .footer-col a:hover{color:var(--ac)}
 .footer-col+.footer-col{border-left:1px solid rgba(255,255,255,.12)}
 .footer-bar{display:flex;justify-content:center;align-items:center;gap:16px;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
-.footer-brand{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:3px}
+.footer-brand{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:1px}
 .footer-brand-accent{color:var(--tx)}
 .footer-meta{color:var(--mu2);text-transform:none;letter-spacing:.3px}
 @media(max-width:720px){.footer-grid{grid-template-columns:repeat(3,1fr);gap:24px}.footer-bar{flex-direction:column;gap:12px;text-align:center}}
@@ -199,8 +199,8 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 
 <nav>
  <a href="/" class="nav-logo">
- <span class="nav-logo-mark">S<span class="nav-logo-accent">A</span>TK</span>
- <span class="nav-logo-sub">Sascha's Audio Tool Kit</span>
+ <span class="nav-logo-mark">pegel<span class="nav-logo-accent">WERK</span></span>
+ <span class="nav-logo-sub">Pro Audio Tools</span>
  </a>
  <div class="nav-platforms">
  <a href="/mac" class="active">Mac</a>
@@ -229,13 +229,13 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 </section>
 
 <div class="hero-img-wrap">
- <img class="hero-img" src="img-loudness-correct.webp" alt="SATK loudness CORRECT Interface">
+ <img class="hero-img" src="img-loudness-correct.webp" alt="pegelWERK loudness CORRECT Interface">
 </div>
 
 <section class="section">
  <div class="section-label" data-i18n="lc_features_label">Highlights</div>
  <h2 class="section-h2" data-i18n="lc_features_title">Triff dein Target. Wiederholbar.</h2>
- <p class="section-intro" data-i18n="lc_features_intro">loudness CORRECT ist die fokussierte Single-File-Lösung für normgerechte Lautheitskorrektur. Die DSP-Engine teilt sich loudness CORRECT mit dem SATK broadcast METER, gleiche K-Weighting, gleicher Loudness-Meter, gleicher True-Peak-Detektor. Was du im Meter siehst, triffst du hier.</p>
+ <p class="section-intro" data-i18n="lc_features_intro">loudness CORRECT ist die fokussierte Single-File-Lösung für normgerechte Lautheitskorrektur. Die DSP-Engine teilt sich loudness CORRECT mit dem pegelWERK broadcast METER, gleiche K-Weighting, gleicher Loudness-Meter, gleicher True-Peak-Detektor. Was du im Meter siehst, triffst du hier.</p>
 
  <div class="features">
  <div class="feature">
@@ -357,7 +357,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 <section class="section">
  <div class="section-label" data-i18n="lc_specs_label">Technische Details</div>
  <h2 class="section-h2" data-i18n="lc_specs_title">Built for Production</h2>
- <p class="section-intro" data-i18n="lc_specs_intro">DSP-Parität zum SATK broadcast METER, gleiche K-Weighting, gleicher Loudness-Meter, gleicher True-Peak-Detektor.</p>
+ <p class="section-intro" data-i18n="lc_specs_intro">DSP-Parität zum pegelWERK broadcast METER, gleiche K-Weighting, gleicher Loudness-Meter, gleicher True-Peak-Detektor.</p>
 
  <div class="specs">
  <div class="spec-col">
@@ -427,8 +427,8 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
  </div>
  </div>
  <div class="footer-bar">
- <span class="footer-brand">S<span class="footer-brand-accent">A</span>TK</span>
- <span class="footer-meta">Sascha's Audio Toolkit · © 2026</span>
+ <span class="footer-brand">pegel<span class="footer-brand-accent">WERK</span></span>
+ <span class="footer-meta">pegelWERK · © 2026</span>
  </div>
 </footer>
 
@@ -450,7 +450,7 @@ const i18n = {
  vat: 'inkl. MwSt. · Einführungspreis',
  lc_features_label: 'Highlights',
  lc_features_title: 'Triff dein Target. Wiederholbar.',
- lc_features_intro: 'loudness CORRECT ist die fokussierte Single-File-Lösung für normgerechte Lautheitskorrektur. Die DSP-Engine teilt sich loudness CORRECT mit dem SATK broadcast METER, gleiche K-Weighting, gleicher Loudness-Meter, gleicher True-Peak-Detektor. Was du im Meter siehst, triffst du hier.',
+ lc_features_intro: 'loudness CORRECT ist die fokussierte Single-File-Lösung für normgerechte Lautheitskorrektur. Die DSP-Engine teilt sich loudness CORRECT mit dem pegelWERK broadcast METER, gleiche K-Weighting, gleicher Loudness-Meter, gleicher True-Peak-Detektor. Was du im Meter siehst, triffst du hier.',
  lc_f1_h: 'K-Weighting + Double Gating',
  lc_f1_p: 'ITU-R BS.1770-4 K-Filter (Pre + RLB), 400-ms-Blöcke mit 75% Overlap, absolutes -70 LUFS und relatives -10 LU Gating. LUFS-I, LUFS-S Max, LUFS-M Max, LRA (EBU Tech 3342), alle Werte exakt nach Spec.',
  lc_f2_h: '4x Polyphase TP-Limiter',
@@ -481,7 +481,7 @@ const i18n = {
  lc_w4_p: 'Output wird neu gemessen. Bei |Residual| > 0,1 LU läuft Pass 2 erneut. PDF-Report mit Source / Target / Result und PASS-Badge.',
  lc_specs_label: 'Technische Details',
  lc_specs_title: 'Built for Production',
- lc_specs_intro: 'DSP-Parität zum SATK broadcast METER, gleiche K-Weighting, gleicher Loudness-Meter, gleicher True-Peak-Detektor.',
+ lc_specs_intro: 'DSP-Parität zum pegelWERK broadcast METER, gleiche K-Weighting, gleicher Loudness-Meter, gleicher True-Peak-Detektor.',
  lc_specs_dsp: 'Standards & Engine',
  lc_specs_proc: 'Processing',
  lc_specs_io: 'Plattform & I/O',
@@ -521,7 +521,7 @@ const i18n = {
  vat: 'incl. VAT · Launch price',
  lc_features_label: 'Highlights',
  lc_features_title: 'Hit your target. Repeatable.',
- lc_features_intro: 'loudness CORRECT is the focused single-file solution for spec-compliant loudness correction. It shares its DSP engine with SATK broadcast METER, same K-weighting, same loudness meter, same true-peak detector. What you see in the meter, you hit here.',
+ lc_features_intro: 'loudness CORRECT is the focused single-file solution for spec-compliant loudness correction. It shares its DSP engine with pegelWERK broadcast METER, same K-weighting, same loudness meter, same true-peak detector. What you see in the meter, you hit here.',
  lc_f1_h: 'K-Weighting + Double Gating',
  lc_f1_p: 'ITU-R BS.1770-4 K-filter (pre + RLB), 400 ms blocks at 75% overlap, absolute -70 LUFS and relative -10 LU gating. LUFS-I, LUFS-S Max, LUFS-M Max, LRA (EBU Tech 3342), every value exactly per spec.',
  lc_f2_h: '4x Polyphase TP Limiter',
@@ -552,7 +552,7 @@ const i18n = {
  lc_w4_p: 'Output is re-measured. If |residual| > 0.1 LU, pass 2 runs again. PDF report with source / target / result and PASS badge.',
  lc_specs_label: 'Technical Details',
  lc_specs_title: 'Built for Production',
- lc_specs_intro: 'DSP parity with SATK broadcast METER, same K-weighting, same loudness meter, same true-peak detector.',
+ lc_specs_intro: 'DSP parity with pegelWERK broadcast METER, same K-weighting, same loudness meter, same true-peak detector.',
  lc_specs_dsp: 'Standards & Engine',
  lc_specs_proc: 'Processing',
  lc_specs_io: 'Platform & I/O',

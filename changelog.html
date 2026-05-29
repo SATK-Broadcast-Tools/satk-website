@@ -2,21 +2,21 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="/favicon.ico?v=2" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
-<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=2">
-<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=2">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
-<link rel="canonical" href="https://satk.tech/changelog">
+<link rel="icon" href="/favicon.ico?v=3" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=3">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=3">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<link rel="canonical" href="https://pegelwerk.com/changelog">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SATK Changelog - Was sich in den letzten Releases geändert hat</title>
-<meta name="description" content="Release-Notes und Roadmap für SATK Pro Audio Software: broadcast METER, overdub STUDIO, loudness CORRECT.">
+<title>pegelWERK Changelog - Was sich in den letzten Releases geändert hat</title>
+<meta name="description" content="Release-Notes und Roadmap für pegelWERK Pro Audio Software: broadcast METER, overdub STUDIO, loudness CORRECT.">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="SATK Changelog & Roadmap">
-<meta property="og:description" content="Release-Notes und Roadmap für SATK Pro Audio Software.">
-<meta property="og:url" content="https://satk.tech/changelog">
-<meta property="og:site_name" content="SATK - Sascha's Audio Tool Kit">
+<meta property="og:title" content="pegelWERK Changelog & Roadmap">
+<meta property="og:description" content="Release-Notes und Roadmap für pegelWERK Pro Audio Software.">
+<meta property="og:url" content="https://pegelwerk.com/changelog">
+<meta property="og:site_name" content="pegelWERK">
 <meta property="og:locale" content="de_DE">
 
 <link href="fonts.css" rel="stylesheet">
@@ -30,7 +30,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
  padding:16px 48px;background:rgba(10,10,11,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
  border-bottom:1px solid rgba(255,255,255,.04)}
 .nav-logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;line-height:1}
-.nav-logo-mark{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--ac);letter-spacing:4px}
+.nav-logo-mark{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--ac);letter-spacing:1px}
 .nav-logo-accent{color:var(--tx)}
 .nav-logo-sub{font-family:'DM Mono',monospace;font-size:8px;color:var(--mu);letter-spacing:1.5px;text-transform:uppercase;font-weight:300;white-space:nowrap}
 .nav-links{display:flex;gap:32px;align-items:center}
@@ -102,7 +102,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 .footer-col a:hover{color:var(--ac)}
 .footer-col+.footer-col{border-left:1px solid rgba(255,255,255,.12)}
 .footer-bar{display:flex;justify-content:center;align-items:center;gap:16px;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
-.footer-brand{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:3px}
+.footer-brand{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:1px}
 .footer-brand-accent{color:var(--tx)}
 .footer-meta{color:var(--mu2);text-transform:none;letter-spacing:.3px}
 @media(max-width:720px){.footer-grid{grid-template-columns:repeat(3,1fr);gap:24px}.footer-bar{flex-direction:column;gap:12px;text-align:center}}
@@ -121,8 +121,8 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 
 <nav>
  <a href="/" class="nav-logo">
- <span class="nav-logo-mark">S<span class="nav-logo-accent">A</span>TK</span>
- <span class="nav-logo-sub">Sascha's Audio Tool Kit</span>
+ <span class="nav-logo-mark">pegel<span class="nav-logo-accent">WERK</span></span>
+ <span class="nav-logo-sub">Pro Audio Tools</span>
  </a>
  <div class="nav-platforms">
  <a href="/mac">Mac</a>
@@ -152,14 +152,14 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 
  <!-- ── broadcast METER ──────────── -->
  <div class="product-block">
- <div class="product-name">SATK broadcast METER <span class="product-status" data-i18n="cl_st_live">Live</span></div>
+ <div class="product-name">pegelWERK broadcast METER <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
  <div class="release">
  <span class="release-version">1.0.5</span><span class="release-date">2026-05-06</span>
  <div class="release-title" data-i18n="cl_bm_105_t">Stabilisierung der One-Click-Aktivierung</div>
  <ul class="release-list">
  <li data-i18n="cl_bm_105_1">Method-Swizzling auf NSAppleEventManager, One-Click aus der Lizenz-Mail funktioniert jetzt zuverlässig auch bei kalt gestarteter App auf macOS 13+.</li>
- <li data-i18n="cl_bm_105_2">Drei-Schicht-Defence für URL-Scheme-Handler (load + willFinishLaunching + Method-Swizzle) als Standard-Pattern für alle künftigen SATK-Tools dokumentiert.</li>
+ <li data-i18n="cl_bm_105_2">Drei-Schicht-Defence für URL-Scheme-Handler (load + willFinishLaunching + Method-Swizzle) als Standard-Pattern für alle künftigen pegelWERK-Tools dokumentiert.</li>
  </ul>
  </div>
 
@@ -187,7 +187,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 
  <!-- ── overdub STUDIO ──────────── -->
  <div class="product-block">
- <div class="product-name">SATK overdub STUDIO <span class="product-status" data-i18n="cl_st_live">Live</span></div>
+ <div class="product-name">pegelWERK overdub STUDIO <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
  <div class="release">
  <span class="release-version">1.0.3</span><span class="release-date">2026-05-22</span>
@@ -244,7 +244,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
  ═════════════════════════════════════════════════════════════ ╗
 
  <div class="product-block">
- <div class="product-name">SATK loudness CORRECT <span class="product-status" data-i18n="cl_st_live">Live</span></div>
+ <div class="product-name">pegelWERK loudness CORRECT <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
  <div class="release">
  <span class="release-version"><UNDER VERSION></span><span class="release-date"><UNDER DATUM></span>
@@ -253,7 +253,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
  <li data-i18n="cl_lc_100_1">Offline R128-Korrektur mit 16 Delivery-Presets, Broadcast (EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354), Streaming (Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube), Kino (Leq(m), Leq(a)) plus Custom.</li>
  <li data-i18n="cl_lc_100_2">Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.</li>
  <li data-i18n="cl_lc_100_3">3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor, ohne Pumpen, ohne Phasen-Artefakte.</li>
- <li data-i18n="cl_lc_100_4">Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum SATK broadcast METER, Messen und Korrigieren mit derselben Wahrheit.</li>
+ <li data-i18n="cl_lc_100_4">Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum pegelWERK broadcast METER, Messen und Korrigieren mit derselben Wahrheit.</li>
  </ul>
  </div>
  </div>
@@ -264,11 +264,11 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 
  <!-- ── loudness CORRECT (in Roadmap-Block, entfernen wenn LC live geht) ──────────── -->
  <div class="product-block">
- <div class="product-name">SATK loudness CORRECT <span class="product-status soon" data-i18n="cl_st_soon">In Entwicklung</span></div>
+ <div class="product-name">pegelWERK loudness CORRECT <span class="product-status soon" data-i18n="cl_st_soon">In Entwicklung</span></div>
  <p class="roadmap-line" data-i18n="cl_lc_p"><strong>Offline R128-Korrektur · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6.</strong> Engine ist funktionsfähig, derzeit Feinarbeit am Preset-System und der Batch-Pipeline.</p>
  </div>
 
- <p class="note" data-i18n-html="cl_note">Hinweis: Wir veröffentlichen erst, wenn ein Tool zuverlässig im Workflow läuft, keine fixen Termine, keine Vorbestellungen. Wenn du benachrichtigt werden möchtest sobald ein Tool live geht, schreib eine kurze Mail an <a href="mailto:info@satk.tech?subject=Launch-Notification">info@satk.tech</a> mit dem Tool-Namen.</p>
+ <p class="note" data-i18n-html="cl_note">Hinweis: Wir veröffentlichen erst, wenn ein Tool zuverlässig im Workflow läuft, keine fixen Termine, keine Vorbestellungen. Wenn du benachrichtigt werden möchtest sobald ein Tool live geht, schreib eine kurze Mail an <a href="mailto:info@pegelwerk.com?subject=Launch-Notification">info@pegelwerk.com</a> mit dem Tool-Namen.</p>
 
 </section>
 
@@ -296,8 +296,8 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
  </div>
  </div>
  <div class="footer-bar">
- <span class="footer-brand">S<span class="footer-brand-accent">A</span>TK</span>
- <span class="footer-meta">Sascha's Audio Toolkit · © 2026</span>
+ <span class="footer-brand">pegel<span class="footer-brand-accent">WERK</span></span>
+ <span class="footer-meta">pegelWERK · © 2026</span>
  </div>
 </footer>
 
@@ -313,7 +313,7 @@ const i18n = {
  cl_st_live: 'Live', cl_st_soon: 'In Entwicklung',
  cl_bm_105_t: 'Stabilisierung der One-Click-Aktivierung',
  cl_bm_105_1: 'Method-Swizzling auf NSAppleEventManager, One-Click aus der Lizenz-Mail funktioniert jetzt zuverlässig auch bei kalt gestarteter App auf macOS 13+.',
- cl_bm_105_2: 'Drei-Schicht-Defence für URL-Scheme-Handler (load + willFinishLaunching + Method-Swizzle) als Standard-Pattern für alle künftigen SATK-Tools dokumentiert.',
+ cl_bm_105_2: 'Drei-Schicht-Defence für URL-Scheme-Handler (load + willFinishLaunching + Method-Swizzle) als Standard-Pattern für alle künftigen pegelWERK-Tools dokumentiert.',
  cl_bm_104_t: 'Zwischenrelease (von 1.0.5 abgelöst)',
  cl_bm_103_t: 'Zwischenrelease (von 1.0.5 abgelöst)',
  cl_bm_102_t: 'Erste öffentliche Direct-Sales-Version',
@@ -326,7 +326,7 @@ const i18n = {
  cl_lc_100_1: 'Offline R128-Korrektur mit 16 Delivery-Presets, Broadcast (EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354), Streaming (Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube), Kino (Leq(m), Leq(a)) plus Custom.',
  cl_lc_100_2: 'Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.',
  cl_lc_100_3: '3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor, ohne Pumpen, ohne Phasen-Artefakte.',
- cl_lc_100_4: 'Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum SATK broadcast METER, Messen und Korrigieren mit derselben Wahrheit.',
+ cl_lc_100_4: 'Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum pegelWERK broadcast METER, Messen und Korrigieren mit derselben Wahrheit.',
  */
  cl_od_103_t: 'Polish-Release: Take-Edit-UX und Preroll-Visual',
  cl_od_103_1: 'Auto-Scroll beim Take-Drag, beim Verschieben oder Trimmen scrollt die Timeline jetzt automatisch mit, sobald der Cursor an den linken oder rechten Rand kommt (DAW-Standard wie Pro Tools / Logic).',
@@ -348,7 +348,7 @@ const i18n = {
  cl_od_100_4: 'Export, Stereo-WAV (Mix + Voice-Stem), Video-Mux mit MXF-Round-Trip für Broadcast-Workflows, MP4 für Streaming.',
  cl_od_100_5: 'Lizenz-Architektur identisch zum broadcast METER, Plain-File-Lizenz-Speicher (kein Keychain-Prompt), 7-Tage-Trial ohne Account, Watermarking der Käufer-E-Mail im About-Window.',
  cl_lc_p: '<strong>Offline R128-Korrektur · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6.</strong> Engine ist funktionsfähig, derzeit Feinarbeit am Preset-System und der Batch-Pipeline.',
- cl_note: 'Hinweis: Wir veröffentlichen erst, wenn ein Tool zuverlässig im Workflow läuft, keine fixen Termine, keine Vorbestellungen. Wenn du benachrichtigt werden möchtest sobald ein Tool live geht, schreib eine kurze Mail an <a href="mailto:info@satk.tech?subject=Launch-Notification">info@satk.tech</a> mit dem Tool-Namen.',
+ cl_note: 'Hinweis: Wir veröffentlichen erst, wenn ein Tool zuverlässig im Workflow läuft, keine fixen Termine, keine Vorbestellungen. Wenn du benachrichtigt werden möchtest sobald ein Tool live geht, schreib eine kurze Mail an <a href="mailto:info@pegelwerk.com?subject=Launch-Notification">info@pegelwerk.com</a> mit dem Tool-Namen.',
  f_shop: 'Shop', f_support: 'Support', f_manage: 'Lizenz verwalten', f_terms: 'AGB', f_refund: 'Widerruf', f_imprint: 'Impressum', f_privacy: 'Datenschutz',
  nav_mac: 'Mac Apps',
  nav_ios: 'iOS Apps',
@@ -368,7 +368,7 @@ const i18n = {
  cl_st_live: 'Live', cl_st_soon: 'In development',
  cl_bm_105_t: 'One-click activation hardened',
  cl_bm_105_1: 'Method-swizzling on NSAppleEventManager, one-click activation from the license mail now works reliably even on cold-started apps on macOS 13+.',
- cl_bm_105_2: 'Three-layer defence for URL-scheme handler (load + willFinishLaunching + method-swizzle) documented as the standard pattern for all future SATK tools.',
+ cl_bm_105_2: 'Three-layer defence for URL-scheme handler (load + willFinishLaunching + method-swizzle) documented as the standard pattern for all future pegelWERK tools.',
  cl_bm_104_t: 'Interim release (superseded by 1.0.5)',
  cl_bm_103_t: 'Interim release (superseded by 1.0.5)',
  cl_bm_102_t: 'First public direct-sales release',
@@ -381,7 +381,7 @@ const i18n = {
  cl_lc_100_1: 'Offline R128 correction with 16 delivery presets, broadcast (EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354), streaming (Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube), cinema (Leq(m), Leq(a)) plus Custom.',
  cl_lc_100_2: 'Two-pass with automatic refine: pass 1 measures, pass 2 corrects, pass 3 verifies. If the residual is above 0.1 LU, correction runs again with trimmed gain.',
  cl_lc_100_3: '3-band LRA processor (Linkwitz-Riley 4th order with perfect reconstruction) pulls every LRA into the broadcast corridor, no pumping, no phase artefacts.',
- cl_lc_100_4: 'Mono to 9.1.6 with BS.1770-compliant LFE weighting. DSP engine byte-identical to SATK broadcast METER, measure and correct with the same truth.',
+ cl_lc_100_4: 'Mono to 9.1.6 with BS.1770-compliant LFE weighting. DSP engine byte-identical to pegelWERK broadcast METER, measure and correct with the same truth.',
  */
  cl_od_103_t: 'Polish release: take edit UX and preroll visual',
  cl_od_103_1: 'Auto-scroll while dragging takes, when moving or trimming a take, the timeline now scrolls automatically once the cursor hits the left or right edge (DAW standard like Pro Tools / Logic).',
@@ -403,7 +403,7 @@ const i18n = {
  cl_od_100_4: 'Export, stereo WAV (mix + voice stem), video mux with MXF round-trip for broadcast workflows, MP4 for streaming.',
  cl_od_100_5: 'License architecture identical to broadcast METER, plain-file license storage (no Keychain prompt), 7-day trial without account, buyer email watermarked in the About window.',
  cl_lc_p: '<strong>Offline R128 correction · 16 delivery presets · verify-and-refine · mono to 9.1.6.</strong> Engine is functional, currently fine-tuning the preset system and batch pipeline.',
- cl_note: 'Note: We release only when a tool runs reliably in the workflow, no fixed dates, no pre-orders. If you want to be notified when a tool goes live, send a short email to <a href="mailto:info@satk.tech?subject=Launch-Notification">info@satk.tech</a> with the tool name.',
+ cl_note: 'Note: We release only when a tool runs reliably in the workflow, no fixed dates, no pre-orders. If you want to be notified when a tool goes live, send a short email to <a href="mailto:info@pegelwerk.com?subject=Launch-Notification">info@pegelwerk.com</a> with the tool name.',
  f_shop: 'Shop', f_support: 'Support', f_manage: 'Manage License', f_terms: 'Terms', f_refund: 'Refund', f_imprint: 'Legal', f_privacy: 'Privacy',
  nav_mac: 'Mac Apps',
  nav_ios: 'iOS Apps',

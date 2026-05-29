@@ -1,9 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="14" fill="#0a0a0b"/>
-  <g font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="900" font-size="30" text-anchor="middle">
-    <text x="17" y="30" fill="#c8f060">S</text>
-    <text x="47" y="30" fill="#e8e8ec">A</text>
-    <text x="17" y="56" fill="#c8f060">T</text>
-    <text x="47" y="56" fill="#c8f060">K</text>
+  <g font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="800" text-anchor="middle">
+    <text x="32" y="28" font-size="15" fill="#c8f060">pegel</text>
+    <text x="32" y="50" font-size="18" fill="#e8e8ec">WERK</text>
   </g>
 </svg>

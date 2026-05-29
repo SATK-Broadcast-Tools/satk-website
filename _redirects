@@ -3,10 +3,6 @@
 # Format: <from> <to> <status>
 # Wildcards: :splat erfasst den Rest
 
-# Domain-Umzug: satk.tech -> pegelwerk.com (Branding-Domain), Pfad bleibt erhalten
-https://satk.tech/* https://pegelwerk.com/:splat 301
-https://www.satk.tech/* https://pegelwerk.com/:splat 301
-
 # index.html → / (kanonische Homepage)
 /index.html / 301
 

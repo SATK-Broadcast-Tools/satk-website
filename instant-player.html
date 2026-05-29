@@ -4,11 +4,11 @@
 <meta name="description" content="64 Cue-Slots in 4 Bänken, Tastatur-Trigger, Loop, Fade, Auto-Cue, Wellenform-Vorschau. Sampler und Instant-Replay-Player für Live, Broadcast und Studio, lokal im Browser, ohne Upload.">
 <meta name="keywords" content="instant PLAYER, Soundboard, Cue Player, Sampler Browser, Instant Replay, Jingle Player, Stinger Player, 64 Slots, Keyboard Steuerung, Loop, Fade, Live Audio, Broadcast Player, Studio Playout, kostenlos, kein Download, Browser Soundboard">
 <meta charset="UTF-8">
-<link rel="icon" href="/favicon.ico?v=3" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
-<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=3">
-<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=3">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<link rel="icon" href="/favicon.ico?v=5" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=5">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=5">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=5">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>pegelWERK instant PLAYER · 64 Cue-Slots, Tastatur-Trigger, Loop &amp; Fade</title>
 <style>
@@ -32,7 +32,7 @@
  body {
  background: var(--bg);
  color: var(--text);
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  min-height: 100vh;
  overflow-x: hidden;
  }
@@ -73,7 +73,7 @@
  gap: 14px;
  }
  .logo-wordmark {
- font-family: 'Syne', sans-serif;
+ font-family: 'Arimo', sans-serif;
  font-size: clamp(22px, 5vw, 44px);
  font-weight: 800;
  letter-spacing: 0.18em;
@@ -95,7 +95,7 @@
  }
  .logo-right { display: flex; flex-direction: column; gap: 3px; }
  .logo-sub-word {
- font-family: 'Syne', sans-serif;
+ font-family: 'Arimo', sans-serif;
  font-size: clamp(10px, 1.6vw, 12px);
  font-weight: 600;
  letter-spacing: 0.28em;
@@ -161,7 +161,7 @@
  background: none;
  border: 1px solid var(--border);
  color: var(--muted);
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  font-size: 11px;
  letter-spacing: 0.06em;
  text-transform: uppercase;
@@ -233,7 +233,7 @@
  border: 1px solid var(--border);
  border-bottom: none;
  color: var(--muted);
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  font-size: 10px;
  letter-spacing: 0.1em;
  text-transform: uppercase;
@@ -313,7 +313,7 @@
  font-size: 9px;
  letter-spacing: 0.1em;
  color: var(--muted);
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  line-height: 1;
  z-index: 2;
  }
@@ -363,7 +363,7 @@
  font-size: 9px;
  padding: 3px 6px;
  cursor: pointer;
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  letter-spacing: 0.04em;
  transition: all 0.12s;
  z-index: 5;
@@ -421,7 +421,7 @@
  background: none;
  border: 1px solid var(--border);
  color: var(--muted);
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  font-size: 10px;
  letter-spacing: 0.06em;
  padding: 4px 10px;
@@ -478,7 +478,7 @@
  flex-wrap: wrap;
  gap: 12px;
  }
- .footer-logo { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 0.18em; color: var(--accent); }
+ .footer-logo { font-family: 'Arimo', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 0.18em; color: var(--accent); }
  .footer-copy { font-size: 10px; color: var(--muted); }
 
  /* ── Keyboard hint ─────────────────────────────────────────────────────── */
@@ -633,7 +633,7 @@
 #satkDlHint{
  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
  background:#0d1012;border:1px solid rgba(200,240,96,.35);
- color:#e2e6ed;font-family:'DM Mono',monospace;font-size:11px;
+ color:#e2e6ed;font-family:'Inter',sans-serif;font-size:11px;
  padding:12px 18px;z-index:9999;max-width:420px;width:90%;
  box-shadow:0 4px 24px rgba(0,0,0,.5);
  animation:satkDlIn .25s ease;pointer-events:none;
@@ -651,12 +651,12 @@
 /* ── Footer (3-spaltig) ──────────── */
 footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255,255,.06);background:#15161a;text-align:left}
 .footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1120px;margin:0 auto 48px;text-align:center}
-.footer-col h4{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
-.footer-col a{display:block;font-family:'DM Mono',monospace;font-size:11px;color:var(--mu2);text-decoration:none;letter-spacing:.3px;padding:5px 0;transition:color .2s}
+.footer-col h4{font-family:'Arimo',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
+.footer-col a{display:block;font-family:'Inter',sans-serif;font-size:11px;color:var(--mu2);text-decoration:none;letter-spacing:.3px;padding:5px 0;transition:color .2s}
 .footer-col a:hover{color:var(--ac)}
 .footer-col+.footer-col{border-left:1px solid rgba(255,255,255,.12)}
-.footer-bar{display:flex;justify-content:center;align-items:center;gap:16px;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
-.footer-brand{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:1px}
+.footer-bar{display:flex;justify-content:center;align-items:center;gap:16px;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'Inter',sans-serif;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
+.footer-brand{font-family:'Arimo',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:1px}.footer-brand-img{height:17px;width:auto;display:block}
 .footer-brand-accent{color:var(--tx)}
 .footer-meta{color:var(--mu2);text-transform:none;letter-spacing:.3px}
 @media(max-width:720px){.footer-grid{grid-template-columns:repeat(3,1fr);gap:24px}.footer-bar{flex-direction:column;gap:12px;text-align:center}}
@@ -712,12 +712,12 @@ html, body, * { scrollbar-width: none; -ms-overflow-style: none; }
 }
 
 /* ── Shop-Back-Link ── */
-.shop-back{position:fixed;top:16px;right:20px;z-index:100;display:inline-flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--muted);text-decoration:none;padding:7px 12px;border:1px solid var(--border);background:rgba(10,10,11,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:color .2s,border-color .2s;}
+.shop-back{position:fixed;top:16px;right:20px;z-index:100;display:inline-flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.08em;color:var(--muted);text-decoration:none;padding:7px 12px;border:1px solid var(--border);background:rgba(10,10,11,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:color .2s,border-color .2s;}
 .shop-back:hover{color:var(--accent);border-color:var(--accent);}
 @media (max-width:540px){.shop-back{top:10px;right:10px;font-size:10px;padding:5px 9px;}}
 
 /* ── Tool-Meta: Sprachschalter + Master-Links, fixed top-right ── */
-.tool-meta{position:fixed;top:18px;right:160px;z-index:100;display:inline-flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;border:1px solid var(--border);background:rgba(10,10,11,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+.tool-meta{position:fixed;top:18px;right:160px;z-index:100;display:inline-flex;align-items:center;gap:12px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;border:1px solid var(--border);background:rgba(10,10,11,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
 .tool-meta a{color:var(--muted);text-decoration:none;transition:color .2s;}
 .tool-meta a:hover{color:var(--accent);}
 .tool-meta .lang-sw{display:inline-flex;align-items:center;gap:4px;}
@@ -932,7 +932,7 @@ function setLang(lang){
  </div>
  </div>
  <div class="footer-bar">
- <span class="footer-brand">pegel<span class="footer-brand-accent">WERK</span></span>
+ <img class="footer-brand-img" src="/logo.svg?v=1" alt="pegelWERK">
  <span class="footer-meta">pegelWERK · © 2026</span>
  </div>
 </footer>
@@ -1244,7 +1244,7 @@ function drawWaveform(idx, audioBuf, cuePoint) {
  c.beginPath(); c.moveTo(cx, 0); c.lineTo(cx, CH); c.stroke();
  c.setLineDash([]);
  c.fillStyle = '#60d4f0';
- c.font = 'bold 7px monospace';
+ c.font = 'bold 7px Inter,sans-serif';
  c.fillText('CUE', cx + 2, 9);
  }
 }

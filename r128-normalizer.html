@@ -4,11 +4,11 @@
 <meta name="description" content="Lautheitsnormalisierung nach EBU R128 / ITU-R BS.1770-4. Datei droppen, Target wählen, normalisieren. K-Filter mit Double-Gating, 4x Polyphase TP-Limiter, lokale Verarbeitung im Browser, ohne Upload.">
 <meta name="keywords" content="R128 NORMALIZER, EBU R128, Loudness Normalizer, LUFS normalisieren, Lautheit normalisieren, TV Audio normalisieren, Podcast normalisieren, YouTube normalisieren, -23 LUFS, -16 LUFS, -14 LUFS, True Peak, ITU-R BS.1770-4, K-Weighted, Auphonic Alternative, kostenlos, Browser, kein Upload">
 <meta charset="UTF-8">
-<link rel="icon" href="/favicon.ico?v=3" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
-<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=3">
-<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=3">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<link rel="icon" href="/favicon.ico?v=5" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=5">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=5">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=5">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>pegelWERK R128 NORMALIZER · EBU R128 / ITU-R BS.1770-4 im Browser</title>
 <style>
@@ -32,7 +32,7 @@
  body {
  background: var(--bg);
  color: var(--text);
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  min-height: 100vh;
  overflow-x: hidden;
  }
@@ -76,7 +76,7 @@
  }
 
  .logo-wordmark {
- font-family: 'Syne', sans-serif;
+ font-family: 'Arimo', sans-serif;
  font-size: clamp(22px, 8vw, 48px);
  font-weight: 800;
  letter-spacing: 0.18em;
@@ -109,7 +109,7 @@
  }
 
  .logo-sub-word {
- font-family: 'Syne', sans-serif;
+ font-family: 'Arimo', sans-serif;
  font-size: clamp(10px, 1.8vw, 13px);
  font-weight: 600;
  letter-spacing: 0.28em;
@@ -119,7 +119,7 @@
  }
 
  .logo-standard {
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  font-size: 10px;
  letter-spacing: 0.1em;
  color: var(--muted);
@@ -141,7 +141,7 @@
  }
 
  .logo-tag {
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  font-size: 9px;
  letter-spacing: 0.15em;
  text-transform: uppercase;
@@ -207,7 +207,7 @@
  .drop-icon svg { stroke: var(--accent); }
 
  .drop-title {
- font-family: 'Syne', sans-serif;
+ font-family: 'Arimo', sans-serif;
  font-size: 18px;
  font-weight: 700;
  margin-bottom: 8px;
@@ -279,7 +279,7 @@
  background: var(--bg);
  border: 1px solid var(--border);
  color: var(--text);
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  font-size: 13px;
  padding: 6px 10px;
  outline: none;
@@ -348,7 +348,7 @@
  background: none;
  border: 1px solid var(--accent);
  color: var(--accent);
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  font-size: 11px;
  letter-spacing: 0.08em;
  padding: 5px 12px;
@@ -387,7 +387,7 @@
  background: var(--accent);
  color: #0a0a0b;
  border: none;
- font-family: 'Syne', sans-serif;
+ font-family: 'Arimo', sans-serif;
  font-size: 14px;
  font-weight: 700;
  letter-spacing: 0.04em;
@@ -404,7 +404,7 @@
  background: none;
  color: var(--muted);
  border: 1px solid var(--border);
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  font-size: 12px;
  letter-spacing: 0.04em;
  padding: 14px 24px;
@@ -491,7 +491,7 @@
  background: var(--border);
  }
  .section-divider-label {
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  font-size: 10px;
  letter-spacing: 0.14em;
  text-transform: uppercase;
@@ -524,7 +524,7 @@
 
  /* Scale on the left */
  .lufs-scale span {
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  font-size: 9px;
  color: var(--muted);
  text-align: right;
@@ -660,7 +660,7 @@
 #satkDlHint{
  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
  background:#0d1012;border:1px solid rgba(200,240,96,.35);
- color:#e2e6ed;font-family:'DM Mono',monospace;font-size:11px;
+ color:#e2e6ed;font-family:'Inter',sans-serif;font-size:11px;
  padding:12px 18px;z-index:9999;max-width:420px;width:90%;
  box-shadow:0 4px 24px rgba(0,0,0,.5);
  animation:satkDlIn .25s ease;pointer-events:none;
@@ -678,12 +678,12 @@
 /* ── Footer (3-spaltig) ──────────── */
 footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255,255,.06);background:#15161a;text-align:left}
 .footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1120px;margin:0 auto 48px;text-align:center}
-.footer-col h4{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
-.footer-col a{display:block;font-family:'DM Mono',monospace;font-size:11px;color:var(--mu2);text-decoration:none;letter-spacing:.3px;padding:5px 0;transition:color .2s}
+.footer-col h4{font-family:'Arimo',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
+.footer-col a{display:block;font-family:'Inter',sans-serif;font-size:11px;color:var(--mu2);text-decoration:none;letter-spacing:.3px;padding:5px 0;transition:color .2s}
 .footer-col a:hover{color:var(--ac)}
 .footer-col+.footer-col{border-left:1px solid rgba(255,255,255,.12)}
-.footer-bar{display:flex;justify-content:center;align-items:center;gap:16px;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
-.footer-brand{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:1px}
+.footer-bar{display:flex;justify-content:center;align-items:center;gap:16px;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'Inter',sans-serif;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
+.footer-brand{font-family:'Arimo',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:1px}.footer-brand-img{height:17px;width:auto;display:block}
 .footer-brand-accent{color:var(--tx)}
 .footer-meta{color:var(--mu2);text-transform:none;letter-spacing:.3px}
 @media(max-width:720px){.footer-grid{grid-template-columns:repeat(3,1fr);gap:24px}.footer-bar{flex-direction:column;gap:12px;text-align:center}}
@@ -714,7 +714,7 @@ body { overflow: hidden; height: 100vh; }
  display: inline-flex;
  align-items: center;
  gap: 6px;
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  font-size: 11px;
  letter-spacing: 0.08em;
  color: var(--muted);
@@ -732,7 +732,7 @@ body { overflow: hidden; height: 100vh; }
 }
 
 /* Tool-Meta: Sprachschalter + Master-Links, fixed top-right */
-.tool-meta{position:fixed;top:18px;right:160px;z-index:100;display:inline-flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;border:1px solid var(--border);background:rgba(10,10,11,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+.tool-meta{position:fixed;top:18px;right:160px;z-index:100;display:inline-flex;align-items:center;gap:12px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;border:1px solid var(--border);background:rgba(10,10,11,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
 .tool-meta a{color:var(--muted);text-decoration:none;transition:color .2s;}
 .tool-meta a:hover{color:var(--accent);}
 .tool-meta .lang-sw{display:inline-flex;align-items:center;gap:4px;}
@@ -1455,7 +1455,7 @@ processBtn.addEventListener('click', async () => {
  </div>
  </div>
  <div class="footer-bar">
- <span class="footer-brand">pegel<span class="footer-brand-accent">WERK</span></span>
+ <img class="footer-brand-img" src="/logo.svg?v=1" alt="pegelWERK">
  <span class="footer-meta">pegelWERK · © 2026</span>
  </div>
 </footer>
@@ -1491,20 +1491,20 @@ processBtn.addEventListener('click', async () => {
  gap: 10px;
 }
 .footer-logo {
- font-family: 'Syne', sans-serif;
+ font-family: 'Arimo', sans-serif;
  font-size: 18px;
  font-weight: 800;
  letter-spacing: 0.18em;
  color: var(--accent);
 }
 .footer-tagline {
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  font-size: 11px;
  color: var(--muted);
  letter-spacing: 0.06em;
 }
 .footer-copy {
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  font-size: 11px;
  color: var(--muted);
  letter-spacing: 0.02em;
@@ -1517,7 +1517,7 @@ processBtn.addEventListener('click', async () => {
 .footer-link {
  background: none;
  border: none;
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  font-size: 11px;
  letter-spacing: 0.06em;
  color: var(--muted);
@@ -1570,7 +1570,7 @@ processBtn.addEventListener('click', async () => {
 }
 .modal-close:hover { color: var(--text); }
 .modal-box h2 {
- font-family: 'Syne', sans-serif;
+ font-family: 'Arimo', sans-serif;
  font-size: 18px;
  font-weight: 800;
  letter-spacing: 0.08em;
@@ -1581,7 +1581,7 @@ processBtn.addEventListener('click', async () => {
  border-bottom: 1px solid var(--border);
 }
 .modal-box h3 {
- font-family: 'Syne', sans-serif;
+ font-family: 'Arimo', sans-serif;
  font-size: 13px;
  font-weight: 700;
  letter-spacing: 0.06em;
@@ -1590,7 +1590,7 @@ processBtn.addEventListener('click', async () => {
  margin: 20px 0 8px;
 }
 .modal-box p {
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  font-size: 12px;
  line-height: 1.8;
  color: var(--muted);
@@ -1598,7 +1598,7 @@ processBtn.addEventListener('click', async () => {
 }
 .modal-box address {
  font-style: normal;
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  font-size: 12px;
  line-height: 1.8;
  color: var(--muted);
@@ -1607,7 +1607,7 @@ processBtn.addEventListener('click', async () => {
  display: inline-block;
  background: var(--bg);
  border: 1px solid var(--border);
- font-family: 'DM Mono', monospace;
+ font-family: 'Inter', sans-serif;
  font-size: 10px;
  letter-spacing: 0.1em;
  color: var(--accent);

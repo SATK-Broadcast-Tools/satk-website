@@ -2,11 +2,11 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="/favicon.ico?v=3" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
-<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=3">
-<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=3">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<link rel="icon" href="/favicon.ico?v=5" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=5">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=5">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=5">
 <link rel="canonical" href="https://pegelwerk.com/support">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>pegelWERK Support - Kontakt &amp; Hilfe</title>
@@ -31,15 +31,15 @@
 :root{--bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#c8f060;--tx:#e8e8ec;--mu:#6e6e7a;--mu2:#9a9aaa}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--tx);font-family:'DM Mono',monospace;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
 
 nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
  padding:16px 48px;background:rgba(10,10,11,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
  border-bottom:1px solid rgba(255,255,255,.04)}
-.nav-logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;line-height:1}
-.nav-logo-mark{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--ac);letter-spacing:1px}
+.nav-logo{display:inline-flex;flex-direction:column;align-items:stretch;gap:3px;text-decoration:none;line-height:1}
+.nav-logo-mark{font-family:'Arimo',sans-serif;font-weight:800;font-size:20px;color:var(--ac);letter-spacing:1px}.nav-logo-img{height:22px;width:auto;display:block;align-self:flex-start}
 .nav-logo-accent{color:var(--tx)}
-.nav-logo-sub{font-family:'DM Mono',monospace;font-size:8px;color:var(--mu);letter-spacing:1.5px;text-transform:uppercase;font-weight:300;white-space:nowrap}
+.nav-logo-sub{font-family:'Inter',sans-serif;font-size:8px;color:var(--mu);letter-spacing:1px;text-transform:uppercase;font-weight:300;text-align:justify;text-align-last:justify}
 .nav-links{display:flex;gap:32px;align-items:center}
 .nav-links a{color:var(--mu2);text-decoration:none;font-size:11px;letter-spacing:.5px;transition:color .2s}
 .nav-links a:hover{color:var(--tx)}
@@ -48,7 +48,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 
 /* ── Nav Platforms (Pill-Tabs) ─────── */
 .nav-platforms{display:flex;gap:2px;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:999px;padding:3px}
-.nav-platforms a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:999px;color:var(--mu2);text-decoration:none;transition:all .2s}
+.nav-platforms a{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:999px;color:var(--mu2);text-decoration:none;transition:all .2s}
 .nav-platforms a.active{background:var(--ac);color:#0a0a0b}
 .nav-platforms a:hover:not(.active){color:var(--tx);background:rgba(255,255,255,.04)}
 .lang-sw{display:flex;align-items:center;gap:6px}
@@ -59,8 +59,8 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 
 /* ── Page Hero ─────────────── */
 .page-hero{text-align:center;padding:80px 32px 32px;max-width:680px;margin:0 auto}
-.page-eyebrow{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.4em;color:var(--ac);text-transform:uppercase;margin-bottom:18px}
-.page-hero h1{font-family:'Syne',sans-serif;font-size:clamp(32px,4.5vw,48px);font-weight:800;letter-spacing:-.5px;line-height:1.05;text-transform:uppercase;margin-bottom:18px}
+.page-eyebrow{font-family:'Arimo',sans-serif;font-size:11px;font-weight:700;letter-spacing:.4em;color:var(--ac);text-transform:uppercase;margin-bottom:18px}
+.page-hero h1{font-family:'Arimo',sans-serif;font-size:clamp(32px,4.5vw,48px);font-weight:800;letter-spacing:-.5px;line-height:1.05;text-transform:uppercase;margin-bottom:18px}
 .page-hero .tagline{color:var(--mu2);font-size:14px;letter-spacing:.3px;line-height:1.7}
 
 /* ── Container ─────────────── */
@@ -69,18 +69,18 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 /* ── Contact Box ─────────────── */
 .contact-info{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:10px;overflow:hidden;margin-bottom:48px}
 .contact-cell{padding:24px 22px;background:var(--sf);text-align:center}
-.contact-cell h3{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:10px}
+.contact-cell h3{font-family:'Arimo',sans-serif;font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:10px}
 .contact-cell p{font-size:11px;color:var(--mu2);line-height:1.6}
 .contact-cell a{color:var(--tx);text-decoration:none;border-bottom:1px solid rgba(200,240,96,.3);transition:border-color .2s,color .2s}
 .contact-cell a:hover{color:var(--ac);border-bottom-color:var(--ac)}
 
 /* ── Form ─────────────── */
 .form-wrap{background:var(--sf);border:1px solid var(--bd);border-radius:14px;padding:40px 36px;margin-bottom:48px}
-.form-label{display:block;font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--ac);margin-bottom:8px}
+.form-label{display:block;font-family:'Arimo',sans-serif;font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--ac);margin-bottom:8px}
 .form-row{margin-bottom:22px}
 .form-input,.form-select,.form-textarea{
  width:100%;background:var(--bg);border:1px solid var(--bd);border-radius:6px;
- padding:12px 14px;color:var(--tx);font-family:'DM Mono',monospace;font-size:13px;
+ padding:12px 14px;color:var(--tx);font-family:'Inter',sans-serif;font-size:13px;
  letter-spacing:.2px;line-height:1.5;transition:border-color .2s
 }
 .form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--ac)}
@@ -90,10 +90,10 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .form-row-grid .form-row{margin-bottom:0}
 .form-section{margin-top:28px;padding-top:28px;border-top:1px solid var(--bd)}
 .form-section:first-of-type{margin-top:0;padding-top:0;border-top:none}
-.form-section-h{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:18px}
+.form-section-h{font-family:'Arimo',sans-serif;font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:18px}
 .form-label .opt{color:var(--mu);font-weight:300;letter-spacing:0;text-transform:none;font-size:9px;margin-left:6px}
 
-.form-submit{display:inline-block;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+.form-submit{display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
  padding:14px 36px;border-radius:6px;border:none;cursor:pointer;font-weight:500;transition:all .25s;
  background:var(--ac);color:#0a0a0b;margin-top:8px}
 .form-submit:hover{background:#d4f880;transform:scale(1.02)}
@@ -101,21 +101,21 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 
 /* ── FAQ short ─────────────── */
 .faq{margin-bottom:48px}
-.faq h2{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:24px;text-align:center}
+.faq h2{font-family:'Arimo',sans-serif;font-size:13px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:24px;text-align:center}
 .faq-item{border-top:1px solid var(--bd);padding:18px 0}
 .faq-item:last-child{border-bottom:1px solid var(--bd)}
-.faq-item h3{font-family:'Syne',sans-serif;font-size:14px;font-weight:600;color:var(--tx);margin-bottom:6px;letter-spacing:-.2px}
+.faq-item h3{font-family:'Arimo',sans-serif;font-size:14px;font-weight:600;color:var(--tx);margin-bottom:6px;letter-spacing:-.2px}
 .faq-item p{font-size:12px;color:var(--mu2);line-height:1.7}
 
 /* ── Footer (3-spaltig) ──────────── */
 footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255,255,.06);background:#15161a;text-align:left}
 .footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1120px;margin:0 auto 48px;text-align:center}
-.footer-col h4{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
-.footer-col a{display:block;font-family:'DM Mono',monospace;font-size:11px;color:var(--mu2);text-decoration:none;letter-spacing:.3px;padding:5px 0;transition:color .2s}
+.footer-col h4{font-family:'Arimo',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
+.footer-col a{display:block;font-family:'Inter',sans-serif;font-size:11px;color:var(--mu2);text-decoration:none;letter-spacing:.3px;padding:5px 0;transition:color .2s}
 .footer-col a:hover{color:var(--ac)}
 .footer-col+.footer-col{border-left:1px solid rgba(255,255,255,.12)}
-.footer-bar{display:flex;justify-content:center;align-items:center;gap:16px;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
-.footer-brand{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:1px}
+.footer-bar{display:flex;justify-content:center;align-items:center;gap:16px;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'Inter',sans-serif;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
+.footer-brand{font-family:'Arimo',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:1px}.footer-brand-img{height:17px;width:auto;display:block}
 .footer-brand-accent{color:var(--tx)}
 .footer-meta{color:var(--mu2);text-transform:none;letter-spacing:.3px}
 @media(max-width:720px){.footer-grid{grid-template-columns:repeat(3,1fr);gap:24px}.footer-bar{flex-direction:column;gap:12px;text-align:center}}
@@ -146,7 +146,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 
 <nav>
  <a href="/" class="nav-logo">
- <span class="nav-logo-mark">pegel<span class="nav-logo-accent">WERK</span></span>
+ <img class="nav-logo-img" src="/logo.svg?v=1" alt="pegelWERK">
  <span class="nav-logo-sub">Pro Audio Tools</span>
  </a>
  <div class="nav-platforms">
@@ -189,13 +189,13 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
  </div>
 
  <!-- Erfolgs-Banner (außerhalb des Forms, damit er nicht mit ausgeblendet wird) -->
- <div id="sentBanner" style="display:none;padding:24px 28px;border:1px solid var(--ac);border-radius:10px;background:rgba(200,240,96,.06);color:var(--ac);font-family:'Syne',sans-serif;font-size:14px;font-weight:600;letter-spacing:.3px;margin-bottom:32px;text-align:center;line-height:1.6" data-i18n="sup_sent">✓ Vielen Dank, deine Anfrage ist eingegangen. Du erhältst gleich eine Bestätigungs-Mail. Ich melde mich werktags meist innerhalb von 24 Stunden.</div>
+ <div id="sentBanner" style="display:none;padding:24px 28px;border:1px solid var(--ac);border-radius:10px;background:rgba(200,240,96,.06);color:var(--ac);font-family:'Arimo',sans-serif;font-size:14px;font-weight:600;letter-spacing:.3px;margin-bottom:32px;text-align:center;line-height:1.6" data-i18n="sup_sent">✓ Vielen Dank, deine Anfrage ist eingegangen. Du erhältst gleich eine Bestätigungs-Mail. Ich melde mich werktags meist innerhalb von 24 Stunden.</div>
 
  <!-- Fehler-Banner mit Mailto-Fallback (Daten gehen nicht verloren) -->
  <div id="errorBanner" style="display:none;padding:22px 26px;border:1px solid #f0a060;border-radius:10px;background:rgba(240,160,96,.06);margin-bottom:32px;line-height:1.7">
- <div style="font-family:'Syne',sans-serif;font-weight:700;color:#f0a060;margin-bottom:10px;font-size:14px;letter-spacing:.3px" data-i18n="sup_err_h">Senden gerade nicht möglich</div>
+ <div style="font-family:'Arimo',sans-serif;font-weight:700;color:#f0a060;margin-bottom:10px;font-size:14px;letter-spacing:.3px" data-i18n="sup_err_h">Senden gerade nicht möglich</div>
  <p style="color:var(--mu2);font-size:12px;margin-bottom:18px" data-i18n="sup_err_p">Das Formular konnte deine Anfrage gerade nicht ausliefern. Kein Problem, sende sie direkt per E-Mail. Alle eingegebenen Daten werden in der Mail vorausgefüllt.</p>
- <a id="mailtoFallback" href="mailto:info@pegelwerk.com" style="display:inline-block;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;background:var(--ac);color:#0a0a0b;text-decoration:none;font-weight:500;transition:transform .15s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'" data-i18n="sup_err_btn">📧 Per E-Mail senden</a>
+ <a id="mailtoFallback" href="mailto:info@pegelwerk.com" style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;background:var(--ac);color:#0a0a0b;text-decoration:none;font-weight:500;transition:transform .15s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'" data-i18n="sup_err_btn">📧 Per E-Mail senden</a>
  </div>
 
  <form class="form-wrap" action="https://satk-license-worker.weathered-lake-eea9.workers.dev/support" method="POST" id="supportForm">
@@ -203,7 +203,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
  Worker erkennt nicht-leeres _honey und antwortet "silent success" ohne Mail. -->
  <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
 
- <h2 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.2px;color:var(--tx);margin-bottom:8px" data-i18n="sup_form_h2">Support-Anfrage</h2>
+ <h2 style="font-family:'Arimo',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.2px;color:var(--tx);margin-bottom:8px" data-i18n="sup_form_h2">Support-Anfrage</h2>
  <p style="font-size:12px;color:var(--mu2);margin-bottom:28px;line-height:1.6" data-i18n="sup_form_intro">Bitte fülle die Felder so vollständig wie möglich aus, App- und OS-Version sind für Bug-Tracking entscheidend. Screenshots, Crash-Logs oder Audio-Beispiele kannst du in einer Antwort-Mail nachreichen.</p>
 
  <!-- ╔══ Kontakt ═══════════════════════════════════════════╗ -->
@@ -429,7 +429,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
  </div>
  </div>
  <div class="footer-bar">
- <span class="footer-brand">pegel<span class="footer-brand-accent">WERK</span></span>
+ <img class="footer-brand-img" src="/logo.svg?v=1" alt="pegelWERK">
  <span class="footer-meta">pegelWERK · © 2026</span>
  </div>
 </footer>

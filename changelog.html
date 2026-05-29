@@ -2,11 +2,11 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="/favicon.ico?v=3" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
-<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=3">
-<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=3">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+<link rel="icon" href="/favicon.ico?v=5" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=5">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=5">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=5">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=5">
 <link rel="canonical" href="https://pegelwerk.com/changelog">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>pegelWERK Changelog - Was sich in den letzten Releases geändert hat</title>
@@ -24,15 +24,15 @@
 :root{--bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#c8f060;--tx:#e8e8ec;--mu:#6e6e7a;--mu2:#9a9aaa}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--tx);font-family:'DM Mono',monospace;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
 
 nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
  padding:16px 48px;background:rgba(10,10,11,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
  border-bottom:1px solid rgba(255,255,255,.04)}
-.nav-logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;line-height:1}
-.nav-logo-mark{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--ac);letter-spacing:1px}
+.nav-logo{display:inline-flex;flex-direction:column;align-items:stretch;gap:3px;text-decoration:none;line-height:1}
+.nav-logo-mark{font-family:'Arimo',sans-serif;font-weight:800;font-size:20px;color:var(--ac);letter-spacing:1px}.nav-logo-img{height:22px;width:auto;display:block;align-self:flex-start}
 .nav-logo-accent{color:var(--tx)}
-.nav-logo-sub{font-family:'DM Mono',monospace;font-size:8px;color:var(--mu);letter-spacing:1.5px;text-transform:uppercase;font-weight:300;white-space:nowrap}
+.nav-logo-sub{font-family:'Inter',sans-serif;font-size:8px;color:var(--mu);letter-spacing:1px;text-transform:uppercase;font-weight:300;text-align:justify;text-align-last:justify}
 .nav-links{display:flex;gap:32px;align-items:center}
 .nav-links a{color:var(--mu2);text-decoration:none;font-size:11px;letter-spacing:.5px;transition:color .2s}
 .nav-links a:hover{color:var(--tx)}
@@ -41,7 +41,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 
 /* ── Nav Platforms (Pill-Tabs) ─────── */
 .nav-platforms{display:flex;gap:2px;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:999px;padding:3px}
-.nav-platforms a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:999px;color:var(--mu2);text-decoration:none;transition:all .2s}
+.nav-platforms a{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:999px;color:var(--mu2);text-decoration:none;transition:all .2s}
 .nav-platforms a.active{background:var(--ac);color:#0a0a0b}
 .nav-platforms a:hover:not(.active){color:var(--tx);background:rgba(255,255,255,.04)}
 .lang-sw{display:flex;align-items:center;gap:6px}
@@ -51,16 +51,16 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .lang-sep{color:var(--mu);font-size:10px}
 
 .page-hero{text-align:center;padding:80px 32px 32px;max-width:680px;margin:0 auto}
-.page-eyebrow{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.4em;color:var(--ac);text-transform:uppercase;margin-bottom:18px}
-.page-hero h1{font-family:'Syne',sans-serif;font-size:clamp(32px,4.5vw,48px);font-weight:800;letter-spacing:-.5px;line-height:1.05;text-transform:uppercase;margin-bottom:18px}
+.page-eyebrow{font-family:'Arimo',sans-serif;font-size:11px;font-weight:700;letter-spacing:.4em;color:var(--ac);text-transform:uppercase;margin-bottom:18px}
+.page-hero h1{font-family:'Arimo',sans-serif;font-size:clamp(32px,4.5vw,48px);font-weight:800;letter-spacing:-.5px;line-height:1.05;text-transform:uppercase;margin-bottom:18px}
 .page-hero .tagline{color:var(--mu2);font-size:14px;letter-spacing:.3px;line-height:1.7}
 
 .section{max-width:780px;margin:0 auto;padding:32px 32px 0}
-.section h2{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--mu);margin:48px 0 24px}
+.section h2{font-family:'Arimo',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--mu);margin:48px 0 24px}
 
 .product-block{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:32px 32px;margin-bottom:24px}
-.product-name{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.2px;color:var(--tx);margin-bottom:24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px}
-.product-status{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--ac);background:rgba(200,240,96,.08);padding:5px 12px;border-radius:4px}
+.product-name{font-family:'Arimo',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.2px;color:var(--tx);margin-bottom:24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px}
+.product-status{font-family:'Arimo',sans-serif;font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--ac);background:rgba(200,240,96,.08);padding:5px 12px;border-radius:4px}
 .product-status.beta{color:#e8b85c;background:rgba(232,184,92,.08)}
 .product-status.soon{color:var(--mu2);background:transparent;border:1px dashed var(--bd)}
 
@@ -68,7 +68,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .release:last-child{padding-bottom:0}
 .release::before{content:'';position:absolute;left:-5px;top:18px;width:9px;height:9px;background:var(--ac);border-radius:50%}
 .release.older::before{background:var(--mu);width:7px;height:7px;left:-4px}
-.release-version{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--tx);display:inline-block;margin-right:12px}
+.release-version{font-family:'Arimo',sans-serif;font-size:14px;font-weight:700;color:var(--tx);display:inline-block;margin-right:12px}
 .release-date{font-size:10px;color:var(--mu);letter-spacing:.5px}
 .release-title{font-size:12px;color:var(--mu2);margin-top:6px;line-height:1.55}
 .release-list{margin:8px 0 0 0;padding-left:16px;font-size:11px;color:var(--mu2);line-height:1.7}
@@ -84,7 +84,7 @@ footer{text-align:center;padding:60px 32px 40px;margin-top:60px;border-top:1px s
 footer p{font-size:9px;color:var(--mu);letter-spacing:.3px}
 footer a{color:var(--mu2);text-decoration:none}
 footer a:hover{color:var(--ac)}
-footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:3px;margin-bottom:10px}
+footer .fl{font-family:'Arimo',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:3px;margin-bottom:10px}
 
 @media(max-width:600px){
  nav{padding:14px 20px}
@@ -97,12 +97,12 @@ footer .fl{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-si
 /* ── Footer (3-spaltig) ──────────── */
 footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255,255,.06);background:#15161a;text-align:left}
 .footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1120px;margin:0 auto 48px;text-align:center}
-.footer-col h4{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
-.footer-col a{display:block;font-family:'DM Mono',monospace;font-size:11px;color:var(--mu2);text-decoration:none;letter-spacing:.3px;padding:5px 0;transition:color .2s}
+.footer-col h4{font-family:'Arimo',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
+.footer-col a{display:block;font-family:'Inter',sans-serif;font-size:11px;color:var(--mu2);text-decoration:none;letter-spacing:.3px;padding:5px 0;transition:color .2s}
 .footer-col a:hover{color:var(--ac)}
 .footer-col+.footer-col{border-left:1px solid rgba(255,255,255,.12)}
-.footer-bar{display:flex;justify-content:center;align-items:center;gap:16px;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
-.footer-brand{font-family:'Syne',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:1px}
+.footer-bar{display:flex;justify-content:center;align-items:center;gap:16px;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'Inter',sans-serif;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
+.footer-brand{font-family:'Arimo',sans-serif;font-weight:800;color:var(--ac);font-size:14px;letter-spacing:1px}.footer-brand-img{height:17px;width:auto;display:block}
 .footer-brand-accent{color:var(--tx)}
 .footer-meta{color:var(--mu2);text-transform:none;letter-spacing:.3px}
 @media(max-width:720px){.footer-grid{grid-template-columns:repeat(3,1fr);gap:24px}.footer-bar{flex-direction:column;gap:12px;text-align:center}}
@@ -121,7 +121,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 
 <nav>
  <a href="/" class="nav-logo">
- <span class="nav-logo-mark">pegel<span class="nav-logo-accent">WERK</span></span>
+ <img class="nav-logo-img" src="/logo.svg?v=1" alt="pegelWERK">
  <span class="nav-logo-sub">Pro Audio Tools</span>
  </a>
  <div class="nav-platforms">
@@ -296,7 +296,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
  </div>
  </div>
  <div class="footer-bar">
- <span class="footer-brand">pegel<span class="footer-brand-accent">WERK</span></span>
+ <img class="footer-brand-img" src="/logo.svg?v=1" alt="pegelWERK">
  <span class="footer-meta">pegelWERK · © 2026</span>
  </div>
 </footer>

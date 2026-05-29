@@ -105,7 +105,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .platform-card-body{padding:28px 28px 32px;display:flex;flex-direction:column;flex:1}
 .platform-tag{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ac);margin-bottom:14px;display:block}
 .platform-card h3{font-family:'Arimo',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.3px;margin-bottom:12px}
-.platform-card p{font-size:13px;color:var(--mu2);line-height:1.7;margin-bottom:20px;flex:1}
+.platform-card p{font-size:13px;color:var(--mu2);line-height:1.7;margin-bottom:20px;flex:1;text-wrap:balance}
 .platform-link{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ac);transition:transform .2s;display:inline-block}
 .platform-card:hover .platform-link{transform:translateX(4px)}
 @media(max-width:900px){.platforms-grid{grid-template-columns:1fr;gap:16px}.platform-card-body{padding:24px 22px 26px}}
@@ -114,7 +114,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .hero{text-align:center;padding:72px 32px 48px;position:relative}
 .hero h1{font-family:'Arimo',sans-serif;font-size:clamp(26px,3.6vw,42px);font-weight:800;letter-spacing:.04em;line-height:1.05;text-transform:uppercase}
 .hero h1 em{font-style:normal;color:var(--ac)}
-.hero p{color:var(--mu2);font-size:15px;margin-top:14px;letter-spacing:.3px;max-width:520px;margin-inline:auto;line-height:1.7}
+.hero p{color:var(--mu2);font-size:15px;margin-top:14px;letter-spacing:.3px;max-width:520px;margin-inline:auto;line-height:1.7;text-wrap:balance}
 .hero-line{width:40px;height:1px;background:var(--ac);margin:28px auto 0;opacity:.4}
 
 /* ── Grid ────────────────────────── */
@@ -133,7 +133,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
  border:1px solid rgba(200,240,96,.2);backdrop-filter:blur(8px)}
 .card-body{padding:18px 24px 22px;text-align:center}
 .card-name{font-family:'Arimo',sans-serif;font-size:20px;font-weight:700;letter-spacing:-.3px;margin-bottom:4px}
-.card-sub{font-size:11px;color:var(--mu2);margin-bottom:12px;line-height:1.5}
+.card-sub{font-size:11px;color:var(--mu2);margin-bottom:12px;line-height:1.5;text-wrap:balance}
 .card-platforms{display:flex;justify-content:center;gap:6px;margin-bottom:14px;flex-wrap:wrap}
 .card-platforms span{font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--mu);
  border:1px solid rgba(255,255,255,.06);padding:3px 8px;border-radius:3px}
@@ -235,6 +235,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 .lang:hover{color:var(--tx)}
 .lang.active{color:var(--ac)}
 .lang-sep{color:var(--mu);font-size:10px}
+h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 </style>
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-gqR5BLYgrx9BycGkSCWbt.js"></script>

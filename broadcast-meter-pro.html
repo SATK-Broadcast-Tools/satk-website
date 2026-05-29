@@ -127,7 +127,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .section{max-width:1120px;margin:0 auto;padding:96px 32px 0}
 .section-label{font-family:'Arimo',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:16px;text-align:center}
 .section-h2{font-family:'Arimo',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-.5px;line-height:1.1;text-align:center;margin-bottom:14px;text-transform:uppercase}
-.section-intro{color:var(--mu2);font-size:15px;line-height:1.7;text-align:center;max-width:680px;margin:0 auto 56px}
+.section-intro{color:var(--mu2);font-size:15px;line-height:1.7;text-align:center;max-width:680px;margin:0 auto 56px;text-wrap:balance}
 
 /* ── Features ─────────────────── */
 .features{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -248,6 +248,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 .feature:nth-child(5){animation-delay:.42s}
 .feature:nth-child(6){animation-delay:.5s}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 </style>
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-gqR5BLYgrx9BycGkSCWbt.js"></script>

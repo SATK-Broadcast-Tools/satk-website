@@ -3,14 +3,15 @@
 Statische Marketing-Site für pegelWERK. Reine HTML/CSS/JS,
 kein Build, kein Framework.
 
-> **Brand-Rebrand SATK zu pegelWERK (live seit 2026-05-29):** Komplettes
-> sichtbares Branding (Texte, Logo, Favicon, Typo Arimo+Inter) ist auf
-> pegelWERK umgestellt und live auf `satk.tech`. **Domain/E-Mail bleiben
-> bewusst auf satk.tech**: canonical, og, interne Links und Kontakt-Mail
-> `info@satk.tech` zeigen weiter auf satk.tech, bis pegelwerk.com per
-> DNS-Cutover live ist (dann global `satk.tech` -> `pegelwerk.com` flippen
-> + 301-Redirects + Mailrouting). **NICHT umzustellen** (sonst bricht
-> Shop/Lizenz/Deploy): Download-Host `download.satk.tech`, Worker-Endpoint
+> **Brand-Rebrand SATK zu pegelWERK + Domain-Umzug (2026-05-29):**
+> Komplettes Branding (Texte, Logo, Favicon, Typo Arimo+Inter) auf
+> pegelWERK. Primaerdomain ist **pegelwerk.com**: canonical, og, interne
+> Links und Kontakt-Mail `info@pegelwerk.com` zeigen auf pegelwerk.com.
+> `satk.tech` ist als Custom Domain am Pages-Projekt und leitet per
+> `_redirects` 301 auf pegelwerk.com um (satk.tech NICHT vom Projekt
+> entfernen, sonst greift der Redirect nicht). **NICHT umgestellt**
+> (sonst bricht Shop/Lizenz/Deploy): Download-Host `download.satk.tech`,
+> Worker-Endpoint
 > `satk-license-worker.weathered-lake-eea9.workers.dev`, das CF-Pages-
 > Projekt `satk-website`, sowie alle nicht-sichtbaren Bezeichner: Apple-
 > Bundle-IDs `com.satk.*`, CSS-Klassen/JS-Vars `satk-*`/`_satkAC`,

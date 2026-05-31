@@ -3,13 +3,13 @@
 
   <!-- Hauptseiten -->
   <url>
-    <loc>https://satk.tech/</loc>
+    <loc>https://pegelwerk.com/</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://satk.tech/support</loc>
+    <loc>https://pegelwerk.com/support</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -17,19 +17,19 @@
 
   <!-- Pro-Software-Detailseiten -->
   <url>
-    <loc>https://satk.tech/broadcast-meter-pro</loc>
+    <loc>https://pegelwerk.com/broadcast-meter-pro</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://satk.tech/overdub-studio-pro</loc>
+    <loc>https://pegelwerk.com/overdub-studio-pro</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://satk.tech/loudness-correct</loc>
+    <loc>https://pegelwerk.com/loudness-correct</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -37,31 +37,31 @@
 
   <!-- iOS App-Detailseiten -->
   <url>
-    <loc>https://satk.tech/easy-editor</loc>
+    <loc>https://pegelwerk.com/easy-editor</loc>
     <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://satk.tech/instant-player-app</loc>
+    <loc>https://pegelwerk.com/instant-player-app</loc>
     <lastmod>2026-05-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://satk.tech/broadcast-meter-ios</loc>
+    <loc>https://pegelwerk.com/broadcast-meter-ios</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://satk.tech/overdub-studio-ios</loc>
+    <loc>https://pegelwerk.com/overdub-studio-ios</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satk.tech/loudness-correct-ios</loc>
+    <loc>https://pegelwerk.com/loudness-correct-ios</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -69,43 +69,43 @@
 
   <!-- Browser-Tools (kostenlos) -->
   <url>
-    <loc>https://satk.tech/tools</loc>
+    <loc>https://pegelwerk.com/tools</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://satk.tech/broadcast-meter</loc>
+    <loc>https://pegelwerk.com/broadcast-meter</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://satk.tech/r128-normalizer</loc>
+    <loc>https://pegelwerk.com/r128-normalizer</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://satk.tech/overdub-studio</loc>
+    <loc>https://pegelwerk.com/overdub-studio</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satk.tech/auto-mixer</loc>
+    <loc>https://pegelwerk.com/auto-mixer</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satk.tech/audio-editor</loc>
+    <loc>https://pegelwerk.com/audio-editor</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satk.tech/instant-player</loc>
+    <loc>https://pegelwerk.com/instant-player</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -113,49 +113,49 @@
 
   <!-- Rechtliches -->
   <url>
-    <loc>https://satk.tech/impressum</loc>
+    <loc>https://pegelwerk.com/impressum</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://satk.tech/impressum-en</loc>
+    <loc>https://pegelwerk.com/impressum-en</loc>
     <lastmod>2026-05-09</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://satk.tech/datenschutz</loc>
+    <loc>https://pegelwerk.com/datenschutz</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://satk.tech/datenschutz-en</loc>
+    <loc>https://pegelwerk.com/datenschutz-en</loc>
     <lastmod>2026-05-09</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://satk.tech/agb</loc>
+    <loc>https://pegelwerk.com/agb</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://satk.tech/agb-en</loc>
+    <loc>https://pegelwerk.com/agb-en</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://satk.tech/widerruf</loc>
+    <loc>https://pegelwerk.com/widerruf</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://satk.tech/widerruf-en</loc>
+    <loc>https://pegelwerk.com/widerruf-en</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>

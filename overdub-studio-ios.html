@@ -90,8 +90,8 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 
 .status-badge{display:inline-block;font-family:'Arimo',sans-serif;font-size:13px;font-weight:700;letter-spacing:.15em;color:var(--warn);border:1px solid rgba(240,160,96,.3);background:rgba(240,160,96,.06);padding:10px 22px;border-radius:8px;margin-top:30px;text-transform:uppercase}
 .appstore-cta{margin-top:30px;text-align:center}
-.appstore-badge-link{display:inline-block}
-.appstore-badge{height:50px;width:auto}
+.shop-cta-btn{display:inline-block;font-family:'Arimo',sans-serif;font-size:14px;font-weight:700;letter-spacing:.05em;color:var(--bg);background:var(--ac);padding:14px 30px;border-radius:10px;text-decoration:none;transition:opacity .15s}
+.shop-cta-btn:hover{opacity:.85}
 
 .hero-img-wrap{max-width:1120px;margin:32px auto 0;padding:0 32px;text-align:center}
 .hero-img{display:inline-block;max-width:760px;width:100%;height:auto;border:1px solid var(--bd);border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
@@ -211,9 +211,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <h1 data-i18n="od_h1">overdub STUDIO</h1>
  <p class="tagline" data-i18n="od_tagline">Voice-Over gegen Bewegtbild auf dem iPad. Mix-Workflow ohne Prompter, die Stimme zählt. AutoEdit, AutoMix nach EBU R128, MXF Round-Trip mit Sum, M+E und OT. Jetzt im App Store.</p>
  <div class="appstore-cta">
- <a class="appstore-badge-link" data-app-id="6772143499" href="https://apps.apple.com/app/id6772143499" target="_blank" rel="noopener" aria-label="overdub STUDIO im App Store">
- <img class="appstore-badge" src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store laden">
- </a>
+ <a class="shop-cta-btn" href="/ios" data-i18n="od_shop_cta">Im Shop ansehen</a>
  </div>
 </section>
 
@@ -417,6 +415,7 @@ const i18n = {
  od_h1: 'overdub STUDIO',
  od_tagline: 'Voice-Over gegen Bewegtbild auf dem iPad. Mix-Workflow ohne Prompter, die Stimme zählt. AutoEdit, AutoMix nach EBU R128, MXF Round-Trip mit Sum, M+E und OT. Jetzt im App Store.',
  od_status: 'Jetzt im App Store',
+ od_shop_cta: 'Im Shop ansehen',
  od_hero_caption: 'Mockup mit Mac-Layout · iPad-Version im App Store erhältlich',
  od_features_label: 'Highlights',
  od_features_title: 'Mix-Workflow, kein Editor-Baukasten',
@@ -483,6 +482,7 @@ const i18n = {
  od_h1: 'overdub STUDIO',
  od_tagline: 'Voice-over against video on iPad. Mix workflow without prompter, the voice carries it. AutoEdit, AutoMix per EBU R128, MXF round-trip with Sum, M+E and OT. Now on the App Store.',
  od_status: 'Now on the App Store',
+ od_shop_cta: 'View in shop',
  od_hero_caption: 'Mockup with Mac layout · iPad version available on the App Store',
  od_features_label: 'Highlights',
  od_features_title: 'Mix workflow, not editor erector set',

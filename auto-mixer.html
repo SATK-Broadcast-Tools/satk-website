@@ -569,7 +569,7 @@ function setLang(lang){
 
  <!-- Download -->
  <div class="dl-section">
- <a class="dl-btn" id="dlBtn" href="#" download="satk-mix.wav">
+ <a class="dl-btn" id="dlBtn" href="#" download="pegelwerk-mix.wav">
  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
  WAV herunterladen
  </a>
@@ -1935,7 +1935,7 @@ function satkFilename(tool, ext){
  ver = (parseInt(localStorage.getItem(key))||0) + 1;
  localStorage.setItem(key, ver);
  } catch(e) {}
- return 'satk_'+tool+'_'+date+'_'+time+'_v'+ver+(ext?'.'+ext:'');
+ return 'pegelwerk_'+tool+'_'+date+'_'+time+'_v'+ver+(ext?'.'+ext:'');
 }
 
 

@@ -481,7 +481,7 @@ let actx=null;
 let playNode=null, playStart=0, playOffset=0, playing=false;
 // zoomLevel and view declared in zoom section
 let duration=0;
-let origFileName='satk-edit';
+let origFileName='pegelwerk-edit';
 
 // Auswahl
 let selIn=null, selOut=null;
@@ -1737,7 +1737,7 @@ function satkFilename(tool, ext){
  ver = (parseInt(localStorage.getItem(key))||0) + 1;
  localStorage.setItem(key, ver);
  } catch(e) {}
- return 'satk_'+tool+'_'+date+'_'+time+'_v'+ver+(ext?'.'+ext:'');
+ return 'pegelwerk_'+tool+'_'+date+'_'+time+'_v'+ver+(ext?'.'+ext:'');
 }
 
 

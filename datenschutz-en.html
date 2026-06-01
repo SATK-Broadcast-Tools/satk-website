@@ -128,7 +128,7 @@ try {
  <p>This website and several backend services run entirely on Cloudflare infrastructure (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA):</p>
  <ul>
  <li><strong>Cloudflare Pages</strong> serves the website and acts as a reverse proxy. Processes IP address, user agent and request data to provide content and protect against attacks (DDoS, bot filtering).</li>
- <li><strong>Cloudflare R2</strong> delivers trial downloads (e.&nbsp;g. the DMG package for the Pro apps) under the subdomain <code>download.satk.tech</code>. When you click the trial-download button, your IP address is transmitted to R2; no additional collection, the download is anonymous, without account or email entry.</li>
+ <li><strong>Cloudflare R2</strong> delivers trial downloads (e.&nbsp;g. the DMG package for the Pro apps) under the subdomain <code>download.pegelwerk.com</code>. When you click the trial-download button, your IP address is transmitted to R2; no additional collection, the download is anonymous, without account or email entry.</li>
  <li><strong>Cloudflare Workers</strong> run the licence backend (activation, self-service portal, trial tracking) and the support-form backend at <code>satk-license-worker.weathered-lake-eea9.workers.dev</code>. Worker invocations process request data (IP, headers, body) ephemerally to answer the request; Cloudflare logs invocations short-term for error analysis by default.</li>
  <li><strong>Cloudflare D1</strong> is the SQLite-based database for licences (licence ID, buyer email from Paddle, activated devices), trials (anonymous device IDs) and support-form rate limits (SHA-256 hash of the IP address plus timestamp, no plaintext IPs). Data does not leave the Cloudflare infrastructure.</li>
  </ul>

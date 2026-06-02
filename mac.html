@@ -123,6 +123,8 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .card-price{font-family:'Arimo',sans-serif;font-size:24px;font-weight:700;color:var(--tx);margin-bottom:2px;line-height:1}
 .card-price .cur{font-size:14px;color:var(--mu2);font-weight:400}
 .card-vat{font-size:9px;color:var(--mu);margin-bottom:12px}
+.early-badge{display:inline-block;font-family:'Arimo',sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#0a0a0b;background:var(--ac);padding:3px 9px;border-radius:4px;margin-bottom:8px}
+.early-badge.soon{background:transparent;color:var(--mu2);border:1px solid var(--bd)}
 .card-btn{display:inline-block;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
  padding:9px 24px;border-radius:5px;border:none;cursor:pointer;transition:all .25s;font-weight:500}
 .card-btn.buy{background:var(--ac);color:#0a0a0b}
@@ -257,8 +259,9 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 
  <div class="format-section">
  <div class="format-label" data-i18n="fmt_standalone_mac">Standalone · macOS</div>
+ <span class="early-badge" data-i18n="early_badge">Einführungspreis</span>
  <div class="card-price">199 <span class="cur">€</span></div>
- <div class="card-vat" data-i18n="vat">inkl. MwSt. · Einführungspreis</div>
+ <div class="card-vat" data-i18n="vat_249">inkl. MwSt. · regulär danach 249 €</div>
  <div class="card-cta">
  <button class="card-btn trial" data-i18n="btn_trial" onclick="openTrial(TRIAL_URLS.od)">Kostenlos 7 Tage testen</button>
  <button class="card-btn-link" data-i18n="btn_trial_buy" onclick="openCheckout(PRICES.od)">oder direkt kaufen</button>
@@ -283,8 +286,9 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 
  <div class="format-section">
  <div class="format-label" data-i18n="fmt_standalone_mac">Standalone · macOS</div>
- <div class="card-price">89 <span class="cur">€</span></div>
- <div class="card-vat" data-i18n="vat">inkl. MwSt. · Einführungspreis</div>
+ <span class="early-badge" data-i18n="early_badge">Einführungspreis</span>
+ <div class="card-price">119 <span class="cur">€</span></div>
+ <div class="card-vat" data-i18n="vat_169">inkl. MwSt. · regulär danach 169 €</div>
  <div class="card-cta">
  <button class="card-btn trial" data-i18n="btn_trial" onclick="openTrial(TRIAL_URLS.bm)">Kostenlos 7 Tage testen</button>
  <button class="card-btn-link" data-i18n="btn_trial_buy" onclick="openCheckout(PRICES.bm)">oder direkt kaufen</button>
@@ -309,11 +313,10 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 
  <div class="format-section">
  <div class="format-label" data-i18n="fmt_standalone_mac">Standalone · macOS</div>
- <div class="card-price">49 <span class="cur">€</span></div>
- <div class="card-vat" data-i18n="vat">inkl. MwSt. · Einführungspreis</div>
+ <span class="early-badge soon" data-i18n="lc_badge">In Vorbereitung</span>
+ <div class="card-vat" data-i18n="lc_soon">Launch zusammen mit dem Video-Loudness-Update</div>
  <div class="card-cta">
  <button class="card-btn trial" data-i18n="btn_trial" onclick="openTrial(TRIAL_URLS.lc)">Kostenlos 7 Tage testen</button>
- <button class="card-btn-link" data-i18n="btn_trial_buy" onclick="openCheckout(PRICES.lc)">oder direkt kaufen</button>
  <div class="card-claim" data-i18n="trial_claim">Kein Konto · keine Email</div>
  </div>
  </div>
@@ -492,7 +495,12 @@ const i18n = {
  lc_sub: 'Offline R128 · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6',
  fmt_standalone_mac: 'Standalone · macOS',
  r128_sub: 'Batch-Normalisierung · Double-Gating · True Peak Limiter · CLI',
- vat: 'inkl. MwSt. · Einführungspreis',
+ vat: 'inkl. MwSt.',
+ early_badge: 'Einführungspreis',
+ vat_249: 'inkl. MwSt. · regulär danach 249 €',
+ vat_169: 'inkl. MwSt. · regulär danach 169 €',
+ lc_badge: 'In Vorbereitung',
+ lc_soon: 'Launch zusammen mit dem Video-Loudness-Update',
  btn_soon: 'Bald verfügbar',
  btn_buy: 'Kaufen',
  btn_trial: 'Kostenlos 7 Tage testen',
@@ -571,7 +579,12 @@ const i18n = {
  lc_sub: 'Offline R128 · 16 delivery presets · verify-and-refine · mono to 9.1.6',
  fmt_standalone_mac: 'Standalone · macOS',
  r128_sub: 'Batch Normalization · Double Gating · True Peak Limiter · CLI',
- vat: 'incl. VAT · Launch price',
+ vat: 'incl. VAT',
+ early_badge: 'Launch price',
+ vat_249: 'incl. VAT · regular price later 249 €',
+ vat_169: 'incl. VAT · regular price later 169 €',
+ lc_badge: 'In preparation',
+ lc_soon: 'Launches with the video loudness update',
  btn_soon: 'Coming soon',
  btn_buy: 'Buy',
  btn_trial: 'Free 7-day trial',

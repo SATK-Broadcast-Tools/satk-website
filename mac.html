@@ -716,6 +716,8 @@ function setLang(lang) {
  const k = el.dataset.i18nHtml;
  if (t[k]) el.innerHTML = t[k];
  });
+ // overdub-Abo-Toggle/Labels werden per JS gesetzt (kein data-i18n) -> mitziehen
+ if (typeof setOdPlan === 'function') setOdPlan(odInterval);
  try { localStorage.setItem('satk-lang', lang); } catch(e){}
 }
 

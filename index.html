@@ -433,6 +433,15 @@ window.addEventListener('load', () => {
  // Sekundaerer "oder direkt kaufen"-Link aus, solange Paddle disabled ist
  document.querySelectorAll('.card-btn-link').forEach(el => { el.style.display = 'none'; });
  }
+
+ // Direkt-Checkout via URL-Param: ?buy=od|bm|lc oeffnet sofort den
+ // Paddle-Checkout des Produkts. Der In-App "Lizenz kaufen"-Button
+ // (nach Trial-Ende) fuehrt direkt hierher -> der Kunde landet im
+ // Kauf, nicht erst auf der Startseite.
+ const buyParam = new URLSearchParams(window.location.search).get('buy');
+ if (PADDLE_ENV !== 'disabled' && buyParam && PRICES[buyParam])
+ openCheckout(PRICES[buyParam]);
+
  // Hinweis: Paddle.Initialize passiert nicht mehr hier, siehe ensurePaddle().
 });
 

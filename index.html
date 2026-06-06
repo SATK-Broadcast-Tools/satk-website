@@ -441,7 +441,7 @@ window.addEventListener('load', () => {
  const buyParam = new URLSearchParams(window.location.search).get('buy');
  if (PADDLE_ENV !== 'disabled' && buyParam && PRICES[buyParam]) {
    const pid = (typeof PRICES[buyParam] === 'string') ? PRICES[buyParam]
-             : PRICES[buyParam].year;   // overdub-Abo: Jahr als Default
+             : PRICES[buyParam].month;   // overdub-Abo: Monat als Default
    openCheckout(pid);
  }
 

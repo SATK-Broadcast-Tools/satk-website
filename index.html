@@ -378,12 +378,12 @@ const PADDLE_TOKEN = IS_LOCAL
 const PRICES = IS_LOCAL ? {
  // Sandbox-Price-IDs (localhost-Tests)
  bm: 'pri_01kqj02k8cwdj70b04ajthffqj',
- od: 'pri_01kqj0fp74z9m4mg9y4z3xhbfp',
+ od: { month: 'pri_01kqj0fp74z9m4mg9y4z3xhbfp', year: 'pri_01kqj0fp74z9m4mg9y4z3xhbfp' },
  lc: 'pri_01kqj0qm3v1tv8e1s5tgv4j9q2'
 } : {
  // Live-Price-IDs (production)
  bm: 'pri_01kqwjjadxp4j7exrc841d7d8z',
- od: 'pri_01krx7es1jx2q58z5fcae8w1xd', // Live seit 2026-05-18
+ od: { month: 'pri_01kteb6z4rqwjttrqrxxd8befq', year: 'pri_01ktehrt96x9tf49gpavwbwvrm' }, // Abo (overdub = Abo-only)
  lc: 'pri_01krh0f1r22tvq3702yfbm0ygk'
 };
 
@@ -392,7 +392,7 @@ const PRICES = IS_LOCAL ? {
 // in R2 liegt, hier eintragen, fertig.
 const TRIAL_URLS = {
  bm: 'https://download.pegelwerk.com/broadcast-meter-1.0.7.dmg',
- od: 'https://download.pegelwerk.com/overdub-studio-1.1.0.dmg?v=2',
+ od: 'https://download.pegelwerk.com/overdub-studio-1.1.1.dmg',
  lc: 'https://download.pegelwerk.com/loudness-correct-1.0.1.dmg'
 };
 
@@ -439,8 +439,11 @@ window.addEventListener('load', () => {
  // (nach Trial-Ende) fuehrt direkt hierher -> der Kunde landet im
  // Kauf, nicht erst auf der Startseite.
  const buyParam = new URLSearchParams(window.location.search).get('buy');
- if (PADDLE_ENV !== 'disabled' && buyParam && PRICES[buyParam])
- openCheckout(PRICES[buyParam]);
+ if (PADDLE_ENV !== 'disabled' && buyParam && PRICES[buyParam]) {
+   const pid = (typeof PRICES[buyParam] === 'string') ? PRICES[buyParam]
+             : PRICES[buyParam].year;   // overdub-Abo: Jahr als Default
+   openCheckout(pid);
+ }
 
  // Hinweis: Paddle.Initialize passiert nicht mehr hier, siehe ensurePaddle().
 });

@@ -123,6 +123,9 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .card-price{font-family:'Arimo',sans-serif;font-size:24px;font-weight:700;color:var(--tx);margin-bottom:2px;line-height:1}
 .card-price .cur{font-size:14px;color:var(--mu2);font-weight:400}
 .card-vat{font-size:9px;color:var(--mu);margin-bottom:12px}
+.od-plan{display:flex;width:fit-content;margin:0 auto 8px;border:1px solid var(--bd);border-radius:999px;overflow:hidden}
+.od-plan button{border:0;padding:6px 18px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.5px;cursor:pointer;background:transparent;color:var(--mu2);transition:all .15s}
+.od-plan button.active{background:var(--ac);color:#0a0a0b;font-weight:700}
 .early-badge{display:inline-block;font-family:'Arimo',sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#0a0a0b;background:var(--ac);padding:3px 9px;border-radius:4px;margin-bottom:8px}
 .early-badge.soon{background:transparent;color:var(--mu2);border:1px solid var(--bd)}
 .card-btn{display:inline-block;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
@@ -259,12 +262,15 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 
  <div class="format-section">
  <div class="format-label" data-i18n="fmt_standalone_mac">Standalone · macOS</div>
- <span class="early-badge" data-i18n="early_badge">Einführungspreis</span>
- <div class="card-price">199 <span class="cur">€</span></div>
- <div class="card-vat" data-i18n="vat_249">inkl. MwSt. · regulär danach 249 €</div>
+ <div class="od-plan">
+   <button id="odSegYear"  type="button" onclick="setOdPlan('year')">Jährlich</button>
+   <button id="odSegMonth" type="button" onclick="setOdPlan('month')">Monatlich</button>
+ </div>
+ <div class="card-price"><span id="odPrice">249</span> <span class="cur">€</span><span class="cur" id="odPer"> / Jahr</span></div>
+ <div class="card-vat" id="odVat">inkl. MwSt. · 2 Monate gratis</div>
  <div class="card-cta">
  <button class="card-btn trial" data-i18n="btn_trial" onclick="openTrial(TRIAL_URLS.od)">Kostenlos 7 Tage testen</button>
- <button class="card-btn-link" data-i18n="btn_trial_buy" onclick="openCheckout(PRICES.od)">oder direkt kaufen</button>
+ <button class="card-btn-link" data-i18n="btn_trial_buy" onclick="odBuy()">oder Abo abschließen</button>
  <div class="card-claim" data-i18n="trial_claim">Kein Konto · keine Email</div>
  </div>
  </div>
@@ -394,24 +400,53 @@ const PADDLE_ENV = IS_LOCAL ? 'sandbox' : 'production';
 const PADDLE_TOKEN = IS_LOCAL
  ? 'test_a65ecd48de16da666e6cc143342' // Sandbox (localhost)
  : 'live_d396180ae63b7e976090665cccb'; // Live (production)
+// overdub (od) ist ein ABO -> Objekt {month, year}. BM/LC bleiben Einmalkauf (String).
 const PRICES = IS_LOCAL ? {
  // Sandbox-Price-IDs (localhost-Tests)
  bm: 'pri_01kqj02k8cwdj70b04ajthffqj',
- od: 'pri_01kqj0fp74z9m4mg9y4z3xhbfp',
+ od: { month: 'pri_01kqj0fp74z9m4mg9y4z3xhbfp', year: 'pri_01kqj0fp74z9m4mg9y4z3xhbfp' },
  lc: 'pri_01kqj0qm3v1tv8e1s5tgv4j9q2'
 } : {
  // Live-Price-IDs (production)
  bm: 'pri_01kqwjjadxp4j7exrc841d7d8z',
- od: 'pri_01krx7es1jx2q58z5fcae8w1xd', // Live seit 2026-05-18
+ od: { month: 'pri_01kteb6z4rqwjttrqrxxd8befq', year: 'pri_01ktehrt96x9tf49gpavwbwvrm' }, // Abo 24,99/Monat · 249/Jahr
  lc: 'pri_01krh0f1r22tvq3702yfbm0ygk'
 };
+
+// overdub-Abo: Monat/Jahr-Umschalter auf der Karte.
+let odInterval = 'year';   // Default Jahr (günstiger, weniger Churn)
+function setOdPlan(plan) {
+ odInterval = (plan === 'month') ? 'month' : 'year';
+ var en = (document.documentElement.lang || 'de') === 'en';
+ var price = document.getElementById('odPrice');
+ var per   = document.getElementById('odPer');
+ var vat   = document.getElementById('odVat');
+ var y = document.getElementById('odSegYear');
+ var m = document.getElementById('odSegMonth');
+ if (price) price.textContent = (odInterval === 'year') ? '249' : '24,99';
+ if (per)   per.textContent   = (odInterval === 'year') ? (en ? ' / yr' : ' / Jahr')
+                                                        : (en ? ' / mo' : ' / Monat');
+ if (vat)   vat.textContent   = (odInterval === 'year')
+                ? (en ? 'incl. VAT · 2 months free' : 'inkl. MwSt. · 2 Monate gratis')
+                : (en ? 'incl. VAT · cancel anytime' : 'inkl. MwSt. · monatlich kündbar');
+ if (y && m) {
+   y.classList.toggle('active', odInterval === 'year');
+   m.classList.toggle('active', odInterval === 'month');
+   y.textContent = en ? 'Yearly'  : 'Jährlich';
+   m.textContent = en ? 'Monthly' : 'Monatlich';
+ }
+}
+function odPriceId() {
+ return (typeof PRICES.od === 'string') ? PRICES.od : PRICES.od[odInterval];
+}
+function odBuy() { openCheckout(odPriceId()); }
 
 // Trial-Download-URLs (R2). null = noch nicht verfuegbar (Pre-Launch),
 // Klick zeigt dann eine "Bald verfuegbar"-Meldung. Sobald der DMG-Build
 // in R2 liegt, hier eintragen, fertig.
 const TRIAL_URLS = {
  bm: 'https://download.pegelwerk.com/broadcast-meter-1.0.7.dmg',
- od: 'https://download.pegelwerk.com/overdub-studio-1.1.0.dmg?v=2',
+ od: 'https://download.pegelwerk.com/overdub-studio-1.1.1.dmg',
  lc: 'https://download.pegelwerk.com/loudness-correct-1.0.1.dmg'
 };
 
@@ -458,8 +493,15 @@ window.addEventListener('load', () => {
  // (nach Trial-Ende) fuehrt direkt hierher -> der Kunde landet im
  // Kauf, nicht erst auf der Startseite.
  const buyParam = new URLSearchParams(window.location.search).get('buy');
- if (PADDLE_ENV !== 'disabled' && buyParam && PRICES[buyParam])
- openCheckout(PRICES[buyParam]);
+ if (PADDLE_ENV !== 'disabled' && buyParam && PRICES[buyParam]) {
+   const pid = (typeof PRICES[buyParam] === 'string')
+             ? PRICES[buyParam]
+             : PRICES[buyParam][odInterval];   // overdub-Abo: Default-Intervall (Jahr)
+   openCheckout(pid);
+ }
+
+ // overdub-Abo-Umschalter initialisieren (aktiver Zustand + Labels nach Sprache).
+ if (typeof setOdPlan === 'function') setOdPlan(odInterval);
 
  // Hinweis: Paddle.Initialize passiert nicht mehr hier, siehe ensurePaddle().
 });

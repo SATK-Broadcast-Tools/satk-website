@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Lizenz aktivieren · pegelWERK</title>
+<style>
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+         background:#0a0a0b; color:#e8e8ec; font-family:-apple-system,system-ui,sans-serif; }
+  .box { max-width:440px; text-align:center; padding:32px; }
+  .logo { font-family:'Arimo',Arial,sans-serif; font-weight:700; font-size:26px; letter-spacing:1px; margin-bottom:24px; }
+  .logo .a { color:#c8f060; } .logo .b { color:#e8e8ec; }
+  h1 { font-size:18px; margin:0 0 12px; }
+  p { color:#c4c4cd; font-size:14px; line-height:1.6; }
+  a.btn { display:inline-block; margin-top:18px; background:#c8f060; color:#0a0a0b; font-weight:600;
+          padding:12px 24px; border-radius:8px; text-decoration:none; font-size:14px; }
+  a.dl { color:#c8f060; }
+  .muted { color:#6e6e7a; font-size:12px; margin-top:22px; }
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="logo"><span class="a">pegel</span><span class="b">WERK</span></div>
+    <h1 id="title">Lizenz wird aktiviert…</h1>
+    <p id="msg">Die App öffnet sich gleich. Falls nicht, klick den Button:</p>
+    <a class="btn" id="manual" href="#">App öffnen &amp; aktivieren</a>
+    <p class="muted" id="fallback">
+      Funktioniert nichts? App noch nicht installiert? →
+      <a class="dl" href="https://pegelwerk.com/mac">overdub STUDIO laden</a><br>
+      Dann in der App: <b>Hilfe → Lizenz eingeben</b> und die Daten aus deiner
+      Lizenz-Mail einfügen.
+    </p>
+  </div>
+
+  <script>
+    // Allowed app URL schemes (pegelWERK products). Defaults to overdub.
+    var ALLOWED = { 'satk-od': 1, 'satk-bm': 1, 'satk-lc': 1 };
+    var p = new URLSearchParams(location.search);
+    var token = p.get('token') || '';
+    var lic   = p.get('license_id') || '';
+    var s     = ALLOWED[p.get('s')] ? p.get('s') : 'satk-od';
+
+    if (token) {
+      // Build the app deep-link in the exact format the app's URL handler expects
+      // (raw token; base64url is URL-safe). license_id optional.
+      var target = s + '://activate?token=' + token + (lic ? '&license_id=' + lic : '');
+      document.getElementById('manual').setAttribute('href', target);
+      // Auto-launch the app.
+      location.href = target;
+    } else {
+      document.getElementById('title').textContent = 'Kein Token gefunden';
+      document.getElementById('msg').textContent =
+        'Dieser Link ist unvollständig. Bitte öffne den Aktivierungslink aus deiner Lizenz-Mail erneut.';
+      document.getElementById('manual').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

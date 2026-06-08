@@ -109,6 +109,9 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .banner-success{border:1px solid var(--ac);background:rgba(200,240,96,.06);color:var(--ac)}
 .banner-error{border:1px solid var(--err);background:rgba(255,110,110,.06);color:var(--err)}
 .banner-info{border:1px solid var(--bd);background:var(--sf);color:var(--mu2)}
+.banner-info strong{color:var(--tx)}
+.banner-info a{color:var(--ac);text-decoration:none}
+.banner-info a:hover{text-decoration:underline}
 
 /* Footer */
 footer{text-align:center;padding:60px 32px 40px;margin-top:60px;border-top:1px solid rgba(255,255,255,.03)}
@@ -178,6 +181,10 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 </section>
 
 <section class="section">
+
+ <div class="banner banner-info" data-i18n="sub_note" style="margin-bottom:28px">
+ <strong>Abo kündigen:</strong> overdub STUDIO PRO für Mac ist ein Abo über Paddle. Kündige über den Link in deiner Paddle-Bestellmail oder im Käuferportal <a href="https://paddle.net" target="_blank" rel="noopener">paddle.net</a>. Die overdub STUDIO App für iPad läuft als App-Store-Abo, das kündigst du bei Apple unter <a href="https://apps.apple.com/account/subscriptions" target="_blank" rel="noopener">apps.apple.com/account/subscriptions</a>. Hier verwaltest du nur Lizenz und Geräte, Abos werden nicht über pegelWERK gekündigt.
+ </div>
 
  <div id="errBanner" class="banner banner-error" style="display:none"></div>
  <div id="okBanner" class="banner banner-success" style="display:none"></div>
@@ -274,6 +281,7 @@ const i18n = {
  hero_eyebrow: 'Self-Service-Portal',
  hero_title: 'Lizenz verwalten',
  hero_tagline: 'Aktivierungs-Mail erneut senden, aktivierte Geräte einsehen, alles ohne Support-Anfrage.',
+ sub_note: '<strong>Abo kündigen:</strong> overdub STUDIO PRO für Mac ist ein Abo über Paddle. Kündige über den Link in deiner Paddle-Bestellmail oder im Käuferportal <a href="https://paddle.net" target="_blank" rel="noopener">paddle.net</a>. Die overdub STUDIO App für iPad läuft als App-Store-Abo, das kündigst du bei Apple unter <a href="https://apps.apple.com/account/subscriptions" target="_blank" rel="noopener">apps.apple.com/account/subscriptions</a>. Hier verwaltest du nur Lizenz und Geräte, Abos werden nicht über pegelWERK gekündigt.',
  label_email: 'E-Mail-Adresse aus dem Kauf',
  hint_email: 'Genau die Adresse, an die deine Lizenz-Mail gesendet wurde.',
  label_license: 'Lizenz-ID',
@@ -315,6 +323,7 @@ const i18n = {
  hero_eyebrow: 'Self-Service Portal',
  hero_title: 'Manage License',
  hero_tagline: 'Resend activation email, view activated devices, without contacting support.',
+ sub_note: '<strong>Cancelling a subscription:</strong> overdub STUDIO PRO for Mac is a subscription via Paddle. Cancel it through the link in your Paddle order email or in the buyer portal <a href="https://paddle.net" target="_blank" rel="noopener">paddle.net</a>. The overdub STUDIO app for iPad is an App Store subscription, cancel it with Apple at <a href="https://apps.apple.com/account/subscriptions" target="_blank" rel="noopener">apps.apple.com/account/subscriptions</a>. This page only manages your licence and devices, subscriptions are not cancelled via pegelWERK.',
  label_email: 'Email address from your purchase',
  hint_email: 'Exactly the address your license mail was sent to.',
  label_license: 'License ID',

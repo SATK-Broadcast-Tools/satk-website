@@ -154,6 +154,14 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="product-name">pegelWERK broadcast METER <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
  <div class="release">
+ <span class="release-version">1.0.6</span><span class="release-date">2026-06-04</span>
+ <div class="release-title" data-i18n="cl_bm_106_t">Rebrand auf pegelWERK</div>
+ <ul class="release-list">
+ <li data-i18n="cl_bm_106_1">Umbenennung von SATK auf pegelWERK, neuer Name, neue Wortmarke und neues App-Icon. Funktional unverändert, dieselbe DSP-Engine und Messung.</li>
+ </ul>
+ </div>
+
+ <div class="release older">
  <span class="release-version">1.0.5</span><span class="release-date">2026-05-06</span>
  <div class="release-title" data-i18n="cl_bm_105_t">Stabilisierung der One-Click-Aktivierung</div>
  <ul class="release-list">
@@ -244,21 +252,11 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  </div>
  </div>
 
- <!-- ╔═════════════════════════════════════════════════════════════
- LC 1.0.0 RELEASE-BLOCK (vorbereitet, einkommentieren wenn live)
- Schritte zum Aktivieren:
- 1. Diesen ganzen Block aus dem HTML-Kommentar nehmen
- 2. <UNDER VERSION> + <UNDER DATUM> mit echten Werten ersetzen
- 3. Den LC-Block in der Roadmap-Sektion unten loeschen
- 4. cl_lc_100_t / cl_lc_100_1..4 i18n-Strings im JS-Block am
- Ende der Datei einkommentieren (auch dort vorbereitet)
- ═════════════════════════════════════════════════════════════ ╗
-
  <div class="product-block">
  <div class="product-name">pegelWERK loudness CORRECT <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
  <div class="release">
- <span class="release-version"><UNDER VERSION></span><span class="release-date"><UNDER DATUM></span>
+ <span class="release-version">1.0.0</span><span class="release-date">2026-06-02</span>
  <div class="release-title" data-i18n="cl_lc_100_t">Erste öffentliche Direct-Sales-Version</div>
  <ul class="release-list">
  <li data-i18n="cl_lc_100_1">Offline R128-Korrektur mit 16 Delivery-Presets, Broadcast (EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354), Streaming (Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube), Kino (Leq(m), Leq(a)) plus Custom.</li>
@@ -269,15 +267,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  </div>
  </div>
 
- ═════════════════════════════════════════════════════════════ -->
-
  <h2 data-i18n="cl_h_roadmap">Was als Nächstes kommt</h2>
-
- <!-- ── loudness CORRECT (in Roadmap-Block, entfernen wenn LC live geht) ──────────── -->
- <div class="product-block">
- <div class="product-name">pegelWERK loudness CORRECT <span class="product-status soon" data-i18n="cl_st_soon">In Entwicklung</span></div>
- <p class="roadmap-line" data-i18n="cl_lc_p"><strong>Offline R128-Korrektur · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6.</strong> Engine ist funktionsfähig, derzeit Feinarbeit am Preset-System und der Batch-Pipeline.</p>
- </div>
 
  <p class="note" data-i18n-html="cl_note">Hinweis: Wir veröffentlichen erst, wenn ein Tool zuverlässig im Workflow läuft, keine fixen Termine, keine Vorbestellungen. Wenn du benachrichtigt werden möchtest sobald ein Tool live geht, schreib eine kurze Mail an <a href="mailto:info@pegelwerk.com?subject=Launch-Notification">info@pegelwerk.com</a> mit dem Tool-Namen.</p>
 
@@ -323,6 +313,8 @@ const i18n = {
  cl_h_releases: 'Aktuelle Releases',
  cl_h_roadmap: 'Was als Nächstes kommt',
  cl_st_live: 'Live', cl_st_soon: 'In Entwicklung',
+ cl_bm_106_t: 'Rebrand auf pegelWERK',
+ cl_bm_106_1: 'Umbenennung von SATK auf pegelWERK, neuer Name, neue Wortmarke und neues App-Icon. Funktional unverändert, dieselbe DSP-Engine und Messung.',
  cl_bm_105_t: 'Stabilisierung der One-Click-Aktivierung',
  cl_bm_105_1: 'Method-Swizzling auf NSAppleEventManager, One-Click aus der Lizenz-Mail funktioniert jetzt zuverlässig auch bei kalt gestarteter App auf macOS 13+.',
  cl_bm_105_2: 'Drei-Schicht-Defence für URL-Scheme-Handler (load + willFinishLaunching + Method-Swizzle) als Standard-Pattern für alle künftigen pegelWERK-Tools dokumentiert.',
@@ -333,13 +325,11 @@ const i18n = {
  cl_bm_102_2: '7-Tage-Trial ohne Konto und ohne E-Mail-Adresse, Vollversion direkt downloadbar, Trial-Status server-getrackt gegen Reset-Versuche.',
  cl_bm_102_3: 'Watermarking der Käufer-E-Mail im About-Window und in der Toolbar.',
  cl_bm_102_4: 'PDF- und CSV-Reports mit Loudness-Timeline und Speech-Clarity-Bewertung.',
- /* LC 1.0.0 Release-Notes, bei Go-Live einkommentieren:
  cl_lc_100_t: 'Erste öffentliche Direct-Sales-Version',
  cl_lc_100_1: 'Offline R128-Korrektur mit 16 Delivery-Presets, Broadcast (EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354), Streaming (Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube), Kino (Leq(m), Leq(a)) plus Custom.',
  cl_lc_100_2: 'Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.',
  cl_lc_100_3: '3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor, ohne Pumpen, ohne Phasen-Artefakte.',
  cl_lc_100_4: 'Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum pegelWERK broadcast METER, Messen und Korrigieren mit derselben Wahrheit.',
- */
  cl_od_111_t: 'Audio-only-Modus, neuronale Entrauschung und Prompter auf dem iPad',
  cl_od_111_1: 'Audio-only-Modus, overdub STUDIO funktioniert jetzt auch ganz ohne Videospur, für Podcasts und Hörbücher. WAV, MP3, AIFF und M4A landen direkt auf der Sprachspur, mit mitlaufendem Prompter-Audio-Feed.',
  cl_od_111_2: 'Neuronale Entrauschung (DeepFilterNet 3) als eigener NOISE-Regler im Konsolen-Strip, läuft komplett lokal auf dem Gerät, ohne externes Plug-in und ohne Upload.',
@@ -384,6 +374,8 @@ const i18n = {
  cl_h_releases: 'Current releases',
  cl_h_roadmap: 'What\'s coming next',
  cl_st_live: 'Live', cl_st_soon: 'In development',
+ cl_bm_106_t: 'Rebrand to pegelWERK',
+ cl_bm_106_1: 'Renamed from SATK to pegelWERK, new name, new wordmark and new app icon. Functionally unchanged, same DSP engine and metering.',
  cl_bm_105_t: 'One-click activation hardened',
  cl_bm_105_1: 'Method-swizzling on NSAppleEventManager, one-click activation from the license mail now works reliably even on cold-started apps on macOS 13+.',
  cl_bm_105_2: 'Three-layer defence for URL-scheme handler (load + willFinishLaunching + method-swizzle) documented as the standard pattern for all future pegelWERK tools.',
@@ -394,13 +386,11 @@ const i18n = {
  cl_bm_102_2: '7-day trial without account and without email, full version download, trial state server-tracked against reset attempts.',
  cl_bm_102_3: 'Buyer email watermarked in the About window and the toolbar.',
  cl_bm_102_4: 'PDF and CSV reports with loudness timeline and speech-clarity rating.',
- /* LC 1.0.0 Release-Notes EN, uncomment when LC goes live:
  cl_lc_100_t: 'First public direct-sales release',
  cl_lc_100_1: 'Offline R128 correction with 16 delivery presets, broadcast (EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354), streaming (Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube), cinema (Leq(m), Leq(a)) plus Custom.',
  cl_lc_100_2: 'Two-pass with automatic refine: pass 1 measures, pass 2 corrects, pass 3 verifies. If the residual is above 0.1 LU, correction runs again with trimmed gain.',
  cl_lc_100_3: '3-band LRA processor (Linkwitz-Riley 4th order with perfect reconstruction) pulls every LRA into the broadcast corridor, no pumping, no phase artefacts.',
  cl_lc_100_4: 'Mono to 9.1.6 with BS.1770-compliant LFE weighting. DSP engine byte-identical to pegelWERK broadcast METER, measure and correct with the same truth.',
- */
  cl_od_111_t: 'Audio-only mode, neural noise removal and prompter on iPad',
  cl_od_111_1: 'Audio-only mode, overdub STUDIO now works entirely without a video track, for podcasts and audiobooks. Import WAV, MP3, AIFF and M4A straight onto the voice track, with a scrolling prompter audio feed.',
  cl_od_111_2: 'Neural noise removal (DeepFilterNet 3) as a dedicated NOISE fader in the channel strip, running entirely on-device, with no external plug-in and no upload.',

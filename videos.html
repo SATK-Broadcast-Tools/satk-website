@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.ico?v=6" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=6">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=6">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=6">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=6">
+<link rel="canonical" href="https://pegelwerk.com/videos">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pegelWERK Videos, Trailer, Produktvideos & Tutorials</title>
+<meta name="description" content="Produktvideos, Trailer und Tutorials zu pegelWERK overdub STUDIO und dem gesamten pegelWERK-Lineup. Datenschutzfreundlich eingebettet, YouTube lädt erst nach Klick.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="pegelWERK Videos, Trailer & Tutorials">
+<meta property="og:description" content="Produktvideos, Trailer und Tutorials zu pegelWERK overdub STUDIO und dem gesamten Lineup.">
+<meta property="og:url" content="https://pegelwerk.com/videos">
+<meta property="og:image" content="https://pegelwerk.com/og-image.png?v=7">
+<meta property="og:site_name" content="pegelWERK">
+<meta property="og:locale" content="de_DE">
+<meta property="og:locale:alternate" content="en_US">
+
+<link href="fonts.css" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#c8f060;--tx:#e8e8ec;--mu:#6e6e7a;--mu2:#c4c4cd}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+ padding:16px 48px;background:rgba(10,10,11,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+ border-bottom:1px solid rgba(255,255,255,.04)}
+.nav-logo{display:inline-flex;flex-direction:column;align-items:stretch;gap:5px;text-decoration:none;line-height:1}
+.nav-logo-img{height:45px;width:auto;display:block;align-self:flex-start}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{color:var(--mu2);text-decoration:none;font-size:11px;letter-spacing:.5px;transition:color .2s}
+.nav-links a:hover{color:var(--tx)}
+.nav-platforms{display:flex;gap:2px;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:999px;padding:3px}
+.nav-platforms a{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:999px;color:var(--mu2);text-decoration:none;transition:all .2s}
+.nav-platforms a.active{background:var(--ac);color:#0a0a0b}
+.nav-platforms a:hover:not(.active){color:var(--tx);background:rgba(255,255,255,.04)}
+.lang-sw{display:flex;align-items:center;gap:6px}
+.lang{font-size:10px;letter-spacing:1px;color:var(--mu);cursor:pointer;transition:color .2s;background:none;border:0;font-family:'Inter',sans-serif}
+.lang:hover{color:var(--tx)}
+.lang.active{color:var(--ac)}
+.lang-sep{color:var(--mu);font-size:10px}
+
+.page-hero{text-align:center;padding:80px 32px 24px;max-width:760px;margin-left:auto;margin-right:auto}
+.page-eyebrow{font-family:'Arimo',sans-serif;font-size:11px;font-weight:700;letter-spacing:.4em;color:var(--ac);text-transform:uppercase;margin:0 auto 18px;text-align:center}
+.page-hero h1{font-family:'Arimo',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-.5px;line-height:1.05;margin:0 auto 18px;text-align:center}
+.page-hero .tagline{color:var(--mu2);font-size:14px;letter-spacing:.3px;line-height:1.7;text-align:center;margin:0 auto}
+
+.section{max-width:1000px;margin:0 auto;padding:24px 32px 0}
+
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:24px}
+.video-card{background:var(--sf);border:1px solid var(--bd);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.video-frame{position:relative;aspect-ratio:16/9;background:#000;cursor:pointer;overflow:hidden}
+.video-frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease,opacity .2s}
+.video-frame:hover img{transform:scale(1.03);opacity:.85}
+.video-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,10,11,.18)}
+.play-btn{width:74px;height:74px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(0,0,0,.45);transition:transform .2s}
+.video-frame:hover .play-btn{transform:scale(1.08)}
+.play-btn svg{width:30px;height:30px;margin-left:4px;display:block}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-meta{padding:20px 22px;display:flex;flex-direction:column;flex:1}
+.video-title{font-family:'Arimo',sans-serif;font-weight:700;font-size:16px;color:var(--tx);letter-spacing:-.1px;margin-bottom:8px}
+.video-desc{font-size:12px;color:var(--mu2);line-height:1.7}
+.video-consent{font-size:10px;color:var(--mu);line-height:1.6;letter-spacing:.2px;margin-top:14px;padding-top:12px;border-top:1px solid var(--bd)}
+.video-consent a{color:var(--mu2);text-decoration:underline;text-underline-offset:2px}
+.video-consent a:hover{color:var(--ac)}
+
+.privacy-note{max-width:1000px;margin:28px auto 0;padding:0 32px;font-size:11px;color:var(--mu);line-height:1.7;text-align:center}
+
+footer{padding:72px 48px 36px;margin-top:96px;border-top:1px solid rgba(255,255,255,.06);background:#15161a;text-align:left}
+.footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1120px;margin:0 auto 48px;text-align:center}
+.footer-col h4{font-family:'Arimo',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
+.footer-col a{display:block;font-family:'Inter',sans-serif;font-size:11px;color:var(--mu2);text-decoration:none;letter-spacing:.3px;padding:5px 0;transition:color .2s}
+.footer-col a:hover{color:var(--ac)}
+.footer-col+.footer-col{border-left:1px solid rgba(255,255,255,.12)}
+.footer-bar{display:flex;justify-content:center;align-items:center;gap:16px;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'Inter',sans-serif;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
+.footer-brand-img{height:17px;width:auto;display:block}
+.footer-meta{color:var(--mu2);text-transform:none;letter-spacing:.3px}
+
+body{overflow-wrap:break-word}
+@media(max-width:900px){
+ nav{padding:14px 20px;gap:12px;flex-wrap:wrap}
+ .nav-platforms a{font-size:9px;padding:6px 12px;letter-spacing:1px}
+}
+@media(max-width:760px){
+ nav{padding:12px 16px}
+ .nav-links{gap:16px}
+ .page-hero{padding:56px 20px 16px}
+ .section{padding:18px 20px 0}
+ .video-grid{grid-template-columns:1fr}
+ .footer-grid{grid-template-columns:1fr;gap:32px;text-align:center}
+ .footer-col+.footer-col{border-left:none}
+ footer{padding:48px 20px 24px}
+}
+@media(max-width:600px){
+ .nav-links{display:none}
+ nav{padding:10px 14px;gap:8px}
+ .nav-platforms a{font-size:8px;padding:5px 10px;letter-spacing:.8px}
+ .page-hero{padding:40px 16px 12px}
+ .section{padding:14px 16px 0}
+}
+h1,h2,h3,h4,h5,p,li{text-wrap:balance}
+</style>
+</head>
+<body>
+
+<nav>
+ <a href="/" class="nav-logo">
+ <img class="nav-logo-img" src="/logo-lockup.svg?v=2" alt="pegelWERK">
+ </a>
+ <div class="nav-platforms">
+ <a href="/mac">Mac</a>
+ <a href="/ios">iOS</a>
+ <a href="/tools">Web</a>
+ </div>
+ <div class="nav-links">
+ <a href="/support" data-i18n="nav_info">Supportanfrage</a>
+ <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
+ <div class="lang-sw">
+ <span class="lang active" id="btnDE" onclick="setLang('de')">DE</span>
+ <span class="lang-sep">·</span>
+ <span class="lang" id="btnEN" onclick="setLang('en')">EN</span>
+ </div>
+ </div>
+</nav>
+
+<section class="page-hero">
+ <div class="page-eyebrow" data-i18n="page_eyebrow">Videos</div>
+ <h1 data-i18n="page_h1">Videos &amp; Tutorials</h1>
+ <p class="tagline" data-i18n="page_tagline">Trailer, Produktvideos und Tutorials zu pegelWERK overdub STUDIO und dem gesamten Lineup. Aus Datenschutzgründen startet ein Video erst nach deinem Klick.</p>
+</section>
+
+<section class="section">
+ <div class="video-grid" id="videoGrid"></div>
+</section>
+
+<p class="privacy-note" data-i18n="privacy_note">Hinweis zum Datenschutz: Die Vorschaubilder liegen auf unserem eigenen Server, es wird beim Laden dieser Seite keine Verbindung zu YouTube oder Google aufgebaut. Erst wenn du auf ein Video klickst, wird der YouTube-Player im datenschutzfreundlichen Modus (youtube-nocookie.com) nachgeladen.</p>
+
+<footer>
+ <div class="footer-grid">
+ <div class="footer-col">
+ <h4 data-i18n="f_col_products">Produkte</h4>
+ <a href="/mac" data-i18n="nav_mac">Mac Apps</a>
+ <a href="/ios" data-i18n="nav_ios">iOS Apps</a>
+ <a href="/tools" data-i18n="nav_tools">Browser-Tools</a>
+ </div>
+ <div class="footer-col">
+ <h4 data-i18n="f_col_support">Support</h4>
+ <a href="/videos" data-i18n="nav_videos">Videos</a>
+ <a href="/support" data-i18n="nav_info">Supportanfrage</a>
+ <a href="/manage-license" data-i18n="f_manage">Lizenz verwalten</a>
+ <a href="/changelog" data-i18n="f_changelog">Changelog</a>
+ <a href="/press" data-i18n="f_press">Presse</a>
+ </div>
+ <div class="footer-col">
+ <h4 data-i18n="f_col_legal">Rechtliches</h4>
+ <a href="/agb" data-i18n="f_terms">AGB</a>
+ <a href="/widerruf" data-i18n="f_refund">Widerruf</a>
+ <a href="/datenschutz" data-i18n="f_privacy">Datenschutz</a>
+ <a href="/impressum" data-i18n="f_imprint_contact">Kontakt &amp; Impressum</a>
+ </div>
+ </div>
+ <div class="footer-bar">
+ <img class="footer-brand-img" src="/logo.svg?v=5" alt="pegelWERK">
+ <span class="footer-meta">pegelWERK · © 2026</span>
+ </div>
+</footer>
+
+<script>
+// ── Videoliste: ein Eintrag pro Video. Neues Video = ein Objekt ergaenzen. ──
+// id    = YouTube-Video-ID
+// thumb = lokales Vorschaubild (kein externer Abruf beim Seitenaufruf)
+// title/desc = Deutsch, title_en/desc_en = Englisch
+const VIDEOS = [
+ {
+ id: 'CbWFldaMI6Q',
+ thumb: '/videos/overdub-studio-trailer.jpg',
+ title: 'overdub STUDIO, der Trailer',
+ title_en: 'overdub STUDIO, the Trailer',
+ desc: 'Vertonen ohne Studio und ohne Technikwissen. Video laden, Text vom Prompter ablesen, ein Klick auf Auto Mix, fertig.',
+ desc_en: 'Voiceover without a studio and without technical know-how. Load a video, read from the prompter, one click on Auto Mix, done.'
+ }
+];
+
+const I18N = {
+ de: {
+ nav_videos: 'Videos', nav_info: 'Supportanfrage', nav_manage: 'Lizenz',
+ page_eyebrow: 'Videos',
+ page_h1: 'Videos & Tutorials',
+ page_tagline: 'Trailer, Produktvideos und Tutorials zu pegelWERK overdub STUDIO und dem gesamten Lineup. Aus Datenschutzgründen startet ein Video erst nach deinem Klick.',
+ privacy_note: 'Hinweis zum Datenschutz: Die Vorschaubilder liegen auf unserem eigenen Server, es wird beim Laden dieser Seite keine Verbindung zu YouTube oder Google aufgebaut. Erst wenn du auf ein Video klickst, wird der YouTube-Player im datenschutzfreundlichen Modus (youtube-nocookie.com) nachgeladen.',
+ consent: 'Mit Klick lädt das Video von YouTube. Dann gelten die <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzbestimmungen von Google</a>.',
+ nav_mac: 'Mac Apps', nav_ios: 'iOS Apps', nav_tools: 'Browser-Tools',
+ f_col_products: 'Produkte', f_col_support: 'Support', f_col_legal: 'Rechtliches',
+ f_changelog: 'Changelog', f_manage: 'Lizenz verwalten', f_press: 'Presse',
+ f_imprint_contact: 'Kontakt & Impressum', f_terms: 'AGB', f_refund: 'Widerruf', f_privacy: 'Datenschutz',
+ },
+ en: {
+ nav_videos: 'Videos', nav_info: 'Support', nav_manage: 'License',
+ page_eyebrow: 'Videos',
+ page_h1: 'Videos & Tutorials',
+ page_tagline: 'Trailers, product videos and tutorials for pegelWERK overdub STUDIO and the entire lineup. For privacy reasons a video only starts after you click.',
+ privacy_note: 'Privacy note: the preview images are hosted on our own server, no connection to YouTube or Google is made when this page loads. Only when you click a video the YouTube player is loaded in privacy-friendly mode (youtube-nocookie.com).',
+ consent: 'Clicking loads the video from YouTube. Google’s <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">privacy policy</a> then applies.',
+ nav_mac: 'Mac Apps', nav_ios: 'iOS Apps', nav_tools: 'Browser Tools',
+ f_col_products: 'Products', f_col_support: 'Support', f_col_legal: 'Legal',
+ f_changelog: 'Changelog', f_manage: 'Manage License', f_press: 'Press',
+ f_imprint_contact: 'Contact & Legal Notice', f_terms: 'Terms', f_refund: 'Refund', f_privacy: 'Privacy',
+ }
+};
+
+const PLAY_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#0a0a0b"/></svg>';
+
+function loadVideo(frame, id, title){
+ const ifr = document.createElement('iframe');
+ ifr.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+ ifr.title = title;
+ ifr.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; web-share; fullscreen');
+ ifr.setAttribute('allowfullscreen', '');
+ ifr.setAttribute('loading', 'eager');
+ frame.innerHTML = '';
+ frame.appendChild(ifr);
+ frame.style.cursor = 'default';
+}
+
+function buildVideos(){
+ const grid = document.getElementById('videoGrid');
+ grid.innerHTML = '';
+ VIDEOS.forEach(v => {
+ const card = document.createElement('div');
+ card.className = 'video-card';
+
+ const frame = document.createElement('div');
+ frame.className = 'video-frame';
+ frame.setAttribute('role', 'button');
+ frame.setAttribute('tabindex', '0');
+ const labelPlay = (document.documentElement.lang === 'en' ? 'Play video: ' : 'Video abspielen: ');
+ frame.setAttribute('aria-label', labelPlay + v.title);
+
+ const img = document.createElement('img');
+ img.src = v.thumb;
+ img.alt = v.title;
+ img.loading = 'lazy';
+ img.width = 1280; img.height = 720;
+
+ const overlay = document.createElement('div');
+ overlay.className = 'video-overlay';
+ overlay.innerHTML = '<span class="play-btn">' + PLAY_SVG + '</span>';
+
+ frame.appendChild(img);
+ frame.appendChild(overlay);
+
+ const playNow = () => {
+ const lang = document.documentElement.lang === 'en' ? 'en' : 'de';
+ const title = lang === 'en' ? v.title_en : v.title;
+ loadVideo(frame, v.id, title);
+ };
+ frame.addEventListener('click', playNow);
+ frame.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playNow(); } });
+
+ const meta = document.createElement('div');
+ meta.className = 'video-meta';
+ const h = document.createElement('div');
+ h.className = 'video-title';
+ const p = document.createElement('div');
+ p.className = 'video-desc';
+ const c = document.createElement('div');
+ c.className = 'video-consent';
+ meta.appendChild(h); meta.appendChild(p); meta.appendChild(c);
+
+ card.appendChild(frame);
+ card.appendChild(meta);
+ grid.appendChild(card);
+
+ // Referenzen fuer Sprachwechsel
+ card._v = v; card._h = h; card._p = p; card._c = c;
+ });
+}
+
+function updateVideoLang(lang){
+ const dict = I18N[lang] || I18N.de;
+ document.querySelectorAll('.video-card').forEach(card => {
+ const v = card._v;
+ card._h.textContent = lang === 'en' ? v.title_en : v.title;
+ card._p.textContent = lang === 'en' ? v.desc_en : v.desc;
+ card._c.innerHTML = dict.consent;
+ });
+}
+
+function setLang(lang){
+ const dict = I18N[lang] || I18N.de;
+ document.documentElement.lang = lang;
+ document.querySelectorAll('[data-i18n]').forEach(el=>{
+ const k = el.getAttribute('data-i18n');
+ if (dict[k]) el.textContent = dict[k];
+ });
+ updateVideoLang(lang);
+ document.getElementById('btnDE').classList.toggle('active', lang==='de');
+ document.getElementById('btnEN').classList.toggle('active', lang==='en');
+ try{ localStorage.setItem('satk-lang', lang); }catch(e){}
+}
+
+buildVideos();
+(function(){
+ let lang = 'de';
+ try{
+ const stored = localStorage.getItem('satk-lang');
+ lang = stored || ((navigator.language||'').startsWith('en') ? 'en' : 'de');
+ }catch(e){}
+ setLang(lang === 'en' ? 'en' : 'de');
+})();
+</script>
+
+</body>
+</html>

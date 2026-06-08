@@ -189,6 +189,18 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="product-name">pegelWERK overdub STUDIO <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
  <div class="release">
+ <span class="release-version">1.1.1</span><span class="release-date">2026-06-06</span>
+ <div class="release-title" data-i18n="cl_od_111_t">Audio-only-Modus, neuronale Entrauschung und Prompter auf dem iPad</div>
+ <ul class="release-list">
+ <li data-i18n="cl_od_111_1">Audio-only-Modus, overdub STUDIO funktioniert jetzt auch ganz ohne Videospur, für Podcasts und Hörbücher. WAV, MP3, AIFF und M4A landen direkt auf der Sprachspur, mit mitlaufendem Prompter-Audio-Feed.</li>
+ <li data-i18n="cl_od_111_2">Neuronale Entrauschung (DeepFilterNet 3) als eigener NOISE-Regler im Konsolen-Strip, läuft komplett lokal auf dem Gerät, ohne externes Plug-in und ohne Upload.</li>
+ <li data-i18n="cl_od_111_3">Manueller Konsolen-Strip mit fünf Reglern (Monitor, Noise, Comp, Air, Body) auf Mix- und Audio-Seite, re-rendert beim Loslassen und bleibt gespeichert, falls man die Automatik selbst nachregeln will.</li>
+ <li data-i18n="cl_od_111_4">Prompter jetzt auch auf dem iPad, mit Sprachauswahl, die Erkennungssprache lässt sich unabhängig von der Bedienoberfläche einstellen.</li>
+ <li data-i18n="cl_od_111_5">Sauberere Take-Anfänge, die ersten Wörter am Take-Beginn werden nicht mehr weggedrückt (Leveler-Lead-in und Comp-Priming).</li>
+ </ul>
+ </div>
+
+ <div class="release older">
  <span class="release-version">1.0.3</span><span class="release-date">2026-05-22</span>
  <div class="release-title" data-i18n="cl_od_103_t">Polish-Release: Take-Edit-UX und Preroll-Visual</div>
  <ul class="release-list">
@@ -328,6 +340,12 @@ const i18n = {
  cl_lc_100_3: '3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor, ohne Pumpen, ohne Phasen-Artefakte.',
  cl_lc_100_4: 'Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum pegelWERK broadcast METER, Messen und Korrigieren mit derselben Wahrheit.',
  */
+ cl_od_111_t: 'Audio-only-Modus, neuronale Entrauschung und Prompter auf dem iPad',
+ cl_od_111_1: 'Audio-only-Modus, overdub STUDIO funktioniert jetzt auch ganz ohne Videospur, für Podcasts und Hörbücher. WAV, MP3, AIFF und M4A landen direkt auf der Sprachspur, mit mitlaufendem Prompter-Audio-Feed.',
+ cl_od_111_2: 'Neuronale Entrauschung (DeepFilterNet 3) als eigener NOISE-Regler im Konsolen-Strip, läuft komplett lokal auf dem Gerät, ohne externes Plug-in und ohne Upload.',
+ cl_od_111_3: 'Manueller Konsolen-Strip mit fünf Reglern (Monitor, Noise, Comp, Air, Body) auf Mix- und Audio-Seite, re-rendert beim Loslassen und bleibt gespeichert, falls man die Automatik selbst nachregeln will.',
+ cl_od_111_4: 'Prompter jetzt auch auf dem iPad, mit Sprachauswahl, die Erkennungssprache lässt sich unabhängig von der Bedienoberfläche einstellen.',
+ cl_od_111_5: 'Sauberere Take-Anfänge, die ersten Wörter am Take-Beginn werden nicht mehr weggedrückt (Leveler-Lead-in und Comp-Priming).',
  cl_od_103_t: 'Polish-Release: Take-Edit-UX und Preroll-Visual',
  cl_od_103_1: 'Auto-Scroll beim Take-Drag, beim Verschieben oder Trimmen scrollt die Timeline jetzt automatisch mit, sobald der Cursor an den linken oder rechten Rand kommt (DAW-Standard wie Pro Tools / Logic).',
  cl_od_103_2: 'Preroll-Countdown auf Intel und iPad wiederhergestellt, der Countdown war auf Geräten mit geladenem Video unsichtbar, weil AVPlayerLayer auf macOS und iOS den separaten Overlay überdeckte.',
@@ -383,6 +401,12 @@ const i18n = {
  cl_lc_100_3: '3-band LRA processor (Linkwitz-Riley 4th order with perfect reconstruction) pulls every LRA into the broadcast corridor, no pumping, no phase artefacts.',
  cl_lc_100_4: 'Mono to 9.1.6 with BS.1770-compliant LFE weighting. DSP engine byte-identical to pegelWERK broadcast METER, measure and correct with the same truth.',
  */
+ cl_od_111_t: 'Audio-only mode, neural noise removal and prompter on iPad',
+ cl_od_111_1: 'Audio-only mode, overdub STUDIO now works entirely without a video track, for podcasts and audiobooks. Import WAV, MP3, AIFF and M4A straight onto the voice track, with a scrolling prompter audio feed.',
+ cl_od_111_2: 'Neural noise removal (DeepFilterNet 3) as a dedicated NOISE fader in the channel strip, running entirely on-device, with no external plug-in and no upload.',
+ cl_od_111_3: 'Manual channel strip with five faders (Monitor, Noise, Comp, Air, Body) on the mix and audio pages, re-renders on release and persists, for when you want to take over from the automatic processing.',
+ cl_od_111_4: 'Prompter now on iPad too, with a language picker, the recognition language can be set independently from the interface.',
+ cl_od_111_5: 'Cleaner take starts, the first words at the start of a take are no longer pushed down (leveler lead-in and comp priming).',
  cl_od_103_t: 'Polish release: take edit UX and preroll visual',
  cl_od_103_1: 'Auto-scroll while dragging takes, when moving or trimming a take, the timeline now scrolls automatically once the cursor hits the left or right edge (DAW standard like Pro Tools / Logic).',
  cl_od_103_2: 'Preroll countdown restored on Intel and iPad, the countdown was invisible on devices with a loaded video because macOS and iOS AVPlayerLayer covered the separate overlay.',

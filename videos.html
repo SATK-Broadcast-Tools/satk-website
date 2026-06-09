@@ -53,15 +53,15 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 
 .section{max-width:1000px;margin:0 auto;padding:24px 32px 0}
 
-.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:24px}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,340px));gap:22px;justify-content:center}
 .video-card{background:var(--sf);border:1px solid var(--bd);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
 .video-frame{position:relative;aspect-ratio:16/9;background:#000;cursor:pointer;overflow:hidden}
 .video-frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease,opacity .2s}
 .video-frame:hover img{transform:scale(1.03);opacity:.85}
 .video-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,10,11,.18)}
-.play-btn{width:74px;height:74px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(0,0,0,.45);transition:transform .2s}
+.play-btn{width:58px;height:58px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(0,0,0,.45);transition:transform .2s}
 .video-frame:hover .play-btn{transform:scale(1.08)}
-.play-btn svg{width:30px;height:30px;margin-left:4px;display:block}
+.play-btn svg{width:24px;height:24px;margin-left:3px;display:block}
 .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .video-meta{padding:20px 22px;display:flex;flex-direction:column;flex:1}
 .video-title{font-family:'Arimo',sans-serif;font-weight:700;font-size:16px;color:var(--tx);letter-spacing:-.1px;margin-bottom:8px}
@@ -176,6 +176,14 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 // thumb = lokales Vorschaubild (kein externer Abruf beim Seitenaufruf)
 // title/desc = Deutsch, title_en/desc_en = Englisch
 const VIDEOS = [
+ {
+ id: '87JCZzzo5jI',
+ thumb: '/videos/ipad-launch.jpg',
+ title: 'overdub STUDIO jetzt fürs iPad',
+ title_en: 'overdub STUDIO is now on iPad',
+ desc: 'overdub STUDIO gibt es jetzt auch fürs iPad. Vertonen mit Prompter, Auto Mix und EBU R128, jetzt auch mobil. Englischer Ton.',
+ desc_en: 'overdub STUDIO is now available on iPad. Voiceover with prompter, Auto Mix and EBU R128, now on the go.'
+ },
  {
  id: 'CbWFldaMI6Q',
  thumb: '/videos/overdub-studio-trailer.jpg',

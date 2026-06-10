@@ -1,0 +1,7 @@
+# pegelWERK — security.txt (RFC 9116)
+# Kontakt für Meldungen von Sicherheitslücken / vulnerability reports.
+Contact: mailto:info@pegelwerk.com
+Expires: 2027-06-10T23:59:59.000Z
+Preferred-Languages: de, en
+Canonical: https://pegelwerk.com/.well-known/security.txt
+Policy: https://pegelwerk.com/security

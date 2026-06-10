@@ -61,8 +61,12 @@ kein Build, kein Framework.
 - **Checkout:** Paddle (Inline-Popup, lädt erst beim Klick)
 - **Self-Service-Portal:** `manage-license.html` ruft den Worker via
   `connect-src` (CSP-Whitelist drin)
-- **Analytics:** Plausible (privacy-friendly, lokales JS-Snippet aus
-  satk.tech, Datenfluss zu plausible.io)
+- **Analytics:** KEINE. Bewusste Entscheidung 2026-06-09: kein Webanalyse-
+  Tool, kein Snippet, keine browserseitige Reichweitenmessung (Plausible
+  schon vorher entfernt, der eigene Analytics-Worker wurde verworfen, um die
+  Datenschutz-/Abmahn-Lage maximal sauber zu halten). Datenschutz §8 sagt
+  entsprechend „keine Analyse-/Tracking-Dienste". Reine Reichweite ggf. nur
+  ueber Cloudflare-Edge-Statistik im Dashboard, ohne Browser-Skript.
 
 ## Wichtige Files
 

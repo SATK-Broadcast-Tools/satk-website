@@ -12,6 +12,10 @@ package-lock.json
 dist/
 .cache/
 
+# Wrangler/Cloudflare-Cache (enthält Account-ID + Account-Email — kein Secret,
+# aber gehört nicht ins Repo). Untracked im Audit 2026-06-10.
+.wrangler/
+
 # Secrets
 .env
 .env.*

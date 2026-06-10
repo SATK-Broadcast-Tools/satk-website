@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico?v=6" sizes="any">
@@ -7,9 +7,9 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=6">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=6">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=6">
-<link rel="canonical" href="https://pegelwerk.com/security">
+<link rel="canonical" href="https://pegelwerk.com/security-en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Security & Licensing Principles von pegelWERK — die festen Invarianten unserer Lizenz- und Backend-Architektur.">
+<meta name="description" content="pegelWERK Security & Licensing Principles — the fixed invariants of our licensing and backend architecture.">
 <title>Security &amp; Licensing Principles, pegelWERK</title>
 <style>
 @import url('fonts.css');
@@ -50,10 +50,10 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 </style>
 <script>
-// Auto-redirect to EN version if user's global language is EN
+// Auto-redirect to DE version only if user's global language is explicitly DE
 try {
- if (localStorage.getItem('satk-lang') === 'en') {
- location.replace('security-en.html');
+ if (localStorage.getItem('satk-lang') === 'de') {
+ location.replace('security.html');
  }
 } catch(e){}
 </script>
@@ -62,79 +62,78 @@ try {
 <div class="wrap">
  <a class="back" href="index.html">
  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
- Zurück zu pegelWERK
+ Back to pegelWERK
  </a>
  <div class="logo">pegelWERK</div>
  <h1>Security &amp; Licensing Principles</h1>
 
  <div class="highlight">
- Unsere Audio-Tools laufen komplett lokal auf Ihrem Gerät. Trotzdem behandeln wir Lizenzen und Kundendaten so, als würden wir ein sicherheitskritisches System betreiben. Die folgenden Prinzipien gelten als feste, dokumentierte Invarianten unserer Architektur — nicht als Marketing-Versprechen, sondern als Regeln, die jede Code-Änderung respektieren muss.
+ Our audio tools run entirely locally on your device. Even so, we treat licenses and customer data as if we were running a security-critical system. The following principles are fixed, documented invariants of our architecture — not marketing promises, but rules that every code change must respect.
  </div>
 
- <h2>Technische Garantien</h2>
+ <h2>Technical guarantees</h2>
 
- <h3>Kryptographisch signierte Lizenzen</h3>
- <p>Lizenzen werden mit modernen Verfahren (Ed25519) signiert und von der App lokal geprüft — ein einfaches „OK" vom Server (HTTP&nbsp;200) reicht nie als Berechtigung. Eine gültige Lizenz lässt sich ohne unseren geheimen Signierschlüssel nicht fälschen.</p>
+ <h3>Cryptographically signed licenses</h3>
+ <p>Licenses are signed with modern cryptography (Ed25519) and verified locally by the app — a plain server “OK” (HTTP&nbsp;200) is never enough to grant entitlement. A valid license cannot be forged without our private signing key.</p>
 
- <h3>Private Schlüssel bleiben im Backend</h3>
- <p>Die Geheimnisse zum Signieren von Lizenzen und zum Prüfen von Zahlungs-Webhooks verlassen nie unsere Server-Umgebung. In den Apps steckt ausschließlich der öffentliche Schlüssel, mit dem Signaturen geprüft werden.</p>
+ <h3>Private keys stay in the backend</h3>
+ <p>The secrets used to sign licenses and to verify payment webhooks never leave our server environment. The apps contain only the public key needed to verify signatures.</p>
 
- <h3>Keine Server-Secrets im Client</h3>
- <p>Unsere Desktop- und iOS-Apps enthalten keine API-Schlüssel oder Zugangsdaten für Backend-Dienste. Wer ein Programm-Binary analysiert, findet höchstens öffentliche Schlüssel — keine geheimen Credentials.</p>
+ <h3>No server secrets in the client</h3>
+ <p>Our desktop and iOS apps contain no API keys or credentials for backend services. Anyone analyzing an app binary finds at most public keys — never secret credentials.</p>
 
- <h3>Zahlungs-Webhooks sind „fail-closed"</h3>
- <p>Zahlungs- und Lizenz-Webhooks werden kryptografisch signiert, konstant-zeitig geprüft und bei Abweichungen — einschließlich verdächtiger Zeitstempel (Replay-Schutz) — strikt abgelehnt. Einen „im Zweifel durchwinken"-Pfad gibt es nicht.</p>
+ <h3>Payment webhooks are “fail-closed”</h3>
+ <p>Payment and license webhooks are cryptographically signed, verified in constant time, and strictly rejected on any mismatch — including suspicious timestamps (replay protection). There is no “let it through when in doubt” path.</p>
 
- <h3>Schnittstellen sind bewusst begrenzt</h3>
- <p>Unsere Server-APIs akzeptieren Browser-Anfragen nur von ausdrücklich erlaubten Domains. Für lizenz- oder datenverändernde Endpunkte verwenden wir kein offenes Wildcard-CORS.</p>
+ <h3>Interfaces are deliberately constrained</h3>
+ <p>Our server APIs accept browser requests only from explicitly allowed domains. We do not use open wildcard CORS for license- or data-mutating endpoints.</p>
 
- <h3>App-Store-Konformität (iOS)</h3>
- <p>Unsere iOS-Apps enthalten keinen eingebauten externen Kauf- oder Lizenzcode, der gegen App-Store-Regel&nbsp;3.1.1 verstoßen würde. Käufe und Abos folgen den von Apple vorgesehenen Wegen (StoreKit).</p>
+ <h3>App Store compliance (iOS)</h3>
+ <p>Our iOS apps contain no built-in external purchase or licensing code that would violate App Store rule&nbsp;3.1.1. Purchases and subscriptions follow Apple’s intended path (StoreKit).</p>
 
- <h2>Klar definierte Vertrauensgrenzen</h2>
+ <h2>Clearly defined trust boundaries</h2>
 
- <h3>Lizenz-Kennungen sind keine Passwörter</h3>
- <p>Lizenz-IDs behandeln wir nicht als vollwertige Geheimnisse: Sie sind hochentropisch und nicht erratbar, Anfragen sind ratenbegrenzt, und die eigentliche Berechtigung hängt immer an einer kryptografischen Signatur — nicht an der ID allein.</p>
+ <h3>License IDs are not passwords</h3>
+ <p>We do not treat license identifiers as full secrets: they are high-entropy and unguessable, requests are rate-limited, and the actual entitlement always rests on a cryptographic signature — not on the ID alone.</p>
 
- <h3>Client-Manipulation ist als Restrisiko eingeplant</h3>
- <p>Wir gehen realistisch davon aus, dass sich lokale Eingriffe in eine installierte App nie vollständig verhindern lassen. Unsere Architektur ist deshalb so ausgelegt, dass solche Eingriffe maximal das eigene Gerät betreffen — niemals andere Kunden oder Daten auf unseren Servern.</p>
+ <h3>Client tampering is planned for as a residual risk</h3>
+ <p>We realistically assume that local tampering with an installed app can never be fully prevented. Our architecture is therefore designed so that such tampering affects at most that one device — never other customers or data on our servers.</p>
 
- <h2>Kontinuierliche Härtung &amp; Audits</h2>
+ <h2>Continuous hardening &amp; audits</h2>
 
- <h3>Security-Audits</h3>
- <p>Wir auditieren unsere Lizenz- und Zahlungs-Komponenten — inklusive Secret-Scans, Code-Review sowie Tests der Krypto- und Webhook-Logik — und beheben Befunde priorisiert und nachvollziehbar. Letzter Audit: Juni&nbsp;2026.</p>
+ <h3>Security audits</h3>
+ <p>We audit our licensing and payment components — including secret scans, code review, and tests of the crypto and webhook logic — and fix findings in a prioritized, traceable way. Last audit: June&nbsp;2026.</p>
 
- <h3>Dokumentierte Invarianten statt undurchschaubarer Automatik</h3>
- <p>Auch dort, wo wir moderne Werkzeuge (einschließlich KI-Assistenz) in der Entwicklung einsetzen, sind alle sicherheitsrelevanten Garantien als prüfbare Invarianten dokumentiert. Jede Änderung — ob von einem Menschen oder einem Assistenten vorgeschlagen — muss diese Regeln einhalten.</p>
+ <h3>Documented invariants instead of opaque automation</h3>
+ <p>Even where we use modern tooling (including AI assistance) in development, every security-relevant guarantee is documented as a verifiable invariant. Every change — whether proposed by a human or an assistant — must uphold these rules.</p>
 
  <div class="note">
- Diese Prinzipien beschreiben den aktuellen Stand unserer Architektur und werden bei Änderungen aktualisiert. Fragen oder Sicherheitshinweise: <a href="mailto:info@pegelwerk.com">info@pegelwerk.com</a> · Stand: Juni&nbsp;2026
+ These principles describe the current state of our architecture and are updated as it changes. Questions or security reports: <a href="mailto:info@pegelwerk.com">info@pegelwerk.com</a> · As of: June&nbsp;2026
  </div>
 
  </div>
 <footer>
  <div class="footer-grid">
  <div class="footer-col">
- <h4 data-i18n="f_col_products">Produkte</h4>
- <a href="/mac" data-i18n="nav_mac">Mac Apps</a>
- <a href="/ios" data-i18n="nav_ios">iOS Apps</a>
- <a href="/tools" data-i18n="nav_tools">Browser-Tools</a>
+ <h4>Products</h4>
+ <a href="/mac">Mac Apps</a>
+ <a href="/ios">iOS Apps</a>
+ <a href="/tools">Browser Tools</a>
  </div>
  <div class="footer-col">
- <h4 data-i18n="f_col_support">Support</h4>
- <a href="/videos" data-i18n="nav_videos">Videos</a>
- <a href="/support" data-i18n="nav_info">Supportanfrage</a>
- <a href="/manage-license" data-i18n="f_manage">Lizenz verwalten</a>
- <a href="/changelog" data-i18n="f_changelog">Changelog</a>
- <a href="/press" data-i18n="f_press">Presse</a>
+ <h4>Support</h4>
+ <a href="/support">Support request</a>
+ <a href="/manage-license">Manage License</a>
+ <a href="/changelog">Changelog</a>
+ <a href="/press">Press</a>
  </div>
  <div class="footer-col">
- <h4 data-i18n="f_col_legal">Rechtliches</h4>
- <a href="/security" data-i18n="f_security">Security</a>
- <a href="/agb" data-i18n="f_terms">AGB</a>
- <a href="/widerruf" data-i18n="f_refund">Widerruf</a>
- <a href="/datenschutz" data-i18n="f_privacy">Datenschutz</a>
- <a href="/impressum" data-i18n="f_imprint_contact">Kontakt &amp; Impressum</a>
+ <h4>Legal</h4>
+ <a href="/impressum-en">Contact &amp; Legal Notice</a>
+ <a href="/security-en">Security</a>
+ <a href="/agb-en">Terms</a>
+ <a href="/widerruf-en">Right of Withdrawal</a>
+ <a href="/datenschutz-en">Privacy Policy</a>
  </div>
  </div>
  <div class="footer-bar">

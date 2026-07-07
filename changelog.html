@@ -191,6 +191,62 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="product-name">pegelWERK overdub STUDIO <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
  <div class="release">
+ <span class="release-version">1.3.1</span><span class="release-date">2026-07-07</span>
+ <div class="release-title" data-i18n="cl_od_131_t">MXF-Import auf Apple-Silicon-Macs repariert</div>
+ <ul class="release-list">
+ <li data-i18n="cl_od_131_1">MXF-Import scheiterte auf neueren Apple-Silicon-Macs (M-Serie) ohne Rosetta still mit „Conversion Failed". Das mitgelieferte Video-Werkzeug läuft jetzt nativ auf Apple Silicon und Intel (Universal-Binary), der Import funktioniert überall. Rein interne Änderung, kein Effekt auf bestehende Projekte.</li>
+ </ul>
+ </div>
+
+ <div class="release older">
+ <span class="release-version">1.3.0</span><span class="release-date">2026-07-06</span>
+ <div class="release-title" data-i18n="cl_od_130_t">Mehrspur, Mic Mix und dreistufige Entrauschung</div>
+ <ul class="release-list">
+ <li data-i18n="cl_od_130_1">Mehrspur-Arbeitsplatz (MULTITRACK): mehrere Sprecher bzw. Spuren, jede mit eigenem Klang, werden zu einem homogenen Auto-Mix zusammengeführt.</li>
+ <li data-i18n="cl_od_130_2">Mic Mix pro Spur: automatischer Pegelausgleich mehrerer offener Mikrofone (Dugan-Stil), schon beim Abhören live wirksam.</li>
+ <li data-i18n="cl_od_130_3">Entrauschung jetzt in drei Stufen (NR-Taste 1/2/3 = 80/90/100 %), das Umschalten läuft ohne kurzes Rauschen.</li>
+ <li data-i18n="cl_od_130_4">Seiten umbenannt und neu geordnet: MAIN · PROMPTER · AUDIO · MULTITRACK.</li>
+ <li data-i18n="cl_od_130_5">Transparenter Look-ahead-Limiter, der Abhörpegel entspricht jetzt dem Auto-Mix, Importe landen einheitlich bei -20 LUFS.</li>
+ <li data-i18n="cl_od_130_6">Stabiler: Speichern und Export gehärtet, Absturz beim Beenden während des Speicherns behoben, diverse AutoCut- und Kopier-Fixes.</li>
+ </ul>
+ </div>
+
+ <div class="release older">
+ <span class="release-version">1.2.3</span><span class="release-date">2026-06-24</span>
+ <div class="release-title" data-i18n="cl_od_123_t">Editing-Politur</div>
+ <ul class="release-list">
+ <li data-i18n="cl_od_123_1">Ruckelfreies Trimmen, Audio-only-Overlay-Fix, Begrenzung von Bett-Clips, „Neues Projekt" setzt die Klangkurven zurück, aktualisierte In-App-Hilfe.</li>
+ </ul>
+ </div>
+
+ <div class="release older">
+ <span class="release-version">1.2.2</span><span class="release-date">2026-06-17</span>
+ <div class="release-title" data-i18n="cl_od_122_t">Bett, Import-Dialog und Mix-Feinschliff</div>
+ <ul class="release-list">
+ <li data-i18n="cl_od_122_1">Import fragt jetzt „roh oder fertig produziert" ab und wählt die passende Klangkette, schnellerer Export, Bett-Clip-Absturz behoben, Mix-Feinschliff (Air, Bett, O-Ton-Füller, Ducker-Hold).</li>
+ </ul>
+ </div>
+
+ <div class="release older">
+ <span class="release-version">1.2.1</span><span class="release-date">2026-06-17</span>
+ <div class="release-title" data-i18n="cl_od_121_t">Video entfernen/stummschalten und UI-Politur</div>
+ <ul class="release-list">
+ <li data-i18n="cl_od_121_1">Video entfernen (X) oder stummschalten (M), höhere Bett-Wellenform, geschärfte Header-Bedienoberfläche, „Neues Projekt" mit Speichern-Abfrage (rückgängig machbar), MXF-Scroll-Fix.</li>
+ </ul>
+ </div>
+
+ <div class="release older">
+ <span class="release-version">1.2.0</span><span class="release-date">2026-06-15</span>
+ <div class="release-title" data-i18n="cl_od_120_t">Echtzeit-Stimme, Format-Profile und MUSIK/FX-Bett</div>
+ <ul class="release-list">
+ <li data-i18n="cl_od_120_1">Live-Klangkette: EQ, COMP, AIR und BODY wirken jetzt sofort beim Abspielen, du drehst einen Fader und hörst die Wirkung direkt. Der Offline-Render bleibt nur noch für AUTO MIX und Export.</li>
+ <li data-i18n="cl_od_120_2">Neun Ausgabe-Profile (TV/Radio EBU · USA · Japan · Australien, Streaming Podcast · YouTube, Doku, Sport, Hörbuch) legen Lautheits-Ziel und Klangcharakter in einem Schritt fest, plus Pegel-Check zum sauberen Aussteuern vor der Aufnahme.</li>
+ <li data-i18n="cl_od_120_3">MUSIK/FX-Bett: eine Stereo-Zuspielspur für Musik, Effekte oder Atmo, mehrere Clips nebeneinander, automatisch abgesenkt beim Sprechen (Ducking).</li>
+ <li data-i18n="cl_od_120_4">AutoCut als Live-Schalter pro Spur, automatisches De-Plosive gegen „p/b"-Bursts, Low-Cut auf 80 Hz (Broadcast-VO-Standard), entschärfte Presets.</li>
+ </ul>
+ </div>
+
+ <div class="release older">
  <span class="release-version">1.1.1</span><span class="release-date">2026-06-06</span>
  <div class="release-title" data-i18n="cl_od_111_t">Audio-only-Modus, neuronale Entrauschung und Prompter auf dem iPad</div>
  <ul class="release-list">
@@ -325,6 +381,26 @@ const i18n = {
  cl_lc_100_2: 'Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.',
  cl_lc_100_3: '3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor, ohne Pumpen, ohne Phasen-Artefakte.',
  cl_lc_100_4: 'Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum pegelWERK broadcast METER, Messen und Korrigieren mit derselben Wahrheit.',
+ cl_od_131_t: 'MXF-Import auf Apple-Silicon-Macs repariert',
+ cl_od_131_1: 'MXF-Import scheiterte auf neueren Apple-Silicon-Macs (M-Serie) ohne Rosetta still mit „Conversion Failed". Das mitgelieferte Video-Werkzeug läuft jetzt nativ auf Apple Silicon und Intel (Universal-Binary), der Import funktioniert überall. Rein interne Änderung, kein Effekt auf bestehende Projekte.',
+ cl_od_130_t: 'Mehrspur, Mic Mix und dreistufige Entrauschung',
+ cl_od_130_1: 'Mehrspur-Arbeitsplatz (MULTITRACK): mehrere Sprecher bzw. Spuren, jede mit eigenem Klang, werden zu einem homogenen Auto-Mix zusammengeführt.',
+ cl_od_130_2: 'Mic Mix pro Spur: automatischer Pegelausgleich mehrerer offener Mikrofone (Dugan-Stil), schon beim Abhören live wirksam.',
+ cl_od_130_3: 'Entrauschung jetzt in drei Stufen (NR-Taste 1/2/3 = 80/90/100 %), das Umschalten läuft ohne kurzes Rauschen.',
+ cl_od_130_4: 'Seiten umbenannt und neu geordnet: MAIN · PROMPTER · AUDIO · MULTITRACK.',
+ cl_od_130_5: 'Transparenter Look-ahead-Limiter, der Abhörpegel entspricht jetzt dem Auto-Mix, Importe landen einheitlich bei -20 LUFS.',
+ cl_od_130_6: 'Stabiler: Speichern und Export gehärtet, Absturz beim Beenden während des Speicherns behoben, diverse AutoCut- und Kopier-Fixes.',
+ cl_od_123_t: 'Editing-Politur',
+ cl_od_123_1: 'Ruckelfreies Trimmen, Audio-only-Overlay-Fix, Begrenzung von Bett-Clips, „Neues Projekt" setzt die Klangkurven zurück, aktualisierte In-App-Hilfe.',
+ cl_od_122_t: 'Bett, Import-Dialog und Mix-Feinschliff',
+ cl_od_122_1: 'Import fragt jetzt „roh oder fertig produziert" ab und wählt die passende Klangkette, schnellerer Export, Bett-Clip-Absturz behoben, Mix-Feinschliff (Air, Bett, O-Ton-Füller, Ducker-Hold).',
+ cl_od_121_t: 'Video entfernen/stummschalten und UI-Politur',
+ cl_od_121_1: 'Video entfernen (X) oder stummschalten (M), höhere Bett-Wellenform, geschärfte Header-Bedienoberfläche, „Neues Projekt" mit Speichern-Abfrage (rückgängig machbar), MXF-Scroll-Fix.',
+ cl_od_120_t: 'Echtzeit-Stimme, Format-Profile und MUSIK/FX-Bett',
+ cl_od_120_1: 'Live-Klangkette: EQ, COMP, AIR und BODY wirken jetzt sofort beim Abspielen, du drehst einen Fader und hörst die Wirkung direkt. Der Offline-Render bleibt nur noch für AUTO MIX und Export.',
+ cl_od_120_2: 'Neun Ausgabe-Profile (TV/Radio EBU · USA · Japan · Australien, Streaming Podcast · YouTube, Doku, Sport, Hörbuch) legen Lautheits-Ziel und Klangcharakter in einem Schritt fest, plus Pegel-Check zum sauberen Aussteuern vor der Aufnahme.',
+ cl_od_120_3: 'MUSIK/FX-Bett: eine Stereo-Zuspielspur für Musik, Effekte oder Atmo, mehrere Clips nebeneinander, automatisch abgesenkt beim Sprechen (Ducking).',
+ cl_od_120_4: 'AutoCut als Live-Schalter pro Spur, automatisches De-Plosive gegen „p/b"-Bursts, Low-Cut auf 80 Hz (Broadcast-VO-Standard), entschärfte Presets.',
  cl_od_111_t: 'Audio-only-Modus, neuronale Entrauschung und Prompter auf dem iPad',
  cl_od_111_1: 'Audio-only-Modus, overdub STUDIO funktioniert jetzt auch ganz ohne Videospur, für Podcasts und Hörbücher. WAV, MP3, AIFF und M4A landen direkt auf der Sprachspur, mit mitlaufendem Prompter-Audio-Feed.',
  cl_od_111_2: 'Neuronale Entrauschung (DeepFilterNet 3) als eigener NOISE-Regler im Konsolen-Strip, läuft komplett lokal auf dem Gerät, ohne externes Plug-in und ohne Upload.',
@@ -386,6 +462,26 @@ const i18n = {
  cl_lc_100_2: 'Two-pass with automatic refine: pass 1 measures, pass 2 corrects, pass 3 verifies. If the residual is above 0.1 LU, correction runs again with trimmed gain.',
  cl_lc_100_3: '3-band LRA processor (Linkwitz-Riley 4th order with perfect reconstruction) pulls every LRA into the broadcast corridor, no pumping, no phase artefacts.',
  cl_lc_100_4: 'Mono to 9.1.6 with BS.1770-compliant LFE weighting. DSP engine byte-identical to pegelWERK broadcast METER, measure and correct with the same truth.',
+ cl_od_131_t: 'MXF import fixed on Apple Silicon Macs',
+ cl_od_131_1: 'MXF import failed silently with "Conversion Failed" on newer Apple Silicon Macs (M-series) without Rosetta. The bundled video tool now runs natively on both Apple Silicon and Intel (universal binary), so import works everywhere. Purely internal change, no effect on existing projects.',
+ cl_od_130_t: 'Multitrack, Mic Mix and three-stage noise removal',
+ cl_od_130_1: 'Multitrack workspace (MULTITRACK): several speakers or tracks, each with its own sound, merged into one homogeneous auto mix.',
+ cl_od_130_2: 'Per-track Mic Mix: automatic level balancing of multiple open microphones (Dugan style), already active while monitoring.',
+ cl_od_130_3: 'Noise removal now in three stages (NR button 1/2/3 = 80/90/100 %), switching between them without a brief burst of noise.',
+ cl_od_130_4: 'Pages renamed and reordered: MAIN · PROMPTER · AUDIO · MULTITRACK.',
+ cl_od_130_5: 'Transparent look-ahead limiter, the monitoring level now matches the auto mix, imports land uniformly at -20 LUFS.',
+ cl_od_130_6: 'More stable: save and export hardened, crash when quitting during a save fixed, various AutoCut and copy fixes.',
+ cl_od_123_t: 'Editing polish',
+ cl_od_123_1: 'Judder-free trimming, audio-only overlay fix, bed-clip clamping, "New project" resets the sound curves, updated in-app help.',
+ cl_od_122_t: 'Bed, import dialog and mix tuning',
+ cl_od_122_1: 'Import now asks "raw or already produced" and picks the matching sound chain, faster export, bed-clip crash fixed, mix tuning (air, bed, room-tone filler, ducker hold).',
+ cl_od_121_t: 'Remove/mute video and UI polish',
+ cl_od_121_1: 'Remove video (X) or mute it (M), taller bed waveform, sharpened header interface, "New project" with a save prompt (undoable), MXF scroll fix.',
+ cl_od_120_t: 'Real-time voice, format profiles and a music/FX bed',
+ cl_od_120_1: 'Live sound chain: EQ, COMP, AIR and BODY now take effect immediately during playback, turn a fader and hear the result right away. The offline render is now only for AUTO MIX and export.',
+ cl_od_120_2: 'Nine output profiles (TV/radio EBU · USA · Japan · Australia, streaming podcast · YouTube, documentary, sport, audiobook) set loudness target and tonal character in one step, plus a level check for clean gain staging before recording.',
+ cl_od_120_3: 'Music/FX bed: a stereo playback track for music, effects or atmosphere, several clips side by side, automatically ducked while speaking.',
+ cl_od_120_4: 'AutoCut as a live toggle per track, automatic de-plosive against "p/b" bursts, low cut raised to 80 Hz (broadcast VO standard), softened presets.',
  cl_od_111_t: 'Audio-only mode, neural noise removal and prompter on iPad',
  cl_od_111_1: 'Audio-only mode, overdub STUDIO now works entirely without a video track, for podcasts and audiobooks. Import WAV, MP3, AIFF and M4A straight onto the voice track, with a scrolling prompter audio feed.',
  cl_od_111_2: 'Neural noise removal (DeepFilterNet 3) as a dedicated NOISE fader in the channel strip, running entirely on-device, with no external plug-in and no upload.',

@@ -191,6 +191,16 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="product-name">pegelWERK overdub STUDIO <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
  <div class="release">
+ <span class="release-version">1.3.2</span><span class="release-date">2026-07-08</span>
+ <div class="release-title" data-i18n="cl_od_132_t">Korrekturen: NR-Stufe im AUTO MIX, Video-Einblendung, Speicher-Hinweis</div>
+ <ul class="release-list">
+ <li data-i18n="cl_od_132_1">AUTO MIX übernimmt jetzt zuverlässig die eingestellte Entrausch-Stufe, auch direkt nach einem Stufenwechsel: der gebackene Mix klingt wie das Live-Abhören, nicht mehr unterentrauscht.</li>
+ <li data-i18n="cl_od_132_2">Auf den Seiten ohne Video (MULTITRACK, Audio) taucht das Videobild nicht mehr fälschlich auf, z. B. nach einem Profilwechsel.</li>
+ <li data-i18n="cl_od_132_3">Reicht der Speicherplatz auf der Systemplatte nicht für die Videokonvertierung, erscheint jetzt ein klarer Hinweis statt einer generischen Fehlermeldung.</li>
+ </ul>
+ </div>
+
+ <div class="release older">
  <span class="release-version">1.3.1</span><span class="release-date">2026-07-07</span>
  <div class="release-title" data-i18n="cl_od_131_t">MXF-Import auf Apple-Silicon-Macs repariert</div>
  <ul class="release-list">
@@ -381,6 +391,10 @@ const i18n = {
  cl_lc_100_2: 'Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.',
  cl_lc_100_3: '3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor, ohne Pumpen, ohne Phasen-Artefakte.',
  cl_lc_100_4: 'Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum pegelWERK broadcast METER, Messen und Korrigieren mit derselben Wahrheit.',
+ cl_od_132_t: 'Korrekturen: NR-Stufe im AUTO MIX, Video-Einblendung, Speicher-Hinweis',
+ cl_od_132_1: 'AUTO MIX übernimmt jetzt zuverlässig die eingestellte Entrausch-Stufe, auch direkt nach einem Stufenwechsel: der gebackene Mix klingt wie das Live-Abhören, nicht mehr unterentrauscht.',
+ cl_od_132_2: 'Auf den Seiten ohne Video (MULTITRACK, Audio) taucht das Videobild nicht mehr fälschlich auf, z. B. nach einem Profilwechsel.',
+ cl_od_132_3: 'Reicht der Speicherplatz auf der Systemplatte nicht für die Videokonvertierung, erscheint jetzt ein klarer Hinweis statt einer generischen Fehlermeldung.',
  cl_od_131_t: 'MXF-Import auf Apple-Silicon-Macs repariert',
  cl_od_131_1: 'MXF-Import scheiterte auf neueren Apple-Silicon-Macs (M-Serie) ohne Rosetta still mit „Conversion Failed". Das mitgelieferte Video-Werkzeug läuft jetzt nativ auf Apple Silicon und Intel (Universal-Binary), der Import funktioniert überall. Rein interne Änderung, kein Effekt auf bestehende Projekte.',
  cl_od_130_t: 'Mehrspur, Mic Mix und dreistufige Entrauschung',
@@ -462,6 +476,10 @@ const i18n = {
  cl_lc_100_2: 'Two-pass with automatic refine: pass 1 measures, pass 2 corrects, pass 3 verifies. If the residual is above 0.1 LU, correction runs again with trimmed gain.',
  cl_lc_100_3: '3-band LRA processor (Linkwitz-Riley 4th order with perfect reconstruction) pulls every LRA into the broadcast corridor, no pumping, no phase artefacts.',
  cl_lc_100_4: 'Mono to 9.1.6 with BS.1770-compliant LFE weighting. DSP engine byte-identical to pegelWERK broadcast METER, measure and correct with the same truth.',
+ cl_od_132_t: 'Fixes: NR stage in AUTO MIX, video overlay, disk-space notice',
+ cl_od_132_1: 'AUTO MIX now reliably uses the selected noise-removal stage, even right after switching stages: the rendered mix sounds like live monitoring, no longer under-denoised.',
+ cl_od_132_2: 'On the pages without video (MULTITRACK, Audio) the video image no longer appears by mistake, e.g. after switching format profile.',
+ cl_od_132_3: 'If the system drive is too full to convert the video, a clear notice now appears instead of a generic error message.',
  cl_od_131_t: 'MXF import fixed on Apple Silicon Macs',
  cl_od_131_1: 'MXF import failed silently with "Conversion Failed" on newer Apple Silicon Macs (M-series) without Rosetta. The bundled video tool now runs natively on both Apple Silicon and Intel (universal binary), so import works everywhere. Purely internal change, no effect on existing projects.',
  cl_od_130_t: 'Multitrack, Mic Mix and three-stage noise removal',

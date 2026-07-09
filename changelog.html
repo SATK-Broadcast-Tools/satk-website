@@ -10,7 +10,7 @@
 <link rel="canonical" href="https://pegelwerk.com/changelog">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>pegelWERK Changelog - Was sich in den letzten Releases geändert hat</title>
-<meta name="description" content="Release-Notes und Roadmap für pegelWERK Pro Audio Software: broadcast METER, overdub STUDIO, loudness CORRECT.">
+<meta name="description" content="Release-Notes und Roadmap für pegelWERK Pro Audio Software: broadcast METER, voyzSESSION, loudness CORRECT.">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="pegelWERK Changelog & Roadmap">
@@ -186,11 +186,22 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  </div>
  </div>
 
- <!-- ── overdub STUDIO ──────────── -->
+ <!-- ── voyzSESSION ──────────── -->
  <div class="product-block">
- <div class="product-name">pegelWERK overdub STUDIO <span class="product-status" data-i18n="cl_st_live">Live</span></div>
+ <div class="product-name">pegelWERK voyzSESSION <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
  <div class="release">
+ <span class="release-version">1.4.0</span><span class="release-date">2026-07-09</span>
+ <div class="release-title" data-i18n="cl_od_140_t">overdub STUDIO ist jetzt voyzSESSION — dieselbe App, dieselbe Lizenz</div>
+ <ul class="release-list">
+ <li data-i18n="cl_od_140_1">Neuer Name, neues Gesicht: voyzSESSION, die Voice Workstation für Voice-over und Podcast. Alle Projekte, Einstellungen und Lizenzen bleiben unverändert erhalten, das Update ist kostenlos.</li>
+ <li data-i18n="cl_od_140_2">Frisches Erscheinungsbild: neues App-Icon und durchgehend blaues UI.</li>
+ <li data-i18n="cl_od_140_3">Zuverlässigere Lizenz-Verlängerung (Abrechnung am Verlängerungszeitpunkt korrigiert).</li>
+ <li data-i18n="cl_od_140_4">Neuer dezenter In-App-Hinweis, sobald eine neuere Version verfügbar ist.</li>
+ </ul>
+ </div>
+
+ <div class="release older">
  <span class="release-version">1.3.2</span><span class="release-date">2026-07-08</span>
  <div class="release-title" data-i18n="cl_od_132_t">Korrekturen: NR-Stufe im AUTO MIX, Video-Einblendung, Speicher-Hinweis</div>
  <ul class="release-list">
@@ -260,7 +271,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <span class="release-version">1.1.1</span><span class="release-date">2026-06-06</span>
  <div class="release-title" data-i18n="cl_od_111_t">Audio-only-Modus, neuronale Entrauschung und Prompter auf dem iPad</div>
  <ul class="release-list">
- <li data-i18n="cl_od_111_1">Audio-only-Modus, overdub STUDIO funktioniert jetzt auch ganz ohne Videospur, für Podcasts und Hörbücher. WAV, MP3, AIFF und M4A landen direkt auf der Sprachspur, mit mitlaufendem Prompter-Audio-Feed.</li>
+ <li data-i18n="cl_od_111_1">Audio-only-Modus, voyzSESSION funktioniert jetzt auch ganz ohne Videospur, für Podcasts und Hörbücher. WAV, MP3, AIFF und M4A landen direkt auf der Sprachspur, mit mitlaufendem Prompter-Audio-Feed.</li>
  <li data-i18n="cl_od_111_2">Neuronale Entrauschung (DeepFilterNet 3) als eigener NOISE-Regler im Konsolen-Strip, läuft komplett lokal auf dem Gerät, ohne externes Plug-in und ohne Upload.</li>
  <li data-i18n="cl_od_111_3">Manueller Konsolen-Strip mit fünf Reglern (Monitor, Noise, Comp, Air, Body) auf Mix- und Audio-Seite, re-rendert beim Loslassen und bleibt gespeichert, falls man die Automatik selbst nachregeln will.</li>
  <li data-i18n="cl_od_111_4">Prompter jetzt auch auf dem iPad, mit Sprachauswahl, die Erkennungssprache lässt sich unabhängig von der Bedienoberfläche einstellen.</li>
@@ -391,6 +402,11 @@ const i18n = {
  cl_lc_100_2: 'Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.',
  cl_lc_100_3: '3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor, ohne Pumpen, ohne Phasen-Artefakte.',
  cl_lc_100_4: 'Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum pegelWERK broadcast METER, Messen und Korrigieren mit derselben Wahrheit.',
+ cl_od_140_t: 'overdub STUDIO ist jetzt voyzSESSION — dieselbe App, dieselbe Lizenz',
+ cl_od_140_1: 'Neuer Name, neues Gesicht: voyzSESSION, die Voice Workstation für Voice-over und Podcast. Alle Projekte, Einstellungen und Lizenzen bleiben unverändert erhalten, das Update ist kostenlos.',
+ cl_od_140_2: 'Frisches Erscheinungsbild: neues App-Icon und durchgehend blaues UI.',
+ cl_od_140_3: 'Zuverlässigere Lizenz-Verlängerung (Abrechnung am Verlängerungszeitpunkt korrigiert).',
+ cl_od_140_4: 'Neuer dezenter In-App-Hinweis, sobald eine neuere Version verfügbar ist.',
  cl_od_132_t: 'Korrekturen: NR-Stufe im AUTO MIX, Video-Einblendung, Speicher-Hinweis',
  cl_od_132_1: 'AUTO MIX übernimmt jetzt zuverlässig die eingestellte Entrausch-Stufe, auch direkt nach einem Stufenwechsel: der gebackene Mix klingt wie das Live-Abhören, nicht mehr unterentrauscht.',
  cl_od_132_2: 'Auf den Seiten ohne Video (MULTITRACK, Audio) taucht das Videobild nicht mehr fälschlich auf, z. B. nach einem Profilwechsel.',
@@ -416,7 +432,7 @@ const i18n = {
  cl_od_120_3: 'MUSIK/FX-Bett: eine Stereo-Zuspielspur für Musik, Effekte oder Atmo, mehrere Clips nebeneinander, automatisch abgesenkt beim Sprechen (Ducking).',
  cl_od_120_4: 'AutoCut als Live-Schalter pro Spur, automatisches De-Plosive gegen „p/b"-Bursts, Low-Cut auf 80 Hz (Broadcast-VO-Standard), entschärfte Presets.',
  cl_od_111_t: 'Audio-only-Modus, neuronale Entrauschung und Prompter auf dem iPad',
- cl_od_111_1: 'Audio-only-Modus, overdub STUDIO funktioniert jetzt auch ganz ohne Videospur, für Podcasts und Hörbücher. WAV, MP3, AIFF und M4A landen direkt auf der Sprachspur, mit mitlaufendem Prompter-Audio-Feed.',
+ cl_od_111_1: 'Audio-only-Modus, voyzSESSION funktioniert jetzt auch ganz ohne Videospur, für Podcasts und Hörbücher. WAV, MP3, AIFF und M4A landen direkt auf der Sprachspur, mit mitlaufendem Prompter-Audio-Feed.',
  cl_od_111_2: 'Neuronale Entrauschung (DeepFilterNet 3) als eigener NOISE-Regler im Konsolen-Strip, läuft komplett lokal auf dem Gerät, ohne externes Plug-in und ohne Upload.',
  cl_od_111_3: 'Manueller Konsolen-Strip mit fünf Reglern (Monitor, Noise, Comp, Air, Body) auf Mix- und Audio-Seite, re-rendert beim Loslassen und bleibt gespeichert, falls man die Automatik selbst nachregeln will.',
  cl_od_111_4: 'Prompter jetzt auch auf dem iPad, mit Sprachauswahl, die Erkennungssprache lässt sich unabhängig von der Bedienoberfläche einstellen.',
@@ -476,6 +492,11 @@ const i18n = {
  cl_lc_100_2: 'Two-pass with automatic refine: pass 1 measures, pass 2 corrects, pass 3 verifies. If the residual is above 0.1 LU, correction runs again with trimmed gain.',
  cl_lc_100_3: '3-band LRA processor (Linkwitz-Riley 4th order with perfect reconstruction) pulls every LRA into the broadcast corridor, no pumping, no phase artefacts.',
  cl_lc_100_4: 'Mono to 9.1.6 with BS.1770-compliant LFE weighting. DSP engine byte-identical to pegelWERK broadcast METER, measure and correct with the same truth.',
+ cl_od_140_t: 'overdub STUDIO is now voyzSESSION — same app, same license',
+ cl_od_140_1: 'New name, new face: voyzSESSION, the voice workstation for voice-over and podcast. All your projects, settings and licenses carry over unchanged, and the update is free.',
+ cl_od_140_2: 'Fresh look: new app icon and an all-blue UI.',
+ cl_od_140_3: 'More reliable license renewal (billing at the renewal boundary fixed).',
+ cl_od_140_4: 'New subtle in-app notice when a newer version is available.',
  cl_od_132_t: 'Fixes: NR stage in AUTO MIX, video overlay, disk-space notice',
  cl_od_132_1: 'AUTO MIX now reliably uses the selected noise-removal stage, even right after switching stages: the rendered mix sounds like live monitoring, no longer under-denoised.',
  cl_od_132_2: 'On the pages without video (MULTITRACK, Audio) the video image no longer appears by mistake, e.g. after switching format profile.',
@@ -501,7 +522,7 @@ const i18n = {
  cl_od_120_3: 'Music/FX bed: a stereo playback track for music, effects or atmosphere, several clips side by side, automatically ducked while speaking.',
  cl_od_120_4: 'AutoCut as a live toggle per track, automatic de-plosive against "p/b" bursts, low cut raised to 80 Hz (broadcast VO standard), softened presets.',
  cl_od_111_t: 'Audio-only mode, neural noise removal and prompter on iPad',
- cl_od_111_1: 'Audio-only mode, overdub STUDIO now works entirely without a video track, for podcasts and audiobooks. Import WAV, MP3, AIFF and M4A straight onto the voice track, with a scrolling prompter audio feed.',
+ cl_od_111_1: 'Audio-only mode, voyzSESSION now works entirely without a video track, for podcasts and audiobooks. Import WAV, MP3, AIFF and M4A straight onto the voice track, with a scrolling prompter audio feed.',
  cl_od_111_2: 'Neural noise removal (DeepFilterNet 3) as a dedicated NOISE fader in the channel strip, running entirely on-device, with no external plug-in and no upload.',
  cl_od_111_3: 'Manual channel strip with five faders (Monitor, Noise, Comp, Air, Body) on the mix and audio pages, re-renders on release and persists, for when you want to take over from the automatic processing.',
  cl_od_111_4: 'Prompter now on iPad too, with a language picker, the recognition language can be set independently from the interface.',

@@ -42,7 +42,8 @@
 /overdub-studio-pro.html /voyzsession 301
 /overdub-studio.html /voyzsession 301
 /overdub-studio /voyzsession 301
-/overdub-studio-ios.html /overdub-studio-ios 301
+/overdub-studio-ios /voyzsession-ios 301
+/overdub-studio-ios.html /voyzsession-ios 301
 /podcast-recorder /tools 301
 /podcast-recorder.html /tools 301
 /r128-normalizer.html /r128-normalizer 301

@@ -13,10 +13,10 @@
 <title>pegelWERK voiceover PROCESSOR · Stimme optimieren, R128 im Browser</title>
 <style>
 @import url('fonts.css');
-:root{--bg:#0a0a0b;--sf:#111114;--sf2:#16161a;--bd:#1e1e24;--ac:#c8f060;--ac2:#60d4f0;--warn:#f0a060;--red:#f06060;--tx:#e8e8ec;--mu:#5a5a6a;}
+:root{--bg:#0a0a0b;--sf:#111114;--sf2:#16161a;--bd:#1e1e24;--ac:#12d0ff;--ac2:#60d4f0;--warn:#f0a060;--red:#f06060;--tx:#e8e8ec;--mu:#5a5a6a;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;min-height:100vh;}
-body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(200,240,96,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(200,240,96,.025) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(18,208,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(18,208,255,.025) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
 .wrapper{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:48px 24px 80px;}
 
 /* Header */
@@ -35,7 +35,7 @@ header{margin-bottom:36px;}
 
 /* Drop Zone */
 .drop-zone{border:1px dashed var(--bd);padding:32px 24px;text-align:center;cursor:pointer;transition:all .15s;margin-bottom:20px;}
-.drop-zone:hover,.drop-zone.dragging{border-color:var(--ac);background:rgba(200,240,96,.04);}
+.drop-zone:hover,.drop-zone.dragging{border-color:var(--ac);background:rgba(18,208,255,.04);}
 .drop-icon{color:var(--mu);margin-bottom:10px;}
 .drop-title{font-family:'Arimo',sans-serif;font-size:15px;font-weight:700;margin-bottom:5px;}
 .drop-sub{font-size:11px;color:var(--mu);}
@@ -46,7 +46,7 @@ input[type=file]{display:none;}
 .profiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px;}@media(max-width:700px){.profiles{grid-template-columns:repeat(2,1fr);}}
 .profile-card{border:1px solid var(--bd);background:var(--sf);padding:14px 12px;cursor:pointer;transition:all .15s;position:relative;}
 .profile-card:hover{border-color:var(--mu);}
-.profile-card.active{border-color:var(--ac);background:rgba(200,240,96,.05);}
+.profile-card.active{border-color:var(--ac);background:rgba(18,208,255,.05);}
 .profile-card.active::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--ac);}
 .prof-icon{font-size:20px;margin-bottom:6px;display:block;}
 .prof-name{font-family:'Arimo',sans-serif;font-size:11px;font-weight:700;color:var(--tx);display:block;margin-bottom:3px;}
@@ -69,7 +69,7 @@ input[type=file]{display:none;}
 .pstep.off .pstep-n{color:#333;}
 /* Processing states */
 .pstep.active{background:rgba(96,212,240,.05);}.pstep.active .pstep-name{color:var(--ac2);}
-.pstep.done{background:rgba(200,240,96,.04);}.pstep.done .pstep-name{color:var(--ac);}
+.pstep.done{background:rgba(18,208,255,.04);}.pstep.done .pstep-name{color:var(--ac);}
 
 /* Loudness Meters */
 .meters-section{background:var(--sf);border:1px solid var(--bd);margin-bottom:20px;overflow:hidden;}
@@ -88,7 +88,7 @@ input[type=file]{display:none;}
 .meter-fill.I{background:linear-gradient(90deg,#1a3a5c,#1e88e5);}
 .meter-val{font-family:'Inter',sans-serif;font-size:10px;font-weight:600;min-width:52px;text-align:right;color:#90caf9;}
 .meter-val.good{color:var(--ac);}
-.meter-target-line{position:absolute;top:0;bottom:0;width:1px;background:rgba(200,240,96,.6);}
+.meter-target-line{position:absolute;top:0;bottom:0;width:1px;background:rgba(18,208,255,.6);}
 .meter-summary{padding:8px 14px;border-top:1px solid var(--bd);display:flex;gap:20px;align-items:center;}
 .msumm{display:flex;flex-direction:column;gap:2px;}
 .msumm-l{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--mu);}
@@ -106,7 +106,7 @@ canvas.wv{width:100%;height:80px;display:block;background:#08090a;}
 .wave-ctrl{display:flex;align-items:center;gap:8px;padding:6px 12px;background:var(--bg);border-top:1px solid var(--bd);}
 .play-btn{display:flex;align-items:center;gap:5px;background:none;border:1px solid var(--bd);color:var(--mu);font-family:'Inter',sans-serif;font-size:9px;padding:4px 10px;cursor:pointer;transition:all .12s;}
 .play-btn:hover:not(:disabled){border-color:var(--ac);color:var(--ac);}
-.play-btn.playing{border-color:var(--ac);color:var(--ac);background:rgba(200,240,96,.07);}
+.play-btn.playing{border-color:var(--ac);color:var(--ac);background:rgba(18,208,255,.07);}
 .play-btn:disabled{opacity:.3;cursor:not-allowed;}
 .play-time{font-size:9px;color:var(--mu);margin-left:auto;}
 .playhead{position:absolute;top:0;bottom:28px;width:1px;background:var(--ac);pointer-events:none;display:none;z-index:3;}
@@ -138,7 +138,7 @@ canvas.wv{width:100%;height:80px;display:block;background:#08090a;}
 .ii dt{font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);}
 .ii dd{font-size:10px;color:var(--ac);}
 
-@keyframes hb{0%,100%{box-shadow:0 0 0 0 rgba(200,240,96,.25)}50%{box-shadow:0 0 0 8px rgba(200,240,96,0)}}
+@keyframes hb{0%,100%{box-shadow:0 0 0 0 rgba(18,208,255,.25)}50%{box-shadow:0 0 0 8px rgba(18,208,255,0)}}
 .site-footer{background:var(--sf);border-top:1px solid var(--bd);margin-top:60px;}
 .footer-inner{max-width:900px;margin:0 auto;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
 .footer-logo{font-family:'Arimo',sans-serif;font-size:15px;font-weight:700;letter-spacing:.18em;color:var(--ac);}
@@ -157,18 +157,18 @@ canvas.wv{width:100%;height:80px;display:block;background:#08090a;}
 /* ── Download-Hinweis Toast ── */
 #satkDlHint{
  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
- background:#0d1012;border:1px solid rgba(200,240,96,.35);
+ background:#0d1012;border:1px solid rgba(18,208,255,.35);
  color:#e2e6ed;font-family:'Inter',sans-serif;font-size:11px;
  padding:12px 18px;z-index:9999;max-width:420px;width:90%;
  box-shadow:0 4px 24px rgba(0,0,0,.5);
  animation:satkDlIn .25s ease;pointer-events:none;
  line-height:1.6;
 }
-#satkDlHint strong{color:#c8f060;}
-#satkDlHint .satk-dl-file{color:#c8f060;font-size:10px;opacity:.8;display:block;margin-bottom:4px;}
+#satkDlHint strong{color:#12d0ff;}
+#satkDlHint .satk-dl-file{color:#12d0ff;font-size:10px;opacity:.8;display:block;margin-bottom:4px;}
 #satkDlHint .satk-dl-close{
  position:absolute;top:7px;right:10px;cursor:pointer;
- color:rgba(200,240,96,.5);font-size:13px;pointer-events:all;
+ color:rgba(18,208,255,.5);font-size:13px;pointer-events:all;
 }
 @keyframes satkDlIn{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
 @keyframes satkDlOut{from{opacity:1;}to{opacity:0;transform:translateX(-50%) translateY(8px);}}
@@ -738,7 +738,7 @@ async function loadFile(file) {
  if(rec.denoise.recommended && typeof denoiseBuffer==='function'){
  dropName.textContent = '⏳ Denoising...';
  origBuf = await denoiseBuffer(origBuf, rec.denoise.settings);
- drawWave(cvOrig, origBuf, '#c8f060');
+ drawWave(cvOrig, origBuf, '#12d0ff');
  dropName.textContent = file.name + ' · ✓ Denoised';
  }
  // Direkt optimieren, kein zweiter Klick nötig
@@ -749,7 +749,7 @@ async function loadFile(file) {
  }
  }catch(e){ console.warn('[pegelWERK VO Analyse]',e); }
  })();
- drawWave(cvOrig, origBuf, '#c8f060');
+ drawWave(cvOrig, origBuf, '#12d0ff');
  clearWave(cvProc);
  tOrig.textContent = fmtT(origBuf.duration);
  tProc.textContent = '-';
@@ -1999,11 +1999,11 @@ function showAnalysisPanel(result, opts = {}) {
  // ── Farb-Kodierung ────────────────────────────────────────────────────────
  const lufsColor = r.intLufs > tgt.lufs + 2 ? '#f06060'
  : r.intLufs < tgt.lufs - 6 ? '#ffd000'
- : '#c8f060';
- const tpColor = r.truePeak > tgt.tp ? '#f06060' : '#c8f060';
- const lraColor = r.lra > 14 ? '#ffd000' : r.lra < 2 ? '#5a5a6a' : '#c8f060';
+ : '#12d0ff';
+ const tpColor = r.truePeak > tgt.tp ? '#f06060' : '#12d0ff';
+ const lraColor = r.lra > 14 ? '#ffd000' : r.lra < 2 ? '#5a5a6a' : '#12d0ff';
  const noiseColor= rec.denoise.urgency==='hoch' ? '#f06060'
- : rec.denoise.urgency==='mittel' ? '#ffd000' : '#c8f060';
+ : rec.denoise.urgency==='mittel' ? '#ffd000' : '#12d0ff';
 
  const fmt = n => (n >= 0 ? '+' : '') + n.toFixed(1);
  const fmtLU = n => n.toFixed(1) + ' LU';
@@ -2032,7 +2032,7 @@ function showAnalysisPanel(result, opts = {}) {
  padding:16px 20px 12px; border-bottom:1px solid #1e1e24;
  display:flex; align-items:flex-start; justify-content:space-between;
 }
-#${containerId} .ap-title{font-family:'Arimo',sans-serif;font-size:14px;font-weight:700;letter-spacing:.12em;color:#c8f060;}
+#${containerId} .ap-title{font-family:'Arimo',sans-serif;font-size:14px;font-weight:700;letter-spacing:.12em;color:#12d0ff;}
 #${containerId} .ap-sub{font-size:8px;color:#5a5a6a;letter-spacing:.1em;margin-top:3px;}
 #${containerId} .ap-close{background:none;border:none;color:#5a5a6a;font-size:18px;cursor:pointer;line-height:1;padding:2px 6px;}
 #${containerId} .ap-close:hover{color:#e8e8ec;}
@@ -2047,12 +2047,12 @@ function showAnalysisPanel(result, opts = {}) {
 #${containerId} .metric-sub{font-size:8px;color:#5a5a6a;margin-top:2px;}
 #${containerId} .badge{display:inline-block;padding:2px 8px;font-size:9px;letter-spacing:.1em;
  font-family:'Arimo',sans-serif;font-weight:700;}
-#${containerId} .badge-type{background:rgba(200,240,96,.1);border:1px solid rgba(200,240,96,.3);color:#c8f060;}
+#${containerId} .badge-type{background:rgba(18,208,255,.1);border:1px solid rgba(18,208,255,.3);color:#12d0ff;}
 #${containerId} .rec-list{display:flex;flex-direction:column;gap:6px;}
 #${containerId} .rec-item{background:#06060a;border:1px solid #1e1e24;padding:8px 10px 8px 12px;
  display:flex;align-items:flex-start;gap:10px;}
 #${containerId} .rec-item.warn{border-left:2px solid #ffd000;}
-#${containerId} .rec-item.ok{border-left:2px solid #c8f060;}
+#${containerId} .rec-item.ok{border-left:2px solid #12d0ff;}
 #${containerId} .rec-item.alert{border-left:2px solid #f06060;}
 #${containerId} .rec-icon{font-size:14px;line-height:1;flex-shrink:0;margin-top:1px;}
 #${containerId} .rec-text{flex:1;}
@@ -2065,8 +2065,8 @@ function showAnalysisPanel(result, opts = {}) {
  font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.1em;text-transform:uppercase;
  padding:7px 14px;cursor:pointer;transition:all .12s;}
 #${containerId} .ap-btn:hover{border-color:#5a5a6a;color:#e8e8ec;}
-#${containerId} .ap-btn.primary{border-color:rgba(200,240,96,.4);color:#c8f060;background:rgba(200,240,96,.04);}
-#${containerId} .ap-btn.primary:hover{border-color:#c8f060;background:rgba(200,240,96,.08);}
+#${containerId} .ap-btn.primary{border-color:rgba(18,208,255,.4);color:#12d0ff;background:rgba(18,208,255,.04);}
+#${containerId} .ap-btn.primary:hover{border-color:#12d0ff;background:rgba(18,208,255,.08);}
 </style>
 
 <div class="ap">
@@ -2115,7 +2115,7 @@ function showAnalysisPanel(result, opts = {}) {
  </div>
  <div class="metric">
  <div class="metric-lbl">Profil</div>
- <div class="metric-val" style="color:#c8f060;font-size:11px;padding-top:3px;">${tgt.label}</div>
+ <div class="metric-val" style="color:#12d0ff;font-size:11px;padding-top:3px;">${tgt.label}</div>
  <div class="metric-sub">Optimale Einstellungen angewendet</div>
  </div>
  </div>
@@ -2125,11 +2125,11 @@ function showAnalysisPanel(result, opts = {}) {
  <div class="ap-section" style="padding:8px 0;">
  <div style="font-size:9px;color:#5a5a6a;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;">Wird angewendet</div>
  <div style="display:flex;flex-wrap:wrap;gap:5px;">
- ${rec.denoise.recommended ? `<span style="background:#c8f060;color:#0a0a0b;font-size:9px;padding:2px 8px;border-radius:1px;letter-spacing:.06em;">DENOISING</span>` : ''}
- ${rec.eq.length>0 ? `<span style="background:#1e1e24;color:#c8f060;font-size:9px;padding:2px 8px;border-radius:1px;border:1px solid #c8f060;letter-spacing:.06em;">EQ</span>` : ''}
- ${rec.compressor.needed ? `<span style="background:#1e1e24;color:#c8f060;font-size:9px;padding:2px 8px;border-radius:1px;border:1px solid #c8f060;letter-spacing:.06em;">KOMPRESSOR</span>` : ''}
- <span style="background:#1e1e24;color:#c8f060;font-size:9px;padding:2px 8px;border-radius:1px;border:1px solid #c8f060;letter-spacing:.06em;">LIMITER ${tgt.tp} dBTP</span>
- <span style="background:#c8f060;color:#0a0a0b;font-size:9px;padding:2px 8px;border-radius:1px;letter-spacing:.06em;">R128 ${tgt.lufs} LUFS</span>
+ ${rec.denoise.recommended ? `<span style="background:#12d0ff;color:#0a0a0b;font-size:9px;padding:2px 8px;border-radius:1px;letter-spacing:.06em;">DENOISING</span>` : ''}
+ ${rec.eq.length>0 ? `<span style="background:#1e1e24;color:#12d0ff;font-size:9px;padding:2px 8px;border-radius:1px;border:1px solid #12d0ff;letter-spacing:.06em;">EQ</span>` : ''}
+ ${rec.compressor.needed ? `<span style="background:#1e1e24;color:#12d0ff;font-size:9px;padding:2px 8px;border-radius:1px;border:1px solid #12d0ff;letter-spacing:.06em;">KOMPRESSOR</span>` : ''}
+ <span style="background:#1e1e24;color:#12d0ff;font-size:9px;padding:2px 8px;border-radius:1px;border:1px solid #12d0ff;letter-spacing:.06em;">LIMITER ${tgt.tp} dBTP</span>
+ <span style="background:#12d0ff;color:#0a0a0b;font-size:9px;padding:2px 8px;border-radius:1px;letter-spacing:.06em;">R128 ${tgt.lufs} LUFS</span>
  </div>
  </div></div><!-- /ap-body -->
 

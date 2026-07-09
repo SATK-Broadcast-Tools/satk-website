@@ -19,7 +19,7 @@
  --surface: #111114;
  --surface2:#16161a;
  --border: #1e1e24;
- --accent: #c8f060;
+ --accent: #12d0ff;
  --accent2: #60d4f0;
  --warn: #f0a060;
  --danger: #f06060;
@@ -43,8 +43,8 @@
  position: fixed;
  inset: 0;
  background-image:
- linear-gradient(rgba(200,240,96,0.025) 1px, transparent 1px),
- linear-gradient(90deg, rgba(200,240,96,0.025) 1px, transparent 1px);
+ linear-gradient(rgba(18,208,255,0.025) 1px, transparent 1px),
+ linear-gradient(90deg, rgba(18,208,255,0.025) 1px, transparent 1px);
  background-size: 40px 40px;
  pointer-events: none;
  z-index: 0;
@@ -284,13 +284,13 @@
  /* Playing state */
  .pad.playing {
  border-color: var(--accent) !important;
- background: rgba(200,240,96,0.06);
+ background: rgba(18,208,255,0.06);
  }
  .pad.playing::before {
  content: '';
  position: absolute;
  inset: 0;
- background: radial-gradient(ellipse at 50% 100%, rgba(200,240,96,0.12) 0%, transparent 70%);
+ background: radial-gradient(ellipse at 50% 100%, rgba(18,208,255,0.12) 0%, transparent 70%);
  pointer-events: none;
  }
 
@@ -388,7 +388,7 @@
  /* Drop highlight */
  .pad.drag-over {
  border-color: var(--accent) !important;
- background: rgba(200,240,96,0.08);
+ background: rgba(18,208,255,0.08);
  }
 
  /* Hidden file input */
@@ -632,18 +632,18 @@
 /* ── Download-Hinweis Toast ── */
 #satkDlHint{
  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
- background:#0d1012;border:1px solid rgba(200,240,96,.35);
+ background:#0d1012;border:1px solid rgba(18,208,255,.35);
  color:#e2e6ed;font-family:'Inter',sans-serif;font-size:11px;
  padding:12px 18px;z-index:9999;max-width:420px;width:90%;
  box-shadow:0 4px 24px rgba(0,0,0,.5);
  animation:satkDlIn .25s ease;pointer-events:none;
  line-height:1.6;
 }
-#satkDlHint strong{color:#c8f060;}
-#satkDlHint .satk-dl-file{color:#c8f060;font-size:10px;opacity:.8;display:block;margin-bottom:4px;}
+#satkDlHint strong{color:#12d0ff;}
+#satkDlHint .satk-dl-file{color:#12d0ff;font-size:10px;opacity:.8;display:block;margin-bottom:4px;}
 #satkDlHint .satk-dl-close{
  position:absolute;top:7px;right:10px;cursor:pointer;
- color:rgba(200,240,96,.5);font-size:13px;pointer-events:all;
+ color:rgba(18,208,255,.5);font-size:13px;pointer-events:all;
 }
 @keyframes satkDlIn{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
 @keyframes satkDlOut{from{opacity:1;}to{opacity:0;transform:translateX(-50%) translateY(8px);}}
@@ -673,7 +673,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 /* Firefox */
 html, body, * {
  scrollbar-width: thin;
- scrollbar-color: rgba(200,240,96,.25) transparent;
+ scrollbar-color: rgba(18,208,255,.25) transparent;
 }
 
 /* Chrome / Safari / Edge */
@@ -685,12 +685,12 @@ html, body, * {
  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
- background: rgba(200,240,96,.2);
+ background: rgba(18,208,255,.2);
  border-radius: 2px;
  transition: background .2s;
 }
 ::-webkit-scrollbar-thumb:hover {
- background: rgba(200,240,96,.5);
+ background: rgba(18,208,255,.5);
 }
 ::-webkit-scrollbar-corner {
  background: transparent;
@@ -852,7 +852,7 @@ function setLang(lang){
  <span class="pad-setting-lbl">Farbe</span>
  <div class="color-dots" id="color-picker">
  <div class="color-dot selected" data-color="" style="background:var(--border)" title="Kein"></div>
- <div class="color-dot" data-color="#c8f060" style="background:#c8f060" title="Grün"></div>
+ <div class="color-dot" data-color="#12d0ff" style="background:#12d0ff" title="Grün"></div>
  <div class="color-dot" data-color="#60d4f0" style="background:#60d4f0" title="Cyan"></div>
  <div class="color-dot" data-color="#f0a060" style="background:#f0a060" title="Orange"></div>
  <div class="color-dot" data-color="#f06060" style="background:#f06060" title="Rot"></div>
@@ -950,7 +950,7 @@ const BANK_KEYS = [
 // Simpler key map: first 16 printable keys across all banks
 const PAD_KEYS = ['1','2','3','4','q','w','e','r','a','s','d','f','z','x','c','v'];
 
-const COLORS = ['','#c8f060','#60d4f0','#f0a060','#f06060','#c060f0','#f0e060'];
+const COLORS = ['','#12d0ff','#60d4f0','#f0a060','#f06060','#c060f0','#f0e060'];
 
 let currentBank = 0;
 let selectedColor = '';
@@ -1202,8 +1202,8 @@ function drawWaveform(idx, audioBuf, cuePoint) {
  c.clearRect(0, 0, CW, CH);
 
  // Filled waveform
- c.fillStyle = '#c8f06022';
- c.strokeStyle = '#c8f060';
+ c.fillStyle = '#12d0ff22';
+ c.strokeStyle = '#12d0ff';
  c.lineWidth = 1;
  c.beginPath();
  c.moveTo(0, CH / 2);
@@ -1228,7 +1228,7 @@ function drawWaveform(idx, audioBuf, cuePoint) {
  c.stroke();
 
  // Center line
- c.strokeStyle = '#c8f06030';
+ c.strokeStyle = '#12d0ff30';
  c.lineWidth = 1;
  c.beginPath(); c.moveTo(0, CH/2); c.lineTo(CW, CH/2); c.stroke();
 
@@ -1462,8 +1462,8 @@ renderBank();
 <style>
 
 @keyframes ir-heartbeat {
- 0%,100% { box-shadow: 0 0 0 0 rgba(200,240,96,0.25); }
- 50% { box-shadow: 0 0 0 8px rgba(200,240,96,0); }
+ 0%,100% { box-shadow: 0 0 0 0 rgba(18,208,255,0.25); }
+ 50% { box-shadow: 0 0 0 8px rgba(18,208,255,0); }
 }
 
 @media (max-width: 600px) {

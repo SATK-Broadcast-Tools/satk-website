@@ -18,7 +18,7 @@
  --bg: #0a0a0b;
  --surface: #111114;
  --border: #1e1e24;
- --accent: #c8f060;
+ --accent: #12d0ff;
  --accent2: #60d4f0;
  --warn: #f0a060;
  --danger: #f06060;
@@ -43,8 +43,8 @@
  position: fixed;
  inset: 0;
  background-image:
- linear-gradient(rgba(200,240,96,0.03) 1px, transparent 1px),
- linear-gradient(90deg, rgba(200,240,96,0.03) 1px, transparent 1px);
+ linear-gradient(rgba(18,208,255,0.03) 1px, transparent 1px),
+ linear-gradient(90deg, rgba(18,208,255,0.03) 1px, transparent 1px);
  background-size: 40px 40px;
  pointer-events: none;
  z-index: 0;
@@ -174,7 +174,7 @@
  content: '';
  position: absolute;
  inset: 0;
- background: radial-gradient(ellipse at 50% 0%, rgba(200,240,96,0.06) 0%, transparent 70%);
+ background: radial-gradient(ellipse at 50% 0%, rgba(18,208,255,0.06) 0%, transparent 70%);
  opacity: 0;
  transition: opacity 0.3s;
  }
@@ -659,18 +659,18 @@
 /* ── Download-Hinweis Toast ── */
 #satkDlHint{
  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
- background:#0d1012;border:1px solid rgba(200,240,96,.35);
+ background:#0d1012;border:1px solid rgba(18,208,255,.35);
  color:#e2e6ed;font-family:'Inter',sans-serif;font-size:11px;
  padding:12px 18px;z-index:9999;max-width:420px;width:90%;
  box-shadow:0 4px 24px rgba(0,0,0,.5);
  animation:satkDlIn .25s ease;pointer-events:none;
  line-height:1.6;
 }
-#satkDlHint strong{color:#c8f060;}
-#satkDlHint .satk-dl-file{color:#c8f060;font-size:10px;opacity:.8;display:block;margin-bottom:4px;}
+#satkDlHint strong{color:#12d0ff;}
+#satkDlHint .satk-dl-file{color:#12d0ff;font-size:10px;opacity:.8;display:block;margin-bottom:4px;}
 #satkDlHint .satk-dl-close{
  position:absolute;top:7px;right:10px;cursor:pointer;
- color:rgba(200,240,96,.5);font-size:13px;pointer-events:all;
+ color:rgba(18,208,255,.5);font-size:13px;pointer-events:all;
 }
 @keyframes satkDlIn{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
 @keyframes satkDlOut{from{opacity:1;}to{opacity:0;transform:translateX(-50%) translateY(8px);}}
@@ -1672,8 +1672,8 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 <style>
 
 @keyframes heartbeat {
- 0%,100% { box-shadow: 0 0 0 0 rgba(200,240,96,0.25); }
- 50% { box-shadow: 0 0 0 8px rgba(200,240,96,0); }
+ 0%,100% { box-shadow: 0 0 0 0 rgba(18,208,255,0.25); }
+ 50% { box-shadow: 0 0 0 8px rgba(18,208,255,0); }
 }
 
 @media (max-width: 540px) {

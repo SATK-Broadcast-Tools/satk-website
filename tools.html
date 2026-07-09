@@ -186,7 +186,7 @@
  --bg: #0a0a0b;
  --sf: #111114;
  --bd: #1e1e24;
- --ac: #c8f060;
+ --ac: #12d0ff;
  --ac2: #60d4f0;
  --warn: #f0a060;
  --red: #f06060;
@@ -205,8 +205,8 @@ body {
 body::before {
  content: ''; position: fixed; inset: 0;
  background-image:
- linear-gradient(rgba(200,240,96,.018) 1px, transparent 1px),
- linear-gradient(90deg, rgba(200,240,96,.018) 1px, transparent 1px);
+ linear-gradient(rgba(18,208,255,.018) 1px, transparent 1px),
+ linear-gradient(90deg, rgba(18,208,255,.018) 1px, transparent 1px);
  background-size: 40px 40px;
  pointer-events: none; z-index: 0;
 }
@@ -260,7 +260,7 @@ header { margin-bottom: 40px; }
 .tool-card:hover {
  border-color: var(--ac);
  transform: translateY(-2px);
- box-shadow: 0 8px 32px rgba(200,240,96,.07);
+ box-shadow: 0 8px 32px rgba(18,208,255,.07);
 }
 .tool-card:hover .card-open { background: var(--ac); color: #0a0a0b; }
 
@@ -321,7 +321,7 @@ header { margin-bottom: 40px; }
 .seo-h2 { font-family: 'Arimo',sans-serif; font-size: 14px; font-weight: 700; color: var(--tx); letter-spacing: .06em; margin-bottom: 14px; }
 .seo-h3 { font-family: 'Arimo',sans-serif; font-size: 11px; font-weight: 700; color: var(--ac); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
 .seo-text p { font-size: 11px; color: var(--mu); line-height: 1.8; margin-bottom: 10px; }
-.seo-text a { color: rgba(200,240,96,.7); text-decoration: none; }
+.seo-text a { color: rgba(18,208,255,.7); text-decoration: none; }
 .seo-text a:hover { color: var(--ac); }
 .seo-audience { background: var(--sf); border: 1px solid var(--bd); padding: 20px; }
 .audience-list { list-style: none; padding: 0; }
@@ -448,13 +448,13 @@ header { margin-bottom: 40px; }
  position: absolute;
  bottom: -2px; left: 4px; right: 4px;
  height: 1px;
- background: #c8f060;
+ background: #12d0ff;
  transform: scaleX(0);
  transform-origin: left;
  transition: transform .2s ease;
 }
 .lang-link:hover { color: #e8e8ec; }
-.lang-link.active { color: #c8f060; }
+.lang-link.active { color: #12d0ff; }
 .lang-link.active::after { transform: scaleX(1); }
 @keyframes langFlash {
  0% { opacity: 1; }
@@ -789,7 +789,7 @@ function animMeter() {
  dots.push({x:cx+Math.cos(ang)*dist, y:cy-Math.abs(dist*0.6), a:0.9});
  }
  for (let i=dots.length-1;i>=0;i--) {
- c.fillStyle = `rgba(200,240,96,${dots[i].a})`;
+ c.fillStyle = `rgba(18,208,255,${dots[i].a})`;
  c.fillRect(dots[i].x-1, dots[i].y-1, 2, 2);
  dots[i].a -= 0.04;
  if (dots[i].a <= 0) dots.splice(i,1);
@@ -822,7 +822,7 @@ function animVO() {
  const h2 = H/2;
 
  // Original waveform (top half)
- c.strokeStyle = 'rgba(200,240,96,.4)'; c.lineWidth=1;
+ c.strokeStyle = 'rgba(18,208,255,.4)'; c.lineWidth=1;
  c.beginPath();
  for (let x=0;x<W;x++) {
  const y = h2*0.5 + wave[(x+t)%W] * (h2*0.4);
@@ -871,7 +871,7 @@ function animR128() {
  0.35 + 0.3*Math.sin(t*0.03+1),
  0.55
  ];
- const colors = ['#42a5f5','#26a269','#c8f060'];
+ const colors = ['#42a5f5','#26a269','#12d0ff'];
  const bw = (W-40)/3 - 8;
 
  bars.forEach((label, i) => {
@@ -883,7 +883,7 @@ function animR128() {
  c.fillRect(bx, by+bh-fh, bw, fh);
  c.globalAlpha=1;
  // Target line at 55% (-23 LUFS region)
- c.strokeStyle='rgba(200,240,96,.4)'; c.lineWidth=1; c.setLineDash([2,2]);
+ c.strokeStyle='rgba(18,208,255,.4)'; c.lineWidth=1; c.setLineDash([2,2]);
  c.beginPath(); c.moveTo(bx,by+bh*0.45); c.lineTo(bx+bw,by+bh*0.45); c.stroke();
  c.setLineDash([]);
  c.fillStyle='#5a5a6a'; c.font='8px Inter,sans-serif'; c.textAlign='center';
@@ -900,7 +900,7 @@ function animPlayer() {
  const c = cv.getContext('2d');
  const W = cv.width, H = cv.height;
  let t = 0;
- const pads = Array(16).fill(0).map((_,i)=>({active:false,timer:0,color:['#c8f060','#60d4f0','#f0a060','#f06060'][i%4]}));
+ const pads = Array(16).fill(0).map((_,i)=>({active:false,timer:0,color:['#12d0ff','#60d4f0','#f0a060','#f06060'][i%4]}));
  setInterval(()=>{ const p=pads[Math.floor(Math.random()*16)]; p.active=true; p.timer=8; },400);
 
  (function draw() {
@@ -940,7 +940,7 @@ function animMixer() {
  const h3 = H/3;
 
  // Voice track (top)
- c.strokeStyle = 'rgba(200,240,96,.5)'; c.lineWidth=1;
+ c.strokeStyle = 'rgba(18,208,255,.5)'; c.lineWidth=1;
  c.beginPath();
  for(let x=0;x<W;x++){
  const phase=(x/W+t/300)%1;
@@ -999,7 +999,7 @@ function animEditor() {
  c.fillStyle = '#08090a'; c.fillRect(0,0,W,H);
 
  // Waveform
- c.strokeStyle = 'rgba(200,240,96,.6)'; c.lineWidth = 1;
+ c.strokeStyle = 'rgba(18,208,255,.6)'; c.lineWidth = 1;
  c.beginPath();
  for (let x=0; x<W; x++) {
  const phase = x/W;
@@ -1026,7 +1026,7 @@ function animEditor() {
 
  // Playhead
  const phx = ((t*0.5)%W);
- c.strokeStyle='rgba(200,240,96,.8)'; c.lineWidth=1.5; c.setLineDash([]);
+ c.strokeStyle='rgba(18,208,255,.8)'; c.lineWidth=1.5; c.setLineDash([]);
  c.beginPath(); c.moveTo(phx,0); c.lineTo(phx,H); c.stroke();
 
  // Ruler ticks
@@ -1072,8 +1072,8 @@ window.addEventListener('resize', ()=>{
  const toast = document.createElement('div');
  toast.style.cssText = [
  'position:fixed','top:20px','left:50%','transform:translateX(-50%)',
- 'background:#0e1a0a','border:1px solid rgba(200,240,96,.35)',
- 'color:#c8f060','font-family:Inter,sans-serif','font-size:10px',
+ 'background:#0e1a0a','border:1px solid rgba(18,208,255,.35)',
+ 'color:#12d0ff','font-family:Inter,sans-serif','font-size:10px',
  'letter-spacing:.06em','line-height:1.6','padding:10px 18px',
  'border-radius:3px','z-index:9999','pointer-events:none',
  'max-width:420px','text-align:center',

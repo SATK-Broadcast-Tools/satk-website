@@ -73,38 +73,6 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Browser-Tools (kostenlos) -->
-  <url>
-    <loc>https://pegelwerk.com/tools</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://pegelwerk.com/r128-normalizer</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://pegelwerk.com/auto-mixer</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://pegelwerk.com/audio-editor</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://pegelwerk.com/instant-player</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
   <!-- Rechtliches -->
   <url>
     <loc>https://pegelwerk.com/impressum</loc>

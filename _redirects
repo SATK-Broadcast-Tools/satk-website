@@ -13,8 +13,6 @@
 # Alle anderen .html → ohne Extension
 /agb.html /agb 301
 /agb-en.html /agb-en 301
-/audio-editor.html /audio-editor 301
-/auto-mixer.html /auto-mixer 301
 /easy-editor.html /easy-editor 301
 # Alte Broadcast-Meter-Standalone-Page → Pro-Marketing-Page (Schutz vor alten Backlinks)
 /broadcast-meter.html /broadcast-meter-pro 301
@@ -30,7 +28,6 @@
 /impressum-en.html /impressum-en 301
 /format-wandler /tools 301
 /format-wandler.html /tools 301
-/instant-player.html /instant-player 301
 /instant-player-app.html /instant-player-app 301
 /loudness-correct.html /loudness-correct 301
 /loudness-correct-ios.html /loudness-correct-ios 301
@@ -46,14 +43,25 @@
 /overdub-studio-ios.html /voyzsession-ios 301
 /podcast-recorder /tools 301
 /podcast-recorder.html /tools 301
-/r128-normalizer.html /r128-normalizer 301
 /support.html /support 301
-/tools.html /tools 301
 /videos.html /videos 301
-/voiceover-processor.html /voiceover-processor 301
 /widerruf.html /widerruf 301
 /widerruf-en.html /widerruf-en 301
 
 # Pretty-URL → .html-File rewrites passieren AUTOMATISCH bei CF Pages
 # wenn die Datei `<name>.html` existiert. Kein expliziter Redirect nötig.
 # Beispiel: GET /support → liefert support.html mit URL bleibt /support
+
+# Browser-Tools entfernt -> Startseite
+/tools / 301
+/tools.html / 301
+/r128-normalizer / 301
+/r128-normalizer.html / 301
+/auto-mixer / 301
+/auto-mixer.html / 301
+/audio-editor / 301
+/audio-editor.html / 301
+/instant-player / 301
+/instant-player.html / 301
+/voiceover-processor / 301
+/voiceover-processor.html / 301

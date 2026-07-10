@@ -4,11 +4,11 @@
 <meta name="description" content="Lautheitsnormalisierung nach EBU R128 / ITU-R BS.1770-4. Datei droppen, Target wählen, normalisieren. K-Filter mit Double-Gating, 4x Polyphase TP-Limiter, lokale Verarbeitung im Browser, ohne Upload.">
 <meta name="keywords" content="R128 NORMALIZER, EBU R128, Loudness Normalizer, LUFS normalisieren, Lautheit normalisieren, TV Audio normalisieren, Podcast normalisieren, YouTube normalisieren, -23 LUFS, -16 LUFS, -14 LUFS, True Peak, ITU-R BS.1770-4, K-Weighted, Auphonic Alternative, kostenlos, Browser, kein Upload">
 <meta charset="UTF-8">
-<link rel="icon" href="/favicon.ico?v=7" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=7">
-<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=7">
-<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=7">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=7">
+<link rel="icon" href="/favicon.ico?v=8" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=8">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=8">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=8">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>pegelWERK R128 NORMALIZER · EBU R128 / ITU-R BS.1770-4 im Browser</title>
 <style>
@@ -18,7 +18,7 @@
  --bg: #0a0a0b;
  --surface: #111114;
  --border: #1e1e24;
- --accent: #12d0ff;
+ --accent: #b6e34a;
  --accent2: #60d4f0;
  --warn: #f0a060;
  --danger: #f06060;
@@ -43,8 +43,8 @@
  position: fixed;
  inset: 0;
  background-image:
- linear-gradient(rgba(18,208,255,0.03) 1px, transparent 1px),
- linear-gradient(90deg, rgba(18,208,255,0.03) 1px, transparent 1px);
+ linear-gradient(rgba(182,227,74,0.03) 1px, transparent 1px),
+ linear-gradient(90deg, rgba(182,227,74,0.03) 1px, transparent 1px);
  background-size: 40px 40px;
  pointer-events: none;
  z-index: 0;
@@ -174,7 +174,7 @@
  content: '';
  position: absolute;
  inset: 0;
- background: radial-gradient(ellipse at 50% 0%, rgba(18,208,255,0.06) 0%, transparent 70%);
+ background: radial-gradient(ellipse at 50% 0%, rgba(182,227,74,0.06) 0%, transparent 70%);
  opacity: 0;
  transition: opacity 0.3s;
  }
@@ -659,18 +659,18 @@
 /* ── Download-Hinweis Toast ── */
 #satkDlHint{
  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
- background:#0d1012;border:1px solid rgba(18,208,255,.35);
+ background:#0d1012;border:1px solid rgba(182,227,74,.35);
  color:#e2e6ed;font-family:'Inter',sans-serif;font-size:11px;
  padding:12px 18px;z-index:9999;max-width:420px;width:90%;
  box-shadow:0 4px 24px rgba(0,0,0,.5);
  animation:satkDlIn .25s ease;pointer-events:none;
  line-height:1.6;
 }
-#satkDlHint strong{color:#12d0ff;}
-#satkDlHint .satk-dl-file{color:#12d0ff;font-size:10px;opacity:.8;display:block;margin-bottom:4px;}
+#satkDlHint strong{color:#b6e34a;}
+#satkDlHint .satk-dl-file{color:#b6e34a;font-size:10px;opacity:.8;display:block;margin-bottom:4px;}
 #satkDlHint .satk-dl-close{
  position:absolute;top:7px;right:10px;cursor:pointer;
- color:rgba(18,208,255,.5);font-size:13px;pointer-events:all;
+ color:rgba(182,227,74,.5);font-size:13px;pointer-events:all;
 }
 @keyframes satkDlIn{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
 @keyframes satkDlOut{from{opacity:1;}to{opacity:0;transform:translateX(-50%) translateY(8px);}}
@@ -691,6 +691,14 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 @media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:32px;text-align:center}.footer-col+.footer-col{border-left:none}}
 
 h1,h2,h3,h4,h5,p,li{text-wrap:balance}
+
+/*VB-START voyz brackets + readability*/
+.hero h1,.page-hero h1{position:relative;display:inline-block;padding:0 8px}
+.hero h1::before,.hero h1::after,.page-hero h1::before,.page-hero h1::after{content:"";position:absolute;top:-4px;bottom:-4px;width:16px;border:2px solid var(--ac);opacity:.9}
+.hero h1::before,.page-hero h1::before{left:-22px;border-right:0}
+.hero h1::after,.page-hero h1::after{right:-22px;border-left:0}
+@media(max-width:600px){.hero h1::before,.page-hero h1::before{left:-14px;width:10px}.hero h1::after,.page-hero h1::after{right:-14px;width:10px}}
+/*VB-END*/
 </style>
 
 <style>
@@ -1452,7 +1460,7 @@ processBtn.addEventListener('click', async () => {
  </div>
  </div>
  <div class="footer-bar">
- <img class="footer-brand-img" src="/logo.svg?v=6" alt="pegelWERK">
+ <img class="footer-brand-img" src="/logo.svg?v=7" alt="pegelWERK">
  <span class="footer-meta">pegelWERK · © 2026</span>
  </div>
 </footer>
@@ -1672,8 +1680,8 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 <style>
 
 @keyframes heartbeat {
- 0%,100% { box-shadow: 0 0 0 0 rgba(18,208,255,0.25); }
- 50% { box-shadow: 0 0 0 8px rgba(18,208,255,0); }
+ 0%,100% { box-shadow: 0 0 0 0 rgba(182,227,74,0.25); }
+ 50% { box-shadow: 0 0 0 8px rgba(182,227,74,0); }
 }
 
 @media (max-width: 540px) {

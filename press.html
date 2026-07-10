@@ -2,11 +2,11 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="/favicon.ico?v=7" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=7">
-<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=7">
-<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=7">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=7">
+<link rel="icon" href="/favicon.ico?v=8" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=8">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=8">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=8">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=8">
 <link rel="canonical" href="https://pegelwerk.com/press">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>pegelWERK Press, Pressemitteilungen, Press Kit, Logos & Bildmaterial</title>
@@ -16,14 +16,14 @@
 <meta property="og:title" content="pegelWERK Press, Pressekontakt, Pressetexte, Press Kit">
 <meta property="og:description" content="Pressekontakt, Pressemitteilungen, Fact Sheets und Press Kit für pegelWERK voyzSESSION und das gesamte pegelWERK-Lineup.">
 <meta property="og:url" content="https://pegelwerk.com/press">
-<meta property="og:image" content="https://pegelwerk.com/og-image.png?v=8">
+<meta property="og:image" content="https://pegelwerk.com/og-image.png?v=9">
 <meta property="og:site_name" content="pegelWERK">
 <meta property="og:locale" content="de_DE">
 <meta property="og:locale:alternate" content="en_US">
 
 <link href="fonts.css" rel="stylesheet">
 <style>
-:root{--bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#12d0ff;--tx:#e8e8ec;--mu:#6e6e7a;--mu2:#c4c4cd}
+:root{--bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#b6e34a;--tx:#e8e8ec;--mu:#9a9aa8;--mu2:#d4d4dc}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
@@ -70,16 +70,16 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .contact-grid .val a:hover{text-decoration:underline}
 
 .dl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;margin-top:18px}
-.dl-btn{display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(18,208,255,.05);border:1px solid var(--bd);border-radius:8px;text-decoration:none;transition:all .15s}
-.dl-btn:hover{border-color:rgba(18,208,255,.3);background:rgba(18,208,255,.08)}
-.dl-icon{width:32px;height:32px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(18,208,255,.1);border-radius:6px;color:var(--ac);font-family:'Arimo',sans-serif;font-weight:700;font-size:10px;letter-spacing:1px}
+.dl-btn{display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(182,227,74,.05);border:1px solid var(--bd);border-radius:8px;text-decoration:none;transition:all .15s}
+.dl-btn:hover{border-color:rgba(182,227,74,.3);background:rgba(182,227,74,.08)}
+.dl-icon{width:32px;height:32px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(182,227,74,.1);border-radius:6px;color:var(--ac);font-family:'Arimo',sans-serif;font-weight:700;font-size:10px;letter-spacing:1px}
 .dl-text{flex:1;min-width:0}
 .dl-title{font-family:'Arimo',sans-serif;font-size:12px;font-weight:700;color:var(--tx);letter-spacing:.05em;text-transform:uppercase;margin-bottom:2px}
 .dl-sub{font-size:10px;color:var(--mu);letter-spacing:.3px}
 
 .asset-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
 .asset-card{background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:14px;text-align:center;text-decoration:none;color:var(--tx);transition:border-color .15s}
-.asset-card:hover{border-color:rgba(18,208,255,.3)}
+.asset-card:hover{border-color:rgba(182,227,74,.3)}
 .asset-thumb{height:80px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
 .asset-thumb img{max-height:80px;max-width:100%;object-fit:contain}
 .asset-name{font-family:'Arimo',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tx);margin-bottom:3px}
@@ -124,13 +124,20 @@ body{overflow-wrap:break-word}
  .card{padding:18px 18px}
 }
 h1,h2,h3,h4,h5,p,li{text-wrap:balance}
+/*VB-START voyz brackets + readability*/
+.hero h1,.page-hero h1{position:relative;display:inline-block;padding:0 8px}
+.hero h1::before,.hero h1::after,.page-hero h1::before,.page-hero h1::after{content:"";position:absolute;top:-4px;bottom:-4px;width:16px;border:2px solid var(--ac);opacity:.9}
+.hero h1::before,.page-hero h1::before{left:-22px;border-right:0}
+.hero h1::after,.page-hero h1::after{right:-22px;border-left:0}
+@media(max-width:600px){.hero h1::before,.page-hero h1::before{left:-14px;width:10px}.hero h1::after,.page-hero h1::after{right:-14px;width:10px}}
+/*VB-END*/
 </style>
 </head>
 <body>
 
 <nav>
  <a href="/" class="nav-logo">
- <img class="nav-logo-img" src="/logo-lockup.svg?v=3" alt="pegelWERK">
+ <img class="nav-logo-img" src="/logo-lockup.svg?v=4" alt="pegelWERK">
  </a>
  <div class="nav-platforms">
  <a href="/mac">Mac</a>
@@ -250,8 +257,8 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="asset-name">Logo</div>
  <div class="asset-meta">PNG · 1183x1083</div>
  </a>
- <a class="asset-card" href="/og-image.png?v=8" download>
- <div class="asset-thumb"><img src="/og-image.png?v=8" alt="pegelWERK Open Graph image"></div>
+ <a class="asset-card" href="/og-image.png?v=9" download>
+ <div class="asset-thumb"><img src="/og-image.png?v=9" alt="pegelWERK Open Graph image"></div>
  <div class="asset-name">OG Image</div>
  <div class="asset-meta">PNG · 1200x630</div>
  </a>
@@ -411,7 +418,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  </div>
  </div>
  <div class="footer-bar">
- <img class="footer-brand-img" src="/logo.svg?v=6" alt="pegelWERK">
+ <img class="footer-brand-img" src="/logo.svg?v=7" alt="pegelWERK">
  <span class="footer-meta">pegelWERK · © 2026</span>
  </div>
 </footer>

@@ -10,13 +10,20 @@
          background:#0a0a0b; color:#e8e8ec; font-family:-apple-system,system-ui,sans-serif; }
   .box { max-width:440px; text-align:center; padding:32px; }
   .logo { font-family:'Arimo',Arial,sans-serif; font-weight:700; font-size:26px; letter-spacing:1px; margin-bottom:24px; }
-  .logo .a { color:#12d0ff; } .logo .b { color:#e8e8ec; }
+  .logo .a { color:#b6e34a; } .logo .b { color:#e8e8ec; }
   h1 { font-size:18px; margin:0 0 12px; }
   p { color:#c4c4cd; font-size:14px; line-height:1.6; }
-  a.btn { display:inline-block; margin-top:18px; background:#12d0ff; color:#0a0a0b; font-weight:600;
+  a.btn { display:inline-block; margin-top:18px; background:#b6e34a; color:#0a0a0b; font-weight:600;
           padding:12px 24px; border-radius:8px; text-decoration:none; font-size:14px; }
-  a.dl { color:#12d0ff; }
+  a.dl { color:#b6e34a; }
   .muted { color:#6e6e7a; font-size:12px; margin-top:22px; }
+/*VB-START voyz brackets + readability*/
+.hero h1,.page-hero h1{position:relative;display:inline-block;padding:0 8px}
+.hero h1::before,.hero h1::after,.page-hero h1::before,.page-hero h1::after{content:"";position:absolute;top:-4px;bottom:-4px;width:16px;border:2px solid var(--ac);opacity:.9}
+.hero h1::before,.page-hero h1::before{left:-22px;border-right:0}
+.hero h1::after,.page-hero h1::after{right:-22px;border-left:0}
+@media(max-width:600px){.hero h1::before,.page-hero h1::before{left:-14px;width:10px}.hero h1::after,.page-hero h1::after{right:-14px;width:10px}}
+/*VB-END*/
 </style>
 </head>
 <body>

@@ -55,7 +55,7 @@
 }
 </script>
 <style>
-:root{--bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#12d0ff;--tx:#e8e8ec;--mu:#6e6e7a;--mu2:#c4c4cd;--warn:#f0a060}
+:root{--bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#12d0ff;--tx:#e8e8ec;--mu:#9a9aa8;--mu2:#d4d4dc;--warn:#f0a060}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
@@ -172,6 +172,13 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 .feature:nth-child(6){animation-delay:.5s}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 h1,h2,h3,h4,h5,p,li{text-wrap:balance}
+/*VB-START voyz brackets + readability*/
+.hero h1,.page-hero h1{position:relative;display:inline-block;padding:0 8px}
+.hero h1::before,.hero h1::after,.page-hero h1::before,.page-hero h1::after{content:"";position:absolute;top:-4px;bottom:-4px;width:16px;border:2px solid var(--ac);opacity:.9}
+.hero h1::before,.page-hero h1::before{left:-22px;border-right:0}
+.hero h1::after,.page-hero h1::after{right:-22px;border-left:0}
+@media(max-width:600px){.hero h1::before,.page-hero h1::before{left:-14px;width:10px}.hero h1::after,.page-hero h1::after{right:-14px;width:10px}}
+/*VB-END*/
 </style>
 </head>
 <body>

@@ -2,11 +2,11 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="/favicon.ico?v=7" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=7">
-<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=7">
-<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=7">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=7">
+<link rel="icon" href="/favicon.ico?v=8" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=8">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=8">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=8">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=8">
 <link rel="canonical" href="https://pegelwerk.com/mac">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>pegelWERK Mac Apps - broadcast METER PRO, voyzSESSION, loudness CORRECT</title>
@@ -68,7 +68,7 @@
 }
 </script>
 <style>
-:root{--bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#12d0ff;--tx:#e8e8ec;--mu:#6e6e7a;--mu2:#c4c4cd}
+:root{--bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#b6e34a;--tx:#e8e8ec;--mu:#9a9aa8;--mu2:#d4d4dc}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
@@ -113,7 +113,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .card:hover .card-img img{transform:scale(1.03)}
 .card-tag{position:absolute;top:14px;left:14px;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;
  padding:4px 10px;border-radius:3px;font-weight:500;background:rgba(10,10,11,.7);color:var(--ac);
- border:1px solid rgba(18,208,255,.2);backdrop-filter:blur(8px)}
+ border:1px solid rgba(182,227,74,.2);backdrop-filter:blur(8px)}
 .card-body{padding:18px 24px 22px;text-align:center}
 .card-name{font-family:'Arimo',sans-serif;font-size:20px;font-weight:700;letter-spacing:-.3px;margin-bottom:4px}
 .card-sub{font-size:11px;color:var(--mu2);margin-bottom:12px;line-height:1.5;text-wrap:balance}
@@ -131,9 +131,9 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .card-btn{display:inline-block;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
  padding:9px 24px;border-radius:5px;border:none;cursor:pointer;transition:all .25s;font-weight:500}
 .card-btn.buy{background:var(--ac);color:#0a0a0b}
-.card-btn.buy:hover{background:#5ce0ff;transform:scale(1.03)}
+.card-btn.buy:hover{background:#cced6f;transform:scale(1.03)}
 .card-btn.trial{background:var(--ac);color:#0a0a0b;width:100%;padding:11px 24px}
-.card-btn.trial:hover{background:#5ce0ff;transform:scale(1.02)}
+.card-btn.trial:hover{background:#cced6f;transform:scale(1.02)}
 .card-btn.soon{background:transparent;color:var(--mu);border:1px solid var(--bd);cursor:default}
 .card-cta{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:8px}
 .card-btn-link{font-family:'Inter',sans-serif;font-size:10px;color:var(--mu2);text-decoration:underline;text-decoration-color:rgba(255,255,255,.18);
@@ -208,13 +208,20 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 .lang.active{color:var(--ac)}
 .lang-sep{color:var(--mu);font-size:10px}
 h1,h2,h3,h4,h5,p,li{text-wrap:balance}
+/*VB-START voyz brackets + readability*/
+.hero h1,.page-hero h1{position:relative;display:inline-block;padding:0 8px}
+.hero h1::before,.hero h1::after,.page-hero h1::before,.page-hero h1::after{content:"";position:absolute;top:-4px;bottom:-4px;width:16px;border:2px solid var(--ac);opacity:.9}
+.hero h1::before,.page-hero h1::before{left:-22px;border-right:0}
+.hero h1::after,.page-hero h1::after{right:-22px;border-left:0}
+@media(max-width:600px){.hero h1::before,.page-hero h1::before{left:-14px;width:10px}.hero h1::after,.page-hero h1::after{right:-14px;width:10px}}
+/*VB-END*/
 </style>
 </head>
 <body>
 
 <nav>
  <a href="/" class="nav-logo">
- <img class="nav-logo-img" src="/logo-lockup.svg?v=3" alt="pegelWERK">
+ <img class="nav-logo-img" src="/logo-lockup.svg?v=4" alt="pegelWERK">
  </a>
  <div class="nav-platforms">
  <a href="/mac" class="active">Mac</a>
@@ -376,7 +383,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  </div>
  </div>
  <div class="footer-bar">
- <img class="footer-brand-img" src="/logo.svg?v=6" alt="pegelWERK">
+ <img class="footer-brand-img" src="/logo.svg?v=7" alt="pegelWERK">
  <span class="footer-meta">pegelWERK · © 2026</span>
  </div>
 </footer>

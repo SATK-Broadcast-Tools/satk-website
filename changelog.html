@@ -10,7 +10,7 @@
 <link rel="canonical" href="https://pegelwerk.com/changelog">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>pegelWERK Changelog - Was sich in den letzten Releases geändert hat</title>
-<meta name="description" content="Release-Notes und Roadmap für pegelWERK Pro Audio Software: broadcast METER, voyzSESSION, loudness CORRECT.">
+<meta name="description" content="Release-Notes und Roadmap für pegelWERK Pro Audio Software: loudness METER PRO, voyzSESSION, loudness CORRECT.">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="pegelWERK Changelog & Roadmap">
@@ -150,9 +150,9 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 
  <h2 data-i18n="cl_h_releases">Aktuelle Releases</h2>
 
- <!-- ── broadcast METER ──────────── -->
+ <!-- ── loudness METER PRO ──────────── -->
  <div class="product-block">
- <div class="product-name">pegelWERK broadcast METER <span class="product-status" data-i18n="cl_st_live">Live</span></div>
+ <div class="product-name">pegelWERK loudness METER PRO <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
  <div class="release">
  <span class="release-version">1.0.6</span><span class="release-date">2026-06-04</span>
@@ -334,7 +334,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <li data-i18n="cl_od_100_2">AutoMix in einem Klick, Voice Channel Strip (HP80, EQ, Comp, Sat) + Ducker (-4 dB, 150 ms Release) + Bus Glue + R128-Normalisierung auf -23 LUFS.</li>
  <li data-i18n="cl_od_100_3">smart PROMPTER mit On-Device Speech Recognition, der Text-Highlight folgt automatisch der Sprache, kein manuelles Scrollen während der Aufnahme.</li>
  <li data-i18n="cl_od_100_4">Export, Stereo-WAV (Mix + Voice-Stem), Video-Mux mit MXF-Round-Trip für Broadcast-Workflows, MP4 für Streaming.</li>
- <li data-i18n="cl_od_100_5">Lizenz-Architektur identisch zum broadcast METER, Plain-File-Lizenz-Speicher (kein Keychain-Prompt), 7-Tage-Trial ohne Account, Watermarking der Käufer-E-Mail im About-Window.</li>
+ <li data-i18n="cl_od_100_5">Lizenz-Architektur identisch zum loudness METER PRO, Plain-File-Lizenz-Speicher (kein Keychain-Prompt), 7-Tage-Trial ohne Account, Watermarking der Käufer-E-Mail im About-Window.</li>
  </ul>
  </div>
  </div>
@@ -349,7 +349,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <li data-i18n="cl_lc_100_1">Offline R128-Korrektur mit 16 Delivery-Presets, Broadcast (EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354), Streaming (Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube), Kino (Leq(m), Leq(a)) plus Custom.</li>
  <li data-i18n="cl_lc_100_2">Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.</li>
  <li data-i18n="cl_lc_100_3">3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor, ohne Pumpen, ohne Phasen-Artefakte.</li>
- <li data-i18n="cl_lc_100_4">Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum pegelWERK broadcast METER, Messen und Korrigieren mit derselben Wahrheit.</li>
+ <li data-i18n="cl_lc_100_4">Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum pegelWERK loudness METER PRO, Messen und Korrigieren mit derselben Wahrheit.</li>
  </ul>
  </div>
  </div>
@@ -416,7 +416,7 @@ const i18n = {
  cl_lc_100_1: 'Offline R128-Korrektur mit 16 Delivery-Presets, Broadcast (EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354), Streaming (Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube), Kino (Leq(m), Leq(a)) plus Custom.',
  cl_lc_100_2: 'Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.',
  cl_lc_100_3: '3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor, ohne Pumpen, ohne Phasen-Artefakte.',
- cl_lc_100_4: 'Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum pegelWERK broadcast METER, Messen und Korrigieren mit derselben Wahrheit.',
+ cl_lc_100_4: 'Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum pegelWERK loudness METER PRO, Messen und Korrigieren mit derselben Wahrheit.',
  cl_od_141_t: 'Rauschentfernung jetzt auch für importierte, fertige Aufnahmen',
  cl_od_141_1: 'Der NR-Schalter pro Spur wirkt jetzt auch auf importierte Aufnahmen, die als „fertig produziert" markiert sind — die Rauschentfernung lässt sich überall zuschalten (Standard bleibt aus, damit fertige Dateien unangetastet bleiben).',
  cl_od_141_2: 'Kleinere Lizenz-Korrektur für die dauerhafte Offline-Nutzung.',
@@ -473,7 +473,7 @@ const i18n = {
  cl_od_100_2: 'AutoMix in einem Klick, Voice Channel Strip (HP80, EQ, Comp, Sat) + Ducker (-4 dB, 150 ms Release) + Bus Glue + R128-Normalisierung auf -23 LUFS.',
  cl_od_100_3: 'smart PROMPTER mit On-Device Speech Recognition, der Text-Highlight folgt automatisch der Sprache, kein manuelles Scrollen während der Aufnahme.',
  cl_od_100_4: 'Export, Stereo-WAV (Mix + Voice-Stem), Video-Mux mit MXF-Round-Trip für Broadcast-Workflows, MP4 für Streaming.',
- cl_od_100_5: 'Lizenz-Architektur identisch zum broadcast METER, Plain-File-Lizenz-Speicher (kein Keychain-Prompt), 7-Tage-Trial ohne Account, Watermarking der Käufer-E-Mail im About-Window.',
+ cl_od_100_5: 'Lizenz-Architektur identisch zum loudness METER PRO, Plain-File-Lizenz-Speicher (kein Keychain-Prompt), 7-Tage-Trial ohne Account, Watermarking der Käufer-E-Mail im About-Window.',
  cl_lc_p: '<strong>Offline R128-Korrektur · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6.</strong> Engine ist funktionsfähig, derzeit Feinarbeit am Preset-System und der Batch-Pipeline.',
  cl_note: 'Hinweis: Wir veröffentlichen erst, wenn ein Tool zuverlässig im Workflow läuft, keine fixen Termine, keine Vorbestellungen. Wenn du benachrichtigt werden möchtest sobald ein Tool live geht, schreib eine kurze Mail an <a href="mailto:info@pegelwerk.com?subject=Launch-Notification">info@pegelwerk.com</a> mit dem Tool-Namen.',
  f_shop: 'Shop', f_support: 'Support', f_manage: 'Lizenz verwalten', f_terms: 'AGB', f_refund: 'Widerruf', f_imprint: 'Impressum', f_privacy: 'Datenschutz',
@@ -508,7 +508,7 @@ const i18n = {
  cl_lc_100_1: 'Offline R128 correction with 16 delivery presets, broadcast (EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354), streaming (Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube), cinema (Leq(m), Leq(a)) plus Custom.',
  cl_lc_100_2: 'Two-pass with automatic refine: pass 1 measures, pass 2 corrects, pass 3 verifies. If the residual is above 0.1 LU, correction runs again with trimmed gain.',
  cl_lc_100_3: '3-band LRA processor (Linkwitz-Riley 4th order with perfect reconstruction) pulls every LRA into the broadcast corridor, no pumping, no phase artefacts.',
- cl_lc_100_4: 'Mono to 9.1.6 with BS.1770-compliant LFE weighting. DSP engine byte-identical to pegelWERK broadcast METER, measure and correct with the same truth.',
+ cl_lc_100_4: 'Mono to 9.1.6 with BS.1770-compliant LFE weighting. DSP engine byte-identical to pegelWERK loudness METER PRO, measure and correct with the same truth.',
  cl_od_141_t: 'Noise removal now works on imported, finished recordings too',
  cl_od_141_1: 'The per-track NR switch now also applies to imported recordings marked as "finished" — noise removal can be enabled everywhere (still off by default, so finished files stay untouched).',
  cl_od_141_2: 'Minor licensing fix for long-term offline use.',
@@ -565,7 +565,7 @@ const i18n = {
  cl_od_100_2: 'One-click AutoMix, voice channel strip (HP80, EQ, comp, sat) + ducker (-4 dB, 150 ms release) + bus glue + R128 normalisation to -23 LUFS.',
  cl_od_100_3: 'smart PROMPTER with on-device speech recognition, the text highlight follows the voice automatically, no manual scrolling during recording.',
  cl_od_100_4: 'Export, stereo WAV (mix + voice stem), video mux with MXF round-trip for broadcast workflows, MP4 for streaming.',
- cl_od_100_5: 'License architecture identical to broadcast METER, plain-file license storage (no Keychain prompt), 7-day trial without account, buyer email watermarked in the About window.',
+ cl_od_100_5: 'License architecture identical to loudness METER PRO, plain-file license storage (no Keychain prompt), 7-day trial without account, buyer email watermarked in the About window.',
  cl_lc_p: '<strong>Offline R128 correction · 16 delivery presets · verify-and-refine · mono to 9.1.6.</strong> Engine is functional, currently fine-tuning the preset system and batch pipeline.',
  cl_note: 'Note: We release only when a tool runs reliably in the workflow, no fixed dates, no pre-orders. If you want to be notified when a tool goes live, send a short email to <a href="mailto:info@pegelwerk.com?subject=Launch-Notification">info@pegelwerk.com</a> with the tool name.',
  f_shop: 'Shop', f_support: 'Support', f_manage: 'Manage License', f_terms: 'Terms', f_refund: 'Refund', f_imprint: 'Legal', f_privacy: 'Privacy',

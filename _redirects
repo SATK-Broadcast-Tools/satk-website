@@ -1,5 +1,5 @@
 # Cloudflare Pages — _redirects
-# Übersetzung von .htaccess RewriteRules
+# Pretty-URL-Mapping (die alte IONOS-.htaccess ist gelöscht)
 # Format: <from> <to> <status>
 # Wildcards: :splat erfasst den Rest
 

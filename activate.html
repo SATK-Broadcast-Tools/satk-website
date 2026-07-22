@@ -51,7 +51,8 @@
     if (token) {
       // Build the app deep-link in the exact format the app's URL handler expects
       // (raw token; base64url is URL-safe). license_id optional.
-      var target = s + '://activate?token=' + token + (lic ? '&license_id=' + lic : '');
+      var target = s + '://activate?token=' + encodeURIComponent(token)
+                 + (lic ? '&license_id=' + encodeURIComponent(lic) : '');
       document.getElementById('manual').setAttribute('href', target);
       // Auto-launch the app.
       location.href = target;

@@ -9,13 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=7">
 <link rel="canonical" href="https://pegelwerk.com/voyzsession">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>voyzSESSION - die DAW für Sprachproduktion, Mac und iPad | pegelWERK</title>
-<meta name="description" content="voyzSESSION: die DAW für Sprachproduktion. Record. Auto Mix. Deliver. Auto Mix nach EBU R128, ATSC A/85, ARIB TR-B32 und OP-59, DNN-Entrauschung, Script-Editor, AU/VST3-Inserts, MXF-Delivery. Für Mac und iPad.">
+<title>voyzSESSION PRO - die DAW für Sprachproduktion am Mac | pegelWERK</title>
+<meta name="description" content="voyzSESSION PRO: die DAW für Sprachproduktion am Mac. Record. Auto Mix. Deliver. Auto Mix nach EBU R128, ATSC A/85, ARIB TR-B32 und OP-59, DNN-Entrauschung, Script-Editor, AU/VST3-Inserts, MXF-Delivery. Für macOS; für das iPad gibt es voyzSESSION im App Store.">
 
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="voyzSESSION - eine Session, zwei Arbeitsweisen">
-<meta property="og:description" content="Record. Auto Mix. Deliver. Assist mischt normgerecht von allein, Manual gibt dir die volle DAW: AU/VST3-Inserts, Stems, Hardware-Konsole, MXF-Delivery. Mac und iPad.">
+<meta property="og:title" content="voyzSESSION PRO - eine Session, zwei Arbeitsweisen">
+<meta property="og:description" content="Record. Auto Mix. Deliver. Assist mischt normgerecht von allein, Manual gibt dir die volle DAW: AU/VST3-Inserts, Stems, Hardware-Konsole, MXF-Delivery. Für den Mac.">
 <meta property="og:url" content="https://pegelwerk.com/voyzsession">
 <meta property="og:image" content="https://pegelwerk.com/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -23,19 +23,19 @@
 <meta property="og:site_name" content="pegelWERK">
 <meta property="og:locale" content="de_DE">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="voyzSESSION - die DAW für Sprachproduktion">
-<meta name="twitter:description" content="Record. Auto Mix. Deliver. Auto Mix nach R128, A/85, TR-B32, OP-59. Script-Editor, AU/VST3-Inserts, MXF-Delivery. Mac und iPad.">
+<meta name="twitter:title" content="voyzSESSION PRO - die DAW für Sprachproduktion">
+<meta name="twitter:description" content="Record. Auto Mix. Deliver. Auto Mix nach R128, A/85, TR-B32, OP-59. Script-Editor, AU/VST3-Inserts, MXF-Delivery. Für den Mac.">
 <meta name="twitter:image" content="https://pegelwerk.com/og-image.png">
 <link href="fonts.css" rel="stylesheet">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
  "@type": "SoftwareApplication",
- "name": "pegelWERK voyzSESSION",
- "description": "Die DAW für Sprachproduktion - Voice-over, Beitrag, Podcast, Hörspiel. Assist mischt automatisch normgerecht (EBU R128, ATSC A/85, ARIB TR-B32, OP-59), Manual bietet den vollen DAW-Umfang: AU/VST3-Inserts, Einzelspur-Stems, Hardware-Konsolen, MXF-Delivery. Prompter und Script-Editor an Bord. Für Mac und iPad.",
+ "name": "pegelWERK voyzSESSION PRO",
+ "description": "Die DAW für Sprachproduktion - Voice-over, Beitrag, Podcast, Hörspiel. Assist mischt automatisch normgerecht (EBU R128, ATSC A/85, ARIB TR-B32, OP-59), Manual bietet den vollen DAW-Umfang: AU/VST3-Inserts, Einzelspur-Stems, Hardware-Konsolen, MXF-Delivery. Prompter und Script-Editor an Bord. Für macOS; die iPad-App heißt voyzSESSION.",
  "applicationCategory": "MultimediaApplication",
  "applicationSubCategory": "Voice Recording & Broadcast Mixing",
- "operatingSystem": "macOS 12+, iPadOS 16+",
+ "operatingSystem": "macOS 12+",
  "url": "https://pegelwerk.com/voyzsession",
  "image": "https://pegelwerk.com/img-overdub-studio.webp?v=7",
  "screenshot": "https://pegelwerk.com/img-overdub-studio.webp?v=7",
@@ -138,6 +138,10 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .btn-primary:hover{opacity:.85}
 .btn-ghost{color:var(--mu2);border:1px solid var(--bd)}
 .btn-ghost:hover{color:var(--tx);border-color:rgba(18,208,255,.35)}
+/* Ehrlicher Vorlauf-Hinweis: die Seite beschreibt das kommende Update. */
+.notice{max-width:640px;margin:30px auto 0;padding:13px 22px;border:1px solid rgba(18,208,255,.32);
+ border-radius:10px;background:rgba(18,208,255,.06);color:var(--mu2);font-size:13px;line-height:1.65;text-align:center}
+.notice b{color:var(--ac);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-family:'Arimo',sans-serif}
 
 /* ── Sektionen ───────────────────────────────────────────────────────── */
 .section{max-width:1120px;margin:0 auto;padding:104px 32px 0}
@@ -179,6 +183,8 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .band-row dt{font-family:'Arimo',sans-serif;font-weight:700;font-size:11px;letter-spacing:.18em;
  text-transform:uppercase;color:var(--ac);padding-top:2px}
 .band-row dd{color:var(--mu2);font-size:14px;line-height:1.6}
+.band-row dd a{color:var(--ac);text-decoration:none;border-bottom:1px solid rgba(18,208,255,.35)}
+.band-row dd a:hover{border-bottom-color:var(--ac)}
 @media(max-width:720px){
  .band-row{grid-template-columns:1fr;gap:6px}
 }
@@ -273,21 +279,22 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 <header class="field hero">
  <div class="hero-art">
  <img src="img-voyz-hero-mixer.webp?v=1" width="2200" height="1379"
-      alt="voyzSESSION: Mischpult mit Voice-, Audio- und Gruppenkanaelen, Timeline mit Wellenformen">
+      alt="voyzSESSION PRO: Mischpult mit Voice-, Audio- und Gruppenkanaelen, Timeline mit Wellenformen">
  </div>
  <div class="hero-copy">
  <p class="eyebrow">A DAW made for voice productions</p>
  <h1 class="lockup">
- <img src="logo-voyzsession-frame.png?v=1" alt="voyzSESSION">
+ <img src="logo-voyzsession-frame.png?v=1" alt="voyzSESSION PRO">
  <span class="chip">PRO</span>
  </h1>
  <p class="claim">Record. Auto Mix. Deliver.</p>
  <p class="subline" data-i18n="hero_sub">Kein Overkill. Nur Workflow.</p>
- <p class="tagline" data-i18n="hero_tag">Die DAW für Sprachproduktion: Voice-over, Beitrag, Podcast, Hörspiel. Video oder Skript laden, sprechen, fertig — Auto Mix bringt alles auf Sendelautstärke, der Export geht als WAV, MXF oder direkt mit dem Video raus. Für Mac und iPad.</p>
+ <p class="tagline" data-i18n="hero_tag">Die DAW für Sprachproduktion: Voice-over, Beitrag, Podcast, Hörspiel. Video oder Skript laden, sprechen, fertig — Auto Mix bringt alles auf Sendelautstärke, der Export geht als WAV, MXF oder direkt mit dem Video raus. Für den Mac - die iPad-App heißt voyzSESSION.</p>
  <div class="cta-row">
  <a class="btn-primary" href="/mac" data-i18n="cta_trial">Kostenlos 7 Tage testen</a>
  <a class="btn-ghost" href="#modes" data-i18n="cta_more">Was drinsteckt</a>
  </div>
+ <p class="notice" data-i18n-html="hero_notice"><b>Bald verfügbar</b> — die hier beschriebenen Funktionen kommen mit dem nächsten Update, voraussichtlich am 1. September 2026. Zum Herunterladen steht heute Version 1.4.1 bereit.</p>
  </div>
 </header>
 
@@ -295,7 +302,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 <section class="field" id="modes">
  <div class="modes-art">
  <img src="img-voyz-hero-timeline.webp?v=1" width="2200" height="1381" loading="lazy"
-      alt="voyzSESSION: Script links, Video rechts, darunter die Timeline mit Voice- und Bett-Spur">
+      alt="voyzSESSION PRO: Script links, Video rechts, darunter die Timeline mit Voice- und Bett-Spur">
  </div>
  <div class="modes-body">
  <h2 class="eyebrow">One session, two ways to work</h2>
@@ -338,6 +345,10 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <dd data-i18n="b_plugins">AU und VST3, fünf Insert-Plätze je Kanal, dazu Voice-, IT/FX- und Master-Gruppe (macOS)</dd>
  </div>
  <div class="band-row">
+ <dt>Virtual Video I/O</dt>
+ <dd data-i18n="b_camera">Die Session erscheint als eigene Kamera — in jeder App, die eine Kamera nimmt. Mit eingebranntem Timecode und Vorlaufzähler, ohne Zusatzsoftware (macOS)</dd>
+ </div>
+ <div class="band-row">
  <dt>Controller</dt>
  <dd data-i18n="b_controller">MakePro X (MPX), Mackie MCU, OSC</dd>
  </div>
@@ -349,7 +360,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 <section class="section" id="features">
  <p class="eyebrow" data-i18n="f_label">Highlights</p>
  <h2 class="section-h2" data-i18n="f_title">Kein Overkill. Nur Workflow.</h2>
- <p class="section-intro" data-i18n="f_intro">Keine überladene DAW, kein Setup-Abend, kein Herumprobieren. voyzSESSION ist für alle, die Sprache aufnehmen, mischen und sendefertig abliefern müssen — und die dabei trotzdem jeden Griff selbst machen können wollen, wenn sie es brauchen.</p>
+ <p class="section-intro" data-i18n="f_intro">Keine überladene DAW, kein Setup-Abend, kein Herumprobieren. voyzSESSION PRO ist für alle, die Sprache aufnehmen, mischen und sendefertig abliefern müssen — und die dabei trotzdem jeden Griff selbst machen können wollen, wenn sie es brauchen.</p>
 
  <div class="features">
  <div class="feature">
@@ -386,9 +397,9 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 
  <figure class="prompter-figure">
  <p class="eyebrow" data-i18n="pr_eyebrow">smart PROMPTER</p>
- <p class="prompter-sub" data-i18n="pr_sub">Skript links, Video rechts, Timeline darunter — eine Seite. Der Text scrollt mit deiner Stimme, in jeder Sprache, die die Spracherkennung deines Geräts kennt. Auf dem Mac wie auf dem iPad.</p>
- <img src="img-overdub-studio-prompter.webp?v=6" loading="lazy" alt="voyzSESSION, Prompter-Ansicht: Skript links, Video rechts, Text läuft mit der Stimme mit">
- <figcaption data-i18n="pr_caption">Aufgenommen in pegelWERK voyzSESSION</figcaption>
+ <p class="prompter-sub" data-i18n="pr_sub">Skript links, Video rechts, Timeline darunter — eine Seite. Der Text scrollt mit deiner Stimme, in jeder Sprache, die die Spracherkennung deines Geräts kennt. Die iPad-App voyzSESSION hat ihn ebenso.</p>
+ <img src="img-overdub-studio-prompter.webp?v=6" loading="lazy" alt="voyzSESSION PRO, Prompter-Ansicht: Skript links, Video rechts, Text läuft mit der Stimme mit">
+ <figcaption data-i18n="pr_caption">Aufgenommen in pegelWERK voyzSESSION PRO</figcaption>
  </figure>
 </section>
 
@@ -425,7 +436,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 <section class="section" id="specs">
  <p class="eyebrow" data-i18n="s_label">Technische Details</p>
  <h2 class="section-h2" data-i18n="s_title">Built for Production</h2>
- <p class="section-intro" data-i18n="s_intro">Nativ in C++ auf JUCE 8. Alles läuft lokal auf deinem Rechner: kein Cloud-Sync, kein Upload, kein Streaming.</p>
+ <p class="section-intro" data-i18n="s_intro">Nativ in C++ auf JUCE 8. Alles läuft lokal auf deinem Rechner: kein Cloud-Sync, kein Upload, kein Streaming. Die Angaben beschreiben das kommende Update (voraussichtlich 1. September 2026).</p>
 
  <dl class="band" style="margin-top:0">
  <div class="band-row"><dt>Loudness</dt><dd>ITU-R BS.1770-4 · EBU R128 · ATSC A/85 · ARIB TR-B32 · OP-59</dd></div>
@@ -439,12 +450,13 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="band-row"><dt>Prompter</dt><dd data-i18n="s_pr">Apple-Spracherkennung, Sprache frei wählbar und unabhängig von der App-Sprache</dd></div>
  <div class="band-row"><dt>Controller</dt><dd data-i18n="s_ctl">Mackie MCU · OSC · Web-Konsole für MakePro X (macOS)</dd></div>
  <div class="band-row"><dt>Remote</dt><dd data-i18n="s_rem">Cue-Ausgang und Talkback auf eigenen Ausgängen — kein Aggregat-Gerät nötig</dd></div>
+ <div class="band-row"><dt>Virtual Camera</dt><dd data-i18n="s_cam">Eigene Systemerweiterung im App-Bundle, meldet sich auf Wunsch selbst beim System an; Bild mit Timecode und Vorlaufzähler (macOS)</dd></div>
  <div class="band-row"><dt>Video In</dt><dd>MP4 · MOV · M4V · MXF</dd></div>
  <div class="band-row"><dt>MXF Delivery</dt><dd data-i18n="s_mxf">8 Sound-Tracks, Kanalziel wählbar, M&amp;E der Quelle bleibt erhalten · EBU R128 · US ATSC · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10</dd></div>
  <div class="band-row"><dt>Audio Export</dt><dd data-i18n="s_exp">WAV · AIFF · AAC (.m4a) · MP3 · 44,1 / 48 / 88,2 / 96 kHz · 16 Bit, 24 Bit, 32 Bit Float · Mix, Voice-Stem und Stems je Spur</dd></div>
  <div class="band-row"><dt>Subtitles</dt><dd>SubRip (.srt) · WebVTT (.vtt)</dd></div>
  <div class="band-row"><dt>macOS</dt><dd data-i18n="s_mac">12 oder neuer (13+ empfohlen), Universal Binary für Apple Silicon und Intel</dd></div>
- <div class="band-row"><dt>iPad</dt><dd data-i18n="s_ipad">iPadOS 16 oder neuer — mit Prompter</dd></div>
+ <div class="band-row"><dt>iPad</dt><dd data-i18n-html="s_ipad">Eigenes Produkt: <a href="/voyzsession-ios">voyzSESSION für iPad</a>, iPadOS 16 oder neuer — ebenfalls mit Prompter</dd></div>
  </dl>
 </section>
 
@@ -452,7 +464,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 <section class="section">
  <p class="eyebrow" data-i18n="c_label">Was es nicht ist</p>
  <h2 class="section-h2" data-i18n-html="c_title">Kein Baukasten.<br>Ein Werkzeug.</h2>
- <p class="section-intro" data-i18n="c_p">voyzSESSION ist kein Baukasten, sondern ein Werkzeug. Für schnelle, professionelle Sprachproduktion im Redaktionsalltag — und für den Tag, an dem es doch von Hand gemischt werden muss. Einmal installieren, sofort arbeiten. Keine Cloud, alles bleibt lokal.</p>
+ <p class="section-intro" data-i18n="c_p">voyzSESSION PRO ist kein Baukasten, sondern ein Werkzeug. Für schnelle, professionelle Sprachproduktion im Redaktionsalltag — und für den Tag, an dem es doch von Hand gemischt werden muss. Einmal installieren, sofort arbeiten. Keine Cloud, alles bleibt lokal.</p>
 </section>
 
 <footer>
@@ -495,9 +507,10 @@ const i18n = {
  nav_ios: 'iOS Apps',
 
  hero_sub: 'Kein Overkill. Nur Workflow.',
- hero_tag: 'Die DAW für Sprachproduktion: Voice-over, Beitrag, Podcast, Hörspiel. Video oder Skript laden, sprechen, fertig — Auto Mix bringt alles auf Sendelautstärke, der Export geht als WAV, MXF oder direkt mit dem Video raus. Für Mac und iPad.',
+ hero_tag: 'Die DAW für Sprachproduktion: Voice-over, Beitrag, Podcast, Hörspiel. Video oder Skript laden, sprechen, fertig — Auto Mix bringt alles auf Sendelautstärke, der Export geht als WAV, MXF oder direkt mit dem Video raus. Für den Mac - die iPad-App heißt voyzSESSION.',
  cta_trial: 'Kostenlos 7 Tage testen',
  cta_more: 'Was drinsteckt',
+ hero_notice: '<b>Bald verfügbar</b> — die hier beschriebenen Funktionen kommen mit dem nächsten Update, voraussichtlich am 1. September 2026. Zum Herunterladen steht heute Version 1.4.1 bereit.',
 
  m_assist_sub: 'Klang formen, normgerecht abliefern',
  m_a1: 'Auto Mix: R128 · A/85 · TR-B32 · OP-59',
@@ -516,11 +529,12 @@ const i18n = {
 
  b_delivery: 'MXF mit 8 Sound-Tracks, M&E der Quelle bleibt erhalten · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10 · WAV · SRT/VTT',
  b_plugins: 'AU und VST3, fünf Insert-Plätze je Kanal, dazu Voice-, IT/FX- und Master-Gruppe (macOS)',
+ b_camera: 'Die Session erscheint als eigene Kamera — in jeder App, die eine Kamera nimmt. Mit eingebranntem Timecode und Vorlaufzähler, ohne Zusatzsoftware (macOS)',
  b_controller: 'MakePro X (MPX), Mackie MCU, OSC',
 
  f_label: 'Highlights',
  f_title: 'Kein Overkill. Nur Workflow.',
- f_intro: 'Keine überladene DAW, kein Setup-Abend, kein Herumprobieren. voyzSESSION ist für alle, die Sprache aufnehmen, mischen und sendefertig abliefern müssen — und die dabei trotzdem jeden Griff selbst machen können wollen, wenn sie es brauchen.',
+ f_intro: 'Keine überladene DAW, kein Setup-Abend, kein Herumprobieren. voyzSESSION PRO ist für alle, die Sprache aufnehmen, mischen und sendefertig abliefern müssen — und die dabei trotzdem jeden Griff selbst machen können wollen, wenn sie es brauchen.',
  f1_h: 'Ein Klick, sendefertig',
  f1_p: 'Stimme, Musik und Effekte kommen automatisch in Balance — auf die Norm, die du brauchst: EBU R128, ATSC A/85, ARIB TR-B32 oder OP-59. Dazu Profile für Podcast, YouTube und Hörbuch. Kein Reglerklicken, kein Nachmischen.',
  f2_h: 'Klingt sofort sendefähig',
@@ -535,8 +549,8 @@ const i18n = {
  f6_p: 'MXF mit acht Sound-Tracks, das M&E der Quelle bleibt erhalten. Fertige Profile für ARD/ZDF HDF01a, ARIB RDD9 und CST AS-10 — und dazu Video-Mux, WAV, AIFF, AAC und MP3.',
 
  pr_eyebrow: 'smart PROMPTER',
- pr_sub: 'Skript links, Video rechts, Timeline darunter — eine Seite. Der Text scrollt mit deiner Stimme, in jeder Sprache, die die Spracherkennung deines Geräts kennt. Auf dem Mac wie auf dem iPad.',
- pr_caption: 'Aufgenommen in pegelWERK voyzSESSION',
+ pr_sub: 'Skript links, Video rechts, Timeline darunter — eine Seite. Der Text scrollt mit deiner Stimme, in jeder Sprache, die die Spracherkennung deines Geräts kennt. Die iPad-App voyzSESSION hat ihn ebenso.',
+ pr_caption: 'Aufgenommen in pegelWERK voyzSESSION PRO',
 
  w_label: 'Funktionsweise',
  w_title: 'In 4 Schritten zum fertigen Beitrag',
@@ -551,7 +565,7 @@ const i18n = {
 
  s_label: 'Technische Details',
  s_title: 'Built for Production',
- s_intro: 'Nativ in C++ auf JUCE 8. Alles läuft lokal auf deinem Rechner: kein Cloud-Sync, kein Upload, kein Streaming.',
+ s_intro: 'Nativ in C++ auf JUCE 8. Alles läuft lokal auf deinem Rechner: kein Cloud-Sync, kein Upload, kein Streaming. Die Angaben beschreiben das kommende Update (voraussichtlich 1. September 2026).',
  s_tp: '4-fach überabgetasteter FIR-Limiter',
  s_nr: 'DeepFilterNet 3 (ONNX Runtime) · SmartDenoiser (FFT) als klassische Stufe',
  s_duck: 'SmartDucker, Mehrband, mit Look-ahead',
@@ -560,14 +574,15 @@ const i18n = {
  s_pr: 'Apple-Spracherkennung, Sprache frei wählbar und unabhängig von der App-Sprache',
  s_ctl: 'Mackie MCU · OSC · Web-Konsole für MakePro X (macOS)',
  s_rem: 'Cue-Ausgang und Talkback auf eigenen Ausgängen — kein Aggregat-Gerät nötig',
+ s_cam: 'Eigene Systemerweiterung im App-Bundle, meldet sich auf Wunsch selbst beim System an; Bild mit Timecode und Vorlaufzähler (macOS)',
  s_mxf: '8 Sound-Tracks, Kanalziel wählbar, M&E der Quelle bleibt erhalten · EBU R128 · US ATSC · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10',
  s_exp: 'WAV · AIFF · AAC (.m4a) · MP3 · 44,1 / 48 / 88,2 / 96 kHz · 16 Bit, 24 Bit, 32 Bit Float · Mix, Voice-Stem und Stems je Spur',
  s_mac: '12 oder neuer (13+ empfohlen), Universal Binary für Apple Silicon und Intel',
- s_ipad: 'iPadOS 16 oder neuer — mit Prompter',
+ s_ipad: 'Eigenes Produkt: <a href="/voyzsession-ios">voyzSESSION für iPad</a>, iPadOS 16 oder neuer — ebenfalls mit Prompter',
 
  c_label: 'Was es nicht ist',
  c_title: 'Kein Baukasten.<br>Ein Werkzeug.',
- c_p: 'voyzSESSION ist kein Baukasten, sondern ein Werkzeug. Für schnelle, professionelle Sprachproduktion im Redaktionsalltag — und für den Tag, an dem es doch von Hand gemischt werden muss. Einmal installieren, sofort arbeiten. Keine Cloud, alles bleibt lokal.',
+ c_p: 'voyzSESSION PRO ist kein Baukasten, sondern ein Werkzeug. Für schnelle, professionelle Sprachproduktion im Redaktionsalltag — und für den Tag, an dem es doch von Hand gemischt werden muss. Einmal installieren, sofort arbeiten. Keine Cloud, alles bleibt lokal.',
 
  f_manage: 'Lizenz verwalten',
  f_changelog: 'Changelog',
@@ -589,9 +604,10 @@ const i18n = {
  nav_ios: 'iOS Apps',
 
  hero_sub: 'No overkill. Just workflow.',
- hero_tag: 'The DAW for voice productions: voice-over, news pieces, podcast, radio drama. Load a video or a script, speak, done — Auto Mix balances everything to broadcast level, and the export goes out as WAV, MXF or muxed straight back into the video. For Mac and iPad.',
+ hero_tag: 'The DAW for voice productions: voice-over, news pieces, podcast, radio drama. Load a video or a script, speak, done — Auto Mix balances everything to broadcast level, and the export goes out as WAV, MXF or muxed straight back into the video. For the Mac - the iPad app is called voyzSESSION.',
  cta_trial: 'Try it free for 7 days',
  cta_more: 'What is inside',
+ hero_notice: '<b>Coming soon</b> — the features described here arrive with the next update, expected 1 September 2026. The download available today is version 1.4.1.',
 
  m_assist_sub: 'sound shaping, compliant out',
  m_a1: 'Auto Mix: R128 · A/85 · TR-B32 · OP-59',
@@ -610,11 +626,12 @@ const i18n = {
 
  b_delivery: 'MXF with 8 sound tracks, the source M&E is preserved · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10 · WAV · SRT/VTT',
  b_plugins: 'AU and VST3, five insert slots per channel, plus voice, IT/FX and master group (macOS)',
+ b_camera: 'Your session shows up as a camera of its own — in any app that takes a camera. With timecode and preroll countdown burned in, no extra software (macOS)',
  b_controller: 'MakePro X (MPX), Mackie MCU, OSC',
 
  f_label: 'Highlights',
  f_title: 'No overkill. Just workflow.',
- f_intro: 'No bloated DAW, no evening spent on setup, no guesswork. voyzSESSION is for everyone who has to record, mix and deliver speech ready for air — and who still wants every control under their own hand on the day it matters.',
+ f_intro: 'No bloated DAW, no evening spent on setup, no guesswork. voyzSESSION PRO is for everyone who has to record, mix and deliver speech ready for air — and who still wants every control under their own hand on the day it matters.',
  f1_h: 'One click, broadcast-ready',
  f1_p: 'Voice, music and effects are balanced automatically, to whichever standard you need: EBU R128, ATSC A/85, ARIB TR-B32 or OP-59. Plus presets for podcast, YouTube and audiobook. No knob-tweaking, no remixing.',
  f2_h: 'Sounds broadcast-ready immediately',
@@ -629,8 +646,8 @@ const i18n = {
  f6_p: 'MXF with eight sound tracks, the source M&E stays intact. Ready-made profiles for ARD/ZDF HDF01a, ARIB RDD9 and CST AS-10 — plus video mux, WAV, AIFF, AAC and MP3.',
 
  pr_eyebrow: 'smart PROMPTER',
- pr_sub: 'Script on the left, video on the right, timeline below — one page. The text scrolls with your voice, in every language your device speech recognition knows. On the Mac and on the iPad alike.',
- pr_caption: 'Captured in pegelWERK voyzSESSION',
+ pr_sub: 'Script on the left, video on the right, timeline below — one page. The text scrolls with your voice, in every language your device speech recognition knows. The iPad app voyzSESSION has it too.',
+ pr_caption: 'Captured in pegelWERK voyzSESSION PRO',
 
  w_label: 'How it works',
  w_title: 'From video to finished segment in 4 steps',
@@ -645,7 +662,7 @@ const i18n = {
 
  s_label: 'Technical Details',
  s_title: 'Built for Production',
- s_intro: 'Native C++ on JUCE 8. Everything runs locally on your machine: no cloud sync, no upload, no streaming.',
+ s_intro: 'Native C++ on JUCE 8. Everything runs locally on your machine: no cloud sync, no upload, no streaming. These figures describe the coming update (expected 1 September 2026).',
  s_tp: '4x oversampled FIR limiter',
  s_nr: 'DeepFilterNet 3 (ONNX Runtime) · SmartDenoiser (FFT) as the classic stage',
  s_duck: 'SmartDucker, multiband, with look-ahead',
@@ -654,14 +671,15 @@ const i18n = {
  s_pr: 'Apple speech recognition, language freely selectable and independent of the app language',
  s_ctl: 'Mackie MCU · OSC · web console for MakePro X (macOS)',
  s_rem: 'Cue output and talkback on their own outputs — no aggregate device needed',
+ s_cam: 'Its own system extension inside the app bundle, registers with the system on request; picture carries timecode and preroll countdown (macOS)',
  s_mxf: '8 sound tracks, channel target selectable, the source M&E is preserved · EBU R128 · US ATSC · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10',
  s_exp: 'WAV · AIFF · AAC (.m4a) · MP3 · 44.1 / 48 / 88.2 / 96 kHz · 16-bit, 24-bit, 32-bit float · mix, voice stem and per-track stems',
  s_mac: '12 or newer (13+ recommended), Universal Binary for Apple Silicon and Intel',
- s_ipad: 'iPadOS 16 or newer — with the prompter',
+ s_ipad: 'A product of its own: <a href="/voyzsession-ios">voyzSESSION for iPad</a>, iPadOS 16 or newer — with the prompter as well',
 
  c_label: 'What it is not',
  c_title: 'Not a kit.<br>A tool.',
- c_p: 'voyzSESSION is not a kit, it is a tool. For fast, professional voice production in the editorial day — and for the day it has to be mixed by hand after all. Install once, work immediately. No cloud, everything stays local.',
+ c_p: 'voyzSESSION PRO is not a kit, it is a tool. For fast, professional voice production in the editorial day — and for the day it has to be mixed by hand after all. Install once, work immediately. No cloud, everything stays local.',
 
  f_manage: 'Manage License',
  f_changelog: 'Changelog',

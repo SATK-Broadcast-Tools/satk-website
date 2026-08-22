@@ -9,13 +9,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=7">
 <link rel="canonical" href="https://pegelwerk.com/voyzsession">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>voyzSESSION - Voice-over &amp; Podcast vertonen am Mac, sendefertig | pegelWERK</title>
-<meta name="description" content="voyzSESSION: die Voice Workstation für Voice-over und Podcast. Video oder Skript laden, sprechen, fertig - Auto-Mix nach EBU R128, smart Prompter, MXF-Round-Trip. Für Mac und iPad.">
+<title>voyzSESSION - die DAW für Sprachproduktion, Mac und iPad | pegelWERK</title>
+<meta name="description" content="voyzSESSION: die DAW für Sprachproduktion. Record. Auto Mix. Deliver. Auto Mix nach EBU R128, ATSC A/85, ARIB TR-B32 und OP-59, DNN-Entrauschung, Script-Editor, AU/VST3-Inserts, MXF-Delivery. Für Mac und iPad.">
 
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="voyzSESSION - die Voice Workstation für Voice-over &amp; Podcast">
-<meta property="og:description" content="Von der Idee zum sendefertigen Master in einer App. Auto-Mix nach EBU R128, smart Prompter, MXF-Round-Trip. Für Voice-over und Podcast, auf Mac und iPad.">
+<meta property="og:title" content="voyzSESSION - eine Session, zwei Arbeitsweisen">
+<meta property="og:description" content="Record. Auto Mix. Deliver. Assist mischt normgerecht von allein, Manual gibt dir die volle DAW: AU/VST3-Inserts, Stems, Hardware-Konsole, MXF-Delivery. Mac und iPad.">
 <meta property="og:url" content="https://pegelwerk.com/voyzsession">
 <meta property="og:image" content="https://pegelwerk.com/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -23,8 +23,8 @@
 <meta property="og:site_name" content="pegelWERK">
 <meta property="og:locale" content="de_DE">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="voyzSESSION - Voice Workstation für Voice-over &amp; Podcast">
-<meta name="twitter:description" content="Von der Idee zum sendefertigen Master. Auto-Mix nach EBU R128, smart Prompter, MXF-Round-Trip. Voice-over und Podcast, Mac und iPad.">
+<meta name="twitter:title" content="voyzSESSION - die DAW für Sprachproduktion">
+<meta name="twitter:description" content="Record. Auto Mix. Deliver. Auto Mix nach R128, A/85, TR-B32, OP-59. Script-Editor, AU/VST3-Inserts, MXF-Delivery. Mac und iPad.">
 <meta name="twitter:image" content="https://pegelwerk.com/og-image.png">
 <link href="fonts.css" rel="stylesheet">
 <script type="application/ld+json">
@@ -32,21 +32,33 @@
  "@context": "https://schema.org",
  "@type": "SoftwareApplication",
  "name": "pegelWERK voyzSESSION",
- "description": "Die Voice Workstation für Voice-over und Podcast - ohne Technikstress. Vom Skript bis zum sendefertigen Beitrag in einer App. Auto-Mix nach EBU R128, smart Prompter (macOS), MXF-Round-Trip. Für Mac und iPad.",
+ "description": "Die DAW für Sprachproduktion - Voice-over, Beitrag, Podcast, Hörspiel. Assist mischt automatisch normgerecht (EBU R128, ATSC A/85, ARIB TR-B32, OP-59), Manual bietet den vollen DAW-Umfang: AU/VST3-Inserts, Einzelspur-Stems, Hardware-Konsolen, MXF-Delivery. Prompter und Script-Editor an Bord. Für Mac und iPad.",
  "applicationCategory": "MultimediaApplication",
- "applicationSubCategory": "Voice-over & Podcast Recording",
- "operatingSystem": "macOS 13+, iPadOS 16+",
+ "applicationSubCategory": "Voice Recording & Broadcast Mixing",
+ "operatingSystem": "macOS 12+, iPadOS 16+",
  "url": "https://pegelwerk.com/voyzsession",
  "image": "https://pegelwerk.com/img-overdub-studio.webp?v=7",
  "screenshot": "https://pegelwerk.com/img-overdub-studio.webp?v=7",
- "offers": {
+ "offers": [
+ {
  "@type": "Offer",
- "name": "Standalone macOS",
- "price": "199.00",
+ "name": "Abo monatlich",
+ "price": "24.99",
  "priceCurrency": "EUR",
  "availability": "https://schema.org/InStock",
- "category": "Software License"
+ "category": "Subscription",
+ "url": "https://pegelwerk.com/mac"
  },
+ {
+ "@type": "Offer",
+ "name": "Abo jährlich",
+ "price": "249.00",
+ "priceCurrency": "EUR",
+ "availability": "https://schema.org/InStock",
+ "category": "Subscription",
+ "url": "https://pegelwerk.com/mac"
+ }
+ ],
  "publisher": {
  "@type": "Organization",
  "name": "pegelWERK",
@@ -57,137 +69,183 @@
 }
 </script>
 <style>
-:root{--bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#12d0ff;--tx:#e8e8ec;--mu:#9a9aa8;--mu2:#d4d4dc}
+:root{
+ --bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#12d0ff;--tx:#e8e8ec;--mu:#9a9aa8;--mu2:#d4d4dc;
+ --bl:#2b4bd8;--gr:#b6e34a;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
  padding:16px 48px;background:rgba(10,10,11,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
  border-bottom:1px solid rgba(255,255,255,.04)}
 .nav-logo{display:inline-flex;flex-direction:column;align-items:stretch;gap:5px;text-decoration:none;line-height:1}
-.nav-logo-mark{font-family:'Arimo',sans-serif;font-weight:700;font-size:20px;color:var(--ac);letter-spacing:1px}.nav-logo-img{height:45px;width:auto;display:block;align-self:flex-start}
-.nav-logo-accent{color:var(--tx)}
-.nav-logo-sub{font-family:'Inter',sans-serif;font-size:8px;color:var(--mu);letter-spacing:1.5px;text-transform:uppercase;font-weight:300;white-space:nowrap}
+.nav-logo-img{height:45px;width:auto;display:block;align-self:flex-start}
 .nav-links{display:flex;gap:32px;align-items:center}
-.nav-links a{color:var(--mu2);text-decoration:none;font-size:11px;letter-spacing:.5px;transition:color .2s}
+.nav-links a{color:var(--mu2);text-decoration:none;font-size:12px;letter-spacing:.5px;transition:color .2s}
 .nav-links a:hover{color:var(--tx)}
-.nav-back{color:var(--mu);font-size:10px;letter-spacing:.5px;text-decoration:none;opacity:.6;transition:opacity .2s}
-.nav-back:hover{opacity:1}
-
-/* ── Nav Platforms (Pill-Tabs) ─────── */
 .nav-platforms{display:flex;gap:2px;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:999px;padding:3px}
-.nav-platforms a{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:999px;color:var(--mu2);text-decoration:none;transition:all .2s}
+.nav-platforms a{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:999px;color:var(--mu2);text-decoration:none;transition:all .2s}
 .nav-platforms a.active{background:var(--ac);color:#0a0a0b}
 .nav-platforms a:hover:not(.active){color:var(--tx);background:rgba(255,255,255,.04)}
 .lang-sw{display:flex;align-items:center;gap:6px}
-.lang{font-size:10px;letter-spacing:1px;color:var(--mu);cursor:pointer;transition:color .2s}
+.lang{font-size:11px;letter-spacing:1px;color:var(--mu);cursor:pointer;transition:color .2s}
 .lang:hover{color:var(--tx)}
 .lang.active{color:var(--ac)}
-.lang-sep{color:var(--mu);font-size:10px}
+.lang-sep{color:var(--mu);font-size:11px}
 
-.product-back{padding:18px 48px 0}
-.product-back a{display:inline-flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.08em;color:var(--mu2);text-decoration:none;text-transform:uppercase;transition:color .15s}
-.product-back a:hover{color:var(--ac)}
-@media(max-width:900px){.product-back{padding:14px 20px 0}}
-@media(max-width:600px){.product-back a{font-size:9px}}
-.product-hero{text-align:center;padding:40px 32px 32px;max-width:920px;margin:0 auto}
-.product-eyebrow{font-family:'Arimo',sans-serif;font-size:11px;font-weight:700;letter-spacing:.4em;color:var(--ac);text-transform:uppercase;margin-bottom:18px}
-.product-hero h1{font-family:'Arimo',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:700;letter-spacing:-1px;line-height:1.05;margin-bottom:18px}
-.product-hero .tagline{color:var(--mu2);font-size:14px;letter-spacing:.3px;line-height:1.7;max-width:640px;margin:0 auto}
-.appstore-cta{margin-top:30px;text-align:center}
-.shop-cta-btn{display:inline-block;font-family:'Arimo',sans-serif;font-size:14px;font-weight:700;letter-spacing:.05em;color:var(--bg);background:var(--ac);padding:14px 30px;border-radius:10px;text-decoration:none;transition:opacity .15s}
-.shop-cta-btn:hover{opacity:.85}
-.product-price-chip{display:inline-block;font-family:'Arimo',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.3px;color:var(--ac);border:1px solid rgba(18,208,255,.3);padding:10px 24px;border-radius:8px;margin-top:30px}
-.product-price-chip .vat{font-size:10px;color:var(--mu);font-weight:300;letter-spacing:.4px;margin-left:10px;text-transform:uppercase}
+/* ── Postkarten-Grundelemente ────────────────────────────────────────── */
+/* Farbfeld statt Schwarz: drei weiche Blasen ueber #0a0a0b, wie auf der
+   IBC-Karte (Cyan oben rechts, Tiefblau links, pegelWERK-Gruen unten rechts). */
+.field{position:relative;isolation:isolate;overflow:hidden;background:var(--bg)}
+.field::before{content:"";position:absolute;inset:-10% -5%;z-index:-2;pointer-events:none;background:
+ radial-gradient(48% 52% at 78% 12%, rgba(18,208,255,.34) 0%, rgba(18,208,255,0) 68%),
+ radial-gradient(46% 54% at 8% 58%, rgba(43,75,216,.36) 0%, rgba(43,75,216,0) 70%),
+ radial-gradient(34% 36% at 94% 86%, rgba(182,227,74,.16) 0%, rgba(182,227,74,0) 70%)}
 
-.hero-img-wrap{max-width:1120px;margin:32px auto 0;padding:0 32px}
-.hero-img{width:100%;border:1px solid var(--bd);border-radius:10px;display:block;box-shadow:0 30px 80px rgba(0,0,0,.5)}
-.prompter-figure{max-width:720px;margin:64px auto 0;padding:0 32px;text-align:center}
-.prompter-figure .prompter-eyebrow{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:10px}
-.prompter-figure .prompter-sub{font-size:12px;color:var(--mu2);line-height:1.7;letter-spacing:.2px;max-width:540px;margin:0 auto 24px}
-.prompter-figure img{width:100%;border:1px solid var(--bd);border-radius:8px;display:block;box-shadow:0 20px 50px rgba(0,0,0,.4)}
-.prompter-figure figcaption{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mu);text-align:center;margin-top:14px}
+.eyebrow{font-family:'Arimo',sans-serif;font-weight:700;font-size:clamp(11px,1.15vw,14px);
+ letter-spacing:.22em;text-transform:uppercase;color:var(--ac);text-align:center}
+.claim{font-family:'Arimo',sans-serif;font-weight:700;font-size:clamp(30px,5.4vw,60px);
+ line-height:1.02;letter-spacing:-.8px;color:var(--tx);text-align:center}
+.subline{font-size:clamp(15px,1.7vw,20px);color:var(--mu);text-align:center}
 
-.section{max-width:1120px;margin:0 auto;padding:96px 32px 0}
-.section-label{font-family:'Arimo',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:16px;text-align:center}
-.section-h2{font-family:'Arimo',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;letter-spacing:-.5px;line-height:1.1;text-align:center;margin-bottom:14px}
-.section-intro{color:var(--mu2);font-size:15px;line-height:1.7;text-align:center;max-width:680px;margin:0 auto 56px;text-wrap:balance}
+/* ── Hero ────────────────────────────────────────────────────────────── */
+.hero{padding-bottom:40px}
+/* Die Flaeche ist bereits perspektivisch gekippt und traegt ihren Schatten
+   (make_hero.py, 4-Punkt-Projektion) — deshalb kein CSS-transform noetig.
+   Der obere Rand wird beschnitten wie auf der Karte (dort hy = -26 mm). */
+.hero-art{position:relative;max-width:1240px;margin:0 auto;padding:0 12px;
+ aspect-ratio:2.3/1;max-height:58vh}
+/* Statt eines Deck-Verlaufs wird die Flaeche selbst ausgeblendet — so laeuft
+   das Farbfeld ohne sichtbare Kante weiter (Bildunterkante = kein Absatz). */
+.hero-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 82%;
+ -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 34%,rgba(0,0,0,.55) 62%,rgba(0,0,0,0) 96%);
+ mask-image:linear-gradient(180deg,#000 0%,#000 34%,rgba(0,0,0,.55) 62%,rgba(0,0,0,0) 96%)}
+.hero-copy{position:relative;z-index:2;max-width:900px;margin:-118px auto 0;padding:0 24px;text-align:center}
+@media(max-width:900px){.hero-copy{margin-top:-70px}}
+.lockup{display:flex;align-items:center;justify-content:center;gap:14px;margin:16px 0 0}
+.lockup img{width:min(62%,430px);height:auto;display:block}
+.chip{font-family:'Arimo',sans-serif;font-weight:700;font-size:clamp(18px,2.4vw,28px);letter-spacing:.06em;
+ color:var(--bg);background:var(--ac);border-radius:8px;padding:.16em .42em;line-height:1}
+.hero-copy .claim{margin-top:26px}
+.hero-copy .subline{margin-top:12px}
+.tagline{max-width:660px;margin:22px auto 0;color:var(--mu2);font-size:15px;line-height:1.75;text-align:center;text-wrap:balance}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:32px}
+.btn-primary,.btn-ghost{display:inline-block;font-family:'Arimo',sans-serif;font-weight:700;font-size:14px;
+ letter-spacing:.05em;padding:14px 28px;border-radius:10px;text-decoration:none;transition:all .15s}
+.btn-primary{background:var(--ac);color:var(--bg)}
+.btn-primary:hover{opacity:.85}
+.btn-ghost{color:var(--mu2);border:1px solid var(--bd)}
+.btn-ghost:hover{color:var(--tx);border-color:rgba(18,208,255,.35)}
 
+/* ── Sektionen ───────────────────────────────────────────────────────── */
+.section{max-width:1120px;margin:0 auto;padding:104px 32px 0}
+.section-h2{font-family:'Arimo',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;letter-spacing:-.5px;line-height:1.1;text-align:center;margin:16px 0 14px}
+.section-intro{color:var(--mu2);font-size:15px;line-height:1.75;text-align:center;max-width:700px;margin:0 auto 56px;text-wrap:balance}
+
+/* ── Zwei-Spalten-Vergleich ASSIST / MANUAL ──────────────────────────── */
+.modes-art{position:relative;max-width:1140px;margin:0 auto;padding:0 12px;
+ aspect-ratio:2.6/1;max-height:52vh}
+.modes-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 88%;
+ -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 28%,rgba(0,0,0,.5) 58%,rgba(0,0,0,0) 94%);
+ mask-image:linear-gradient(180deg,#000 0%,#000 28%,rgba(0,0,0,.5) 58%,rgba(0,0,0,0) 94%)}
+.modes-body{position:relative;z-index:2;max-width:1120px;margin:-96px auto 0;padding:0 32px 96px}
+@media(max-width:900px){.modes-body{margin-top:-60px}}
+.modes-rule{height:1px;background:rgba(18,208,255,.45);margin:22px 0 40px}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.mode{padding:0 44px}
+.mode+.mode{border-left:1px solid rgba(232,232,236,.16)}
+.mode:first-child{padding-left:0}
+.mode:last-child{padding-right:0}
+.mode h3{font-family:'Arimo',sans-serif;font-weight:700;font-size:clamp(28px,3.4vw,42px);letter-spacing:.02em;line-height:1}
+.mode.assist h3{color:var(--ac)}
+.mode.manual h3{color:var(--tx)}
+.mode .mode-sub{color:var(--mu);font-size:15px;margin:10px 0 26px}
+.mode ul{list-style:none}
+.mode li{position:relative;padding:0 0 0 22px;margin-bottom:14px;color:var(--mu2);font-size:15px;line-height:1.45}
+.mode li::before{content:"";position:absolute;left:0;top:.42em;width:9px;height:9px}
+.mode.assist li::before{background:var(--ac)}
+.mode.manual li::before{background:rgba(232,232,236,.85)}
+@media(max-width:820px){
+ .modes{grid-template-columns:1fr}
+ .mode{padding:0}
+ .mode+.mode{border-left:none;border-top:1px solid rgba(232,232,236,.14);margin-top:40px;padding-top:36px}
+}
+
+/* ── Spec-Band (Label links gesperrt, Angabe rechts) ─────────────────── */
+.band{border-top:1px solid rgba(232,232,236,.2);margin-top:52px}
+.band-row{display:grid;grid-template-columns:230px 1fr;gap:24px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.band-row dt{font-family:'Arimo',sans-serif;font-weight:700;font-size:11px;letter-spacing:.18em;
+ text-transform:uppercase;color:var(--ac);padding-top:2px}
+.band-row dd{color:var(--mu2);font-size:14px;line-height:1.6}
+@media(max-width:720px){
+ .band-row{grid-template-columns:1fr;gap:6px}
+}
+
+/* ── Feature-Karten ──────────────────────────────────────────────────── */
 .features{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.feature{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:32px 28px;transition:transform .3s ease,border-color .3s ease;position:relative}
-.feature:hover{transform:translateY(-3px);border-color:rgba(18,208,255,.2)}
-.feature.top::before{content:"TOP";position:absolute;top:14px;right:14px;font-family:'Arimo',sans-serif;font-size:8px;font-weight:700;letter-spacing:.25em;color:var(--ac);background:rgba(18,208,255,.08);padding:3px 7px;border-radius:3px;border:1px solid rgba(18,208,255,.2)}
-.feature-icon{font-family:'Arimo',sans-serif;font-size:13px;font-weight:700;letter-spacing:.25em;color:var(--ac);margin-bottom:14px;text-transform:uppercase}
-.feature h3{font-family:'Arimo',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.2px;margin-bottom:10px;color:var(--tx)}
-.feature p{font-size:12px;color:var(--mu2);line-height:1.7}
+.feature{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:32px 28px;transition:transform .3s ease,border-color .3s ease}
+.feature:hover{transform:translateY(-3px);border-color:rgba(18,208,255,.22)}
+.feature-icon{font-family:'Arimo',sans-serif;font-size:11px;font-weight:700;letter-spacing:.22em;color:var(--ac);margin-bottom:14px;text-transform:uppercase}
+.feature h3{font-family:'Arimo',sans-serif;font-size:19px;font-weight:700;letter-spacing:-.2px;margin-bottom:10px;color:var(--tx)}
+.feature p{font-size:14px;color:var(--mu2);line-height:1.7}
 
-.workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
-.workflow-step{position:relative;padding:28px 24px;background:var(--sf);border-radius:10px;border:1px solid var(--bd)}
+/* ── Prompter-Bild ───────────────────────────────────────────────────── */
+.prompter-figure{max-width:820px;margin:88px auto 0;padding:0 32px;text-align:center}
+.prompter-figure .prompter-sub{font-size:14px;color:var(--mu2);line-height:1.75;max-width:600px;margin:14px auto 26px}
+.prompter-figure img{width:100%;border:1px solid var(--bd);border-radius:10px;display:block;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.prompter-figure figcaption{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mu);margin-top:14px}
+
+/* ── Workflow ────────────────────────────────────────────────────────── */
+.workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.workflow-step{padding:28px 24px;background:var(--sf);border-radius:12px;border:1px solid var(--bd)}
 .workflow-num{font-family:'Arimo',sans-serif;font-size:32px;font-weight:700;color:var(--ac);line-height:1;margin-bottom:14px}
-.workflow-step h3{font-family:'Arimo',sans-serif;font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px;color:var(--tx)}
-.workflow-step p{font-size:11px;color:var(--mu2);line-height:1.7}
+.workflow-step h3{font-family:'Arimo',sans-serif;font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px;color:var(--tx)}
+.workflow-step p{font-size:13px;color:var(--mu2);line-height:1.7}
 
-.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
-.spec-col{padding:32px 28px;border-right:1px solid var(--bd)}
-.spec-col:last-child{border-right:none}
-.spec-col h4{font-family:'Arimo',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:14px}
-.spec-col ul{list-style:none}
-.spec-col li{display:flex;align-items:center;gap:12px;font-size:11px;color:var(--tx);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.spec-col li:last-child{border-bottom:none}
-.spec-col li b{color:var(--ac);font-weight:500;flex:0 0 88px}
-
-footer{text-align:center;padding:72px 32px 48px;margin-top:96px;border-top:1px solid rgba(255,255,255,.03)}
-footer p{font-size:9px;color:var(--mu);letter-spacing:.3px}
-footer a{color:var(--mu2);text-decoration:none}
-footer a:hover{color:var(--ac)}
-footer .fl{font-family:'Arimo',sans-serif;font-weight:700;color:var(--ac);font-size:14px;letter-spacing:3px;margin-bottom:10px}
-
+@media(max-width:760px){
+ .hero-art{aspect-ratio:1.7/1}
+ .modes-art{aspect-ratio:1.8/1}
+}
 @media(max-width:900px){
  nav{padding:14px 20px}
  .nav-links{gap:18px}
- .features,.workflow,.specs{grid-template-columns:1fr}
- .spec-col{border-right:none;border-bottom:1px solid var(--bd)}
- .spec-col:last-child{border-bottom:none}
- .product-hero{padding:48px 20px 24px}
- .hero-img-wrap{padding:0 20px}
- .section{padding:64px 20px 0}
+ .features,.workflow{grid-template-columns:1fr}
+ .section{padding:72px 20px 0}
+ .modes-body{padding:0 20px 72px}
+ .prompter-figure{padding:0 20px}
 }
 @media(max-width:600px){
- .nav-links a:not(.nav-back){display:none}
+ .nav-links a{display:none}
+ .lockup{flex-direction:row;gap:10px}
 }
 
 .feature,.workflow-step{opacity:0;animation:rise .6s ease forwards}
-.feature:nth-child(1),.workflow-step:nth-child(1){animation-delay:.1s}
-.feature:nth-child(2),.workflow-step:nth-child(2){animation-delay:.18s}
-.feature:nth-child(3),.workflow-step:nth-child(3){animation-delay:.26s}
-.feature:nth-child(4),.workflow-step:nth-child(4){animation-delay:.34s}
-.feature:nth-child(5){animation-delay:.42s}
-.feature:nth-child(6){animation-delay:.5s}
+.feature:nth-child(1),.workflow-step:nth-child(1){animation-delay:.06s}
+.feature:nth-child(2),.workflow-step:nth-child(2){animation-delay:.13s}
+.feature:nth-child(3),.workflow-step:nth-child(3){animation-delay:.2s}
+.feature:nth-child(4),.workflow-step:nth-child(4){animation-delay:.27s}
+.feature:nth-child(5){animation-delay:.34s}
+.feature:nth-child(6){animation-delay:.41s}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-/* ── Footer (3-spaltig) ──────────── */
+@media(prefers-reduced-motion:reduce){.feature,.workflow-step{opacity:1;animation:none}}
+
+/* ── Footer (3-spaltig) ──────────────────────────────────────────────── */
 footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255,255,.06);background:#15161a;text-align:left}
 .footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1120px;margin:0 auto 48px;text-align:center}
-.footer-col h4{font-family:'Arimo',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
-.footer-col a{display:block;font-family:'Inter',sans-serif;font-size:11px;color:var(--mu2);text-decoration:none;letter-spacing:.3px;padding:5px 0;transition:color .2s}
+.footer-col h4{font-family:'Arimo',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
+.footer-col a{display:block;font-family:'Inter',sans-serif;font-size:12px;color:var(--mu2);text-decoration:none;letter-spacing:.3px;padding:5px 0;transition:color .2s}
 .footer-col a:hover{color:var(--ac)}
 .footer-col+.footer-col{border-left:1px solid rgba(255,255,255,.12)}
-.footer-bar{display:flex;justify-content:center;align-items:center;gap:16px;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'Inter',sans-serif;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
-.footer-brand{font-family:'Arimo',sans-serif;font-weight:700;color:var(--ac);font-size:14px;letter-spacing:1px}.footer-brand-img{height:17px;width:auto;display:block}
-.footer-brand-accent{color:var(--tx)}
+.footer-bar{display:flex;justify-content:center;align-items:center;gap:16px;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
+.footer-brand-img{height:17px;width:auto;display:block}
 .footer-meta{color:var(--mu2);text-transform:none;letter-spacing:.3px}
-@media(max-width:720px){.footer-grid{grid-template-columns:repeat(3,1fr);gap:24px}.footer-bar{flex-direction:column;gap:12px;text-align:center}}
+@media(max-width:720px){.footer-bar{flex-direction:column;gap:12px;text-align:center}}
 @media(max-width:600px){footer{padding:48px 24px 24px;margin-top:64px}}
-@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:32px;text-align:center}.footer-col+.footer-col{border-left:none}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:32px}.footer-col+.footer-col{border-left:none}}
 
 h1,h2,h3,h4,h5,p,li{text-wrap:balance}
-/*VB-START voyz brackets + readability*/
-.hero h1,.page-hero h1{position:relative;display:inline-block;padding:0 8px}
-.hero h1::before,.hero h1::after,.page-hero h1::before,.page-hero h1::after{content:"";position:absolute;top:-4px;bottom:-4px;width:16px;border:2px solid var(--ac);opacity:.9}
-.hero h1::before,.page-hero h1::before{left:-22px;border-right:0}
-.hero h1::after,.page-hero h1::after{right:-22px;border-left:0}
-@media(max-width:600px){.hero h1::before,.page-hero h1::before{left:-14px;width:10px}.hero h1::after,.page-hero h1::after{right:-14px;width:10px}}
-/*VB-END*/
 </style>
 </head>
 <body>
@@ -211,141 +269,190 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  </div>
 </nav>
 
+<!-- ╔══ Hero: gekippte Flaeche ueber dem Farbfeld ═══════════════════════╗ -->
+<header class="field hero">
+ <div class="hero-art">
+ <img src="img-voyz-hero-mixer.webp?v=1" width="2200" height="1379"
+      alt="voyzSESSION: Mischpult mit Voice-, Audio- und Gruppenkanaelen, Timeline mit Wellenformen">
+ </div>
+ <div class="hero-copy">
+ <p class="eyebrow">A DAW made for voice productions</p>
+ <h1 class="lockup">
+ <img src="logo-voyzsession-frame.png?v=1" alt="voyzSESSION">
+ <span class="chip">PRO</span>
+ </h1>
+ <p class="claim">Record. Auto Mix. Deliver.</p>
+ <p class="subline" data-i18n="hero_sub">Kein Overkill. Nur Workflow.</p>
+ <p class="tagline" data-i18n="hero_tag">Die DAW für Sprachproduktion: Voice-over, Beitrag, Podcast, Hörspiel. Video oder Skript laden, sprechen, fertig — Auto Mix bringt alles auf Sendelautstärke, der Export geht als WAV, MXF oder direkt mit dem Video raus. Für Mac und iPad.</p>
+ <div class="cta-row">
+ <a class="btn-primary" href="/mac" data-i18n="cta_trial">Kostenlos 7 Tage testen</a>
+ <a class="btn-ghost" href="#modes" data-i18n="cta_more">Was drinsteckt</a>
+ </div>
+ </div>
+</header>
 
-<section class="product-hero">
- <div class="product-eyebrow" data-i18n="od_eyebrow">Voice Workstation · macOS · iPad</div>
- <h1 class="hero-logo"><img src="logo-voyzsession-frame.png?v=1" alt="voyzSESSION" style="width:min(78%,560px);height:auto;display:block;margin:0 auto"></h1>
- <p class="tagline" data-i18n="od_tagline">Die Voice Workstation für Voice-over und Podcast. Zum Video vertonen oder frei ins Mikro sprechen — das Skript läuft mit, das Ergebnis ist sendefertig nach EBU R128. Ohne Technikstress, ohne DAW.</p>
- <div class="appstore-cta">
- <a class="shop-cta-btn" href="/mac" data-i18n="nav_back">Zurück zum Shop</a>
+<!-- ╔══ ONE SESSION, TWO WAYS TO WORK ══════════════════════════════════╗ -->
+<section class="field" id="modes">
+ <div class="modes-art">
+ <img src="img-voyz-hero-timeline.webp?v=1" width="2200" height="1381" loading="lazy"
+      alt="voyzSESSION: Script links, Video rechts, darunter die Timeline mit Voice- und Bett-Spur">
+ </div>
+ <div class="modes-body">
+ <h2 class="eyebrow">One session, two ways to work</h2>
+ <div class="modes-rule"></div>
+
+ <div class="modes">
+ <div class="mode assist">
+ <h3>ASSIST</h3>
+ <p class="mode-sub" data-i18n="m_assist_sub">Klang formen, normgerecht abliefern</p>
+ <ul>
+ <li data-i18n="m_a1">Auto Mix: R128 · A/85 · TR-B32 · OP-59</li>
+ <li data-i18n="m_a2">Automatische DSP: EQ, Kompressor, De-Esser</li>
+ <li data-i18n="m_a3">SmartLeveler, Mehrband-Ducker, DNN-Entrauschung</li>
+ <li data-i18n="m_a4">V-PUNCH: sprachgesteuerter Einstieg in die Aufnahme</li>
+ <li data-i18n="m_a5">AutoCut nimmt die Stille aus jedem Take</li>
+ <li data-i18n="m_a6">Script-Editor: alle Spuren, ein Text</li>
+ </ul>
+ </div>
+ <div class="mode manual">
+ <h3>MANUAL</h3>
+ <p class="mode-sub" data-i18n="m_manual_sub">nur was Sprachproduktion wirklich braucht</p>
+ <ul>
+ <li data-i18n="m_m1">Alle DAW-Standards an Bord</li>
+ <li data-i18n="m_m2">MXF: auf jede gewünschte Spur einbetten</li>
+ <li data-i18n="m_m3">Trockene Einzelspur-Stems, vor dem Bus</li>
+ <li data-i18n="m_m4">Mic Mix: Gain-Sharing-Automix je Spur</li>
+ <li data-i18n="m_m5">Hardware-Konsole anschließen</li>
+ <li data-i18n="m_m6">Fernaufnahme ohne Aggregat-Gerät</li>
+ </ul>
+ </div>
+ </div>
+
+ <dl class="band">
+ <div class="band-row">
+ <dt>International Delivery</dt>
+ <dd data-i18n="b_delivery">MXF mit 8 Sound-Tracks, M&amp;E der Quelle bleibt erhalten · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10 · WAV · SRT/VTT</dd>
+ </div>
+ <div class="band-row">
+ <dt>Plugins</dt>
+ <dd data-i18n="b_plugins">AU und VST3, fünf Insert-Plätze je Kanal, dazu Voice-, IT/FX- und Master-Gruppe (macOS)</dd>
+ </div>
+ <div class="band-row">
+ <dt>Controller</dt>
+ <dd data-i18n="b_controller">MakePro X (MPX), Mackie MCU, OSC</dd>
+ </div>
+ </dl>
  </div>
 </section>
 
-<div class="hero-img-wrap">
- <img class="hero-img" src="img-overdub-studio.webp?v=7" alt="pegelWERK voyzSESSION Interface">
-</div>
-
-<section class="section">
- <div class="section-label" data-i18n="od_features_label">Highlights</div>
- <h2 class="section-h2" data-i18n="od_features_title">Kein Overkill. Nur Workflow.</h2>
- <p class="section-intro" data-i18n="od_features_intro">Keine komplexe DAW, kein Setup, kein Herumprobieren. voyzSESSION ist für alle, die schnell vertonen oder einen Podcast produzieren müssen - sauber, verständlich und sendefertig.</p>
+<!-- ╔══ Highlights ═════════════════════════════════════════════════════╗ -->
+<section class="section" id="features">
+ <p class="eyebrow" data-i18n="f_label">Highlights</p>
+ <h2 class="section-h2" data-i18n="f_title">Kein Overkill. Nur Workflow.</h2>
+ <p class="section-intro" data-i18n="f_intro">Keine überladene DAW, kein Setup-Abend, kein Herumprobieren. voyzSESSION ist für alle, die Sprache aufnehmen, mischen und sendefertig abliefern müssen — und die dabei trotzdem jeden Griff selbst machen können wollen, wenn sie es brauchen.</p>
 
  <div class="features">
- <div class="feature top">
- <div class="feature-icon">Auto Edit</div>
- <h3 data-i18n="od_f1_h">Weniger klicken, mehr sprechen</h3>
- <p data-i18n="od_f1_p">Pausen werden automatisch entfernt. Versprecher? Einfach neu ansetzen. Den Rest erledigt die App im Hintergrund.</p>
- </div>
- <div class="feature top">
- <div class="feature-icon">Auto DSP</div>
- <h3 data-i18n="od_f2_h">Klingt sofort sendefähig</h3>
- <p data-i18n="od_f2_p">Deine Stimme wird automatisch optimiert - klar, gleichmäßig und auf Sendelautstärke. Du musst nichts einstellen.</p>
- </div>
- <div class="feature top">
+ <div class="feature">
  <div class="feature-icon">Auto Mix</div>
- <h3 data-i18n="od_f3_h">Ein Klick, sendefertig</h3>
- <p data-i18n="od_f3_p">Stimme, Musik und Effekte werden automatisch in Balance gebracht - exakt auf Sendelautstärke. Kein Reglerklicken, kein Nachmischen.</p>
- </div>
- <div class="feature top">
- <div class="feature-icon">smart PROMPTER</div>
- <h3 data-i18n="od_f4_h">Liest sich wie im Studio</h3>
- <p data-i18n="od_f4_p">Der Text läuft mit deiner Stimme mit. Deine Leseposition bleibt stabil - du kannst dich ganz auf den Inhalt konzentrieren. Nur in der macOS-Version; die iPad-App fokussiert auf den Mix-Workflow.</p>
+ <h3 data-i18n="f1_h">Ein Klick, sendefertig</h3>
+ <p data-i18n="f1_p">Stimme, Musik und Effekte kommen automatisch in Balance — auf die Norm, die du brauchst: EBU R128, ATSC A/85, ARIB TR-B32 oder OP-59. Dazu Profile für Podcast, YouTube und Hörbuch. Kein Reglerklicken, kein Nachmischen.</p>
  </div>
  <div class="feature">
- <div class="feature-icon">Video</div>
- <h3 data-i18n="od_f5_h">Einfach reinziehen und loslegen</h3>
- <p data-i18n="od_f5_p">Video laden, abspielen, vertonen. MXF bleibt beim Import und Export vollständig erhalten. Alles bleibt synchron, der Timecode ist immer im Blick.</p>
+ <div class="feature-icon">Auto DSP</div>
+ <h3 data-i18n="f2_h">Klingt sofort sendefähig</h3>
+ <p data-i18n="f2_p">Neuronale Entrauschung (DeepFilterNet 3) holt selbst aus lauter Umgebung Studioqualität — stufenlos per Fader. Dazu die automatische Politur: EQ, Kompressor, De-Esser, SmartLeveler und ein Mehrband-Ducker mit Look-ahead.</p>
  </div>
  <div class="feature">
- <div class="feature-icon">Recording</div>
- <h3 data-i18n="od_f6_h">Aufnehmen ohne Umwege</h3>
- <p data-i18n="od_f6_p">Pre-Roll, klare Pegelanzeige und direktes Monitoring - so einfach wie ein Take im Studio.</p>
+ <div class="feature-icon">V-Punch</div>
+ <h3 data-i18n="f3_h">Der Versprecher kostet keinen Take</h3>
+ <p data-i18n="f3_p">Sprich die letzten guten Worte einfach noch einmal — die Aufnahme setzt genau dort ein. Mit Shift auch der Ausstieg per Stimme, dann wird nur der Fehler ersetzt. Kein Suchen nach dem Einstiegspunkt.</p>
+ </div>
+ <div class="feature">
+ <div class="feature-icon">Script-Editor</div>
+ <h3 data-i18n="f4_h">Der Ton als Text</h3>
+ <p data-i18n="f4_p">Whisper transkribiert offline und wortgenau, alle Spuren in einem Text und je Spur eingefärbt. Ein Klick aufs Wort setzt den Playhead. Untertitel gehen als SubRip (.srt) oder WebVTT (.vtt) raus.</p>
+ </div>
+ <div class="feature">
+ <div class="feature-icon">Inserts</div>
+ <h3 data-i18n="f5_h">Deine Plugins, dein Sound</h3>
+ <p data-i18n="f5_p">Fünf Insert-Plätze je Kanal, dazu eigene Ketten auf der Voice-, der IT/FX- und der Master-Gruppe — AU und VST3, wie in jeder DAW. Was live läuft, klingt im Export identisch. macOS.</p>
+ </div>
+ <div class="feature">
+ <div class="feature-icon">Delivery</div>
+ <h3 data-i18n="f6_h">International abliefern</h3>
+ <p data-i18n="f6_p">MXF mit acht Sound-Tracks, das M&amp;E der Quelle bleibt erhalten. Fertige Profile für ARD/ZDF HDF01a, ARIB RDD9 und CST AS-10 — und dazu Video-Mux, WAV, AIFF, AAC und MP3.</p>
  </div>
  </div>
 
  <figure class="prompter-figure">
- <div class="prompter-eyebrow" data-i18n="od_prompter_eyebrow">smart PROMPTER · Detailansicht</div>
- <p class="prompter-sub" data-i18n="od_prompter_sub">Skript links, Video rechts. Der Text scrollt automatisch mit deiner Stimme - du behältst die Leseposition, ohne mit der Maus zu navigieren.</p>
- <img src="img-overdub-studio-prompter.webp?v=6" loading="lazy" alt="pegelWERK voyzSESSION, Prompter-Ansicht: Skript links, Video rechts, Text läuft mit der Stimme mit">
- <figcaption data-i18n="od_prompter_caption">Aufgenommen im pegelWERK voyzSESSION, macOS-Version</figcaption>
+ <p class="eyebrow" data-i18n="pr_eyebrow">smart PROMPTER</p>
+ <p class="prompter-sub" data-i18n="pr_sub">Skript links, Video rechts, Timeline darunter — eine Seite. Der Text scrollt mit deiner Stimme, in jeder Sprache, die die Spracherkennung deines Geräts kennt. Auf dem Mac wie auf dem iPad.</p>
+ <img src="img-overdub-studio-prompter.webp?v=6" loading="lazy" alt="voyzSESSION, Prompter-Ansicht: Skript links, Video rechts, Text läuft mit der Stimme mit">
+ <figcaption data-i18n="pr_caption">Aufgenommen in pegelWERK voyzSESSION</figcaption>
  </figure>
 </section>
 
+<!-- ╔══ Workflow ═══════════════════════════════════════════════════════╗ -->
 <section class="section">
- <div class="section-label" data-i18n="od_wf_label">Funktionsweise</div>
- <h2 class="section-h2" data-i18n="od_wf_title">In 4 Schritten zum fertigen Beitrag</h2>
+ <p class="eyebrow" data-i18n="w_label">Funktionsweise</p>
+ <h2 class="section-h2" data-i18n="w_title">In 4 Schritten zum fertigen Beitrag</h2>
 
  <div class="workflow">
  <div class="workflow-step">
  <div class="workflow-num">01</div>
- <h3 data-i18n="od_w1_h">Video laden</h3>
- <p data-i18n="od_w1_p">Per Drag &amp; Drop starten - das Audio ist direkt vorbereitet.</p>
+ <h3 data-i18n="w1_h">Video laden</h3>
+ <p data-i18n="w1_p">Per Drag &amp; Drop starten — MP4, MOV, M4V oder MXF, das Audio ist sofort vorbereitet.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">02</div>
- <h3 data-i18n="od_w2_h">Text laden</h3>
- <p data-i18n="od_w2_p">Einfügen oder öffnen - sofort im Prompter sichtbar.</p>
+ <h3 data-i18n="w2_h">Text laden</h3>
+ <p data-i18n="w2_p">Einfügen oder öffnen — der Prompter steht direkt neben dem Bild.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">03</div>
- <h3 data-i18n="od_w3_h">Sprechen</h3>
- <p data-i18n="od_w3_p">Aufnehmen, korrigieren, weitermachen - ohne den Flow zu verlieren.</p>
+ <h3 data-i18n="w3_h">Sprechen</h3>
+ <p data-i18n="w3_p">Aufnehmen, mit V-PUNCH korrigieren, weitermachen — ohne den Flow zu verlieren.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">04</div>
- <h3 data-i18n="od_w4_h">Fertig machen</h3>
- <p data-i18n="od_w4_p">Auto Mix klicken - und direkt exportieren.</p>
+ <h3 data-i18n="w4_h">Fertig machen</h3>
+ <p data-i18n="w4_p">Auto Mix klicken, im Export-Fenster die Ausgaben anhaken — fertig.</p>
  </div>
  </div>
 </section>
 
-<section class="section">
- <div class="section-label" data-i18n="od_specs_label">Technische Details</div>
- <h2 class="section-h2" data-i18n="od_specs_title">Built for Production</h2>
- <p class="section-intro" data-i18n="od_specs_intro">Native C++, JUCE 8, lokal, kein Cloud-Sync, kein Streaming.</p>
+<!-- ╔══ Technische Details ═════════════════════════════════════════════╗ -->
+<section class="section" id="specs">
+ <p class="eyebrow" data-i18n="s_label">Technische Details</p>
+ <h2 class="section-h2" data-i18n="s_title">Built for Production</h2>
+ <p class="section-intro" data-i18n="s_intro">Nativ in C++ auf JUCE 8. Alles läuft lokal auf deinem Rechner: kein Cloud-Sync, kein Upload, kein Streaming.</p>
 
- <div class="specs">
- <div class="spec-col">
- <h4 data-i18n="od_specs_dsp">Standards &amp; DSP</h4>
- <ul>
- <li><b>Loudness</b> ITU-R BS.1770-4 · EBU R128</li>
- <li><b>Target</b> -23 LUFS · -1 dBTP</li>
- <li><b>True Peak</b> 4x polyphase FIR</li>
- <li><b>LRA-Ziel</b> <= 6 LU (TV-Standard)</li>
- <li><b>Sample-Rate</b> folgt Audio-Hardware</li>
- <li><b>Buffer</b> 64 / 128 / 256 / 512 / 1024</li>
- </ul>
- </div>
- <div class="spec-col">
- <h4 data-i18n="od_specs_audio">Audio Engine</h4>
- <ul>
- <li><b>Profil</b> VoiceAnalyzer</li>
- <li><b>Denoiser</b> SmartDenoiser (FFT)</li>
- <li><b>Channel Strip</b> AutoEQ + AutoComp + SmartLeveler</li>
- <li><b>Ducker</b> SmartDucker (Mehrband, Look-ahead)</li>
- <li><b>Prompter</b> SFSpeechRecognizer DE/EN</li>
- <li><b>Saturation</b> Tube (optional)</li>
- </ul>
- </div>
- <div class="spec-col">
- <h4 data-i18n="od_specs_io">Plattform &amp; I/O</h4>
- <ul>
- <li><b>macOS</b> 13+ Universal Binary</li>
- <li><b>iPad</b> iPadOS 16+ (ohne Prompter)</li>
- <li><b>Architektur</b> Apple Silicon + Intel x86_64</li>
- <li><b>Video</b> MP4, MOV, MXF, WebM</li>
- <li><b>MXF</b> Round-Trip Sum + M+E + OT</li>
- <li><b>Export</b> WAV · Stems · Video-Mux</li>
- </ul>
- </div>
- </div>
+ <dl class="band" style="margin-top:0">
+ <div class="band-row"><dt>Loudness</dt><dd>ITU-R BS.1770-4 · EBU R128 · ATSC A/85 · ARIB TR-B32 · OP-59</dd></div>
+ <div class="band-row"><dt>Targets</dt><dd>-23 LUFS / -1 dBTP (R128) · -24 LKFS (A/85, TR-B32, OP-59) · -16 LUFS Podcast · -14 LUFS YouTube</dd></div>
+ <div class="band-row"><dt>True Peak</dt><dd data-i18n="s_tp">4-fach überabgetasteter FIR-Limiter</dd></div>
+ <div class="band-row"><dt>Denoiser</dt><dd data-i18n="s_nr">DeepFilterNet 3 (ONNX Runtime) · SmartDenoiser (FFT) als klassische Stufe</dd></div>
+ <div class="band-row"><dt>Channel Strip</dt><dd>AutoEQ · AutoComp · De-Esser · SmartLeveler · Tube-Saturation</dd></div>
+ <div class="band-row"><dt>Ducker</dt><dd data-i18n="s_duck">SmartDucker, Mehrband, mit Look-ahead</dd></div>
+ <div class="band-row"><dt>Inserts</dt><dd data-i18n="s_ins">5 × AU/VST3 je Kanal, dazu Voice-, IT/FX- und Master-Gruppe (macOS)</dd></div>
+ <div class="band-row"><dt>Transcription</dt><dd data-i18n="s_tr">Whisper auf dem Gerät, wortgenaue Zeitmarken, offline</dd></div>
+ <div class="band-row"><dt>Prompter</dt><dd data-i18n="s_pr">Apple-Spracherkennung, Sprache frei wählbar und unabhängig von der App-Sprache</dd></div>
+ <div class="band-row"><dt>Controller</dt><dd data-i18n="s_ctl">Mackie MCU · OSC · Web-Konsole für MakePro X (macOS)</dd></div>
+ <div class="band-row"><dt>Remote</dt><dd data-i18n="s_rem">Cue-Ausgang und Talkback auf eigenen Ausgängen — kein Aggregat-Gerät nötig</dd></div>
+ <div class="band-row"><dt>Video In</dt><dd>MP4 · MOV · M4V · MXF</dd></div>
+ <div class="band-row"><dt>MXF Delivery</dt><dd data-i18n="s_mxf">8 Sound-Tracks, Kanalziel wählbar, M&amp;E der Quelle bleibt erhalten · EBU R128 · US ATSC · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10</dd></div>
+ <div class="band-row"><dt>Audio Export</dt><dd data-i18n="s_exp">WAV · AIFF · AAC (.m4a) · MP3 · 44,1 / 48 / 88,2 / 96 kHz · 16 Bit, 24 Bit, 32 Bit Float · Mix, Voice-Stem und Stems je Spur</dd></div>
+ <div class="band-row"><dt>Subtitles</dt><dd>SubRip (.srt) · WebVTT (.vtt)</dd></div>
+ <div class="band-row"><dt>macOS</dt><dd data-i18n="s_mac">12 oder neuer (13+ empfohlen), Universal Binary für Apple Silicon und Intel</dd></div>
+ <div class="band-row"><dt>iPad</dt><dd data-i18n="s_ipad">iPadOS 16 oder neuer — mit Prompter</dd></div>
+ </dl>
 </section>
 
-<!-- ╔══ Closing Credo ═════════════════════════════════════════╗ -->
+<!-- ╔══ Closing Credo ══════════════════════════════════════════════════╗ -->
 <section class="section">
- <div class="section-label" data-i18n="od_credo_label">Was es nicht ist</div>
- <h2 class="section-h2" data-i18n-html="od_credo_title">Kein Baukasten.<br>Ein Werkzeug.</h2>
- <p class="section-intro" data-i18n="od_credo_p">voyzSESSION ist kein Baukasten - sondern ein Werkzeug. Für schnelle, professionelle Voice-over- und Podcast-Produktion im Redaktionsalltag. Einmal installieren, sofort arbeiten. Keine Cloud. Alles bleibt lokal.</p>
+ <p class="eyebrow" data-i18n="c_label">Was es nicht ist</p>
+ <h2 class="section-h2" data-i18n-html="c_title">Kein Baukasten.<br>Ein Werkzeug.</h2>
+ <p class="section-intro" data-i18n="c_p">voyzSESSION ist kein Baukasten, sondern ein Werkzeug. Für schnelle, professionelle Sprachproduktion im Redaktionsalltag — und für den Tag, an dem es doch von Hand gemischt werden muss. Einmal installieren, sofort arbeiten. Keine Cloud, alles bleibt lokal.</p>
 </section>
 
 <footer>
@@ -381,120 +488,188 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 <script>
 const i18n = {
  de: {
- nav_shop: 'Shop',
  nav_manage: 'Lizenz',
  nav_info: 'Supportanfrage',
- nav_back: 'Zurück zum Shop',
- od_eyebrow: 'Voice Workstation · macOS · iPad',
- od_tagline: 'Die Voice Workstation für Voice-over und Podcast. Zum Video vertonen oder frei ins Mikro sprechen — das Skript läuft mit, das Ergebnis ist sendefertig nach EBU R128. Ohne Technikstress, ohne DAW.',
- vat: 'inkl. MwSt. · Einführungspreis',
- od_features_label: 'Highlights',
- od_features_title: 'Kein Overkill. Nur Workflow.',
- od_features_intro: 'Keine komplexe DAW, kein Setup, kein Herumprobieren. voyzSESSION ist für alle, die schnell vertonen oder einen Podcast produzieren müssen - sauber, verständlich und sendefertig.',
- od_f1_h: 'Weniger klicken, mehr sprechen',
- od_f1_p: 'Pausen werden automatisch entfernt. Versprecher? Einfach neu ansetzen. Den Rest erledigt die App im Hintergrund.',
- od_f2_h: 'Klingt sofort sendefähig',
- od_f2_p: 'Neuronale Entrauschung (DeepFilterNet) holt selbst aus lauter Umgebung Studioqualität - stufenlos per Fader. Dazu automatische Politur: De-Esser, Atemkontrolle, Wärme und Brillanz. Klar, gleichmäßig, auf Sendelautstärke - ohne dass du etwas einstellst.',
- od_f3_h: 'Ein Klick, sendefertig',
- od_f3_p: 'Stimme, Musik und Effekte werden automatisch in Balance gebracht - exakt auf Sendelautstärke. Wer mag, feilt mit den Konsolen-Fadern (Rauschen, Kompressor, Wärme, Air) am Sound. Kein Reglerklicken nötig, kein Nachmischen.',
- od_f4_h: 'Liest sich wie im Studio',
- od_f4_p: 'Der Text läuft mit deiner Stimme mit und folgt dir in über 50 Sprachen - frei wählbar, unabhängig von der App-Sprache. Deine Leseposition bleibt stabil; du konzentrierst dich ganz auf den Inhalt. Nur in der macOS-Version; die iPad-App fokussiert auf den Mix-Workflow.',
- od_f5_h: 'Einfach reinziehen und loslegen',
- od_f5_p: 'Video laden, abspielen, vertonen. MXF bleibt beim Import und Export vollständig erhalten. Alles bleibt synchron, der Timecode ist immer im Blick.',
- od_f6_h: 'Aufnehmen ohne Umwege',
- od_f6_p: 'Pre-Roll, klare Pegelanzeige und direktes Monitoring - so einfach wie ein Take im Studio.',
- od_prompter_eyebrow: 'smart PROMPTER · Detailansicht',
- od_prompter_sub: 'Skript links, Video rechts. Der Text scrollt automatisch mit deiner Stimme - du behältst die Leseposition, ohne mit der Maus zu navigieren.',
- od_prompter_caption: 'Aufgenommen im pegelWERK voyzSESSION, macOS-Version',
- od_wf_label: 'Funktionsweise',
- od_wf_title: 'In 4 Schritten zum fertigen Beitrag',
- od_w1_h: 'Video laden',
- od_w1_p: 'Per Drag & Drop starten - das Audio ist direkt vorbereitet.',
- od_w2_h: 'Text laden',
- od_w2_p: 'Einfügen oder öffnen - sofort im Prompter sichtbar.',
- od_w3_h: 'Sprechen',
- od_w3_p: 'Aufnehmen, korrigieren, weitermachen - ohne den Flow zu verlieren.',
- od_w4_h: 'Fertig machen',
- od_w4_p: 'Auto Mix klicken - und direkt exportieren.',
- od_specs_label: 'Technische Details',
- od_specs_title: 'Built for Production',
- od_specs_intro: 'Native C++, JUCE 8, lokal, kein Cloud-Sync, kein Streaming.',
- od_specs_dsp: 'Standards & DSP',
- od_specs_audio: 'Audio Engine',
- od_specs_io: 'Plattform & I/O',
- od_credo_label: 'Was es nicht ist',
- od_credo_title: 'Kein Baukasten.<br>Ein Werkzeug.',
- od_credo_p: 'voyzSESSION ist kein Baukasten - sondern ein Werkzeug. Für schnelle, professionelle Voice-over- und Podcast-Produktion im Redaktionsalltag. Einmal installieren, sofort arbeiten. Keine Cloud. Alles bleibt lokal.',
- f_shop: 'Shop',
+ nav_videos: 'Videos',
+ nav_mac: 'Mac Apps',
+ nav_ios: 'iOS Apps',
+
+ hero_sub: 'Kein Overkill. Nur Workflow.',
+ hero_tag: 'Die DAW für Sprachproduktion: Voice-over, Beitrag, Podcast, Hörspiel. Video oder Skript laden, sprechen, fertig — Auto Mix bringt alles auf Sendelautstärke, der Export geht als WAV, MXF oder direkt mit dem Video raus. Für Mac und iPad.',
+ cta_trial: 'Kostenlos 7 Tage testen',
+ cta_more: 'Was drinsteckt',
+
+ m_assist_sub: 'Klang formen, normgerecht abliefern',
+ m_a1: 'Auto Mix: R128 · A/85 · TR-B32 · OP-59',
+ m_a2: 'Automatische DSP: EQ, Kompressor, De-Esser',
+ m_a3: 'SmartLeveler, Mehrband-Ducker, DNN-Entrauschung',
+ m_a4: 'V-PUNCH: sprachgesteuerter Einstieg in die Aufnahme',
+ m_a5: 'AutoCut nimmt die Stille aus jedem Take',
+ m_a6: 'Script-Editor: alle Spuren, ein Text',
+ m_manual_sub: 'nur was Sprachproduktion wirklich braucht',
+ m_m1: 'Alle DAW-Standards an Bord',
+ m_m2: 'MXF: auf jede gewünschte Spur einbetten',
+ m_m3: 'Trockene Einzelspur-Stems, vor dem Bus',
+ m_m4: 'Mic Mix: Gain-Sharing-Automix je Spur',
+ m_m5: 'Hardware-Konsole anschließen',
+ m_m6: 'Fernaufnahme ohne Aggregat-Gerät',
+
+ b_delivery: 'MXF mit 8 Sound-Tracks, M&E der Quelle bleibt erhalten · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10 · WAV · SRT/VTT',
+ b_plugins: 'AU und VST3, fünf Insert-Plätze je Kanal, dazu Voice-, IT/FX- und Master-Gruppe (macOS)',
+ b_controller: 'MakePro X (MPX), Mackie MCU, OSC',
+
+ f_label: 'Highlights',
+ f_title: 'Kein Overkill. Nur Workflow.',
+ f_intro: 'Keine überladene DAW, kein Setup-Abend, kein Herumprobieren. voyzSESSION ist für alle, die Sprache aufnehmen, mischen und sendefertig abliefern müssen — und die dabei trotzdem jeden Griff selbst machen können wollen, wenn sie es brauchen.',
+ f1_h: 'Ein Klick, sendefertig',
+ f1_p: 'Stimme, Musik und Effekte kommen automatisch in Balance — auf die Norm, die du brauchst: EBU R128, ATSC A/85, ARIB TR-B32 oder OP-59. Dazu Profile für Podcast, YouTube und Hörbuch. Kein Reglerklicken, kein Nachmischen.',
+ f2_h: 'Klingt sofort sendefähig',
+ f2_p: 'Neuronale Entrauschung (DeepFilterNet 3) holt selbst aus lauter Umgebung Studioqualität — stufenlos per Fader. Dazu die automatische Politur: EQ, Kompressor, De-Esser, SmartLeveler und ein Mehrband-Ducker mit Look-ahead.',
+ f3_h: 'Der Versprecher kostet keinen Take',
+ f3_p: 'Sprich die letzten guten Worte einfach noch einmal — die Aufnahme setzt genau dort ein. Mit Shift auch der Ausstieg per Stimme, dann wird nur der Fehler ersetzt. Kein Suchen nach dem Einstiegspunkt.',
+ f4_h: 'Der Ton als Text',
+ f4_p: 'Whisper transkribiert offline und wortgenau, alle Spuren in einem Text und je Spur eingefärbt. Ein Klick aufs Wort setzt den Playhead. Untertitel gehen als SubRip (.srt) oder WebVTT (.vtt) raus.',
+ f5_h: 'Deine Plugins, dein Sound',
+ f5_p: 'Fünf Insert-Plätze je Kanal, dazu eigene Ketten auf der Voice-, der IT/FX- und der Master-Gruppe — AU und VST3, wie in jeder DAW. Was live läuft, klingt im Export identisch. macOS.',
+ f6_h: 'International abliefern',
+ f6_p: 'MXF mit acht Sound-Tracks, das M&E der Quelle bleibt erhalten. Fertige Profile für ARD/ZDF HDF01a, ARIB RDD9 und CST AS-10 — und dazu Video-Mux, WAV, AIFF, AAC und MP3.',
+
+ pr_eyebrow: 'smart PROMPTER',
+ pr_sub: 'Skript links, Video rechts, Timeline darunter — eine Seite. Der Text scrollt mit deiner Stimme, in jeder Sprache, die die Spracherkennung deines Geräts kennt. Auf dem Mac wie auf dem iPad.',
+ pr_caption: 'Aufgenommen in pegelWERK voyzSESSION',
+
+ w_label: 'Funktionsweise',
+ w_title: 'In 4 Schritten zum fertigen Beitrag',
+ w1_h: 'Video laden',
+ w1_p: 'Per Drag & Drop starten — MP4, MOV, M4V oder MXF, das Audio ist sofort vorbereitet.',
+ w2_h: 'Text laden',
+ w2_p: 'Einfügen oder öffnen — der Prompter steht direkt neben dem Bild.',
+ w3_h: 'Sprechen',
+ w3_p: 'Aufnehmen, mit V-PUNCH korrigieren, weitermachen — ohne den Flow zu verlieren.',
+ w4_h: 'Fertig machen',
+ w4_p: 'Auto Mix klicken, im Export-Fenster die Ausgaben anhaken — fertig.',
+
+ s_label: 'Technische Details',
+ s_title: 'Built for Production',
+ s_intro: 'Nativ in C++ auf JUCE 8. Alles läuft lokal auf deinem Rechner: kein Cloud-Sync, kein Upload, kein Streaming.',
+ s_tp: '4-fach überabgetasteter FIR-Limiter',
+ s_nr: 'DeepFilterNet 3 (ONNX Runtime) · SmartDenoiser (FFT) als klassische Stufe',
+ s_duck: 'SmartDucker, Mehrband, mit Look-ahead',
+ s_ins: '5 × AU/VST3 je Kanal, dazu Voice-, IT/FX- und Master-Gruppe (macOS)',
+ s_tr: 'Whisper auf dem Gerät, wortgenaue Zeitmarken, offline',
+ s_pr: 'Apple-Spracherkennung, Sprache frei wählbar und unabhängig von der App-Sprache',
+ s_ctl: 'Mackie MCU · OSC · Web-Konsole für MakePro X (macOS)',
+ s_rem: 'Cue-Ausgang und Talkback auf eigenen Ausgängen — kein Aggregat-Gerät nötig',
+ s_mxf: '8 Sound-Tracks, Kanalziel wählbar, M&E der Quelle bleibt erhalten · EBU R128 · US ATSC · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10',
+ s_exp: 'WAV · AIFF · AAC (.m4a) · MP3 · 44,1 / 48 / 88,2 / 96 kHz · 16 Bit, 24 Bit, 32 Bit Float · Mix, Voice-Stem und Stems je Spur',
+ s_mac: '12 oder neuer (13+ empfohlen), Universal Binary für Apple Silicon und Intel',
+ s_ipad: 'iPadOS 16 oder neuer — mit Prompter',
+
+ c_label: 'Was es nicht ist',
+ c_title: 'Kein Baukasten.<br>Ein Werkzeug.',
+ c_p: 'voyzSESSION ist kein Baukasten, sondern ein Werkzeug. Für schnelle, professionelle Sprachproduktion im Redaktionsalltag — und für den Tag, an dem es doch von Hand gemischt werden muss. Einmal installieren, sofort arbeiten. Keine Cloud, alles bleibt lokal.',
+
  f_manage: 'Lizenz verwalten',
  f_changelog: 'Changelog',
  f_press: 'Presse',
- f_imprint: 'Impressum',
+ f_security: 'Security',
  f_privacy: 'Datenschutz',
  f_terms: 'AGB',
  f_refund: 'Widerruf',
- nav_mac: 'Mac Apps',
- nav_ios: 'iOS Apps',
  f_col_products: 'Produkte',
  f_col_support: 'Support',
  f_col_legal: 'Rechtliches',
  f_imprint_contact: 'Kontakt & Impressum'
  },
  en: {
- nav_shop: 'Shop',
  nav_manage: 'License',
  nav_info: 'Support request',
- nav_back: 'Back to Shop',
- od_eyebrow: 'Voice Workstation · macOS · iPad',
- od_tagline: 'The voice workstation for voice-over and podcast. Dub to picture or just speak into the mic — the script scrolls along and the result is broadcast-ready to EBU R128. No tech hassle, no DAW.',
- vat: 'incl. VAT · Launch price',
- od_features_label: 'Highlights',
- od_features_title: 'No overkill. Just workflow.',
- od_features_intro: 'No complex DAW, no setup, no fiddling. voyzSESSION is for anyone who needs to voice a video or produce a podcast fast - clean, intelligible, broadcast-ready.',
- od_f1_h: 'Click less, speak more',
- od_f1_p: 'Silences are removed automatically. Stumbled? Just start over. The app handles the rest in the background.',
- od_f2_h: 'Sounds broadcast-ready immediately',
- od_f2_p: 'Neural noise removal (DeepFilterNet) pulls studio quality out of even a noisy room - dial it in with one fader. Plus automatic polish: de-esser, breath control, warmth and air. Clear, even, at broadcast level - with nothing to tweak.',
- od_f3_h: 'One click, broadcast-ready',
- od_f3_p: 'Voice, music and effects are balanced automatically, exactly at broadcast level. If you like, fine-tune with the console faders (noise, compressor, warmth, air). No knob-tweaking required, no remixing.',
- od_f4_h: 'Reads like in the studio',
- od_f4_p: 'The text follows your voice - in 50+ languages, freely selectable and independent of the app language. Your reading position stays fixed; you focus entirely on content. macOS only; the iPad version focuses on the mix workflow.',
- od_f5_h: 'Drop in and go',
- od_f5_p: 'Load video, play, voice it. MXF stays fully intact on import and export. Everything stays in sync, timecode always visible.',
- od_f6_h: 'Recording without detours',
- od_f6_p: 'Pre-roll, clear level meter, direct monitoring, as simple as a take in the studio.',
- od_prompter_eyebrow: 'smart PROMPTER · Detail view',
- od_prompter_sub: 'Script on the left, video on the right. The text scrolls with your voice, keep your reading position without touching the mouse.',
- od_prompter_caption: 'Captured in pegelWERK voyzSESSION, macOS version',
- od_wf_label: 'How it works',
- od_wf_title: 'From video to finished segment in 4 steps',
- od_w1_h: 'Load video',
- od_w1_p: 'Start with drag & drop, audio is prepared instantly.',
- od_w2_h: 'Load text',
- od_w2_p: 'Paste or open, visible in the prompter immediately.',
- od_w3_h: 'Speak',
- od_w3_p: 'Record, correct, continue, without losing flow.',
- od_w4_h: 'Wrap up',
- od_w4_p: 'Click Auto Mix, and export directly.',
- od_specs_label: 'Technical Details',
- od_specs_title: 'Built for Production',
- od_specs_intro: 'Native C++, JUCE 8, local, no cloud sync, no streaming.',
- od_specs_dsp: 'Standards & DSP',
- od_specs_audio: 'Audio Engine',
- od_specs_io: 'Platform & I/O',
- od_credo_label: 'What it is not',
- od_credo_title: 'Not a kit.<br>A tool.',
- od_credo_p: 'voyzSESSION is not a kit, it is a tool. For fast, professional voice-over and podcast production in the editorial workflow. Install once, work immediately. No cloud. Everything stays local.',
- f_shop: 'Shop',
+ nav_videos: 'Videos',
+ nav_mac: 'Mac Apps',
+ nav_ios: 'iOS Apps',
+
+ hero_sub: 'No overkill. Just workflow.',
+ hero_tag: 'The DAW for voice productions: voice-over, news pieces, podcast, radio drama. Load a video or a script, speak, done — Auto Mix balances everything to broadcast level, and the export goes out as WAV, MXF or muxed straight back into the video. For Mac and iPad.',
+ cta_trial: 'Try it free for 7 days',
+ cta_more: 'What is inside',
+
+ m_assist_sub: 'sound shaping, compliant out',
+ m_a1: 'Auto Mix: R128 · A/85 · TR-B32 · OP-59',
+ m_a2: 'Automatic DSP: EQ, compressor, de-ess',
+ m_a3: 'SmartLeveler, multiband ducker, DNN NR',
+ m_a4: 'V-PUNCH: speech-triggered punch-in',
+ m_a5: 'AutoCut strips the dead air per take',
+ m_a6: 'Script editor: all tracks, one text',
+ m_manual_sub: 'only what voice production really needs',
+ m_m1: 'All DAW standards on board',
+ m_m2: 'MXF: embed on any track you need',
+ m_m3: 'Dry per-track stems, pre-bus',
+ m_m4: 'Mic Mix: gain-sharing automix per track',
+ m_m5: 'Connect a hardware control surface',
+ m_m6: 'Easy remote recording, no aggregate device',
+
+ b_delivery: 'MXF with 8 sound tracks, the source M&E is preserved · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10 · WAV · SRT/VTT',
+ b_plugins: 'AU and VST3, five insert slots per channel, plus voice, IT/FX and master group (macOS)',
+ b_controller: 'MakePro X (MPX), Mackie MCU, OSC',
+
+ f_label: 'Highlights',
+ f_title: 'No overkill. Just workflow.',
+ f_intro: 'No bloated DAW, no evening spent on setup, no guesswork. voyzSESSION is for everyone who has to record, mix and deliver speech ready for air — and who still wants every control under their own hand on the day it matters.',
+ f1_h: 'One click, broadcast-ready',
+ f1_p: 'Voice, music and effects are balanced automatically, to whichever standard you need: EBU R128, ATSC A/85, ARIB TR-B32 or OP-59. Plus presets for podcast, YouTube and audiobook. No knob-tweaking, no remixing.',
+ f2_h: 'Sounds broadcast-ready immediately',
+ f2_p: 'Neural noise removal (DeepFilterNet 3) pulls studio quality out of even a noisy room — dial it in with one fader. Plus the automatic polish: EQ, compressor, de-esser, SmartLeveler and a multiband ducker with look-ahead.',
+ f3_h: 'A fluffed line costs you no take',
+ f3_p: 'Just say the last good words again — the recording punches in exactly there. Shift-click adds a spoken out-point, so only the mistake gets replaced. No hunting for the punch point.',
+ f4_h: 'The audio as text',
+ f4_p: 'Whisper transcribes on-device and word-accurate, all tracks in one text, colour-coded per track. Click a word and the playhead goes there. Subtitles export as SubRip (.srt) or WebVTT (.vtt).',
+ f5_h: 'Your plugins, your sound',
+ f5_p: 'Five insert slots per channel, plus their own chains on the voice, IT/FX and master group — AU and VST3, like any DAW. What you hear live is what the export renders. macOS.',
+ f6_h: 'Deliver internationally',
+ f6_p: 'MXF with eight sound tracks, the source M&E stays intact. Ready-made profiles for ARD/ZDF HDF01a, ARIB RDD9 and CST AS-10 — plus video mux, WAV, AIFF, AAC and MP3.',
+
+ pr_eyebrow: 'smart PROMPTER',
+ pr_sub: 'Script on the left, video on the right, timeline below — one page. The text scrolls with your voice, in every language your device speech recognition knows. On the Mac and on the iPad alike.',
+ pr_caption: 'Captured in pegelWERK voyzSESSION',
+
+ w_label: 'How it works',
+ w_title: 'From video to finished segment in 4 steps',
+ w1_h: 'Load video',
+ w1_p: 'Start with drag & drop — MP4, MOV, M4V or MXF, the audio is prepared instantly.',
+ w2_h: 'Load text',
+ w2_p: 'Paste or open it — the prompter sits right next to the picture.',
+ w3_h: 'Speak',
+ w3_p: 'Record, fix it with V-PUNCH, carry on — without losing your flow.',
+ w4_h: 'Wrap up',
+ w4_p: 'Click Auto Mix, tick the outputs you want in the export window — done.',
+
+ s_label: 'Technical Details',
+ s_title: 'Built for Production',
+ s_intro: 'Native C++ on JUCE 8. Everything runs locally on your machine: no cloud sync, no upload, no streaming.',
+ s_tp: '4x oversampled FIR limiter',
+ s_nr: 'DeepFilterNet 3 (ONNX Runtime) · SmartDenoiser (FFT) as the classic stage',
+ s_duck: 'SmartDucker, multiband, with look-ahead',
+ s_ins: '5 × AU/VST3 per channel, plus voice, IT/FX and master group (macOS)',
+ s_tr: 'Whisper on-device, word-level timestamps, offline',
+ s_pr: 'Apple speech recognition, language freely selectable and independent of the app language',
+ s_ctl: 'Mackie MCU · OSC · web console for MakePro X (macOS)',
+ s_rem: 'Cue output and talkback on their own outputs — no aggregate device needed',
+ s_mxf: '8 sound tracks, channel target selectable, the source M&E is preserved · EBU R128 · US ATSC · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10',
+ s_exp: 'WAV · AIFF · AAC (.m4a) · MP3 · 44.1 / 48 / 88.2 / 96 kHz · 16-bit, 24-bit, 32-bit float · mix, voice stem and per-track stems',
+ s_mac: '12 or newer (13+ recommended), Universal Binary for Apple Silicon and Intel',
+ s_ipad: 'iPadOS 16 or newer — with the prompter',
+
+ c_label: 'What it is not',
+ c_title: 'Not a kit.<br>A tool.',
+ c_p: 'voyzSESSION is not a kit, it is a tool. For fast, professional voice production in the editorial day — and for the day it has to be mixed by hand after all. Install once, work immediately. No cloud, everything stays local.',
+
  f_manage: 'Manage License',
  f_changelog: 'Changelog',
  f_press: 'Press',
- f_imprint: 'Legal Notice',
+ f_security: 'Security',
  f_privacy: 'Privacy Policy',
  f_terms: 'Terms',
  f_refund: 'Right of Withdrawal',
- nav_mac: 'Mac Apps',
- nav_ios: 'iOS Apps',
  f_col_products: 'Products',
  f_col_support: 'Support',
  f_col_legal: 'Legal',

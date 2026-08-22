@@ -70,7 +70,7 @@
 </script>
 <style>
 :root{
- --bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#12d0ff;--tx:#e8e8ec;--mu:#9a9aa8;--mu2:#d4d4dc;
+ --bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#12d0ff;--haus:#4fb99a;--tx:#e8e8ec;--mu:#9a9aa8;--mu2:#d4d4dc;
  --bl:#2b4bd8;--gr:#4fb99a;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -87,12 +87,12 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .nav-links a:hover{color:var(--tx)}
 .nav-platforms{display:flex;gap:2px;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:999px;padding:3px}
 .nav-platforms a{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:999px;color:var(--mu2);text-decoration:none;transition:all .2s}
-.nav-platforms a.active{background:var(--ac);color:#0a0a0b}
+.nav-platforms a.active{background:var(--haus);color:#0a0a0b}
 .nav-platforms a:hover:not(.active){color:var(--tx);background:rgba(255,255,255,.04)}
 .lang-sw{display:flex;align-items:center;gap:6px}
 .lang{font-size:11px;letter-spacing:1px;color:var(--mu);cursor:pointer;transition:color .2s}
 .lang:hover{color:var(--tx)}
-.lang.active{color:var(--ac)}
+.lang.active{color:var(--haus)}
 .lang-sep{color:var(--mu);font-size:11px}
 
 /* ── Postkarten-Grundelemente ────────────────────────────────────────── */
@@ -240,7 +240,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 .footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1120px;margin:0 auto 48px;text-align:center}
 .footer-col h4{font-family:'Arimo',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
 .footer-col a{display:block;font-family:'Inter',sans-serif;font-size:12px;color:var(--mu2);text-decoration:none;letter-spacing:.3px;padding:5px 0;transition:color .2s}
-.footer-col a:hover{color:var(--ac)}
+.footer-col a:hover{color:var(--haus)}
 .footer-col+.footer-col{border-left:1px solid rgba(255,255,255,.12)}
 .footer-bar{display:flex;justify-content:center;align-items:center;gap:16px;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
 .footer-brand-img{height:17px;width:auto;display:block}

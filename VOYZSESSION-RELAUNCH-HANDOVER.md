@@ -10,6 +10,19 @@ neu gestalten **und die Fakten auf den heutigen Code-Stand bringen**.
 
 ---
 
+## 0. Stand beim Übergeben
+
+**Branch `voyzsession-relaunch` ist angelegt** (von `main` abgezweigt), noch ohne
+Änderung an der Seite. Dort weiterarbeiten, nicht auf `main`.
+
+Beim Sichten des Kopfbereichs ist ein weiterer Fehler aufgefallen, der in
+Abschnitt 5 fehlt: **Das JSON-LD wiederholt die iPad-Falschaussage.** In
+`"description"` steht „smart Prompter (macOS)", was den Prompter als
+Mac-Funktion ausgibt — er ist Kernfunktion der iPad-App. Ebenso prüfen:
+`"operatingSystem"`, `"offers"` (199 EUR) und die `og:`/`twitter:`-Beschreibungen,
+die alle dieselbe veraltete Erzählung tragen. **Kopfbereich mitziehen, nicht nur
+den sichtbaren Text.**
+
 ## 1. Was wo liegt
 
 | | |

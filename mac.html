@@ -110,6 +110,13 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.5)}
 .card-img{display:block;width:100%;aspect-ratio:16/9;overflow:hidden;position:relative;background:#08090a;text-decoration:none}
 .card-img img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s ease}
+/* Randlos NUR dort, wo das Bild breiter als hoch ist und der Beschnitt nichts
+   kostet. contain liess beim voyzSESSION-Screenshot links und rechts Balken
+   stehen (Bild 1.59, Kachel 1.78). Beschnitten wird ausschliesslich OBEN
+   (object-position 100%): weg faellt die Titelleiste, drin bleibt die
+   Transportleiste mit V-PUNCH, AUTO MIX und EXPORT. Nicht global setzen —
+   loudness CORRECT ist Hochformat und wuerde zu einem Streifen zerschnitten. */
+.card-img.bleed img{object-fit:cover;object-position:50% 100%}
 .card:hover .card-img img{transform:scale(1.03)}
 .card-tag{position:absolute;top:14px;left:14px;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;
  padding:4px 10px;border-radius:3px;font-weight:500;background:rgba(10,10,11,.7);color:var(--ac);
@@ -250,8 +257,8 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 
  <!-- ╔══ voyzSESSION PRO (Standalone macOS + Mac App) ══════════╗ -->
  <div class="card">
- <a href="voyzsession.html" class="card-img">
- <img src="img-voyzsession-pro.webp?v=1" alt="pegelWERK voyzSESSION PRO, zur Detailseite">
+ <a href="voyzsession.html" class="card-img bleed">
+ <img src="img-voyzsession-pro.webp?v=2" alt="pegelWERK voyzSESSION PRO, zur Detailseite">
  </a>
  <div class="card-body">
  <div class="card-name">voyzSESSION PRO</div>

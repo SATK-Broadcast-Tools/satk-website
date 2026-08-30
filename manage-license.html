@@ -152,6 +152,12 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 .hero h1::after,.page-hero h1::after{right:-22px;border-left:0}
 @media(max-width:600px){.hero h1::before,.page-hero h1::before{left:-14px;width:10px}.hero h1::after,.page-hero h1::after{right:-14px;width:10px}}
 /*VB-END*/
+
+/* Kopfzeile: gleiche Masse auf jeder Seite, auch unterhalb 900 px.
+   Die Uebersichtsseiten hatten diese Stufen, die Produktseiten nicht --
+   dadurch wuchsen die Mac/iOS-Pillen beim Wechsel auf eine Produktseite. */
+@media(max-width:900px){nav{padding:14px 20px;gap:12px}.nav-platforms a{font-size:9px;padding:6px 12px;letter-spacing:1px}}
+@media(max-width:600px){nav{padding:12px 16px;gap:8px}.nav-platforms a{font-size:8px;padding:5px 10px;letter-spacing:.8px}}
 </style>
 </head>
 <body>

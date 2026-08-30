@@ -81,7 +81,7 @@ try {
  <h2>Technische Garantien</h2>
 
  <h3>Kryptographisch signierte Lizenzen</h3>
- <p>Lizenzen werden mit modernen Verfahren (Ed25519) signiert und von der App lokal geprüft - ein einfaches „OK" vom Server (HTTP&nbsp;200) reicht nie als Berechtigung. Eine gültige Lizenz lässt sich ohne unseren geheimen Signierschlüssel nicht fälschen.</p>
+ <p>Lizenzen werden mit modernen Verfahren (Ed25519) signiert und von der App lokal geprüft - ein einfaches "OK" vom Server (HTTP&nbsp;200) reicht nie als Berechtigung. Eine gültige Lizenz lässt sich ohne unseren geheimen Signierschlüssel nicht fälschen.</p>
 
  <h3>Private Schlüssel bleiben im Backend</h3>
  <p>Die Geheimnisse zum Signieren von Lizenzen und zum Prüfen von Zahlungs-Webhooks verlassen nie unsere Server-Umgebung. In den Apps steckt ausschließlich der öffentliche Schlüssel, mit dem Signaturen geprüft werden.</p>
@@ -89,8 +89,8 @@ try {
  <h3>Keine Server-Secrets im Client</h3>
  <p>Unsere Desktop- und iOS-Apps enthalten keine API-Schlüssel oder Zugangsdaten für Backend-Dienste. Wer ein Programm-Binary analysiert, findet höchstens öffentliche Schlüssel - keine geheimen Credentials.</p>
 
- <h3>Zahlungs-Webhooks sind „fail-closed"</h3>
- <p>Zahlungs- und Lizenz-Webhooks werden kryptografisch signiert, konstant-zeitig geprüft und bei Abweichungen - einschließlich verdächtiger Zeitstempel (Replay-Schutz) - strikt abgelehnt. Einen „im Zweifel durchwinken"-Pfad gibt es nicht.</p>
+ <h3>Zahlungs-Webhooks sind "fail-closed"</h3>
+ <p>Zahlungs- und Lizenz-Webhooks werden kryptografisch signiert, konstant-zeitig geprüft und bei Abweichungen - einschließlich verdächtiger Zeitstempel (Replay-Schutz) - strikt abgelehnt. Einen "im Zweifel durchwinken"-Pfad gibt es nicht.</p>
 
  <h3>Schnittstellen sind bewusst begrenzt</h3>
  <p>Unsere Server-APIs akzeptieren Browser-Anfragen nur von ausdrücklich erlaubten Domains. Für lizenz- oder datenverändernde Endpunkte verwenden wir kein offenes Wildcard-CORS.</p>

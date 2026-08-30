@@ -128,6 +128,14 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
  padding:4px 10px;border-radius:3px;font-weight:500;background:rgba(10,10,11,.7);color:var(--ac);
  border:1px solid rgba(79,185,154,.2);backdrop-filter:blur(8px)}
 .card-body{padding:18px 24px 22px;text-align:center}
+/* Preisblock am Kachelboden verankern. Die voyzSESSION-Kachel traegt
+   eine Zeile mehr (Monatlich/Jaehrlich), wodurch Preis, MwSt.-Zeile und
+   Testen-Knopf dort tiefer sassen als bei den Nachbarn. Die Kacheln sind
+   als Grid-Elemente ohnehin gleich hoch; mit margin-top:auto stehen die
+   Bloecke jetzt auf derselben Grundlinie, und nur der Umschalter ragt
+   nach oben heraus - da, wo Platz ist. */
+.card{display:flex;flex-direction:column}
+.card-body{flex:1;display:flex;flex-direction:column}
 .card-name{font-family:'Arimo',sans-serif;font-size:20px;font-weight:700;letter-spacing:-.3px;margin-bottom:4px}
 .card-sub{font-size:11px;color:var(--mu2);margin-bottom:12px;line-height:1.5;text-wrap:balance}
 .card-platforms{display:flex;justify-content:center;gap:6px;margin-bottom:14px;flex-wrap:wrap}
@@ -161,6 +169,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .format-row:first-of-type{margin-top:0;padding-top:0;border-top:none}
 .format-row .format-section{margin-top:0;padding-top:0;border-top:none}
 .format-row .format-section + .format-section{border-left:1px solid var(--bd);padding-left:20px}
+.card-body > .format-section{margin-top:auto}
 @media(max-width:600px){.format-row{grid-template-columns:1fr}.format-row .format-section + .format-section{border-left:none;padding-left:0;margin-top:16px;padding-top:16px;border-top:1px solid var(--bd)}}
 .format-label{font-family:'Arimo',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:10px}
 

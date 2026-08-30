@@ -101,7 +101,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .field{position:relative;isolation:isolate;overflow:hidden;background:var(--bg)}
 /* Die Blasen in ABSOLUTEN Groessen, nicht in Prozent der Sektionshoehe: nur so
    bleiben sie gleich gross, egal wie hoch das gemeinsame Feld gerade ist. Hero
-   und ASSIST/MANUAL teilen sich EIN .field — zwei getrennte Felder liessen die
+   und ASSIST/MANUAL teilen sich EIN .field - zwei getrennte Felder liessen die
    Verlaeufe an der Grenze neu anfangen, und genau das ergab dort eine Kante. */
 .field::before{content:"";position:absolute;inset:-6% -5%;z-index:-2;pointer-events:none;background:
  radial-gradient(880px 620px at 78% 8%, rgba(18,208,255,.34) 0%, rgba(18,208,255,0) 70%),
@@ -121,11 +121,11 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 /* ── Hero ────────────────────────────────────────────────────────────── */
 .hero{padding-bottom:40px}
 /* Die Flaeche ist bereits perspektivisch gekippt und traegt ihren Schatten
-   (make_hero.py, 4-Punkt-Projektion) — deshalb kein CSS-transform noetig.
+   (make_hero.py, 4-Punkt-Projektion) - deshalb kein CSS-transform noetig.
    Der obere Rand wird beschnitten wie auf der Karte (dort hy = -26 mm). */
 .hero-art{position:relative;max-width:1120px;margin:0 auto;padding:0 32px;
  aspect-ratio:2.3/1;max-height:58vh}
-/* Statt eines Deck-Verlaufs wird die Flaeche selbst ausgeblendet — so laeuft
+/* Statt eines Deck-Verlaufs wird die Flaeche selbst ausgeblendet - so laeuft
    das Farbfeld ohne sichtbare Kante weiter (Bildunterkante = kein Absatz). */
 .hero-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 82%;
  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 34%,rgba(0,0,0,.55) 62%,rgba(0,0,0,0) 96%);

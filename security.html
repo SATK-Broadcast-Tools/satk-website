@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=10">
 <link rel="canonical" href="https://pegelwerk.com/security">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Security & Licensing Principles von pegelWERK — die festen Invarianten unserer Lizenz- und Backend-Architektur.">
+<meta name="description" content="Security & Licensing Principles von pegelWERK - die festen Invarianten unserer Lizenz- und Backend-Architektur.">
 <title>Security &amp; Licensing Principles, pegelWERK</title>
 <style>
 @import url('fonts.css');
@@ -75,22 +75,22 @@ try {
  <h1>Security &amp; Licensing Principles</h1>
 
  <div class="highlight">
- Unsere Audio-Tools laufen komplett lokal auf Ihrem Gerät. Trotzdem behandeln wir Lizenzen und Kundendaten so, als würden wir ein sicherheitskritisches System betreiben. Die folgenden Prinzipien gelten als feste, dokumentierte Invarianten unserer Architektur — nicht als Marketing-Versprechen, sondern als Regeln, die jede Code-Änderung respektieren muss.
+ Unsere Audio-Tools laufen komplett lokal auf Ihrem Gerät. Trotzdem behandeln wir Lizenzen und Kundendaten so, als würden wir ein sicherheitskritisches System betreiben. Die folgenden Prinzipien gelten als feste, dokumentierte Invarianten unserer Architektur - nicht als Marketing-Versprechen, sondern als Regeln, die jede Code-Änderung respektieren muss.
  </div>
 
  <h2>Technische Garantien</h2>
 
  <h3>Kryptographisch signierte Lizenzen</h3>
- <p>Lizenzen werden mit modernen Verfahren (Ed25519) signiert und von der App lokal geprüft — ein einfaches „OK" vom Server (HTTP&nbsp;200) reicht nie als Berechtigung. Eine gültige Lizenz lässt sich ohne unseren geheimen Signierschlüssel nicht fälschen.</p>
+ <p>Lizenzen werden mit modernen Verfahren (Ed25519) signiert und von der App lokal geprüft - ein einfaches „OK" vom Server (HTTP&nbsp;200) reicht nie als Berechtigung. Eine gültige Lizenz lässt sich ohne unseren geheimen Signierschlüssel nicht fälschen.</p>
 
  <h3>Private Schlüssel bleiben im Backend</h3>
  <p>Die Geheimnisse zum Signieren von Lizenzen und zum Prüfen von Zahlungs-Webhooks verlassen nie unsere Server-Umgebung. In den Apps steckt ausschließlich der öffentliche Schlüssel, mit dem Signaturen geprüft werden.</p>
 
  <h3>Keine Server-Secrets im Client</h3>
- <p>Unsere Desktop- und iOS-Apps enthalten keine API-Schlüssel oder Zugangsdaten für Backend-Dienste. Wer ein Programm-Binary analysiert, findet höchstens öffentliche Schlüssel — keine geheimen Credentials.</p>
+ <p>Unsere Desktop- und iOS-Apps enthalten keine API-Schlüssel oder Zugangsdaten für Backend-Dienste. Wer ein Programm-Binary analysiert, findet höchstens öffentliche Schlüssel - keine geheimen Credentials.</p>
 
  <h3>Zahlungs-Webhooks sind „fail-closed"</h3>
- <p>Zahlungs- und Lizenz-Webhooks werden kryptografisch signiert, konstant-zeitig geprüft und bei Abweichungen — einschließlich verdächtiger Zeitstempel (Replay-Schutz) — strikt abgelehnt. Einen „im Zweifel durchwinken"-Pfad gibt es nicht.</p>
+ <p>Zahlungs- und Lizenz-Webhooks werden kryptografisch signiert, konstant-zeitig geprüft und bei Abweichungen - einschließlich verdächtiger Zeitstempel (Replay-Schutz) - strikt abgelehnt. Einen „im Zweifel durchwinken"-Pfad gibt es nicht.</p>
 
  <h3>Schnittstellen sind bewusst begrenzt</h3>
  <p>Unsere Server-APIs akzeptieren Browser-Anfragen nur von ausdrücklich erlaubten Domains. Für lizenz- oder datenverändernde Endpunkte verwenden wir kein offenes Wildcard-CORS.</p>
@@ -101,18 +101,18 @@ try {
  <h2>Klar definierte Vertrauensgrenzen</h2>
 
  <h3>Lizenz-Kennungen sind keine Passwörter</h3>
- <p>Lizenz-IDs behandeln wir nicht als vollwertige Geheimnisse: Sie sind hochentropisch und nicht erratbar, Anfragen sind ratenbegrenzt, und die eigentliche Berechtigung hängt immer an einer kryptografischen Signatur — nicht an der ID allein.</p>
+ <p>Lizenz-IDs behandeln wir nicht als vollwertige Geheimnisse: Sie sind hochentropisch und nicht erratbar, Anfragen sind ratenbegrenzt, und die eigentliche Berechtigung hängt immer an einer kryptografischen Signatur - nicht an der ID allein.</p>
 
  <h3>Client-Manipulation ist als Restrisiko eingeplant</h3>
- <p>Wir gehen realistisch davon aus, dass sich lokale Eingriffe in eine installierte App nie vollständig verhindern lassen. Unsere Architektur ist deshalb so ausgelegt, dass solche Eingriffe maximal das eigene Gerät betreffen — niemals andere Kunden oder Daten auf unseren Servern.</p>
+ <p>Wir gehen realistisch davon aus, dass sich lokale Eingriffe in eine installierte App nie vollständig verhindern lassen. Unsere Architektur ist deshalb so ausgelegt, dass solche Eingriffe maximal das eigene Gerät betreffen - niemals andere Kunden oder Daten auf unseren Servern.</p>
 
  <h2>Kontinuierliche Härtung &amp; Audits</h2>
 
  <h3>Security-Audits</h3>
- <p>Wir auditieren unsere Lizenz- und Zahlungs-Komponenten — inklusive Secret-Scans, Code-Review sowie Tests der Krypto- und Webhook-Logik — und beheben Befunde priorisiert und nachvollziehbar. Letzter Audit: Juni&nbsp;2026.</p>
+ <p>Wir auditieren unsere Lizenz- und Zahlungs-Komponenten - inklusive Secret-Scans, Code-Review sowie Tests der Krypto- und Webhook-Logik - und beheben Befunde priorisiert und nachvollziehbar. Letzter Audit: Juni&nbsp;2026.</p>
 
  <h3>Dokumentierte Invarianten statt undurchschaubarer Automatik</h3>
- <p>Auch dort, wo wir moderne Werkzeuge (einschließlich KI-Assistenz) in der Entwicklung einsetzen, sind alle sicherheitsrelevanten Garantien als prüfbare Invarianten dokumentiert. Jede Änderung — ob von einem Menschen oder einem Assistenten vorgeschlagen — muss diese Regeln einhalten.</p>
+ <p>Auch dort, wo wir moderne Werkzeuge (einschließlich KI-Assistenz) in der Entwicklung einsetzen, sind alle sicherheitsrelevanten Garantien als prüfbare Invarianten dokumentiert. Jede Änderung - ob von einem Menschen oder einem Assistenten vorgeschlagen - muss diese Regeln einhalten.</p>
 
  <h2>Schwachstellen melden</h2>
 

@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=10">
 <link rel="canonical" href="https://pegelwerk.com/security-en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="pegelWERK Security & Licensing Principles — the fixed invariants of our licensing and backend architecture.">
+<meta name="description" content="pegelWERK Security & Licensing Principles - the fixed invariants of our licensing and backend architecture.">
 <title>Security &amp; Licensing Principles, pegelWERK</title>
 <style>
 @import url('fonts.css');
@@ -75,44 +75,44 @@ try {
  <h1>Security &amp; Licensing Principles</h1>
 
  <div class="highlight">
- Our audio tools run entirely locally on your device. Even so, we treat licenses and customer data as if we were running a security-critical system. The following principles are fixed, documented invariants of our architecture — not marketing promises, but rules that every code change must respect.
+ Our audio tools run entirely locally on your device. Even so, we treat licenses and customer data as if we were running a security-critical system. The following principles are fixed, documented invariants of our architecture - not marketing promises, but rules that every code change must respect.
  </div>
 
  <h2>Technical guarantees</h2>
 
  <h3>Cryptographically signed licenses</h3>
- <p>Licenses are signed with modern cryptography (Ed25519) and verified locally by the app — a plain server “OK” (HTTP&nbsp;200) is never enough to grant entitlement. A valid license cannot be forged without our private signing key.</p>
+ <p>Licenses are signed with modern cryptography (Ed25519) and verified locally by the app - a plain server "OK" (HTTP&nbsp;200) is never enough to grant entitlement. A valid license cannot be forged without our private signing key.</p>
 
  <h3>Private keys stay in the backend</h3>
  <p>The secrets used to sign licenses and to verify payment webhooks never leave our server environment. The apps contain only the public key needed to verify signatures.</p>
 
  <h3>No server secrets in the client</h3>
- <p>Our desktop and iOS apps contain no API keys or credentials for backend services. Anyone analyzing an app binary finds at most public keys — never secret credentials.</p>
+ <p>Our desktop and iOS apps contain no API keys or credentials for backend services. Anyone analyzing an app binary finds at most public keys - never secret credentials.</p>
 
- <h3>Payment webhooks are “fail-closed”</h3>
- <p>Payment and license webhooks are cryptographically signed, verified in constant time, and strictly rejected on any mismatch — including suspicious timestamps (replay protection). There is no “let it through when in doubt” path.</p>
+ <h3>Payment webhooks are "fail-closed"</h3>
+ <p>Payment and license webhooks are cryptographically signed, verified in constant time, and strictly rejected on any mismatch - including suspicious timestamps (replay protection). There is no "let it through when in doubt" path.</p>
 
  <h3>Interfaces are deliberately constrained</h3>
  <p>Our server APIs accept browser requests only from explicitly allowed domains. We do not use open wildcard CORS for license- or data-mutating endpoints.</p>
 
  <h3>App Store compliance (iOS)</h3>
- <p>Our iOS apps contain no built-in external purchase or licensing code that would violate App Store rule&nbsp;3.1.1. Purchases and subscriptions follow Apple’s intended path (StoreKit).</p>
+ <p>Our iOS apps contain no built-in external purchase or licensing code that would violate App Store rule&nbsp;3.1.1. Purchases and subscriptions follow Apple's intended path (StoreKit).</p>
 
  <h2>Clearly defined trust boundaries</h2>
 
  <h3>License IDs are not passwords</h3>
- <p>We do not treat license identifiers as full secrets: they are high-entropy and unguessable, requests are rate-limited, and the actual entitlement always rests on a cryptographic signature — not on the ID alone.</p>
+ <p>We do not treat license identifiers as full secrets: they are high-entropy and unguessable, requests are rate-limited, and the actual entitlement always rests on a cryptographic signature - not on the ID alone.</p>
 
  <h3>Client tampering is planned for as a residual risk</h3>
- <p>We realistically assume that local tampering with an installed app can never be fully prevented. Our architecture is therefore designed so that such tampering affects at most that one device — never other customers or data on our servers.</p>
+ <p>We realistically assume that local tampering with an installed app can never be fully prevented. Our architecture is therefore designed so that such tampering affects at most that one device - never other customers or data on our servers.</p>
 
  <h2>Continuous hardening &amp; audits</h2>
 
  <h3>Security audits</h3>
- <p>We audit our licensing and payment components — including secret scans, code review, and tests of the crypto and webhook logic — and fix findings in a prioritized, traceable way. Last audit: June&nbsp;2026.</p>
+ <p>We audit our licensing and payment components - including secret scans, code review, and tests of the crypto and webhook logic - and fix findings in a prioritized, traceable way. Last audit: June&nbsp;2026.</p>
 
  <h3>Documented invariants instead of opaque automation</h3>
- <p>Even where we use modern tooling (including AI assistance) in development, every security-relevant guarantee is documented as a verifiable invariant. Every change — whether proposed by a human or an assistant — must uphold these rules.</p>
+ <p>Even where we use modern tooling (including AI assistance) in development, every security-relevant guarantee is documented as a verifiable invariant. Every change - whether proposed by a human or an assistant - must uphold these rules.</p>
 
  <h2>Reporting a vulnerability</h2>
 

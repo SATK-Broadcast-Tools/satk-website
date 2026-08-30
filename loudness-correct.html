@@ -10,12 +10,12 @@
 <link rel="canonical" href="https://pegelwerk.com/loudness-correct">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>pegelWERK loudness CORRECT - EBU R128 / ITU-R BS.1770-4 Loudness-Korrektur</title>
-<meta name="description" content="Offline-Lautheitskorrektur nach EBU R128, ATSC A/85, Netflix, Spotify, YouTube & Co. Two-Pass mit Verify-and-Refine auf +/-0,1 LU. macOS Standalone + iPad.">
+<meta name="description" content="Offline-Lautheitskorrektur nach EBU R128, ATSC A/85, OTT, Spotify, YouTube & Co. Two-Pass mit Verify-and-Refine auf +/-0,1 LU. macOS Standalone + iPad.">
 
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="pegelWERK loudness CORRECT - EBU R128 Loudness-Korrektur">
-<meta property="og:description" content="Offline-Lautheitskorrektur. Two-Pass mit Verify-and-Refine auf +/-0,1 LU. 16 Delivery-Presets (EBU R128, ATSC A/85, Netflix, Spotify, YouTube). macOS + iPad.">
+<meta property="og:description" content="Offline-Lautheitskorrektur. Two-Pass mit Verify-and-Refine auf +/-0,1 LU. 14 Delivery-Presets (EBU R128, ATSC A/85, OTT, Spotify, YouTube). macOS + iPad.">
 <meta property="og:url" content="https://pegelwerk.com/loudness-correct">
 <meta property="og:image" content="https://pegelwerk.com/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -24,7 +24,7 @@
 <meta property="og:locale" content="de_DE">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="pegelWERK loudness CORRECT - EBU R128 Loudness-Korrektur">
-<meta name="twitter:description" content="Offline R128 / ITU-R BS.1770-4. 16 Delivery-Presets, Verify-and-Refine, Mono bis 9.1.6.">
+<meta name="twitter:description" content="Offline R128 / ITU-R BS.1770-4. 14 Delivery-Presets, Verify-and-Refine, Mono bis 9.1.6.">
 <meta name="twitter:image" content="https://pegelwerk.com/og-image.png">
 <link href="fonts.css" rel="stylesheet">
 <script type="application/ld+json">
@@ -32,13 +32,13 @@
  "@context": "https://schema.org",
  "@type": "SoftwareApplication",
  "name": "pegelWERK loudness CORRECT",
- "description": "Offline-Lautheitskorrektur nach EBU R128, ATSC A/85, Netflix, Spotify, YouTube. Two-Pass mit Verify-and-Refine auf +/-0,1 LU. macOS Standalone und iPad.",
+ "description": "Offline-Lautheitskorrektur nach EBU R128, ATSC A/85, OTT, Spotify, YouTube. Two-Pass mit Verify-and-Refine auf +/-0,1 LU. macOS Standalone und iPad.",
  "applicationCategory": "MultimediaApplication",
  "applicationSubCategory": "Loudness Normalization",
  "operatingSystem": "macOS 13+, iPadOS 16+",
  "url": "https://pegelwerk.com/loudness-correct",
- "image": "https://pegelwerk.com/img-loudness-correct.webp",
- "screenshot": "https://pegelwerk.com/img-loudness-correct.webp",
+ "image": "https://pegelwerk.com/img-loudness-correct-1056.webp",
+ "screenshot": "https://pegelwerk.com/img-loudness-correct-1056.webp",
  "offers": {
  "@type": "Offer",
  "name": "Standalone macOS",
@@ -102,7 +102,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .product-price-chip .vat{font-size:10px;color:var(--mu);font-weight:300;letter-spacing:.4px;margin-left:10px;text-transform:uppercase}
 
 .hero-img-wrap{max-width:1120px;margin:32px auto 0;padding:0 32px;text-align:center}
-.hero-img{display:inline-block;max-width:560px;width:100%;height:auto;border:1px solid var(--bd);border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.hero-img{display:inline-block;max-width:1056px;width:100%;height:auto;border:1px solid var(--bd);border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
 
 /* ── Trust-Strip ───────────────── */
 .trust-strip{max-width:1120px;margin:48px auto 0;padding:0 32px}
@@ -232,7 +232,10 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 </section>
 
 <div class="hero-img-wrap">
- <img class="hero-img" src="img-loudness-correct.webp" alt="pegelWERK loudness CORRECT Interface">
+ <img class="hero-img" src="img-loudness-correct-1056.webp" width="1056" height="734"
+      srcset="img-loudness-correct-640.webp 640w, img-loudness-correct-900.webp 900w, img-loudness-correct-1056.webp 1056w, img-loudness-correct-2112.webp 2112w"
+      sizes="(max-width: 1120px) calc(100vw - 64px), 1056px"
+      alt="pegelWERK loudness CORRECT: Original- und Vorgabe-Werte nebeneinander, EBU-R128-Preset, True Peak und Integrated auf Ziel">
 </div>
 
 <section class="section">
@@ -263,8 +266,8 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  </div>
  <div class="feature">
  <div class="feature-icon">Presets</div>
- <h3 data-i18n="lc_f5_h">16 Delivery-Presets</h3>
- <p data-i18n="lc_f5_p">EBU R128, R128 S1 Streaming, ATSC A/85 (CALM), ARIB TR-B32, AGCOM, OP-59, DPP, Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube, Leq(m)/Leq(a) Kino, plus Custom. Tolerance-Window pro Preset, Verify meldet PASS / FAIL.</p>
+ <h3 data-i18n="lc_f5_h">14 Delivery-Presets</h3>
+ <p data-i18n="lc_f5_p">EBU R128, R128 S1 Kurzformat, ATSC A/85 (CALM), ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354, OTT -27 LUFS, Apple Podcasts, Spotify, Amazon Music, YouTube, plus Custom. Tolerance-Window pro Preset, Verify meldet PASS / FAIL.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Surround</div>
@@ -305,25 +308,23 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 
 <section class="section">
  <div class="section-label" data-i18n="lc_presets_label">Delivery-Presets</div>
- <h2 class="section-h2" data-i18n="lc_presets_title">16 Targets ab Werk</h2>
- <p class="section-intro" data-i18n="lc_presets_intro">Von EBU R128 bis Netflix, von Apple Podcasts bis Kino-Leq(m). Ein Klick, der Verify-Pass dokumentiert PASS / FAIL.</p>
+ <h2 class="section-h2" data-i18n="lc_presets_title">14 Targets ab Werk</h2>
+ <p class="section-intro" data-i18n="lc_presets_intro">Von EBU R128 bis OTT, von Apple Podcasts bis YouTube. Ein Klick, der Verify-Pass dokumentiert PASS / FAIL.</p>
 
  <div class="preset-grid">
  <div class="preset-pill"><div class="preset-name">EBU R128</div><div class="preset-target">-23 LUFS · -1 dBTP</div></div>
- <div class="preset-pill"><div class="preset-name">R128 S1</div><div class="preset-target">-23 · LRA <= 10</div></div>
+ <div class="preset-pill"><div class="preset-name">R128 S1</div><div class="preset-target">-23 LUFS · S max -18</div></div>
  <div class="preset-pill"><div class="preset-name">ATSC A/85</div><div class="preset-target">-24 LUFS · -2 dBTP</div></div>
  <div class="preset-pill"><div class="preset-name">ARIB TR-B32</div><div class="preset-target">-24 LUFS · -1 dBTP</div></div>
  <div class="preset-pill"><div class="preset-name">AGCOM</div><div class="preset-target">-24 LUFS · -2 dBTP</div></div>
  <div class="preset-pill"><div class="preset-name">FreeTV OP-59</div><div class="preset-target">-24 LUFS · -2 dBTP</div></div>
  <div class="preset-pill"><div class="preset-name">DPP</div><div class="preset-target">-23 LUFS · -1 dBTP</div></div>
  <div class="preset-pill"><div class="preset-name">Portaria 354</div><div class="preset-target">-23 LUFS · -2 dBTP</div></div>
- <div class="preset-pill"><div class="preset-name">Netflix</div><div class="preset-target">-27 LUFS · -2 dBTP</div></div>
+ <div class="preset-pill"><div class="preset-name">OTT -27 LUFS</div><div class="preset-target">-27 LUFS · -2 dBTP</div></div>
  <div class="preset-pill"><div class="preset-name">Apple Podcasts</div><div class="preset-target">-16 LUFS · -1 dBTP</div></div>
  <div class="preset-pill"><div class="preset-name">Spotify</div><div class="preset-target">-14 LUFS · -1 dBTP</div></div>
  <div class="preset-pill"><div class="preset-name">Amazon Music</div><div class="preset-target">-14 LUFS · -2 dBTP</div></div>
  <div class="preset-pill"><div class="preset-name">YouTube</div><div class="preset-target">-14 LUFS · -1 dBTP</div></div>
- <div class="preset-pill"><div class="preset-name">Leq(m) -85</div><div class="preset-target">Kino · TASA</div></div>
- <div class="preset-pill"><div class="preset-name">Leq(a) -85</div><div class="preset-target">Kino</div></div>
  <div class="preset-pill"><div class="preset-name" data-i18n="lc_preset_custom">Custom</div><div class="preset-target" data-i18n="lc_preset_custom_target">Frei wählbar</div></div>
  </div>
 </section>
@@ -342,7 +343,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="workflow-step">
  <div class="workflow-num">02</div>
  <h3 data-i18n="lc_w2_h">Preset wählen</h3>
- <p data-i18n="lc_w2_p">Eines der 16 Delivery-Targets oder Custom mit eigenen LUFS/TP/LRA-Werten. LRA-Korrektur und TP-Limiter individuell zuschaltbar.</p>
+ <p data-i18n="lc_w2_p">Eines der 13 Delivery-Targets oder Custom mit eigenen LUFS/TP/LRA-Werten. LRA-Korrektur und TP-Limiter individuell zuschaltbar.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">03</div>
@@ -382,7 +383,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <li><b>LRA</b> 3-Band Linkwitz-Riley 4. Ordnung</li>
  <li><b>Bands</b> <= 150 / 150-3k / &gt; 3 kHz</li>
  <li><b>Verify</b> Auto-Refine bei &gt; 0,1 LU</li>
- <li><b>Presets</b> 16 + Custom</li>
+ <li><b>Presets</b> 13 + Custom</li>
  </ul>
  </div>
  <div class="spec-col">
@@ -463,13 +464,13 @@ const i18n = {
  lc_f3_p: 'Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion. Low <= 150 Hz, Mid 150-3000 Hz, High > 3000 Hz. Pro-Band Soft-Knee-Kompressor mit RMS-Hüllkurve. Bandspezifische Zeitkonstanten, bringt jede LRA in den Sendekorridor.',
  lc_f4_h: 'Two-Pass mit Auto-Refine',
  lc_f4_p: 'Pass 1 misst, Pass 2 korrigiert, dritter Pass verifiziert. Liegt der Residualwert über 0,1 LU, läuft der Korrektur-Pass automatisch noch einmal mit getrimmter Verstärkung. Ergebnis: dein Target auf +/-0,1 LU.',
- lc_f5_h: '16 Delivery-Presets',
- lc_f5_p: 'EBU R128, R128 S1 Streaming, ATSC A/85 (CALM), ARIB TR-B32, AGCOM, OP-59, DPP, Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube, Leq(m)/Leq(a) Kino, plus Custom. Tolerance-Window pro Preset, Verify meldet PASS / FAIL.',
+ lc_f5_h: '14 Delivery-Presets',
+ lc_f5_p: 'EBU R128, R128 S1 Kurzformat, ATSC A/85 (CALM), ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354, OTT -27 LUFS, Apple Podcasts, Spotify, Amazon Music, YouTube, plus Custom. Tolerance-Window pro Preset, Verify meldet PASS / FAIL.',
  lc_f6_h: 'Mono bis 9.1.6',
  lc_f6_p: 'Bis zu 16 Kanäle, vier Routing-Layouts (Auto/ITU, Film L-C-R, DTS, Raw/Stems). LFE BS.1770-konform mit Gewicht 0, Surrounds mit 1,41 in der Power-Domain, exakt nach Spec, ohne Eigeninterpretation.',
  lc_presets_label: 'Delivery-Presets',
- lc_presets_title: '16 Targets ab Werk',
- lc_presets_intro: 'Von EBU R128 bis Netflix, von Apple Podcasts bis Kino-Leq(m). Ein Klick, der Verify-Pass dokumentiert PASS / FAIL.',
+ lc_presets_title: '14 Targets ab Werk',
+ lc_presets_intro: 'Von EBU R128 bis OTT, von Apple Podcasts bis YouTube. Ein Klick, der Verify-Pass dokumentiert PASS / FAIL.',
  lc_preset_custom: 'Custom',
  lc_preset_custom_target: 'Frei wählbar',
  lc_wf_label: 'Funktionsweise',
@@ -478,7 +479,7 @@ const i18n = {
  lc_w1_h: 'Datei droppen',
  lc_w1_p: 'WAV, AIFF, FLAC, MP3. Mono bis 9.1.6, vier Routing-Layouts (ITU, Film, DTS, Raw). Auf macOS via File-Picker, auf iPad via Files-App / iCloud Drive.',
  lc_w2_h: 'Preset wählen',
- lc_w2_p: 'Eines der 16 Delivery-Targets oder Custom mit eigenen LUFS/TP/LRA-Werten. LRA-Korrektur und TP-Limiter individuell zuschaltbar.',
+ lc_w2_p: 'Eines der 13 Delivery-Targets oder Custom mit eigenen LUFS/TP/LRA-Werten. LRA-Korrektur und TP-Limiter individuell zuschaltbar.',
  lc_w3_h: 'ANALYZE + CORRECT',
  lc_w3_p: 'Pass 1 misst LUFS-I/S/M, LRA, TP. Pass 2 schreibt eine neue Datei mit statischem Gain optionaler LRA-Multiband-Korrektur TP-Limiter.',
  lc_w4_h: 'VERIFY + Report',
@@ -532,13 +533,13 @@ const i18n = {
  lc_f3_p: 'Linkwitz-Riley 4th order with perfect reconstruction. Low <= 150 Hz, mid 150-3000 Hz, high > 3000 Hz. Per-band soft-knee compressor with RMS envelope. Band-specific time constants, pulls every LRA into the broadcast corridor.',
  lc_f4_h: 'Two-Pass with auto-refine',
  lc_f4_p: 'Pass 1 measures, pass 2 corrects, a third pass verifies. If the residual is above 0.1 LU, the correction pass runs again with trimmed gain. Result: your target hit within +/-0.1 LU.',
- lc_f5_h: '16 delivery presets',
- lc_f5_p: 'EBU R128, R128 S1 streaming, ATSC A/85 (CALM), ARIB TR-B32, AGCOM, OP-59, DPP, Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube, Leq(m)/Leq(a) cinema, plus custom. Tolerance window per preset, verify reports PASS / FAIL.',
+ lc_f5_h: '14 delivery presets',
+ lc_f5_p: 'EBU R128, R128 S1 short-form, ATSC A/85 (CALM), ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354, OTT -27 LUFS, Apple Podcasts, Spotify, Amazon Music, YouTube, plus custom. Tolerance window per preset, verify reports PASS / FAIL.',
  lc_f6_h: 'Mono to 9.1.6',
  lc_f6_p: 'Up to 16 channels, four routing layouts (Auto/ITU, Film L-C-R, DTS, Raw/Stems). LFE BS.1770-compliant with weight 0, surrounds at 1.41 in the power domain, exactly per spec, no creative interpretation.',
  lc_presets_label: 'Delivery Presets',
- lc_presets_title: '16 targets out of the box',
- lc_presets_intro: 'From EBU R128 to Netflix, from Apple Podcasts to cinema Leq(m). One click; the verify pass documents PASS / FAIL.',
+ lc_presets_title: '14 targets out of the box',
+ lc_presets_intro: 'From EBU R128 to OTT, from Apple Podcasts to YouTube. One click; the verify pass documents PASS / FAIL.',
  lc_preset_custom: 'Custom',
  lc_preset_custom_target: 'Free choice',
  lc_wf_label: 'How it works',
@@ -547,7 +548,7 @@ const i18n = {
  lc_w1_h: 'Drop file',
  lc_w1_p: 'WAV, AIFF, FLAC, MP3. Mono to 9.1.6, four routing layouts (ITU, Film, DTS, Raw). On macOS via file picker, on iPad via Files / iCloud Drive.',
  lc_w2_h: 'Pick preset',
- lc_w2_p: 'One of the 16 delivery targets, or custom with your own LUFS / TP / LRA values. LRA correction and TP limiter individually toggleable.',
+ lc_w2_p: 'One of the 13 delivery targets, or custom with your own LUFS / TP / LRA values. LRA correction and TP limiter individually toggleable.',
  lc_w3_h: 'ANALYZE + CORRECT',
  lc_w3_p: 'Pass 1 measures LUFS-I/S/M, LRA, TP. Pass 2 writes a new file with static gain optional LRA multi-band correction TP limiter.',
  lc_w4_h: 'VERIFY + Report',

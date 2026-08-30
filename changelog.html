@@ -361,6 +361,18 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="product-name">pegelWERK loudness CORRECT <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
  <div class="release">
+ <span class="release-version">1.1.0</span><span class="release-date">2026-08-30</span>
+ <div class="release-title" data-i18n="cl_lc_110_t">Genauere True-Peak-Messung, aufgeräumte Presets</div>
+ <ul class="release-list">
+ <li data-i18n="cl_lc_110_1">Die True-Peak-Messung folgt jetzt exakt den Koeffizienten aus ITU-R BS.1770-4 Anhang 2. Frühere Versionen lagen bei hochfrequenzlastigem Material zu niedrig, im Extremfall um bis zu 2 dB; bei Sprache und den meisten Musikmischungen betrug die Abweichung Zehntel. Wer mit einer früheren Version dicht an eine True-Peak-Decke normalisiert hat, misst am besten kurz nach.</li>
+ <li data-i18n="cl_lc_110_2">Die korrigierte Datei ist jetzt sample-genau zur Quelle und gleich lang. Vorher lag sie bis zu 15 ms später.</li>
+ <li data-i18n="cl_lc_110_3">Die Loudness Range folgt EBU Tech 3342 genauer, und EBU R128 s1 begrenzt jetzt die maximale Short-Term-Lautheit auf −18 LUFS, wie die Norm es vorsieht, statt die Loudness Range zu deckeln, die sie ausdrücklich ausschließt.</li>
+ <li data-i18n="cl_lc_110_4">14 Presets statt 16: Leq(m) und Leq(a) sind entfernt — sie sind gewichtete Pegel gegen eine kalibrierte 85-dB-Referenz, keine LUFS-Ziele, und arbeiteten als solche falsch. „Netflix" heißt jetzt „OTT −27 LUFS": dieselben Zahlen, aber ein Zielwert verspricht nichts, was ein Markenname verspricht.</li>
+ <li data-i18n="cl_lc_110_5">Ergebnisse werden nicht mehr überschrieben, sondern durchnummeriert. Die Oberfläche trägt das pegelWERK-Design.</li>
+ </ul>
+ </div>
+
+ <div class="release">
  <span class="release-version">1.0.0</span><span class="release-date">2026-06-02</span>
  <div class="release-title" data-i18n="cl_lc_100_t">Erste öffentliche Direct-Sales-Version</div>
  <ul class="release-list">
@@ -436,6 +448,12 @@ const i18n = {
  cl_bm_102_2: '7-Tage-Trial ohne Konto und ohne E-Mail-Adresse, Vollversion direkt downloadbar, Trial-Status server-getrackt gegen Reset-Versuche.',
  cl_bm_102_3: 'Watermarking der Käufer-E-Mail im About-Window und in der Toolbar.',
  cl_bm_102_4: 'PDF- und CSV-Reports mit Loudness-Timeline und Speech-Clarity-Bewertung.',
+ cl_lc_110_t: 'Genauere True-Peak-Messung, aufgeräumte Presets',
+ cl_lc_110_1: 'Die True-Peak-Messung folgt jetzt exakt den Koeffizienten aus ITU-R BS.1770-4 Anhang 2. Frühere Versionen lagen bei hochfrequenzlastigem Material zu niedrig, im Extremfall um bis zu 2 dB; bei Sprache und den meisten Musikmischungen betrug die Abweichung Zehntel. Wer mit einer früheren Version dicht an eine True-Peak-Decke normalisiert hat, misst am besten kurz nach.',
+ cl_lc_110_2: 'Die korrigierte Datei ist jetzt sample-genau zur Quelle und gleich lang. Vorher lag sie bis zu 15 ms später.',
+ cl_lc_110_3: 'Die Loudness Range folgt EBU Tech 3342 genauer, und EBU R128 s1 begrenzt jetzt die maximale Short-Term-Lautheit auf −18 LUFS, wie die Norm es vorsieht, statt die Loudness Range zu deckeln, die sie ausdrücklich ausschließt.',
+ cl_lc_110_4: '14 Presets statt 16: Leq(m) und Leq(a) sind entfernt — sie sind gewichtete Pegel gegen eine kalibrierte 85-dB-Referenz, keine LUFS-Ziele, und arbeiteten als solche falsch. „Netflix" heißt jetzt „OTT −27 LUFS": dieselben Zahlen, aber ein Zielwert verspricht nichts, was ein Markenname verspricht.',
+ cl_lc_110_5: 'Ergebnisse werden nicht mehr überschrieben, sondern durchnummeriert. Die Oberfläche trägt das pegelWERK-Design.',
  cl_lc_100_t: 'Erste öffentliche Direct-Sales-Version',
  cl_lc_100_1: 'Offline R128-Korrektur mit 16 Delivery-Presets, Broadcast (EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354), Streaming (Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube), Kino (Leq(m), Leq(a)) plus Custom.',
  cl_lc_100_2: 'Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.',
@@ -534,6 +552,12 @@ const i18n = {
  cl_bm_102_2: '7-day trial without account and without email, full version download, trial state server-tracked against reset attempts.',
  cl_bm_102_3: 'Buyer email watermarked in the About window and the toolbar.',
  cl_bm_102_4: 'PDF and CSV reports with loudness timeline and speech-clarity rating.',
+ cl_lc_110_t: 'More accurate true-peak measurement, tidied presets',
+ cl_lc_110_1: 'True-peak measurement now follows the coefficients in ITU-R BS.1770-4 Annex 2 exactly. Earlier versions read low on high-frequency material, by up to 2 dB in the worst case; on speech and most music mixes the difference was in tenths. If you normalised close to a true-peak ceiling with an earlier version, it is worth re-checking those files.',
+ cl_lc_110_2: 'The corrected file is now sample-aligned with the source and the same length. It used to sit up to 15 ms late.',
+ cl_lc_110_3: 'Loudness Range follows EBU Tech 3342 more closely, and EBU R128 s1 now limits Maximum Short-term Loudness to -18 LUFS as the standard defines, instead of capping Loudness Range, which the standard explicitly excludes.',
+ cl_lc_110_4: '14 presets instead of 16: Leq(m) and Leq(a) are gone - they are weighted levels against a calibrated 85 dB reference, not LUFS targets, and behaved wrongly as such. "Netflix" is now "OTT -27 LUFS": the same figures, but a target promises nothing that a brand name promises.',
+ cl_lc_110_5: 'Results are no longer overwritten; they are numbered. The interface carries the pegelWERK design.',
  cl_lc_100_t: 'First public direct-sales release',
  cl_lc_100_1: 'Offline R128 correction with 16 delivery presets, broadcast (EBU R128, R128 S1, ATSC A/85, ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354), streaming (Netflix, Apple Podcasts, Spotify, Amazon Music, YouTube), cinema (Leq(m), Leq(a)) plus Custom.',
  cl_lc_100_2: 'Two-pass with automatic refine: pass 1 measures, pass 2 corrects, pass 3 verifies. If the residual is above 0.1 LU, correction runs again with trimmed gain.',

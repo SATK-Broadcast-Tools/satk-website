@@ -17,7 +17,7 @@ BASE = "https://pegelwerk.com"
 
 # de-Datei -> (en-Datei, DE-Pfad, EN-Pfad, EN-Titel, EN-Description)
 PAGES = {
- "index.html": ("index-en.html", "/", "/en",
+ "index.html": ("en.html", "/", "/en",
    "pegelWERK - Pro Audio Software for Broadcast &amp; Post Production",
    "pegelWERK pro audio apps for macOS and iPad: voyzSESSION PRO, loudness METER PRO, loudness CORRECT, easy EDITOR and instant PLAYER."),
  "mac.html": ("mac-en.html", "/mac", "/mac-en",

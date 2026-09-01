@@ -67,10 +67,10 @@
 /voiceover-processor.html / 301
 
 # ── Englische Fassungen (erzeugt von tools/build-en.py) ──────────
-# Die englische Startseite laeuft unter /en, nicht /index-en.
-/en /index-en.html 200
-/index-en /en 301
-/index-en.html /en 301
+# Die englische Startseite heisst en.html, /en ist damit die native Clean-URL
+# von Cloudflare Pages. KEINE Rewrite-Regel - ein 200-Rewrite auf /index-en.html
+# erzeugte eine Endlosschleife, weil Pages die .html-Endung selbst per 308 wegputzt.
+/en.html /en 301
 /mac-en.html /mac-en 301
 /ios-en.html /ios-en 301
 /broadcast-meter-pro-en.html /broadcast-meter-pro-en 301

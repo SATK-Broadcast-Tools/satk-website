@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="de">
+<!-- GENERIERT von tools/build-en.py aus voyzsession.html - NICHT von Hand aendern.
+     Aenderungen gehoeren in die deutsche Seite bzw. ihre en:-i18n-Tabelle,
+     danach `python3 tools/build-en.py` neu laufen lassen. -->
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico?v=10" sizes="any">
@@ -7,13 +10,13 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=10">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=10">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=10">
-<link rel="canonical" href="https://pegelwerk.com/voyzsession">
+<link rel="canonical" href="https://pegelwerk.com/voyzsession-en">
 <link rel="alternate" hreflang="de" href="https://pegelwerk.com/voyzsession">
 <link rel="alternate" hreflang="en" href="https://pegelwerk.com/voyzsession-en">
 <link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/voyzsession">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>voyzSESSION PRO - die DAW für Sprachproduktion am Mac | pegelWERK</title>
-<meta name="description" content="voyzSESSION PRO: die DAW für Sprachproduktion am Mac. Record. Auto Mix. Deliver. Auto Mix nach EBU R128, ATSC A/85, ARIB TR-B32 und OP-59, DNN-Entrauschung, Script-Editor, AU/VST3-Inserts, MXF-Delivery. Für macOS; für das iPad gibt es voyzSESSION im App Store.">
+<title>voyzSESSION PRO - the DAW for voice production on the Mac | pegelWERK</title>
+<meta name="description" content="voyzSESSION PRO: the DAW for voice production on the Mac. Record. Auto Mix. Deliver. Auto Mix to EBU R128, ATSC A/85 and ARIB.">
 
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website">
@@ -35,11 +38,11 @@
  "@context": "https://schema.org",
  "@type": "SoftwareApplication",
  "name": "pegelWERK voyzSESSION PRO",
- "description": "Die DAW für Sprachproduktion - Voice-over, Beitrag, Podcast, Hörspiel. Assist mischt automatisch normgerecht (EBU R128, ATSC A/85, ARIB TR-B32, OP-59), Manual bietet den vollen DAW-Umfang: AU/VST3-Inserts, Einzelspur-Stems, Hardware-Konsolen, MXF-Delivery. Prompter und Script-Editor an Bord. Für macOS; die iPad-App heißt voyzSESSION.",
+ "description": "The DAW for voice production - voice-over, news pieces, podcast, radio drama. Assist mixes automatically to standard (EBU R128, ATSC A/85, ARIB TR-B32, OP-59), Manual offers the full DAW scope: AU/VST3 inserts, single-track stems, hardware consoles, MXF delivery. Prompter and script editor on board. For macOS; the iPad app is called voyzSESSION.",
  "applicationCategory": "MultimediaApplication",
  "applicationSubCategory": "Voice Recording & Broadcast Mixing",
  "operatingSystem": "macOS 12+",
- "url": "https://pegelwerk.com/voyzsession",
+ "url": "https://pegelwerk.com/voyzsession-en",
  "image": "https://pegelwerk.com/img-voyzsession-pro.webp?v=2",
  "screenshot": "https://pegelwerk.com/img-voyzsession-pro.webp?v=2",
  "offers": [
@@ -68,7 +71,7 @@
  "url": "https://pegelwerk.com",
  "logo": "https://pegelwerk.com/og-image.png"
  },
- "inLanguage": ["de", "en"]
+ "inLanguage": "en"
 }
 </script>
 <style>
@@ -264,26 +267,26 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 function switchLang(l,u){try{localStorage.setItem('satk-lang',l);}catch(e){}location.href=u;}
 // Auto-redirect zur anderen Sprachfassung nur bei EXPLIZIT gesetzter Vorliebe
 // (null/unset = hierbleiben, der Besucher hat diese URL bewusst aufgerufen)
-try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/voyzsession-en'); } } catch(e){}
+try { if (localStorage.getItem('satk-lang') === 'de') { location.replace('/voyzsession'); } } catch(e){}
 </script>
 </head>
 <body>
 
 <nav>
- <a href="/" class="nav-logo">
+ <a href="/en" class="nav-logo">
  <img class="nav-logo-img" src="/logo-lockup-2.svg" alt="pegelWERK">
  </a>
  <div class="nav-platforms">
- <a href="/mac" class="active">Mac</a>
- <a href="/ios">iOS</a>
+ <a href="/mac-en" class="active">Mac</a>
+ <a href="/ios-en">iOS</a>
  </div>
  <div class="nav-links">
- <a href="/support" data-i18n="nav_info">Supportanfrage</a>
- <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
+ <a href="/support-en" data-i18n="nav_info">Support request</a>
+ <a href="/manage-license" data-i18n="nav_manage">License</a>
  <div class="lang-sw">
- <span class="lang active" id="btnDE" onclick="switchLang('de','/voyzsession')">DE</span>
+ <span class="lang" id="btnDE" onclick="switchLang('de','/voyzsession')">DE</span>
  <span class="lang-sep">·</span>
- <span class="lang" id="btnEN" onclick="switchLang('en','/voyzsession-en')">EN</span>
+ <span class="lang active" id="btnEN" onclick="switchLang('en','/voyzsession-en')">EN</span>
  </div>
  </div>
 </nav>
@@ -295,7 +298,7 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/voyzs
  <img src="img-voyz-hero-mixer-1056.webp?v=5" width="1056" height="662"
       srcset="img-voyz-hero-mixer-640.webp?v=5 640w, img-voyz-hero-mixer-900.webp?v=5 900w, img-voyz-hero-mixer-1056.webp?v=5 1056w, img-voyz-hero-mixer-2112.webp?v=5 2112w"
       sizes="(max-width: 1120px) calc(100vw - 64px), 1056px"
-      alt="voyzSESSION PRO: Mischpult mit Voice-, Audio- und Gruppenkanaelen, Timeline mit Wellenformen">
+      alt="voyzSESSION PRO: mixer with voice, audio and group channels, timeline with waveforms">
  </div>
  <div class="hero-copy">
  <p class="eyebrow">A DAW made for voice productions</p>
@@ -304,13 +307,13 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/voyzs
  <span class="chip">PRO</span>
  </h1>
  <p class="claim">Record. Auto Mix. Deliver.</p>
- <p class="subline" data-i18n="hero_sub">Kein Overkill. Nur Workflow.</p>
- <p class="tagline" data-i18n="hero_tag">Die DAW für Sprachproduktion: Voice-over, Beitrag, Podcast, Hörspiel. Video oder Skript laden, sprechen, fertig - Auto Mix bringt alles auf Sendelautstärke, der Export geht als WAV, MXF oder direkt mit dem Video raus. Für den Mac - die iPad-App heißt voyzSESSION.</p>
+ <p class="subline" data-i18n="hero_sub">No overkill. Just workflow.</p>
+ <p class="tagline" data-i18n="hero_tag">The DAW for voice productions: voice-over, news pieces, podcast, radio drama. Load a video or a script, speak, done - Auto Mix balances everything to broadcast level, and the export goes out as WAV, MXF or muxed straight back into the video. For the Mac - the iPad app is called voyzSESSION.</p>
  <div class="cta-row">
- <a class="btn-primary" href="/mac" data-i18n="cta_trial">Kostenlos 7 Tage testen</a>
- <a class="btn-ghost" href="#modes" data-i18n="cta_more">Was drinsteckt</a>
+ <a class="btn-primary" href="/mac-en" data-i18n="cta_trial">Try it free for 7 days</a>
+ <a class="btn-ghost" href="#modes" data-i18n="cta_more">What is inside</a>
  </div>
- <p class="notice" data-i18n-html="hero_notice"><b>Bald verfügbar</b> - die hier beschriebenen Funktionen kommen mit dem nächsten Update, voraussichtlich am 1. September 2026. Zum Herunterladen steht heute Version 1.4.1 bereit.</p>
+ <p class="notice" data-i18n-html="hero_notice"><b>Coming soon</b> - the features described here arrive with the next update, expected 1 September 2026. The download available today is version 1.4.1.</p>
  </div>
 </header>
 
@@ -323,26 +326,26 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/voyzs
  <div class="modes">
  <div class="mode assist">
  <h3>ASSIST</h3>
- <p class="mode-sub" data-i18n="m_assist_sub">Klang formen, normgerecht abliefern</p>
+ <p class="mode-sub" data-i18n="m_assist_sub">sound shaping, compliant out</p>
  <ul>
  <li data-i18n="m_a1">Auto Mix: R128 · A/85 · TR-B32 · OP-59</li>
- <li data-i18n="m_a2">Automatische DSP: EQ, Kompressor, De-Esser</li>
- <li data-i18n="m_a3">SmartLeveler, Mehrband-Ducker, DNN-Entrauschung</li>
- <li data-i18n="m_a4">V-PUNCH: sprachgesteuerter Einstieg in die Aufnahme</li>
- <li data-i18n="m_a5">AutoCut nimmt die Stille aus jedem Take</li>
- <li data-i18n="m_a6">Script-Editor: alle Spuren, ein Text</li>
+ <li data-i18n="m_a2">Automatic DSP: EQ, compressor, de-ess</li>
+ <li data-i18n="m_a3">SmartLeveler, multiband ducker, DNN NR</li>
+ <li data-i18n="m_a4">V-PUNCH: speech-triggered punch-in</li>
+ <li data-i18n="m_a5">AutoCut strips the dead air per take</li>
+ <li data-i18n="m_a6">Script editor: all tracks, one text</li>
  </ul>
  </div>
  <div class="mode manual">
  <h3>MANUAL</h3>
- <p class="mode-sub" data-i18n="m_manual_sub">nur was Sprachproduktion wirklich braucht</p>
+ <p class="mode-sub" data-i18n="m_manual_sub">only what voice production really needs</p>
  <ul>
- <li data-i18n="m_m1">Alle DAW-Standards an Bord</li>
- <li data-i18n="m_m2">MXF: auf jede gewünschte Spur einbetten</li>
- <li data-i18n="m_m3">Trockene Einzelspur-Stems, vor dem Bus</li>
- <li data-i18n="m_m4">Mic Mix: Gain-Sharing-Automix je Spur</li>
- <li data-i18n="m_m5">Hardware-Konsole anschließen</li>
- <li data-i18n="m_m6">Fernaufnahme ohne Aggregat-Gerät</li>
+ <li data-i18n="m_m1">All DAW standards on board</li>
+ <li data-i18n="m_m2">MXF: embed on any track you need</li>
+ <li data-i18n="m_m3">Dry per-track stems, pre-bus</li>
+ <li data-i18n="m_m4">Mic Mix: gain-sharing automix per track</li>
+ <li data-i18n="m_m5">Connect a hardware control surface</li>
+ <li data-i18n="m_m6">Easy remote recording, no aggregate device</li>
  </ul>
  </div>
  </div>
@@ -350,15 +353,15 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/voyzs
  <dl class="band">
  <div class="band-row">
  <dt>International Delivery</dt>
- <dd data-i18n="b_delivery">MXF mit 8 Sound-Tracks, M&amp;E der Quelle bleibt erhalten · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10 · WAV · SRT/VTT</dd>
+ <dd data-i18n="b_delivery">MXF with 8 sound tracks, the source M&amp;E is preserved · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10 · WAV · SRT/VTT</dd>
  </div>
  <div class="band-row">
  <dt>Plugins</dt>
- <dd data-i18n="b_plugins">AU und VST3, fünf Insert-Plätze je Kanal, dazu Voice-, IT/FX- und Master-Gruppe (macOS)</dd>
+ <dd data-i18n="b_plugins">AU and VST3, five insert slots per channel, plus voice, IT/FX and master group (macOS)</dd>
  </div>
  <div class="band-row">
  <dt>Virtual Video I/O</dt>
- <dd data-i18n="b_camera">Die Session erscheint als eigene Kamera - in jeder App, die eine Kamera nimmt. Mit eingebranntem Timecode und Vorlaufzähler, ohne Zusatzsoftware (macOS)</dd>
+ <dd data-i18n="b_camera">Your session shows up as a camera of its own - in any app that takes a camera. With timecode and preroll countdown burned in, no extra software (macOS)</dd>
  </div>
  <div class="band-row">
  <dt>Controller</dt>
@@ -372,54 +375,54 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/voyzs
 <!-- ╔══ Highlights ═════════════════════════════════════════════════════╗ -->
 <section class="section" id="features">
  <p class="eyebrow" data-i18n="f_label">Highlights</p>
- <h2 class="section-h2" data-i18n="f_title">Was voyzSESSION PRO ausmacht</h2>
- <p class="section-intro" data-i18n="f_intro">Neun Dinge, die den Unterschied machen - von der Aufnahme bis zur Auslieferung. Was von allein laufen soll, läuft von allein; was du selbst in die Hand nehmen willst, liegt offen.</p>
+ <h2 class="section-h2" data-i18n="f_title">What sets voyzSESSION PRO apart</h2>
+ <p class="section-intro" data-i18n="f_intro">Nine things that make the difference, from the take to the delivery. What should run by itself runs by itself; what you want in your own hands lies open.</p>
 
  <div class="features">
  <div class="feature">
  <div class="feature-icon">Auto Mix</div>
- <h3 data-i18n="f1_h">Ein Klick, sendefertig</h3>
- <p data-i18n="f1_p">Stimme, Musik und Effekte kommen automatisch in Balance - auf die Norm, die du brauchst: EBU R128, ATSC A/85, ARIB TR-B32 oder OP-59. Dazu Profile für Podcast, YouTube und Hörbuch. Kein Reglerklicken, kein Nachmischen.</p>
+ <h3 data-i18n="f1_h">One click, broadcast-ready</h3>
+ <p data-i18n="f1_p">Voice, music and effects are balanced automatically, to whichever standard you need: EBU R128, ATSC A/85, ARIB TR-B32 or OP-59. Plus presets for podcast, YouTube and audiobook. No knob-tweaking, no remixing.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Auto DSP</div>
- <h3 data-i18n="f2_h">Klingt sofort sendefähig</h3>
- <p data-i18n="f2_p">Neuronale Entrauschung (DeepFilterNet 3) holt selbst aus lauter Umgebung Studioqualität - stufenlos per Fader. Dazu die automatische Politur: EQ, Kompressor, De-Esser, SmartLeveler und ein Mehrband-Ducker mit Look-ahead.</p>
+ <h3 data-i18n="f2_h">Sounds broadcast-ready immediately</h3>
+ <p data-i18n="f2_p">Neural noise removal (DeepFilterNet 3) pulls studio quality out of even a noisy room - dial it in with one fader. Plus the automatic polish: EQ, compressor, de-esser, SmartLeveler and a multiband ducker with look-ahead.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Prompter</div>
- <h3 data-i18n="f7_h">Der Text läuft mit</h3>
- <p data-i18n="f7_p">Skript links, Video rechts, Timeline darunter - eine Seite. Der Text scrollt mit deiner Stimme, in jeder Sprache, die die Spracherkennung deines Geräts kennt. Deine Leseposition bleibt stehen, auch wenn du eine Zeile wiederholst.</p>
+ <h3 data-i18n="f7_h">The text runs with you</h3>
+ <p data-i18n="f7_p">Script on the left, video on the right, timeline below - one page. The text scrolls with your voice, in every language your device speech recognition knows. Your reading position stays put, even when you repeat a line.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">V-Punch</div>
- <h3 data-i18n="f3_h">Der Versprecher kostet keinen Take</h3>
- <p data-i18n="f3_p">Sprich die letzten guten Worte einfach noch einmal - die Aufnahme setzt genau dort ein. Mit Shift auch der Ausstieg per Stimme, dann wird nur der Fehler ersetzt. Kein Suchen nach dem Einstiegspunkt.</p>
+ <h3 data-i18n="f3_h">A fluffed line costs you no take</h3>
+ <p data-i18n="f3_p">Just say the last good words again - the recording punches in exactly there. Shift-click adds a spoken out-point, so only the mistake gets replaced. No hunting for the punch point.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Script-Editor</div>
- <h3 data-i18n="f4_h">Der Ton als Text</h3>
- <p data-i18n="f4_p">Whisper transkribiert offline und wortgenau, alle Spuren in einem Text und je Spur eingefärbt. Ein Klick aufs Wort setzt den Playhead. Untertitel gehen als SubRip (.srt) oder WebVTT (.vtt) raus.</p>
+ <h3 data-i18n="f4_h">The audio as text</h3>
+ <p data-i18n="f4_p">Whisper transcribes on-device and word-accurate, all tracks in one text, colour-coded per track. Click a word and the playhead goes there. Subtitles export as SubRip (.srt) or WebVTT (.vtt).</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Mic Mix</div>
- <h3 data-i18n="f8_h">Mehrere Mikrofone, ein Pegel</h3>
- <p data-i18n="f8_p">Gain-Sharing-Automix je Spur: wer spricht, bekommt den Pegel, die anderen treten zurück. Mit drei Prioritätsstufen, damit die Hauptstimme führt, wenn zwei gleichzeitig reden. Für Interview, Dialog und Hörspiel.</p>
+ <h3 data-i18n="f8_h">Several mics, one level</h3>
+ <p data-i18n="f8_p">Gain-sharing automix per track: whoever speaks gets the level, the others step back. Three priority stages keep the lead voice in front when two talk at once. For interview, dialogue and radio drama.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Inserts</div>
- <h3 data-i18n="f5_h">Deine Plugins, dein Sound</h3>
- <p data-i18n="f5_p">Fünf Insert-Plätze je Kanal, dazu eigene Ketten auf der Voice-, der IT/FX- und der Master-Gruppe - AU und VST3, wie in jeder DAW. Was live läuft, klingt im Export identisch. macOS.</p>
+ <h3 data-i18n="f5_h">Your plugins, your sound</h3>
+ <p data-i18n="f5_p">Five insert slots per channel, plus their own chains on the voice, IT/FX and master group - AU and VST3, like any DAW. What you hear live is what the export renders. macOS.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Remote</div>
- <h3 data-i18n="f9_h">Der Sprecher sitzt woanders</h3>
- <p data-i18n="f9_p">voyzSESSION PRO meldet eine eigene Kamera beim System an: jede App, die eine Kamera nimmt, zeigt dem Gast dein Videobild samt eingebranntem Timecode und Vorlaufzähler - er weiß, wo er einsetzt. Cue-Weg und Talkback liegen auf eigenen Ausgängen, ohne Aggregat-Gerät. macOS.</p>
+ <h3 data-i18n="f9_h">Your talent is somewhere else</h3>
+ <p data-i18n="f9_p">voyzSESSION PRO registers a camera of its own with the system: any app that takes a camera shows your guest the video, with timecode and preroll countdown burned in - they know exactly where to come in. Cue feed and talkback sit on their own outputs, no aggregate device. macOS.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Delivery</div>
- <h3 data-i18n="f6_h">International abliefern</h3>
- <p data-i18n="f6_p">MXF mit acht Sound-Tracks, das M&amp;E der Quelle bleibt erhalten. Fertige Profile für ARD/ZDF HDF01a, ARIB RDD9 und CST AS-10 - und dazu Video-Mux, WAV, AIFF, AAC und MP3.</p>
+ <h3 data-i18n="f6_h">Deliver internationally</h3>
+ <p data-i18n="f6_p">MXF with eight sound tracks, the source M&amp;E stays intact. Ready-made profiles for ARD/ZDF HDF01a, ARIB RDD9 and CST AS-10 - plus video mux, WAV, AIFF, AAC and MP3.</p>
  </div>
  </div>
 
@@ -427,90 +430,90 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/voyzs
 
 <!-- ╔══ Workflow ═══════════════════════════════════════════════════════╗ -->
 <section class="section">
- <p class="eyebrow" data-i18n="w_label">Funktionsweise</p>
- <h2 class="section-h2" data-i18n="w_title">In 4 Schritten zum fertigen Beitrag</h2>
+ <p class="eyebrow" data-i18n="w_label">How it works</p>
+ <h2 class="section-h2" data-i18n="w_title">From video to finished segment in 4 steps</h2>
 
  <div class="workflow">
  <div class="workflow-step">
  <div class="workflow-num">01</div>
- <h3 data-i18n="w1_h">Video laden</h3>
- <p data-i18n="w1_p">Per Drag &amp; Drop starten - MP4, MOV, M4V oder MXF, das Audio ist sofort vorbereitet.</p>
+ <h3 data-i18n="w1_h">Load video</h3>
+ <p data-i18n="w1_p">Start with drag &amp; drop - MP4, MOV, M4V or MXF, the audio is prepared instantly.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">02</div>
- <h3 data-i18n="w2_h">Text laden</h3>
- <p data-i18n="w2_p">Einfügen oder öffnen - der Prompter steht direkt neben dem Bild.</p>
+ <h3 data-i18n="w2_h">Load text</h3>
+ <p data-i18n="w2_p">Paste or open it - the prompter sits right next to the picture.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">03</div>
- <h3 data-i18n="w3_h">Sprechen</h3>
- <p data-i18n="w3_p">Aufnehmen, mit V-PUNCH korrigieren, weitermachen - ohne den Flow zu verlieren.</p>
+ <h3 data-i18n="w3_h">Speak</h3>
+ <p data-i18n="w3_p">Record, fix it with V-PUNCH, carry on - without losing your flow.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">04</div>
- <h3 data-i18n="w4_h">Fertig machen</h3>
- <p data-i18n="w4_p">Auto Mix klicken, im Export-Fenster die Ausgaben anhaken - fertig.</p>
+ <h3 data-i18n="w4_h">Wrap up</h3>
+ <p data-i18n="w4_p">Click Auto Mix, tick the outputs you want in the export window - done.</p>
  </div>
  </div>
 </section>
 
 <!-- ╔══ Technische Details ═════════════════════════════════════════════╗ -->
 <section class="section" id="specs">
- <p class="eyebrow" data-i18n="s_label">Technische Details</p>
+ <p class="eyebrow" data-i18n="s_label">Technical Details</p>
  <h2 class="section-h2" data-i18n="s_title">Built for Production</h2>
- <p class="section-intro" data-i18n="s_intro">Nativ in C++ auf JUCE 8. Alles läuft lokal auf deinem Rechner: kein Cloud-Sync, kein Upload, kein Streaming. Die Angaben beschreiben das kommende Update (voraussichtlich 1. September 2026).</p>
+ <p class="section-intro" data-i18n="s_intro">Native C++ on JUCE 8. Everything runs locally on your machine: no cloud sync, no upload, no streaming. These figures describe the coming update (expected 1 September 2026).</p>
 
  <dl class="band" style="margin-top:0">
  <div class="band-row"><dt>Loudness</dt><dd>ITU-R BS.1770-4 · EBU R128 · ATSC A/85 · ARIB TR-B32 · OP-59</dd></div>
  <div class="band-row"><dt>Targets</dt><dd>-23 LUFS / -1 dBTP (R128) · -24 LKFS (A/85, TR-B32, OP-59) · -16 LUFS Podcast · -14 LUFS YouTube</dd></div>
- <div class="band-row"><dt>True Peak</dt><dd data-i18n="s_tp">4-fach überabgetasteter FIR-Limiter</dd></div>
- <div class="band-row"><dt>Denoiser</dt><dd data-i18n="s_nr">DeepFilterNet 3 (ONNX Runtime) · SmartDenoiser (FFT) als klassische Stufe</dd></div>
+ <div class="band-row"><dt>True Peak</dt><dd data-i18n="s_tp">4x oversampled FIR limiter</dd></div>
+ <div class="band-row"><dt>Denoiser</dt><dd data-i18n="s_nr">DeepFilterNet 3 (ONNX Runtime) · SmartDenoiser (FFT) as the classic stage</dd></div>
  <div class="band-row"><dt>Channel Strip</dt><dd>AutoEQ · AutoComp · De-Esser · SmartLeveler · Tube-Saturation</dd></div>
- <div class="band-row"><dt>Ducker</dt><dd data-i18n="s_duck">SmartDucker, Mehrband, mit Look-ahead</dd></div>
- <div class="band-row"><dt>Inserts</dt><dd data-i18n="s_ins">5 × AU/VST3 je Kanal, dazu Voice-, IT/FX- und Master-Gruppe (macOS)</dd></div>
- <div class="band-row"><dt>Transcription</dt><dd data-i18n="s_tr">Whisper auf dem Gerät, wortgenaue Zeitmarken, offline</dd></div>
- <div class="band-row"><dt>Prompter</dt><dd data-i18n="s_pr">Apple-Spracherkennung, Sprache frei wählbar und unabhängig von der App-Sprache</dd></div>
- <div class="band-row"><dt>Controller</dt><dd data-i18n="s_ctl">Mackie MCU · OSC · Web-Konsole für MakePro X (macOS)</dd></div>
- <div class="band-row"><dt>Remote</dt><dd data-i18n="s_rem">Cue-Ausgang und Talkback auf eigenen Ausgängen - kein Aggregat-Gerät nötig</dd></div>
- <div class="band-row"><dt>Virtual Camera</dt><dd data-i18n="s_cam">Eigene Systemerweiterung im App-Bundle, meldet sich auf Wunsch selbst beim System an; Bild mit Timecode und Vorlaufzähler (macOS)</dd></div>
+ <div class="band-row"><dt>Ducker</dt><dd data-i18n="s_duck">SmartDucker, multiband, with look-ahead</dd></div>
+ <div class="band-row"><dt>Inserts</dt><dd data-i18n="s_ins">5 × AU/VST3 per channel, plus voice, IT/FX and master group (macOS)</dd></div>
+ <div class="band-row"><dt>Transcription</dt><dd data-i18n="s_tr">Whisper on-device, word-level timestamps, offline</dd></div>
+ <div class="band-row"><dt>Prompter</dt><dd data-i18n="s_pr">Apple speech recognition, language freely selectable and independent of the app language</dd></div>
+ <div class="band-row"><dt>Controller</dt><dd data-i18n="s_ctl">Mackie MCU · OSC · web console for MakePro X (macOS)</dd></div>
+ <div class="band-row"><dt>Remote</dt><dd data-i18n="s_rem">Cue output and talkback on their own outputs - no aggregate device needed</dd></div>
+ <div class="band-row"><dt>Virtual Camera</dt><dd data-i18n="s_cam">Its own system extension inside the app bundle, registers with the system on request; picture carries timecode and preroll countdown (macOS)</dd></div>
  <div class="band-row"><dt>Video In</dt><dd>MP4 · MOV · M4V · MXF</dd></div>
- <div class="band-row"><dt>MXF Delivery</dt><dd data-i18n="s_mxf">8 Sound-Tracks, Kanalziel wählbar, M&amp;E der Quelle bleibt erhalten · EBU R128 · US ATSC · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10</dd></div>
- <div class="band-row"><dt>Audio Export</dt><dd data-i18n="s_exp">WAV · AIFF · AAC (.m4a) · MP3 · 44,1 / 48 / 88,2 / 96 kHz · 16 Bit, 24 Bit, 32 Bit Float · Mix, Voice-Stem und Stems je Spur</dd></div>
+ <div class="band-row"><dt>MXF Delivery</dt><dd data-i18n="s_mxf">8 sound tracks, channel target selectable, the source M&amp;E is preserved · EBU R128 · US ATSC · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10</dd></div>
+ <div class="band-row"><dt>Audio Export</dt><dd data-i18n="s_exp">WAV · AIFF · AAC (.m4a) · MP3 · 44.1 / 48 / 88.2 / 96 kHz · 16-bit, 24-bit, 32-bit float · mix, voice stem and per-track stems</dd></div>
  <div class="band-row"><dt>Subtitles</dt><dd>SubRip (.srt) · WebVTT (.vtt)</dd></div>
- <div class="band-row"><dt>macOS</dt><dd data-i18n="s_mac">12 oder neuer (13+ empfohlen), Universal Binary für Apple Silicon und Intel</dd></div>
- <div class="band-row"><dt>iPad</dt><dd data-i18n-html="s_ipad">Eigenes Produkt: <a href="/voyzsession-ios">voyzSESSION für iPad</a>, iPadOS 16 oder neuer - ebenfalls mit Prompter</dd></div>
+ <div class="band-row"><dt>macOS</dt><dd data-i18n="s_mac">12 or newer (13+ recommended), Universal Binary for Apple Silicon and Intel</dd></div>
+ <div class="band-row"><dt>iPad</dt><dd data-i18n-html="s_ipad">A product of its own: <a href="/voyzsession-ios-en">voyzSESSION for iPad</a>, iPadOS 16 or newer - with the prompter as well</dd></div>
  </dl>
 </section>
 
 <!-- ╔══ Closing Credo ══════════════════════════════════════════════════╗ -->
 <section class="section">
- <p class="eyebrow" data-i18n="c_label">Was es nicht ist</p>
- <h2 class="section-h2" data-i18n-html="c_title">Kein Baukasten.<br>Ein Werkzeug.</h2>
- <p class="section-intro" data-i18n="c_p">voyzSESSION PRO ist kein Baukasten, sondern ein Werkzeug. Für schnelle, professionelle Sprachproduktion im Redaktionsalltag - und für den Tag, an dem es doch von Hand gemischt werden muss. Einmal installieren, sofort arbeiten. Keine Cloud, alles bleibt lokal.</p>
+ <p class="eyebrow" data-i18n="c_label">What it is not</p>
+ <h2 class="section-h2" data-i18n-html="c_title">Not a kit.<br>A tool.</h2>
+ <p class="section-intro" data-i18n="c_p">voyzSESSION PRO is not a kit, it is a tool. For fast, professional voice production in the editorial day - and for the day it has to be mixed by hand after all. Install once, work immediately. No cloud, everything stays local.</p>
 </section>
 
 <footer>
  <div class="footer-grid">
  <div class="footer-col">
- <h4 data-i18n="f_col_products">Produkte</h4>
- <a href="/mac" data-i18n="nav_mac">Mac Apps</a>
- <a href="/ios" data-i18n="nav_ios">iOS Apps</a>
+ <h4 data-i18n="f_col_products">Products</h4>
+ <a href="/mac-en" data-i18n="nav_mac">Mac Apps</a>
+ <a href="/ios-en" data-i18n="nav_ios">iOS Apps</a>
  </div>
  <div class="footer-col">
  <h4 data-i18n="f_col_support">Support</h4>
  <a href="/videos" data-i18n="nav_videos">Videos</a>
- <a href="/support" data-i18n="nav_info">Supportanfrage</a>
- <a href="/manage-license" data-i18n="f_manage">Lizenz verwalten</a>
+ <a href="/support-en" data-i18n="nav_info">Support request</a>
+ <a href="/manage-license" data-i18n="f_manage">Manage License</a>
  <a href="/changelog" data-i18n="f_changelog">Changelog</a>
- <a href="/press" data-i18n="f_press">Presse</a>
+ <a href="/press" data-i18n="f_press">Press</a>
  </div>
  <div class="footer-col">
- <h4 data-i18n="f_col_legal">Rechtliches</h4>
- <a href="/security" data-i18n="f_security">Security</a>
- <a href="/agb" data-i18n="f_terms">AGB</a>
- <a href="/widerruf" data-i18n="f_refund">Widerruf</a>
- <a href="/datenschutz" data-i18n="f_privacy">Datenschutz</a>
- <a href="/impressum" data-i18n="f_imprint_contact">Kontakt &amp; Impressum</a>
+ <h4 data-i18n="f_col_legal">Legal</h4>
+ <a href="/security-en" data-i18n="f_security">Security</a>
+ <a href="/agb-en" data-i18n="f_terms">Terms</a>
+ <a href="/widerruf-en" data-i18n="f_refund">Right of Withdrawal</a>
+ <a href="/datenschutz-en" data-i18n="f_privacy">Privacy Policy</a>
+ <a href="/impressum-en" data-i18n="f_imprint_contact">Contact &amp; Legal Notice</a>
  </div>
  </div>
  <div class="footer-bar">
@@ -597,7 +600,7 @@ const i18n = {
  s_mxf: '8 Sound-Tracks, Kanalziel wählbar, M&E der Quelle bleibt erhalten · EBU R128 · US ATSC · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10',
  s_exp: 'WAV · AIFF · AAC (.m4a) · MP3 · 44,1 / 48 / 88,2 / 96 kHz · 16 Bit, 24 Bit, 32 Bit Float · Mix, Voice-Stem und Stems je Spur',
  s_mac: '12 oder neuer (13+ empfohlen), Universal Binary für Apple Silicon und Intel',
- s_ipad: 'Eigenes Produkt: <a href="/voyzsession-ios">voyzSESSION für iPad</a>, iPadOS 16 oder neuer - ebenfalls mit Prompter',
+ s_ipad: 'Eigenes Produkt: <a href="/voyzsession-ios-en">voyzSESSION für iPad</a>, iPadOS 16 oder neuer - ebenfalls mit Prompter',
 
  c_label: 'Was es nicht ist',
  c_title: 'Kein Baukasten.<br>Ein Werkzeug.',
@@ -697,7 +700,7 @@ const i18n = {
  s_mxf: '8 sound tracks, channel target selectable, the source M&E is preserved · EBU R128 · US ATSC · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10',
  s_exp: 'WAV · AIFF · AAC (.m4a) · MP3 · 44.1 / 48 / 88.2 / 96 kHz · 16-bit, 24-bit, 32-bit float · mix, voice stem and per-track stems',
  s_mac: '12 or newer (13+ recommended), Universal Binary for Apple Silicon and Intel',
- s_ipad: 'A product of its own: <a href="/voyzsession-ios">voyzSESSION for iPad</a>, iPadOS 16 or newer - with the prompter as well',
+ s_ipad: 'A product of its own: <a href="/voyzsession-ios-en">voyzSESSION for iPad</a>, iPadOS 16 or newer - with the prompter as well',
 
  c_label: 'What it is not',
  c_title: 'Not a kit.<br>A tool.',

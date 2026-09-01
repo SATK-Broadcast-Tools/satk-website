@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="de">
+<!-- GENERIERT von tools/build-en.py aus broadcast-meter-pro.html - NICHT von Hand aendern.
+     Aenderungen gehoeren in die deutsche Seite bzw. ihre en:-i18n-Tabelle,
+     danach `python3 tools/build-en.py` neu laufen lassen. -->
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico?v=10" sizes="any">
@@ -7,13 +10,13 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=10">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=10">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=10">
-<link rel="canonical" href="https://pegelwerk.com/broadcast-meter-pro">
+<link rel="canonical" href="https://pegelwerk.com/broadcast-meter-pro-en">
 <link rel="alternate" hreflang="de" href="https://pegelwerk.com/broadcast-meter-pro">
 <link rel="alternate" hreflang="en" href="https://pegelwerk.com/broadcast-meter-pro-en">
 <link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/broadcast-meter-pro">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>pegelWERK loudness METER PRO - EBU R128 Metering für Broadcast</title>
-<meta name="description" content="EBU R128 / ITU-R BS.1770-4 Loudness-Metering: PPM, LUFS, True Peak, FFT, Goniometer, Sprachklarheit. macOS-, iPad- und iPhone-App.">
+<title>pegelWERK loudness METER PRO - EBU R128 Metering for Broadcast</title>
+<meta name="description" content="EBU R128 / ITU-R BS.1770-4 / BS.1771 loudness metering: PPM, LUFS, True Peak, FFT, goniometer, speech clarity. macOS, iPad and iPhone.">
 
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website">
@@ -35,11 +38,11 @@
  "@context": "https://schema.org",
  "@type": "SoftwareApplication",
  "name": "pegelWERK loudness METER PRO",
- "description": "EBU R128 / ITU-R BS.1770-4 / BS.1771 Loudness-Metering: PPM, LUFS, True Peak, FFT, Goniometer, Sprachklarheit. macOS-, iPad- und iPhone-App.",
+ "description": "EBU R128 / ITU-R BS.1770-4 / BS.1771 loudness metering: PPM, LUFS, true peak, FFT, goniometer, speech clarity. macOS, iPad and iPhone app.",
  "applicationCategory": "MultimediaApplication",
  "applicationSubCategory": "Audio Metering",
  "operatingSystem": "macOS 13+, iPadOS 16+, iOS 16+",
- "url": "https://pegelwerk.com/broadcast-meter-pro",
+ "url": "https://pegelwerk.com/broadcast-meter-pro-en",
  "image": "https://pegelwerk.com/img-broadcast-meter.webp",
  "screenshot": "https://pegelwerk.com/img-broadcast-meter.webp",
  "offers": {
@@ -56,7 +59,7 @@
  "url": "https://pegelwerk.com",
  "logo": "https://pegelwerk.com/og-image.png"
  },
- "inLanguage": ["de", "en"]
+ "inLanguage": "en"
 }
 </script>
 <style>
@@ -263,26 +266,26 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 function switchLang(l,u){try{localStorage.setItem('satk-lang',l);}catch(e){}location.href=u;}
 // Auto-redirect zur anderen Sprachfassung nur bei EXPLIZIT gesetzter Vorliebe
 // (null/unset = hierbleiben, der Besucher hat diese URL bewusst aufgerufen)
-try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/broadcast-meter-pro-en'); } } catch(e){}
+try { if (localStorage.getItem('satk-lang') === 'de') { location.replace('/broadcast-meter-pro'); } } catch(e){}
 </script>
 </head>
 <body>
 
 <nav>
- <a href="/" class="nav-logo">
+ <a href="/en" class="nav-logo">
  <img class="nav-logo-img" src="/logo-lockup-2.svg" alt="pegelWERK">
  </a>
  <div class="nav-platforms">
- <a href="/mac" class="active">Mac</a>
- <a href="/ios">iOS</a>
+ <a href="/mac-en" class="active">Mac</a>
+ <a href="/ios-en">iOS</a>
  </div>
  <div class="nav-links">
- <a href="/support" data-i18n="nav_info">Supportanfrage</a>
- <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
+ <a href="/support-en" data-i18n="nav_info">Support request</a>
+ <a href="/manage-license" data-i18n="nav_manage">License</a>
  <div class="lang-sw">
- <span class="lang active" id="btnDE" onclick="switchLang('de','/broadcast-meter-pro')">DE</span>
+ <span class="lang" id="btnDE" onclick="switchLang('de','/broadcast-meter-pro')">DE</span>
  <span class="lang-sep">·</span>
- <span class="lang" id="btnEN" onclick="switchLang('en','/broadcast-meter-pro-en')">EN</span>
+ <span class="lang active" id="btnEN" onclick="switchLang('en','/broadcast-meter-pro-en')">EN</span>
  </div>
  </div>
 </nav>
@@ -292,52 +295,52 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/broad
 <section class="product-hero">
  <div class="product-eyebrow" data-i18n="ph_eyebrow">Standalone · macOS · iPad · iPhone Mini</div>
  <h1>loudness METER PRO</h1>
- <p class="tagline" data-i18n="ph_tagline">Der professionelle Loudness-Meter für Sendung, Postproduktion und Live-Broadcast, EBU R128 / ITU-R BS.1770-4 und BS.1771 konform, mit KI-gestützter Sprachanalyse.</p>
+ <p class="tagline" data-i18n="ph_tagline">The professional loudness meter for broadcast, post and live shows, EBU R128 / ITU-R BS.1770-4 and BS.1771 compliant, with AI-powered speech analysis.</p>
  <div class="appstore-cta">
- <a class="shop-cta-btn" href="/mac" data-i18n="nav_back">Zurück zum Shop</a>
+ <a class="shop-cta-btn" href="/mac-en" data-i18n="nav_back">Back to Shop</a>
  </div>
 </section>
 
 <div class="hero-img-wrap">
- <img class="hero-img" src="img-broadcast-meter.webp" alt="pegelWERK loudness METER PRO Interface">
+ <img class="hero-img" src="img-broadcast-meter.webp" alt="pegelWERK loudness METER PRO interface">
 </div>
 
 <!-- ╔══ Highlights ════════════════════════════════════════════╗ -->
 <section class="section">
  <div class="section-label" data-i18n="bm_features_label">Highlights</div>
- <h2 class="section-h2" data-i18n="bm_features_title">Mehr als ein Loudness-Meter</h2>
- <p class="section-intro" data-i18n="bm_features_intro">Ob du eine Nachrichtensendung mischt, einen Hörspiel-Master abnimmst oder eine Live-Show fährst, der loudness METER PRO zeigt dir nicht nur, ob dein Pegel stimmt. Er zeigt dir, wie verständlich deine Sprache ankommt, wie sich dein Programm bis zum Sendeende entwickelt, und ob deine Dynamik im erlaubten Korridor bleibt. Alles in Echtzeit, in einer einzigen klaren Oberfläche.</p>
+ <h2 class="section-h2" data-i18n="bm_features_title">More than a loudness meter</h2>
+ <p class="section-intro" data-i18n="bm_features_intro">Whether you are mixing a news show, signing off an audio drama master or running a live programme, the loudness METER PRO does not just tell you whether your level is right. It tells you how intelligible your speech actually sounds, how your programme is shaping up to broadcast end, and whether your dynamics stay inside the allowed corridor. All in realtime, in one clear interface.</p>
 
  <div class="features">
  <div class="feature">
  <div class="feature-icon">EBU R128</div>
  <h3 data-i18n="bm_f1_h">Loudness Engine</h3>
- <p data-i18n="bm_f1_p">Momentary, Short-Term und Integrated Loudness mit korrekter 400-ms-Gating-Engine bei 75% Overlap. Power-Domain in double precision, keine LUFS-Drifts bei stundenlangen Programmen. LRA nach EBU Tech 3342.</p>
+ <p data-i18n="bm_f1_p">Momentary, Short-Term and Integrated Loudness with correct 400 ms gating engine at 75% overlap. Power-domain in double precision, no LUFS drift over hours-long programmes. LRA per EBU Tech 3342.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">True Peak</div>
  <h3 data-i18n="bm_f2_h">4x Polyphase TP</h3>
- <p data-i18n="bm_f2_p">Inter-Sample-Peak-Detection mit 4-fachem polyphasem FIR-Filter. Spot-genau auch bei Inter-Sample-Peaks, kompatibel zu allen R128-Limitern. Update-Rate 200 ms, flüssig ohne Zappeln.</p>
+ <p data-i18n="bm_f2_p">Inter-sample peak detection with 4x polyphase FIR filter. Spot-on even at inter-sample peaks, compatible with every R128 limiter. 200 ms update rate, smooth without flicker.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Speech AI</div>
- <h3 data-i18n="bm_f3_h">Sprach-Klarheit in Echtzeit</h3>
- <p data-i18n="bm_f3_p">Silero VAD v5 erkennt Sprache zuverlässig auch unter Musik. wespeaker ResNet34-LM mit Speaker-Lock erkennt Sprecherwechsel automatisch. Ampel: Good · Fair · Poor, sagt dir, ob deine Sprache verständlich ankommt, bevor das Telefon klingelt.</p>
+ <h3 data-i18n="bm_f3_h">Speech Clarity in realtime</h3>
+ <p data-i18n="bm_f3_p">Silero VAD v5 reliably detects speech even under music. wespeaker ResNet34-LM with speaker-lock auto-detects speaker changes. Traffic-light: Good · Fair · Poor, tells you whether your speech reaches the listener intelligibly, before the phone rings.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Forecast</div>
- <h3 data-i18n="bm_f4_h">Live-Prognose bis Sendeende</h3>
- <p data-i18n="bm_f4_p">Vorhersage der Integrated Loudness und LRA am Programmende auf Basis des bisherigen Verlaufs. Programm-Dauer-Panel mit Restzeit, 4-Felder-Banner mit Loudness-Trend, LRA-Trend und Reserve.</p>
+ <h3 data-i18n="bm_f4_h">Live forecast to broadcast end</h3>
+ <p data-i18n="bm_f4_p">Predicts Integrated Loudness and LRA at programme end based on the running history. Programme-duration panel with remaining time, 4-field banner with loudness trend, LRA trend and headroom.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">RTW-Style</div>
- <h3 data-i18n="bm_f5_h">Vollständige Visualisierung</h3>
- <p data-i18n="bm_f5_p">PPM Bars in Broadcast-Skala (-59...-5) mit Cyan/Grün/Rot-Zonen, Goniometer mit Korrelation, FFT-Spektrum, Loudness Radar und drei Histogramme (Loudness, LRA, R128 Gating). Vertraute Optik für erfahrene Tonmeister.</p>
+ <h3 data-i18n="bm_f5_h">Complete visualisation</h3>
+ <p data-i18n="bm_f5_p">PPM bars in broadcast scale (-59...-5) with cyan/green/red zones, vectorscope with correlation, FFT spectrum, loudness radar and three histograms (Loudness, LRA, R128 Gating). Familiar look for seasoned engineers.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Studio</div>
- <h3 data-i18n="bm_f6_h">3 GUI-Modi · Batch · Remote</h3>
- <p data-i18n="bm_f6_p">All / Live / Analytics, drei Modi für jede Situation. Batch-Modus für ganze Ordner mit CSV- und Multi-Page-PDF-Reports. MIDI Learn, Bluetooth MIDI Pairing und GPI für die Regie.</p>
+ <h3 data-i18n="bm_f6_h">3 GUI modes · Batch · Remote</h3>
+ <p data-i18n="bm_f6_p">All / Live / Analytics, three modes for every situation. Batch mode for whole folders with CSV and multi-page PDF reports. MIDI Learn, Bluetooth MIDI pairing and GPI for the gallery.</p>
  </div>
  </div>
 </section>
@@ -357,73 +360,73 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/broad
  <div class="trust-icon" aria-hidden="true">
  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
  </div>
- <div class="trust-h" data-i18n="trust_p1_h">Vom erfahrenen Toningenieur</div>
- <div class="trust-p" data-i18n="trust_p1_p">Entwickelt von einem aktiven Broadcast-Engineer für Broadcast-Engineers. Keine nutzlosen Marketing-Features, nur was im Studio wirklich gebraucht wird.</div>
+ <div class="trust-h" data-i18n="trust_p1_h">Built by an experienced sound engineer</div>
+ <div class="trust-p" data-i18n="trust_p1_p">Built by an active broadcast engineer for broadcast engineers. No useless marketing features, only what actually gets used in the studio.</div>
  </div>
  <div class="trust-pillar">
  <div class="trust-icon" aria-hidden="true">
  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v6l4 2"/><circle cx="12" cy="14" r="8"/></svg>
  </div>
- <div class="trust-h" data-i18n="trust_p2_h">7 Tage testen, ohne Risiko</div>
- <div class="trust-p" data-i18n="trust_p2_p">Vollversion herunterladen, eine Woche im echten Workflow nutzen, kein Konto, keine E-Mail, keine Kreditkarte. Erst dann entscheiden.</div>
+ <div class="trust-h" data-i18n="trust_p2_h">7-day risk-free trial</div>
+ <div class="trust-p" data-i18n="trust_p2_p">Download the full version, use it for a week in your real workflow, no account, no email, no credit card. Decide afterwards.</div>
  </div>
  <div class="trust-pillar">
  <div class="trust-icon" aria-hidden="true">
  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v12H7l-3 4z"/><path d="M8 9h8M8 12h6"/></svg>
  </div>
- <div class="trust-h" data-i18n="trust_p3_h">Antwort vom Entwickler</div>
- <div class="trust-p" data-i18n="trust_p3_p">Support-Mails landen direkt im Posteingang des Entwicklers, nicht bei einem Ticket-System. Werktags meist innerhalb von 24 Stunden.</div>
+ <div class="trust-h" data-i18n="trust_p3_h">Reply from the developer</div>
+ <div class="trust-p" data-i18n="trust_p3_p">Support emails go straight to the developer's inbox, not into a ticket system. Usually within 24 hours on working days.</div>
  </div>
  </div>
 </section>
 
 <!-- ╔══ Platform Compare ══════════════════════════════════════╗ -->
 <section class="section">
- <div class="section-label" data-i18n="bm_pc_label">Plattformen im Vergleich</div>
- <h2 class="section-h2" data-i18n="bm_pc_title">Eine Engine, drei Stufen</h2>
- <p class="section-intro" data-i18n="bm_pc_intro">Dieselbe DSP läuft auf jeder Plattform. Der Funktionsumfang skaliert mit dem Einsatzgebiet, vom mobilen Quick-Check bis zur Vollproduktion.</p>
+ <div class="section-label" data-i18n="bm_pc_label">Platforms compared</div>
+ <h2 class="section-h2" data-i18n="bm_pc_title">One engine, three tiers</h2>
+ <p class="section-intro" data-i18n="bm_pc_intro">The same DSP runs on every platform. Feature scope scales with the use case, from a mobile quick-check to full production.</p>
 
  <div class="table-scroll">
  <table class="platform-table">
  <thead>
  <tr>
  <th data-i18n="pc_h_feature">Feature</th>
- <th data-i18n="pc_h_macos">macOS App</th>
+ <th data-i18n="pc_h_macos">macOS app</th>
  <th data-i18n="pc_h_ipad">iPad App</th>
  <th data-i18n="pc_h_iphone">iPhone Mini</th>
  </tr>
  </thead>
  <tbody>
- <tr class="price-row"><td data-i18n="pc_price">Preis</td><td class="price">99 €</td><td class="price">19,99 €</td><td class="price" data-i18n="pc_price_iphone">Gratis</td></tr>
+ <tr class="price-row"><td data-i18n="pc_price">Price</td><td class="price">99 €</td><td class="price">19,99 €</td><td class="price" data-i18n="pc_price_iphone">Free</td></tr>
  <tr><td data-i18n="pc_lufs">LUFS-I/S/M Metering</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
  <tr><td data-i18n="pc_tp">True Peak (4x polyphase)</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
- <tr><td data-i18n="pc_fft">FFT Spektrum</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
- <tr><td data-i18n="pc_ppm">PPM Bars (RTW-Style)</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
- <tr><td data-i18n="pc_gonio">Goniometer / Korrelation</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">-</td></tr>
+ <tr><td data-i18n="pc_fft">FFT Spectrum</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+ <tr><td data-i18n="pc_ppm">PPM Bars (RTW-style)</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+ <tr><td data-i18n="pc_gonio">Vectorscope / Correlation</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">-</td></tr>
  <tr><td data-i18n="pc_radar">Loudness Radar</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">-</td></tr>
- <tr><td data-i18n="pc_clarity">Sprachklarheit (Silero VAD)</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">-</td></tr>
- <tr><td data-i18n="pc_forecast">Programm-Prognose</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">-</td></tr>
- <tr><td data-i18n="pc_histo">Histogramme (Loudness, LRA, Gating)</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">-</td></tr>
+ <tr><td data-i18n="pc_clarity">Speech Clarity (Silero VAD)</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">-</td></tr>
+ <tr><td data-i18n="pc_forecast">Programme Forecast</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">-</td></tr>
+ <tr><td data-i18n="pc_histo">Histograms (Loudness, LRA, Gating)</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">-</td></tr>
  <tr><td data-i18n="pc_midi">MIDI Remote (Bluetooth + Learn)</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">-</td></tr>
  <tr><td data-i18n="pc_gpi">GPI Remote</td><td class="yes">✓</td><td class="no">-</td><td class="no">-</td></tr>
- <tr><td data-i18n="pc_file">File-Open / Batch-Analyse</td><td class="yes">✓</td><td class="no">-</td><td class="no">-</td></tr>
+ <tr><td data-i18n="pc_file">File-Open / Batch Analysis</td><td class="yes">✓</td><td class="no">-</td><td class="no">-</td></tr>
  <tr><td data-i18n="pc_pdf">PDF / CSV Reports</td><td class="yes">✓</td><td class="no">-</td><td class="no">-</td></tr>
  </tbody>
  </table>
  </div>
 
  <div class="ipad-frame">
- <img src="img-bm-ipad.webp" alt="loudness METER PRO, iPad App">
+ <img src="img-bm-ipad.webp" alt="loudness METER PRO, iPad app">
  <span class="iphone-caption" data-i18n="ipad_caption">iPad App</span>
  </div>
 
  <div class="iphone-showcase">
  <div class="iphone-frame">
- <img src="img-bm-iphone-meters.webp" alt="loudness METER PRO Mini, Page Meters">
+ <img src="img-bm-iphone-meters.webp" alt="loudness METER PRO Mini, meters page">
  <span class="iphone-caption" data-i18n="iphone_meters">iPhone Mini · Meters</span>
  </div>
  <div class="iphone-frame">
- <img src="img-bm-iphone-spectrum.webp" alt="loudness METER PRO Mini, Page Spectrum">
+ <img src="img-bm-iphone-spectrum.webp" alt="loudness METER PRO Mini, spectrum page">
  <span class="iphone-caption" data-i18n="iphone_spectrum">iPhone Mini · Spectrum</span>
  </div>
  </div>
@@ -431,39 +434,39 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/broad
 
 <!-- ╔══ Workflow ══════════════════════════════════════════════╗ -->
 <section class="section">
- <div class="section-label" data-i18n="bm_wf_label">Funktionsweise</div>
- <h2 class="section-h2" data-i18n="bm_wf_title">In 4 Schritten zur Sendung</h2>
- <p class="section-intro" data-i18n="bm_wf_intro">Ob im Kontrollraum oder als Standalone neben dem Schnitt - der Workflow bleibt der gleiche.</p>
+ <div class="section-label" data-i18n="bm_wf_label">How it works</div>
+ <h2 class="section-h2" data-i18n="bm_wf_title">Four steps to broadcast</h2>
+ <p class="section-intro" data-i18n="bm_wf_intro">In the control room or standalone next to the editor - the workflow stays the same.</p>
 
  <div class="workflow">
  <div class="workflow-step">
  <div class="workflow-num">01</div>
- <h3 data-i18n="bm_w1_h">Einsetzen</h3>
- <p data-i18n="bm_w1_p">Standalone öffnen, Audio routet automatisch ein - kein Setup, keine Konfiguration nötig.</p>
+ <h3 data-i18n="bm_w1_h">Insert</h3>
+ <p data-i18n="bm_w1_p">Open the app. Audio routes automatically - no setup, no configuration.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">02</div>
- <h3 data-i18n="bm_w2_h">Messen</h3>
- <p data-i18n="bm_w2_p">Alle Werte in Echtzeit: LUFS-I/S/M, TP, LRA, Sprachklarheit, Korrelation. Histogramme dokumentieren den Verlauf.</p>
+ <h3 data-i18n="bm_w2_h">Measure</h3>
+ <p data-i18n="bm_w2_p">Every value in realtime: LUFS-I/S/M, TP, LRA, speech clarity, correlation. Histograms document the timeline.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">03</div>
- <h3 data-i18n="bm_w3_h">Korrigieren</h3>
- <p data-i18n="bm_w3_p">Prädiktive Anzeige zeigt vor Sendeschluss, ob du im R128-Korridor bist. MIDI- und GPI-Remote für die Regie.</p>
+ <h3 data-i18n="bm_w3_h">Correct</h3>
+ <p data-i18n="bm_w3_p">Predictive display shows whether you are inside the R128 corridor before the show ends. MIDI and GPI remote for the gallery.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">04</div>
- <h3 data-i18n="bm_w4_h">Dokumentieren</h3>
- <p data-i18n="bm_w4_p">PDF-Report mit allen Metriken, Histogrammen und Timeline. Batch-CSV für ganze Sendungen oder Folgenpakete.</p>
+ <h3 data-i18n="bm_w4_h">Document</h3>
+ <p data-i18n="bm_w4_p">PDF report with every metric, histogram and timeline. Batch CSV for whole shows or episode bundles.</p>
  </div>
  </div>
 </section>
 
 <!-- ╔══ Specs ═════════════════════════════════════════════════╗ -->
 <section class="section">
- <div class="section-label" data-i18n="bm_specs_label">Technische Details</div>
+ <div class="section-label" data-i18n="bm_specs_label">Technical Details</div>
  <h2 class="section-h2" data-i18n="bm_specs_title">Built for Production</h2>
- <p class="section-intro" data-i18n="bm_specs_intro">Saubere DSP, keine Mogelpackungen.</p>
+ <p class="section-intro" data-i18n="bm_specs_intro">Clean DSP, no shortcuts.</p>
 
  <div class="specs">
  <div class="spec-col">
@@ -478,7 +481,7 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/broad
  </ul>
  </div>
  <div class="spec-col">
- <h4 data-i18n="bm_specs_ai">KI &amp; GUI</h4>
+ <h4 data-i18n="bm_specs_ai">AI &amp; GUI</h4>
  <ul>
  <li><b>VAD</b> Silero v5 (ONNX, lokal)</li>
  <li><b>Speaker</b> wespeaker ResNet34-LM</li>
@@ -489,7 +492,7 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/broad
  </ul>
  </div>
  <div class="spec-col">
- <h4 data-i18n="bm_specs_io">Plattform &amp; I/O</h4>
+ <h4 data-i18n="bm_specs_io">Platform &amp; I/O</h4>
  <ul>
  <li><b>Standalone</b> macOS · Windows · Linux x64</li>
  <li><b>iPad</b> iPadOS 16+ (iPad-only)</li>
@@ -503,33 +506,33 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/broad
 
 <!-- ╔══ Closing Credo ═════════════════════════════════════════╗ -->
 <section class="section">
- <div class="section-label" data-i18n="bm_credo_label">Was es besonders macht</div>
- <h2 class="section-h2" data-i18n-html="bm_credo_title">Andere zeigen Zahlen.<br>Wir zeigen, was sie bedeuten.</h2>
- <p class="section-intro" data-i18n="bm_credo_p">Andere Loudness-Meter zeigen dir Zahlen. Der pegelWERK loudness METER PRO zeigt dir, was sie bedeuten, von der Sprachverständlichkeit bis zur Endprognose. Entwickelt von einem Sendetontechniker für Sendetontechniker.</p>
+ <div class="section-label" data-i18n="bm_credo_label">What sets it apart</div>
+ <h2 class="section-h2" data-i18n-html="bm_credo_title">Others show numbers.<br>We show what they mean.</h2>
+ <p class="section-intro" data-i18n="bm_credo_p">Other loudness meters show you numbers. The pegelWERK loudness METER PRO shows you what they mean, from speech intelligibility to end-of-programme forecast. Built by a broadcast engineer for broadcast engineers.</p>
 </section>
 
 <footer>
  <div class="footer-grid">
  <div class="footer-col">
- <h4 data-i18n="f_col_products">Produkte</h4>
- <a href="/mac" data-i18n="nav_mac">Mac Apps</a>
- <a href="/ios" data-i18n="nav_ios">iOS Apps</a>
+ <h4 data-i18n="f_col_products">Products</h4>
+ <a href="/mac-en" data-i18n="nav_mac">Mac Apps</a>
+ <a href="/ios-en" data-i18n="nav_ios">iOS Apps</a>
  </div>
  <div class="footer-col">
  <h4 data-i18n="f_col_support">Support</h4>
  <a href="/videos" data-i18n="nav_videos">Videos</a>
- <a href="/support" data-i18n="nav_info">Supportanfrage</a>
- <a href="/manage-license" data-i18n="f_manage">Lizenz verwalten</a>
+ <a href="/support-en" data-i18n="nav_info">Support request</a>
+ <a href="/manage-license" data-i18n="f_manage">Manage License</a>
  <a href="/changelog" data-i18n="f_changelog">Changelog</a>
- <a href="/press" data-i18n="f_press">Presse</a>
+ <a href="/press" data-i18n="f_press">Press</a>
  </div>
  <div class="footer-col">
- <h4 data-i18n="f_col_legal">Rechtliches</h4>
- <a href="/security" data-i18n="f_security">Security</a>
- <a href="/agb" data-i18n="f_terms">AGB</a>
- <a href="/widerruf" data-i18n="f_refund">Widerruf</a>
- <a href="/datenschutz" data-i18n="f_privacy">Datenschutz</a>
- <a href="/impressum" data-i18n="f_imprint_contact">Kontakt &amp; Impressum</a>
+ <h4 data-i18n="f_col_legal">Legal</h4>
+ <a href="/security-en" data-i18n="f_security">Security</a>
+ <a href="/agb-en" data-i18n="f_terms">Terms</a>
+ <a href="/widerruf-en" data-i18n="f_refund">Right of Withdrawal</a>
+ <a href="/datenschutz-en" data-i18n="f_privacy">Privacy Policy</a>
+ <a href="/impressum-en" data-i18n="f_imprint_contact">Contact &amp; Legal Notice</a>
  </div>
  </div>
  <div class="footer-bar">

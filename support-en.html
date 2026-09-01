@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="de">
+<!-- GENERIERT von tools/build-en.py aus support.html - NICHT von Hand aendern.
+     Aenderungen gehoeren in die deutsche Seite bzw. ihre en:-i18n-Tabelle,
+     danach `python3 tools/build-en.py` neu laufen lassen. -->
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico?v=10" sizes="any">
@@ -7,13 +10,13 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=10">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=10">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=10">
-<link rel="canonical" href="https://pegelwerk.com/support">
+<link rel="canonical" href="https://pegelwerk.com/support-en">
 <link rel="alternate" hreflang="de" href="https://pegelwerk.com/support">
 <link rel="alternate" hreflang="en" href="https://pegelwerk.com/support-en">
 <link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/support">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>pegelWERK Support - Kontakt &amp; Hilfe</title>
-<meta name="description" content="Support und Kontakt für pegelWERK loudness METER PRO, voyzSESSION PRO und loudness CORRECT. E-Mail-Support direkt vom Entwickler.">
+<title>pegelWERK Support - contact &amp; help</title>
+<meta name="description" content="Support and contact for pegelWERK loudness METER PRO, voyzSESSION PRO and loudness CORRECT. Email support directly from the developer.">
 
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website">
@@ -156,61 +159,61 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 function switchLang(l,u){try{localStorage.setItem('satk-lang',l);}catch(e){}location.href=u;}
 // Auto-redirect zur anderen Sprachfassung nur bei EXPLIZIT gesetzter Vorliebe
 // (null/unset = hierbleiben, der Besucher hat diese URL bewusst aufgerufen)
-try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/support-en'); } } catch(e){}
+try { if (localStorage.getItem('satk-lang') === 'de') { location.replace('/support'); } } catch(e){}
 </script>
 </head>
 <body>
 
 <nav>
- <a href="/" class="nav-logo">
+ <a href="/en" class="nav-logo">
  <img class="nav-logo-img" src="/logo-lockup-2.svg" alt="pegelWERK">
  </a>
  <div class="nav-platforms">
- <a href="/mac">Mac</a>
- <a href="/ios">iOS</a>
+ <a href="/mac-en">Mac</a>
+ <a href="/ios-en">iOS</a>
  </div>
  <div class="nav-links">
- <a href="/support" data-i18n="nav_info">Supportanfrage</a>
- <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
+ <a href="/support-en" data-i18n="nav_info">Support request</a>
+ <a href="/manage-license" data-i18n="nav_manage">License</a>
  <div class="lang-sw">
- <span class="lang active" id="btnDE" onclick="switchLang('de','/support')">DE</span>
+ <span class="lang" id="btnDE" onclick="switchLang('de','/support')">DE</span>
  <span class="lang-sep">·</span>
- <span class="lang" id="btnEN" onclick="switchLang('en','/support-en')">EN</span>
+ <span class="lang active" id="btnEN" onclick="switchLang('en','/support-en')">EN</span>
  </div>
  </div>
 </nav>
 
 <section class="page-hero">
- <div class="page-eyebrow" data-i18n="sup_eyebrow">Support &amp; Kontakt</div>
- <h1 data-i18n="sup_title">Wie können wir helfen?</h1>
- <p class="tagline" data-i18n="sup_tagline">E-Mail-Support direkt vom Entwickler. Keine Warteschlange, keine Chatbots. Antwort meist innerhalb von 24 Stunden.</p>
+ <div class="page-eyebrow" data-i18n="sup_eyebrow">Support &amp; Contact</div>
+ <h1 data-i18n="sup_title">How can we help?</h1>
+ <p class="tagline" data-i18n="sup_tagline">Email support directly from the developer. No queues, no chatbots. Replies usually within 24 hours.</p>
 </section>
 
 <section class="section">
 
  <div class="contact-info">
  <div class="contact-cell">
- <h3 data-i18n="sup_email_h">E-Mail</h3>
+ <h3 data-i18n="sup_email_h">Email</h3>
  <p><a href="mailto:info@pegelwerk.com">info@pegelwerk.com</a></p>
  </div>
  <div class="contact-cell">
- <h3 data-i18n="sup_response_h">Antwortzeit</h3>
- <p data-i18n="sup_response_p">Werktags meist innerhalb von 24 Stunden.</p>
+ <h3 data-i18n="sup_response_h">Response time</h3>
+ <p data-i18n="sup_response_p">Usually within 24 hours on working days.</p>
  </div>
  <div class="contact-cell">
- <h3 data-i18n="sup_lang_h">Sprachen</h3>
- <p data-i18n="sup_lang_p">Deutsch und Englisch.</p>
+ <h3 data-i18n="sup_lang_h">Languages</h3>
+ <p data-i18n="sup_lang_p">German and English.</p>
  </div>
  </div>
 
  <!-- Erfolgs-Banner (außerhalb des Forms, damit er nicht mit ausgeblendet wird) -->
- <div id="sentBanner" style="display:none;padding:24px 28px;border:1px solid var(--ac);border-radius:10px;background:rgba(79,185,154,.06);color:var(--ac);font-family:'Arimo',sans-serif;font-size:14px;font-weight:600;letter-spacing:.3px;margin-bottom:32px;text-align:center;line-height:1.6" data-i18n="sup_sent">✓ Vielen Dank, deine Anfrage ist eingegangen. Du erhältst gleich eine Bestätigungs-Mail. Ich melde mich werktags meist innerhalb von 24 Stunden.</div>
+ <div id="sentBanner" style="display:none;padding:24px 28px;border:1px solid var(--ac);border-radius:10px;background:rgba(79,185,154,.06);color:var(--ac);font-family:'Arimo',sans-serif;font-size:14px;font-weight:600;letter-spacing:.3px;margin-bottom:32px;text-align:center;line-height:1.6" data-i18n="sup_sent">✓ Thank you, your request has been received. A confirmation email is on its way. I usually reply within 24 hours on working days.</div>
 
  <!-- Fehler-Banner mit Mailto-Fallback (Daten gehen nicht verloren) -->
  <div id="errorBanner" style="display:none;padding:22px 26px;border:1px solid #f0a060;border-radius:10px;background:rgba(240,160,96,.06);margin-bottom:32px;line-height:1.7">
- <div style="font-family:'Arimo',sans-serif;font-weight:700;color:#f0a060;margin-bottom:10px;font-size:14px;letter-spacing:.3px" data-i18n="sup_err_h">Senden gerade nicht möglich</div>
- <p style="color:var(--mu2);font-size:12px;margin-bottom:18px" data-i18n="sup_err_p">Das Formular konnte deine Anfrage gerade nicht ausliefern. Kein Problem, sende sie direkt per E-Mail. Alle eingegebenen Daten werden in der Mail vorausgefüllt.</p>
- <a id="mailtoFallback" href="mailto:info@pegelwerk.com" style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;background:var(--ac);color:#0a0a0b;text-decoration:none;font-weight:500;transition:transform .15s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'" data-i18n="sup_err_btn">📧 Per E-Mail senden</a>
+ <div style="font-family:'Arimo',sans-serif;font-weight:700;color:#f0a060;margin-bottom:10px;font-size:14px;letter-spacing:.3px" data-i18n="sup_err_h">Sending failed right now</div>
+ <p style="color:var(--mu2);font-size:12px;margin-bottom:18px" data-i18n="sup_err_p">The form could not deliver your request right now. No problem, send it by email instead. Everything you entered will be pre-filled in the message.</p>
+ <a id="mailtoFallback" href="mailto:info@pegelwerk.com" style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;background:var(--ac);color:#0a0a0b;text-decoration:none;font-weight:500;transition:transform .15s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'" data-i18n="sup_err_btn">📧 Send by email</a>
  </div>
 
  <form class="form-wrap" action="https://satk-license-worker.weathered-lake-eea9.workers.dev/support" method="POST" id="supportForm">
@@ -218,19 +221,19 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/suppo
  Worker erkennt nicht-leeres _honey und antwortet "silent success" ohne Mail. -->
  <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
 
- <h2 style="font-family:'Arimo',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.2px;color:var(--tx);margin-bottom:8px" data-i18n="sup_form_h2">Support-Anfrage</h2>
- <p style="font-size:12px;color:var(--mu2);margin-bottom:28px;line-height:1.6" data-i18n="sup_form_intro">Bitte fülle die Felder so vollständig wie möglich aus, App- und OS-Version sind für Bug-Tracking entscheidend. Screenshots, Crash-Logs oder Audio-Beispiele kannst du in einer Antwort-Mail nachreichen.</p>
+ <h2 style="font-family:'Arimo',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.2px;color:var(--tx);margin-bottom:8px" data-i18n="sup_form_h2">Support request</h2>
+ <p style="font-size:12px;color:var(--mu2);margin-bottom:28px;line-height:1.6" data-i18n="sup_form_intro">Please fill in the fields as completely as possible, app and OS version are essential for bug tracking. Screenshots, crash logs or audio samples can be attached to your reply mail.</p>
 
  <!-- ╔══ Kontakt ═══════════════════════════════════════════╗ -->
  <div class="form-section">
- <div class="form-section-h" data-i18n="sup_sec_contact">Kontakt</div>
+ <div class="form-section-h" data-i18n="sup_sec_contact">Contact</div>
  <div class="form-row-grid">
  <div class="form-row">
  <label class="form-label" for="name" data-i18n="sup_label_name">Name</label>
  <input class="form-input" type="text" id="name" name="Name" required>
  </div>
  <div class="form-row">
- <label class="form-label" for="email" data-i18n="sup_label_email">E-Mail</label>
+ <label class="form-label" for="email" data-i18n="sup_label_email">Email</label>
  <input class="form-input" type="email" id="email" name="E-Mail" required>
  </div>
  </div>
@@ -244,29 +247,29 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/suppo
  <label class="form-label" for="product" data-i18n="sup_label_product">App</label>
  <select class="form-select" id="product" name="App" required>
  <option value="loudness METER PRO (Plugin)">loudness METER PRO, Plugin (VST3 / AU / AAX)</option>
- <option value="loudness METER PRO (macOS App)">loudness METER PRO, macOS App</option>
+ <option value="loudness METER PRO (macOS App)">loudness METER PRO, macOS app</option>
  <option value="loudness METER PRO (iPad)">loudness METER PRO, iPad</option>
  <option value="loudness METER PRO Mini (iPhone)">loudness METER PRO Mini, iPhone</option>
  <option value="voyzSESSION PRO (macOS)">voyzSESSION PRO, macOS</option>
  <option value="voyzSESSION (iPad)">voyzSESSION, iPad</option>
  <option value="loudness CORRECT (macOS)">loudness CORRECT, macOS</option>
  <option value="loudness CORRECT (iPad)">loudness CORRECT, iPad</option>
-  <option value="Allgemein">Allgemein / Sonstiges</option>
+  <option value="Allgemein">General / other</option>
  </select>
  </div>
  <div class="form-row">
- <label class="form-label" for="appversion" data-i18n="sup_label_appversion">App-Version</label>
- <input class="form-input" type="text" id="appversion" name="App-Version" placeholder="z. B. 1.0.3 (12)" required>
+ <label class="form-label" for="appversion" data-i18n="sup_label_appversion">App version</label>
+ <input class="form-input" type="text" id="appversion" name="App-Version" placeholder="e.g. 1.0.3 (12)" required>
  </div>
  </div>
  <div class="form-row">
- <label class="form-label" for="topic" data-i18n="sup_label_topic">Anliegen</label>
+ <label class="form-label" for="topic" data-i18n="sup_label_topic">Topic</label>
  <select class="form-select" id="topic" name="Anliegen" required>
  <option value="Bug / Crash">Bug / Crash</option>
- <option value="Frage / Wie geht...">Frage / Wie geht...</option>
- <option value="Feature-Wunsch">Feature-Wunsch</option>
- <option value="Lizenz / Bestellung">Lizenz / Bestellung</option>
- <option value="Sonstiges">Sonstiges</option>
+ <option value="Frage / Wie geht...">Question / how do I...</option>
+ <option value="Feature-Wunsch">Feature request</option>
+ <option value="Lizenz / Bestellung">Licence / order</option>
+ <option value="Sonstiges">Other</option>
  </select>
  </div>
  </div>
@@ -276,52 +279,52 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/suppo
  <div class="form-section-h" data-i18n="sup_sec_system">System</div>
  <div class="form-row-grid">
  <div class="form-row">
- <label class="form-label" for="os" data-i18n="sup_label_os">Betriebssystem</label>
+ <label class="form-label" for="os" data-i18n="sup_label_os">Operating system</label>
  <select class="form-select" id="os" name="Betriebssystem" required>
  <option value="macOS">macOS</option>
  <option value="Windows">Windows</option>
  <option value="iPadOS">iPadOS</option>
  <option value="iOS">iOS (iPhone)</option>
  <option value="Linux">Linux</option>
- <option value="Andere">Andere</option>
+ <option value="Andere">Other</option>
  </select>
  </div>
  <div class="form-row">
- <label class="form-label" for="osversion" data-i18n="sup_label_osversion">OS-Version</label>
- <input class="form-input" type="text" id="osversion" name="OS-Version" placeholder="z. B. macOS 14.5 Sonoma" required>
+ <label class="form-label" for="osversion" data-i18n="sup_label_osversion">OS version</label>
+ <input class="form-input" type="text" id="osversion" name="OS-Version" placeholder="e.g. macOS 14.5 Sonoma" required>
  </div>
  </div>
  <div class="form-row-grid">
  <div class="form-row">
- <label class="form-label" for="daw">DAW <span class="opt" data-i18n="sup_optional">(optional, nur bei Plugin)</span></label>
- <input class="form-input" type="text" id="daw" name="DAW" placeholder="z. B. Pro Tools 2024.3">
+ <label class="form-label" for="daw">DAW <span class="opt" data-i18n="sup_optional">(optional, plugin only)</span></label>
+ <input class="form-input" type="text" id="daw" name="DAW" placeholder="e.g. Pro Tools 2024.3">
  </div>
  <div class="form-row">
  <label class="form-label" for="iface">Audio-Interface <span class="opt" data-i18n="sup_optional2">(optional)</span></label>
- <input class="form-input" type="text" id="iface" name="Audio-Interface" placeholder="z. B. RME UCX II">
+ <input class="form-input" type="text" id="iface" name="Audio-Interface" placeholder="e.g. RME UCX II">
  </div>
  </div>
  </div>
 
  <!-- ╔══ Anliegen ══════════════════════════════════════════╗ -->
  <div class="form-section">
- <div class="form-section-h" data-i18n="sup_sec_request">Beschreibung</div>
+ <div class="form-section-h" data-i18n="sup_sec_request">Description</div>
  <div class="form-row">
- <label class="form-label" for="subject" data-i18n="sup_label_subject">Betreff</label>
+ <label class="form-label" for="subject" data-i18n="sup_label_subject">Subject</label>
  <input class="form-input" type="text" id="subject" name="Betreff" required>
  </div>
  <div class="form-row">
- <label class="form-label" for="message" data-i18n="sup_label_message">Fehlerbeschreibung / Frage</label>
+ <label class="form-label" for="message" data-i18n="sup_label_message">Bug description / question</label>
  <textarea class="form-textarea" id="message" name="Nachricht" required></textarea>
  </div>
  <div class="form-row">
- <label class="form-label" for="repro">Reproduktionsschritte <span class="opt" data-i18n="sup_optional3">(optional, hilft enorm bei Bugs)</span></label>
+ <label class="form-label" for="repro">Reproduktionsschritte <span class="opt" data-i18n="sup_optional3">(optional, hugely helps for bugs)</span></label>
  <textarea class="form-textarea" id="repro" name="Reproduktion" placeholder="1. ...&#10;2. ...&#10;3. ..." style="min-height:110px"></textarea>
  </div>
  </div>
 
- <button class="form-submit" type="submit" data-i18n="sup_submit">Senden</button>
- <p class="form-note" data-i18n="sup_form_note">Die Anfrage geht direkt per E-Mail an info@pegelwerk.com. Du erhältst eine automatische Bestätigung. Anhänge (Screenshots, Logs, Audio) kannst du in einer Antwort-Mail nachreichen.</p>
+ <button class="form-submit" type="submit" data-i18n="sup_submit">Send</button>
+ <p class="form-note" data-i18n="sup_form_note">The request is sent directly to info@pegelwerk.com. You will get an automatic confirmation. Attachments (screenshots, logs, audio) can follow in your reply mail.</p>
  </form>
 
  <script>
@@ -399,22 +402,22 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/suppo
  </script>
 
  <div class="faq">
- <h2 data-i18n="sup_faq_h">Häufige Fragen</h2>
+ <h2 data-i18n="sup_faq_h">Frequently asked</h2>
  <div class="faq-item">
- <h3 data-i18n="sup_q1_h">Wo finde ich meine Lizenz?</h3>
- <p data-i18n="sup_q1_p">Lizenzschlüssel kommen direkt nach dem Kauf per E-Mail von Paddle (für Plugin-Käufe) bzw. sind im Apple-App-Store-Konto hinterlegt (für Mac- und iPad-Apps). Mail nicht mehr griffbereit? <a href="manage-license.html" style="color:var(--ac);text-decoration:underline">Lizenz im Self-Service-Portal verwalten</a>, Aktivierungs-Mail erneut senden lassen oder aktivierte Geräte einsehen.</p>
+ <h3 data-i18n="sup_q1_h">Where do I find my licence?</h3>
+ <p data-i18n="sup_q1_p">Licence keys arrive by email right after purchase from Paddle (for plugin purchases) or are stored in your Apple App Store account (for Mac and iPad apps). Lost the mail? &lt;a href="manage-license.html" style="color:var(--ac);text-decoration:underline"&gt;Manage your licence in the self-service portal&lt;/a&gt;, resend the activation mail or view activated devices.</p>
  </div>
  <div class="faq-item">
- <h3 data-i18n="sup_q2_h">Auf wie vielen Rechnern darf ich die Software nutzen?</h3>
- <p data-i18n="sup_q2_p">Plugin- und Standalone-Lizenzen gelten für 2 Rechner. App-Store-Apps folgen den üblichen Apple-Bestimmungen (Family Sharing möglich).</p>
+ <h3 data-i18n="sup_q2_h">How many computers can I use the software on?</h3>
+ <p data-i18n="sup_q2_p">Plugin and standalone licences cover 2 computers. App Store apps follow the usual Apple terms (Family Sharing supported).</p>
  </div>
  <div class="faq-item">
- <h3 data-i18n="sup_q3_h">Updates und Versionen?</h3>
- <p data-i18n="sup_q3_p">Alle Minor-Updates innerhalb der Major-Version sind kostenlos. Major-Updates kommen zum vergünstigten Upgrade-Preis.</p>
+ <h3 data-i18n="sup_q3_h">Updates and versions?</h3>
+ <p data-i18n="sup_q3_p">All minor updates within the major version are free. Major updates are offered at a discounted upgrade price.</p>
  </div>
  <div class="faq-item">
- <h3 data-i18n="sup_q4_h">Werden meine Audio-Daten in die Cloud geladen?</h3>
- <p data-i18n="sup_q4_p">Nein, alle pegelWERK-Tools verarbeiten Audio ausschließlich lokal auf deinem Gerät. Kein Upload, kein Tracking, kein Konto erforderlich.</p>
+ <h3 data-i18n="sup_q4_h">Is my audio uploaded to the cloud?</h3>
+ <p data-i18n="sup_q4_p">No, every pegelWERK tool processes audio locally on your device. No upload, no tracking, no account required.</p>
  </div>
  </div>
 
@@ -423,25 +426,25 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/suppo
 <footer>
  <div class="footer-grid">
  <div class="footer-col">
- <h4 data-i18n="f_col_products">Produkte</h4>
- <a href="/mac" data-i18n="nav_mac">Mac Apps</a>
- <a href="/ios" data-i18n="nav_ios">iOS Apps</a>
+ <h4 data-i18n="f_col_products">Products</h4>
+ <a href="/mac-en" data-i18n="nav_mac">Mac Apps</a>
+ <a href="/ios-en" data-i18n="nav_ios">iOS Apps</a>
  </div>
  <div class="footer-col">
  <h4 data-i18n="f_col_support">Support</h4>
  <a href="/videos" data-i18n="nav_videos">Videos</a>
- <a href="/support" data-i18n="nav_info">Supportanfrage</a>
- <a href="/manage-license" data-i18n="f_manage">Lizenz verwalten</a>
+ <a href="/support-en" data-i18n="nav_info">Support request</a>
+ <a href="/manage-license" data-i18n="f_manage">Manage License</a>
  <a href="/changelog" data-i18n="f_changelog">Changelog</a>
- <a href="/press" data-i18n="f_press">Presse</a>
+ <a href="/press" data-i18n="f_press">Press</a>
  </div>
  <div class="footer-col">
- <h4 data-i18n="f_col_legal">Rechtliches</h4>
- <a href="/security" data-i18n="f_security">Security</a>
- <a href="/agb" data-i18n="f_terms">AGB</a>
- <a href="/widerruf" data-i18n="f_refund">Widerruf</a>
- <a href="/datenschutz" data-i18n="f_privacy">Datenschutz</a>
- <a href="/impressum" data-i18n="f_imprint_contact">Kontakt &amp; Impressum</a>
+ <h4 data-i18n="f_col_legal">Legal</h4>
+ <a href="/security-en" data-i18n="f_security">Security</a>
+ <a href="/agb-en" data-i18n="f_terms">Terms</a>
+ <a href="/widerruf-en" data-i18n="f_refund">Right of Withdrawal</a>
+ <a href="/datenschutz-en" data-i18n="f_privacy">Privacy Policy</a>
+ <a href="/impressum-en" data-i18n="f_imprint_contact">Contact &amp; Legal Notice</a>
  </div>
  </div>
  <div class="footer-bar">

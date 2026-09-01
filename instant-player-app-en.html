@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="de">
+<!-- GENERIERT von tools/build-en.py aus instant-player-app.html - NICHT von Hand aendern.
+     Aenderungen gehoeren in die deutsche Seite bzw. ihre en:-i18n-Tabelle,
+     danach `python3 tools/build-en.py` neu laufen lassen. -->
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico?v=10" sizes="any">
@@ -7,13 +10,13 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=10">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=10">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=10">
-<link rel="canonical" href="https://pegelwerk.com/instant-player-app">
+<link rel="canonical" href="https://pegelwerk.com/instant-player-app-en">
 <link rel="alternate" hreflang="de" href="https://pegelwerk.com/instant-player-app">
 <link rel="alternate" hreflang="en" href="https://pegelwerk.com/instant-player-app-en">
 <link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/instant-player-app">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>pegelWERK instant PLAYER - 64-Pad-Soundboard für Live, Theater und Studio</title>
-<meta name="description" content="Gratis-Soundboard für iPhone und iPad: 64 Pads in 4 Banks, MULTI/SINGLE-Mode mit Cross-Fade, AUTO-CUE, LOOP, ganze Show als .satkip-Bundle speichern. Round-Trip mit pegelWERK easy EDITOR.">
+<title>pegelWERK instant PLAYER - 64-pad soundboard for live, theatre and studio</title>
+<meta name="description" content="Free soundboard for iPhone and iPad: 64 pads in 4 banks, MULTI/SINGLE mode with cross-fade, AUTO-CUE and LOOP.">
 
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website">
@@ -35,11 +38,11 @@
  "@context": "https://schema.org",
  "@type": "MobileApplication",
  "name": "pegelWERK instant PLAYER",
- "description": "Gratis-Soundboard für iPhone und iPad. 64 Pads in 4 Banks, MULTI/SINGLE-Mode mit Cross-Fade, AUTO-CUE, LOOP, .satkip-Show-Bundle. Round-Trip mit pegelWERK easy EDITOR.",
+ "description": "Free soundboard for iPhone and iPad. 64 pads in 4 banks, MULTI/SINGLE mode with cross-fade, AUTO-CUE, LOOP, .satkip show bundle. Round trip with pegelWERK easy EDITOR.",
  "applicationCategory": "MultimediaApplication",
  "applicationSubCategory": "Soundboard / Cue Player",
  "operatingSystem": "iOS, iPadOS",
- "url": "https://pegelwerk.com/instant-player-app",
+ "url": "https://pegelwerk.com/instant-player-app-en",
  "image": "https://pegelwerk.com/img-instant-player.png",
  "screenshot": "https://pegelwerk.com/img-instant-player.png",
  "offers": {
@@ -57,7 +60,7 @@
  "url": "https://pegelwerk.com",
  "logo": "https://pegelwerk.com/og-image.png"
  },
- "inLanguage": ["de", "en"]
+ "inLanguage": "en"
 }
 </script>
 <style>
@@ -215,26 +218,26 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 function switchLang(l,u){try{localStorage.setItem('satk-lang',l);}catch(e){}location.href=u;}
 // Auto-redirect zur anderen Sprachfassung nur bei EXPLIZIT gesetzter Vorliebe
 // (null/unset = hierbleiben, der Besucher hat diese URL bewusst aufgerufen)
-try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/instant-player-app-en'); } } catch(e){}
+try { if (localStorage.getItem('satk-lang') === 'de') { location.replace('/instant-player-app'); } } catch(e){}
 </script>
 </head>
 <body>
 
 <nav>
- <a href="/" class="nav-logo">
+ <a href="/en" class="nav-logo">
  <img class="nav-logo-img" src="/logo-lockup-2.svg" alt="pegelWERK">
  </a>
  <div class="nav-platforms">
- <a href="/mac">Mac</a>
- <a href="/ios" class="active">iOS</a>
+ <a href="/mac-en">Mac</a>
+ <a href="/ios-en" class="active">iOS</a>
  </div>
  <div class="nav-links">
- <a href="/support" data-i18n="nav_info">Supportanfrage</a>
- <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
+ <a href="/support-en" data-i18n="nav_info">Support request</a>
+ <a href="/manage-license" data-i18n="nav_manage">License</a>
  <div class="lang-sw">
- <span class="lang active" id="btnDE" onclick="switchLang('de','/instant-player-app')">DE</span>
+ <span class="lang" id="btnDE" onclick="switchLang('de','/instant-player-app')">DE</span>
  <span class="lang-sep">·</span>
- <span class="lang" id="btnEN" onclick="switchLang('en','/instant-player-app-en')">EN</span>
+ <span class="lang active" id="btnEN" onclick="switchLang('en','/instant-player-app-en')">EN</span>
  </div>
  </div>
 </nav>
@@ -243,51 +246,51 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/insta
 <section class="product-hero">
  <div class="product-eyebrow" data-i18n="ip_eyebrow">iPhone · iPad · iOS App</div>
  <h1>instant PLAYER</h1>
- <p class="tagline" data-i18n="ip_tagline">64-Pad-Soundboard für Live-Show, Theater, Podcast und Studio. Tippen heißt spielen, nochmal tippen heißt stoppen. Stimmen stapeln im MULTI-Mode, mit Cross-Fade ablösen im SINGLE-Mode. Die ganze Show in einer .satkip-Datei speichern und auf einem anderen iPad in Sekunden wieder laden.</p>
+ <p class="tagline" data-i18n="ip_tagline">64-pad soundboard for live show, theatre, podcast and studio. Tap to play, tap again to stop. Stack voices in MULTI mode, cross-fade replace in SINGLE mode. Save the entire show, every audio file, every setting, into a single .satkip bundle and reload it on a different iPad in seconds.</p>
  <div class="appstore-cta">
- <a class="shop-cta-btn" href="/ios" data-i18n="nav_back">Zurück zum Shop</a>
+ <a class="shop-cta-btn" href="/ios-en" data-i18n="nav_back">Back to Shop</a>
  </div>
 </section>
 
 <div class="hero-img-wrap">
- <img class="hero-img" src="img-instant-player.png?v=2" alt="pegelWERK instant PLAYER, 64-Pad-Soundboard für iPhone und iPad">
+ <img class="hero-img" src="img-instant-player.png?v=2" alt="pegelWERK instant PLAYER, 64-pad soundboard for iPhone and iPad">
 </div>
 
 <section class="section">
  <div class="section-label" data-i18n="ip_features_label">Highlights</div>
- <h2 class="section-h2" data-i18n="ip_features_title">64 Pads. Tippen. Cue läuft.</h2>
- <p class="section-intro" data-i18n="ip_features_intro">instant PLAYER ist ein 64-Pad-Soundboard im Studio-Cart-Stil. 16 Pads pro Bank, 4 Bänke, MULTI- und SINGLE-Mode, AUTO-CUE, LOOP, optionaler Cross-Fade. Komplette Show als ein .satkip-Bundle portabel, per AirDrop aufs nächste iPad und sofort einsatzbereit.</p>
+ <h2 class="section-h2" data-i18n="ip_features_title">64 pads. Tap. Cue plays.</h2>
+ <p class="section-intro" data-i18n="ip_features_intro">instant PLAYER is a 64-pad soundboard in studio cart style. 16 pads per bank, 4 banks, MULTI and SINGLE mode, AUTO-CUE, LOOP, optional cross-fade. Save the whole show as one .satkip bundle, AirDrop it to the next iPad and it's ready.</p>
 
  <div class="features">
  <div class="feature">
  <div class="feature-icon">64 Pads</div>
- <h3 data-i18n="ip_f1_h">16 Pads x 4 Banks</h3>
- <p data-i18n="ip_f1_p">64 Cue-Slots, organisiert in vier Banks (A / B / C / D) mit je 16 Pads. Pro Pad: Name, Farbe (7-Farben-Palette), Lautstärke-Slider, LOOP-Toggle, AUTO-CUE-Toggle. Mini-Wellenform mit Cue-Marker direkt auf jedem Pad.</p>
+ <h3 data-i18n="ip_f1_h">16 pads x 4 banks</h3>
+ <p data-i18n="ip_f1_p">64 cue slots, organised in four banks (A / B / C / D) with 16 pads each. Per pad: name, colour (7-colour palette), volume slider, LOOP toggle, AUTO-CUE toggle. Mini waveform with cue marker on every pad.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Multi · Single</div>
- <h3 data-i18n="ip_f2_h">MULTI- oder SINGLE-Mode</h3>
- <p data-i18n="ip_f2_p">MULTI: Pads stapeln Stimmen, jeder Tipp legt eine weitere drauf. SINGLE: jeder Tipp stoppt zuerst alles andere, wie eine klassische Studio-Cart-Maschine. SINGLE plus FADE > 0 ergibt einen sauberen Cross-Fade zwischen Cues.</p>
+ <h3 data-i18n="ip_f2_h">MULTI or SINGLE mode</h3>
+ <p data-i18n="ip_f2_p">MULTI: pads stack voices, every tap adds another. SINGLE: any tap stops everything else first, like a classic studio cart machine. SINGLE plus FADE &gt; 0 yields a clean cross-fade between cues.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Fade</div>
- <h3 data-i18n="ip_f3_h">Vier FADE-Stufen</h3>
- <p data-i18n="ip_f3_p">FADE-Knopf zyklt OFF / SHORT / MEDIUM / LONG (0,5 / 1,5 / 4 s), global für alle Pads. Im SINGLE-Mode wird das automatisch zum Cross-Fade. Kein Klick beim Stoppen, kein hartes Cut bei Stings.</p>
+ <h3 data-i18n="ip_f3_h">Four FADE stages</h3>
+ <p data-i18n="ip_f3_p">FADE button cycles OFF / SHORT / MEDIUM / LONG (0.5 / 1.5 / 4 s), global for all pads. In SINGLE mode this becomes the cross-fade. No click on stop, no hard cut on stings.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Auto-Cue</div>
  <h3 data-i18n="ip_f4_h">AUTO-CUE + LOOP</h3>
- <p data-i18n="ip_f4_p">AUTO-CUE überspringt Anfangsstille, Cues feuern beim ersten hörbaren Sample, nicht beim Datei-Anfang. LOOP-Toggle für Beds und Ambient-Material, Wraparound zum Cue-Punkt. Beides pro Pad zuschaltbar.</p>
+ <p data-i18n="ip_f4_p">AUTO-CUE skips leading silence, cues fire on the first audible sample, not at the file start. LOOP toggle for beds and ambient material, wraparound to the cue point. Both per-pad toggleable.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Show-Bundle</div>
- <h3 data-i18n="ip_f5_h">.satkip-Bundle</h3>
- <p data-i18n="ip_f5_p">Komplette Show, Manifest und alle 24-Bit-WAVs, in einer einzigen .satkip-ZIP-Datei. Per AirDrop aufs nächste iPad, dort öffnen, Show ist sofort einsatzbereit. Kein Re-Upload, keine Cloud, kein Account.</p>
+ <h3 data-i18n="ip_f5_h">.satkip bundle</h3>
+ <p data-i18n="ip_f5_p">A complete show, manifest plus all 24-bit WAVs, in a single .satkip ZIP file. AirDrop to the next iPad, open, show is ready. No re-upload, no cloud, no account.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Round-Trip</div>
- <h3 data-i18n="ip_f6_h">Roundtrip mit easy EDITOR</h3>
- <p data-i18n="ip_f6_p">CHOOSE-Button schickt das aktive Pad an pegelWERK easy EDITOR. Dort trimmen oder R128-normalisieren, mit SEND BACK kommt das Ergebnis automatisch ins selbe Pad zurück. Ohne easy EDITOR erscheint stattdessen ein App-Store-Hinweis.</p>
+ <h3 data-i18n="ip_f6_h">Round-trip with easy EDITOR</h3>
+ <p data-i18n="ip_f6_p">The CHOOSE button hands the active pad off to pegelWERK easy EDITOR. Trim or R128-normalise it there; SEND BACK lands the result on the same pad. Without easy EDITOR an App Store hint is shown instead.</p>
  </div>
  </div>
 </section>
@@ -298,87 +301,87 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/insta
  <div class="trust-icon" aria-hidden="true">
  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
  </div>
- <div class="trust-h" data-i18n="trust_p1_h">Vom erfahrenen Toningenieur</div>
- <div class="trust-p" data-i18n="trust_p1_p">Entwickelt von einem aktiven Broadcast-Engineer für Broadcast-Engineers. Keine nutzlosen Marketing-Features, nur was im Studio wirklich gebraucht wird.</div>
+ <div class="trust-h" data-i18n="trust_p1_h">By an experienced sound engineer</div>
+ <div class="trust-p" data-i18n="trust_p1_p">Built by an active broadcast engineer for broadcast engineers. No useless marketing features, only what actually gets used in the studio.</div>
  </div>
  <div class="trust-pillar">
  <div class="trust-icon" aria-hidden="true">
  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
  </div>
- <div class="trust-h" data-i18n="trust_p2_h">Gratis, keine In-App-Käufe</div>
- <div class="trust-p" data-i18n="trust_p2_p">Voller Funktionsumfang ab dem ersten Start. Keine Bank-Freischaltung, keine Werbung, kein Konto. Audio bleibt auf deinem Gerät, die App kontaktiert keinen Server.</div>
+ <div class="trust-h" data-i18n="trust_p2_h">Free, no in-app purchases</div>
+ <div class="trust-p" data-i18n="trust_p2_p">Full feature set from first launch. No bank unlock, no ads, no account. Audio stays on your device, the app contacts no server.</div>
  </div>
  <div class="trust-pillar">
  <div class="trust-icon" aria-hidden="true">
  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v12H7l-3 4z"/><path d="M8 9h8M8 12h6"/></svg>
  </div>
- <div class="trust-h" data-i18n="trust_p3_h">Antwort vom Entwickler</div>
- <div class="trust-p" data-i18n="trust_p3_p">Support-Mails landen direkt im Posteingang des Entwicklers, nicht bei einem Ticket-System. Werktags meist innerhalb von 24 Stunden.</div>
+ <div class="trust-h" data-i18n="trust_p3_h">Reply from the developer</div>
+ <div class="trust-p" data-i18n="trust_p3_p">Support emails go straight to the developer's inbox, not into a ticket system. Usually within 24 hours on working days.</div>
  </div>
  </div>
 </section>
 
 <section class="section">
- <div class="section-label" data-i18n="ip_uc_label">Einsatzgebiete</div>
- <h2 class="section-h2" data-i18n="ip_uc_title">Wofür Cue-Player gebaut werden</h2>
- <p class="section-intro" data-i18n="ip_uc_intro">Eine App, vier typische Show-Szenarien. Pad-Layout, Mode und FADE-Stufe entscheiden, der Rest ist Audio und ein Tipp.</p>
+ <div class="section-label" data-i18n="ip_uc_label">Use cases</div>
+ <h2 class="section-h2" data-i18n="ip_uc_title">What cue players are built for</h2>
+ <p class="section-intro" data-i18n="ip_uc_intro">One app, four typical show scenarios. Pad layout, mode and FADE stage decide, the rest is audio and a tap.</p>
 
  <div class="usecase-grid">
- <div class="usecase-pill"><div class="uc-name" data-i18n="ip_uc1_name">Theater</div><div class="uc-target" data-i18n="ip_uc1_target">SFX mit Cross-Fade</div></div>
- <div class="usecase-pill"><div class="uc-name" data-i18n="ip_uc2_name">Podcast</div><div class="uc-target" data-i18n="ip_uc2_target">Jingles · Stings · Beds</div></div>
- <div class="usecase-pill"><div class="uc-name" data-i18n="ip_uc3_name">Studio</div><div class="uc-target" data-i18n="ip_uc3_target">Cues für Remote-Sessions</div></div>
- <div class="usecase-pill"><div class="uc-name" data-i18n="ip_uc4_name">Probenraum</div><div class="uc-target" data-i18n="ip_uc4_target">Backing-Tracks · One-Tap-Stop</div></div>
+ <div class="usecase-pill"><div class="uc-name" data-i18n="ip_uc1_name">Theatre</div><div class="uc-target" data-i18n="ip_uc1_target">SFX with cross-fade</div></div>
+ <div class="usecase-pill"><div class="uc-name" data-i18n="ip_uc2_name">Podcast</div><div class="uc-target" data-i18n="ip_uc2_target">Jingles · stings · beds</div></div>
+ <div class="usecase-pill"><div class="uc-name" data-i18n="ip_uc3_name">Studio</div><div class="uc-target" data-i18n="ip_uc3_target">Cues for remote sessions</div></div>
+ <div class="usecase-pill"><div class="uc-name" data-i18n="ip_uc4_name">Practice room</div><div class="uc-target" data-i18n="ip_uc4_target">Backing tracks · one-tap stop</div></div>
  </div>
 </section>
 
 <section class="section">
- <div class="section-label" data-i18n="ip_wf_label">Funktionsweise</div>
- <h2 class="section-h2" data-i18n="ip_wf_title">In 4 Schritten zur Show</h2>
- <p class="section-intro" data-i18n="ip_wf_intro">Pad antippen, Audio wählen, Mode setzen, Show speichern. Auf iPhone (Hoch- und Querformat) und iPad (alle vier Orientierungen) gleich bedienbar.</p>
+ <div class="section-label" data-i18n="ip_wf_label">How it works</div>
+ <h2 class="section-h2" data-i18n="ip_wf_title">Four steps to a show</h2>
+ <p class="section-intro" data-i18n="ip_wf_intro">Tap pad, pick audio, set mode, save show. Identical handling on iPhone (portrait + landscape) and iPad (all four orientations).</p>
 
  <div class="workflow">
  <div class="workflow-step">
  <div class="workflow-num">01</div>
- <h3 data-i18n="ip_w1_h">Pad belegen</h3>
- <p data-i18n="ip_w1_p">Leeres Pad antippen, der Files-Picker öffnet sich. Audio aus Dateien-App, iCloud Drive oder per AirDrop wählen. Pad zeigt sofort eine Wellenform-Vorschau mit Cue-Marker.</p>
+ <h3 data-i18n="ip_w1_h">Assign pad</h3>
+ <p data-i18n="ip_w1_p">Tap an empty pad, the Files picker opens. Pick audio from Files, iCloud Drive or via AirDrop. Pad shows a waveform thumbnail with cue marker immediately.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">02</div>
- <h3 data-i18n="ip_w2_h">Pad einstellen</h3>
- <p data-i18n="ip_w2_p">Lautstärke per Slider, eine der 7 Farben für die Pad-Kachel, LOOP für Beds, AUTO-CUE für saubere Cue-Starts. Optional an easy EDITOR zum Trimmen schicken.</p>
+ <h3 data-i18n="ip_w2_h">Configure pad</h3>
+ <p data-i18n="ip_w2_p">Volume by slider, one of 7 colours for the pad tile, LOOP for beds, AUTO-CUE for clean cue starts. Optionally hand off to easy EDITOR for trimming.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">03</div>
- <h3 data-i18n="ip_w3_h">Mode wählen</h3>
- <p data-i18n="ip_w3_p">MULTI-Mode für Stacking, SINGLE-Mode für Cart-Machine-Logik. FADE auf SHORT / MEDIUM / LONG für Cross-Fades zwischen Cues. ESC stoppt alles, Fade-All zieht alle laufenden Pads sauber raus.</p>
+ <h3 data-i18n="ip_w3_h">Pick mode</h3>
+ <p data-i18n="ip_w3_p">MULTI for stacking, SINGLE for cart-machine logic. FADE at SHORT / MEDIUM / LONG for cross-fades between cues. ESC stops everything, Fade-All gracefully fades all running pads.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">04</div>
- <h3 data-i18n="ip_w4_h">Show speichern</h3>
- <p data-i18n="ip_w4_p">SAVE schreibt eine .satkip-Datei mit Manifest und allen Audios als 24-Bit-WAV. Per AirDrop oder Files aufs nächste iPad, dort doppelklicken, Show steht.</p>
+ <h3 data-i18n="ip_w4_h">Save show</h3>
+ <p data-i18n="ip_w4_p">SAVE writes a .satkip file with manifest and all audio as 24-bit WAVs. Via AirDrop or Files to the next iPad, open it there, show is up.</p>
  </div>
  </div>
 </section>
 
 <section class="section">
- <div class="section-label" data-i18n="ip_specs_label">Technische Details</div>
+ <div class="section-label" data-i18n="ip_specs_label">Technical Details</div>
  <h2 class="section-h2" data-i18n="ip_specs_title">Built for Live</h2>
- <p class="section-intro" data-i18n="ip_specs_intro">Native iOS-App auf JUCE-Audio. Background-Audio aktiviert, damit Cues bei gesperrtem Display weiterlaufen.</p>
+ <p class="section-intro" data-i18n="ip_specs_intro">Native iOS app on JUCE audio. Background-audio enabled so cues keep playing when the screen locks.</p>
 
  <div class="specs">
  <div class="spec-col">
- <h4 data-i18n="ip_specs_pad">Pad-Engine</h4>
+ <h4 data-i18n="ip_specs_pad">Pad engine</h4>
  <ul>
  <li><b>Slots</b> 64 (4 Banks x 16)</li>
  <li><b>Voices</b> 64 (1 pro Slot)</li>
  <li><b>Per-Pad</b> Name · Farbe · Vol</li>
  <li><b>LOOP</b> Wraparound zum Cue-Punkt</li>
  <li><b>AUTO-CUE</b> Stille-Skip am Anfang</li>
- <li><b>Wellenform</b> Mini-Preview mit Cue-Marker</li>
+ <li><b>Waveform</b> Mini preview with cue marker</li>
  </ul>
  </div>
  <div class="spec-col">
- <h4 data-i18n="ip_specs_modes">Modes &amp; Steuerung</h4>
+ <h4 data-i18n="ip_specs_modes">Modes &amp; Control</h4>
  <ul>
  <li><b>Mode</b> MULTI · SINGLE</li>
  <li><b>FADE</b> OFF · 0,5 · 1,5 · 4 s</li>
@@ -389,12 +392,12 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/insta
  </ul>
  </div>
  <div class="spec-col">
- <h4 data-i18n="ip_specs_io">Plattform &amp; I/O</h4>
+ <h4 data-i18n="ip_specs_io">Platform &amp; I/O</h4>
  <ul>
  <li><b>iPhone</b> Hoch + Quer</li>
  <li><b>iPad</b> alle 4 Orientierungen</li>
  <li><b>Input</b> WAV · AIFF · MP3 · M4A · FLAC · OGG</li>
- <li><b>Show</b> .satkip (ZIP mit 24-Bit-WAVs)</li>
+ <li><b>Show</b> .satkip (ZIP with 24-bit WAVs)</li>
  <li><b>Background</b> Audio-Mode aktiv</li>
  <li><b>URL-Scheme</b> instantplayer://</li>
  </ul>
@@ -403,34 +406,34 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/insta
 </section>
 
 <section class="section">
- <div class="section-label" data-i18n="ip_credo_label">Was es besonders macht</div>
- <h2 class="section-h2" data-i18n-html="ip_credo_title">Eine Show.<br>Eine Datei.</h2>
- <p class="section-intro" data-i18n="ip_credo_p">Der Unterschied zu generischen Soundboards ist das .satkip-Bundle: Manifest plus alle 24-Bit-WAVs in einer ZIP. Ein Theater-Abend, eine Podcast-Folge, ein Live-Set, komplett portabel. Vergiss den USB-Stick, vergiss "welche Audios gehören zu welcher Show", AirDrop einfach das Bundle und das Setup ist da, wo es sein muss.</p>
+ <div class="section-label" data-i18n="ip_credo_label">What sets it apart</div>
+ <h2 class="section-h2" data-i18n-html="ip_credo_title">One show.<br>One file.</h2>
+ <p class="section-intro" data-i18n="ip_credo_p">What separates it from generic soundboards is the .satkip bundle: manifest plus all 24-bit WAVs in one ZIP. A theatre night, a podcast episode, a live set, fully portable. Forget the USB stick, forget "which audio belongs to which show", AirDrop the bundle and the setup is where it needs to be.</p>
 
 </section>
 
 <footer>
  <div class="footer-grid">
  <div class="footer-col">
- <h4 data-i18n="f_col_products">Produkte</h4>
- <a href="/mac" data-i18n="nav_mac">Mac Apps</a>
- <a href="/ios" data-i18n="nav_ios">iOS Apps</a>
+ <h4 data-i18n="f_col_products">Products</h4>
+ <a href="/mac-en" data-i18n="nav_mac">Mac Apps</a>
+ <a href="/ios-en" data-i18n="nav_ios">iOS Apps</a>
  </div>
  <div class="footer-col">
  <h4 data-i18n="f_col_support">Support</h4>
  <a href="/videos" data-i18n="nav_videos">Videos</a>
- <a href="/support" data-i18n="nav_info">Supportanfrage</a>
- <a href="/manage-license" data-i18n="f_manage">Lizenz verwalten</a>
+ <a href="/support-en" data-i18n="nav_info">Support request</a>
+ <a href="/manage-license" data-i18n="f_manage">Manage License</a>
  <a href="/changelog" data-i18n="f_changelog">Changelog</a>
- <a href="/press" data-i18n="f_press">Presse</a>
+ <a href="/press" data-i18n="f_press">Press</a>
  </div>
  <div class="footer-col">
- <h4 data-i18n="f_col_legal">Rechtliches</h4>
- <a href="/security" data-i18n="f_security">Security</a>
- <a href="/agb" data-i18n="f_terms">AGB</a>
- <a href="/widerruf" data-i18n="f_refund">Widerruf</a>
- <a href="/datenschutz" data-i18n="f_privacy">Datenschutz</a>
- <a href="/impressum" data-i18n="f_imprint_contact">Kontakt &amp; Impressum</a>
+ <h4 data-i18n="f_col_legal">Legal</h4>
+ <a href="/security-en" data-i18n="f_security">Security</a>
+ <a href="/agb-en" data-i18n="f_terms">Terms</a>
+ <a href="/widerruf-en" data-i18n="f_refund">Right of Withdrawal</a>
+ <a href="/datenschutz-en" data-i18n="f_privacy">Privacy Policy</a>
+ <a href="/impressum-en" data-i18n="f_imprint_contact">Contact &amp; Legal Notice</a>
  </div>
  </div>
  <div class="footer-bar">

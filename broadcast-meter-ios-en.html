@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="de">
+<!-- GENERIERT von tools/build-en.py aus broadcast-meter-ios.html - NICHT von Hand aendern.
+     Aenderungen gehoeren in die deutsche Seite bzw. ihre en:-i18n-Tabelle,
+     danach `python3 tools/build-en.py` neu laufen lassen. -->
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico?v=10" sizes="any">
@@ -7,13 +10,13 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=10">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=10">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=10">
-<link rel="canonical" href="https://pegelwerk.com/broadcast-meter-ios">
+<link rel="canonical" href="https://pegelwerk.com/broadcast-meter-ios-en">
 <link rel="alternate" hreflang="de" href="https://pegelwerk.com/broadcast-meter-ios">
 <link rel="alternate" hreflang="en" href="https://pegelwerk.com/broadcast-meter-ios-en">
 <link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/broadcast-meter-ios">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>pegelWERK loudness METER PRO &amp; loudness METER - EBU R128 auf iPad und iPhone</title>
-<meta name="description" content="EBU R128 / ITU-R BS.1770-4 Loudness-Metering auf iOS: loudness METER PRO für iPad mit Silero-VAD, Forecast und MIDI Learn. loudness METER für iPhone, kompaktes Mess-Werkzeug mit Meters und Spectrum. Beide live im App Store.">
+<title>pegelWERK loudness METER PRO &amp; loudness METER - EBU R128 on iPad and iPhone</title>
+<meta name="description" content="EBU R128 / ITU-R BS.1770-4 loudness metering on iOS: loudness METER PRO for iPad with Silero VAD, forecast and MIDI learn.">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="pegelWERK loudness METER PRO &amp; loudness METER - Loudness-Metering auf iOS">
@@ -35,11 +38,11 @@
  "@context": "https://schema.org",
  "@type": "MobileApplication",
  "name": "pegelWERK loudness METER PRO",
- "description": "EBU R128 / ITU-R BS.1770-4 Loudness-Meter für iPad. Silero-VAD-Sprachklarheit, Live-Forecast, RTW-PPM, Goniometer, Histograms, MIDI Learn + Bluetooth Pairing.",
+ "description": "EBU R128 / ITU-R BS.1770-4 loudness meter for iPad. Silero VAD speech clarity, live forecast, RTW PPM, goniometer, histograms, MIDI learn and Bluetooth pairing.",
  "applicationCategory": "MultimediaApplication",
  "applicationSubCategory": "Loudness Meter",
  "operatingSystem": "iPadOS 16+",
- "url": "https://pegelwerk.com/broadcast-meter-ios",
+ "url": "https://pegelwerk.com/broadcast-meter-ios-en",
  "image": "https://pegelwerk.com/img-bm-ipad.webp",
  "screenshot": "https://pegelwerk.com/img-bm-ipad.webp",
  "offers": {
@@ -56,7 +59,7 @@
  "url": "https://pegelwerk.com",
  "logo": "https://pegelwerk.com/og-image.png"
  },
- "inLanguage": ["de", "en"]
+ "inLanguage": "en"
 }
 </script>
 <script type="application/ld+json">
@@ -64,11 +67,11 @@
  "@context": "https://schema.org",
  "@type": "MobileApplication",
  "name": "loudness METER",
- "description": "Kompakter Loudness-Meter für iPhone. Zwei Swipe-Pages mit Meters und Spectrum. EBU R128 / ITU-R BS.1770-4. Background-Audio. Portrait und Landscape.",
+ "description": "Compact loudness meter for iPhone. Two swipe pages with meters and spectrum. EBU R128 / ITU-R BS.1770-4. Background audio. Portrait and landscape.",
  "applicationCategory": "MultimediaApplication",
  "applicationSubCategory": "Loudness Meter",
  "operatingSystem": "iOS 16+",
- "url": "https://pegelwerk.com/broadcast-meter-ios",
+ "url": "https://pegelwerk.com/broadcast-meter-ios-en",
  "image": "https://pegelwerk.com/img-bm-iphone-meters.webp",
  "screenshot": "https://pegelwerk.com/img-bm-iphone-meters.webp",
  "offers": {
@@ -85,7 +88,7 @@
  "url": "https://pegelwerk.com",
  "logo": "https://pegelwerk.com/og-image.png"
  },
- "inLanguage": ["de", "en"]
+ "inLanguage": "en"
 }
 </script>
 <style>
@@ -241,26 +244,26 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 function switchLang(l,u){try{localStorage.setItem('satk-lang',l);}catch(e){}location.href=u;}
 // Auto-redirect zur anderen Sprachfassung nur bei EXPLIZIT gesetzter Vorliebe
 // (null/unset = hierbleiben, der Besucher hat diese URL bewusst aufgerufen)
-try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/broadcast-meter-ios-en'); } } catch(e){}
+try { if (localStorage.getItem('satk-lang') === 'de') { location.replace('/broadcast-meter-ios'); } } catch(e){}
 </script>
 </head>
 <body>
 
 <nav>
- <a href="/" class="nav-logo">
+ <a href="/en" class="nav-logo">
  <img class="nav-logo-img" src="/logo-lockup-2.svg" alt="pegelWERK">
  </a>
  <div class="nav-platforms">
- <a href="/mac">Mac</a>
- <a href="/ios" class="active">iOS</a>
+ <a href="/mac-en">Mac</a>
+ <a href="/ios-en" class="active">iOS</a>
  </div>
  <div class="nav-links">
- <a href="/support" data-i18n="nav_info">Supportanfrage</a>
- <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
+ <a href="/support-en" data-i18n="nav_info">Support request</a>
+ <a href="/manage-license" data-i18n="nav_manage">License</a>
  <div class="lang-sw">
- <span class="lang active" id="btnDE" onclick="switchLang('de','/broadcast-meter-ios')">DE</span>
+ <span class="lang" id="btnDE" onclick="switchLang('de','/broadcast-meter-ios')">DE</span>
  <span class="lang-sep">·</span>
- <span class="lang" id="btnEN" onclick="switchLang('en','/broadcast-meter-ios-en')">EN</span>
+ <span class="lang active" id="btnEN" onclick="switchLang('en','/broadcast-meter-ios-en')">EN</span>
  </div>
  </div>
 </nav>
@@ -270,9 +273,9 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/broad
 <section class="product-hero">
  <div class="product-eyebrow" data-i18n="bmios_eyebrow">iPad · iPhone · iOS Apps</div>
  <h1 data-i18n="bmios_h1">loudness METER PRO</h1>
- <p class="tagline" data-i18n="bmios_tagline">Loudness-Metering nach EBU R128 / ITU-R BS.1770-4, auf dem iPad mit voller Engine, auf dem iPhone als kompaktes loudness METER für unterwegs. Zwei eigenständige Apps, eine gemeinsame DSP-Wahrheit.</p>
+ <p class="tagline" data-i18n="bmios_tagline">Loudness metering per EBU R128 / ITU-R BS.1770-4, full engine on iPad, compact loudness METER on iPhone for the road. Two distinct apps, one shared DSP truth.</p>
  <div class="appstore-cta">
- <a class="shop-cta-btn" href="/ios" data-i18n="nav_back">Zurück zum Shop</a>
+ <a class="shop-cta-btn" href="/ios-en" data-i18n="nav_back">Back to Shop</a>
  </div>
 </section>
 
@@ -283,22 +286,22 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/broad
  <div class="trust-icon" aria-hidden="true">
  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
  </div>
- <div class="trust-h" data-i18n="trust_p1_h">Vom erfahrenen Toningenieur</div>
- <div class="trust-p" data-i18n="trust_p1_p">Entwickelt von einem aktiven Broadcast-Engineer für Broadcast-Engineers. Gleiche DSP-Engine wie die Plugin/Standalone-Version, nichts vereinfacht, nichts entfernt.</div>
+ <div class="trust-h" data-i18n="trust_p1_h">By an experienced sound engineer</div>
+ <div class="trust-p" data-i18n="trust_p1_p">Built by an active broadcast engineer for broadcast engineers. Same DSP engine as the plugin/standalone version, nothing simplified, nothing dropped.</div>
  </div>
  <div class="trust-pillar">
  <div class="trust-icon" aria-hidden="true">
  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
  </div>
- <div class="trust-h" data-i18n="trust_p2_h">Einmal kaufen</div>
- <div class="trust-p" data-i18n="trust_p2_p">Keine In-App-Käufe, keine Werbung. Apple-Familienfreigabe für bis zu 5 weitere Personen. Updates über deinen Apple-Account.</div>
+ <div class="trust-h" data-i18n="trust_p2_h">Buy once</div>
+ <div class="trust-p" data-i18n="trust_p2_p">No in-app purchases, no ads. Apple Family Sharing for up to 5 additional people. Updates through your Apple account.</div>
  </div>
  <div class="trust-pillar">
  <div class="trust-icon" aria-hidden="true">
  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v12H7l-3 4z"/><path d="M8 9h8M8 12h6"/></svg>
  </div>
- <div class="trust-h" data-i18n="trust_p3_h">Antwort vom Entwickler</div>
- <div class="trust-p" data-i18n="trust_p3_p">Support-Mails landen direkt im Posteingang des Entwicklers, nicht bei einem Ticket-System. Werktags meist innerhalb von 24 Stunden.</div>
+ <div class="trust-h" data-i18n="trust_p3_h">Reply from the developer</div>
+ <div class="trust-p" data-i18n="trust_p3_p">Support emails go straight to the developer's inbox, not into a ticket system. Usually within 24 hours on working days.</div>
  </div>
  </div>
 </section>
@@ -306,67 +309,67 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/broad
 <!-- ╔══ Section 1, loudness METER PRO iPad ═══════════════════════╗ -->
 <section class="product-block" id="ipad">
  <div class="product-block-head">
- <div class="product-block-eyebrow" data-i18n="bm_ipad_eyebrow">iPad-Vollversion · iPadOS 16+</div>
- <h2 class="product-block-h2" data-i18n="bm_ipad_h">loudness METER PRO für iPad</h2>
- <p class="product-block-tagline" data-i18n="bm_ipad_tagline">Die komplette Broadcast-Meter-Engine im Touch-Format. Silero-VAD, Live-Forecast, RTW-PPM, Goniometer, Radar, FFT, Histograms, alles, was du auf dem Desktop kennst, mit MIDI-Remote für die Regie.</p> </div>
+ <div class="product-block-eyebrow" data-i18n="bm_ipad_eyebrow">iPad full version · iPadOS 16+</div>
+ <h2 class="product-block-h2" data-i18n="bm_ipad_h">loudness METER PRO for iPad</h2>
+ <p class="product-block-tagline" data-i18n="bm_ipad_tagline">The full broadcast meter engine in touch format. Silero VAD, live forecast, RTW PPM, goniometer, radar, FFT, histograms, everything you know from the desktop, plus MIDI remote for control.</p> </div>
 
  <div class="block-img-wrap">
- <img class="block-img" src="img-bm-ipad.webp?v=2" alt="pegelWERK loudness METER PRO auf iPad">
+ <img class="block-img" src="img-bm-ipad.webp?v=2" alt="pegelWERK loudness METER PRO on iPad">
  </div>
 
  <div class="features">
  <div class="feature">
  <div class="feature-icon">EBU R128</div>
- <h3 data-i18n="bm_ipad_f1_h">Loudness Engine</h3>
- <p data-i18n="bm_ipad_f1_p">Momentary, Short-Term und Integrated Loudness mit korrekter 400-ms-Gating-Engine bei 75 % Overlap. Power-Domain in Double Precision, keine LUFS-Drifts bei stundenlangen Programmen. LRA nach EBU Tech 3342.</p>
+ <h3 data-i18n="bm_ipad_f1_h">Loudness engine</h3>
+ <p data-i18n="bm_ipad_f1_p">Momentary, short-term and integrated loudness with proper 400 ms gating at 75 % overlap. Power-domain double precision, no LUFS drift on hour-long programs. LRA per EBU Tech 3342.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">True Peak</div>
- <h3 data-i18n="bm_ipad_f2_h">4x Polyphase TP</h3>
- <p data-i18n="bm_ipad_f2_p">Inter-Sample-Peak-Detection mit 4-fach oversampelndem Polyphase-FIR-Filter. Kompatibel zu allen R128-Limitern. Update-Rate 200 ms, flüssig ohne Zappeln.</p>
+ <h3 data-i18n="bm_ipad_f2_h">4x polyphase TP</h3>
+ <p data-i18n="bm_ipad_f2_p">Inter-sample peak detection with a 4x oversampling polyphase FIR filter. Compatible with every R128 limiter. 200 ms update rate, smooth, not jittery.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Speech AI</div>
- <h3 data-i18n="bm_ipad_f3_h">Sprach-Klarheit in Echtzeit</h3>
- <p data-i18n="bm_ipad_f3_p">Silero VAD v5 erkennt Sprache zuverlässig auch unter Musik. wespeaker ResNet34-LM mit Speaker-Lock erkennt Sprecherwechsel automatisch. Ampel: Good · Fair · Poor, sagt dir, ob deine Sprache verständlich ankommt, bevor das Telefon klingelt.</p>
+ <h3 data-i18n="bm_ipad_f3_h">Speech clarity in real-time</h3>
+ <p data-i18n="bm_ipad_f3_p">Silero VAD v5 detects speech even under music. wespeaker ResNet34-LM with speaker-lock detects speaker changes. Traffic light: Good · Fair · Poor, tells you whether your voice lands before the phone rings.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Forecast</div>
- <h3 data-i18n="bm_ipad_f4_h">Live-Prognose bis Sendeende</h3>
- <p data-i18n="bm_ipad_f4_p">Vorhersage der Integrated Loudness und LRA am Programmende auf Basis des bisherigen Verlaufs. Programm-Dauer-Panel mit Restzeit, 4-Felder-Banner mit Loudness-Trend, LRA-Trend und Reserve.</p>
+ <h3 data-i18n="bm_ipad_f4_h">Live forecast to programme end</h3>
+ <p data-i18n="bm_ipad_f4_p">Prediction of integrated loudness and LRA at programme end based on history. Programme-duration panel with remaining time, 4-field banner with loudness trend, LRA trend and reserve.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">RTW-Style</div>
- <h3 data-i18n="bm_ipad_f5_h">Vollständige Visualisierung</h3>
- <p data-i18n="bm_ipad_f5_p">PPM Bars in Broadcast-Skala (-59...-5) mit Cyan/Grün/Rot-Zonen, Goniometer mit Korrelation, FFT-Spektrum, Loudness Radar und drei Histogramme (Loudness, LRA, R128 Gating). Vertraute Optik für erfahrene Tonmeister.</p>
+ <h3 data-i18n="bm_ipad_f5_h">Full visualisation</h3>
+ <p data-i18n="bm_ipad_f5_p">PPM bars on the broadcast scale (-59...-5) with cyan/green/red zones, goniometer with correlation, FFT spectrum, loudness radar and three histograms (loudness, LRA, R128 gating). Familiar look for experienced engineers.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Remote</div>
  <h3 data-i18n="bm_ipad_f6_h">MIDI Learn + Bluetooth</h3>
- <p data-i18n="bm_ipad_f6_p">OPTIONS MIDI: Start, Stop und Reset über externe Controller. Bluetooth-MIDI-Pairing direkt aus der App, kein Adapter, kein Kabel, kein Setup. Perfekt für die Regie.</p>
+ <p data-i18n="bm_ipad_f6_p">OPTIONS MIDI: start, stop and reset via external controllers. Bluetooth-MIDI pairing straight from the app, no adapter, no cable, no setup. Perfect for control rooms.</p>
  </div>
  </div>
 
  <div class="workflow">
  <div class="workflow-step">
  <div class="workflow-num">01</div>
- <h3 data-i18n="bm_ipad_w1_h">App starten</h3>
- <p data-i18n="bm_ipad_w1_p">Externe Audio-Schnittstelle anschließen oder über das Built-in-Mikro arbeiten. Audio-Session erkennt das Interface automatisch und bevorzugt es.</p>
+ <h3 data-i18n="bm_ipad_w1_h">Launch the app</h3>
+ <p data-i18n="bm_ipad_w1_p">Plug in an external audio interface or work with the built-in mic. The audio session detects the interface and prefers it automatically.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">02</div>
- <h3 data-i18n="bm_ipad_w2_h">Messen</h3>
- <p data-i18n="bm_ipad_w2_p">Alle Werte in Echtzeit: LUFS-I/S/M, TP, LRA, Sprachklarheit, Korrelation. Histogramme dokumentieren den Verlauf während du arbeitest.</p>
+ <h3 data-i18n="bm_ipad_w2_h">Measure</h3>
+ <p data-i18n="bm_ipad_w2_p">All values in real-time: LUFS-I/S/M, TP, LRA, speech clarity, correlation. Histograms document the run as you work.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">03</div>
- <h3 data-i18n="bm_ipad_w3_h">Korrigieren</h3>
- <p data-i18n="bm_ipad_w3_p">Prädiktive Anzeige zeigt vor Sendeschluss, ob du im R128-Korridor bist. Forecast-Banner mit Loudness-Trend und Reserve hilft, frühzeitig nachzuregeln.</p>
+ <h3 data-i18n="bm_ipad_w3_h">Correct</h3>
+ <p data-i18n="bm_ipad_w3_p">Predictive readout shows before the end whether you're in the R128 corridor. Forecast banner with loudness trend and reserve helps you adjust early.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">04</div>
- <h3 data-i18n="bm_ipad_w4_h">Regie</h3>
- <p data-i18n="bm_ipad_w4_p">Start, Stop und Reset über MIDI-Controller oder Bluetooth-Footswitch. OPTIONS-Dialog für MIDI-Learn, einmal zuweisen, dauerhaft gespeichert.</p>
+ <h3 data-i18n="bm_ipad_w4_h">Remote</h3>
+ <p data-i18n="bm_ipad_w4_p">Start, stop and reset via MIDI controller or Bluetooth footswitch. OPTIONS dialog for MIDI Learn, assign once, stored permanently.</p>
  </div>
  </div>
 
@@ -383,7 +386,7 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/broad
  </ul>
  </div>
  <div class="spec-col">
- <h4 data-i18n="bm_ipad_specs_ai">KI &amp; Visualisierung</h4>
+ <h4 data-i18n="bm_ipad_specs_ai">AI &amp; Visualisation</h4>
  <ul>
  <li><b>VAD</b> Silero v5 (ONNX, lokal)</li>
  <li><b>Speaker</b> wespeaker ResNet34-LM</li>
@@ -394,7 +397,7 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/broad
  </ul>
  </div>
  <div class="spec-col">
- <h4 data-i18n="bm_ipad_specs_io">Plattform &amp; I/O</h4>
+ <h4 data-i18n="bm_ipad_specs_io">Platform &amp; I/O</h4>
  <ul>
  <li><b>OS</b> iPadOS 16+ (iPad-only)</li>
  <li><b>Bundle</b> com.satk.broadcastmeter</li>
@@ -413,18 +416,18 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/broad
 <!-- ╔══ Section 2, loudness METER iPhone ═══════════════════════════╗ -->
 <section class="product-block" id="iphone">
  <div class="product-block-head">
- <div class="product-block-eyebrow" data-i18n="bm_mini_eyebrow">iPhone-Kompakt · iOS 16+</div>
+ <div class="product-block-eyebrow" data-i18n="bm_mini_eyebrow">iPhone compact · iOS 16+</div>
  <h2 class="product-block-h2" data-i18n="bm_mini_h">loudness METER</h2>
- <p class="product-block-tagline" data-i18n="bm_mini_tagline">Loudness-Check für unterwegs. Zwei Swipe-Pages, Meters und Spectrum, gleiche DSP-Engine wie die iPad-Vollversion, kompakt in der Tasche.</p> </div>
+ <p class="product-block-tagline" data-i18n="bm_mini_tagline">Loudness check on the go. Two swipe pages, Meters and Spectrum, same DSP engine as the iPad version, in your pocket.</p> </div>
 
  <div class="block-img-wrap">
  <div class="iphone-pair">
  <figure class="iphone-shot">
- <img src="img-bm-iphone-meters.webp?v=2" alt="loudness METER auf iPhone, Meters-Page">
+ <img src="img-bm-iphone-meters.webp?v=2" alt="loudness METER on iPhone, meters page">
  <figcaption data-i18n="bm_mini_cap1">Page Meters</figcaption>
  </figure>
  <figure class="iphone-shot">
- <img src="img-bm-iphone-spectrum.webp?v=2" alt="loudness METER auf iPhone, Spectrum-Page">
+ <img src="img-bm-iphone-spectrum.webp?v=2" alt="loudness METER on iPhone, spectrum page">
  <figcaption data-i18n="bm_mini_cap2">Page Spectrum</figcaption>
  </figure>
  </div>
@@ -433,29 +436,29 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/broad
  <div class="features cols-2">
  <div class="feature">
  <div class="feature-icon">Engine</div>
- <h3 data-i18n="bm_mini_f1_h">Gleiche DSP wie iPad</h3>
- <p data-i18n="bm_mini_f1_p">LUFS-I/S/M, 400-ms-Gating mit 75 % Overlap, 4x Polyphase True Peak, identische DSP-Wahrheit wie die Vollversion. Kein "Light"-Modus, nur reduzierte Oberfläche.</p>
+ <h3 data-i18n="bm_mini_f1_h">Same DSP as iPad</h3>
+ <p data-i18n="bm_mini_f1_p">LUFS-I/S/M, 400 ms gating at 75 % overlap, 4x polyphase true peak, identical DSP truth to the full version. No "lite" mode, just a reduced surface.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Swipe</div>
- <h3 data-i18n="bm_mini_f2_h">Zwei Pages, ein Swipe</h3>
- <p data-i18n="bm_mini_f2_p">Page 1: PPM Bars und LUFS-Werte. Page 2: FFT-Spektrum. Punkte unten rechts zeigen die aktive Seite, Wischen wechselt, keine versteckten Menüs.</p>
+ <h3 data-i18n="bm_mini_f2_h">Two pages, one swipe</h3>
+ <p data-i18n="bm_mini_f2_p">Page 1: PPM bars and LUFS values. Page 2: FFT spectrum. Dots bottom-right show the active page; swipe to switch, no hidden menus.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Background</div>
- <h3 data-i18n="bm_mini_f3_h">Bildschirm sperren, weiter messen</h3>
- <p data-i18n="bm_mini_f3_p">Background-Audio-Mode aktiv: das Metering läuft weiter, auch wenn das iPhone sich sperrt. Ideal für Langzeit-Messungen im Studio.</p>
+ <h3 data-i18n="bm_mini_f3_h">Lock the screen, keep measuring</h3>
+ <p data-i18n="bm_mini_f3_p">Background audio mode active: metering continues even when the iPhone locks. Ideal for long-run measurements in the studio.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Format</div>
- <h3 data-i18n="bm_mini_f4_h">Hoch- und Querformat</h3>
- <p data-i18n="bm_mini_f4_p">Portrait für den schnellen Pegel-Check am Bahnsteig, Landscape für detailliertes Lesen am Tisch. Das Layout passt sich automatisch an.</p>
+ <h3 data-i18n="bm_mini_f4_h">Portrait and landscape</h3>
+ <p data-i18n="bm_mini_f4_p">Portrait for a quick level check on the platform, landscape for detailed reading at the table. The layout adapts automatically.</p>
  </div>
  </div>
 
  <div class="not-in-callout">
- <h4 data-i18n="bm_mini_notin_h">Nicht in loudness METER</h4>
- <p data-i18n="bm_mini_notin_p">Bewusst weggelassen, damit die App schlank und schnell bleibt: <b>Silero VAD und Speaker-Engine</b> (kein ONNX-Runtime auf dem iPhone), <b>MIDI Learn</b>, <b>GPI</b>, <b>Live-Forecast</b>, <b>Histograms</b>, <b>Loudness Radar</b>. Wer das alles in einer App will, nimmt loudness METER PRO für iPad.</p>
+ <h4 data-i18n="bm_mini_notin_h">Not in loudness METER</h4>
+ <p data-i18n="bm_mini_notin_p">Deliberately omitted to keep the app lean and fast: Silero VAD and speaker engine (no ONNX runtime on iPhone), MIDI Learn, GPI, live forecast, histograms, loudness radar. Want all that in one app? Get loudness METER PRO for iPad.</p>
  </div>
 
 </section>
@@ -463,25 +466,25 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/broad
 <footer>
  <div class="footer-grid">
  <div class="footer-col">
- <h4 data-i18n="f_col_products">Produkte</h4>
- <a href="/mac" data-i18n="nav_mac">Mac Apps</a>
- <a href="/ios" data-i18n="nav_ios">iOS Apps</a>
+ <h4 data-i18n="f_col_products">Products</h4>
+ <a href="/mac-en" data-i18n="nav_mac">Mac Apps</a>
+ <a href="/ios-en" data-i18n="nav_ios">iOS Apps</a>
  </div>
  <div class="footer-col">
  <h4 data-i18n="f_col_support">Support</h4>
  <a href="/videos" data-i18n="nav_videos">Videos</a>
- <a href="/support" data-i18n="nav_info">Supportanfrage</a>
- <a href="/manage-license" data-i18n="f_manage">Lizenz verwalten</a>
+ <a href="/support-en" data-i18n="nav_info">Support request</a>
+ <a href="/manage-license" data-i18n="f_manage">Manage License</a>
  <a href="/changelog" data-i18n="f_changelog">Changelog</a>
- <a href="/press" data-i18n="f_press">Presse</a>
+ <a href="/press" data-i18n="f_press">Press</a>
  </div>
  <div class="footer-col">
- <h4 data-i18n="f_col_legal">Rechtliches</h4>
- <a href="/security" data-i18n="f_security">Security</a>
- <a href="/agb" data-i18n="f_terms">AGB</a>
- <a href="/widerruf" data-i18n="f_refund">Widerruf</a>
- <a href="/datenschutz" data-i18n="f_privacy">Datenschutz</a>
- <a href="/impressum" data-i18n="f_imprint_contact">Kontakt &amp; Impressum</a>
+ <h4 data-i18n="f_col_legal">Legal</h4>
+ <a href="/security-en" data-i18n="f_security">Security</a>
+ <a href="/agb-en" data-i18n="f_terms">Terms</a>
+ <a href="/widerruf-en" data-i18n="f_refund">Right of Withdrawal</a>
+ <a href="/datenschutz-en" data-i18n="f_privacy">Privacy Policy</a>
+ <a href="/impressum-en" data-i18n="f_imprint_contact">Contact &amp; Legal Notice</a>
  </div>
  </div>
  <div class="footer-bar">

@@ -65,3 +65,23 @@
 /instant-player.html / 301
 /voiceover-processor / 301
 /voiceover-processor.html / 301
+
+# ── Englische Fassungen (erzeugt von tools/build-en.py) ──────────
+# Die englische Startseite laeuft unter /en, nicht /index-en.
+/en /index-en.html 200
+/index-en /en 301
+/index-en.html /en 301
+/mac-en.html /mac-en 301
+/ios-en.html /ios-en 301
+/broadcast-meter-pro-en.html /broadcast-meter-pro-en 301
+/broadcast-meter-ios-en.html /broadcast-meter-ios-en 301
+/loudness-correct-en.html /loudness-correct-en 301
+/loudness-correct-ios-en.html /loudness-correct-ios-en 301
+/voyzsession-en.html /voyzsession-en 301
+/voyzsession-ios-en.html /voyzsession-ios-en 301
+/easy-editor-en.html /easy-editor-en 301
+/instant-player-app-en.html /instant-player-app-en 301
+/support-en.html /support-en 301
+
+# Build-Werkzeuge gehoeren nicht ins Web (Pages deployt sonst alles mit)
+/tools/* / 301

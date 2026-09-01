@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="de">
+<!-- GENERIERT von tools/build-en.py aus ios.html - NICHT von Hand aendern.
+     Aenderungen gehoeren in die deutsche Seite bzw. ihre en:-i18n-Tabelle,
+     danach `python3 tools/build-en.py` neu laufen lassen. -->
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico?v=10" sizes="any">
@@ -7,13 +10,13 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=10">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=10">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=10">
-<link rel="canonical" href="https://pegelwerk.com/ios">
+<link rel="canonical" href="https://pegelwerk.com/ios-en">
 <link rel="alternate" hreflang="de" href="https://pegelwerk.com/ios">
 <link rel="alternate" hreflang="en" href="https://pegelwerk.com/ios-en">
 <link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/ios">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>pegelWERK iOS Apps - iPhone und iPad im App Store</title>
-<meta name="description" content="iOS-Apps für iPhone und iPad direkt im App Store: loudness METER PRO, voyzSESSION, loudness CORRECT, easy EDITOR und instant PLAYER. Sofort einsatzbereit ohne Account.">
+<title>pegelWERK iOS Apps - iPhone and iPad on the App Store</title>
+<meta name="description" content="iOS apps for iPhone and iPad on the App Store: loudness METER PRO, voyzSESSION, loudness CORRECT, easy EDITOR and instant PLAYER.">
 
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website">
@@ -67,7 +70,7 @@
  "name": "pegelWERK",
  "url": "https://pegelwerk.com",
  "publisher": { "@type": "Organization", "name": "pegelWERK" },
- "inLanguage": ["de", "en"]
+ "inLanguage": "en"
 }
 </script>
 <style>
@@ -240,33 +243,33 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 function switchLang(l,u){try{localStorage.setItem('satk-lang',l);}catch(e){}location.href=u;}
 // Auto-redirect zur anderen Sprachfassung nur bei EXPLIZIT gesetzter Vorliebe
 // (null/unset = hierbleiben, der Besucher hat diese URL bewusst aufgerufen)
-try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/ios-en'); } } catch(e){}
+try { if (localStorage.getItem('satk-lang') === 'de') { location.replace('/ios'); } } catch(e){}
 </script>
 </head>
 <body>
 
 <nav>
- <a href="/" class="nav-logo">
+ <a href="/en" class="nav-logo">
  <img class="nav-logo-img" src="/logo-lockup-2.svg" alt="pegelWERK">
  </a>
  <div class="nav-platforms">
- <a href="/mac">Mac</a>
- <a href="/ios" class="active">iOS</a>
+ <a href="/mac-en">Mac</a>
+ <a href="/ios-en" class="active">iOS</a>
  </div>
  <div class="nav-links">
- <a href="/support" data-i18n="nav_info">Supportanfrage</a>
- <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
+ <a href="/support-en" data-i18n="nav_info">Support request</a>
+ <a href="/manage-license" data-i18n="nav_manage">License</a>
  <div class="lang-sw">
- <span class="lang active" id="btnDE" onclick="switchLang('de','/ios')">DE</span>
+ <span class="lang" id="btnDE" onclick="switchLang('de','/ios')">DE</span>
  <span class="lang-sep">·</span>
- <span class="lang" id="btnEN" onclick="switchLang('en','/ios-en')">EN</span>
+ <span class="lang active" id="btnEN" onclick="switchLang('en','/ios-en')">EN</span>
  </div>
  </div>
 </nav>
 
 <div class="hero">
  <h1><span class="plakette">iOS</span><span class="wort">Apps</span></h1>
- <p data-i18n="hero_ios_sub">Apps für iPhone und iPad direkt aus dem Apple App Store.</p>
+ <p data-i18n="hero_ios_sub">Apps for iPhone and iPad directly from the Apple App Store.</p>
  <div class="hero-line"></div>
 </div>
 
@@ -275,19 +278,19 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/ios-e
  <div class="grid">
 
  <div class="card">
- <a href="voyzsession-ios.html" class="card-img">
+ <a href="/voyzsession-ios-en" class="card-img">
  <img src="img-overdub-studio.webp?v=7" alt="pegelWERK voyzSESSION, iPad">
  </a>
  <div class="card-body">
  <div class="card-name">voyzSESSION</div>
- <div class="card-sub" data-i18n="vs_ios_sub">Voice-Over gegen Video · K-Loudness · Channel Strip · Ducking · R128-Export. iPhone- &amp; iPad-App.</div>
+ <div class="card-sub" data-i18n="vs_ios_sub">Voice-over against video · K-loudness · Channel strip · Ducking · R128 export. iPhone &amp; iPad app.</div>
  <div class="card-platforms">
  <span>iPhone</span>
  <span>iPad</span>
  </div>
 
  <div class="format-section">
- <div class="format-label" data-i18n="fmt_apps">Apple App</div>
+ <div class="format-label" data-i18n="fmt_apps">Apple Apps</div>
  <div class="card-stores list">
  <div class="store-row">
  <a class="appstore-badge" data-app-id="6772143499" href="https://apps.apple.com/app/id6772143499" target="_blank" rel="noopener" aria-label="voyzSESSION im App Store laden">
@@ -304,12 +307,12 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/ios-e
 
  <!-- ╔══ loudness METER PRO (iPhone + iPad, beide live) ═════════╗ -->
  <div class="card">
- <a href="broadcast-meter-ios.html" class="card-img">
- <img src="img-bm-ipad.webp" alt="pegelWERK loudness METER PRO, iPad und iPhone">
+ <a href="/broadcast-meter-ios-en" class="card-img">
+ <img src="img-bm-ipad.webp" alt="pegelWERK loudness METER PRO, iPad and iPhone">
  </a>
  <div class="card-body">
  <div class="card-name">loudness METER PRO</div>
- <div class="card-sub" data-i18n="bm_ios_sub">PPM · LUFS · True Peak · FFT · Goniometer · Sprachklarheit. Auf iPad und iPhone.</div>
+ <div class="card-sub" data-i18n="bm_ios_sub">PPM · LUFS · True Peak · FFT · Vectorscope · Speech Clarity. On iPad and iPhone.</div>
  <div class="card-platforms">
  <span>iPhone</span><span>iPad</span>
  </div>
@@ -332,7 +335,7 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/ios-e
  </a>
  <div class="store-meta">
  <span class="store-platform" data-i18n="store_iphone">iPhone App</span>
- <span class="store-price" data-i18n="store_free">gratis</span>
+ <span class="store-price" data-i18n="store_free">free</span>
  </div>
  </div>
  </div>
@@ -342,18 +345,18 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/ios-e
 
  <!-- ╔══ loudness CORRECT (iPad), live im App Store ═══════╗ -->
  <div class="card">
- <a href="loudness-correct-ios.html" class="card-img">
+ <a href="/loudness-correct-ios-en" class="card-img">
  <img src="img-loudness-correct-1056.webp" width="1056" height="734" loading="lazy" alt="pegelWERK loudness CORRECT, iPad">
  </a>
  <div class="card-body">
  <div class="card-name">loudness CORRECT</div>
- <div class="card-sub" data-i18n="lc_ios_sub">Offline R128 · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6. iPad-App.</div>
+ <div class="card-sub" data-i18n="lc_ios_sub">Offline R128 · 16 delivery presets · Verify-and-Refine · Mono to 9.1.6. iPad app.</div>
  <div class="card-platforms">
  <span>iPad</span>
  </div>
 
  <div class="format-section">
- <div class="format-label" data-i18n="fmt_apps">Apple App</div>
+ <div class="format-label" data-i18n="fmt_apps">Apple Apps</div>
  <div class="card-stores list">
  <div class="store-row">
  <a class="appstore-badge" data-app-id="6768704949" href="https://apps.apple.com/app/id6768704949" target="_blank" rel="noopener" aria-label="loudness CORRECT im App Store laden">
@@ -371,18 +374,18 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/ios-e
 
  <!-- ╔══ easy EDITOR (4,99 €, iPhone + iPad) ══════════════════╗ -->
  <div class="card">
- <a href="easy-editor.html" class="card-img">
- <img src="img-easy-editor.png?v=1" alt="pegelWERK easy EDITOR, Wellenform-Editor fuer iPhone und iPad, zur Detailseite">
+ <a href="/easy-editor-en" class="card-img">
+ <img src="img-easy-editor.png?v=1" alt="pegelWERK easy EDITOR, waveform editor for iPhone and iPad, go to product page">
  </a>
  <div class="card-body">
  <div class="card-name">easy EDITOR</div>
- <div class="card-sub" data-i18n="ee_ios_sub">Audio-Cutter mit Trim, Cut, Undo. EBU R128 -23 LUFS Export als 24-Bit-WAV. Round-Trip mit instant PLAYER.</div>
+ <div class="card-sub" data-i18n="ee_ios_sub">Audio cutter with trim, cut, undo. EBU R128 -23 LUFS export as 24-bit WAV. Round-trip with instant PLAYER.</div>
  <div class="card-platforms">
  <span>iPhone</span><span>iPad</span>
  </div>
 
  <div class="format-section">
- <div class="format-label" data-i18n="fmt_apps">Apple App</div>
+ <div class="format-label" data-i18n="fmt_apps">Apple Apps</div>
  <div class="card-stores list">
  <div class="store-row">
  <a class="appstore-badge" data-app-id="6768668559" href="https://apps.apple.com/app/id6768668559" target="_blank" rel="noopener" aria-label="easy EDITOR im App Store laden">
@@ -400,18 +403,18 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/ios-e
 
  <!-- ╔══ instant PLAYER (gratis, iPhone + iPad) ═══════════════╗ -->
  <div class="card">
- <a href="instant-player-app.html" class="card-img">
- <img src="img-instant-player.png?v=1" alt="pegelWERK instant PLAYER, 64-Pad-Soundboard fuer iPhone und iPad, zur Detailseite">
+ <a href="/instant-player-app-en" class="card-img">
+ <img src="img-instant-player.png?v=1" alt="pegelWERK instant PLAYER, 64-pad soundboard for iPhone and iPad, go to product page">
  </a>
  <div class="card-body">
  <div class="card-name">instant PLAYER</div>
- <div class="card-sub" data-i18n="ip_ios_sub">64-Pad-Soundboard: 16 Pads x 4 Banks, MULTI/SINGLE-Mode, Cross-Fade, AUTO-CUE, Show als .satkip-Bundle. Round-Trip mit easy EDITOR.</div>
+ <div class="card-sub" data-i18n="ip_ios_sub">64-pad soundboard: 16 pads x 4 banks, MULTI/SINGLE mode, cross-fade, AUTO-CUE, show as .satkip bundle. Round-trip with easy EDITOR.</div>
  <div class="card-platforms">
  <span>iPhone</span><span>iPad</span>
  </div>
 
  <div class="format-section">
- <div class="format-label" data-i18n="fmt_apps">Apple App</div>
+ <div class="format-label" data-i18n="fmt_apps">Apple Apps</div>
  <div class="card-stores list">
  <div class="store-row">
  <a class="appstore-badge" data-app-id="6768668895" href="https://apps.apple.com/app/id6768668895" target="_blank" rel="noopener" aria-label="instant PLAYER im App Store laden">
@@ -419,7 +422,7 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/ios-e
  </a>
  <div class="store-meta">
  <span class="store-platform" data-i18n="store_universal">iPhone &amp; iPad</span>
- <span class="store-price" data-i18n="store_free">gratis</span>
+ <span class="store-price" data-i18n="store_free">free</span>
  </div>
  </div>
  </div>
@@ -434,20 +437,20 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/ios-e
  <h2 data-i18n="info_title_ios">Apple App Store</h2>
  <div class="info-row">
  <div class="info-item">
- <h3 data-i18n="info_ios_buy_h">Kauf &amp; Updates</h3>
- <p data-i18n="info_ios_buy_p">Kauf und Updates laufen über deinen Apple-Account. Kein zusätzliches Konto, keine separate Lizenzierung.</p>
+ <h3 data-i18n="info_ios_buy_h">Purchase &amp; Updates</h3>
+ <p data-i18n="info_ios_buy_p">Purchase and updates run through your Apple ID. No separate account, no separate licensing.</p>
  </div>
  <div class="info-item">
- <h3 data-i18n="info_ios_family_h">Familienfreigabe</h3>
- <p data-i18n="info_ios_family_p">Bezahlte Apps lassen sich über die Apple-Familienfreigabe mit bis zu 5 weiteren Familienmitgliedern teilen.</p>
+ <h3 data-i18n="info_ios_family_h">Family Sharing</h3>
+ <p data-i18n="info_ios_family_p">Paid apps can be shared with up to 5 family members via Apple Family Sharing.</p>
  </div>
  <div class="info-item">
  <h3 data-i18n="info_ios_sup_h">Support</h3>
- <p data-i18n="info_ios_sup_p">E-Mail-Support direkt vom Entwickler. Keine Warteschlangen, keine Chatbots.</p>
+ <p data-i18n="info_ios_sup_p">Email support directly from the developer. No queues, no chatbots.</p>
  </div>
  <div class="info-item">
- <h3 data-i18n="info_ios_mac_h">Auch für Mac</h3>
- <p data-i18n-html="info_ios_mac_p">Brauchst du Standalone-macOS-Versionen? <a href="/mac">Mac Apps ansehen</a>.</p>
+ <h3 data-i18n="info_ios_mac_h">Mac too</h3>
+ <p data-i18n-html="info_ios_mac_p">Need native macOS standalone versions? <a href="/mac-en">View Mac Apps</a>.</p>
  </div>
  </div>
 </section>
@@ -455,25 +458,25 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/ios-e
 <footer>
  <div class="footer-grid">
  <div class="footer-col">
- <h4 data-i18n="f_col_products">Produkte</h4>
- <a href="/mac" data-i18n="nav_mac">Mac Apps</a>
- <a href="/ios" data-i18n="nav_ios">iOS Apps</a>
+ <h4 data-i18n="f_col_products">Products</h4>
+ <a href="/mac-en" data-i18n="nav_mac">Mac Apps</a>
+ <a href="/ios-en" data-i18n="nav_ios">iOS Apps</a>
  </div>
  <div class="footer-col">
  <h4 data-i18n="f_col_support">Support</h4>
  <a href="/videos" data-i18n="nav_videos">Videos</a>
- <a href="/support" data-i18n="nav_info">Supportanfrage</a>
- <a href="/manage-license" data-i18n="f_manage">Lizenz verwalten</a>
+ <a href="/support-en" data-i18n="nav_info">Support request</a>
+ <a href="/manage-license" data-i18n="f_manage">Manage License</a>
  <a href="/changelog" data-i18n="f_changelog">Changelog</a>
- <a href="/press" data-i18n="f_press">Presse</a>
+ <a href="/press" data-i18n="f_press">Press</a>
  </div>
  <div class="footer-col">
- <h4 data-i18n="f_col_legal">Rechtliches</h4>
- <a href="/security" data-i18n="f_security">Security</a>
- <a href="/agb" data-i18n="f_terms">AGB</a>
- <a href="/widerruf" data-i18n="f_refund">Widerruf</a>
- <a href="/datenschutz" data-i18n="f_privacy">Datenschutz</a>
- <a href="/impressum" data-i18n="f_imprint_contact">Kontakt &amp; Impressum</a>
+ <h4 data-i18n="f_col_legal">Legal</h4>
+ <a href="/security-en" data-i18n="f_security">Security</a>
+ <a href="/agb-en" data-i18n="f_terms">Terms</a>
+ <a href="/widerruf-en" data-i18n="f_refund">Right of Withdrawal</a>
+ <a href="/datenschutz-en" data-i18n="f_privacy">Privacy Policy</a>
+ <a href="/impressum-en" data-i18n="f_imprint_contact">Contact &amp; Legal Notice</a>
  </div>
  </div>
  <div class="footer-bar">
@@ -560,7 +563,7 @@ const i18n = {
  info_ios_sup_h: 'Support',
  info_ios_sup_p: 'E-Mail-Support direkt vom Entwickler. Keine Warteschlangen, keine Chatbots.',
  info_ios_mac_h: 'Auch für Mac',
- info_ios_mac_p: 'Brauchst du Standalone-macOS-Versionen? <a href="/mac">Mac Apps ansehen</a>.'
+ info_ios_mac_p: 'Brauchst du Standalone-macOS-Versionen? <a href="/mac-en">Mac Apps ansehen</a>.'
  },
  en: {
  nav_info: 'Support request',
@@ -636,7 +639,7 @@ const i18n = {
  info_ios_sup_h: 'Support',
  info_ios_sup_p: 'Email support directly from the developer. No queues, no chatbots.',
  info_ios_mac_h: 'Mac too',
- info_ios_mac_p: 'Need native macOS standalone versions? <a href="/mac">View Mac Apps</a>.'
+ info_ios_mac_p: 'Need native macOS standalone versions? <a href="/mac-en">View Mac Apps</a>.'
  }
 };
 

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="de">
+<!-- GENERIERT von tools/build-en.py aus mac.html - NICHT von Hand aendern.
+     Aenderungen gehoeren in die deutsche Seite bzw. ihre en:-i18n-Tabelle,
+     danach `python3 tools/build-en.py` neu laufen lassen. -->
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico?v=10" sizes="any">
@@ -7,19 +10,19 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=10">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=10">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=10">
-<link rel="canonical" href="https://pegelwerk.com/ios">
-<link rel="alternate" hreflang="de" href="https://pegelwerk.com/ios">
-<link rel="alternate" hreflang="en" href="https://pegelwerk.com/ios-en">
-<link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/ios">
+<link rel="canonical" href="https://pegelwerk.com/mac-en">
+<link rel="alternate" hreflang="de" href="https://pegelwerk.com/mac">
+<link rel="alternate" hreflang="en" href="https://pegelwerk.com/mac-en">
+<link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/mac">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>pegelWERK iOS Apps - iPhone und iPad im App Store</title>
-<meta name="description" content="iOS-Apps für iPhone und iPad direkt im App Store: loudness METER PRO, voyzSESSION, loudness CORRECT, easy EDITOR und instant PLAYER. Sofort einsatzbereit ohne Account.">
+<title>pegelWERK Mac Apps - loudness METER PRO, voyzSESSION PRO, loudness CORRECT</title>
+<meta name="description" content="Native macOS apps for broadcast and post production: loudness METER PRO, voyzSESSION PRO and loudness CORRECT with EBU R128 metering and correction.">
 
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="pegelWERK iOS Apps - iPhone und iPad im App Store">
-<meta property="og:description" content="iOS-Apps für iPhone und iPad direkt im App Store. Sofort einsatzbereit ohne Account.">
-<meta property="og:url" content="https://pegelwerk.com/ios">
+<meta property="og:title" content="pegelWERK Mac Apps - loudness METER PRO, voyzSESSION PRO, loudness CORRECT">
+<meta property="og:description" content="Native macOS-Apps für Broadcast und Postproduktion. Einmalkauf, 7-Tage-Trial, Lizenz für 2 Macs.">
+<meta property="og:url" content="https://pegelwerk.com/mac">
 <meta property="og:image" content="https://pegelwerk.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -27,8 +30,8 @@
 <meta property="og:locale" content="de_DE">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="pegelWERK iOS Apps - iPhone und iPad im App Store">
-<meta name="twitter:description" content="iOS-Apps für iPhone und iPad direkt im App Store.">
+<meta name="twitter:title" content="pegelWERK - Pro Audio Software für Broadcast &amp; Postproduktion">
+<meta name="twitter:description" content="Apps und Plugins für professionelle Medienproduktionen. loudness METER PRO, voyzSESSION PRO, loudness CORRECT.">
 <meta name="twitter:image" content="https://pegelwerk.com/og-image.png">
 <link href="fonts.css" rel="stylesheet">
 <script type="application/ld+json">
@@ -67,7 +70,7 @@
  "name": "pegelWERK",
  "url": "https://pegelwerk.com",
  "publisher": { "@type": "Organization", "name": "pegelWERK" },
- "inLanguage": ["de", "en"]
+ "inLanguage": "en"
 }
 </script>
 <style>
@@ -119,11 +122,26 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.5)}
 .card-img{display:block;width:100%;aspect-ratio:16/9;overflow:hidden;position:relative;background:#08090a;text-decoration:none}
 .card-img img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s ease}
+/* Randlos NUR dort, wo das Bild breiter als hoch ist und der Beschnitt nichts
+   kostet. contain liess beim voyzSESSION-Screenshot links und rechts Balken
+   stehen (Bild 1.59, Kachel 1.78). Beschnitten wird ausschliesslich OBEN
+   (object-position 100%): weg faellt die Titelleiste, drin bleibt die
+   Transportleiste mit V-PUNCH, AUTO MIX und EXPORT. Nicht global setzen - 
+   loudness CORRECT ist Hochformat und wuerde zu einem Streifen zerschnitten. */
+.card-img.bleed img{object-fit:cover;object-position:50% 100%}
 .card:hover .card-img img{transform:scale(1.03)}
 .card-tag{position:absolute;top:14px;left:14px;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;
  padding:4px 10px;border-radius:3px;font-weight:500;background:rgba(10,10,11,.7);color:var(--ac);
  border:1px solid rgba(79,185,154,.2);backdrop-filter:blur(8px)}
 .card-body{padding:18px 24px 22px;text-align:center}
+/* Preisblock am Kachelboden verankern. Die voyzSESSION-Kachel traegt
+   eine Zeile mehr (Monatlich/Jaehrlich), wodurch Preis, MwSt.-Zeile und
+   Testen-Knopf dort tiefer sassen als bei den Nachbarn. Die Kacheln sind
+   als Grid-Elemente ohnehin gleich hoch; mit margin-top:auto stehen die
+   Bloecke jetzt auf derselben Grundlinie, und nur der Umschalter ragt
+   nach oben heraus - da, wo Platz ist. */
+.card{display:flex;flex-direction:column}
+.card-body{flex:1;display:flex;flex-direction:column}
 .card-name{font-family:'Arimo',sans-serif;font-size:20px;font-weight:700;letter-spacing:-.3px;margin-bottom:4px}
 .card-sub{font-size:11px;color:var(--mu2);margin-bottom:12px;line-height:1.5;text-wrap:balance}
 .card-platforms{display:flex;justify-content:center;gap:6px;margin-bottom:14px;flex-wrap:wrap}
@@ -132,6 +150,11 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .card-price{font-family:'Arimo',sans-serif;font-size:24px;font-weight:700;color:var(--tx);margin-bottom:2px;line-height:1}
 .card-price .cur{font-size:14px;color:var(--mu2);font-weight:400}
 .card-vat{font-size:9px;color:var(--mu);margin-bottom:12px}
+.od-plan{display:flex;width:fit-content;margin:0 auto 8px;border:1px solid var(--bd);border-radius:999px;overflow:hidden}
+.od-plan button{border:0;padding:6px 18px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.5px;cursor:pointer;background:transparent;color:var(--mu2);transition:all .15s}
+.od-plan button.active{background:var(--ac);color:#0a0a0b;font-weight:700}
+.early-badge{display:inline-block;font-family:'Arimo',sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#0a0a0b;background:var(--ac);padding:3px 9px;border-radius:4px;margin-bottom:8px}
+.early-badge.soon{background:transparent;color:var(--mu2);border:1px solid var(--bd)}
 .card-btn{display:inline-block;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
  padding:9px 24px;border-radius:5px;border:none;cursor:pointer;transition:all .25s;font-weight:500}
 .card-btn.buy{background:var(--ac);color:#0a0a0b}
@@ -152,20 +175,9 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .format-row:first-of-type{margin-top:0;padding-top:0;border-top:none}
 .format-row .format-section{margin-top:0;padding-top:0;border-top:none}
 .format-row .format-section + .format-section{border-left:1px solid var(--bd);padding-left:20px}
+.card-body > .format-section{margin-top:auto}
 @media(max-width:600px){.format-row{grid-template-columns:1fr}.format-row .format-section + .format-section{border-left:none;padding-left:0;margin-top:16px;padding-top:16px;border-top:1px solid var(--bd)}}
 .format-label{font-family:'Arimo',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:10px}
-.card-stores{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:4px}
-.card-stores.list{flex-direction:row;align-items:flex-start;justify-content:center;gap:20px;flex-wrap:wrap}
-.store-row{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
-.store-meta{display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center}
-.store-platform{font-size:10px;color:var(--tx);letter-spacing:.3px;font-weight:500}
-.store-price{font-family:'Arimo',sans-serif;font-size:13px;font-weight:700;color:var(--tx);letter-spacing:-.2px;margin-top:1px}
-.store-price .cur{font-size:10px;color:var(--mu2);font-weight:400;margin-left:1px}
-.store-status{font-size:9px;color:var(--mu);letter-spacing:.5px;text-transform:uppercase}
-.appstore-badge{display:inline-block;transition:opacity .25s,transform .25s;border-radius:6px;overflow:hidden}
-.appstore-badge:hover{opacity:.85;transform:scale(1.02)}
-.appstore-badge img{display:block;height:30px;width:auto}
-.format-status{font-size:9px;color:var(--mu);margin-top:10px;letter-spacing:.5px}
 
 /* ── Info ────────────────────────── */
 .info-section{max-width:1120px;margin:0 auto;padding:72px 32px 0}
@@ -192,9 +204,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
  nav{padding:14px 20px;gap:12px}
  .grid{grid-template-columns:1fr}
  .info-row{grid-template-columns:1fr 1fr}
- .hero{padding:48px 20px 32px}
- .appstore-badge img{height:26px}
- .nav-platforms a{font-size:9px;padding:6px 12px;letter-spacing:1px}
+ .hero{padding:48px 20px 32px} .nav-platforms a{font-size:9px;padding:6px 12px;letter-spacing:1px}
 }
 @media(max-width:720px){
  .footer-grid{grid-template-columns:repeat(3,1fr);gap:24px}
@@ -202,9 +212,7 @@ footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255
 }
 @media(max-width:600px){
  .info-row{grid-template-columns:1fr}
- .nav-links a{display:none}
- .appstore-badge img{height:24px}
- nav{padding:12px 16px;gap:8px}
+ .nav-links a{display:none} nav{padding:12px 16px;gap:8px}
  .nav-platforms a{font-size:8px;padding:5px 10px;letter-spacing:.8px}
  footer{padding:48px 24px 24px}
 }
@@ -240,190 +248,119 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 function switchLang(l,u){try{localStorage.setItem('satk-lang',l);}catch(e){}location.href=u;}
 // Auto-redirect zur anderen Sprachfassung nur bei EXPLIZIT gesetzter Vorliebe
 // (null/unset = hierbleiben, der Besucher hat diese URL bewusst aufgerufen)
-try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/ios-en'); } } catch(e){}
+try { if (localStorage.getItem('satk-lang') === 'de') { location.replace('/mac'); } } catch(e){}
 </script>
 </head>
 <body>
 
 <nav>
- <a href="/" class="nav-logo">
+ <a href="/en" class="nav-logo">
  <img class="nav-logo-img" src="/logo-lockup-2.svg" alt="pegelWERK">
  </a>
  <div class="nav-platforms">
- <a href="/mac">Mac</a>
- <a href="/ios" class="active">iOS</a>
+ <a href="/mac-en" class="active">Mac</a>
+ <a href="/ios-en">iOS</a>
  </div>
  <div class="nav-links">
- <a href="/support" data-i18n="nav_info">Supportanfrage</a>
- <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
+ <a href="/support-en" data-i18n="nav_info">Support request</a>
+ <a href="/manage-license" data-i18n="nav_manage">License</a>
  <div class="lang-sw">
- <span class="lang active" id="btnDE" onclick="switchLang('de','/ios')">DE</span>
+ <span class="lang" id="btnDE" onclick="switchLang('de','/mac')">DE</span>
  <span class="lang-sep">·</span>
- <span class="lang" id="btnEN" onclick="switchLang('en','/ios-en')">EN</span>
+ <span class="lang active" id="btnEN" onclick="switchLang('en','/mac-en')">EN</span>
  </div>
  </div>
 </nav>
 
 <div class="hero">
- <h1><span class="plakette">iOS</span><span class="wort">Apps</span></h1>
- <p data-i18n="hero_ios_sub">Apps für iPhone und iPad direkt aus dem Apple App Store.</p>
+ <h1><span class="plakette">Mac</span><span class="wort">Apps</span></h1>
+ <p data-i18n="hero_mac_sub">Native standalone apps for macOS. One-time purchase, 7-day trial, license covers 2 Macs.</p>
  <div class="hero-line"></div>
 </div>
 
-<section class="shop-section" id="ios-apps">
- <h2 data-i18n="ios_section_h">Apple App Store</h2>
+<section class="shop-section" id="software">
+ <h2>Software</h2>
  <div class="grid">
 
+ <!-- ╔══ voyzSESSION PRO (Standalone macOS + Mac App) ══════════╗ -->
  <div class="card">
- <a href="voyzsession-ios.html" class="card-img">
- <img src="img-overdub-studio.webp?v=7" alt="pegelWERK voyzSESSION, iPad">
+ <a href="/voyzsession-en" class="card-img bleed">
+ <img src="img-voyzsession-pro.webp?v=2" alt="pegelWERK voyzSESSION PRO, go to product page">
  </a>
  <div class="card-body">
- <div class="card-name">voyzSESSION</div>
- <div class="card-sub" data-i18n="vs_ios_sub">Voice-Over gegen Video · K-Loudness · Channel Strip · Ducking · R128-Export. iPhone- &amp; iPad-App.</div>
+ <div class="card-name">voyzSESSION PRO</div>
+ <div class="card-sub" data-i18n="od_sub">Video sync · neural noise removal · AutoMix R128 · smart PROMPTER (50+ languages) · MXF</div>
  <div class="card-platforms">
- <span>iPhone</span>
- <span>iPad</span>
+ <span>macOS</span><span>iPad</span><span>Universal Binary</span><span>Standalone</span>
  </div>
 
  <div class="format-section">
- <div class="format-label" data-i18n="fmt_apps">Apple App</div>
- <div class="card-stores list">
- <div class="store-row">
- <a class="appstore-badge" data-app-id="6772143499" href="https://apps.apple.com/app/id6772143499" target="_blank" rel="noopener" aria-label="voyzSESSION im App Store laden">
- <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
- </a>
- <div class="store-meta">
- <span class="store-platform" data-i18n="store_universal">iPhone &amp; iPad</span>
+ <div class="format-label" data-i18n="fmt_standalone_mac">Standalone · macOS</div>
+ <div class="od-plan">
+   <button id="odSegMonth" type="button" class="active" onclick="setOdPlan('month')">Monatlich</button>
+   <button id="odSegYear"  type="button" onclick="setOdPlan('year')">Jährlich</button>
  </div>
- </div>
- </div>
- </div>
+ <div class="card-price"><span id="odPrice">24,99</span> <span class="cur">€</span><span class="cur" id="odPer"> / Monat</span></div>
+ <div class="card-vat" id="odVat">inkl. MwSt. · monatlich kündbar</div>
+ <div class="card-cta">
+ <button class="card-btn trial" data-i18n="btn_trial" onclick="openTrial(TRIAL_URLS.od)">Free 7-day trial</button>
+ <button class="card-btn-link" data-i18n="btn_trial_buy" onclick="odBuy()">or buy directly</button>
+ <div class="card-claim" data-i18n="trial_claim">No account · no email</div>
  </div>
  </div>
 
- <!-- ╔══ loudness METER PRO (iPhone + iPad, beide live) ═════════╗ -->
+ </div>
+ </div>
+
+ <!-- ╔══ loudness METER PRO (Mac · iPad · iPhone Mini) ════════════╗ -->
  <div class="card">
- <a href="broadcast-meter-ios.html" class="card-img">
- <img src="img-bm-ipad.webp" alt="pegelWERK loudness METER PRO, iPad und iPhone">
+ <a href="/broadcast-meter-pro-en" class="card-img">
+ <img src="img-broadcast-meter.webp" alt="pegelWERK loudness METER PRO, go to product page">
  </a>
  <div class="card-body">
  <div class="card-name">loudness METER PRO</div>
- <div class="card-sub" data-i18n="bm_ios_sub">PPM · LUFS · True Peak · FFT · Goniometer · Sprachklarheit. Auf iPad und iPhone.</div>
+ <div class="card-sub" data-i18n="bm_sub">PPM · LUFS · True Peak · FFT · Vectorscope · Radar · Speech Clarity · Prediction</div>
  <div class="card-platforms">
- <span>iPhone</span><span>iPad</span>
+ <span>macOS</span><span>iPad</span><span>iPhone</span>
  </div>
 
  <div class="format-section">
- <div class="format-label" data-i18n="fmt_apps">Apple Apps</div>
- <div class="card-stores list">
- <div class="store-row">
- <a class="appstore-badge" data-app-id="6762224279" href="https://apps.apple.com/app/id6762224279" target="_blank" rel="noopener" aria-label="iPad-App im App Store laden">
- <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
- </a>
- <div class="store-meta">
- <span class="store-platform" data-i18n="store_ipad">iPad App</span>
- <span class="store-price">19,99 <span class="cur">€</span></span>
- </div>
- </div>
- <div class="store-row">
- <a class="appstore-badge" data-app-id="6763360069" href="https://apps.apple.com/app/id6763360069" target="_blank" rel="noopener" aria-label="iPhone-App im App Store laden">
- <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
- </a>
- <div class="store-meta">
- <span class="store-platform" data-i18n="store_iphone">iPhone App</span>
- <span class="store-price" data-i18n="store_free">gratis</span>
- </div>
- </div>
- </div>
- </div>
+ <div class="format-label" data-i18n="fmt_standalone_mac">Standalone · macOS</div>
+ <div class="card-price">99 <span class="cur">€</span><span class="cur" data-i18n="price_once"> · one-time purchase</span></div>
+ <div class="card-vat" data-i18n="vat_incl">incl. VAT</div>
+ <div class="card-cta">
+ <button class="card-btn trial" data-i18n="btn_trial" onclick="openTrial(TRIAL_URLS.bm)">Free 7-day trial</button>
+ <button class="card-btn-link" data-i18n="btn_trial_buy" onclick="openCheckout(PRICES.bm)">or buy directly</button>
+ <div class="card-claim" data-i18n="trial_claim">No account · no email</div>
  </div>
  </div>
 
- <!-- ╔══ loudness CORRECT (iPad), live im App Store ═══════╗ -->
+ </div>
+ </div>
+
+ <!-- ╔══ loudness CORRECT (iPad App) ══════════════════════════╗ -->
  <div class="card">
- <a href="loudness-correct-ios.html" class="card-img">
- <img src="img-loudness-correct-1056.webp" width="1056" height="734" loading="lazy" alt="pegelWERK loudness CORRECT, iPad">
+ <a href="/loudness-correct-en" class="card-img">
+ <img src="img-loudness-correct-1056.webp" width="1056" height="734" loading="lazy" alt="pegelWERK loudness CORRECT, go to product page">
  </a>
  <div class="card-body">
  <div class="card-name">loudness CORRECT</div>
- <div class="card-sub" data-i18n="lc_ios_sub">Offline R128 · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6. iPad-App.</div>
+ <div class="card-sub" data-i18n="lc_sub">Offline R128 · 14 delivery presets · verify-and-refine · mono to 9.1.6</div>
  <div class="card-platforms">
- <span>iPad</span>
+ <span>macOS</span><span>iPad</span><span>Universal</span>
  </div>
 
  <div class="format-section">
- <div class="format-label" data-i18n="fmt_apps">Apple App</div>
- <div class="card-stores list">
- <div class="store-row">
- <a class="appstore-badge" data-app-id="6768704949" href="https://apps.apple.com/app/id6768704949" target="_blank" rel="noopener" aria-label="loudness CORRECT im App Store laden">
- <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
- </a>
- <div class="store-meta">
- <span class="store-platform" data-i18n="store_ipad">iPad App</span>
- <span class="store-price">19,99 <span class="cur">€</span></span>
- </div>
- </div>
- </div>
- </div>
+ <div class="format-label" data-i18n="fmt_standalone_mac">Standalone · macOS</div>
+ <div class="card-price">99 <span class="cur">€</span><span class="cur" data-i18n="price_once"> · one-time purchase</span></div>
+ <div class="card-vat" data-i18n="vat_incl">incl. VAT</div>
+ <div class="card-cta">
+ <button class="card-btn trial" data-i18n="btn_trial" onclick="openTrial(TRIAL_URLS.lc)">Free 7-day trial</button>
+ <button class="card-btn-link" data-i18n="btn_trial_buy" onclick="openCheckout(PRICES.lc)">or buy directly</button>
+ <div class="card-claim" data-i18n="trial_claim">No account · no email</div>
  </div>
  </div>
 
- <!-- ╔══ easy EDITOR (4,99 €, iPhone + iPad) ══════════════════╗ -->
- <div class="card">
- <a href="easy-editor.html" class="card-img">
- <img src="img-easy-editor.png?v=1" alt="pegelWERK easy EDITOR, Wellenform-Editor fuer iPhone und iPad, zur Detailseite">
- </a>
- <div class="card-body">
- <div class="card-name">easy EDITOR</div>
- <div class="card-sub" data-i18n="ee_ios_sub">Audio-Cutter mit Trim, Cut, Undo. EBU R128 -23 LUFS Export als 24-Bit-WAV. Round-Trip mit instant PLAYER.</div>
- <div class="card-platforms">
- <span>iPhone</span><span>iPad</span>
- </div>
-
- <div class="format-section">
- <div class="format-label" data-i18n="fmt_apps">Apple App</div>
- <div class="card-stores list">
- <div class="store-row">
- <a class="appstore-badge" data-app-id="6768668559" href="https://apps.apple.com/app/id6768668559" target="_blank" rel="noopener" aria-label="easy EDITOR im App Store laden">
- <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
- </a>
- <div class="store-meta">
- <span class="store-platform" data-i18n="store_universal">iPhone &amp; iPad</span>
- <span class="store-price">4,99 <span class="cur">€</span></span>
- </div>
- </div>
- </div>
- </div>
- </div>
- </div>
-
- <!-- ╔══ instant PLAYER (gratis, iPhone + iPad) ═══════════════╗ -->
- <div class="card">
- <a href="instant-player-app.html" class="card-img">
- <img src="img-instant-player.png?v=1" alt="pegelWERK instant PLAYER, 64-Pad-Soundboard fuer iPhone und iPad, zur Detailseite">
- </a>
- <div class="card-body">
- <div class="card-name">instant PLAYER</div>
- <div class="card-sub" data-i18n="ip_ios_sub">64-Pad-Soundboard: 16 Pads x 4 Banks, MULTI/SINGLE-Mode, Cross-Fade, AUTO-CUE, Show als .satkip-Bundle. Round-Trip mit easy EDITOR.</div>
- <div class="card-platforms">
- <span>iPhone</span><span>iPad</span>
- </div>
-
- <div class="format-section">
- <div class="format-label" data-i18n="fmt_apps">Apple App</div>
- <div class="card-stores list">
- <div class="store-row">
- <a class="appstore-badge" data-app-id="6768668895" href="https://apps.apple.com/app/id6768668895" target="_blank" rel="noopener" aria-label="instant PLAYER im App Store laden">
- <img src="appstore-badge-ios-de.svg" data-src-de="appstore-badge-ios-de.svg" data-src-en="appstore-badge-ios-en.svg" alt="App Store">
- </a>
- <div class="store-meta">
- <span class="store-platform" data-i18n="store_universal">iPhone &amp; iPad</span>
- <span class="store-price" data-i18n="store_free">gratis</span>
- </div>
- </div>
- </div>
- </div>
  </div>
  </div>
 
@@ -431,23 +368,19 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/ios-e
 </section>
 
 <section class="info-section" id="info">
- <h2 data-i18n="info_title_ios">Apple App Store</h2>
+ <h2 data-i18n="info_title">License &amp; Support</h2>
  <div class="info-row">
  <div class="info-item">
- <h3 data-i18n="info_ios_buy_h">Kauf &amp; Updates</h3>
- <p data-i18n="info_ios_buy_p">Kauf und Updates laufen über deinen Apple-Account. Kein zusätzliches Konto, keine separate Lizenzierung.</p>
+ <h3 data-i18n="info_lic_h">License</h3>
+ <p data-i18n="info_lic_p">Each license covers 2 computers. One-time payment. Secure checkout via Paddle.</p>
  </div>
  <div class="info-item">
- <h3 data-i18n="info_ios_family_h">Familienfreigabe</h3>
- <p data-i18n="info_ios_family_p">Bezahlte Apps lassen sich über die Apple-Familienfreigabe mit bis zu 5 weiteren Familienmitgliedern teilen.</p>
+ <h3>Updates</h3>
+ <p data-i18n="info_upd_p">All minor updates free. Major updates at discounted upgrade price.</p>
  </div>
  <div class="info-item">
- <h3 data-i18n="info_ios_sup_h">Support</h3>
- <p data-i18n="info_ios_sup_p">E-Mail-Support direkt vom Entwickler. Keine Warteschlangen, keine Chatbots.</p>
- </div>
- <div class="info-item">
- <h3 data-i18n="info_ios_mac_h">Auch für Mac</h3>
- <p data-i18n-html="info_ios_mac_p">Brauchst du Standalone-macOS-Versionen? <a href="/mac">Mac Apps ansehen</a>.</p>
+ <h3>Support</h3>
+ <p data-i18n="info_sup_p">Email support directly from the developer. No queues, no chatbots.</p>
  </div>
  </div>
 </section>
@@ -455,25 +388,25 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/ios-e
 <footer>
  <div class="footer-grid">
  <div class="footer-col">
- <h4 data-i18n="f_col_products">Produkte</h4>
- <a href="/mac" data-i18n="nav_mac">Mac Apps</a>
- <a href="/ios" data-i18n="nav_ios">iOS Apps</a>
+ <h4 data-i18n="f_col_products">Products</h4>
+ <a href="/mac-en" data-i18n="nav_mac">Mac Apps</a>
+ <a href="/ios-en" data-i18n="nav_ios">iOS Apps</a>
  </div>
  <div class="footer-col">
  <h4 data-i18n="f_col_support">Support</h4>
  <a href="/videos" data-i18n="nav_videos">Videos</a>
- <a href="/support" data-i18n="nav_info">Supportanfrage</a>
- <a href="/manage-license" data-i18n="f_manage">Lizenz verwalten</a>
+ <a href="/support-en" data-i18n="nav_info">Support request</a>
+ <a href="/manage-license" data-i18n="f_manage">Manage License</a>
  <a href="/changelog" data-i18n="f_changelog">Changelog</a>
- <a href="/press" data-i18n="f_press">Presse</a>
+ <a href="/press" data-i18n="f_press">Press</a>
  </div>
  <div class="footer-col">
- <h4 data-i18n="f_col_legal">Rechtliches</h4>
- <a href="/security" data-i18n="f_security">Security</a>
- <a href="/agb" data-i18n="f_terms">AGB</a>
- <a href="/widerruf" data-i18n="f_refund">Widerruf</a>
- <a href="/datenschutz" data-i18n="f_privacy">Datenschutz</a>
- <a href="/impressum" data-i18n="f_imprint_contact">Kontakt &amp; Impressum</a>
+ <h4 data-i18n="f_col_legal">Legal</h4>
+ <a href="/security-en" data-i18n="f_security">Security</a>
+ <a href="/agb-en" data-i18n="f_terms">Terms</a>
+ <a href="/widerruf-en" data-i18n="f_refund">Right of Withdrawal</a>
+ <a href="/datenschutz-en" data-i18n="f_privacy">Privacy Policy</a>
+ <a href="/impressum-en" data-i18n="f_imprint_contact">Contact &amp; Legal Notice</a>
  </div>
  </div>
  <div class="footer-bar">
@@ -483,7 +416,150 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/ios-e
 </footer>
 
 <script>
-// iOS-Seite: ausschliesslich App-Store-Links, kein Paddle-Checkout/DMG-Trial.
+// ── Paddle (Sandbox auf localhost, deaktiviert auf Live) ──
+// Switch auf 'production' sobald Live-Token + Delivery-Pipeline stehen.
+const HOSTNAME = window.location.hostname;
+const IS_LOCAL = HOSTNAME === 'localhost' || HOSTNAME === '127.0.0.1' || HOSTNAME === '';
+// LIVE: Paddle ist scharfgeschaltet auf Production-Daten.
+// Sandbox bleibt fuer lokale Tests aktiv (localhost). voyzSESSION
+// und loudness CORRECT haben noch keine Live-Produkte in Paddle,
+// "oder direkt kaufen" macht dort nichts (graceful), bis Live-Price-IDs
+// hier ergaenzt werden.
+const PADDLE_ENV = IS_LOCAL ? 'sandbox' : 'production';
+const PADDLE_TOKEN = IS_LOCAL
+ ? 'test_a65ecd48de16da666e6cc143342' // Sandbox (localhost)
+ : 'live_d396180ae63b7e976090665cccb'; // Live (production)
+// overdub (od) ist ein ABO -> Objekt {month, year}. BM/LC bleiben Einmalkauf (String).
+const PRICES = IS_LOCAL ? {
+ // Sandbox-Price-IDs (localhost-Tests)
+ bm: 'pri_01kqj02k8cwdj70b04ajthffqj',
+ od: { month: 'pri_01kqj0fp74z9m4mg9y4z3xhbfp', year: 'pri_01kqj0fp74z9m4mg9y4z3xhbfp' },
+ lc: 'pri_01kqj0qm3v1tv8e1s5tgv4j9q2'
+} : {
+ // Live-Price-IDs (production)
+ bm: 'pri_01kqwjjadxp4j7exrc841d7d8z',
+ od: { month: 'pri_01kteb6z4rqwjttrqrxxd8befq', year: 'pri_01ktehrt96x9tf49gpavwbwvrm' }, // Abo 24,99/Monat · 249/Jahr
+ lc: 'pri_01krh0f1r22tvq3702yfbm0ygk'
+};
+
+// overdub-Abo: Monat/Jahr-Umschalter auf der Karte.
+let odInterval = 'month';  // Default Monat (niedrigerer Einstiegspreis, psychologisch besser)
+function setOdPlan(plan) {
+ odInterval = (plan === 'month') ? 'month' : 'year';
+ var en = (document.documentElement.lang || 'de') === 'en';
+ var price = document.getElementById('odPrice');
+ var per   = document.getElementById('odPer');
+ var vat   = document.getElementById('odVat');
+ var y = document.getElementById('odSegYear');
+ var m = document.getElementById('odSegMonth');
+ if (price) price.textContent = (odInterval === 'year') ? '249' : '24,99';
+ if (per)   per.textContent   = (odInterval === 'year') ? (en ? ' / yr' : ' / Jahr')
+                                                        : (en ? ' / mo' : ' / Monat');
+ if (vat)   vat.textContent   = (odInterval === 'year')
+                ? (en ? 'incl. VAT · 2 months free' : 'inkl. MwSt. · 2 Monate gratis')
+                : (en ? 'incl. VAT · cancel anytime' : 'inkl. MwSt. · monatlich kündbar');
+ if (y && m) {
+   y.classList.toggle('active', odInterval === 'year');
+   m.classList.toggle('active', odInterval === 'month');
+   y.textContent = en ? 'Yearly'  : 'Jährlich';
+   m.textContent = en ? 'Monthly' : 'Monatlich';
+ }
+}
+function odPriceId() {
+ return (typeof PRICES.od === 'string') ? PRICES.od : PRICES.od[odInterval];
+}
+function odBuy() { openCheckout(odPriceId()); }
+
+// Trial-Download-URLs (R2). null = noch nicht verfuegbar (Pre-Launch),
+// Klick zeigt dann eine "Bald verfuegbar"-Meldung. Sobald der DMG-Build
+// in R2 liegt, hier eintragen, fertig.
+const TRIAL_URLS = {
+ bm: 'https://download.pegelwerk.com/broadcast-meter/broadcast-meter-1.0.8.dmg',
+ od: 'https://download.pegelwerk.com/voyzsession-1.4.1.dmg',
+ lc: 'https://download.pegelwerk.com/loudness-correct/loudness-correct-1.1.0.dmg'
+};
+
+// DSGVO-Lazy-Load: Paddle.js wird NICHT im <head> geladen, sondern erst
+// beim ersten Klick auf "oder direkt kaufen". Damit gehen IP/User-Agent
+// erst dann an cdn.paddle.com, wenn der Besucher tatsaechlich kaufen will.
+let paddleLoadPromise = null;
+function ensurePaddle() {
+ if (paddleLoadPromise) return paddleLoadPromise;
+ paddleLoadPromise = new Promise((resolve, reject) => {
+ const s = document.createElement('script');
+ s.src = 'https://cdn.paddle.com/paddle/v2/paddle.js';
+ s.async = true;
+ s.onload = () => {
+ if (typeof Paddle === 'undefined') return reject(new Error('Paddle nicht geladen'));
+ if (PADDLE_ENV === 'sandbox') Paddle.Environment.set('sandbox');
+ Paddle.Initialize({ token: PADDLE_TOKEN });
+ resolve();
+ };
+ s.onerror = () => reject(new Error('Paddle.js konnte nicht geladen werden'));
+ document.head.appendChild(s);
+ });
+ return paddleLoadPromise;
+}
+
+window.addEventListener('load', () => {
+ if (PADDLE_ENV === 'disabled') {
+ // Live: Buy-Buttons auf "Bald verfügbar" zurücksetzen, bis Delivery-Stack steht
+ const lang = document.documentElement.lang || 'de';
+ const fallback = (i18n[lang] || i18n.de).btn_soon;
+ document.querySelectorAll('.card-btn.buy').forEach(btn => {
+ btn.classList.remove('buy');
+ btn.classList.add('soon');
+ btn.removeAttribute('onclick');
+ btn.setAttribute('data-i18n', 'btn_soon');
+ btn.textContent = fallback;
+ });
+ // Sekundaerer "oder direkt kaufen"-Link aus, solange Paddle disabled ist
+ document.querySelectorAll('.card-btn-link').forEach(el => { el.style.display = 'none'; });
+ }
+
+ // Direkt-Checkout via URL-Param: ?buy=od|bm|lc oeffnet sofort den
+ // Paddle-Checkout des Produkts. Der In-App "Lizenz kaufen"-Button
+ // (nach Trial-Ende) fuehrt direkt hierher -> der Kunde landet im
+ // Kauf, nicht erst auf der Startseite.
+ const buyParam = new URLSearchParams(window.location.search).get('buy');
+ if (PADDLE_ENV !== 'disabled' && buyParam && PRICES[buyParam]) {
+   const pid = (typeof PRICES[buyParam] === 'string')
+             ? PRICES[buyParam]
+             : PRICES[buyParam][odInterval];   // overdub-Abo: aktuelles Intervall (Default Monat)
+   openCheckout(pid);
+ }
+
+ // overdub-Abo-Umschalter initialisieren (aktiver Zustand + Labels nach Sprache).
+ if (typeof setOdPlan === 'function') setOdPlan(odInterval);
+
+ // Hinweis: Paddle.Initialize passiert nicht mehr hier, siehe ensurePaddle().
+});
+
+async function openCheckout(priceId) {
+ if (PADDLE_ENV === 'disabled' || !priceId) return;
+ try {
+ await ensurePaddle();
+ } catch (e) {
+ console.warn('Paddle konnte nicht geladen werden:', e);
+ return;
+ }
+ Paddle.Checkout.open({
+ items: [{ priceId, quantity: 1 }],
+ settings: {
+ theme: 'dark',
+ locale: document.documentElement.lang || 'de'
+ }
+ });
+}
+
+function openTrial(url) {
+ if (!url) {
+ const lang = document.documentElement.lang || 'de';
+ alert((i18n[lang] || i18n.de).trial_pending);
+ return;
+ }
+ window.location.href = url;
+}
 
 const i18n = {
  de: {
@@ -497,11 +573,15 @@ const i18n = {
  appstore_note: 'im Apple App Store',
  btn_appstore: 'Im App Store',
  btn_review: 'In Prüfung',
- od_sub: 'Video-Sync · Auto Edit · AutoMix R128 · smart PROMPTER · MXF Round-Trip',
- lc_sub: 'Offline R128 · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6',
+ od_sub: 'Video-Sync · neuronale Entrauschung · AutoMix R128 · smart PROMPTER (50+ Sprachen) · MXF',
+ lc_sub: 'Offline R128 · 14 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6',
  fmt_standalone_mac: 'Standalone · macOS',
  r128_sub: 'Batch-Normalisierung · Double-Gating · True Peak Limiter · CLI',
  vat: 'inkl. MwSt.',
+  vat_incl: 'inkl. MwSt.',
+  price_once: ' · Einmalkauf',
+ lc_badge: 'In Vorbereitung',
+ lc_soon: 'Launch zusammen mit dem Video-Loudness-Update',
  btn_soon: 'Bald verfügbar',
  btn_buy: 'Kaufen',
  btn_trial: 'Kostenlos 7 Tage testen',
@@ -515,7 +595,6 @@ const i18n = {
  fmt_iphone: 'iPhone App',
  store_ipad: 'iPad App',
  store_iphone: 'iPhone App',
- store_universal: 'iPhone & iPad',
  info_title: 'Lizenz & Support',
  info_lic_h: 'Lizenz',
  info_lic_p: 'Jede Lizenz gilt für 2 Rechner. Einmalige Zahlung. Sichere Bezahlung über Paddle.',
@@ -546,10 +625,9 @@ const i18n = {
  hero_ios_sub: 'Apps für iPhone und iPad direkt aus dem Apple App Store.',
  ios_section_h: 'Apple App Store',
  bm_ios_sub: 'PPM · LUFS · True Peak · FFT · Goniometer · Sprachklarheit. Auf iPad und iPhone.',
- vs_ios_sub: 'Voice-Over gegen Video · K-Loudness · Channel Strip · Ducking · R128-Export. iPhone- & iPad-App.',
- lc_ios_sub: 'Offline R128 · 16 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6. iPad-App.',
- ee_ios_sub: 'Audio-Cutter mit Trim, Cut, Undo. EBU R128 -23 LUFS Export als 24-Bit-WAV. Round-Trip mit instant PLAYER.',
- ip_ios_sub: '64-Pad-Soundboard: 16 Pads x 4 Banks, MULTI/SINGLE-Mode, Cross-Fade, AUTO-CUE, Show als .satkip-Bundle. Round-Trip mit easy EDITOR.',
+ vs_ios_sub: 'Voice-Over gegen Video · K-Loudness · Channel Strip · Ducking · R128-Export. iPad-App.',
+ lc_ios_sub: 'Offline R128 · 14 Delivery-Presets · Verify-and-Refine · Mono bis 9.1.6. iPad-App.',
+ ee_ip_sub: 'Universal-Apps für iPhone und iPad: schneller Editor und 64-Pad-Soundboard, die ineinandergreifen.',
  store_soon: 'In Vorbereitung',
  store_free: 'gratis',
  info_title_ios: 'Apple App Store',
@@ -560,7 +638,7 @@ const i18n = {
  info_ios_sup_h: 'Support',
  info_ios_sup_p: 'E-Mail-Support direkt vom Entwickler. Keine Warteschlangen, keine Chatbots.',
  info_ios_mac_h: 'Auch für Mac',
- info_ios_mac_p: 'Brauchst du Standalone-macOS-Versionen? <a href="/mac">Mac Apps ansehen</a>.'
+ info_ios_mac_p: 'Brauchst du Standalone-macOS-Versionen? <a href="/mac-en">Mac Apps ansehen</a>.'
  },
  en: {
  nav_info: 'Support request',
@@ -573,11 +651,15 @@ const i18n = {
  appstore_note: 'on the Apple App Store',
  btn_appstore: 'View in App Store',
  btn_review: 'In Review',
- od_sub: 'Video sync · Auto Edit · AutoMix R128 · smart PROMPTER · MXF round-trip',
- lc_sub: 'Offline R128 · 16 delivery presets · verify-and-refine · mono to 9.1.6',
+ od_sub: 'Video sync · neural noise removal · AutoMix R128 · smart PROMPTER (50+ languages) · MXF',
+ lc_sub: 'Offline R128 · 14 delivery presets · verify-and-refine · mono to 9.1.6',
  fmt_standalone_mac: 'Standalone · macOS',
  r128_sub: 'Batch Normalization · Double Gating · True Peak Limiter · CLI',
  vat: 'incl. VAT',
+  vat_incl: 'incl. VAT',
+  price_once: ' · one-time purchase',
+ lc_badge: 'In preparation',
+ lc_soon: 'Launches with the video loudness update',
  btn_soon: 'Coming soon',
  btn_buy: 'Buy',
  btn_trial: 'Free 7-day trial',
@@ -591,7 +673,6 @@ const i18n = {
  fmt_iphone: 'iPhone App',
  store_ipad: 'iPad App',
  store_iphone: 'iPhone App',
- store_universal: 'iPhone & iPad',
  info_title: 'License & Support',
  info_lic_h: 'License',
  info_lic_p: 'Each license covers 2 computers. One-time payment. Secure checkout via Paddle.',
@@ -622,10 +703,9 @@ const i18n = {
  hero_ios_sub: 'Apps for iPhone and iPad directly from the Apple App Store.',
  ios_section_h: 'Apple App Store',
  bm_ios_sub: 'PPM · LUFS · True Peak · FFT · Vectorscope · Speech Clarity. On iPad and iPhone.',
- vs_ios_sub: 'Voice-over against video · K-loudness · Channel strip · Ducking · R128 export. iPhone & iPad app.',
- lc_ios_sub: 'Offline R128 · 16 delivery presets · Verify-and-Refine · Mono to 9.1.6. iPad app.',
- ee_ios_sub: 'Audio cutter with trim, cut, undo. EBU R128 -23 LUFS export as 24-bit WAV. Round-trip with instant PLAYER.',
- ip_ios_sub: '64-pad soundboard: 16 pads x 4 banks, MULTI/SINGLE mode, cross-fade, AUTO-CUE, show as .satkip bundle. Round-trip with easy EDITOR.',
+ vs_ios_sub: 'Voice-over against video · K-loudness · Channel strip · Ducking · R128 export. iPad app.',
+ lc_ios_sub: 'Offline R128 · 14 delivery presets · Verify-and-Refine · Mono to 9.1.6. iPad app.',
+ ee_ip_sub: 'Universal apps for iPhone and iPad: a fast editor and a 64-pad soundboard that work together.',
  store_soon: 'Coming soon',
  store_free: 'free',
  info_title_ios: 'Apple App Store',
@@ -636,7 +716,7 @@ const i18n = {
  info_ios_sup_h: 'Support',
  info_ios_sup_p: 'Email support directly from the developer. No queues, no chatbots.',
  info_ios_mac_h: 'Mac too',
- info_ios_mac_p: 'Need native macOS standalone versions? <a href="/mac">View Mac Apps</a>.'
+ info_ios_mac_p: 'Need native macOS standalone versions? <a href="/mac-en">View Mac Apps</a>.'
  }
 };
 
@@ -653,10 +733,8 @@ function setLang(lang) {
  const k = el.dataset.i18nHtml;
  if (t[k]) el.innerHTML = t[k];
  });
- document.querySelectorAll('.appstore-badge img').forEach(img => {
- const src = lang === 'de' ? img.dataset.srcDe : img.dataset.srcEn;
- if (src) img.src = src;
- });
+ // overdub-Abo-Toggle/Labels werden per JS gesetzt (kein data-i18n) -> mitziehen
+ if (typeof setOdPlan === 'function') setOdPlan(odInterval);
  try { localStorage.setItem('satk-lang', lang); } catch(e){}
 }
 

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="de">
+<!-- GENERIERT von tools/build-en.py aus easy-editor.html - NICHT von Hand aendern.
+     Aenderungen gehoeren in die deutsche Seite bzw. ihre en:-i18n-Tabelle,
+     danach `python3 tools/build-en.py` neu laufen lassen. -->
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico?v=10" sizes="any">
@@ -7,13 +10,13 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=10">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=10">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=10">
-<link rel="canonical" href="https://pegelwerk.com/easy-editor">
+<link rel="canonical" href="https://pegelwerk.com/easy-editor-en">
 <link rel="alternate" hreflang="de" href="https://pegelwerk.com/easy-editor">
 <link rel="alternate" hreflang="en" href="https://pegelwerk.com/easy-editor-en">
 <link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/easy-editor">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>pegelWERK easy EDITOR - Audio trimmen und auf EBU R128 -23 LUFS bringen</title>
-<meta name="description" content="Audio-Editor für iPhone und iPad: Datei öffnen, trimmen, auf EBU R128 -23 LUFS mit True-Peak-Limiter normalisieren, als 24-Bit-WAV exportieren. Round-Trip mit pegelWERK instant PLAYER. 4,99 € im App Store.">
+<title>pegelWERK easy EDITOR - trim audio and hit EBU R128 -23 LUFS</title>
+<meta name="description" content="Audio editor for iPhone and iPad: open a file, trim it, normalise to EBU R128 -23 LUFS with a true-peak limiter.">
 
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website">
@@ -35,11 +38,11 @@
  "@context": "https://schema.org",
  "@type": "MobileApplication",
  "name": "pegelWERK easy EDITOR",
- "description": "Audio-Editor für iPhone und iPad. Audio aus der Dateien-App öffnen, trimmen, auf EBU R128 -23 LUFS mit True-Peak-Limiter normalisieren, als 24-Bit-WAV exportieren. Round-Trip mit pegelWERK instant PLAYER.",
+ "description": "Audio editor for iPhone and iPad. Open audio from the Files app, trim it, normalise to EBU R128 -23 LUFS with a true-peak limiter, export as 24-bit WAV. Round trip with pegelWERK instant PLAYER.",
  "applicationCategory": "MultimediaApplication",
  "applicationSubCategory": "audio EDITOR",
  "operatingSystem": "iOS, iPadOS",
- "url": "https://pegelwerk.com/easy-editor",
+ "url": "https://pegelwerk.com/easy-editor-en",
  "image": "https://pegelwerk.com/img-easy-editor.png",
  "screenshot": "https://pegelwerk.com/img-easy-editor.png",
  "offers": {
@@ -57,7 +60,7 @@
  "url": "https://pegelwerk.com",
  "logo": "https://pegelwerk.com/og-image.png"
  },
- "inLanguage": ["de", "en"]
+ "inLanguage": "en"
 }
 </script>
 <style>
@@ -208,26 +211,26 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 function switchLang(l,u){try{localStorage.setItem('satk-lang',l);}catch(e){}location.href=u;}
 // Auto-redirect zur anderen Sprachfassung nur bei EXPLIZIT gesetzter Vorliebe
 // (null/unset = hierbleiben, der Besucher hat diese URL bewusst aufgerufen)
-try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/easy-editor-en'); } } catch(e){}
+try { if (localStorage.getItem('satk-lang') === 'de') { location.replace('/easy-editor'); } } catch(e){}
 </script>
 </head>
 <body>
 
 <nav>
- <a href="/" class="nav-logo">
+ <a href="/en" class="nav-logo">
  <img class="nav-logo-img" src="/logo-lockup-2.svg" alt="pegelWERK">
  </a>
  <div class="nav-platforms">
- <a href="/mac">Mac</a>
- <a href="/ios" class="active">iOS</a>
+ <a href="/mac-en">Mac</a>
+ <a href="/ios-en" class="active">iOS</a>
  </div>
  <div class="nav-links">
- <a href="/support" data-i18n="nav_info">Supportanfrage</a>
- <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
+ <a href="/support-en" data-i18n="nav_info">Support request</a>
+ <a href="/manage-license" data-i18n="nav_manage">License</a>
  <div class="lang-sw">
- <span class="lang active" id="btnDE" onclick="switchLang('de','/easy-editor')">DE</span>
+ <span class="lang" id="btnDE" onclick="switchLang('de','/easy-editor')">DE</span>
  <span class="lang-sep">·</span>
- <span class="lang" id="btnEN" onclick="switchLang('en','/easy-editor-en')">EN</span>
+ <span class="lang active" id="btnEN" onclick="switchLang('en','/easy-editor-en')">EN</span>
  </div>
  </div>
 </nav>
@@ -236,51 +239,51 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/easy-
 <section class="product-hero">
  <div class="product-eyebrow" data-i18n="ee_eyebrow">iPhone · iPad · iOS App</div>
  <h1>easy EDITOR</h1>
- <p class="tagline" data-i18n="ee_tagline">Audiodatei aus der Dateien-App öffnen, auf den gewünschten Bereich trimmen, auf EBU R128 (-23 LUFS) mit Inter-Sample-Peak-Schutz normalisieren und eine saubere 24-Bit-WAV exportieren, alles auf dem iPhone oder iPad, alles offline.</p>
+ <p class="tagline" data-i18n="ee_tagline">Open a file from the Files app, trim to the section you want, normalise to EBU R128 (-23 LUFS) with inter-sample peak protection, export a clean 24-bit WAV, all on iPhone or iPad, all on-device.</p>
  <div class="appstore-cta">
- <a class="shop-cta-btn" href="/ios" data-i18n="nav_back">Zurück zum Shop</a>
+ <a class="shop-cta-btn" href="/ios-en" data-i18n="nav_back">Back to Shop</a>
  </div>
 </section>
 
 <div class="hero-img-wrap">
- <img class="hero-img" src="img-easy-editor.png?v=2" alt="pegelWERK easy EDITOR, Wellenform-Editor für iPhone und iPad">
+ <img class="hero-img" src="img-easy-editor.png?v=2" alt="pegelWERK easy EDITOR, waveform editor for iPhone and iPad">
 </div>
 
 <section class="section">
  <div class="section-label" data-i18n="ee_features_label">Highlights</div>
- <h2 class="section-h2" data-i18n="ee_features_title">Trimmen. Normalisieren. Fertig.</h2>
- <p class="section-intro" data-i18n="ee_features_intro">easy EDITOR ist ein fokussierter Audio-Cutter für Radio, Podcast und Post-Production. Kein Multitrack, keine Plug-ins, kein MIDI, nur Trimmen, Cutten, R128-Normalisieren und Exportieren. Dafür bündig sauber, mit derselben True-Peak-Engine, die auch pegelWERK loudness CORRECT verwendet.</p>
+ <h2 class="section-h2" data-i18n="ee_features_title">Trim. Normalise. Done.</h2>
+ <p class="section-intro" data-i18n="ee_features_intro">easy EDITOR is a focused audio cutter for radio, podcast and post-production. No multitrack, no plug-ins, no MIDI, just trim, cut, R128-normalise and export. Tightly clean, with the same true-peak engine pegelWERK loudness CORRECT uses.</p>
 
  <div class="features">
  <div class="feature">
  <div class="feature-icon">Trim · Cut</div>
- <h3 data-i18n="ee_f1_h">Trimmen, Cutten, Undo</h3>
- <p data-i18n="ee_f1_p">In- und Out-Handles auf der orangefarbenen Selektion ziehen. <b>Trim</b> behält die Selektion, <b>Cut</b> entfernt sie. Volles Undo bis zum Ladestand. Das Original bleibt unangetastet, bis du explizit exportierst.</p>
+ <h3 data-i18n="ee_f1_h">Trim, cut, undo</h3>
+ <p data-i18n="ee_f1_p">Drag in/out handles on the orange selection. Trim keeps the selection, Cut removes it. Full undo back to load state. The original stays untouched until you explicitly export.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Preview</div>
  <h3 data-i18n="ee_f2_h">PLAY IN / PLAY OUT</h3>
- <p data-i18n="ee_f2_p">Drei Vorschau-Modi: PLAY (komplett ab Cursor), PLAY IN (ab In-Punkt), PLAY OUT (1,5 s vor Out-Punkt). Genau die Vorschauen, die man beim Schnitt-Check wirklich braucht, ohne erst Loop-Selektionen aktivieren zu müssen.</p>
+ <p data-i18n="ee_f2_p">Three preview modes: PLAY (full from cursor), PLAY IN (from in point), PLAY OUT (1.5 s before out point). Exactly the previews you need to verify a cut, without forcing loop selections.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Zoom</div>
- <h3 data-i18n="ee_f3_h">Vier Zoom-Modi</h3>
- <p data-i18n="ee_f3_p">Fit (ganze Datei), Detail, Zoom-to-In, Zoom-to-Out. Ein Tap und du bist auf dem Schnittpunkt, keine Pinch-Akrobatik, kein Verlieren in der Wellenform.</p>
+ <h3 data-i18n="ee_f3_h">Four zoom modes</h3>
+ <p data-i18n="ee_f3_p">Fit (whole file), detail, zoom-to-in, zoom-to-out. One tap puts you on the cut point, no pinch acrobatics, no getting lost in the waveform.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">EBU R128</div>
  <h3 data-i18n="ee_f4_h">-23 LUFS, two-pass</h3>
- <p data-i18n="ee_f4_p">EBU-R128-Normalisierung nach ITU-R BS.1770-4. Pass 1 misst Integrated LUFS, Pass 2 schreibt mit Korrektur-Gain. Zwei-Pass-Refinement, falls die erste Korrektur nicht exakt sitzt, Ergebnis: sauber auf -23 LUFS-I.</p>
+ <p data-i18n="ee_f4_p">EBU R128 normalisation per ITU-R BS.1770-4. Pass 1 measures integrated LUFS, pass 2 writes with correction gain. Two-pass refinement if the first correction misses, result: cleanly on -23 LUFS-I.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">True Peak</div>
- <h3 data-i18n="ee_f5_h">4x Polyphase TP-Limiter</h3>
- <p data-i18n="ee_f5_p">Inter-Sample-Peak-Schutz mit 4-fach oversampelndem Polyphase-Filter. Hält Output unter -1 dBTP, ITU-R BS.1770-4-konform, identisch zur Engine in pegelWERK loudness CORRECT.</p>
+ <h3 data-i18n="ee_f5_h">4x polyphase TP limiter</h3>
+ <p data-i18n="ee_f5_p">Inter-sample peak protection with a 4x oversampling polyphase filter. Holds output below -1 dBTP, ITU-R BS.1770-4 compliant, identical to the engine in pegelWERK loudness CORRECT.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Round-Trip</div>
- <h3 data-i18n="ee_f6_h">Roundtrip mit instant PLAYER</h3>
- <p data-i18n="ee_f6_p">Pad in pegelWERK instant PLAYER wählen an easy EDITOR übergeben trimmen, normalisieren SEND BACK landet das Ergebnis im selben Pad. Standalone heißt der Button stattdessen EXPORT WAV. URL-Scheme-basiert, keine manuelle Datei-Wirtschaft.</p>
+ <h3 data-i18n="ee_f6_h">Round-trip with instant PLAYER</h3>
+ <p data-i18n="ee_f6_p">Pick a pad in pegelWERK instant PLAYER hand off to easy EDITOR trim, normalise SEND BACK lands the result on the same pad. Standalone the button reads EXPORT WAV instead. URL-scheme-based, no manual file shuffling.</p>
  </div>
  </div>
 </section>
@@ -291,63 +294,63 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/easy-
  <div class="trust-icon" aria-hidden="true">
  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
  </div>
- <div class="trust-h" data-i18n="trust_p1_h">Vom erfahrenen Toningenieur</div>
- <div class="trust-p" data-i18n="trust_p1_p">Entwickelt von einem aktiven Broadcast-Engineer für Broadcast-Engineers. Keine nutzlosen Marketing-Features, nur was im Studio wirklich gebraucht wird.</div>
+ <div class="trust-h" data-i18n="trust_p1_h">By an experienced sound engineer</div>
+ <div class="trust-p" data-i18n="trust_p1_p">Built by an active broadcast engineer for broadcast engineers. No useless marketing features, only what actually gets used in the studio.</div>
  </div>
  <div class="trust-pillar">
  <div class="trust-icon" aria-hidden="true">
  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
  </div>
- <div class="trust-h" data-i18n="trust_p2_h">Universal-App, ein Kauf</div>
- <div class="trust-p" data-i18n="trust_p2_p">Einmal kaufen, auf iPhone und iPad nutzen. Keine In-App-Käufe, keine Werbung. Apple-Familienfreigabe für bis zu 5 weitere Personen. Updates über deinen Apple-Account.</div>
+ <div class="trust-h" data-i18n="trust_p2_h">Universal app, one purchase</div>
+ <div class="trust-p" data-i18n="trust_p2_p">Buy once, use on iPhone and iPad. No in-app purchases, no ads. Apple Family Sharing for up to 5 additional people. Updates through your Apple account.</div>
  </div>
  <div class="trust-pillar">
  <div class="trust-icon" aria-hidden="true">
  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v12H7l-3 4z"/><path d="M8 9h8M8 12h6"/></svg>
  </div>
- <div class="trust-h" data-i18n="trust_p3_h">Antwort vom Entwickler</div>
- <div class="trust-p" data-i18n="trust_p3_p">Support-Mails landen direkt im Posteingang des Entwicklers, nicht bei einem Ticket-System. Werktags meist innerhalb von 24 Stunden.</div>
+ <div class="trust-h" data-i18n="trust_p3_h">Reply from the developer</div>
+ <div class="trust-p" data-i18n="trust_p3_p">Support emails go straight to the developer's inbox, not into a ticket system. Usually within 24 hours on working days.</div>
  </div>
  </div>
 </section>
 
 <section class="section">
- <div class="section-label" data-i18n="ee_wf_label">Funktionsweise</div>
- <h2 class="section-h2" data-i18n="ee_wf_title">In 4 Schritten zur fertigen Datei</h2>
- <p class="section-intro" data-i18n="ee_wf_intro">Importieren, schneiden, normalisieren, exportieren, keine Sessions, keine Spuren. Auf iPhone (Hoch- und Querformat) und iPad (alle vier Orientierungen) gleich bedienbar.</p>
+ <div class="section-label" data-i18n="ee_wf_label">How it works</div>
+ <h2 class="section-h2" data-i18n="ee_wf_title">Four steps to the finished file</h2>
+ <p class="section-intro" data-i18n="ee_wf_intro">Import, edit, normalise, export, no sessions, no tracks. Identical handling on iPhone (portrait + landscape) and iPad (all four orientations).</p>
 
  <div class="workflow">
  <div class="workflow-step">
  <div class="workflow-num">01</div>
- <h3 data-i18n="ee_w1_h">Datei öffnen</h3>
- <p data-i18n="ee_w1_p">WAV, MP3, M4A, FLAC, AIFF oder OGG, aus der Dateien-App, iCloud, "Auf meinem Gerät" oder per AirDrop. Wellenform mit In/Out-Handles erscheint sofort.</p>
+ <h3 data-i18n="ee_w1_h">Open file</h3>
+ <p data-i18n="ee_w1_p">WAV, MP3, M4A, FLAC, AIFF or OGG, from Files, iCloud, On My Device or via AirDrop. Waveform with in/out handles appears immediately.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">02</div>
- <h3 data-i18n="ee_w2_h">Bereich markieren</h3>
- <p data-i18n="ee_w2_p">In- und Out-Handles ziehen. Zoom-to-In und Zoom-to-Out für sample-genaue Schnittposition. PLAY IN / PLAY OUT zur Vorschau der Übergänge.</p>
+ <h3 data-i18n="ee_w2_h">Mark range</h3>
+ <p data-i18n="ee_w2_p">Drag in and out handles. Zoom-to-in and zoom-to-out for sample-accurate cut placement. PLAY IN / PLAY OUT to preview transitions.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">03</div>
- <h3 data-i18n="ee_w3_h">Trim oder Cut</h3>
- <p data-i18n="ee_w3_p">Trim behält die Selektion, Cut entfernt sie. Hintergrund-Render, damit die UI auch bei langen Dateien reagiert. Jeder Schritt undo-bar.</p>
+ <h3 data-i18n="ee_w3_h">Trim or cut</h3>
+ <p data-i18n="ee_w3_p">Trim keeps the selection, Cut removes it. Background-thread render keeps the UI responsive on long files. Every step undoable.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">04</div>
- <h3 data-i18n="ee_w4_h">Export oder Send Back</h3>
- <p data-i18n="ee_w4_p">EXPORT WAV speichert eine 24-Bit-WAV (native Sample-Rate, optional R128-normalisiert) via Files-Picker. Bei Round-Trip aus instant PLAYER heißt der Button SEND BACK und das Ergebnis landet im ursprünglichen Pad.</p>
+ <h3 data-i18n="ee_w4_h">Export or send back</h3>
+ <p data-i18n="ee_w4_p">EXPORT WAV writes a 24-bit WAV (native sample rate, optional R128 normalisation) via the Files picker. On a round-trip from instant PLAYER the button reads SEND BACK and the result lands in the originating pad.</p>
  </div>
  </div>
 </section>
 
 <section class="section">
- <div class="section-label" data-i18n="ee_specs_label">Technische Details</div>
+ <div class="section-label" data-i18n="ee_specs_label">Technical Details</div>
  <h2 class="section-h2" data-i18n="ee_specs_title">Built for iOS</h2>
- <p class="section-intro" data-i18n="ee_specs_intro">Native iOS-App auf JUCE-Audio. R128-Engine geteilt mit pegelWERK loudness CORRECT.</p>
+ <p class="section-intro" data-i18n="ee_specs_intro">Native iOS app on JUCE audio. R128 engine shared with pegelWERK loudness CORRECT.</p>
 
  <div class="specs">
  <div class="spec-col">
- <h4 data-i18n="ee_specs_edit">Edit-Engine</h4>
+ <h4 data-i18n="ee_specs_edit">Edit Engine</h4>
  <ul>
  <li><b>Aktionen</b> Trim · Cut · Undo</li>
  <li><b>Selection</b> In/Out-Drag-Handles</li>
@@ -369,7 +372,7 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/easy-
  </ul>
  </div>
  <div class="spec-col">
- <h4 data-i18n="ee_specs_io">Plattform &amp; I/O</h4>
+ <h4 data-i18n="ee_specs_io">Platform &amp; I/O</h4>
  <ul>
  <li><b>iPhone</b> Hoch + Quer</li>
  <li><b>iPad</b> alle 4 Orientierungen</li>
@@ -383,34 +386,34 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/easy-
 </section>
 
 <section class="section">
- <div class="section-label" data-i18n="ee_credo_label">Was es nicht ist</div>
- <h2 class="section-h2" data-i18n-html="ee_credo_title">Keine DAW.<br>Sondern ein Cutter.</h2>
- <p class="section-intro" data-i18n="ee_credo_p">Kein Multitrack, keine Plug-ins, kein MIDI, wer das braucht, nimmt eine DAW. easy EDITOR ist für den Fall, dass du auf dem Handy oder Tablet schnell schneiden, trimmen und auf Sendekorridor-Lautheit normalisieren willst. Genau drei Aktionen, dafür sauber.</p>
+ <div class="section-label" data-i18n="ee_credo_label">What it is not</div>
+ <h2 class="section-h2" data-i18n-html="ee_credo_title">Not a DAW.<br>A cutter.</h2>
+ <p class="section-intro" data-i18n="ee_credo_p">No multitrack, no plug-ins, no MIDI, if you need that, get a DAW. easy EDITOR is for when you want to trim, cut and broadcast-normalise audio quickly on a phone or tablet. Exactly three actions, but cleanly done.</p>
 
 </section>
 
 <footer>
  <div class="footer-grid">
  <div class="footer-col">
- <h4 data-i18n="f_col_products">Produkte</h4>
- <a href="/mac" data-i18n="nav_mac">Mac Apps</a>
- <a href="/ios" data-i18n="nav_ios">iOS Apps</a>
+ <h4 data-i18n="f_col_products">Products</h4>
+ <a href="/mac-en" data-i18n="nav_mac">Mac Apps</a>
+ <a href="/ios-en" data-i18n="nav_ios">iOS Apps</a>
  </div>
  <div class="footer-col">
  <h4 data-i18n="f_col_support">Support</h4>
  <a href="/videos" data-i18n="nav_videos">Videos</a>
- <a href="/support" data-i18n="nav_info">Supportanfrage</a>
- <a href="/manage-license" data-i18n="f_manage">Lizenz verwalten</a>
+ <a href="/support-en" data-i18n="nav_info">Support request</a>
+ <a href="/manage-license" data-i18n="f_manage">Manage License</a>
  <a href="/changelog" data-i18n="f_changelog">Changelog</a>
- <a href="/press" data-i18n="f_press">Presse</a>
+ <a href="/press" data-i18n="f_press">Press</a>
  </div>
  <div class="footer-col">
- <h4 data-i18n="f_col_legal">Rechtliches</h4>
- <a href="/security" data-i18n="f_security">Security</a>
- <a href="/agb" data-i18n="f_terms">AGB</a>
- <a href="/widerruf" data-i18n="f_refund">Widerruf</a>
- <a href="/datenschutz" data-i18n="f_privacy">Datenschutz</a>
- <a href="/impressum" data-i18n="f_imprint_contact">Kontakt &amp; Impressum</a>
+ <h4 data-i18n="f_col_legal">Legal</h4>
+ <a href="/security-en" data-i18n="f_security">Security</a>
+ <a href="/agb-en" data-i18n="f_terms">Terms</a>
+ <a href="/widerruf-en" data-i18n="f_refund">Right of Withdrawal</a>
+ <a href="/datenschutz-en" data-i18n="f_privacy">Privacy Policy</a>
+ <a href="/impressum-en" data-i18n="f_imprint_contact">Contact &amp; Legal Notice</a>
  </div>
  </div>
  <div class="footer-bar">

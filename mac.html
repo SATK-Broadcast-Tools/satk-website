@@ -8,6 +8,9 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=10">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=10">
 <link rel="canonical" href="https://pegelwerk.com/mac">
+<link rel="alternate" hreflang="de" href="https://pegelwerk.com/mac">
+<link rel="alternate" hreflang="en" href="https://pegelwerk.com/mac-en">
+<link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/mac">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>pegelWERK Mac Apps - loudness METER PRO, voyzSESSION PRO, loudness CORRECT</title>
 <meta name="description" content="Native macOS-Apps für Broadcast und Postproduktion: loudness METER PRO, voyzSESSION PRO, loudness CORRECT mit EBU R128, LUFS, True Peak und PPM. Einmalkauf via Paddle, 7-Tage-Trial, Lizenz für 2 Macs.">
@@ -238,6 +241,12 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 @media(max-width:600px){.page-hero h1::before{left:-14px;width:10px}.page-hero h1::after{right:-14px;width:10px}}
 /*VB-END*/
 </style>
+<script>
+function switchLang(l,u){try{localStorage.setItem('satk-lang',l);}catch(e){}location.href=u;}
+// Auto-redirect zur anderen Sprachfassung nur bei EXPLIZIT gesetzter Vorliebe
+// (null/unset = hierbleiben, der Besucher hat diese URL bewusst aufgerufen)
+try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/mac-en'); } } catch(e){}
+</script>
 </head>
 <body>
 
@@ -253,9 +262,9 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <a href="/support" data-i18n="nav_info">Supportanfrage</a>
  <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
  <div class="lang-sw">
- <span class="lang active" id="btnDE" onclick="setLang('de')">DE</span>
+ <span class="lang active" id="btnDE" onclick="switchLang('de','/mac')">DE</span>
  <span class="lang-sep">·</span>
- <span class="lang" id="btnEN" onclick="setLang('en')">EN</span>
+ <span class="lang" id="btnEN" onclick="switchLang('en','/mac-en')">EN</span>
  </div>
  </div>
 </nav>
@@ -727,10 +736,6 @@ function setLang(lang) {
 }
 
 // Sync language from main page
-try {
- const saved = localStorage.getItem('satk-lang');
- if (saved === 'en') setLang('en');
-} catch(e){}
 </script>
 
 </body>

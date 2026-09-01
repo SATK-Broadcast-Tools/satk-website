@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- lastmod = letztes echtes Aenderungsdatum der jeweiligen Datei (git log -1).
+       /activate und /manage-license fehlen absichtlich: beide tragen noindex. -->
+
   <!-- Hauptseiten -->
   <url>
     <loc>https://pegelwerk.com/</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://pegelwerk.com/mac</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://pegelwerk.com/ios</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://pegelwerk.com/support</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pegelwerk.com/videos</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -24,19 +39,19 @@
   <!-- Pro-Software-Detailseiten -->
   <url>
     <loc>https://pegelwerk.com/broadcast-meter-pro</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pegelwerk.com/voyzsession</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pegelwerk.com/loudness-correct</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -44,81 +59,107 @@
   <!-- iOS App-Detailseiten -->
   <url>
     <loc>https://pegelwerk.com/easy-editor</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pegelwerk.com/instant-player-app</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pegelwerk.com/broadcast-meter-ios</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pegelwerk.com/voyzsession-ios</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pegelwerk.com/loudness-correct-ios</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- Presse, Changelog, Security -->
+  <url>
+    <loc>https://pegelwerk.com/press</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://pegelwerk.com/changelog</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://pegelwerk.com/security</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://pegelwerk.com/security-en</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
   </url>
 
   <!-- Rechtliches -->
   <url>
     <loc>https://pegelwerk.com/impressum</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://pegelwerk.com/impressum-en</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://pegelwerk.com/datenschutz</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://pegelwerk.com/datenschutz-en</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://pegelwerk.com/agb</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://pegelwerk.com/agb-en</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://pegelwerk.com/widerruf</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
     <loc>https://pegelwerk.com/widerruf-en</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>

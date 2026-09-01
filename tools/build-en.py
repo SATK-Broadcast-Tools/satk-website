@@ -273,6 +273,13 @@ def build_en(de_file):
 
     s = apply_literals(s)
 
+    # BreadcrumbList: item-URLs auf die englischen Entsprechungen, Namen uebersetzen
+    def _crumb(m):
+        path = m.group(1) or "/"
+        return '"item": "%s%s"' % (BASE, LINKMAP.get(path, path))
+    s = re.sub(r'"item": "%s(/[a-z0-9-]*)?"' % re.escape(BASE), _crumb, s)
+    s = s.replace('"name": "Startseite"', '"name": "Home"')
+
     # Sprachumschalter: navigiert, statt Text zu tauschen. Merkt die Wahl,
     # damit der Auto-Redirect den Besucher nicht sofort zurueckwirft.
     s = s.replace('onclick="setLang(\'de\')"', 'onclick="switchLang(\'de\',\'%s\')"' % de_p)

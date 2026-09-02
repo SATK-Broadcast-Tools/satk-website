@@ -139,7 +139,23 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .hero-copy{position:relative;z-index:2;max-width:900px;margin:-18px auto 0;padding:0 24px;text-align:center}
 @media(max-width:900px){.hero-copy{margin-top:-8px}}
 .lockup{display:flex;align-items:center;justify-content:center;gap:14px;margin:16px 0 0}
-.lockup img{width:min(62%,430px);height:auto;display:block}
+/* Wortmarke als Text statt als PNG. Der Produktname stand vorher nur im
+   alt-Attribut, damit war die H1 fuer Suchmaschinen praktisch leer - alle
+   anderen Produktseiten fuehren ihren Namen als Text. Die vier Eckklammern
+   des Lockups kommen aus acht Gradienten, ohne Zusatz-Markup. */
+.wm{font-family:'Arimo',sans-serif;font-weight:700;line-height:1;letter-spacing:-.01em;
+ font-size:clamp(30px,5.2vw,62px);padding:.34em .46em;display:inline-block;
+ background:
+  linear-gradient(var(--ac),var(--ac)) 0 0/22px 4px no-repeat,
+  linear-gradient(var(--ac),var(--ac)) 0 0/4px 22px no-repeat,
+  linear-gradient(var(--ac),var(--ac)) 100% 0/22px 4px no-repeat,
+  linear-gradient(var(--ac),var(--ac)) 100% 0/4px 22px no-repeat,
+  linear-gradient(var(--ac),var(--ac)) 0 100%/22px 4px no-repeat,
+  linear-gradient(var(--ac),var(--ac)) 0 100%/4px 22px no-repeat,
+  linear-gradient(var(--ac),var(--ac)) 100% 100%/22px 4px no-repeat,
+  linear-gradient(var(--ac),var(--ac)) 100% 100%/4px 22px no-repeat}
+.wm .a{color:var(--ac)}
+.wm .b{color:var(--tx)}
 .chip{font-family:'Arimo',sans-serif;font-weight:700;font-size:clamp(18px,2.4vw,28px);letter-spacing:.06em;
  color:var(--bg);background:var(--ac);border-radius:8px;padding:.16em .42em;line-height:1}
 .hero-copy .claim{margin-top:26px}
@@ -314,7 +330,7 @@ try { if (localStorage.getItem('satk-lang') === 'de') { location.replace('/voyzs
  <div class="hero-copy">
  <p class="eyebrow">A DAW made for voice productions</p>
  <h1 class="lockup">
- <img src="logo-voyzsession-frame.png?v=1" alt="voyzSESSION PRO">
+ <span class="wm"><span class="a">voyz</span><span class="b">SESSION</span></span>
  <span class="chip">PRO</span>
  </h1>
  <p class="claim">Record. Auto Mix. Deliver.</p>

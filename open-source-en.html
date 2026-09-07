@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.ico?v=10" sizes="any">
@@ -7,10 +7,13 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=10">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=10">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=10">
-<meta name="robots" content="noindex">
+<link rel="canonical" href="https://pegelwerk.com/open-source-en">
+<link rel="alternate" hreflang="de" href="https://pegelwerk.com/open-source">
+<link rel="alternate" hreflang="en" href="https://pegelwerk.com/open-source-en">
+<link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/open-source">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Seite nicht gefunden, pegelWERK</title>
-<meta name="description" content="Diese Seite gibt es nicht. Zurueck zu den Mac- und iOS-Apps von pegelWERK.">
+<title>Open source and licences, pegelWERK</title>
+<meta name="description" content="Third-party components in pegelWERK applications, their licences, and the sources of the LGPL parts.">
 <style>
 @import url('fonts.css');
 :root{--bg:#0a0a0b;--sf:#111114;--bd:#1e1e24;--ac:#4fb99a;--tx:#e8e8ec;--mu:#9a9aa8;--mu2:#d4d4dc;}
@@ -28,6 +31,12 @@ h2{font-family:'Arimo',sans-serif;font-size:12px;font-weight:700;letter-spacing:
 p{font-size:11px;color:var(--mu2);line-height:1.9;margin-bottom:10px;}
 a{color:var(--ac);text-decoration:none;}
 a:hover{text-decoration:underline;}
+table.comp{width:100%;border-collapse:collapse;margin:4px 0 8px;}
+table.comp td{font-size:11px;color:var(--mu2);line-height:1.7;padding:7px 10px 7px 0;border-bottom:1px solid var(--bd);vertical-align:top;}
+table.comp td.lic{color:var(--ac);white-space:nowrap;}
+table.comp td.use{color:var(--mu);}
+@media(max-width:560px){table.comp td.use{display:none;}}
+code{font-family:'DM Mono',monospace;font-size:10px;color:var(--mu);}
 .note{font-size:10px;color:var(--mu);line-height:1.8;padding:12px 14px;border:1px solid var(--bd);margin-top:24px;}
 /* ── Footer (3-spaltig) ──────────── */
 footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255,255,.06);background:#15161a}
@@ -53,28 +62,62 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 @media(max-width:600px){.hero h1::before,.page-hero h1::before{left:-14px;width:10px}.hero h1::after,.page-hero h1::after{right:-14px;width:10px}}
 /*VB-END*/
 </style>
+<script>
+// Auto-redirect to EN version if user's global language is EN
+try {
+ if (localStorage.getItem('satk-lang') === 'en') {
+ location.replace('impressum-en.html');
+ }
+} catch(e){}
+</script>
+</head>
 <body>
 <div class="wrap">
  <a class="back" href="/">
  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
- Zurück zu pegelWERK
+ Back to pegelWERK
  </a>
- <div class="logo">Fehler 404</div>
- <h1>Seite nicht gefunden</h1>
+ <div class="logo">pegelWERK</div>
+ <h1>Open source and licences</h1>
 
- <p>Diese Adresse führt ins Leere. Möglicherweise ist der Link veraltet, oder es hat sich ein Tippfehler eingeschlichen.</p>
+ <p>Our applications are proprietary but build on open-source components. They are
+ listed here in full, with their licence. The authoritative record, including every
+ licence text verbatim, ships with each application — as <code>THIRD-PARTY.txt</code>
+ and <code>THIRD-PARTY-LICENSES.txt</code> inside the application bundle.</p>
 
- <h2>Weiter geht es hier</h2>
+ <h2>Components</h2>
+ <table class="comp">
+  <tr><td>JUCE 8</td><td class="lic">commercial licence</td><td class="use">Application framework, UI, audio devices</td></tr>
+  <tr><td>ffmpeg 8.1</td><td class="lic">LGPL v2.1+</td><td class="use">Video proxy, audio extraction, MP3 export</td></tr>
+  <tr><td>LAME 3.100</td><td class="lic">LGPL v2</td><td class="use">MP3 encoding</td></tr>
+  <tr><td>bmx 1.6.0 (BBC)</td><td class="lic">BSD-3-Clause</td><td class="use">MXF delivery</td></tr>
+  <tr><td>libsodium</td><td class="lic">ISC</td><td class="use">Licence signature verification</td></tr>
+  <tr><td>whisper.cpp 1.7.6</td><td class="lic">MIT</td><td class="use">Transcription, runs entirely on device</td></tr>
+  <tr><td>ONNX Runtime 1.19.2</td><td class="lic">MIT</td><td class="use">Runs the noise-reduction model</td></tr>
+  <tr><td>DeepFilterNet 3</td><td class="lic">MIT</td><td class="use">Neural noise-reduction model</td></tr>
+  <tr><td>DM Mono, Inter, Space Grotesk, Syne</td><td class="lic">SIL Open Font License 1.1</td><td class="use">Interface typefaces</td></tr>
+ </table>
+
+ <h2>Source code of the LGPL components</h2>
+ <p>ffmpeg and LAME are licensed under the LGPL. If you want to modify them or
+ substitute your own build, you can obtain the unmodified source of exactly the
+ versions we ship — from our own server, not as a pointer to someone else's:</p>
  <p>
-  <a href="/mac">Mac Apps</a> · <a href="/ios">iOS Apps</a> · <a href="/videos">Videos</a> · <a href="/support">Supportanfrage</a> · <a href="/">Startseite</a>
+ <a href="https://download.pegelwerk.com/sources/ffmpeg-8.1.tar.xz">ffmpeg-8.1.tar.xz</a> ·
+ <a href="https://download.pegelwerk.com/sources/lame-3.100.tar.gz">lame-3.100.tar.gz</a>
  </p>
+ <p>The complete configure line used to build our ffmpeg ships as
+ <code>ffmpeg-BUILD.md</code> inside the application bundle, so an identical binary
+ can be reproduced.</p>
 
- <div class="note">
-  Sie sind über einen Link von aussen hier gelandet und vermuten einen Fehler auf unserer Seite?
-  Ein kurzer Hinweis an <a href="mailto:info@pegelwerk.com">info@pegelwerk.com</a> hilft uns weiter.
- </div>
+ <h2>What is not third-party</h2>
+ <p>The audio processing is our own: channel strip, ducker, leveller, ITU-R BS.1770-4
+ loudness measurement, true-peak limiter and auto mix. So are the prompter, timeline,
+ mixer and console integration.</p>
 
- </div>
+ <div class="note">Questions about licences or sources:
+ <a href="mailto:info@pegelwerk.com">info@pegelwerk.com</a></div>
+</div>
 <footer>
  <div class="footer-grid">
  <div class="footer-col">

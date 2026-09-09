@@ -222,6 +222,25 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="product-name">pegelWERK voyzSESSION PRO <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
  <div class="release">
+ <span class="release-version">1.5.0</span><span class="release-date">2026-09-09</span>
+ <div class="release-title" data-i18n="cl_od_150_t">Handmischung wie in einer DAW, Broadcast-Auslieferung und Transkription an Bord</div>
+ <ul class="release-list">
+ <li data-i18n="cl_od_150_1">Neuer Manual-Modus: von Hand mischen mit Kanalzügen, Gruppen und Automation in Read, Touch, Latch und Write. Eine im Assist-Modus erzeugte Automischung lässt sich als Grundlage übernehmen und weiterbearbeiten.</li>
+ <li data-i18n="cl_od_150_2">Zentrales Export-Fenster: pro Ausgabe Format und Qualität einstellen - fertige Mischung, Voice-Stem, eine Datei je Sprecherspur, dazu Video oder MXF.</li>
+ <li data-i18n="cl_od_150_3">Neue Audioformate: AAC, MP3 und MP2. MP2 gibt es roh und im WAV-Container, wie es viele Sendeabwicklungen erwarten.</li>
+ <li data-i18n="cl_od_150_4">Delivery-Profile für die Auslieferung an Sender: EBU R128, US ATSC, DE ARD/ZDF HDF01a, JP ARIB RDD9 und FR CST-RT-040, mit einstellbarer Tonspur-Belegung. Passt das Lautheitsziel nicht zum gewählten Format-Profil, sagt es das Fenster vor dem Export.</li>
+ <li data-i18n="cl_od_150_5">Mehr Format-Profile: ATSC A/85, ARIB TR-B32, OP-59 und CST-RT-040, jedes mit eigenem Lautheitsziel und eigener True-Peak-Decke.</li>
+ <li data-i18n="cl_od_150_6">Eigene Plugins (AU und VST3) lassen sich im Manual-Modus als Inserts einschleifen.</li>
+ <li data-i18n="cl_od_150_7">Transkription im Programm: das Sprachmodell ist mitgeliefert und läuft ohne Internet. Dazu ein Script-Editor und Untertitel als SRT und VTT.</li>
+ <li data-i18n="cl_od_150_8">Virtuelle Kamera und virtuelles Audiogerät: voyzSESSION meldet sich im System als Kamera und als Ein- und Ausgang an, für Videokonferenzen und Fernaufnahmen.</li>
+ <li data-i18n="cl_od_150_9">Rauschunterdrückung über ein neuronales Netz, in drei Stufen je Spur.</li>
+ <li data-i18n="cl_od_150_10">Hardware-Pulte über Mackie Control, mit Motorfadern und Rückmeldung.</li>
+ <li data-i18n="cl_od_150_11">Aufnahmen werden von der Platte gestreamt statt vollständig im Speicher gehalten. Lange Projekte belasten den Rechner deutlich weniger.</li>
+ <li data-i18n="cl_od_150_12">Die Lizenztexte aller mitgelieferten Open-Source-Bestandteile liegen jetzt im Programm.</li>
+ </ul>
+ </div>
+
+ <div class="release older">
  <span class="release-version">1.4.1</span><span class="release-date">2026-07-10</span>
  <div class="release-title" data-i18n="cl_od_141_t">Rauschentfernung jetzt auch für importierte, fertige Aufnahmen</div>
  <ul class="release-list">
@@ -466,6 +485,19 @@ const i18n = {
  cl_lc_100_2: 'Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.',
  cl_lc_100_3: '3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor, ohne Pumpen, ohne Phasen-Artefakte.',
  cl_lc_100_4: 'Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum pegelWERK loudness METER PRO, Messen und Korrigieren mit derselben Wahrheit.',
+ cl_od_150_t: 'Handmischung wie in einer DAW, Broadcast-Auslieferung und Transkription an Bord',
+ cl_od_150_1: 'Neuer Manual-Modus: von Hand mischen mit Kanalzügen, Gruppen und Automation in Read, Touch, Latch und Write. Eine im Assist-Modus erzeugte Automischung lässt sich als Grundlage übernehmen und weiterbearbeiten.',
+ cl_od_150_2: 'Zentrales Export-Fenster: pro Ausgabe Format und Qualität einstellen - fertige Mischung, Voice-Stem, eine Datei je Sprecherspur, dazu Video oder MXF.',
+ cl_od_150_3: 'Neue Audioformate: AAC, MP3 und MP2. MP2 gibt es roh und im WAV-Container, wie es viele Sendeabwicklungen erwarten.',
+ cl_od_150_4: 'Delivery-Profile für die Auslieferung an Sender: EBU R128, US ATSC, DE ARD/ZDF HDF01a, JP ARIB RDD9 und FR CST-RT-040, mit einstellbarer Tonspur-Belegung. Passt das Lautheitsziel nicht zum gewählten Format-Profil, sagt es das Fenster vor dem Export.',
+ cl_od_150_5: 'Mehr Format-Profile: ATSC A/85, ARIB TR-B32, OP-59 und CST-RT-040, jedes mit eigenem Lautheitsziel und eigener True-Peak-Decke.',
+ cl_od_150_6: 'Eigene Plugins (AU und VST3) lassen sich im Manual-Modus als Inserts einschleifen.',
+ cl_od_150_7: 'Transkription im Programm: das Sprachmodell ist mitgeliefert und läuft ohne Internet. Dazu ein Script-Editor und Untertitel als SRT und VTT.',
+ cl_od_150_8: 'Virtuelle Kamera und virtuelles Audiogerät: voyzSESSION meldet sich im System als Kamera und als Ein- und Ausgang an, für Videokonferenzen und Fernaufnahmen.',
+ cl_od_150_9: 'Rauschunterdrückung über ein neuronales Netz, in drei Stufen je Spur.',
+ cl_od_150_10: 'Hardware-Pulte über Mackie Control, mit Motorfadern und Rückmeldung.',
+ cl_od_150_11: 'Aufnahmen werden von der Platte gestreamt statt vollständig im Speicher gehalten. Lange Projekte belasten den Rechner deutlich weniger.',
+ cl_od_150_12: 'Die Lizenztexte aller mitgelieferten Open-Source-Bestandteile liegen jetzt im Programm.',
  cl_od_141_t: 'Rauschentfernung jetzt auch für importierte, fertige Aufnahmen',
  cl_od_141_1: 'Der NR-Schalter pro Spur wirkt jetzt auch auf importierte Aufnahmen, die als "fertig produziert" markiert sind - die Rauschentfernung lässt sich überall zuschalten (Standard bleibt aus, damit fertige Dateien unangetastet bleiben).',
  cl_od_141_2: 'Kleinere Lizenz-Korrektur für die dauerhafte Offline-Nutzung.',
@@ -570,6 +602,19 @@ const i18n = {
  cl_lc_100_2: 'Two-pass with automatic refine: pass 1 measures, pass 2 corrects, pass 3 verifies. If the residual is above 0.1 LU, correction runs again with trimmed gain.',
  cl_lc_100_3: '3-band LRA processor (Linkwitz-Riley 4th order with perfect reconstruction) pulls every LRA into the broadcast corridor, no pumping, no phase artefacts.',
  cl_lc_100_4: 'Mono to 9.1.6 with BS.1770-compliant LFE weighting. DSP engine byte-identical to pegelWERK loudness METER PRO, measure and correct with the same truth.',
+ cl_od_150_t: 'Mix by hand like a DAW, broadcast delivery, and transcription on board',
+ cl_od_150_1: 'New manual mode: mix by hand with channel strips, groups and automation in Read, Touch, Latch and Write. An automatic mix made in assist mode can be carried over as the starting point and edited further.',
+ cl_od_150_2: 'Central export window: set format and quality per output - finished mix, voice stem, one file per speaker lane, plus video or MXF.',
+ cl_od_150_3: 'New audio formats: AAC, MP3 and MP2. MP2 comes raw and inside a WAV container, the way many playout systems expect it.',
+ cl_od_150_4: 'Delivery profiles for broadcasters: EBU R128, US ATSC, DE ARD/ZDF HDF01a, JP ARIB RDD9 and FR CST-RT-040, with a configurable track layout. If the loudness target does not match the chosen format profile, the window says so before the export.',
+ cl_od_150_5: 'More format profiles: ATSC A/85, ARIB TR-B32, OP-59 and CST-RT-040, each with its own loudness target and true-peak ceiling.',
+ cl_od_150_6: 'Your own plugins (AU and VST3) can be inserted in the manual mode.',
+ cl_od_150_7: 'Transcription inside the app: the speech model ships with it and runs without internet. Plus a script editor and subtitles as SRT and VTT.',
+ cl_od_150_8: 'Virtual camera and virtual audio device: voyzSESSION registers with the system as a camera and as an input and output, for video calls and remote sessions.',
+ cl_od_150_9: 'Noise removal through a neural network, in three steps per track.',
+ cl_od_150_10: 'Hardware desks over Mackie Control, with motor faders and feedback.',
+ cl_od_150_11: 'Recordings are streamed from disk instead of being held entirely in memory. Long projects put much less load on the machine.',
+ cl_od_150_12: 'Licence texts for every bundled open-source component are now inside the app.',
  cl_od_141_t: 'Noise removal now works on imported, finished recordings too',
  cl_od_141_1: 'The per-track NR switch now also applies to imported recordings marked as "finished" - noise removal can be enabled everywhere (still off by default, so finished files stay untouched).',
  cl_od_141_2: 'Minor licensing fix for long-term offline use.',

@@ -222,6 +222,21 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="product-name">pegelWERK voyzSESSION PRO <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
  <div class="release">
+ <span class="release-version">1.5.1</span><span class="release-date">2026-09-13</span>
+ <div class="release-title" data-i18n="cl_od_151_t">Studio 0 dB, PDF im Prompter und Korrekturen an Cue-Bus und Plugins</div>
+ <ul class="release-list">
+ <li data-i18n="cl_od_151_1">Neues Format-Profil "Studio 0 dB" für Studios, die zuliefern und nicht nach Lautheit arbeiten: keine Normalisierung, keine Automatik in der Stimmkette, nur eine True-Peak-Decke bei -1 dBTP.</li>
+ <li data-i18n="cl_od_151_2">Der Prompter liest jetzt auch PDF-Skripte. Ausgelesen wird die Textebene - ein reiner Scan enthält keinen Text, das sagt die App und lädt nichts.</li>
+ <li data-i18n="cl_od_151_3">Schriftgröße im Prompter direkt einstellbar (Cmd + und Cmd -), und "Text folgt der Stimme" läuft ruhiger: ein Ausreißer der Spracherkennung reißt die Anzeige nicht mehr fort.</li>
+ <li data-i18n="cl_od_151_4">Eigene Plugins ließen sich in der ausgelieferten, signierten App nicht mehr laden - behoben.</li>
+ <li data-i18n="cl_od_151_5">Der Fader des Cue-Busses wirkt jetzt auch auf die Fernstrecke, und die Pegelanzeige des Cue-Busses misst hinter dem Fader.</li>
+ <li data-i18n="cl_od_151_6">Die virtuelle Kamera hat einen Schalter in der Oberfläche statt einer Umgebungsvariable und überträgt sofort das Bild, das auch im Programm läuft.</li>
+ <li data-i18n="cl_od_151_7">Die Pegelanzeigen der Sprecherspuren bleiben sichtbar, während die fertige Mischung wiedergegeben wird.</li>
+ <li data-i18n="cl_od_151_8">Die Lautheitsbalken sind nach Zonen eingefärbt, der Zielbereich ist grün. Dazu ein behobener Absturz beim Beenden während laufender Videowiedergabe.</li>
+ </ul>
+ </div>
+
+ <div class="release older">
  <span class="release-version">1.5.0</span><span class="release-date">2026-09-09</span>
  <div class="release-title" data-i18n="cl_od_150_t">Handmischung wie in einer DAW, Broadcast-Auslieferung und Transkription an Bord</div>
  <ul class="release-list">
@@ -485,6 +500,15 @@ const i18n = {
  cl_lc_100_2: 'Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.',
  cl_lc_100_3: '3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor, ohne Pumpen, ohne Phasen-Artefakte.',
  cl_lc_100_4: 'Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum pegelWERK loudness METER PRO, Messen und Korrigieren mit derselben Wahrheit.',
+ cl_od_151_t: 'Studio 0 dB, PDF im Prompter und Korrekturen an Cue-Bus und Plugins',
+ cl_od_151_1: 'Neues Format-Profil "Studio 0 dB" für Studios, die zuliefern und nicht nach Lautheit arbeiten: keine Normalisierung, keine Automatik in der Stimmkette, nur eine True-Peak-Decke bei -1 dBTP.',
+ cl_od_151_2: 'Der Prompter liest jetzt auch PDF-Skripte. Ausgelesen wird die Textebene - ein reiner Scan enthält keinen Text, das sagt die App und lädt nichts.',
+ cl_od_151_3: 'Schriftgröße im Prompter direkt einstellbar (Cmd + und Cmd -), und "Text folgt der Stimme" läuft ruhiger: ein Ausreißer der Spracherkennung reißt die Anzeige nicht mehr fort.',
+ cl_od_151_4: 'Eigene Plugins ließen sich in der ausgelieferten, signierten App nicht mehr laden - behoben.',
+ cl_od_151_5: 'Der Fader des Cue-Busses wirkt jetzt auch auf die Fernstrecke, und die Pegelanzeige des Cue-Busses misst hinter dem Fader.',
+ cl_od_151_6: 'Die virtuelle Kamera hat einen Schalter in der Oberfläche statt einer Umgebungsvariable und überträgt sofort das Bild, das auch im Programm läuft.',
+ cl_od_151_7: 'Die Pegelanzeigen der Sprecherspuren bleiben sichtbar, während die fertige Mischung wiedergegeben wird.',
+ cl_od_151_8: 'Die Lautheitsbalken sind nach Zonen eingefärbt, der Zielbereich ist grün. Dazu ein behobener Absturz beim Beenden während laufender Videowiedergabe.',
  cl_od_150_t: 'Handmischung wie in einer DAW, Broadcast-Auslieferung und Transkription an Bord',
  cl_od_150_1: 'Neuer Manual-Modus: von Hand mischen mit Kanalzügen, Gruppen und Automation in Read, Touch, Latch und Write. Eine im Assist-Modus erzeugte Automischung lässt sich als Grundlage übernehmen und weiterbearbeiten.',
  cl_od_150_2: 'Zentrales Export-Fenster: pro Ausgabe Format und Qualität einstellen - fertige Mischung, Voice-Stem, eine Datei je Sprecherspur, dazu Video oder MXF.',
@@ -602,6 +626,15 @@ const i18n = {
  cl_lc_100_2: 'Two-pass with automatic refine: pass 1 measures, pass 2 corrects, pass 3 verifies. If the residual is above 0.1 LU, correction runs again with trimmed gain.',
  cl_lc_100_3: '3-band LRA processor (Linkwitz-Riley 4th order with perfect reconstruction) pulls every LRA into the broadcast corridor, no pumping, no phase artefacts.',
  cl_lc_100_4: 'Mono to 9.1.6 with BS.1770-compliant LFE weighting. DSP engine byte-identical to pegelWERK loudness METER PRO, measure and correct with the same truth.',
+ cl_od_151_t: 'Studio 0 dB, PDF in the prompter, and fixes for cue bus and plugins',
+ cl_od_151_1: 'New "Studio 0 dB" format profile for studios that supply material and do not work to a loudness target: no normalisation, no automatics in the voice chain, just a true-peak ceiling at -1 dBTP.',
+ cl_od_151_2: 'The prompter now reads PDF scripts as well. It extracts the text layer - a pure scan carries no text, and the app says so instead of loading anything.',
+ cl_od_151_3: 'Font size can be set right on the prompter (Cmd + and Cmd -), and "text follows voice" runs more calmly: a single misrecognition no longer drags the display away.',
+ cl_od_151_4: 'Third-party plugins could no longer be loaded in the shipped, signed app - fixed.',
+ cl_od_151_5: 'The cue bus fader now also affects the remote feed, and the cue bus meter reads after the fader.',
+ cl_od_151_6: 'The virtual camera has a switch in the interface instead of an environment variable, and immediately sends the picture that is playing in the app.',
+ cl_od_151_7: 'The speaker track meters stay visible while the finished mix is playing back.',
+ cl_od_151_8: 'The loudness bars are coloured by zone, with the target zone in green. Plus a fixed crash on quit while video was playing.',
  cl_od_150_t: 'Mix by hand like a DAW, broadcast delivery, and transcription on board',
  cl_od_150_1: 'New manual mode: mix by hand with channel strips, groups and automation in Read, Touch, Latch and Write. An automatic mix made in assist mode can be carried over as the starting point and edited further.',
  cl_od_150_2: 'Central export window: set format and quality per output - finished mix, voice stem, one file per speaker lane, plus video or MXF.',

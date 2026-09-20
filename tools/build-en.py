@@ -141,7 +141,7 @@ for de_f, (en_f, de_p, en_p, _t, _d) in PAGES.items():
         LINKMAP[de_p] = en_p
     LINKMAP["/" + de_f] = en_p
     LINKMAP[de_f] = en_p
-for slug in ("agb", "datenschutz", "impressum", "widerruf", "security"):
+for slug in ("agb", "datenschutz", "impressum", "widerruf", "security", "open-source"):
     LINKMAP["/" + slug] = "/" + slug + "-en"
 
 GEN_NOTE = ("<!-- GENERIERT von tools/build-en.py aus %s - NICHT von Hand aendern.\n"

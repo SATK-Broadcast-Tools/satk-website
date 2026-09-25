@@ -222,6 +222,16 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="product-name">pegelWERK voyzSESSION PRO <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
  <div class="release">
+ <span class="release-version">1.6.2</span><span class="release-date">2026-09-25</span>
+ <div class="release-title" data-i18n="cl_od_162_t">MXF-Import wie angehakt, Transkribieren-Knopf</div>
+ <ul class="release-list">
+ <li data-i18n="cl_od_162_1">Beim MXF-Import wird jede angehakte Tonspur genau so ins Projekt übernommen: eine einzelne Spur als Monospur, zwei im Auswahlfenster gepaarte Spuren als Stereospur („Mit Spur N paaren“ / „Trennen“). Bisher wurde die erste gewählte Spur automatisch zur Stereo-Tonspur des Videos – auch wenn sie mono war.</li>
+ <li data-i18n="cl_od_162_2">Steht im Script Editor „Kein Transkript“, obwohl Audio im Projekt ist, erscheint darunter der Knopf „Transkribieren“. Er rechnet alle Aufnahmen neu.</li>
+ <li data-i18n="cl_od_162_3">Leere Transkripte, die 1.6.0 auf Intel-Macs nach einem gescheiterten Lauf gespeichert hat, werden jetzt automatisch verworfen und neu gerechnet – das Löschen von Hand entfällt.</li>
+ </ul>
+ </div>
+
+ <div class="release">
  <span class="release-version">1.6.1</span><span class="release-date">2026-09-25</span>
  <div class="release-title" data-i18n="cl_od_161_t">Fehlerbehebung für Intel-Macs</div>
  <ul class="release-list">
@@ -546,6 +556,10 @@ const i18n = {
  cl_lc_100_2: 'Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.',
  cl_lc_100_3: '3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor, ohne Pumpen, ohne Phasen-Artefakte.',
  cl_lc_100_4: 'Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum pegelWERK loudness METER PRO, Messen und Korrigieren mit derselben Wahrheit.',
+cl_od_162_t: 'MXF-Import wie angehakt, Transkribieren-Knopf',
+cl_od_162_1: 'Beim MXF-Import wird jede angehakte Tonspur genau so ins Projekt übernommen: eine einzelne Spur als Monospur, zwei im Auswahlfenster gepaarte Spuren als Stereospur („Mit Spur N paaren“ / „Trennen“). Bisher wurde die erste gewählte Spur automatisch zur Stereo-Tonspur des Videos – auch wenn sie mono war.',
+cl_od_162_2: 'Steht im Script Editor „Kein Transkript“, obwohl Audio im Projekt ist, erscheint darunter der Knopf „Transkribieren“. Er rechnet alle Aufnahmen neu.',
+cl_od_162_3: 'Leere Transkripte, die 1.6.0 auf Intel-Macs nach einem gescheiterten Lauf gespeichert hat, werden jetzt automatisch verworfen und neu gerechnet – das Löschen von Hand entfällt.',
 cl_od_161_t: 'Fehlerbehebung für Intel-Macs',
 cl_od_161_1: 'Behoben: auf Intel-Macs mit AMD-Grafik (z. B. Mac Pro 2019) blieb die Transkription leer, und nach Aufnahme oder AutoMix stand die Oberfläche. Die Spracherkennung rechnet auf Intel-Macs jetzt auf dem Prozessor, mit eigens für Intel gebauten Rechenkernen. Auf Apple-Silicon-Macs ändert sich nichts.',
 cl_od_161_2: 'Behoben: ein gescheiterter Transkriptionslauf wurde als leeres Ergebnis gespeichert, und dieselbe Aufnahme bekam danach immer wieder null Wörter – auch nach einem Neuimport. Wer mit 1.6.0 ein leeres Transkript bekommen hat: den Ordner ~/Library/SATK/OverdubStudio/transcripts löschen und die Aufnahme neu importieren.',
@@ -700,6 +714,10 @@ cl_od_161_2: 'Behoben: ein gescheiterter Transkriptionslauf wurde als leeres Erg
  cl_lc_100_2: 'Two-pass with automatic refine: pass 1 measures, pass 2 corrects, pass 3 verifies. If the residual is above 0.1 LU, correction runs again with trimmed gain.',
  cl_lc_100_3: '3-band LRA processor (Linkwitz-Riley 4th order with perfect reconstruction) pulls every LRA into the broadcast corridor, no pumping, no phase artefacts.',
  cl_lc_100_4: 'Mono to 9.1.6 with BS.1770-compliant LFE weighting. DSP engine byte-identical to pegelWERK loudness METER PRO, measure and correct with the same truth.',
+cl_od_162_t: 'MXF import as ticked, Transcribe button',
+cl_od_162_1: 'MXF import now brings in every ticked audio track exactly as chosen: a single track as a mono track, two tracks paired in the selection window as a stereo track ("Pair with N" / "Split"). Previously the first selected track automatically became the stereo video sound - even when it was mono.',
+cl_od_162_2: 'If the Script Editor shows "No transcript" although the project contains audio, a "Transcribe" button now appears below it. It recomputes all recordings.',
+cl_od_162_3: 'Empty transcripts that 1.6.0 stored on Intel Macs after a failed run are now discarded and recomputed automatically - no more deleting by hand.',
 cl_od_161_t: 'Bug fixes for Intel Macs',
 cl_od_161_1: 'Fixed: on Intel Macs with AMD graphics (e.g. Mac Pro 2019) the transcript stayed empty, and the interface stalled after recording or AutoMix. On Intel Macs speech recognition now runs on the processor, with compute kernels built specifically for Intel. Nothing changes on Apple silicon Macs.',
 cl_od_161_2: 'Fixed: a failed transcription run was stored as an empty result, and the same recording kept getting zero words afterwards - even after re-importing it. If 1.6.0 gave you an empty transcript: delete the folder ~/Library/SATK/OverdubStudio/transcripts and re-import the recording.',

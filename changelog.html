@@ -161,6 +161,18 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="product-name">pegelWERK loudness METER PRO <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
  <div class="release">
+ <span class="release-version">1.0.9</span><span class="release-date">2026-09-30</span>
+ <div class="release-title" data-i18n="cl_bm_109_t">Messgenauigkeit und Stabilität</div>
+ <ul class="release-list">
+ <li data-i18n="cl_bm_109_1">True Peak nach ITU-R BS.1770-4 überarbeitet: Zwischenspitzen wurden bisher um bis zu 2 dB zu niedrig angezeigt. Mono-Quellen werden korrekt gewichtet (bisher 3 dB zu laut).</li>
+ <li data-i18n="cl_bm_109_2">Max. Momentary und True Peak im Report stammen nur noch aus dem gemessenen Zeitraum, nicht mehr aus den ersten Millisekunden nach RESET oder dem Soundcheck vor START.</li>
+ <li data-i18n="cl_bm_109_3">Stabiler Dauerbetrieb: Sprach-Erkennung und GPI laufen nicht mehr im Audio-Thread, Laden und Stoppen von Dateien ohne Hänger.</li>
+ <li data-i18n="cl_bm_109_4">Batch-Analyse im Hintergrund mit Fortschritt und Abbrechen. Mehrkanal- und unlesbare Dateien werden als nicht gemessen gekennzeichnet statt falsch bewertet.</li>
+ <li data-i18n="cl_bm_109_5">Eine gültige Lizenz bleibt auch ohne Internetverbindung dauerhaft aktiv.</li>
+ </ul>
+ </div>
+
+ <div class="release older">
  <span class="release-version">1.0.8</span><span class="release-date">2026-07-11</span>
  <div class="release-title" data-i18n="cl_bm_108_t">Umbenennung in loudness METER PRO</div>
  <ul class="release-list">
@@ -527,6 +539,12 @@ const i18n = {
  cl_h_releases: 'Aktuelle Releases',
  cl_h_roadmap: 'Was als Nächstes kommt',
  cl_st_live: 'Live', cl_st_soon: 'In Entwicklung',
+ cl_bm_109_t: 'Messgenauigkeit und Stabilität',
+ cl_bm_109_1: 'True Peak nach ITU-R BS.1770-4 überarbeitet: Zwischenspitzen wurden bisher um bis zu 2 dB zu niedrig angezeigt. Mono-Quellen werden korrekt gewichtet (bisher 3 dB zu laut).',
+ cl_bm_109_2: 'Max. Momentary und True Peak im Report stammen nur noch aus dem gemessenen Zeitraum, nicht mehr aus den ersten Millisekunden nach RESET oder dem Soundcheck vor START.',
+ cl_bm_109_3: 'Stabiler Dauerbetrieb: Sprach-Erkennung und GPI laufen nicht mehr im Audio-Thread, Laden und Stoppen von Dateien ohne Hänger.',
+ cl_bm_109_4: 'Batch-Analyse im Hintergrund mit Fortschritt und Abbrechen. Mehrkanal- und unlesbare Dateien werden als nicht gemessen gekennzeichnet statt falsch bewertet.',
+ cl_bm_109_5: 'Eine gültige Lizenz bleibt auch ohne Internetverbindung dauerhaft aktiv.',
  cl_bm_108_t: 'Umbenennung in loudness METER PRO',
  cl_bm_108_1: 'Umbenennung von broadcast METER in loudness METER PRO. Der Name beschreibt den Einsatzzweck treffender und ist nicht auf Broadcast beschränkt. Dieselbe DSP-Engine, dieselbe Messung, dieselben Lizenzen.',
  cl_bm_108_2: 'Neues App-Icon (LD·NS) im pegelWERK-Design.',
@@ -685,6 +703,12 @@ cl_od_161_2: 'Behoben: ein gescheiterter Transkriptionslauf wurde als leeres Erg
  cl_h_releases: 'Current releases',
  cl_h_roadmap: 'What\'s coming next',
  cl_st_live: 'Live', cl_st_soon: 'In development',
+ cl_bm_109_t: 'Measurement accuracy and stability',
+ cl_bm_109_1: 'True peak reworked to ITU-R BS.1770-4: inter-sample peaks were previously shown up to 2 dB too low. Mono sources are weighted correctly (previously 3 dB too loud).',
+ cl_bm_109_2: 'Max momentary and true peak in the report now come only from the measured period, not from the first milliseconds after RESET or the soundcheck before START.',
+ cl_bm_109_3: 'Reliable long-running operation: speech detection and GPI no longer run on the audio thread, loading and stopping files without hangs.',
+ cl_bm_109_4: 'Batch analysis runs in the background with progress and cancel. Multichannel and unreadable files are marked as not measured instead of being judged wrongly.',
+ cl_bm_109_5: 'A valid license stays active permanently, even without an internet connection.',
  cl_bm_108_t: 'Renamed to loudness METER PRO',
  cl_bm_108_1: 'Renamed from broadcast METER to loudness METER PRO. The name describes the use case more precisely and isn\'t limited to broadcast. Same DSP engine, same metering, same licenses.',
  cl_bm_108_2: 'New app icon (LD·NS) in the pegelWERK design.',

@@ -36,15 +36,16 @@ import i18n_en as EN
 
 BASE = EN.BASE
 I18N_DIR = os.path.join("tools", "i18n")
-ASSET_V = "3"                       # Cache-Buster fuer lang-menu.css/.js (7 Tage immutable)
+ASSET_V = "4"                       # Cache-Buster fuer lang-menu.css/.js (7 Tage immutable)
 
 LANGS = ["de", "en", "fr", "es", "it", "pt"]
 NEW = ["fr", "es", "it", "pt"]
 HREFLANG = {"de": "de", "en": "en", "fr": "fr", "es": "es", "it": "it", "pt": "pt"}
-# Sprache des Textes (<html lang>, lang=): Portugiesisch ist brasilianisch formuliert,
-# gilt per hreflang="pt" aber fuer alle Portugiesisch-Sprecher, auch Portugal.
-HTML_LANG = dict(HREFLANG, pt="pt-BR")
-OG_LOCALE = {"de": "de_DE", "en": "en_US", "fr": "fr_FR", "es": "es_ES", "it": "it_IT", "pt": "pt_BR"}
+# Sprache des Textes (<html lang>, lang=): EINE portugiesische Fassung fuer alle
+# (hreflang="pt"), formuliert europaeisch (pt-PT) - Europa ist der wichtigere Markt.
+# Die brasilianische Form steht als Alternative in der Gegenlese-Liste.
+HTML_LANG = dict(HREFLANG, pt="pt-PT")
+OG_LOCALE = {"de": "de_DE", "en": "en_US", "fr": "fr_FR", "es": "es_ES", "it": "it_IT", "pt": "pt_PT"}
 PADDLE_LOCALE = {"fr": "fr", "es": "es", "it": "it", "pt": "pt"}
 NAME = {"de": "Deutsch", "en": "English", "fr": "Français", "es": "Español",
         "it": "Italiano", "pt": "Português"}
@@ -461,6 +462,8 @@ def sitemap(cur):
 # ------------------------------------------------------------ Gegenlesen ---
 REVIEW_HEAD = ["Nr", "Seiten", "Art", "Deutsch (Original)", "English (Referenz)",
                "Entwurf", "Hinweis zum Entwurf", "Korrektur", "Anmerkung"]
+# Nur fuer Portugiesisch: die brasilianische Form, wo sie von der europaeischen abweicht
+ALT_COL = {"pt": ("pt-alternativen.json", "Alternative pt-BR")}
 
 
 def write_review(lang, asked):
@@ -473,13 +476,19 @@ def write_review(lang, asked):
     d = json.load(io.open(os.path.join(I18N_DIR, lang + ".json"), encoding="utf-8"))
     hp = os.path.join(I18N_DIR, lang + "-hinweise.json")
     hints = json.load(io.open(hp, encoding="utf-8")) if os.path.exists(hp) else {}
+    alt_file, alt_head = ALT_COL.get(lang, (None, None))
+    ap = os.path.join(I18N_DIR, alt_file) if alt_file else None
+    alts = json.load(io.open(ap, encoding="utf-8")) if ap and os.path.exists(ap) else None
     with io.open(p, "w", encoding="utf-8-sig", newline="") as f:
         w = csv.writer(f)
-        w.writerow(REVIEW_HEAD)
+        w.writerow(REVIEW_HEAD[:6] + ([alt_head] if alts is not None else []) + REVIEW_HEAD[6:])
         for n, a in enumerate(asked.values(), 1):
             o = old.get(a["de"], {})
-            w.writerow([n, " ".join(sorted(a["pages"])), a["kind"] + (" (HTML)" if a["html"] else ""),
-                        a["de"], a["en"], d.get(a["de"], ""), hints.get(a["de"], ""), o.get("Korrektur", ""), o.get("Anmerkung", "")])
+            row = [n, " ".join(sorted(a["pages"])), a["kind"] + (" (HTML)" if a["html"] else ""),
+                   a["de"], a["en"], d.get(a["de"], "")]
+            if alts is not None:
+                row.append(alts.get(a["de"], ""))
+            w.writerow(row + [hints.get(a["de"], ""), o.get("Korrektur", ""), o.get("Anmerkung", "")])
     return p
 
 

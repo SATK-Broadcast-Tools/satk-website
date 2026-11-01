@@ -1,8 +1,10 @@
 # Sprachfassungen der Website
 
 Stand 01.11.2026. Sechs Sprachen: Deutsch (Quelle), Englisch, Französisch,
-Spanisch, Italienisch, Portugiesisch (brasilianisch formuliert, aber für alle
-Portugiesisch-Sprecher: `hreflang="pt"`, im Menü „Português“).
+Spanisch, Italienisch, Portugiesisch (eine Fassung für alle Portugiesisch-Sprecher, `hreflang="pt"`,
+im Menü „Português“; formuliert europäisch (pt-PT), weil Europa der wichtigere
+Markt ist. Wo pt-BR zwingend anders lautet, steht die brasilianische Form in
+`pt-alternativen.json` und in der Gegenlese-Liste in der Spalte „Alternative pt-BR“).
 
 ## Adressschema
 

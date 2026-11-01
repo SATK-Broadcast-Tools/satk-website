@@ -5,7 +5,7 @@ Einzige Quelle der Wahrheit bleibt die deutsche Seite:
   * Englisch  steht wie bisher in der en:-Tabelle der deutschen Seite
               (Rest in tools/i18n_en.py). Ergebnis: <seite>-en.html, /en.
   * FR/ES/IT/PT-BR stehen in tools/i18n/<sprache>.json, Schluessel ist der
-              DEUTSCHE Text. Ergebnis: /fr/<seite>, /es/..., /it/..., /pt-br/...
+              DEUTSCHE Text. Ergebnis: /fr/<seite>, /es/..., /it/..., /pt/...
 Aendert sich ein deutscher Text, findet der Generator keine Uebersetzung mehr,
 setzt dort die englische Fassung ein und meldet die Stelle. So kann eine
 Sprachfassung nie still einen veralteten Inhalt (Version, Preis) zeigen.
@@ -36,22 +36,25 @@ import i18n_en as EN
 
 BASE = EN.BASE
 I18N_DIR = os.path.join("tools", "i18n")
-ASSET_V = "2"                       # Cache-Buster fuer lang-menu.css/.js (7 Tage immutable)
+ASSET_V = "3"                       # Cache-Buster fuer lang-menu.css/.js (7 Tage immutable)
 
-LANGS = ["de", "en", "fr", "es", "it", "pt-br"]
-NEW = ["fr", "es", "it", "pt-br"]
-HREFLANG = {"de": "de", "en": "en", "fr": "fr", "es": "es", "it": "it", "pt-br": "pt-BR"}
-OG_LOCALE = {"de": "de_DE", "en": "en_US", "fr": "fr_FR", "es": "es_ES", "it": "it_IT", "pt-br": "pt_BR"}
-PADDLE_LOCALE = {"fr": "fr", "es": "es", "it": "it", "pt-br": "pt"}
+LANGS = ["de", "en", "fr", "es", "it", "pt"]
+NEW = ["fr", "es", "it", "pt"]
+HREFLANG = {"de": "de", "en": "en", "fr": "fr", "es": "es", "it": "it", "pt": "pt"}
+# Sprache des Textes (<html lang>, lang=): Portugiesisch ist brasilianisch formuliert,
+# gilt per hreflang="pt" aber fuer alle Portugiesisch-Sprecher, auch Portugal.
+HTML_LANG = dict(HREFLANG, pt="pt-BR")
+OG_LOCALE = {"de": "de_DE", "en": "en_US", "fr": "fr_FR", "es": "es_ES", "it": "it_IT", "pt": "pt_BR"}
+PADDLE_LOCALE = {"fr": "fr", "es": "es", "it": "it", "pt": "pt"}
 NAME = {"de": "Deutsch", "en": "English", "fr": "Français", "es": "Español",
-        "it": "Italiano", "pt-br": "Português (Brasil)"}
-CODE = {"de": "DE", "en": "EN", "fr": "FR", "es": "ES", "it": "IT", "pt-br": "PT"}
+        "it": "Italiano", "pt": "Português"}
+CODE = {"de": "DE", "en": "EN", "fr": "FR", "es": "ES", "it": "IT", "pt": "PT"}
 LABEL = {"de": "Sprache", "en": "Language", "fr": "Langue", "es": "Idioma",
-         "it": "Lingua", "pt-br": "Idioma"}
+         "it": "Lingua", "pt": "Idioma"}
 # Steht im Menue hinter einer Sprache, fuer die es die Seite nicht gibt - in
 # DIESER Sprache, damit der Leser vor dem Klick weiss, was ihn erwartet.
 FALLBACK_NOTE = {"fr": "page en anglais", "es": "página en inglés",
-                 "it": "pagina in inglese", "pt-br": "página em inglês",
+                 "it": "pagina in inglese", "pt": "página em inglês",
                  "de": "Seite auf Englisch", "en": "page in English"}
 
 # ------------------------------------------------------------ Seitenmodell ---
@@ -268,7 +271,7 @@ def menu_block(g, cur, floating=False):
         items.append('<li><a href="%s" lang="%s" hreflang="%s" data-lang="%s"%s>'
                      '<span class="lm-flag lm-flag-%s" aria-hidden="true"></span>'
                      '<span class="lm-txt"><span class="lm-name">%s</span>%s</span></a></li>'
-                     % (href, HREFLANG[l], HREFLANG[target], l, cur_attr, l, NAME[l], note))
+                     % (href, HTML_LANG[l], HREFLANG[target], l, cur_attr, l, NAME[l], note))
     extra = ""
     if kind == "inpage":
         extra = " data-inpage data-labels='%s'" % json.dumps({l: LABEL[l] for l in ("de", "en")})
@@ -358,7 +361,7 @@ def build(g, lang, src, tr):
 
     s = replace_i18n(src, value_for)
     s = rewrite_links(s, linkmap(lang), absolute=(lang in NEW))
-    s = s.replace('<html lang="de">', '<html lang="%s">' % HREFLANG[lang], 1)
+    s = s.replace('<html lang="de">', '<html lang="%s">' % HTML_LANG[lang], 1)
 
     # Titel, Description, Canonical, Social-Tags
     de_title = html.unescape(re.search(r"<title>(.*?)</title>", src, re.S).group(1))
@@ -387,8 +390,8 @@ def build(g, lang, src, tr):
 
     # JSON-LD
     s = s.replace('"url": "%s%s"' % (BASE, de_p), '"url": "%s%s"' % (BASE, url))
-    s = re.sub(r'"inLanguage":\s*\[[^\]]*\]', '"inLanguage": "%s"' % HREFLANG[lang], s)
-    s = re.sub(r'"inLanguage":\s*"de"', '"inLanguage": "%s"' % HREFLANG[lang], s)
+    s = re.sub(r'"inLanguage":\s*\[[^\]]*\]', '"inLanguage": "%s"' % HTML_LANG[lang], s)
+    s = re.sub(r'"inLanguage":\s*"de"', '"inLanguage": "%s"' % HTML_LANG[lang], s)
     lm = linkmap(lang); lm["/"] = HOME[lang]
     s = re.sub(r'"item": "%s(/[a-z0-9-]*)?"' % re.escape(BASE),
                lambda m: '"item": "%s%s"' % (BASE, lm.get(m.group(1) or "/", m.group(1) or "/")), s)
@@ -423,7 +426,7 @@ def build(g, lang, src, tr):
         tab = {k: T(v, etab.get(k, v), "text") for k, v in dtab.items()}
         i = s.index("const i18n = {\n"); j = s.index("\n};", i) + 3
         s = s[:i] + ("const i18n = {'%s': %s};\ni18n.de = i18n.en = i18n['%s'];"
-                     % (HREFLANG[lang], json.dumps(tab, ensure_ascii=False, indent=0), HREFLANG[lang])) + s[j:]
+                     % (HTML_LANG[lang], json.dumps(tab, ensure_ascii=False, indent=0), HTML_LANG[lang])) + s[j:]
         s = s.replace("locale: document.documentElement.lang || 'de'",
                       "locale: '%s'" % PADDLE_LOCALE[lang])
 

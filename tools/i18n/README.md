@@ -1,7 +1,8 @@
 # Sprachfassungen der Website
 
 Stand 01.11.2026. Sechs Sprachen: Deutsch (Quelle), Englisch, Französisch,
-Spanisch, Italienisch, Portugiesisch (Brasilien).
+Spanisch, Italienisch, Portugiesisch (brasilianisch formuliert, aber für alle
+Portugiesisch-Sprecher: `hreflang="pt"`, im Menü „Português“).
 
 ## Adressschema
 
@@ -12,7 +13,7 @@ Spanisch, Italienisch, Portugiesisch (Brasilien).
 | FR      | `/fr/`     | `/fr/voyzsession`   | `fr/voyzsession.html`    |
 | ES      | `/es/`     | `/es/voyzsession`   | `es/voyzsession.html`    |
 | IT      | `/it/`     | `/it/voyzsession`   | `it/voyzsession.html`    |
-| PT-BR   | `/pt-br/`  | `/pt-br/voyzsession`| `pt-br/voyzsession.html` |
+| PT      | `/pt/`     | `/pt/voyzsession`   | `pt/voyzsession.html`    |
 
 Warum so:
 

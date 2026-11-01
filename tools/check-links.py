@@ -14,9 +14,9 @@ Aufruf im Repo-Wurzelverzeichnis:  python3 tools/check-links.py     (Exit 1 bei 
 import glob, io, os, re, sys
 
 BASE = "https://pegelwerk.com"
-LANGS = ["de", "en", "fr", "es", "it", "pt-br"]
-HREFLANG = {"de": "de", "en": "en", "fr": "fr", "es": "es", "it": "it", "pt-br": "pt-BR"}
-NEW_DIRS = ("fr", "es", "it", "pt-br")
+LANGS = ["de", "en", "fr", "es", "it", "pt"]
+HREFLANG = {"de": "de", "en": "en", "fr": "fr", "es": "es", "it": "it", "pt": "pt"}
+NEW_DIRS = ("fr", "es", "it", "pt")
 FORBIDDEN = re.compile(r"mute-o-matic|\bRTW\b", re.I)
 NO_MENU = {"activate.html"}           # Weiterleitung aus der Lizenz-Mail, ohne Kopfzeile
 
@@ -116,14 +116,14 @@ for f, s in pages.items():
     m = re.search(r'<link rel="canonical" href="([^"]+)">', s)
     lang = re.search(r'<html lang="([^"]+)"', s).group(1)
     folder = f.split("/")[0] if "/" in f else None
-    if folder and lang != HREFLANG[folder]:
+    if folder and lang.split("-")[0] != HREFLANG[folder]:
         err(f, "<html lang=%s> passt nicht zum Ordner" % lang)
     if not alts:
         continue
     canon = m.group(1) if m else None
     if canon != BASE + url_of(f):
         err(f, "canonical %s != %s" % (canon, BASE + url_of(f)))
-    if alts.get(lang) != canon:
+    if alts.get(lang, alts.get(lang.split("-")[0])) != canon:   # pt-BR-Text, hreflang "pt"
         err(f, "hreflang fuer die eigene Sprache %s zeigt nicht auf canonical" % lang)
     if "x-default" in alts and alts["x-default"] != alts.get("en"):
         err(f, "x-default ist nicht die englische Fassung")

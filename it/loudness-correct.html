@@ -341,7 +341,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 
 <section class="section">
  <div class="section-label" data-i18n="lc_presets_label">Preset di consegna</div>
- <h2 class="section-h2" data-i18n="lc_presets_title">14 target di fabbrica</h2>
+ <h2 class="section-h2" data-i18n="lc_presets_title">13 target di fabbrica</h2>
  <p class="section-intro" data-i18n="lc_presets_intro">Da EBU R128 a OTT, da Apple Podcasts a YouTube. Un clic, e il passaggio di verifica documenta PASS / FAIL.</p>
 
  <div class="preset-grid">
@@ -381,7 +381,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="workflow-step">
  <div class="workflow-num">03</div>
  <h3 data-i18n="lc_w3_h">ANALYZE + CORRECT</h3>
- <p data-i18n="lc_w3_p">Il primo passaggio misura LUFS-I/S/M, LRA, TP. Il secondo scrive un nuovo file con gain statico → correzione LRA multibanda opzionale → limiter TP.</p>
+ <p data-i18n="lc_w3_p">Il primo passaggio misura LUFS-I/S/M, LRA, TP. Il secondo scrive un nuovo file con gain statico, correzione LRA multibanda opzionale e limiter TP.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">04</div>
@@ -412,10 +412,10 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <h4 data-i18n="lc_specs_proc">Elaborazione</h4>
  <ul>
  <li><b>TP-Limiter</b> 4x OS · 5 ms Lookahead</li>
- <li><b>Release</b> 50 ms exponentiell</li>
- <li><b>LRA</b> 3-Band Linkwitz-Riley 4. Ordnung</li>
+ <li><b>Release</b> 50 ms esponenziale</li>
+ <li><b>LRA</b> Linkwitz-Riley a 3 bande, 4° ordine</li>
  <li><b>Bands</b> <= 150 / 150-3k / &gt; 3 kHz</li>
- <li><b>Verify</b> Auto-Refine bei &gt; 0,1 LU</li>
+ <li><b>Verify</b> Auto-Refine se &gt; 0,1 LU</li>
  <li><b>Presets</b> 13 + Custom</li>
  </ul>
  </div>
@@ -426,7 +426,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <li><b>iPad</b> iPadOS 16+ Landscape Dark</li>
  <li><b>Input</b> WAV · AIFF · FLAC · MP3</li>
  <li><b>Output</b> WAV / AIFF · 16/24/32 Bit</li>
- <li><b>Channels</b> Mono bis 9.1.6 (16)</li>
+ <li><b>Channels</b> Da mono a 9.1.6 (16)</li>
  <li><b>Layouts</b> Auto · Film · DTS · Raw</li>
  </ul>
  </div>
@@ -503,7 +503,7 @@ const i18n = {'it': {
 "lc_f6_h": "Da mono a 9.1.6",
 "lc_f6_p": "Fino a 16 canali, quattro layout di routing (Auto/ITU, Film L-C-R, DTS, Raw/Stems). LFE conforme a BS.1770 con peso 0, surround con 1,41 nel dominio della potenza, esattamente secondo specifica, senza interpretazioni personali.",
 "lc_presets_label": "Preset di consegna",
-"lc_presets_title": "14 target di fabbrica",
+"lc_presets_title": "13 target di fabbrica",
 "lc_presets_intro": "Da EBU R128 a OTT, da Apple Podcasts a YouTube. Un clic, e il passaggio di verifica documenta PASS / FAIL.",
 "lc_preset_custom": "Custom",
 "lc_preset_custom_target": "Liberamente configurabile",
@@ -515,7 +515,7 @@ const i18n = {'it': {
 "lc_w2_h": "Scegli il preset",
 "lc_w2_p": "Uno dei 13 target di consegna oppure Custom con valori LUFS/TP/LRA personalizzati. Correzione LRA e limiter TP attivabili singolarmente.",
 "lc_w3_h": "ANALYZE + CORRECT",
-"lc_w3_p": "Il primo passaggio misura LUFS-I/S/M, LRA, TP. Il secondo scrive un nuovo file con gain statico → correzione LRA multibanda opzionale → limiter TP.",
+"lc_w3_p": "Il primo passaggio misura LUFS-I/S/M, LRA, TP. Il secondo scrive un nuovo file con gain statico, correzione LRA multibanda opzionale e limiter TP.",
 "lc_w4_h": "VERIFY + report",
 "lc_w4_p": "L’output viene rimisurato. Con |Residual| > 0,1 LU il secondo passaggio riparte. Report PDF con Source / Target / Result e badge PASS.",
 "lc_specs_label": "Dettagli tecnici",

@@ -89,6 +89,19 @@ Alle vier stimmen mit den App-Festlegungen überein (`tools/lang/README.md` im A
      jetzt mit Satzzeichen lesbar gemacht, IT mit „→“. Die DE-Quelle sollte repariert werden; danach bitte die Sprachen angleichen.
    * Zahl der Delivery-Presets: 13 (Nr 370), 14 (Nr 209/227/360/363) und 16 (Nr 293/302/305/325). Die Übersetzungen folgen dem
      Deutschen treu. Welche Zahl stimmt, ist eine Sachfrage an die App.
+**Erledigt am 01.11.2026 (Branch `claude/website-sprachen-e5c579`):**
+* Zu 1: Die Spezifikationslisten übersetzt jetzt `SPEC_EN` in `tools/i18n_en.py` (nur ganze Labels/Werte, Art `spec`
+  in der Gegenlese-Liste), insgesamt 38 deutsche Labels und Werte, nicht nur die zehn genannten.
+* Zu 2: Platzhalter jetzt „z. B. Name und Version“. JUCE ist von den Produktseiten und aus der Bestandteil-Tabelle
+  von `open-source(-en).html` entfernt: Der JUCE-8-EULA verlangt keinen Hinweis, Klausel 2.9 verbietet nur, Hinweise
+  im Framework zu entfernen. RME/UA/Mackie/Elgato/MakePro X bleiben (Nutzer). Der Platzhalter „z. B. RME UCX II“ im Feld
+  Audio-Interface ist geblieben.
+* Zu 3: Pfeile NICHT wieder eingesetzt: Commit `79c912c` hat sie bewusst entfernt (keine KI-typischen Unicode-Zeichen).
+  Stattdessen Kommas in DE, EN und allen vier Sprachen, IT ohne „→“. Preset-Zahl gegen `satk-loudness-correct`
+  `Source/Presets/LoudnessPresets.h:78` (14 Einträge = 13 Targets + Custom, Netflix/Leq seit iPad 1.1.0 entfernt):
+  iOS-Seite von 16 auf 14 Presets und 13 Targets, Netflix → OTT -27 LUFS, Leq-Kacheln raus; Mac-Titel
+  „14 Targets ab Werk“ → „13 Targets ab Werk“. Der Changelog (1.0.0 mit 16 Presets) bleibt als Geschichte stehen.
+
 4. **IT-Gedankenstrich:** Die Seiten setzen „ - “ (Bindestrich) als Gedankenstrich, wie das DE-Original. Typografisch richtig wäre
    „ – “. Nicht geändert, weil das DE-Original es genauso macht. Wenn gewünscht, lässt es sich in allen vier Sprachen
    mechanisch ersetzen.

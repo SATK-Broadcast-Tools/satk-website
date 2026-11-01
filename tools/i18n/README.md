@@ -58,6 +58,9 @@ python3 tools/check-links.py           # 404, Menü, hreflang, Download-Links
 `sed` auch `en.html`/`mac-en.html` anfasst, muss das Skript trotzdem laufen
 lassen. `check-links.py` meldet, wenn eine Sprache eine andere DMG-Version zeigt.
 
+**Spezifikationslisten** (`<li><b>Label</b> Wert</li>`, ohne `data-i18n`): deutsche Labels und Werte
+kommen nach `SPEC_EN` in `tools/i18n_en.py`, die Übersetzung in `<sprache>.json`.
+
 **Neuer Text auf einer Produktseite:** deutsch in die Seite und die `de:`-Tabelle,
 englisch in die `en:`-Tabelle, dann `python3 tools/build-i18n.py --export`. In
 `source.json` stehen danach alle Texte (Exportdatei, nicht eingecheckt). Die Übersetzungen kommen in

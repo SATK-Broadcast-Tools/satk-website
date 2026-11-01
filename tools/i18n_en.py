@@ -34,7 +34,7 @@ PAGES = {
    "EBU R128 / ITU-R BS.1770-4 loudness metering on iOS: loudness METER PRO for iPad with Silero VAD, forecast and MIDI learn."),
  "loudness-correct-ios.html": ("loudness-correct-ios-en.html", "/loudness-correct-ios", "/loudness-correct-ios-en",
    "pegelWERK loudness CORRECT - EBU R128 loudness correction on iPad",
-   "Offline EBU R128 loudness correction on the iPad. 16 delivery presets, two-pass with verify-and-refine, 4x polyphase true-peak limiter."),
+   "Offline EBU R128 loudness correction on the iPad. 14 delivery presets, two-pass with verify-and-refine, 4x polyphase true-peak limiter."),
  "voyzsession-ios.html": ("voyzsession-ios-en.html", "/voyzsession-ios", "/voyzsession-ios-en",
    "voyzSESSION for iPad - voice-over &amp; podcast, broadcast-ready | pegelWERK",
    "voyzSESSION for iPad: mix and master voice-over and podcast. AutoEdit, AutoMix to EBU R128, SmartDucker and R128 export."),
@@ -77,9 +77,52 @@ LITERAL_EN = {
  "Wraparound zum Cue-Punkt": "Wraparound to the cue point",
 }
 
+# Spezifikationslisten <li><b>Label</b> Wert</li> ohne data-i18n. Gilt nur fuer
+# GANZE Labels bzw. Werte (build-i18n.py, spec()). Schluessel ohne HTML-Entities.
+SPEC_EN = {
+ "Aktionen": "Actions",
+ "Histogramme": "Histograms",
+ "LFE-Gewicht": "LFE weight",
+ "Modi": "Modes",
+ "PPM-Skala": "PPM scale",
+ "Profil": "Profile",
+ "Sprache": "Language",
+ "Tastatur": "Keyboard",
+ "Stille-Skip am Anfang": "Skips leading silence",
+ "externe Interfaces (RME, UA, ...)": "external interfaces (RME, UA, ...)",
+ "Audio-Mode aktiv": "audio mode active",
+ "Mono bis 9.1.6 (16)": "Mono to 9.1.6 (16)",
+ "Linkwitz-Riley 4. Ordnung": "4th-order Linkwitz-Riley",
+ "3-Band Linkwitz-Riley 4. Ordnung": "3-band 4th-order Linkwitz-Riley",
+ "0 (BS.1770-konform)": "0 (BS.1770-compliant)",
+ "iPad (iPhone via HW-Tasten)": "iPad (iPhone via hardware buttons)",
+ "Name · Farbe · Vol": "Name · colour · vol",
+ "kein Server, keine Analytics": "no server, no analytics",
+ "50 ms exponentiell": "50 ms exponential",
+ "Hintergrund-Thread": "background thread",
+ "folgt Audio-Hardware / DAW": "follows audio hardware / DAW",
+ "folgt Audio-Hardware": "follows audio hardware",
+ "English UI": "English UI",
+ "Dateien · iCloud · AirDrop": "Files · iCloud · AirDrop",
+ "Dark, Sprache English": "Dark, English",
+ "Auto-Refine bei > 0,1 LU": "Auto-refine at > 0.1 LU",
+ "64 (1 pro Slot)": "64 (1 per slot)",
+ "Fit · Detail · zu In · zu Out": "Fit · Detail · to In · to Out",
+ "alle 4 Orientierungen": "all 4 orientations",
+ "Hoch + Quer": "Portrait + landscape",
+ "iOS 16+ (Mini · separate App)": "iOS 16+ (Mini · separate app)",
+ "Silero v5 (ONNX, lokal)": "Silero v5 (ONNX, local)",
+ "1,41 (Power-Domain)": "1.41 (power domain)",
+ "In/Out-Drag-Handles": "In/Out drag handles",
+ "WAV-Stems · Video-Mux": "WAV stems · video mux",
+ "1.5 s Smoothing": "1.5 s smoothing",
+ "Play · Play In · Play Out (1,5 s)": "Play · Play In · Play Out (1.5 s)",
+ "OFF · 0,5 · 1,5 · 4 s": "OFF · 0.5 · 1.5 · 4 s",
+}
+
 # Nur fuer placeholder-Attribute. value= bleibt bewusst deutsch: das sind die
 # Werte, die das Support-Formular absendet - sonst kaemen zwei Varianten an.
-PLACEHOLDER_EN = {"z. B.": "e.g."}
+PLACEHOLDER_EN = {"z. B.": "e.g.", "Name und Version": "name and version"}
 
 # Bild-Alternativtexte. Auf einer englischen Seite darf kein deutscher alt-Text
 # stehen - er zaehlt fuer Screenreader und die Bildersuche.
@@ -120,8 +163,8 @@ JSONLD_DESC_EN = {
    "Audio editor for iPhone and iPad. Open audio from the Files app, trim it, normalise to EBU R128 -23 LUFS with a true-peak limiter, export as 24-bit WAV. Round trip with pegelWERK instant PLAYER.",
  "Gratis-Soundboard f\u00fcr iPhone und iPad. 64 Pads in 4 Banks, MULTI/SINGLE-Mode mit Cross-Fade, AUTO-CUE, LOOP, .satkip-Show-Bundle. Round-Trip mit pegelWERK easy EDITOR.":
    "Free soundboard for iPhone and iPad. 64 pads in 4 banks, MULTI/SINGLE mode with cross-fade, AUTO-CUE, LOOP, .satkip show bundle. Round trip with pegelWERK easy EDITOR.",
- "Offline EBU-R128-Korrektur auf dem iPad. 16 Delivery-Presets, Two-Pass mit Verify-and-Refine, 4x Polyphase TP-Limiter, Mono bis 9.1.6 Surround.":
-   "Offline EBU R128 correction on the iPad. 16 delivery presets, two-pass with verify-and-refine, 4x polyphase TP limiter, mono to 9.1.6 surround.",
+ "Offline EBU-R128-Korrektur auf dem iPad. 14 Delivery-Presets, Two-Pass mit Verify-and-Refine, 4x Polyphase TP-Limiter, Mono bis 9.1.6 Surround.":
+   "Offline EBU R128 correction on the iPad. 14 delivery presets, two-pass with verify-and-refine, 4x polyphase TP limiter, mono to 9.1.6 surround.",
  "Offline-Lautheitskorrektur nach EBU R128, ATSC A/85, OTT, Spotify, YouTube. Two-Pass mit Verify-and-Refine auf +/-0,1 LU. macOS Standalone und iPad.":
    "Offline loudness correction to EBU R128, ATSC A/85, OTT, Spotify, YouTube. Two-pass with verify-and-refine to +/-0.1 LU. macOS standalone and iPad.",
  "Voice-Over gegen Bewegtbild auf dem iPad. Prompter mit Auto-Scroll, AutoEdit, AutoMix nach EBU R128, SmartDucker.":

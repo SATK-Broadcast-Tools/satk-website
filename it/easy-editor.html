@@ -298,7 +298,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="feature">
  <div class="feature-icon">Round-Trip</div>
  <h3 data-i18n="ee_f6_h">Andata e ritorno con instant PLAYER</h3>
- <p data-i18n="ee_f6_p">Scegli un pad in pegelWERK instant PLAYER → passalo a easy EDITOR → rifila, normalizza → con SEND BACK il risultato torna nello stesso pad. In standalone il pulsante si chiama invece EXPORT WAV. Basato su URL scheme, nessuna gestione manuale dei file.</p>
+ <p data-i18n="ee_f6_p">Scegli un pad in pegelWERK instant PLAYER, passalo a easy EDITOR, rifila e normalizza, e con SEND BACK il risultato torna nello stesso pad. In standalone il pulsante si chiama invece EXPORT WAV. Basato su URL scheme, nessuna gestione manuale dei file.</p>
  </div>
  </div>
 </section>
@@ -361,17 +361,17 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 <section class="section">
  <div class="section-label" data-i18n="ee_specs_label">Dettagli tecnici</div>
  <h2 class="section-h2" data-i18n="ee_specs_title">Built for iOS</h2>
- <p class="section-intro" data-i18n="ee_specs_intro">App iOS nativa basata su JUCE. Motore R128 condiviso con pegelWERK loudness CORRECT.</p>
+ <p class="section-intro" data-i18n="ee_specs_intro">App iOS nativa. Motore R128 condiviso con pegelWERK loudness CORRECT.</p>
 
  <div class="specs">
  <div class="spec-col">
  <h4 data-i18n="ee_specs_edit">Motore di editing</h4>
  <ul>
- <li><b>Aktionen</b> Trim · Cut · Undo</li>
- <li><b>Selection</b> In/Out-Drag-Handles</li>
+ <li><b>Azioni</b> Trim · Cut · Undo</li>
+ <li><b>Selection</b> Maniglie In/Out</li>
  <li><b>Preview</b> Play · Play In · Play Out (1,5 s)</li>
- <li><b>Zoom</b> Fit · Detail · zu In · zu Out</li>
- <li><b>Render</b> Hintergrund-Thread</li>
+ <li><b>Zoom</b> Fit · Dettaglio · a In · a Out</li>
+ <li><b>Render</b> thread in background</li>
  <li><b>Channels</b> Mono · Stereo</li>
  </ul>
  </div>
@@ -389,12 +389,12 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="spec-col">
  <h4 data-i18n="ee_specs_io">Piattaforma &amp; I/O</h4>
  <ul>
- <li><b>iPhone</b> Hoch + Quer</li>
- <li><b>iPad</b> alle 4 Orientierungen</li>
+ <li><b>iPhone</b> Verticale + orizzontale</li>
+ <li><b>iPad</b> tutti e 4 gli orientamenti</li>
  <li><b>Input</b> WAV · MP3 · M4A · FLAC · AIFF · OGG</li>
- <li><b>Storage</b> Dateien · iCloud · AirDrop</li>
+ <li><b>Storage</b> File · iCloud · AirDrop</li>
  <li><b>URL-Scheme</b> easyeditor://</li>
- <li><b>Privacy</b> kein Server, keine Analytics</li>
+ <li><b>Privacy</b> nessun server, nessuna analisi d’uso</li>
  </ul>
  </div>
  </div>
@@ -467,7 +467,7 @@ const i18n = {'it': {
 "ee_f5_h": "Limiter TP polifase 4x",
 "ee_f5_p": "Protezione dai picchi inter-sample con filtro polifase in sovracampionamento 4x. Mantiene l’uscita sotto -1 dBTP, conforme a ITU-R BS.1770-4, identico al motore di pegelWERK loudness CORRECT.",
 "ee_f6_h": "Andata e ritorno con instant PLAYER",
-"ee_f6_p": "Scegli un pad in pegelWERK instant PLAYER → passalo a easy EDITOR → rifila, normalizza → con SEND BACK il risultato torna nello stesso pad. In standalone il pulsante si chiama invece EXPORT WAV. Basato su URL scheme, nessuna gestione manuale dei file.",
+"ee_f6_p": "Scegli un pad in pegelWERK instant PLAYER, passalo a easy EDITOR, rifila e normalizza, e con SEND BACK il risultato torna nello stesso pad. In standalone il pulsante si chiama invece EXPORT WAV. Basato su URL scheme, nessuna gestione manuale dei file.",
 "ee_wf_label": "Come funziona",
 "ee_wf_title": "In 4 passi al file finito",
 "ee_wf_intro": "Importa, taglia, normalizza, esporta: niente sessioni, niente tracce. Si usa allo stesso modo su iPhone (verticale e orizzontale) e iPad (tutti e quattro gli orientamenti).",
@@ -481,7 +481,7 @@ const i18n = {'it': {
 "ee_w4_p": "EXPORT WAV salva un WAV a 24 bit (frequenza di campionamento nativa, opzionalmente normalizzato R128) tramite il selettore di file. Se il file arriva da instant PLAYER, il pulsante si chiama SEND BACK e il risultato torna nel pad di origine.",
 "ee_specs_label": "Dettagli tecnici",
 "ee_specs_title": "Built for iOS",
-"ee_specs_intro": "App iOS nativa basata su JUCE. Motore R128 condiviso con pegelWERK loudness CORRECT.",
+"ee_specs_intro": "App iOS nativa. Motore R128 condiviso con pegelWERK loudness CORRECT.",
 "ee_specs_edit": "Motore di editing",
 "ee_specs_export": "Esportazione & R128",
 "ee_specs_io": "Piattaforma & I/O",

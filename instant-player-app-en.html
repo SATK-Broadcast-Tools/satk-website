@@ -381,17 +381,17 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 <section class="section">
  <div class="section-label" data-i18n="ip_specs_label">Technical Details</div>
  <h2 class="section-h2" data-i18n="ip_specs_title">Built for Live</h2>
- <p class="section-intro" data-i18n="ip_specs_intro">Native iOS app on JUCE audio. Background-audio enabled so cues keep playing when the screen locks.</p>
+ <p class="section-intro" data-i18n="ip_specs_intro">Native iOS app. Background-audio enabled so cues keep playing when the screen locks.</p>
 
  <div class="specs">
  <div class="spec-col">
  <h4 data-i18n="ip_specs_pad">Pad engine</h4>
  <ul>
  <li><b>Slots</b> 64 (4 Banks x 16)</li>
- <li><b>Voices</b> 64 (1 pro Slot)</li>
- <li><b>Per-Pad</b> Name · Farbe · Vol</li>
+ <li><b>Voices</b> 64 (1 per slot)</li>
+ <li><b>Per-Pad</b> Name · colour · vol</li>
  <li><b>LOOP</b> Wraparound to the cue point</li>
- <li><b>AUTO-CUE</b> Stille-Skip am Anfang</li>
+ <li><b>AUTO-CUE</b> Skips leading silence</li>
  <li><b>Waveform</b> Mini preview with cue marker</li>
  </ul>
  </div>
@@ -399,21 +399,21 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <h4 data-i18n="ip_specs_modes">Modes &amp; Control</h4>
  <ul>
  <li><b>Mode</b> MULTI · SINGLE</li>
- <li><b>FADE</b> OFF · 0,5 · 1,5 · 4 s</li>
- <li><b>Tastatur</b> 1234 · QWER · ASDF · ZXCV</li>
+ <li><b>FADE</b> OFF · 0.5 · 1.5 · 4 s</li>
+ <li><b>Keyboard</b> 1234 · QWER · ASDF · ZXCV</li>
  <li><b>Banks</b> F5 · F6 · F7 · F8</li>
  <li><b>Stop All</b> ESC</li>
- <li><b>Master-Vol</b> iPad (iPhone via HW-Tasten)</li>
+ <li><b>Master-Vol</b> iPad (iPhone via hardware buttons)</li>
  </ul>
  </div>
  <div class="spec-col">
  <h4 data-i18n="ip_specs_io">Platform &amp; I/O</h4>
  <ul>
- <li><b>iPhone</b> Hoch + Quer</li>
- <li><b>iPad</b> alle 4 Orientierungen</li>
+ <li><b>iPhone</b> Portrait + landscape</li>
+ <li><b>iPad</b> all 4 orientations</li>
  <li><b>Input</b> WAV · AIFF · MP3 · M4A · FLAC · OGG</li>
  <li><b>Show</b> .satkip (ZIP with 24-bit WAVs)</li>
- <li><b>Background</b> Audio-Mode aktiv</li>
+ <li><b>Background</b> audio mode active</li>
  <li><b>URL-Scheme</b> instantplayer://</li>
  </ul>
  </div>
@@ -514,7 +514,7 @@ const i18n = {
  ip_w4_p: 'SAVE schreibt eine .satkip-Datei mit Manifest und allen Audios als 24-Bit-WAV. Per AirDrop oder Files aufs nächste iPad, dort doppelklicken, Show steht.',
  ip_specs_label: 'Technische Details',
  ip_specs_title: 'Built for Live',
- ip_specs_intro: 'Native iOS-App auf JUCE-Audio. Background-Audio aktiviert, damit Cues bei gesperrtem Display weiterlaufen.',
+ ip_specs_intro: 'Native iOS-App. Background-Audio aktiviert, damit Cues bei gesperrtem Display weiterlaufen.',
  ip_specs_pad: 'Pad-Engine',
  ip_specs_modes: 'Modes & Steuerung',
  ip_specs_io: 'Plattform & I/O',
@@ -591,7 +591,7 @@ const i18n = {
  ip_w4_p: 'SAVE writes a .satkip file with manifest and all audio as 24-bit WAVs. Via AirDrop or Files to the next iPad, open it there, show is up.',
  ip_specs_label: 'Technical Details',
  ip_specs_title: 'Built for Live',
- ip_specs_intro: 'Native iOS app on JUCE audio. Background-audio enabled so cues keep playing when the screen locks.',
+ ip_specs_intro: 'Native iOS app. Background-audio enabled so cues keep playing when the screen locks.',
  ip_specs_pad: 'Pad engine',
  ip_specs_modes: 'Modes & Control',
  ip_specs_io: 'Platform & I/O',

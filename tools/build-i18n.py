@@ -410,6 +410,13 @@ def build(g, lang, src, tr):
     for de_txt, en_txt in EN.ALT_EN.items():
         if 'alt="%s"' % de_txt in s:
             s = s.replace('alt="%s"' % de_txt, 'alt="%s"' % attr(T(de_txt, en_txt, "alt")))
+    # Spezifikationslisten <li><b>Label</b> Wert</li>: nur ganze Labels/Werte tauschen,
+    # Kurzwoerter wie "Modi" oder "Sprache" sonst auch mitten im Fliesstext
+    def spec(txt):
+        de = html.unescape(txt)
+        return esc(T(de, EN.SPEC_EN[de], "spec")) if de in EN.SPEC_EN else txt
+    s = re.sub(r"(<li><b>)([^<]*)(</b> )([^<]*)(</li>)",
+               lambda m: m.group(1) + spec(m.group(2)) + m.group(3) + spec(m.group(4)) + m.group(5), s)
     lits = dict(EN.LITERAL_EN, **(LITERAL_NEW if lang in NEW else {}))
     lit = {k: esc(T(k, v, "literal")) for k, v in lits.items() if k in s}
     s = apply_literals(s, lit)

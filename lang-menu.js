@@ -41,8 +41,10 @@
         else a.removeAttribute('aria-current');
       });
       var code = btn.querySelector('.lm-code'), sr = btn.querySelector('.lm-sr');
-      var name = links[currentIndex()].firstChild.nodeValue;
+      var flag = btn.querySelector('.lm-flag');
+      var name = links[currentIndex()].querySelector('.lm-name').textContent;
       if (code) code.textContent = l.toUpperCase();
+      if (flag) flag.className = 'lm-flag lm-flag-' + l;
       if (sr) sr.textContent = ' – ' + (labels[l] || 'Language') + ': ' + name;
     }
     if (inpage) {

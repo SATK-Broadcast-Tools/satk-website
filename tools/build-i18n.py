@@ -36,7 +36,7 @@ import i18n_en as EN
 
 BASE = EN.BASE
 I18N_DIR = os.path.join("tools", "i18n")
-ASSET_V = "1"                       # Cache-Buster fuer lang-menu.css/.js (7 Tage immutable)
+ASSET_V = "2"                       # Cache-Buster fuer lang-menu.css/.js (7 Tage immutable)
 
 LANGS = ["de", "en", "fr", "es", "it", "pt-br"]
 NEW = ["fr", "es", "it", "pt-br"]
@@ -247,9 +247,6 @@ def head_block(g, cur):
     return "<!--LANG-HEAD-->\n%s\n<!--/LANG-HEAD-->" % "\n".join(lines)
 
 
-GLOBE = ('<svg class="lm-globe" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" '
-         'stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9.5"/>'
-         '<path d="M2.5 12h19M12 2.5c2.6 2.7 3.9 5.9 3.9 9.5s-1.3 6.8-3.9 9.5M12 2.5C9.4 5.2 8.1 8.4 8.1 12s1.3 6.8 3.9 9.5"/></svg>')
 CHEV = ('<svg class="lm-chev" aria-hidden="true" width="9" height="6" viewBox="0 0 12 8" fill="currentColor">'
         '<path d="M6 8L0 0h12z"/></svg>')
 
@@ -268,14 +265,17 @@ def menu_block(g, cur, floating=False):
             href, target = alt["en"], "en"
             note = '<small>%s</small>' % FALLBACK_NOTE[l]
         cur_attr = ' aria-current="true"' if l == cur else ""
-        items.append('<li><a href="%s" lang="%s" hreflang="%s" data-lang="%s"%s>%s%s</a></li>'
-                     % (href, HREFLANG[l], HREFLANG[target], l, cur_attr, NAME[l], note))
+        items.append('<li><a href="%s" lang="%s" hreflang="%s" data-lang="%s"%s>'
+                     '<span class="lm-flag lm-flag-%s" aria-hidden="true"></span>'
+                     '<span class="lm-txt"><span class="lm-name">%s</span>%s</span></a></li>'
+                     % (href, HREFLANG[l], HREFLANG[target], l, cur_attr, l, NAME[l], note))
     extra = ""
     if kind == "inpage":
         extra = " data-inpage data-labels='%s'" % json.dumps({l: LABEL[l] for l in ("de", "en")})
     btn = ('<button type="button" class="lm-btn" aria-expanded="false" aria-controls="lm-list">'
-           '%s<span class="lm-code">%s</span><span class="lm-sr"> – %s: %s</span>%s</button>'
-           % (GLOBE, CODE[cur], LABEL[cur], NAME[cur], CHEV))
+           '<span class="lm-flag lm-flag-%s" aria-hidden="true"></span>'
+           '<span class="lm-code">%s</span><span class="lm-sr"> – %s: %s</span>%s</button>'
+           % (cur, CODE[cur], LABEL[cur], NAME[cur], CHEV))
     return ('<!--LANG-MENU--><div class="lm%s"%s>%s<ul class="lm-list" id="lm-list" hidden>%s</ul></div><!--/LANG-MENU-->'
             % (" lm-float" if floating else "", extra, btn, "".join(items)))
 

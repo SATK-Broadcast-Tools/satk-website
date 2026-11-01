@@ -281,7 +281,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="feature">
  <div class="feature-icon">True Peak</div>
  <h3 data-i18n="lc_f3_h">Limiteur polyphase 4x</h3>
- <p data-i18n="lc_f3_p">Protection contre les crêtes inter-échantillons avec 5 ms d’anticipation et un relâchement exponentiel de 50 ms. Enveloppe à double constante de temps : pas d’effet de pompage, pas de distorsion sur les transitoires.</p>
+ <p data-i18n="lc_f3_p">Protection contre les crêtes inter-échantillons avec 5 ms de lookahead et un release exponentiel de 50 ms. Enveloppe à double constante de temps : pas d’effet de pompage, pas de distorsion sur les transitoires.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Surround</div>
@@ -291,7 +291,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="feature">
  <div class="feature-icon">LRA</div>
  <h3 data-i18n="lc_f5_h">Remodelage 3 bandes</h3>
- <p data-i18n="lc_f5_p">Activable en option si le LRA est trop élevé. Filtre Linkwitz-Riley du 4e ordre avec séparation à &lt;= 150 Hz et &gt;= 3 kHz. Compression à genou doux par bande avec constantes de temps propres à chaque bande, reconstruction parfaite.</p>
+ <p data-i18n="lc_f5_p">Activable en option si le LRA est trop élevé. Filtre Linkwitz-Riley du 4e ordre avec séparation à &lt;= 150 Hz et &gt;= 3 kHz. Compression soft knee par bande avec constantes de temps propres à chaque bande, reconstruction parfaite.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Files</div>
@@ -462,11 +462,11 @@ const i18n = {'fr': {
 "lc_f2_h": "Verify-and-Refine",
 "lc_f2_p": "La passe 1 mesure, la passe 2 écrit le fichier en appliquant le gain de correction. Si le résultat s’écarte de plus de 0,1 LU de la cible, une passe d’affinage supplémentaire est lancée automatiquement. Pas d’« à peu près ».",
 "lc_f3_h": "Limiteur polyphase 4x",
-"lc_f3_p": "Protection contre les crêtes inter-échantillons avec 5 ms d’anticipation et un relâchement exponentiel de 50 ms. Enveloppe à double constante de temps : pas d’effet de pompage, pas de distorsion sur les transitoires.",
+"lc_f3_p": "Protection contre les crêtes inter-échantillons avec 5 ms de lookahead et un release exponentiel de 50 ms. Enveloppe à double constante de temps : pas d’effet de pompage, pas de distorsion sur les transitoires.",
 "lc_f4_h": "Du mono au 9.1.6",
 "lc_f4_p": "Jusqu’à 16 canaux : mono, stéréo, 5.1, 6.1, 7.1, 7.1.2, 7.1.4, 9.1.4, 9.1.6. Quatre configurations de routage (Auto/ITU, Film L-C-R, DTS, Raw/Stems). LFE conforme BS.1770 avec un poids de 0, canaux surround à 1,41, exactement selon la norme.",
 "lc_f5_h": "Remodelage 3 bandes",
-"lc_f5_p": "Activable en option si le LRA est trop élevé. Filtre Linkwitz-Riley du 4e ordre avec séparation à <= 150 Hz et >= 3 kHz. Compression à genou doux par bande avec constantes de temps propres à chaque bande, reconstruction parfaite.",
+"lc_f5_p": "Activable en option si le LRA est trop élevé. Filtre Linkwitz-Riley du 4e ordre avec séparation à <= 150 Hz et >= 3 kHz. Compression soft knee par bande avec constantes de temps propres à chaque bande, reconstruction parfaite.",
 "lc_f6_h": "Flux de travail avec l’app Fichiers",
 "lc_f6_p": "Import via l’app Fichiers, iCloud Drive ou AirDrop. La sortie est enregistrée dans les documents de l’app, partageable aussitôt via l’app Fichiers ou par AirDrop. Nommage : <input>_<preset>.wav.",
 "lc_presets_label": "Presets de livraison",

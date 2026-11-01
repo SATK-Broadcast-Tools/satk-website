@@ -285,12 +285,12 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="feature">
  <div class="feature-icon">True Peak</div>
  <h3 data-i18n="lc_f2_h">Limiteur True Peak polyphase 4x</h3>
- <p data-i18n="lc_f2_p">Coefficients polyphase identiques à ceux du détecteur TP : ce qu’il mesure, il le limite. 5 ms d’anticipation, enveloppe à double constante de temps, relâchement exponentiel de 50 ms. Des courbes de limitation propres et plates, sans pompage.</p>
+ <p data-i18n="lc_f2_p">Coefficients polyphase identiques à ceux du détecteur TP : ce qu’il mesure, il le limite. 5 ms de lookahead, enveloppe à double constante de temps, release exponentiel de 50 ms. Des courbes de limitation propres et plates, sans pompage.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">LRA</div>
  <h3 data-i18n="lc_f3_h">Processeur LRA 3 bandes</h3>
- <p data-i18n="lc_f3_p">Linkwitz-Riley du 4e ordre avec reconstruction parfaite. Grave &lt;= 150 Hz, médium 150-3000 Hz, aigu &gt; 3000 Hz. Compresseur à genou doux par bande avec enveloppe RMS. Constantes de temps propres à chaque bande, pour ramener tout LRA dans le couloir de diffusion.</p>
+ <p data-i18n="lc_f3_p">Linkwitz-Riley du 4e ordre avec reconstruction parfaite. Grave &lt;= 150 Hz, médium 150-3000 Hz, aigu &gt; 3000 Hz. Compresseur soft knee par bande avec enveloppe RMS. Constantes de temps propres à chaque bande, pour ramener tout LRA dans le couloir de diffusion.</p>
  </div>
  <div class="feature">
  <div class="feature-icon">Verify</div>
@@ -381,7 +381,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="workflow-step">
  <div class="workflow-num">03</div>
  <h3 data-i18n="lc_w3_h">ANALYZE + CORRECT</h3>
- <p data-i18n="lc_w3_p">La passe 1 mesure LUFS-I/S/M, LRA, TP. La passe 2 écrit un nouveau fichier avec gain statique correction LRA multibande optionnelle limiteur TP.</p>
+ <p data-i18n="lc_w3_p">La passe 1 mesure LUFS-I/S/M, LRA, TP. La passe 2 écrit un nouveau fichier avec gain statique → correction LRA multibande optionnelle → limiteur TP.</p>
  </div>
  <div class="workflow-step">
  <div class="workflow-num">04</div>
@@ -493,9 +493,9 @@ const i18n = {'fr': {
 "lc_f1_h": "Pondération K + double gating",
 "lc_f1_p": "Filtre K ITU-R BS.1770-4 (Pre + RLB), blocs de 400 ms avec 75 % de recouvrement, gating absolu à -70 LUFS et relatif à -10 LU. LUFS-I, LUFS-S Max, LUFS-M Max, LRA (EBU Tech 3342) : toutes les valeurs exactement selon la norme.",
 "lc_f2_h": "Limiteur True Peak polyphase 4x",
-"lc_f2_p": "Coefficients polyphase identiques à ceux du détecteur TP : ce qu’il mesure, il le limite. 5 ms d’anticipation, enveloppe à double constante de temps, relâchement exponentiel de 50 ms. Des courbes de limitation propres et plates, sans pompage.",
+"lc_f2_p": "Coefficients polyphase identiques à ceux du détecteur TP : ce qu’il mesure, il le limite. 5 ms de lookahead, enveloppe à double constante de temps, release exponentiel de 50 ms. Des courbes de limitation propres et plates, sans pompage.",
 "lc_f3_h": "Processeur LRA 3 bandes",
-"lc_f3_p": "Linkwitz-Riley du 4e ordre avec reconstruction parfaite. Grave <= 150 Hz, médium 150-3000 Hz, aigu > 3000 Hz. Compresseur à genou doux par bande avec enveloppe RMS. Constantes de temps propres à chaque bande, pour ramener tout LRA dans le couloir de diffusion.",
+"lc_f3_p": "Linkwitz-Riley du 4e ordre avec reconstruction parfaite. Grave <= 150 Hz, médium 150-3000 Hz, aigu > 3000 Hz. Compresseur soft knee par bande avec enveloppe RMS. Constantes de temps propres à chaque bande, pour ramener tout LRA dans le couloir de diffusion.",
 "lc_f4_h": "Deux passes avec affinage automatique",
 "lc_f4_p": "La passe 1 mesure, la passe 2 corrige, une troisième passe vérifie. Si l’écart résiduel dépasse 0,1 LU, la passe de correction est relancée automatiquement avec un gain ajusté. Résultat : votre cible à +/-0,1 LU.",
 "lc_f5_h": "14 presets de livraison",
@@ -515,7 +515,7 @@ const i18n = {'fr': {
 "lc_w2_h": "Choisir le preset",
 "lc_w2_p": "Une des 13 cibles de livraison ou Custom avec vos propres valeurs LUFS/TP/LRA. Correction LRA et limiteur TP activables séparément.",
 "lc_w3_h": "ANALYZE + CORRECT",
-"lc_w3_p": "La passe 1 mesure LUFS-I/S/M, LRA, TP. La passe 2 écrit un nouveau fichier avec gain statique correction LRA multibande optionnelle limiteur TP.",
+"lc_w3_p": "La passe 1 mesure LUFS-I/S/M, LRA, TP. La passe 2 écrit un nouveau fichier avec gain statique → correction LRA multibande optionnelle → limiteur TP.",
 "lc_w4_h": "VERIFY + rapport",
 "lc_w4_p": "La sortie est mesurée à nouveau. Si |écart résiduel| > 0,1 LU, la passe 2 est relancée. Rapport PDF avec Source / Target / Result et badge PASS.",
 "lc_specs_label": "Détails techniques",

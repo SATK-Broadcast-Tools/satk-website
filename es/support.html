@@ -211,7 +211,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  </div>
 
  <!-- Erfolgs-Banner (außerhalb des Forms, damit er nicht mit ausgeblendet wird) -->
- <div id="sentBanner" style="display:none;padding:24px 28px;border:1px solid var(--ac);border-radius:10px;background:rgba(79,185,154,.06);color:var(--ac);font-family:'Arimo',sans-serif;font-size:14px;font-weight:600;letter-spacing:.3px;margin-bottom:32px;text-align:center;line-height:1.6" data-i18n="sup_sent">✓ Muchas gracias, hemos recibido tu solicitud. En breve recibirás un correo de confirmación. Te respondo en días laborables, normalmente en menos de 24 horas.</div>
+ <div id="sentBanner" style="display:none;padding:24px 28px;border:1px solid var(--ac);border-radius:10px;background:rgba(79,185,154,.06);color:var(--ac);font-family:'Arimo',sans-serif;font-size:14px;font-weight:600;letter-spacing:.3px;margin-bottom:32px;text-align:center;line-height:1.6" data-i18n="sup_sent">✓ Muchas gracias, tu solicitud ha llegado correctamente. En breve recibirás un correo de confirmación. Te respondo en días laborables, normalmente en menos de 24 horas.</div>
 
  <!-- Fehler-Banner mit Mailto-Fallback (Daten gehen nicht verloren) -->
  <div id="errorBanner" style="display:none;padding:22px 26px;border:1px solid #f0a060;border-radius:10px;background:rgba(240,160,96,.06);margin-bottom:32px;line-height:1.7">
@@ -226,7 +226,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
 
  <h2 style="font-family:'Arimo',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.2px;color:var(--tx);margin-bottom:8px" data-i18n="sup_form_h2">Solicitud de soporte</h2>
- <p style="font-size:12px;color:var(--mu2);margin-bottom:28px;line-height:1.6" data-i18n="sup_form_intro">Rellena los campos de la forma más completa posible: la versión de la app y del sistema operativo son decisivas para el seguimiento de errores. Si quieres, puedes enviar después capturas de pantalla, registros de fallos o ejemplos de audio como adjuntos en tu correo de respuesta.</p>
+ <p style="font-size:12px;color:var(--mu2);margin-bottom:28px;line-height:1.6" data-i18n="sup_form_intro">Rellena los campos de la forma más completa posible: las versiones de la app y del sistema operativo son decisivas para el seguimiento de errores. Si quieres, puedes enviar después capturas de pantalla, registros de fallos o ejemplos de audio como adjuntos en tu correo de respuesta.</p>
 
  <!-- ╔══ Kontakt ═══════════════════════════════════════════╗ -->
  <div class="form-section">
@@ -270,7 +270,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <label class="form-label" for="topic" data-i18n="sup_label_topic">Motivo</label>
  <select class="form-select" id="topic" name="Anliegen" required>
  <option value="Bug / Crash">Bug / Crash</option>
- <option value="Frage / Wie geht...">Pregunta / Cómo se hace...</option>
+ <option value="Frage / Wie geht...">Pregunta / ¿cómo se hace...?</option>
  <option value="Feature-Wunsch">Sugerencia de función</option>
  <option value="Lizenz / Bestellung">Licencia / pedido</option>
  <option value="Sonstiges">Otros</option>
@@ -300,7 +300,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  </div>
  <div class="form-row-grid">
  <div class="form-row">
- <label class="form-label" for="daw">DAW <span class="opt" data-i18n="sup_optional">(opcional, solo para plugins)</span></label>
+ <label class="form-label" for="daw">DAW <span class="opt" data-i18n="sup_optional">(opcional, solo para plug-ins)</span></label>
  <input class="form-input" type="text" id="daw" name="DAW" placeholder="p. ej. Pro Tools 2024.3">
  </div>
  <div class="form-row">
@@ -409,11 +409,11 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <h2 data-i18n="sup_faq_h">Preguntas frecuentes</h2>
  <div class="faq-item">
  <h3 data-i18n="sup_q1_h">¿Dónde encuentro mi licencia?</h3>
- <p data-i18n-html="sup_q1_p">Las claves de licencia llegan por correo electrónico de Paddle justo después de la compra (para compras de plugins) o quedan registradas en tu cuenta del App Store de Apple (para apps de Mac y iPad). ¿Ya no tienes el correo a mano? <a href="/manage-license" style="color:var(--ac);text-decoration:underline">Gestiona tu licencia en el portal de autoservicio</a>, solicita de nuevo el correo de activación o consulta los dispositivos activados.</p>
+ <p data-i18n-html="sup_q1_p">Las claves de licencia llegan por correo electrónico de Paddle justo después de la compra (para compras de plug-ins) o quedan registradas en tu cuenta del App Store de Apple (para apps de Mac y iPad). ¿Ya no tienes el correo a mano? <a href="/manage-license" style="color:var(--ac);text-decoration:underline">Gestiona tu licencia en el portal de autoservicio</a>, solicita de nuevo el correo de activación o consulta los dispositivos activados.</p>
  </div>
  <div class="faq-item">
  <h3 data-i18n="sup_q2_h">¿En cuántos ordenadores puedo usar el software?</h3>
- <p data-i18n="sup_q2_p">Las licencias de plugin y standalone son válidas para 2 ordenadores. Las apps del App Store siguen las condiciones habituales de Apple (se puede usar En familia).</p>
+ <p data-i18n="sup_q2_p">Las licencias de plug-in y standalone son válidas para 2 ordenadores. Las apps del App Store siguen las condiciones habituales de Apple (se puede usar En familia).</p>
  </div>
  <div class="faq-item">
  <h3 data-i18n="sup_q3_h">¿Actualizaciones y versiones?</h3>
@@ -472,7 +472,7 @@ const i18n = {'es': {
 "sup_lang_h": "Idiomas",
 "sup_lang_p": "Alemán e inglés.",
 "sup_form_h2": "Solicitud de soporte",
-"sup_form_intro": "Rellena los campos de la forma más completa posible: la versión de la app y del sistema operativo son decisivas para el seguimiento de errores. Si quieres, puedes enviar después capturas de pantalla, registros de fallos o ejemplos de audio como adjuntos en tu correo de respuesta.",
+"sup_form_intro": "Rellena los campos de la forma más completa posible: las versiones de la app y del sistema operativo son decisivas para el seguimiento de errores. Si quieres, puedes enviar después capturas de pantalla, registros de fallos o ejemplos de audio como adjuntos en tu correo de respuesta.",
 "sup_sec_contact": "Contacto",
 "sup_sec_software": "Software",
 "sup_sec_system": "Sistema",
@@ -486,20 +486,20 @@ const i18n = {'es': {
 "sup_label_topic": "Motivo",
 "sup_label_subject": "Asunto",
 "sup_label_message": "Descripción del error / pregunta",
-"sup_optional": "(opcional, solo para plugins)",
+"sup_optional": "(opcional, solo para plug-ins)",
 "sup_optional2": "(opcional)",
 "sup_optional3": "(opcional, ayuda muchísimo con los errores)",
 "sup_submit": "Enviar",
 "sup_form_note": "La solicitud llega directamente por correo electrónico a info@pegelwerk.com. Recibirás una confirmación automática. Puedes enviar después los adjuntos (capturas de pantalla, registros, audio) en un correo de respuesta.",
-"sup_sent": "✓ Muchas gracias, hemos recibido tu solicitud. En breve recibirás un correo de confirmación. Te respondo en días laborables, normalmente en menos de 24 horas.",
+"sup_sent": "✓ Muchas gracias, tu solicitud ha llegado correctamente. En breve recibirás un correo de confirmación. Te respondo en días laborables, normalmente en menos de 24 horas.",
 "sup_err_h": "No se puede enviar en este momento",
 "sup_err_p": "El formulario no ha podido entregar tu solicitud en este momento. No pasa nada: envíala directamente por correo electrónico. Todos los datos introducidos se rellenarán automáticamente en el correo.",
 "sup_err_btn": "📧 Enviar por correo electrónico",
 "sup_faq_h": "Preguntas frecuentes",
 "sup_q1_h": "¿Dónde encuentro mi licencia?",
-"sup_q1_p": "Las claves de licencia llegan por correo electrónico de Paddle justo después de la compra (para compras de plugins) o quedan registradas en tu cuenta del App Store de Apple (para apps de Mac y iPad). ¿Ya no tienes el correo a mano? <a href=\"/manage-license\" style=\"color:var(--ac);text-decoration:underline\">Gestiona tu licencia en el portal de autoservicio</a>, solicita de nuevo el correo de activación o consulta los dispositivos activados.",
+"sup_q1_p": "Las claves de licencia llegan por correo electrónico de Paddle justo después de la compra (para compras de plug-ins) o quedan registradas en tu cuenta del App Store de Apple (para apps de Mac y iPad). ¿Ya no tienes el correo a mano? <a href=\"/manage-license\" style=\"color:var(--ac);text-decoration:underline\">Gestiona tu licencia en el portal de autoservicio</a>, solicita de nuevo el correo de activación o consulta los dispositivos activados.",
 "sup_q2_h": "¿En cuántos ordenadores puedo usar el software?",
-"sup_q2_p": "Las licencias de plugin y standalone son válidas para 2 ordenadores. Las apps del App Store siguen las condiciones habituales de Apple (se puede usar En familia).",
+"sup_q2_p": "Las licencias de plug-in y standalone son válidas para 2 ordenadores. Las apps del App Store siguen las condiciones habituales de Apple (se puede usar En familia).",
 "sup_q3_h": "¿Actualizaciones y versiones?",
 "sup_q3_p": "Todas las actualizaciones menores dentro de la versión mayor son gratuitas. Las actualizaciones mayores tienen un precio de actualización reducido.",
 "sup_q4_h": "¿Se suben mis datos de audio a la nube?",

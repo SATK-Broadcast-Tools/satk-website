@@ -52,6 +52,8 @@ NAME = {"de": "Deutsch", "en": "English", "fr": "Français", "es": "Español",
 CODE = {"de": "DE", "en": "EN", "fr": "FR", "es": "ES", "it": "IT", "pt": "PT"}
 LABEL = {"de": "Sprache", "en": "Language", "fr": "Langue", "es": "Idioma",
          "it": "Lingua", "pt": "Idioma"}
+# Doppelpunkt nach LABEL: im Franzoesischen mit schmalem geschuetztem Leerzeichen davor
+COLON = {"fr": "\u202f:"}
 # Steht im Menue hinter einer Sprache, fuer die es die Seite nicht gibt - in
 # DIESER Sprache, damit der Leser vor dem Klick weiss, was ihn erwartet.
 FALLBACK_NOTE = {"fr": "page en anglais", "es": "página en inglés",
@@ -278,8 +280,8 @@ def menu_block(g, cur, floating=False):
         extra = " data-inpage data-labels='%s'" % json.dumps({l: LABEL[l] for l in ("de", "en")})
     btn = ('<button type="button" class="lm-btn" aria-expanded="false" aria-controls="lm-list">'
            '<span class="lm-flag lm-flag-%s" aria-hidden="true"></span>'
-           '<span class="lm-code">%s</span><span class="lm-sr"> – %s: %s</span>%s</button>'
-           % (cur, CODE[cur], LABEL[cur], NAME[cur], CHEV))
+           '<span class="lm-code">%s</span><span class="lm-sr"> – %s%s %s</span>%s</button>'
+           % (cur, CODE[cur], LABEL[cur], COLON.get(cur, ":"), NAME[cur], CHEV))
     return ('<!--LANG-MENU--><div class="lm%s"%s>%s<ul class="lm-list" id="lm-list" hidden>%s</ul></div><!--/LANG-MENU-->'
             % (" lm-float" if floating else "", extra, btn, "".join(items)))
 
@@ -461,13 +463,15 @@ def sitemap(cur):
 
 # ------------------------------------------------------------ Gegenlesen ---
 REVIEW_HEAD = ["Nr", "Seiten", "Art", "Deutsch (Original)", "English (Referenz)",
-               "Entwurf", "Hinweis zum Entwurf", "Korrektur", "Anmerkung"]
+               "Entwurf", "Hinweis zum Entwurf", "Korrektur", "Anmerkung", "pruefung", "quelle"]
 # Nur fuer Portugiesisch: die brasilianische Form, wo sie von der europaeischen abweicht
 ALT_COL = {"pt": ("pt-alternativen.json", "Alternative pt-BR")}
 
 
 def write_review(lang, asked):
-    """CSV fuer Muttersprachler. Korrektur/Anmerkung bleiben erhalten, wenn es die Datei schon gibt."""
+    """CSV fuer Muttersprachler. Korrektur/Anmerkung/pruefung/quelle bleiben erhalten, wenn es die Datei schon gibt.
+    pruefung = Ergebnis der Vorpruefung (ok / korrigiert / UNSICHER + Grund),
+    quelle = Beleg fuer den Fachbegriff (lokalisierte DAW, Broadcast-Glossar)."""
     p = os.path.join(I18N_DIR, "gegenlesen-%s.csv" % lang)
     old = {}
     if os.path.exists(p):
@@ -488,7 +492,8 @@ def write_review(lang, asked):
                    a["de"], a["en"], d.get(a["de"], "")]
             if alts is not None:
                 row.append(alts.get(a["de"], ""))
-            w.writerow(row + [hints.get(a["de"], ""), o.get("Korrektur", ""), o.get("Anmerkung", "")])
+            w.writerow(row + [hints.get(a["de"], ""), o.get("Korrektur", ""), o.get("Anmerkung", ""),
+                                 o.get("pruefung", ""), o.get("quelle", "")])
     return p
 
 

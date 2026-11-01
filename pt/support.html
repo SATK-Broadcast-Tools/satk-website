@@ -216,7 +216,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <!-- Fehler-Banner mit Mailto-Fallback (Daten gehen nicht verloren) -->
  <div id="errorBanner" style="display:none;padding:22px 26px;border:1px solid #f0a060;border-radius:10px;background:rgba(240,160,96,.06);margin-bottom:32px;line-height:1.7">
  <div style="font-family:'Arimo',sans-serif;font-weight:700;color:#f0a060;margin-bottom:10px;font-size:14px;letter-spacing:.3px" data-i18n="sup_err_h">Envio indisponível de momento</div>
- <p style="color:var(--mu2);font-size:12px;margin-bottom:18px" data-i18n="sup_err_p">O formulário não conseguiu entregar o seu pedido agora. Sem problema: envie diretamente por e-mail. Todos os dados que introduziu já vêm preenchidos no e-mail.</p>
+ <p style="color:var(--mu2);font-size:12px;margin-bottom:18px" data-i18n="sup_err_p">O formulário não conseguiu entregar o seu pedido agora. Sem problema: envie-o diretamente por e-mail. Todos os dados que introduziu já vêm preenchidos no e-mail.</p>
  <a id="mailtoFallback" href="mailto:info@pegelwerk.com" style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 22px;border-radius:6px;background:var(--ac);color:#0a0a0b;text-decoration:none;font-weight:500;transition:transform .15s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'" data-i18n="sup_err_btn">📧 Enviar por e-mail</a>
  </div>
 
@@ -272,7 +272,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <option value="Bug / Crash">Bug / Crash</option>
  <option value="Frage / Wie geht...">Pergunta / como faço...</option>
  <option value="Feature-Wunsch">Sugestão de funcionalidade</option>
- <option value="Lizenz / Bestellung">Licença / pedido</option>
+ <option value="Lizenz / Bestellung">Licença / encomenda</option>
  <option value="Sonstiges">Outros</option>
  </select>
  </div>
@@ -283,7 +283,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="form-section-h" data-i18n="sup_sec_system">Sistema</div>
  <div class="form-row-grid">
  <div class="form-row">
- <label class="form-label" for="os" data-i18n="sup_label_os">Sistema operacional</label>
+ <label class="form-label" for="os" data-i18n="sup_label_os">Sistema operativo</label>
  <select class="form-select" id="os" name="Betriebssystem" required>
  <option value="macOS">macOS</option>
  <option value="Windows">Windows</option>
@@ -300,7 +300,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  </div>
  <div class="form-row-grid">
  <div class="form-row">
- <label class="form-label" for="daw">DAW <span class="opt" data-i18n="sup_optional">(opcional, só para plugin)</span></label>
+ <label class="form-label" for="daw">DAW <span class="opt" data-i18n="sup_optional">(opcional, só para plug-in)</span></label>
  <input class="form-input" type="text" id="daw" name="DAW" placeholder="ex.: Pro Tools 2024.3">
  </div>
  <div class="form-row">
@@ -409,19 +409,19 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <h2 data-i18n="sup_faq_h">Perguntas frequentes</h2>
  <div class="faq-item">
  <h3 data-i18n="sup_q1_h">Onde encontro a minha licença?</h3>
- <p data-i18n-html="sup_q1_p">As chaves de licença chegam por e-mail do Paddle logo após a compra (para compras de plugin) ou ficam registadas na sua conta da App Store da Apple (para apps de Mac e iPad). Já não encontra o e-mail? <a href="/manage-license" style="color:var(--ac);text-decoration:underline">Faça a gestão da sua licença no portal de self-service</a>, peça o reenvio do e-mail de ativação ou veja os dispositivos ativados.</p>
+ <p data-i18n-html="sup_q1_p">As chaves de licença chegam por e-mail do Paddle logo após a compra (para compras de plug-in) ou ficam registadas na sua conta da App Store da Apple (para apps de Mac e iPad). Já não encontra o e-mail? <a href="/manage-license" style="color:var(--ac);text-decoration:underline">Faça a gestão da sua licença no portal de self-service</a>, peça o reenvio do e-mail de ativação ou veja os dispositivos ativados.</p>
  </div>
  <div class="faq-item">
  <h3 data-i18n="sup_q2_h">Em quantos computadores posso usar o software?</h3>
- <p data-i18n="sup_q2_p">As licenças de plugin e standalone valem para 2 computadores. As apps da App Store seguem as regras habituais da Apple (Partilha com a família possível).</p>
+ <p data-i18n="sup_q2_p">As licenças de plug-in e standalone valem para 2 computadores. As apps da App Store seguem as regras habituais da Apple (com Partilha com a família).</p>
  </div>
  <div class="faq-item">
  <h3 data-i18n="sup_q3_h">Atualizações e versões?</h3>
  <p data-i18n="sup_q3_p">Todas as atualizações menores dentro da versão principal são gratuitas. As atualizações maiores têm preço de upgrade reduzido.</p>
  </div>
  <div class="faq-item">
- <h3 data-i18n="sup_q4_h">Meus dados de áudio são enviados para a nuvem?</h3>
- <p data-i18n="sup_q4_p">Não, todas as ferramentas pegelWERK processam o áudio exclusivamente no seu dispositivo. Sem upload, sem rastreamento, sem necessidade de conta.</p>
+ <h3 data-i18n="sup_q4_h">Os meus dados de áudio são enviados para a nuvem?</h3>
+ <p data-i18n="sup_q4_p">Não, todas as ferramentas pegelWERK processam o áudio exclusivamente no seu dispositivo. Sem upload, sem rastreio, sem necessidade de conta.</p>
  </div>
  </div>
 
@@ -481,29 +481,29 @@ const i18n = {'pt-PT': {
 "sup_label_email": "E-mail",
 "sup_label_product": "App",
 "sup_label_appversion": "Versão da app",
-"sup_label_os": "Sistema operacional",
+"sup_label_os": "Sistema operativo",
 "sup_label_osversion": "Versão do sistema",
 "sup_label_topic": "Assunto",
 "sup_label_subject": "Assunto",
 "sup_label_message": "Descrição do erro / pergunta",
-"sup_optional": "(opcional, só para plugin)",
+"sup_optional": "(opcional, só para plug-in)",
 "sup_optional2": "(opcional)",
 "sup_optional3": "(opcional, ajuda muito com bugs)",
 "sup_submit": "Enviar",
 "sup_form_note": "O pedido segue diretamente por e-mail para info@pegelwerk.com. Receberá uma confirmação automática. Anexos (capturas de ecrã, logs, áudio) podem ser enviados depois num e-mail de resposta.",
 "sup_sent": "✓ Muito obrigado, o seu pedido foi recebido. Vai receber dentro de instantes um e-mail de confirmação. Em dias úteis, costumo responder no prazo de 24 horas.",
 "sup_err_h": "Envio indisponível de momento",
-"sup_err_p": "O formulário não conseguiu entregar o seu pedido agora. Sem problema: envie diretamente por e-mail. Todos os dados que introduziu já vêm preenchidos no e-mail.",
+"sup_err_p": "O formulário não conseguiu entregar o seu pedido agora. Sem problema: envie-o diretamente por e-mail. Todos os dados que introduziu já vêm preenchidos no e-mail.",
 "sup_err_btn": "📧 Enviar por e-mail",
 "sup_faq_h": "Perguntas frequentes",
 "sup_q1_h": "Onde encontro a minha licença?",
-"sup_q1_p": "As chaves de licença chegam por e-mail do Paddle logo após a compra (para compras de plugin) ou ficam registadas na sua conta da App Store da Apple (para apps de Mac e iPad). Já não encontra o e-mail? <a href=\"/manage-license\" style=\"color:var(--ac);text-decoration:underline\">Faça a gestão da sua licença no portal de self-service</a>, peça o reenvio do e-mail de ativação ou veja os dispositivos ativados.",
+"sup_q1_p": "As chaves de licença chegam por e-mail do Paddle logo após a compra (para compras de plug-in) ou ficam registadas na sua conta da App Store da Apple (para apps de Mac e iPad). Já não encontra o e-mail? <a href=\"/manage-license\" style=\"color:var(--ac);text-decoration:underline\">Faça a gestão da sua licença no portal de self-service</a>, peça o reenvio do e-mail de ativação ou veja os dispositivos ativados.",
 "sup_q2_h": "Em quantos computadores posso usar o software?",
-"sup_q2_p": "As licenças de plugin e standalone valem para 2 computadores. As apps da App Store seguem as regras habituais da Apple (Partilha com a família possível).",
+"sup_q2_p": "As licenças de plug-in e standalone valem para 2 computadores. As apps da App Store seguem as regras habituais da Apple (com Partilha com a família).",
 "sup_q3_h": "Atualizações e versões?",
 "sup_q3_p": "Todas as atualizações menores dentro da versão principal são gratuitas. As atualizações maiores têm preço de upgrade reduzido.",
-"sup_q4_h": "Meus dados de áudio são enviados para a nuvem?",
-"sup_q4_p": "Não, todas as ferramentas pegelWERK processam o áudio exclusivamente no seu dispositivo. Sem upload, sem rastreamento, sem necessidade de conta.",
+"sup_q4_h": "Os meus dados de áudio são enviados para a nuvem?",
+"sup_q4_p": "Não, todas as ferramentas pegelWERK processam o áudio exclusivamente no seu dispositivo. Sem upload, sem rastreio, sem necessidade de conta.",
 "f_shop": "Loja",
 "f_manage": "Gerir licença",
 "f_changelog": "Changelog",

@@ -297,7 +297,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  </a>
  <div class="card-body">
  <div class="card-name">voyzSESSION PRO</div>
- <div class="card-sub" data-i18n="od_sub">Sincronizzazione video · riduzione del rumore neurale · AutoMix R128 · smart PROMPTER (50+ lingue) · MXF</div>
+ <div class="card-sub" data-i18n="od_sub">Sincronizzazione video · riduzione neurale del rumore · AutoMix R128 · smart PROMPTER (50+ lingue) · MXF</div>
  <div class="card-platforms">
  <span>macOS</span><span>iPad</span><span>Universal Binary</span><span>Standalone</span>
  </div>
@@ -309,7 +309,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
    <button id="odSegYear"  type="button" onclick="setOdPlan('year')" data-i18n="od_seg_year">Annuale</button>
  </div>
  <div class="card-price"><span id="odPrice">24,99</span> <span class="cur">€</span><span class="cur" id="odPer" data-i18n="od_per_month"> / mese</span></div>
- <div class="card-vat" id="odVat" data-i18n="od_vat_month">IVA inclusa · disdici ogni mese</div>
+ <div class="card-vat" id="odVat" data-i18n="od_vat_month">IVA inclusa · disdetta mensile</div>
  <div class="card-cta">
  <button class="card-btn trial" data-i18n="btn_trial" onclick="openTrial(TRIAL_URLS.od)">Prova gratis per 7 giorni</button>
  <button class="card-btn-link" data-i18n="btn_trial_buy" onclick="odBuy()">oppure acquista subito</button>
@@ -406,13 +406,13 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <a href="/it/support" data-i18n="nav_info">Richiesta di supporto</a>
  <a href="/manage-license" data-i18n="f_manage">Gestisci licenza</a>
  <a href="/changelog" data-i18n="f_changelog">Changelog</a>
- <a href="/press" data-i18n="f_press">Stampa</a>
+ <a href="/press" data-i18n="f_press">Area stampa</a>
  </div>
  <div class="footer-col">
  <h4 data-i18n="f_col_legal">Informazioni legali</h4>
  <a href="/security-en" data-i18n="f_security">Sicurezza</a>
  <a href="/agb-en" data-i18n="f_terms">Condizioni generali</a>
- <a href="/widerruf-en" data-i18n="f_refund">Recesso</a>
+ <a href="/widerruf-en" data-i18n="f_refund">Diritto di recesso</a>
  <a href="/datenschutz-en" data-i18n="f_privacy">Privacy</a>
  <a href="/open-source-en">Open Source</a>
  <a href="/impressum-en" data-i18n="f_imprint_contact">Contatti &amp; note legali</a>
@@ -573,7 +573,7 @@ const i18n = {'it': {
 "od_seg_year": "Annuale",
 "od_per_month": " / mese",
 "od_per_year": " / anno",
-"od_vat_month": "IVA inclusa · disdici ogni mese",
+"od_vat_month": "IVA inclusa · disdetta mensile",
 "od_vat_year": "IVA inclusa · 2 mesi gratis",
 "nav_info": "Richiesta di supporto",
 "hero_sub": "App e plug-in per produzioni media professionali.",
@@ -581,10 +581,10 @@ const i18n = {'it': {
 "bmm_sub": "Loudness EBU R128 · True Peak · Speech Clarity · Batch · Remote MIDI",
 "bmmini_sub": "Misurazione compatta della loudness · PPM · LUFS · True Peak · FFT",
 "bmmac_sub": "App standalone per macOS · EBU R128 · True Peak · Speech Clarity · Batch",
-"appstore_note": "sull'App Store di Apple",
+"appstore_note": "sull’App Store di Apple",
 "btn_appstore": "Su App Store",
 "btn_review": "In revisione",
-"od_sub": "Sincronizzazione video · riduzione del rumore neurale · AutoMix R128 · smart PROMPTER (50+ lingue) · MXF",
+"od_sub": "Sincronizzazione video · riduzione neurale del rumore · AutoMix R128 · smart PROMPTER (50+ lingue) · MXF",
 "lc_sub": "R128 offline · 14 preset di consegna · Verify-and-Refine · da mono a 9.1.6",
 "fmt_standalone_mac": "Standalone · macOS",
 "r128_sub": "Normalizzazione batch · doppio gating · limiter True Peak · CLI",
@@ -592,13 +592,13 @@ const i18n = {'it': {
 "vat_incl": "IVA inclusa",
 "price_once": " · acquisto unico",
 "lc_badge": "In preparazione",
-"lc_soon": "Lancio insieme all'aggiornamento per la loudness video",
+"lc_soon": "Lancio insieme all’aggiornamento per la loudness video",
 "btn_soon": "Presto disponibile",
 "btn_buy": "Acquista",
 "btn_trial": "Prova gratis per 7 giorni",
 "btn_trial_buy": "oppure acquista subito",
 "trial_claim": "Nessun account · nessuna email",
-"trial_pending": "Il download sarà disponibile a breve. Potrai provare l'app gratis per 7 giorni, senza account e senza inserire un'email.",
+"trial_pending": "Il download sarà disponibile a breve. Potrai provare l’app gratis per 7 giorni, senza account e senza inserire un’email.",
 "also_appstore": "Anche sul Mac App Store",
 "fmt_plugin": "Plug-in · VST3 · AU",
 "fmt_standalone": "Standalone · macOS & Windows",
@@ -614,11 +614,11 @@ const i18n = {'it': {
 "nav_manage": "Licenza",
 "f_manage": "Gestisci licenza",
 "f_changelog": "Changelog",
-"f_press": "Stampa",
+"f_press": "Area stampa",
 "f_imprint": "Note legali",
 "f_privacy": "Privacy",
 "f_terms": "Condizioni generali",
-"f_refund": "Recesso",
+"f_refund": "Diritto di recesso",
 "nav_mac": "App per Mac",
 "nav_ios": "App iOS",
 "f_col_products": "Prodotti",
@@ -629,14 +629,14 @@ const i18n = {'it': {
 "hub_mac_p": "App standalone native per macOS: loudness METER PRO, voyzSESSION PRO, loudness CORRECT. Acquisto unico tramite Paddle, prova di 7 giorni, licenza per 2 Mac.",
 "hub_mac_cta": "Scopri le app per Mac",
 "hub_ios_h": "App iOS",
-"hub_ios_p": "App per iPhone e iPad direttamente dall'App Store di Apple: loudness METER PRO, voyzSESSION, loudness CORRECT, easy EDITOR e instant PLAYER.",
+"hub_ios_p": "App per iPhone e iPad direttamente dall’App Store di Apple: loudness METER PRO, voyzSESSION, loudness CORRECT, easy EDITOR e instant PLAYER.",
 "hub_ios_cta": "Scopri le app iOS",
 "hub_web_cta": "Usa gli strumenti",
 "hero_mac_sub": "App standalone native di pegelWERK per macOS.",
-"hero_ios_sub": "App per iPhone e iPad direttamente dall'App Store di Apple.",
+"hero_ios_sub": "App per iPhone e iPad direttamente dall’App Store di Apple.",
 "ios_section_h": "App Store di Apple",
 "bm_ios_sub": "PPM · LUFS · True Peak · FFT · goniometro · chiarezza del parlato. Su iPad e iPhone.",
-"vs_ios_sub": "Voice-over sul video · K-Loudness · Channel Strip · Ducking · export R128. App per iPad.",
+"vs_ios_sub": "Voice-over sul video · K-Loudness · Channel Strip · Ducking · esportazione R128. App per iPad.",
 "lc_ios_sub": "R128 offline · 14 preset di consegna · Verify-and-Refine · da mono a 9.1.6. App per iPad.",
 "ee_ip_sub": "App universali per iPhone e iPad: un editor rapido e un soundboard a 64 pad che lavorano insieme.",
 "store_soon": "In preparazione",
@@ -645,7 +645,7 @@ const i18n = {'it': {
 "info_ios_buy_h": "Acquisto & aggiornamenti",
 "info_ios_buy_p": "Acquisto e aggiornamenti passano dal tuo account Apple. Nessun account aggiuntivo, nessuna licenza separata.",
 "info_ios_family_h": "In famiglia",
-"info_ios_family_p": "Le app a pagamento si possono condividere con In famiglia di Apple con un massimo di 5 altri familiari.",
+"info_ios_family_p": "Le app a pagamento si possono condividere tramite In famiglia di Apple con un massimo di altri 5 familiari.",
 "info_ios_sup_h": "Supporto",
 "info_ios_sup_p": "Supporto via email direttamente dallo sviluppatore. Niente code, niente chatbot.",
 "info_ios_mac_h": "Anche per Mac",

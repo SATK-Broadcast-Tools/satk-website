@@ -67,7 +67,9 @@ englisch in die `en:`-Tabelle, dann `python3 tools/build-i18n.py --export`. In
 
 `gegenlesen-<sprache>.csv` (UTF-8, Komma-getrennt, öffnet in Numbers, Google
 Sheets und Excel). Spalten: Seiten, Art, Deutsch (Original), English (Referenz),
-Entwurf, Hinweis zum Entwurf, **Korrektur**, Anmerkung.
+Entwurf, Hinweis zum Entwurf, **Korrektur**, Anmerkung, `pruefung` (Ergebnis der
+Vorprüfung: ok / korrigiert / UNSICHER + Grund), `quelle` (Beleg aus lokalisierten DAWs).
+Bericht zur Vorprüfung: `PRUEFBERICHT.md`.
 Der Muttersprachler füllt nur **Korrektur**, und auch nur dort, wo der Entwurf
 falsch oder holprig ist. Zurückholen:
 

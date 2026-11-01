@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<!-- GENERIERT von tools/build-i18n.py aus loudness-correct.html - NICHT von Hand aendern.
+     Aenderungen gehoeren in die deutsche Seite (bzw. ihre en:-Tabelle oder
+     tools/i18n/<sprache>.json), danach `python3 tools/build-i18n.py`. -->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.ico?v=10" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=10">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=10">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=10">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=10">
+<link rel="canonical" href="https://pegelwerk.com/pt-br/loudness-correct">
+<!--LANG-HEAD-->
+<link rel="alternate" hreflang="de" href="https://pegelwerk.com/loudness-correct">
+<link rel="alternate" hreflang="en" href="https://pegelwerk.com/loudness-correct-en">
+<link rel="alternate" hreflang="fr" href="https://pegelwerk.com/fr/loudness-correct">
+<link rel="alternate" hreflang="es" href="https://pegelwerk.com/es/loudness-correct">
+<link rel="alternate" hreflang="it" href="https://pegelwerk.com/it/loudness-correct">
+<link rel="alternate" hreflang="pt-BR" href="https://pegelwerk.com/pt-br/loudness-correct">
+<link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/loudness-correct-en">
+<link rel="stylesheet" href="/lang-menu.css?v=1">
+<script>try{var p=localStorage.getItem('satk-lang'),a={"de":"/loudness-correct","en":"/loudness-correct-en","fr":"/fr/loudness-correct","es":"/es/loudness-correct","it":"/it/loudness-correct","pt-br":"/pt-br/loudness-correct"};if(p&&p!=='pt-br'&&a[p])location.replace(a[p]+location.search+location.hash);}catch(e){}</script>
+<script src="/lang-menu.js?v=1" defer></script>
+<!--/LANG-HEAD-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pegelWERK loudness CORRECT - correção de loudness EBU R128 / ITU-R BS.1770-4</title>
+<meta name="description" content="Correção de loudness offline conforme EBU R128, ATSC A/85, OTT, Spotify, YouTube e outros. Duas passagens com Verify-and-Refine em +/-0,1 LU. Standalone para macOS + iPad.">
+
+<!-- Open Graph / Social -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="pegelWERK loudness CORRECT - correção de loudness EBU R128 / ITU-R BS.1770-4">
+<meta property="og:description" content="Correção de loudness offline conforme EBU R128, ATSC A/85, OTT, Spotify, YouTube e outros. Duas passagens com Verify-and-Refine em +/-0,1 LU. Standalone para macOS + iPad.">
+<meta property="og:url" content="https://pegelwerk.com/pt-br/loudness-correct">
+<meta property="og:image" content="https://pegelwerk.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="pegelWERK">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="pegelWERK loudness CORRECT - correção de loudness EBU R128 / ITU-R BS.1770-4">
+<meta name="twitter:description" content="Correção de loudness offline conforme EBU R128, ATSC A/85, OTT, Spotify, YouTube e outros. Duas passagens com Verify-and-Refine em +/-0,1 LU. Standalone para macOS + iPad.">
+<meta name="twitter:image" content="https://pegelwerk.com/og-image.png">
+<link href="/fonts.css" rel="stylesheet">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "pegelWERK loudness CORRECT",
+ "description": "Correção de loudness offline conforme EBU R128, ATSC A/85, OTT, Spotify, YouTube. Duas passagens com Verify-and-Refine em +/-0,1 LU. Standalone para macOS e iPad.",
+ "applicationCategory": "MultimediaApplication",
+ "applicationSubCategory": "Loudness Normalization",
+ "operatingSystem": "macOS 13+, iPadOS 16+",
+ "url": "https://pegelwerk.com/pt-br/loudness-correct",
+ "image": "https://pegelwerk.com/img-loudness-correct-1056.webp",
+ "screenshot": "https://pegelwerk.com/img-loudness-correct-1056.webp",
+ "offers": {
+ "@type": "Offer",
+ "name": "Standalone macOS",
+ "price": "99.00",
+ "priceCurrency": "EUR",
+ "availability": "https://schema.org/InStock",
+ "category": "Software License"
+ },
+ "publisher": {
+ "@type": "Organization",
+ "name": "pegelWERK",
+ "url": "https://pegelwerk.com",
+ "logo": "https://pegelwerk.com/og-image.png"
+ },
+ "inLanguage": "pt-BR"
+}
+</script>
+<style>
+:root{--bg:#0a0a0b;--sf:#101114;--bd:#1a1a20;--ac:#4fb99a;--tx:#e8e8ec;--mu:#9a9aa8;--mu2:#d4d4dc}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+ padding:16px 48px;background:rgba(10,10,11,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+ border-bottom:1px solid rgba(255,255,255,.04)}
+.nav-logo{display:inline-flex;flex-direction:column;align-items:stretch;gap:5px;text-decoration:none;line-height:1}
+.nav-logo-mark{font-family:'Arimo',sans-serif;font-weight:700;font-size:20px;color:var(--ac);letter-spacing:1px}.nav-logo-img{height:45px;width:auto;display:block;align-self:flex-start}
+.nav-logo-accent{color:var(--tx)}
+.nav-logo-sub{font-family:'Inter',sans-serif;font-size:8px;color:var(--mu);letter-spacing:1.5px;text-transform:uppercase;font-weight:300;white-space:nowrap}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{color:var(--mu2);text-decoration:none;font-size:11px;letter-spacing:.5px;transition:color .2s}
+.nav-links a:hover{color:var(--tx)}
+.nav-back{color:var(--mu);font-size:10px;letter-spacing:.5px;text-decoration:none;opacity:.6;transition:opacity .2s}
+.nav-back:hover{opacity:1}
+
+/* ── Nav Platforms (Pill-Tabs) ─────── */
+.nav-platforms{display:flex;gap:2px;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:999px;padding:3px}
+.nav-platforms a{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 16px;border-radius:999px;color:var(--mu2);text-decoration:none;transition:all .2s}
+.nav-platforms a.active{background:var(--ac);color:#0a0a0b}
+.nav-platforms a:hover:not(.active){color:var(--tx);background:rgba(255,255,255,.04)}
+.lang-sw{display:flex;align-items:center;gap:6px}
+.lang{font-size:10px;letter-spacing:1px;color:var(--mu);cursor:pointer;transition:color .2s}
+.lang:hover{color:var(--tx)}
+.lang.active{color:var(--ac)}
+.lang-sep{color:var(--mu);font-size:10px}
+
+.product-back{padding:18px 48px 0}
+.product-back a{display:inline-flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.08em;color:var(--mu2);text-decoration:none;text-transform:uppercase;transition:color .15s}
+.product-back a:hover{color:var(--ac)}
+@media(max-width:900px){.product-back{padding:14px 20px 0}}
+@media(max-width:600px){.product-back a{font-size:9px}}
+.product-hero{text-align:center;padding:40px 32px 32px;max-width:920px;margin:0 auto}
+.product-eyebrow{font-family:'Arimo',sans-serif;font-size:11px;font-weight:700;letter-spacing:.4em;color:var(--ac);text-transform:uppercase;margin-bottom:18px}
+.product-hero h1{font-family:'Arimo',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:700;letter-spacing:-1px;line-height:1.05;margin-bottom:18px}.product-hero h1 .h1-sub{display:block;font-family:'Inter',sans-serif;font-size:clamp(13px,1.7vw,17px);font-weight:400;letter-spacing:.2px;line-height:1.45;color:var(--mu2);margin-top:12px}
+.product-hero .tagline{color:var(--mu2);font-size:14px;letter-spacing:.3px;line-height:1.7;max-width:640px;margin:0 auto}
+.appstore-cta{margin-top:30px;text-align:center}
+.shop-cta-btn{display:inline-block;font-family:'Arimo',sans-serif;font-size:14px;font-weight:700;letter-spacing:.05em;color:var(--bg);background:var(--ac);padding:14px 30px;border-radius:10px;text-decoration:none;transition:opacity .15s}
+.shop-cta-btn:hover{opacity:.85}
+.product-price-chip{display:inline-block;font-family:'Arimo',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.3px;color:var(--ac);border:1px solid rgba(79,185,154,.3);padding:10px 24px;border-radius:8px;margin-top:30px}
+.product-price-chip .vat{font-size:10px;color:var(--mu);font-weight:300;letter-spacing:.4px;margin-left:10px;text-transform:uppercase}
+
+.hero-img-wrap{max-width:1120px;margin:32px auto 0;padding:0 32px;text-align:center}
+.hero-img{display:inline-block;max-width:1056px;width:100%;height:auto;border:1px solid var(--bd);border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+
+/* ── Trust-Strip ───────────────── */
+.trust-strip{max-width:1120px;margin:48px auto 0;padding:0 32px}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:10px;overflow:hidden}
+.trust-pillar{background:var(--sf);padding:28px 26px;text-align:center}
+.trust-icon{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(79,185,154,.08);color:var(--ac);margin-bottom:14px}
+.trust-h{font-family:'Arimo',sans-serif;font-size:13px;font-weight:700;letter-spacing:.05em;color:var(--tx);margin-bottom:8px}
+.trust-p{font-size:12px;color:var(--mu2);line-height:1.65}
+@media(max-width:760px){.trust-grid{grid-template-columns:1fr;gap:1px}}
+
+.section{max-width:1120px;margin:0 auto;padding:96px 32px 0}
+.section-label{font-family:'Arimo',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:16px;text-align:center}
+.section-h2{font-family:'Arimo',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;letter-spacing:-.5px;line-height:1.1;text-align:center;margin-bottom:14px}
+.section-intro{color:var(--mu2);font-size:15px;line-height:1.7;text-align:center;max-width:680px;margin:0 auto 56px;text-wrap:balance}
+
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feature{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:32px 28px;transition:transform .3s ease,border-color .3s ease}
+.feature:hover{transform:translateY(-3px);border-color:rgba(79,185,154,.2)}
+.feature-icon{font-family:'Arimo',sans-serif;font-size:13px;font-weight:700;letter-spacing:.25em;color:var(--ac);margin-bottom:14px;text-transform:uppercase}
+.feature h3{font-family:'Arimo',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.2px;margin-bottom:10px;color:var(--tx)}
+.feature p{font-size:12px;color:var(--mu2);line-height:1.7}
+
+.workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+.workflow-step{position:relative;padding:28px 24px;background:var(--sf);border-radius:10px;border:1px solid var(--bd)}
+.workflow-num{font-family:'Arimo',sans-serif;font-size:32px;font-weight:700;color:var(--ac);line-height:1;margin-bottom:14px}
+.workflow-step h3{font-family:'Arimo',sans-serif;font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px;color:var(--tx)}
+.workflow-step p{font-size:11px;color:var(--mu2);line-height:1.7}
+
+.preset-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.preset-pill{padding:14px 16px;background:var(--sf);border:1px solid var(--bd);border-radius:8px;text-align:center}
+.preset-pill .preset-name{font-family:'Arimo',sans-serif;font-size:11px;font-weight:600;letter-spacing:.5px;color:var(--tx);text-transform:uppercase;margin-bottom:4px}
+.preset-pill .preset-target{font-size:10px;color:var(--ac);letter-spacing:.3px}
+
+.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.spec-col{padding:32px 28px;border-right:1px solid var(--bd)}
+.spec-col:last-child{border-right:none}
+.spec-col h4{font-family:'Arimo',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:14px}
+.spec-col ul{list-style:none}
+.spec-col li{display:flex;align-items:center;gap:12px;font-size:11px;color:var(--tx);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.spec-col li:last-child{border-bottom:none}
+.spec-col li b{color:var(--ac);font-weight:500;flex:0 0 88px}
+
+footer{text-align:center;padding:72px 32px 48px;margin-top:96px;border-top:1px solid rgba(255,255,255,.03)}
+footer p{font-size:9px;color:var(--mu);letter-spacing:.3px}
+footer a{color:var(--mu2);text-decoration:none}
+footer a:hover{color:var(--ac)}
+footer .fl{font-family:'Arimo',sans-serif;font-weight:700;color:var(--ac);font-size:14px;letter-spacing:3px;margin-bottom:10px}
+
+@media(max-width:900px){
+ nav{padding:14px 20px}
+ .nav-links{gap:18px}
+ .features,.workflow,.specs{grid-template-columns:1fr}
+ .preset-grid{grid-template-columns:repeat(2,1fr)}
+ .spec-col{border-right:none;border-bottom:1px solid var(--bd)}
+ .spec-col:last-child{border-bottom:none}
+ .product-hero{padding:48px 20px 24px}
+ .hero-img-wrap{padding:0 20px}
+ .section{padding:64px 20px 0}
+}
+@media(max-width:600px){
+ .nav-links a:not(.nav-back){display:none}
+ .preset-grid{grid-template-columns:1fr}
+}
+
+.feature,.workflow-step{opacity:0;animation:rise .6s ease forwards}
+.feature:nth-child(1),.workflow-step:nth-child(1){animation-delay:.1s}
+.feature:nth-child(2),.workflow-step:nth-child(2){animation-delay:.18s}
+.feature:nth-child(3),.workflow-step:nth-child(3){animation-delay:.26s}
+.feature:nth-child(4),.workflow-step:nth-child(4){animation-delay:.34s}
+.feature:nth-child(5){animation-delay:.42s}
+.feature:nth-child(6){animation-delay:.5s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+/* ── Footer (3-spaltig) ──────────── */
+footer{padding:72px 48px 36px;margin-top:120px;border-top:1px solid rgba(255,255,255,.06);background:#15161a;text-align:left}
+.footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1120px;margin:0 auto 48px;text-align:center}
+.footer-col h4{font-family:'Arimo',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
+.footer-col a{display:block;font-family:'Inter',sans-serif;font-size:11px;color:var(--mu2);text-decoration:none;letter-spacing:.3px;padding:5px 0;transition:color .2s}
+.footer-col a:hover{color:var(--ac)}
+.footer-col+.footer-col{border-left:1px solid rgba(255,255,255,.12)}
+.footer-bar{display:flex;justify-content:center;align-items:center;gap:16px;max-width:1120px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.03);font-family:'Inter',sans-serif;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mu)}
+.footer-brand{font-family:'Arimo',sans-serif;font-weight:700;color:var(--ac);font-size:14px;letter-spacing:1px}.footer-brand-img{height:17px;width:auto;display:block}
+.footer-brand-accent{color:var(--tx)}
+.footer-meta{color:var(--mu2);text-transform:none;letter-spacing:.3px}
+@media(max-width:720px){.footer-grid{grid-template-columns:repeat(3,1fr);gap:24px}.footer-bar{flex-direction:column;gap:12px;text-align:center}}
+@media(max-width:600px){footer{padding:48px 24px 24px;margin-top:64px}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;gap:32px;text-align:center}.footer-col+.footer-col{border-left:none}}
+
+h1,h2,h3,h4,h5,p,li{text-wrap:balance}
+/*VB-START voyz brackets + readability*/
+.hero h1,.page-hero h1{position:relative;display:inline-block;padding:0 8px}
+.hero h1::before,.hero h1::after,.page-hero h1::before,.page-hero h1::after{content:"";position:absolute;top:-4px;bottom:-4px;width:16px;border:2px solid var(--ac);opacity:.9}
+.hero h1::before,.page-hero h1::before{left:-22px;border-right:0}
+.hero h1::after,.page-hero h1::after{right:-22px;border-left:0}
+@media(max-width:600px){.hero h1::before,.page-hero h1::before{left:-14px;width:10px}.hero h1::after,.page-hero h1::after{right:-14px;width:10px}}
+/*VB-END*/
+
+/* Kopfzeile: gleiche Masse auf jeder Seite, auch unterhalb 900 px.
+   Die Uebersichtsseiten hatten diese Stufen, die Produktseiten nicht --
+   dadurch wuchsen die Mac/iOS-Pillen beim Wechsel auf eine Produktseite. */
+@media(max-width:900px){nav{padding:14px 20px;gap:12px}.nav-platforms a{font-size:9px;padding:6px 12px;letter-spacing:1px}}
+@media(max-width:600px){nav{padding:12px 16px;gap:8px}.nav-platforms a{font-size:8px;padding:5px 10px;letter-spacing:.8px}}
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://pegelwerk.com/pt-br/" },
+  { "@type": "ListItem", "position": 2, "name": "Mac Apps", "item": "https://pegelwerk.com/pt-br/mac" },
+  { "@type": "ListItem", "position": 3, "name": "loudness CORRECT", "item": "https://pegelwerk.com/pt-br/loudness-correct" }
+ ]
+}
+</script>
+</head>
+<body>
+
+<nav>
+ <a href="/pt-br/" class="nav-logo">
+ <img class="nav-logo-img" src="/logo-lockup-2.svg" alt="pegelWERK">
+ </a>
+ <div class="nav-platforms">
+ <a href="/pt-br/mac" class="active">Mac</a>
+ <a href="/pt-br/ios">iOS</a>
+ </div>
+ <div class="nav-links">
+ <a href="/pt-br/support" data-i18n="nav_info">Solicitação de suporte</a>
+ <a href="/manage-license" data-i18n="nav_manage">Licença</a>
+ <!--LANG-MENU--><div class="lm"><button type="button" class="lm-btn" aria-expanded="false" aria-controls="lm-list"><svg class="lm-globe" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.7 3.9 5.9 3.9 9.5s-1.3 6.8-3.9 9.5M12 2.5C9.4 5.2 8.1 8.4 8.1 12s1.3 6.8 3.9 9.5"/></svg><span class="lm-code">PT</span><span class="lm-sr"> – Idioma: Português (Brasil)</span><svg class="lm-chev" aria-hidden="true" width="9" height="6" viewBox="0 0 12 8" fill="currentColor"><path d="M6 8L0 0h12z"/></svg></button><ul class="lm-list" id="lm-list" hidden><li><a href="/loudness-correct" lang="de" hreflang="de" data-lang="de">Deutsch</a></li><li><a href="/loudness-correct-en" lang="en" hreflang="en" data-lang="en">English</a></li><li><a href="/fr/loudness-correct" lang="fr" hreflang="fr" data-lang="fr">Français</a></li><li><a href="/es/loudness-correct" lang="es" hreflang="es" data-lang="es">Español</a></li><li><a href="/it/loudness-correct" lang="it" hreflang="it" data-lang="it">Italiano</a></li><li><a href="/pt-br/loudness-correct" lang="pt-BR" hreflang="pt-BR" data-lang="pt-br" aria-current="true">Português (Brasil)</a></li></ul></div><!--/LANG-MENU-->
+ </div>
+</nav>
+
+
+<section class="product-hero">
+ <div class="product-eyebrow" data-i18n="lc_eyebrow">Standalone · macOS · iPad</div>
+ <h1>loudness CORRECT<span class="h1-sub" data-i18n="lc_h1sub">Correção de loudness conforme EBU R128 e ITU-R BS.1770-4</span></h1>
+ <p class="tagline" data-i18n="lc_tagline">Correção de loudness offline conforme EBU R128 / ITU-R BS.1770-4. Solte o arquivo, escolha o preset, corrija. Duas passagens com Verify-and-Refine: acerte o seu alvo com +/-0,1 LU, com limitação limpa, sem mágica de renderizar de novo.</p>
+ <div class="appstore-cta">
+ <a class="shop-cta-btn" href="/pt-br/mac" data-i18n="nav_back">Voltar à loja</a>
+ </div>
+</section>
+
+<div class="hero-img-wrap">
+ <img class="hero-img" src="/img-loudness-correct-1056.webp" width="1056" height="734"
+      srcset="/img-loudness-correct-640.webp 640w, /img-loudness-correct-900.webp 900w, /img-loudness-correct-1056.webp 1056w, /img-loudness-correct-2112.webp 2112w"
+      sizes="(max-width: 1120px) calc(100vw - 64px), 1056px"
+      alt="pegelWERK loudness CORRECT: valores originais e de destino lado a lado, preset EBU R128, True Peak e Integrated no alvo">
+</div>
+
+<section class="section">
+ <div class="section-label" data-i18n="lc_features_label">Destaques</div>
+ <h2 class="section-h2" data-i18n="lc_features_title">Acerte o seu alvo. Sempre.</h2>
+ <p class="section-intro" data-i18n="lc_features_intro">O loudness CORRECT é a solução focada em arquivo único para correção de loudness dentro das normas. O loudness CORRECT compartilha o engine de DSP com o pegelWERK loudness METER PRO: mesmo K-Weighting, mesmo medidor de loudness, mesmo detector de True Peak. O que você vê no medidor, você acerta aqui.</p>
+
+ <div class="features">
+ <div class="feature">
+ <div class="feature-icon">BS.1770-4</div>
+ <h3 data-i18n="lc_f1_h">K-Weighting + Double Gating</h3>
+ <p data-i18n="lc_f1_p">Filtro K ITU-R BS.1770-4 (Pre + RLB), blocos de 400 ms com 75% de sobreposição, gating absoluto de -70 LUFS e relativo de -10 LU. LUFS-I, LUFS-S Max, LUFS-M Max, LRA (EBU Tech 3342), todos os valores exatamente conforme a especificação.</p>
+ </div>
+ <div class="feature">
+ <div class="feature-icon">True Peak</div>
+ <h3 data-i18n="lc_f2_h">Limitador TP polifásico 4x</h3>
+ <p data-i18n="lc_f2_p">Os mesmos taps polifásicos do detector de TP: o que ele mede, ele limita. 5 ms de lookahead, envoltória com duas constantes de tempo, release exponencial de 50 ms. Curvas de limitação limpas e planas, sem bombeamento.</p>
+ </div>
+ <div class="feature">
+ <div class="feature-icon">LRA</div>
+ <h3 data-i18n="lc_f3_h">Processador de LRA em 3 bandas</h3>
+ <p data-i18n="lc_f3_p">Linkwitz-Riley de 4ª ordem com reconstrução perfeita. Low &lt;= 150 Hz, Mid 150-3000 Hz, High &gt; 3000 Hz. Compressor soft-knee por banda com envoltória RMS. Constantes de tempo específicas por banda, leva qualquer LRA ao corredor de transmissão.</p>
+ </div>
+ <div class="feature">
+ <div class="feature-icon">Verify</div>
+ <h3 data-i18n="lc_f4_h">Duas passagens com Auto-Refine</h3>
+ <p data-i18n="lc_f4_p">A passagem 1 mede, a passagem 2 corrige, a terceira verifica. Se o valor residual passar de 0,1 LU, a passagem de correção roda de novo automaticamente com o ganho ajustado. Resultado: o seu alvo com +/-0,1 LU.</p>
+ </div>
+ <div class="feature">
+ <div class="feature-icon">Presets</div>
+ <h3 data-i18n="lc_f5_h">14 presets de entrega</h3>
+ <p data-i18n="lc_f5_p">EBU R128, R128 S1 formato curto, ATSC A/85 (CALM), ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354, OTT -27 LUFS, Apple Podcasts, Spotify, Amazon Music, YouTube, mais Custom. Janela de tolerância por preset, o Verify informa PASS / FAIL.</p>
+ </div>
+ <div class="feature">
+ <div class="feature-icon">Surround</div>
+ <h3 data-i18n="lc_f6_h">Mono até 9.1.6</h3>
+ <p data-i18n="lc_f6_p">Até 16 canais, quatro layouts de roteamento (Auto/ITU, Film L-C-R, DTS, Raw/Stems). LFE conforme BS.1770 com peso 0, surrounds com 1,41 no domínio de potência, exatamente conforme a especificação, sem interpretação própria.</p>
+ </div>
+ </div>
+</section>
+
+<!-- ╔══ Trust-Block ══════════════════════════════════════════╗
+ Drei Saulen direkt nach den Features. Echtes Kunden-Zitat
+ spaeter als 4. Block einfuegen sobald vorhanden. -->
+<section class="trust-strip">
+ <div class="trust-grid">
+ <div class="trust-pillar">
+ <div class="trust-icon" aria-hidden="true">
+ <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
+ </div>
+ <div class="trust-h" data-i18n="trust_p1_h">De um engenheiro de som experiente</div>
+ <div class="trust-p" data-i18n="trust_p1_p">Desenvolvido por um engenheiro de broadcast em atividade para engenheiros de broadcast. Nenhum recurso de marketing inútil, só o que realmente se usa no estúdio.</div>
+ </div>
+ <div class="trust-pillar">
+ <div class="trust-icon" aria-hidden="true">
+ <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v6l4 2"/><circle cx="12" cy="14" r="8"/></svg>
+ </div>
+ <div class="trust-h" data-i18n="trust_p2_h">Teste por 7 dias, sem risco</div>
+ <div class="trust-p" data-i18n="trust_p2_p">Baixe a versão completa, use por uma semana no seu fluxo de trabalho real: sem conta, sem e-mail, sem cartão de crédito. Só então decida.</div>
+ </div>
+ <div class="trust-pillar">
+ <div class="trust-icon" aria-hidden="true">
+ <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v12H7l-3 4z"/><path d="M8 9h8M8 12h6"/></svg>
+ </div>
+ <div class="trust-h" data-i18n="trust_p3_h">Resposta direto do desenvolvedor</div>
+ <div class="trust-p" data-i18n="trust_p3_p">Os e-mails de suporte vão direto para a caixa de entrada do desenvolvedor, não para um sistema de tickets. Em dias úteis, geralmente em até 24 horas.</div>
+ </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="section-label" data-i18n="lc_presets_label">Presets de entrega</div>
+ <h2 class="section-h2" data-i18n="lc_presets_title">14 alvos de fábrica</h2>
+ <p class="section-intro" data-i18n="lc_presets_intro">Do EBU R128 ao OTT, do Apple Podcasts ao YouTube. Um clique, e a passagem de verificação documenta PASS / FAIL.</p>
+
+ <div class="preset-grid">
+ <div class="preset-pill"><div class="preset-name">EBU R128</div><div class="preset-target">-23 LUFS · -1 dBTP</div></div>
+ <div class="preset-pill"><div class="preset-name">R128 S1</div><div class="preset-target">-23 LUFS · S max -18</div></div>
+ <div class="preset-pill"><div class="preset-name">ATSC A/85</div><div class="preset-target">-24 LUFS · -2 dBTP</div></div>
+ <div class="preset-pill"><div class="preset-name">ARIB TR-B32</div><div class="preset-target">-24 LUFS · -1 dBTP</div></div>
+ <div class="preset-pill"><div class="preset-name">AGCOM</div><div class="preset-target">-24 LUFS · -2 dBTP</div></div>
+ <div class="preset-pill"><div class="preset-name">FreeTV OP-59</div><div class="preset-target">-24 LUFS · -2 dBTP</div></div>
+ <div class="preset-pill"><div class="preset-name">DPP</div><div class="preset-target">-23 LUFS · -1 dBTP</div></div>
+ <div class="preset-pill"><div class="preset-name">Portaria 354</div><div class="preset-target">-23 LUFS · -2 dBTP</div></div>
+ <div class="preset-pill"><div class="preset-name">OTT -27 LUFS</div><div class="preset-target">-27 LUFS · -2 dBTP</div></div>
+ <div class="preset-pill"><div class="preset-name">Apple Podcasts</div><div class="preset-target">-16 LUFS · -1 dBTP</div></div>
+ <div class="preset-pill"><div class="preset-name">Spotify</div><div class="preset-target">-14 LUFS · -1 dBTP</div></div>
+ <div class="preset-pill"><div class="preset-name">Amazon Music</div><div class="preset-target">-14 LUFS · -2 dBTP</div></div>
+ <div class="preset-pill"><div class="preset-name">YouTube</div><div class="preset-target">-14 LUFS · -1 dBTP</div></div>
+ <div class="preset-pill"><div class="preset-name" data-i18n="lc_preset_custom">Custom</div><div class="preset-target" data-i18n="lc_preset_custom_target">Livre</div></div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="section-label" data-i18n="lc_wf_label">Como funciona</div>
+ <h2 class="section-h2" data-i18n="lc_wf_title">Em 4 passos até a norma</h2>
+ <p class="section-intro" data-i18n="lc_wf_intro">Solte, clique, pronto. O pipeline de duas passagens trabalha em segundo plano, e você recebe um arquivo corrigido e um relatório PDF de confirmação.</p>
+
+ <div class="workflow">
+ <div class="workflow-step">
+ <div class="workflow-num">01</div>
+ <h3 data-i18n="lc_w1_h">Solte o arquivo</h3>
+ <p data-i18n="lc_w1_p">WAV, AIFF, FLAC, MP3. Do mono ao 9.1.6, quatro layouts de roteamento (ITU, Film, DTS, Raw). No macOS pelo seletor de arquivos, no iPad pelo app Arquivos / iCloud Drive.</p>
+ </div>
+ <div class="workflow-step">
+ <div class="workflow-num">02</div>
+ <h3 data-i18n="lc_w2_h">Escolha o preset</h3>
+ <p data-i18n="lc_w2_p">Um dos 13 alvos de entrega ou Custom com seus próprios valores de LUFS/TP/LRA. Correção de LRA e limitador TP ativáveis individualmente.</p>
+ </div>
+ <div class="workflow-step">
+ <div class="workflow-num">03</div>
+ <h3 data-i18n="lc_w3_h">ANALYZE + CORRECT</h3>
+ <p data-i18n="lc_w3_p">A passagem 1 mede LUFS-I/S/M, LRA, TP. A passagem 2 grava um novo arquivo com ganho estático correção multibanda de LRA opcional limitador TP.</p>
+ </div>
+ <div class="workflow-step">
+ <div class="workflow-num">04</div>
+ <h3 data-i18n="lc_w4_h">VERIFY + relatório</h3>
+ <p data-i18n="lc_w4_p">A saída é medida de novo. Com |residual| &gt; 0,1 LU, a passagem 2 roda outra vez. Relatório PDF com Source / Target / Result e selo PASS.</p>
+ </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="section-label" data-i18n="lc_specs_label">Detalhes técnicos</div>
+ <h2 class="section-h2" data-i18n="lc_specs_title">Feito para produção</h2>
+ <p class="section-intro" data-i18n="lc_specs_intro">Paridade de DSP com o pegelWERK loudness METER PRO: mesmo K-Weighting, mesmo medidor de loudness, mesmo detector de True Peak.</p>
+
+ <div class="specs">
+ <div class="spec-col">
+ <h4 data-i18n="lc_specs_dsp">Padrões &amp; engine</h4>
+ <ul>
+ <li><b>Standard</b> ITU-R BS.1770-4 · EBU R128</li>
+ <li><b>K-Filter</b> Pre + RLB</li>
+ <li><b>Gating</b> Abs -70 / Rel -10 LU</li>
+ <li><b>Blocks</b> 400 ms · 75% OL</li>
+ <li><b>True Peak</b> 4x polyphase FIR</li>
+ <li><b>LRA</b> EBU Tech 3342</li>
+ </ul>
+ </div>
+ <div class="spec-col">
+ <h4 data-i18n="lc_specs_proc">Processamento</h4>
+ <ul>
+ <li><b>TP-Limiter</b> 4x OS · 5 ms Lookahead</li>
+ <li><b>Release</b> 50 ms exponentiell</li>
+ <li><b>LRA</b> 3-Band Linkwitz-Riley 4. Ordnung</li>
+ <li><b>Bands</b> <= 150 / 150-3k / &gt; 3 kHz</li>
+ <li><b>Verify</b> Auto-Refine bei &gt; 0,1 LU</li>
+ <li><b>Presets</b> 13 + Custom</li>
+ </ul>
+ </div>
+ <div class="spec-col">
+ <h4 data-i18n="lc_specs_io">Plataforma &amp; I/O</h4>
+ <ul>
+ <li><b>macOS</b> 13+ Universal Binary</li>
+ <li><b>iPad</b> iPadOS 16+ Landscape Dark</li>
+ <li><b>Input</b> WAV · AIFF · FLAC · MP3</li>
+ <li><b>Output</b> WAV / AIFF · 16/24/32 Bit</li>
+ <li><b>Channels</b> Mono bis 9.1.6 (16)</li>
+ <li><b>Layouts</b> Auto · Film · DTS · Raw</li>
+ </ul>
+ </div>
+ </div>
+</section>
+
+<!-- ╔══ Closing Credo ═════════════════════════════════════════╗ -->
+<section class="section">
+ <div class="section-label" data-i18n="lc_credo_label">O que o torna especial</div>
+ <h2 class="section-h2" data-i18n-html="lc_credo_title">Medir com precisão de amostra.<br>Corrigir o arquivo de forma limpa.</h2>
+ <p class="section-intro" data-i18n="lc_credo_p">Limitadores em tempo real precisam estimar; o loudness CORRECT mede o arquivo primeiro, planeja a correção, grava de forma limpa, mede de novo e refina se houver desvio. É assim que se acerta o alvo exatamente, e não mais ou menos. Documentado por relatório PDF, aprovado na entrega, reproduzível.</p>
+</section>
+
+<footer>
+ <div class="footer-grid">
+ <div class="footer-col">
+ <h4 data-i18n="f_col_products">Produtos</h4>
+ <a href="/pt-br/mac" data-i18n="nav_mac">Apps para Mac</a>
+ <a href="/pt-br/ios" data-i18n="nav_ios">Apps para iOS</a>
+ </div>
+ <div class="footer-col">
+ <h4 data-i18n="f_col_support">Suporte</h4>
+ <a href="/videos" data-i18n="nav_videos">Vídeos</a>
+ <a href="/pt-br/support" data-i18n="nav_info">Solicitação de suporte</a>
+ <a href="/manage-license" data-i18n="f_manage">Gerenciar licença</a>
+ <a href="/changelog" data-i18n="f_changelog">Changelog</a>
+ <a href="/press" data-i18n="f_press">Imprensa</a>
+ </div>
+ <div class="footer-col">
+ <h4 data-i18n="f_col_legal">Jurídico</h4>
+ <a href="/security-en" data-i18n="f_security">Segurança</a>
+ <a href="/agb-en" data-i18n="f_terms">Termos e Condições</a>
+ <a href="/widerruf-en" data-i18n="f_refund">Direito de arrependimento</a>
+ <a href="/datenschutz-en" data-i18n="f_privacy">Privacidade</a>
+ <a href="/open-source-en">Open Source</a>
+ <a href="/impressum-en" data-i18n="f_imprint_contact">Contato &amp; informações legais</a>
+ </div>
+ </div>
+ <div class="footer-bar">
+ <img class="footer-brand-img" src="/logo-2.svg" alt="pegelWERK">
+ <span class="footer-meta">pegelWERK · © 2026</span>
+ </div>
+</footer>
+
+<script>
+const i18n = {'pt-BR': {
+"nav_shop": "Loja",
+"nav_manage": "Licença",
+"nav_info": "Solicitação de suporte",
+"nav_back": "Voltar à loja",
+"trust_p1_h": "De um engenheiro de som experiente",
+"trust_p1_p": "Desenvolvido por um engenheiro de broadcast em atividade para engenheiros de broadcast. Nenhum recurso de marketing inútil, só o que realmente se usa no estúdio.",
+"trust_p2_h": "Teste por 7 dias, sem risco",
+"trust_p2_p": "Baixe a versão completa, use por uma semana no seu fluxo de trabalho real: sem conta, sem e-mail, sem cartão de crédito. Só então decida.",
+"trust_p3_h": "Resposta direto do desenvolvedor",
+"trust_p3_p": "Os e-mails de suporte vão direto para a caixa de entrada do desenvolvedor, não para um sistema de tickets. Em dias úteis, geralmente em até 24 horas.",
+"lc_h1sub": "Correção de loudness conforme EBU R128 e ITU-R BS.1770-4",
+"lc_eyebrow": "Standalone · macOS · iPad",
+"lc_tagline": "Correção de loudness offline conforme EBU R128 / ITU-R BS.1770-4. Solte o arquivo, escolha o preset, corrija. Duas passagens com Verify-and-Refine: acerte o seu alvo com +/-0,1 LU, com limitação limpa, sem mágica de renderizar de novo.",
+"vat": "impostos incl.",
+"lc_features_label": "Destaques",
+"lc_features_title": "Acerte o seu alvo. Sempre.",
+"lc_features_intro": "O loudness CORRECT é a solução focada em arquivo único para correção de loudness dentro das normas. O loudness CORRECT compartilha o engine de DSP com o pegelWERK loudness METER PRO: mesmo K-Weighting, mesmo medidor de loudness, mesmo detector de True Peak. O que você vê no medidor, você acerta aqui.",
+"lc_f1_h": "K-Weighting + Double Gating",
+"lc_f1_p": "Filtro K ITU-R BS.1770-4 (Pre + RLB), blocos de 400 ms com 75% de sobreposição, gating absoluto de -70 LUFS e relativo de -10 LU. LUFS-I, LUFS-S Max, LUFS-M Max, LRA (EBU Tech 3342), todos os valores exatamente conforme a especificação.",
+"lc_f2_h": "Limitador TP polifásico 4x",
+"lc_f2_p": "Os mesmos taps polifásicos do detector de TP: o que ele mede, ele limita. 5 ms de lookahead, envoltória com duas constantes de tempo, release exponencial de 50 ms. Curvas de limitação limpas e planas, sem bombeamento.",
+"lc_f3_h": "Processador de LRA em 3 bandas",
+"lc_f3_p": "Linkwitz-Riley de 4ª ordem com reconstrução perfeita. Low <= 150 Hz, Mid 150-3000 Hz, High > 3000 Hz. Compressor soft-knee por banda com envoltória RMS. Constantes de tempo específicas por banda, leva qualquer LRA ao corredor de transmissão.",
+"lc_f4_h": "Duas passagens com Auto-Refine",
+"lc_f4_p": "A passagem 1 mede, a passagem 2 corrige, a terceira verifica. Se o valor residual passar de 0,1 LU, a passagem de correção roda de novo automaticamente com o ganho ajustado. Resultado: o seu alvo com +/-0,1 LU.",
+"lc_f5_h": "14 presets de entrega",
+"lc_f5_p": "EBU R128, R128 S1 formato curto, ATSC A/85 (CALM), ARIB TR-B32, AGCOM, OP-59, DPP, Portaria 354, OTT -27 LUFS, Apple Podcasts, Spotify, Amazon Music, YouTube, mais Custom. Janela de tolerância por preset, o Verify informa PASS / FAIL.",
+"lc_f6_h": "Mono até 9.1.6",
+"lc_f6_p": "Até 16 canais, quatro layouts de roteamento (Auto/ITU, Film L-C-R, DTS, Raw/Stems). LFE conforme BS.1770 com peso 0, surrounds com 1,41 no domínio de potência, exatamente conforme a especificação, sem interpretação própria.",
+"lc_presets_label": "Presets de entrega",
+"lc_presets_title": "14 alvos de fábrica",
+"lc_presets_intro": "Do EBU R128 ao OTT, do Apple Podcasts ao YouTube. Um clique, e a passagem de verificação documenta PASS / FAIL.",
+"lc_preset_custom": "Custom",
+"lc_preset_custom_target": "Livre",
+"lc_wf_label": "Como funciona",
+"lc_wf_title": "Em 4 passos até a norma",
+"lc_wf_intro": "Solte, clique, pronto. O pipeline de duas passagens trabalha em segundo plano, e você recebe um arquivo corrigido e um relatório PDF de confirmação.",
+"lc_w1_h": "Solte o arquivo",
+"lc_w1_p": "WAV, AIFF, FLAC, MP3. Do mono ao 9.1.6, quatro layouts de roteamento (ITU, Film, DTS, Raw). No macOS pelo seletor de arquivos, no iPad pelo app Arquivos / iCloud Drive.",
+"lc_w2_h": "Escolha o preset",
+"lc_w2_p": "Um dos 13 alvos de entrega ou Custom com seus próprios valores de LUFS/TP/LRA. Correção de LRA e limitador TP ativáveis individualmente.",
+"lc_w3_h": "ANALYZE + CORRECT",
+"lc_w3_p": "A passagem 1 mede LUFS-I/S/M, LRA, TP. A passagem 2 grava um novo arquivo com ganho estático correção multibanda de LRA opcional limitador TP.",
+"lc_w4_h": "VERIFY + relatório",
+"lc_w4_p": "A saída é medida de novo. Com |residual| > 0,1 LU, a passagem 2 roda outra vez. Relatório PDF com Source / Target / Result e selo PASS.",
+"lc_specs_label": "Detalhes técnicos",
+"lc_specs_title": "Feito para produção",
+"lc_specs_intro": "Paridade de DSP com o pegelWERK loudness METER PRO: mesmo K-Weighting, mesmo medidor de loudness, mesmo detector de True Peak.",
+"lc_specs_dsp": "Padrões & engine",
+"lc_specs_proc": "Processamento",
+"lc_specs_io": "Plataforma & I/O",
+"lc_credo_label": "O que o torna especial",
+"lc_credo_title": "Medir com precisão de amostra.<br>Corrigir o arquivo de forma limpa.",
+"lc_credo_p": "Limitadores em tempo real precisam estimar; o loudness CORRECT mede o arquivo primeiro, planeja a correção, grava de forma limpa, mede de novo e refina se houver desvio. É assim que se acerta o alvo exatamente, e não mais ou menos. Documentado por relatório PDF, aprovado na entrega, reproduzível.",
+"f_shop": "Loja",
+"f_manage": "Gerenciar licença",
+"f_changelog": "Changelog",
+"f_press": "Imprensa",
+"f_imprint": "Informações legais",
+"f_privacy": "Privacidade",
+"f_terms": "Termos e Condições",
+"f_refund": "Direito de arrependimento",
+"nav_mac": "Apps para Mac",
+"nav_ios": "Apps para iOS",
+"f_col_products": "Produtos",
+"f_col_support": "Suporte",
+"f_col_legal": "Jurídico",
+"f_imprint_contact": "Contato & informações legais"
+}};
+i18n.de = i18n.en = i18n['pt-BR'];
+
+function setLang(lang) {
+ document.documentElement.lang = lang;
+ document.getElementById('btnDE').classList.toggle('active', lang==='de');
+ document.getElementById('btnEN').classList.toggle('active', lang==='en');
+ const t = i18n[lang];
+ document.querySelectorAll('[data-i18n]').forEach(el => {
+ const k = el.dataset.i18n;
+ if (t[k]) el.textContent = t[k];
+ });
+ document.querySelectorAll('[data-i18n-html]').forEach(el => {
+ const k = el.dataset.i18nHtml;
+ if (t[k]) el.innerHTML = t[k];
+ });
+ try { localStorage.setItem('satk-lang', lang); } catch(e){}
+}
+
+</script>
+
+</body>
+</html>

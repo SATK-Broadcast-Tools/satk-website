@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!-- GENERIERT von tools/build-en.py aus mac.html - NICHT von Hand aendern.
-     Aenderungen gehoeren in die deutsche Seite bzw. ihre en:-i18n-Tabelle,
-     danach `python3 tools/build-en.py` neu laufen lassen. -->
+<!-- GENERIERT von tools/build-i18n.py aus mac.html - NICHT von Hand aendern.
+     Aenderungen gehoeren in die deutsche Seite (bzw. ihre en:-Tabelle oder
+     tools/i18n/<sprache>.json), danach `python3 tools/build-i18n.py`. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -11,9 +11,18 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=10">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=10">
 <link rel="canonical" href="https://pegelwerk.com/mac-en">
+<!--LANG-HEAD-->
 <link rel="alternate" hreflang="de" href="https://pegelwerk.com/mac">
 <link rel="alternate" hreflang="en" href="https://pegelwerk.com/mac-en">
-<link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/mac">
+<link rel="alternate" hreflang="fr" href="https://pegelwerk.com/fr/mac">
+<link rel="alternate" hreflang="es" href="https://pegelwerk.com/es/mac">
+<link rel="alternate" hreflang="it" href="https://pegelwerk.com/it/mac">
+<link rel="alternate" hreflang="pt-BR" href="https://pegelwerk.com/pt-br/mac">
+<link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/mac-en">
+<link rel="stylesheet" href="/lang-menu.css?v=1">
+<script>try{var p=localStorage.getItem('satk-lang'),a={"de":"/mac","en":"/mac-en","fr":"/fr/mac","es":"/es/mac","it":"/it/mac","pt-br":"/pt-br/mac"};if(p&&p!=='en'&&a[p])location.replace(a[p]+location.search+location.hash);}catch(e){}</script>
+<script src="/lang-menu.js?v=1" defer></script>
+<!--/LANG-HEAD-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>pegelWERK Mac Apps - loudness METER PRO, voyzSESSION PRO, loudness CORRECT</title>
 <meta name="description" content="Native macOS apps for broadcast and post production: loudness METER PRO, voyzSESSION PRO and loudness CORRECT with EBU R128 metering and correction.">
@@ -21,17 +30,21 @@
 <!-- Open Graph / Social -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="pegelWERK Mac Apps - loudness METER PRO, voyzSESSION PRO, loudness CORRECT">
-<meta property="og:description" content="Native macOS-Apps für Broadcast und Postproduktion. Einmalkauf, 7-Tage-Trial, Lizenz für 2 Macs.">
-<meta property="og:url" content="https://pegelwerk.com/mac">
+<meta property="og:description" content="Native macOS apps for broadcast and post production: loudness METER PRO, voyzSESSION PRO and loudness CORRECT with EBU R128 metering and correction.">
+<meta property="og:url" content="https://pegelwerk.com/mac-en">
 <meta property="og:image" content="https://pegelwerk.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="pegelWERK">
-<meta property="og:locale" content="de_DE">
-<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="it_IT">
+<meta property="og:locale:alternate" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="pegelWERK - Pro Audio Software für Broadcast &amp; Postproduktion">
-<meta name="twitter:description" content="Apps und Plugins für professionelle Medienproduktionen. loudness METER PRO, voyzSESSION PRO, loudness CORRECT.">
+<meta name="twitter:title" content="pegelWERK Mac Apps - loudness METER PRO, voyzSESSION PRO, loudness CORRECT">
+<meta name="twitter:description" content="Native macOS apps for broadcast and post production: loudness METER PRO, voyzSESSION PRO and loudness CORRECT with EBU R128 metering and correction.">
 <meta name="twitter:image" content="https://pegelwerk.com/og-image.png">
 <link href="fonts.css" rel="stylesheet">
 <script type="application/ld+json">
@@ -249,12 +262,6 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 @media(max-width:600px){.page-hero h1::before{left:-14px;width:10px}.page-hero h1::after{right:-14px;width:10px}}
 /*VB-END*/
 </style>
-<script>
-function switchLang(l,u){try{localStorage.setItem('satk-lang',l);}catch(e){}location.href=u;}
-// Auto-redirect zur anderen Sprachfassung nur bei EXPLIZIT gesetzter Vorliebe
-// (null/unset = hierbleiben, der Besucher hat diese URL bewusst aufgerufen)
-try { if (localStorage.getItem('satk-lang') === 'de') { location.replace('/mac'); } } catch(e){}
-</script>
 </head>
 <body>
 
@@ -269,11 +276,7 @@ try { if (localStorage.getItem('satk-lang') === 'de') { location.replace('/mac')
  <div class="nav-links">
  <a href="/support-en" data-i18n="nav_info">Support request</a>
  <a href="/manage-license" data-i18n="nav_manage">License</a>
- <div class="lang-sw">
- <span class="lang" id="btnDE" onclick="switchLang('de','/mac')">DE</span>
- <span class="lang-sep">·</span>
- <span class="lang active" id="btnEN" onclick="switchLang('en','/mac-en')">EN</span>
- </div>
+ <!--LANG-MENU--><div class="lm"><button type="button" class="lm-btn" aria-expanded="false" aria-controls="lm-list"><svg class="lm-globe" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.7 3.9 5.9 3.9 9.5s-1.3 6.8-3.9 9.5M12 2.5C9.4 5.2 8.1 8.4 8.1 12s1.3 6.8 3.9 9.5"/></svg><span class="lm-code">EN</span><span class="lm-sr"> – Language: English</span><svg class="lm-chev" aria-hidden="true" width="9" height="6" viewBox="0 0 12 8" fill="currentColor"><path d="M6 8L0 0h12z"/></svg></button><ul class="lm-list" id="lm-list" hidden><li><a href="/mac" lang="de" hreflang="de" data-lang="de">Deutsch</a></li><li><a href="/mac-en" lang="en" hreflang="en" data-lang="en" aria-current="true">English</a></li><li><a href="/fr/mac" lang="fr" hreflang="fr" data-lang="fr">Français</a></li><li><a href="/es/mac" lang="es" hreflang="es" data-lang="es">Español</a></li><li><a href="/it/mac" lang="it" hreflang="it" data-lang="it">Italiano</a></li><li><a href="/pt-br/mac" lang="pt-BR" hreflang="pt-BR" data-lang="pt-br">Português (Brasil)</a></li></ul></div><!--/LANG-MENU-->
  </div>
 </nav>
 
@@ -302,11 +305,11 @@ try { if (localStorage.getItem('satk-lang') === 'de') { location.replace('/mac')
  <div class="format-section">
  <div class="format-label" data-i18n="fmt_standalone_mac">Standalone · macOS</div>
  <div class="od-plan">
-   <button id="odSegMonth" type="button" class="active" onclick="setOdPlan('month')">Monatlich</button>
-   <button id="odSegYear"  type="button" onclick="setOdPlan('year')">Jährlich</button>
+   <button id="odSegMonth" type="button" class="active" onclick="setOdPlan('month')" data-i18n="od_seg_month">Monthly</button>
+   <button id="odSegYear"  type="button" onclick="setOdPlan('year')" data-i18n="od_seg_year">Yearly</button>
  </div>
- <div class="card-price"><span id="odPrice">24,99</span> <span class="cur">€</span><span class="cur" id="odPer"> / Monat</span></div>
- <div class="card-vat" id="odVat">inkl. MwSt. · monatlich kündbar</div>
+ <div class="card-price"><span id="odPrice">24,99</span> <span class="cur">€</span><span class="cur" id="odPer" data-i18n="od_per_month"> / mo</span></div>
+ <div class="card-vat" id="odVat" data-i18n="od_vat_month">incl. VAT · cancel anytime</div>
  <div class="card-cta">
  <button class="card-btn trial" data-i18n="btn_trial" onclick="openTrial(TRIAL_URLS.od)">Free 7-day trial</button>
  <button class="card-btn-link" data-i18n="btn_trial_buy" onclick="odBuy()">or buy directly</button>
@@ -452,23 +455,21 @@ const PRICES = IS_LOCAL ? {
 let odInterval = 'month';  // Default Monat (niedrigerer Einstiegspreis, psychologisch besser)
 function setOdPlan(plan) {
  odInterval = (plan === 'month') ? 'month' : 'year';
- var en = (document.documentElement.lang || 'de') === 'en';
+ var t = i18n[document.documentElement.lang] || i18n.de;
  var price = document.getElementById('odPrice');
  var per   = document.getElementById('odPer');
  var vat   = document.getElementById('odVat');
  var y = document.getElementById('odSegYear');
  var m = document.getElementById('odSegMonth');
  if (price) price.textContent = (odInterval === 'year') ? '249' : '24,99';
- if (per)   per.textContent   = (odInterval === 'year') ? (en ? ' / yr' : ' / Jahr')
-                                                        : (en ? ' / mo' : ' / Monat');
+ if (per)   per.textContent   = (odInterval === 'year') ? t.od_per_year : t.od_per_month;
  if (vat)   vat.textContent   = (odInterval === 'year')
-                ? (en ? 'incl. VAT · 2 months free' : 'inkl. MwSt. · 2 Monate gratis')
-                : (en ? 'incl. VAT · cancel anytime' : 'inkl. MwSt. · monatlich kündbar');
+                ? t.od_vat_year : t.od_vat_month;
  if (y && m) {
    y.classList.toggle('active', odInterval === 'year');
    m.classList.toggle('active', odInterval === 'month');
-   y.textContent = en ? 'Yearly'  : 'Jährlich';
-   m.textContent = en ? 'Monthly' : 'Monatlich';
+   y.textContent = t.od_seg_year;
+   m.textContent = t.od_seg_month;
  }
 }
 function odPriceId() {
@@ -569,6 +570,12 @@ function openTrial(url) {
 
 const i18n = {
  de: {
+ od_seg_month: 'Monatlich',
+ od_seg_year: 'Jährlich',
+ od_per_month: ' / Monat',
+ od_per_year: ' / Jahr',
+ od_vat_month: 'inkl. MwSt. · monatlich kündbar',
+ od_vat_year: 'inkl. MwSt. · 2 Monate gratis',
  nav_info: 'Supportanfrage',
 
  hero_sub: 'Apps und Plugins für professionelle Medienproduktionen.',
@@ -647,6 +654,12 @@ const i18n = {
  info_ios_mac_p: 'Brauchst du Standalone-macOS-Versionen? <a href="/mac-en">Mac Apps ansehen</a>.'
  },
  en: {
+ od_seg_month: 'Monthly',
+ od_seg_year: 'Yearly',
+ od_per_month: ' / mo',
+ od_per_year: ' / yr',
+ od_vat_month: 'incl. VAT · cancel anytime',
+ od_vat_year: 'incl. VAT · 2 months free',
  nav_info: 'Support request',
 
  hero_sub: 'Apps and plugins for professional media production.',

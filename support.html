@@ -8,9 +8,18 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=10">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=10">
 <link rel="canonical" href="https://pegelwerk.com/support">
+<!--LANG-HEAD-->
 <link rel="alternate" hreflang="de" href="https://pegelwerk.com/support">
 <link rel="alternate" hreflang="en" href="https://pegelwerk.com/support-en">
-<link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/support">
+<link rel="alternate" hreflang="fr" href="https://pegelwerk.com/fr/support">
+<link rel="alternate" hreflang="es" href="https://pegelwerk.com/es/support">
+<link rel="alternate" hreflang="it" href="https://pegelwerk.com/it/support">
+<link rel="alternate" hreflang="pt-BR" href="https://pegelwerk.com/pt-br/support">
+<link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/support-en">
+<link rel="stylesheet" href="/lang-menu.css?v=1">
+<script>try{var p=localStorage.getItem('satk-lang'),a={"de":"/support","en":"/support-en","fr":"/fr/support","es":"/es/support","it":"/it/support","pt-br":"/pt-br/support"};if(p&&p!=='de'&&a[p])location.replace(a[p]+location.search+location.hash);}catch(e){}</script>
+<script src="/lang-menu.js?v=1" defer></script>
+<!--/LANG-HEAD-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>pegelWERK Support - Kontakt &amp; Hilfe</title>
 <meta name="description" content="Support und Kontakt für pegelWERK loudness METER PRO, voyzSESSION PRO und loudness CORRECT. E-Mail-Support direkt vom Entwickler.">
@@ -152,12 +161,6 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
 @media(max-width:900px){nav{padding:14px 20px;gap:12px}.nav-platforms a{font-size:9px;padding:6px 12px;letter-spacing:1px}}
 @media(max-width:600px){nav{padding:12px 16px;gap:8px}.nav-platforms a{font-size:8px;padding:5px 10px;letter-spacing:.8px}}
 </style>
-<script>
-function switchLang(l,u){try{localStorage.setItem('satk-lang',l);}catch(e){}location.href=u;}
-// Auto-redirect zur anderen Sprachfassung nur bei EXPLIZIT gesetzter Vorliebe
-// (null/unset = hierbleiben, der Besucher hat diese URL bewusst aufgerufen)
-try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/support-en'); } } catch(e){}
-</script>
 </head>
 <body>
 
@@ -172,11 +175,7 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/suppo
  <div class="nav-links">
  <a href="/support" data-i18n="nav_info">Supportanfrage</a>
  <a href="/manage-license" data-i18n="nav_manage">Lizenz</a>
- <div class="lang-sw">
- <span class="lang active" id="btnDE" onclick="switchLang('de','/support')">DE</span>
- <span class="lang-sep">·</span>
- <span class="lang" id="btnEN" onclick="switchLang('en','/support-en')">EN</span>
- </div>
+ <!--LANG-MENU--><div class="lm"><button type="button" class="lm-btn" aria-expanded="false" aria-controls="lm-list"><svg class="lm-globe" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.7 3.9 5.9 3.9 9.5s-1.3 6.8-3.9 9.5M12 2.5C9.4 5.2 8.1 8.4 8.1 12s1.3 6.8 3.9 9.5"/></svg><span class="lm-code">DE</span><span class="lm-sr"> – Sprache: Deutsch</span><svg class="lm-chev" aria-hidden="true" width="9" height="6" viewBox="0 0 12 8" fill="currentColor"><path d="M6 8L0 0h12z"/></svg></button><ul class="lm-list" id="lm-list" hidden><li><a href="/support" lang="de" hreflang="de" data-lang="de" aria-current="true">Deutsch</a></li><li><a href="/support-en" lang="en" hreflang="en" data-lang="en">English</a></li><li><a href="/fr/support" lang="fr" hreflang="fr" data-lang="fr">Français</a></li><li><a href="/es/support" lang="es" hreflang="es" data-lang="es">Español</a></li><li><a href="/it/support" lang="it" hreflang="it" data-lang="it">Italiano</a></li><li><a href="/pt-br/support" lang="pt-BR" hreflang="pt-BR" data-lang="pt-br">Português (Brasil)</a></li></ul></div><!--/LANG-MENU-->
  </div>
 </nav>
 
@@ -402,7 +401,7 @@ try { if (localStorage.getItem('satk-lang') === 'en') { location.replace('/suppo
  <h2 data-i18n="sup_faq_h">Häufige Fragen</h2>
  <div class="faq-item">
  <h3 data-i18n="sup_q1_h">Wo finde ich meine Lizenz?</h3>
- <p data-i18n="sup_q1_p">Lizenzschlüssel kommen direkt nach dem Kauf per E-Mail von Paddle (für Plugin-Käufe) bzw. sind im Apple-App-Store-Konto hinterlegt (für Mac- und iPad-Apps). Mail nicht mehr griffbereit? <a href="/manage-license" style="color:var(--ac);text-decoration:underline">Lizenz im Self-Service-Portal verwalten</a>, Aktivierungs-Mail erneut senden lassen oder aktivierte Geräte einsehen.</p>
+ <p data-i18n-html="sup_q1_p">Lizenzschlüssel kommen direkt nach dem Kauf per E-Mail von Paddle (für Plugin-Käufe) bzw. sind im Apple-App-Store-Konto hinterlegt (für Mac- und iPad-Apps). Mail nicht mehr griffbereit? <a href="/manage-license" style="color:var(--ac);text-decoration:underline">Lizenz im Self-Service-Portal verwalten</a>, Aktivierungs-Mail erneut senden lassen oder aktivierte Geräte einsehen.</p>
  </div>
  <div class="faq-item">
  <h3 data-i18n="sup_q2_h">Auf wie vielen Rechnern darf ich die Software nutzen?</h3>

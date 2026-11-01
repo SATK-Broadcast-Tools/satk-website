@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!-- GENERIERT von tools/build-en.py aus broadcast-meter-ios.html - NICHT von Hand aendern.
-     Aenderungen gehoeren in die deutsche Seite bzw. ihre en:-i18n-Tabelle,
-     danach `python3 tools/build-en.py` neu laufen lassen. -->
+<!-- GENERIERT von tools/build-i18n.py aus broadcast-meter-ios.html - NICHT von Hand aendern.
+     Aenderungen gehoeren in die deutsche Seite (bzw. ihre en:-Tabelle oder
+     tools/i18n/<sprache>.json), danach `python3 tools/build-i18n.py`. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -11,25 +11,39 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png?v=10">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=10">
 <link rel="canonical" href="https://pegelwerk.com/broadcast-meter-ios-en">
+<!--LANG-HEAD-->
 <link rel="alternate" hreflang="de" href="https://pegelwerk.com/broadcast-meter-ios">
 <link rel="alternate" hreflang="en" href="https://pegelwerk.com/broadcast-meter-ios-en">
-<link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/broadcast-meter-ios">
+<link rel="alternate" hreflang="fr" href="https://pegelwerk.com/fr/broadcast-meter-ios">
+<link rel="alternate" hreflang="es" href="https://pegelwerk.com/es/broadcast-meter-ios">
+<link rel="alternate" hreflang="it" href="https://pegelwerk.com/it/broadcast-meter-ios">
+<link rel="alternate" hreflang="pt-BR" href="https://pegelwerk.com/pt-br/broadcast-meter-ios">
+<link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/broadcast-meter-ios-en">
+<link rel="stylesheet" href="/lang-menu.css?v=1">
+<script>try{var p=localStorage.getItem('satk-lang'),a={"de":"/broadcast-meter-ios","en":"/broadcast-meter-ios-en","fr":"/fr/broadcast-meter-ios","es":"/es/broadcast-meter-ios","it":"/it/broadcast-meter-ios","pt-br":"/pt-br/broadcast-meter-ios"};if(p&&p!=='en'&&a[p])location.replace(a[p]+location.search+location.hash);}catch(e){}</script>
+<script src="/lang-menu.js?v=1" defer></script>
+<!--/LANG-HEAD-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>pegelWERK loudness METER PRO &amp; loudness METER - EBU R128 on iPad and iPhone</title>
 <meta name="description" content="EBU R128 / ITU-R BS.1770-4 loudness metering on iOS: loudness METER PRO for iPad with Silero VAD, forecast and MIDI learn.">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="pegelWERK loudness METER PRO &amp; loudness METER - Loudness-Metering auf iOS">
-<meta property="og:description" content="iPad-Vollversion mit Silero-VAD und Forecast. iPhone-Kompakt mit Meters und Spectrum. Beide EBU-R128-konform, beide live im App Store.">
-<meta property="og:url" content="https://pegelwerk.com/broadcast-meter-ios">
+<meta property="og:title" content="pegelWERK loudness METER PRO &amp; loudness METER - EBU R128 on iPad and iPhone">
+<meta property="og:description" content="EBU R128 / ITU-R BS.1770-4 loudness metering on iOS: loudness METER PRO for iPad with Silero VAD, forecast and MIDI learn.">
+<meta property="og:url" content="https://pegelwerk.com/broadcast-meter-ios-en">
 <meta property="og:image" content="https://pegelwerk.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="pegelWERK">
-<meta property="og:locale" content="de_DE">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="it_IT">
+<meta property="og:locale:alternate" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="pegelWERK loudness METER PRO &amp; loudness METER">
-<meta name="twitter:description" content="EBU R128 auf iPad &amp; iPhone. loudness METER PRO 19,99 €, loudness METER gratis. Live im App Store.">
+<meta name="twitter:title" content="pegelWERK loudness METER PRO &amp; loudness METER - EBU R128 on iPad and iPhone">
+<meta name="twitter:description" content="EBU R128 / ITU-R BS.1770-4 loudness metering on iOS: loudness METER PRO for iPad with Silero VAD, forecast and MIDI learn.">
 <meta name="twitter:image" content="https://pegelwerk.com/og-image.png">
 <link href="fonts.css" rel="stylesheet">
 
@@ -251,12 +265,6 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  ]
 }
 </script>
-<script>
-function switchLang(l,u){try{localStorage.setItem('satk-lang',l);}catch(e){}location.href=u;}
-// Auto-redirect zur anderen Sprachfassung nur bei EXPLIZIT gesetzter Vorliebe
-// (null/unset = hierbleiben, der Besucher hat diese URL bewusst aufgerufen)
-try { if (localStorage.getItem('satk-lang') === 'de') { location.replace('/broadcast-meter-ios'); } } catch(e){}
-</script>
 </head>
 <body>
 
@@ -271,11 +279,7 @@ try { if (localStorage.getItem('satk-lang') === 'de') { location.replace('/broad
  <div class="nav-links">
  <a href="/support-en" data-i18n="nav_info">Support request</a>
  <a href="/manage-license" data-i18n="nav_manage">License</a>
- <div class="lang-sw">
- <span class="lang" id="btnDE" onclick="switchLang('de','/broadcast-meter-ios')">DE</span>
- <span class="lang-sep">·</span>
- <span class="lang active" id="btnEN" onclick="switchLang('en','/broadcast-meter-ios-en')">EN</span>
- </div>
+ <!--LANG-MENU--><div class="lm"><button type="button" class="lm-btn" aria-expanded="false" aria-controls="lm-list"><svg class="lm-globe" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.7 3.9 5.9 3.9 9.5s-1.3 6.8-3.9 9.5M12 2.5C9.4 5.2 8.1 8.4 8.1 12s1.3 6.8 3.9 9.5"/></svg><span class="lm-code">EN</span><span class="lm-sr"> – Language: English</span><svg class="lm-chev" aria-hidden="true" width="9" height="6" viewBox="0 0 12 8" fill="currentColor"><path d="M6 8L0 0h12z"/></svg></button><ul class="lm-list" id="lm-list" hidden><li><a href="/broadcast-meter-ios" lang="de" hreflang="de" data-lang="de">Deutsch</a></li><li><a href="/broadcast-meter-ios-en" lang="en" hreflang="en" data-lang="en" aria-current="true">English</a></li><li><a href="/fr/broadcast-meter-ios" lang="fr" hreflang="fr" data-lang="fr">Français</a></li><li><a href="/es/broadcast-meter-ios" lang="es" hreflang="es" data-lang="es">Español</a></li><li><a href="/it/broadcast-meter-ios" lang="it" hreflang="it" data-lang="it">Italiano</a></li><li><a href="/pt-br/broadcast-meter-ios" lang="pt-BR" hreflang="pt-BR" data-lang="pt-br">Português (Brasil)</a></li></ul></div><!--/LANG-MENU-->
  </div>
 </nav>
 

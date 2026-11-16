@@ -185,6 +185,8 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
  text-underline-offset:3px;cursor:pointer;background:none;border:none;padding:2px 4px;letter-spacing:.3px;transition:color .2s}
 .card-btn-link:hover{color:var(--ac)}
 .card-claim{font-size:9px;color:var(--mu);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.card-req{font-size:11px;line-height:1.45;color:var(--mu2);margin-top:12px;padding:8px 10px;border-left:2px solid var(--ac);background:var(--sf);text-align:left}
+.card-req b{color:var(--tx);font-weight:600}
 .card-appstore{display:inline-block;font-size:10px;color:var(--mu2);margin-top:10px;text-decoration:none;letter-spacing:.5px;transition:color .2s}
 .card-appstore:hover{color:var(--ac)}
 .format-section{margin-top:16px;padding-top:16px;border-top:1px solid var(--bd)}
@@ -314,6 +316,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <button class="card-btn trial" data-i18n="btn_trial" onclick="openTrial(TRIAL_URLS.od)">Free 7-day trial</button>
  <button class="card-btn-link" data-i18n="btn_trial_buy" onclick="odBuy()">or buy directly</button>
  <div class="card-claim" data-i18n="trial_claim">No account · no email</div>
+ <div class="card-req" data-i18n-html="od_req"><b>Recommended: Mac with Apple silicon (M1 or newer).</b> AUTO MIX, noise reduction and transcription run much faster there than on Intel. At least 16 GB RAM, macOS 14 Sonoma or newer.</div>
  </div>
  </div>
 
@@ -600,6 +603,7 @@ const i18n = {
  btn_trial: 'Kostenlos 7 Tage testen',
  btn_trial_buy: 'oder direkt kaufen',
  trial_claim: 'Kein Konto · keine Email',
+ od_req: '<b>Empfohlen: Mac mit Apple-Prozessor (M1 oder neuer).</b> Dort laufen AUTO MIX, Entrauschen und Transkription deutlich schneller als auf Intel. Mindestens 16 GB Arbeitsspeicher, macOS 14 Sonoma oder neuer.',
  trial_pending: 'Der Download wird in Kürze freigeschaltet. Du kannst die App dann ohne Konto und ohne Email-Eingabe 7 Tage kostenlos testen.',
  also_appstore: 'Auch im Mac App Store',
  fmt_plugin: 'Plugin · VST3 · AU',
@@ -684,6 +688,7 @@ const i18n = {
  btn_trial: 'Free 7-day trial',
  btn_trial_buy: 'or buy directly',
  trial_claim: 'No account · no email',
+ od_req: '<b>Recommended: Mac with Apple silicon (M1 or newer).</b> AUTO MIX, noise reduction and transcription run much faster there than on Intel. At least 16 GB RAM, macOS 14 Sonoma or newer.',
  trial_pending: 'The download will be unlocked shortly. You will then be able to test the app for 7 days without an account or email signup.',
  also_appstore: 'Also on the Mac App Store',
  fmt_plugin: 'Plugin · VST3 · AU',

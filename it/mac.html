@@ -185,6 +185,8 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
  text-underline-offset:3px;cursor:pointer;background:none;border:none;padding:2px 4px;letter-spacing:.3px;transition:color .2s}
 .card-btn-link:hover{color:var(--ac)}
 .card-claim{font-size:9px;color:var(--mu);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.card-req{font-size:11px;line-height:1.45;color:var(--mu2);margin-top:12px;padding:8px 10px;border-left:2px solid var(--ac);background:var(--sf);text-align:left}
+.card-req b{color:var(--tx);font-weight:600}
 .card-appstore{display:inline-block;font-size:10px;color:var(--mu2);margin-top:10px;text-decoration:none;letter-spacing:.5px;transition:color .2s}
 .card-appstore:hover{color:var(--ac)}
 .format-section{margin-top:16px;padding-top:16px;border-top:1px solid var(--bd)}
@@ -314,6 +316,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <button class="card-btn trial" data-i18n="btn_trial" onclick="openTrial(TRIAL_URLS.od)">Prova gratis per 7 giorni</button>
  <button class="card-btn-link" data-i18n="btn_trial_buy" onclick="odBuy()">oppure acquista subito</button>
  <div class="card-claim" data-i18n="trial_claim">Nessun account · nessuna email</div>
+ <div class="card-req" data-i18n-html="od_req"><b>Consigliato: Mac con chip Apple (M1 o successivo).</b> Lì AUTO MIX, la riduzione del rumore e la trascrizione sono molto più veloci che su Intel. Almeno 16 GB di memoria, macOS 14 Sonoma o successivo.</div>
  </div>
  </div>
 
@@ -598,6 +601,7 @@ const i18n = {'it': {
 "btn_trial": "Prova gratis per 7 giorni",
 "btn_trial_buy": "oppure acquista subito",
 "trial_claim": "Nessun account · nessuna email",
+"od_req": "<b>Consigliato: Mac con chip Apple (M1 o successivo).</b> Lì AUTO MIX, la riduzione del rumore e la trascrizione sono molto più veloci che su Intel. Almeno 16 GB di memoria, macOS 14 Sonoma o successivo.",
 "trial_pending": "Il download sarà disponibile a breve. Potrai provare l’app gratis per 7 giorni, senza account e senza inserire un’email.",
 "also_appstore": "Anche sul Mac App Store",
 "fmt_plugin": "Plug-in · VST3 · AU",

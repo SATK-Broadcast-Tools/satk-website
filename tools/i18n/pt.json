@@ -590,5 +590,6 @@
  "1.5 s Smoothing": "Suavização de 1,5 s",
  "Play · Play In · Play Out (1,5 s)": "Play · Play In · Play Out (1,5 s)",
  "OFF · 0,5 · 1,5 · 4 s": "OFF · 0,5 · 1,5 · 4 s",
- "14 Sonoma oder neuer · Empfohlen: Mac mit Apple-Prozessor (M1 oder neuer), deutlich schneller als Intel · mindestens 16 GB Arbeitsspeicher (32 GB für lange Projekte mit 4K-Video)": "14 Sonoma ou posterior · Recomendado: Mac com chip Apple (M1 ou posterior), muito mais rápido do que Intel · pelo menos 16 GB de memória (32 GB para projetos longos com vídeo 4K)"
+ "14 Sonoma oder neuer · Empfohlen: Mac mit Apple-Prozessor (M1 oder neuer), deutlich schneller als Intel · mindestens 16 GB Arbeitsspeicher (32 GB für lange Projekte mit 4K-Video)": "14 Sonoma ou posterior · Recomendado: Mac com chip Apple (M1 ou posterior), muito mais rápido do que Intel · pelo menos 16 GB de memória (32 GB para projetos longos com vídeo 4K)",
+ "<b>Empfohlen: Mac mit Apple-Prozessor (M1 oder neuer).</b> Dort laufen AUTO MIX, Entrauschen und Transkription deutlich schneller als auf Intel. Mindestens 16 GB Arbeitsspeicher, macOS 14 Sonoma oder neuer.": "<b>Recomendado: Mac com chip Apple (M1 ou posterior).</b> Aí o AUTO MIX, a redução de ruído e a transcrição são muito mais rápidos do que em Intel. Pelo menos 16 GB de memória, macOS 14 Sonoma ou posterior."
 }

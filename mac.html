@@ -303,7 +303,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
    <button id="odSegMonth" type="button" class="active" onclick="setOdPlan('month')" data-i18n="od_seg_month">Monatlich</button>
    <button id="odSegYear"  type="button" onclick="setOdPlan('year')" data-i18n="od_seg_year">Jährlich</button>
  </div>
- <div class="card-price"><span id="odPrice">24,99</span> <span class="cur">€</span><span class="cur" id="odPer" data-i18n="od_per_month"> / Monat</span></div>
+ <div class="card-price"><span id="odPrice">29,99</span> <span class="cur">€</span><span class="cur" id="odPer" data-i18n="od_per_month"> / Monat</span></div>
  <div class="card-vat" id="odVat" data-i18n="od_vat_month">inkl. MwSt. · monatlich kündbar</div>
  <div class="card-cta">
  <button class="card-btn trial" data-i18n="btn_trial" onclick="openTrial(TRIAL_URLS.od)">Kostenlos 7 Tage testen</button>
@@ -443,7 +443,7 @@ const PRICES = IS_LOCAL ? {
 } : {
  // Live-Price-IDs (production)
  bm: 'pri_01kqwjjadxp4j7exrc841d7d8z',
- od: { month: 'pri_01kteb6z4rqwjttrqrxxd8befq', year: 'pri_01ktehrt96x9tf49gpavwbwvrm' }, // Abo 24,99/Monat · 249/Jahr
+ od: { month: 'pri_01kteb6z4rqwjttrqrxxd8befq', year: 'pri_01ktehrt96x9tf49gpavwbwvrm' }, // Abo 29,99/Monat · 299/Jahr
  lc: 'pri_01krh0f1r22tvq3702yfbm0ygk'
 };
 
@@ -457,7 +457,7 @@ function setOdPlan(plan) {
  var vat   = document.getElementById('odVat');
  var y = document.getElementById('odSegYear');
  var m = document.getElementById('odSegMonth');
- if (price) price.textContent = (odInterval === 'year') ? '249' : '24,99';
+ if (price) price.textContent = (odInterval === 'year') ? '299' : '29,99';
  if (per)   per.textContent   = (odInterval === 'year') ? t.od_per_year : t.od_per_month;
  if (vat)   vat.textContent   = (odInterval === 'year')
                 ? t.od_vat_year : t.od_vat_month;

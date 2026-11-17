@@ -103,7 +103,7 @@ DE = {
  ],
   "avail_h": "VERFÜGBARKEIT",
  "avail": f"voyzSESSION PRO {VERSION} steht ab sofort auf pegelwerk.com zum Download bereit. Für Bestandskunden "
-          "ist das Update kostenlos. Das Abo kostet 24,99 EUR im Monat oder 249 EUR im Jahr, jeweils "
+          "ist das Update kostenlos. Das Abo kostet 29,99 EUR im Monat oder 299 EUR im Jahr, jeweils "
           "inklusive Mehrwertsteuer und monatlich kündbar. Sieben Tage lässt sich die Vollversion "
           "kostenlos testen, ohne Konto und ohne E-Mail-Adresse.",
  "about_h": "ÜBER PEGELWERK",
@@ -154,7 +154,7 @@ DE = {
   ("Sprachen", "Deutsch, Englisch, Französisch, Spanisch, Italienisch, Portugiesisch"),
   ("Datenschutz", "Alles läuft lokal auf dem eigenen Rechner: kein Cloud-Sync, kein Upload, kein Streaming"),
   ("Technik", "Nativ in C++"),
-  ("Preis", "Abo 24,99 EUR im Monat oder 249 EUR im Jahr, inkl. MwSt., monatlich kündbar &middot; sieben Tage "
+  ("Preis", "Abo 29,99 EUR im Monat oder 299 EUR im Jahr, inkl. MwSt., monatlich kündbar &middot; sieben Tage "
             "kostenlos testen, ohne Konto und ohne E-Mail"),
   ("Version", f"{VERSION} ({MONTH_DE})"),
   ("Hersteller", "pegelWERK &ndash; Sascha Hömske, Siegburg, Deutschland"),
@@ -228,7 +228,7 @@ EN = {
  ],
   "avail_h": "AVAILABILITY",
  "avail": f"voyzSESSION PRO {VERSION} is available for download at pegelwerk.com. The update is free for existing "
-          "customers. The subscription costs EUR 24.99 per month or EUR 249 per year, VAT included, cancellable "
+          "customers. The subscription costs EUR 29.99 per month or EUR 299 per year, VAT included, cancellable "
           "monthly. The full version can be tried free for seven days, no account and no email address "
           "needed.",
  "about_h": "ABOUT PEGELWERK",
@@ -277,7 +277,7 @@ EN = {
   ("Languages", "German, English, French, Spanish, Italian, Portuguese"),
   ("Privacy", "Everything runs locally on your own machine: no cloud sync, no upload, no streaming"),
   ("Technology", "Native C++"),
-  ("Price", "Subscription EUR 24.99 per month or EUR 249 per year, VAT included, cancellable monthly &middot; "
+  ("Price", "Subscription EUR 29.99 per month or EUR 299 per year, VAT included, cancellable monthly &middot; "
             "seven-day free trial, no account and no email"),
   ("Version", f"{VERSION} ({MONTH_EN})"),
   ("Vendor", "pegelWERK &ndash; Sascha Hömske, Siegburg, Germany"),

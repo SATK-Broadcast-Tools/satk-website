@@ -178,7 +178,7 @@ genauer, **WebM entfernt** (steht nicht im Dateifilter), **macOS 13+ → 12+**
 (`CMakeLists.txt:71`, `HARDWARE.md`: 13+ ist die *Empfehlung*).
 
 **Preis im JSON-LD war falsch:** 199 EUR Einmalkauf. `mac.html:269-423` verkauft
-seit dem Abo-Umbau **24,99 EUR/Monat oder 249 EUR/Jahr** — im `offers`-Array
+seit dem Abo-Umbau **29,99 EUR/Monat oder 299 EUR/Jahr** (seit 17.11.2026; vorher 24,99/249) — im `offers`-Array
 korrigiert. Auf der Seite selbst steht bewusst kein Preis (er wuerde hier
 veralten), die CTA fuehrt auf `/mac`.
 

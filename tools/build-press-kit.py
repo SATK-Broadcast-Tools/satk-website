@@ -40,15 +40,15 @@ MONTH_EN = "November 2026"
 
 DE = {
  "kicker": "PRESSEMITTEILUNG",
- "headline": f"voyzSESSION {VERSION}: Die komplette Sprachproduktion in einer Anwendung &ndash; vom Prompter bis zum <span style=\"white-space:nowrap\">Sende-MXF</span>",
+ "headline": f"voyzSESSION PRO {VERSION}: Die komplette Sprachproduktion in einer Anwendung &ndash; vom Prompter bis zum <span style=\"white-space:nowrap\">Sende-MXF</span>",
  "lead": "Aufnahme gegen Bild und Skript, eine vollständige Klangbearbeitung, eine Mischung, die jede Stimme erst "
-         "vermisst, und die sendefertige Auslieferung: voyzSESSION 2.0 bündelt, was in der Sprachproduktion sonst "
+         "vermisst, und die sendefertige Auslieferung: voyzSESSION PRO 2.0 bündelt, was in der Sprachproduktion sonst "
          "auf mehrere Programme und Plugin-Pakete verteilt ist.",
  "body": [
-  f"<b>Siegburg, {DATE_DE}</b> &ndash; pegelWERK veröffentlicht Version {VERSION} von voyzSESSION, der DAW "
+  f"<b>Siegburg, {DATE_DE}</b> &ndash; pegelWERK veröffentlicht Version {VERSION} von voyzSESSION PRO, der DAW "
   "für Sprachproduktion. Wer heute einen Beitrag vertont, einen Podcast produziert oder ein Hörspiel mischt, "
   "arbeitet meist mit einer DAW, mehreren Plugin-Paketen, einem Teleprompter, einem Transkriptionsdienst und "
-  "einem eigenen Werkzeug für die Auslieferung. voyzSESSION 2.0 vereint all das in einer Anwendung. Alle "
+  "einem eigenen Werkzeug für die Auslieferung. voyzSESSION PRO 2.0 vereint all das in einer Anwendung. Alle "
   "Bausteine, die diese Arbeit braucht, sind in hoher Qualität an Bord &ndash; Software von Drittanbietern ist "
   "nicht nötig. Wer seine eigenen Plugins schätzt, setzt sie trotzdem ein.",
 
@@ -70,7 +70,7 @@ DE = {
   "die Rolle Stadion hält die Atmosphäre gleichmäßig. Am Ende steht eine sendefertige Mischung nach dem "
   "gewählten Lautheitsprofil &ndash; mit einem Klick.",
 
-  "Dabei arbeitet voyzSESSION in zwei Modi, die ineinandergreifen. Im Assist-Modus liefert auch, wer keine "
+  "Dabei arbeitet voyzSESSION PRO in zwei Modi, die ineinandergreifen. Im Assist-Modus liefert auch, wer keine "
   "Erfahrung mit Ton hat, professionell ab. Im Manual-Modus gilt DAW-Standard: rohe Abhöre, Export als reiner "
   "Bounce, Master-Fader und Automation, ein Trim-Modus, der eine Kurve an einzelnen Stellen formerhaltend "
   "verschiebt. Jeder Wert, den der AUTO MIX ermittelt hat, steht dort als echte Einstellung im Modul und "
@@ -85,7 +85,7 @@ DE = {
 
   "Version 2.0 bringt außerdem sechs Sprachen (Deutsch, Englisch, Französisch, Spanisch, Italienisch, "
   "Portugiesisch), Spuren zum Umsortieren, eine Navigationszeile und Projekteinstellungen mit Abtastrate, "
-  "Bildrate und Startzeitcode. voyzSESSION 2.0 läuft ab macOS 14 Sonoma; empfohlen ist ein Mac mit "
+  "Bildrate und Startzeitcode. voyzSESSION PRO 2.0 läuft ab macOS 14 Sonoma; empfohlen ist ein Mac mit "
   "Apple-Prozessor (M1 oder neuer) und mindestens 16 GB Arbeitsspeicher &ndash; dort laufen AUTO MIX, "
   "Entrauschen und Transkription deutlich schneller.",
  ],
@@ -107,10 +107,10 @@ DE = {
   "Ab macOS 14 Sonoma; empfohlen: Mac mit Apple-Prozessor und 16 GB",
  ],
  "avail_h": "VERFÜGBARKEIT",
- "avail": f"voyzSESSION {VERSION} steht ab sofort auf pegelwerk.com zum Download bereit. Für Bestandskunden "
+ "avail": f"voyzSESSION PRO {VERSION} steht ab sofort auf pegelwerk.com zum Download bereit. Für Bestandskunden "
           "ist das Update kostenlos. Das Abo kostet 24,99 EUR im Monat oder 249 EUR im Jahr, jeweils "
           "inklusive Mehrwertsteuer und monatlich kündbar. Sieben Tage lässt sich die Vollversion "
-          "kostenlos testen &ndash; ohne Konto und ohne E-Mail-Adresse. voyzSESSION läuft ab macOS 14 Sonoma; "
+          "kostenlos testen &ndash; ohne Konto und ohne E-Mail-Adresse. voyzSESSION PRO läuft ab macOS 14 Sonoma; "
           "empfohlen ist ein Mac mit Apple-Prozessor.",
  "about_h": "ÜBER PEGELWERK",
  "about": "pegelWERK ist eine unabhängige Audio-Software-Schmiede aus Siegburg, Deutschland, gegründet "
@@ -121,10 +121,10 @@ DE = {
             "Deutschland &middot; pegelwerk.com",
  "cleared": "Alle Materialien sind zur redaktionellen Verwendung freigegeben.",
  "fs_kicker": "FACT SHEET",
- "fs_title": "voyzSESSION &ndash; Fact Sheet",
+ "fs_title": "voyzSESSION PRO &ndash; Fact Sheet",
  "fs_sub": "Die DAW für Sprachproduktion: Voice-over, Beitrag, Podcast, Hörspiel.",
  "fs_rows": [
-  ("Produkt", "voyzSESSION &ndash; DAW für Sprachproduktion mit AUTO MIX und Manual-Modus nach DAW-Standard"),
+  ("Produkt", "voyzSESSION PRO &ndash; DAW für Sprachproduktion mit AUTO MIX und Manual-Modus nach DAW-Standard"),
   ("Kategorie", "Voice-over- und Podcast-Produktion, Audio-Postproduktion, Broadcast-Auslieferung"),
   ("Systeme", "macOS 14 Sonoma oder neuer &middot; empfohlen: Mac mit Apple-Prozessor (M1 oder neuer) und "
               "16 GB Arbeitsspeicher, 32 GB für lange Projekte mit 4K-Video &middot; Intel-Macs laufen weiterhin "
@@ -174,15 +174,15 @@ DE = {
 
 EN = {
  "kicker": "PRESS RELEASE",
- "headline": f"voyzSESSION {VERSION}: The complete voice production in one application &ndash; from prompter to broadcast MXF",
+ "headline": f"voyzSESSION PRO {VERSION}: The complete voice production in one application &ndash; from prompter to broadcast MXF",
  "lead": "Recording against picture and script, a complete set of sound processing, a mix that measures every "
-         "voice first, and broadcast-ready delivery: voyzSESSION 2.0 brings together what voice production "
+         "voice first, and broadcast-ready delivery: voyzSESSION PRO 2.0 brings together what voice production "
          "otherwise spreads across several programs and plugin bundles.",
  "body": [
-  f"<b>Siegburg, {DATE_EN}</b> &ndash; pegelWERK releases version {VERSION} of voyzSESSION, the DAW for voice "
+  f"<b>Siegburg, {DATE_EN}</b> &ndash; pegelWERK releases version {VERSION} of voyzSESSION PRO, the DAW for voice "
   "production. Anyone voicing a report, producing a podcast or mixing a radio drama today usually works with a "
   "DAW, several plugin bundles, a teleprompter, a transcription service and a separate tool for delivery. "
-  "voyzSESSION 2.0 unites all of it in one application. Every processor the job needs is on board in high "
+  "voyzSESSION PRO 2.0 unites all of it in one application. Every processor the job needs is on board in high "
   "quality &ndash; no third-party software required. Those who value their own plugins can still use them.",
 
   "Recording starts at the script: the prompter follows the voice via speech recognition, a booth window shows "
@@ -203,7 +203,7 @@ EN = {
   "the atmosphere steady. The result is a broadcast-ready mix to the chosen loudness profile &ndash; in one "
   "click.",
 
-  "voyzSESSION works in two modes that interlock. In Assist mode even people without audio experience deliver "
+  "voyzSESSION PRO works in two modes that interlock. In Assist mode even people without audio experience deliver "
   "professional results. In Manual mode DAW standard applies: raw monitoring, export as a plain bounce, master "
   "fader and automation, a trim mode that shifts a curve at individual spots while keeping its shape. Every "
   "value AUTO MIX has derived sits there as a real setting in the module and is the starting point for your "
@@ -218,7 +218,7 @@ EN = {
 
   "Version 2.0 also brings six languages (German, English, French, Spanish, Italian, Portuguese), reorderable "
   "tracks, a navigation bar and project settings with sample rate, frame rate and start timecode. "
-  "voyzSESSION 2.0 runs on macOS 14 Sonoma or later; a Mac with Apple silicon (M1 or newer) and at least "
+  "voyzSESSION PRO 2.0 runs on macOS 14 Sonoma or later; a Mac with Apple silicon (M1 or newer) and at least "
   "16 GB of memory is recommended &ndash; AUTO MIX, noise reduction and transcription run much faster there.",
  ],
  "bullets_h": f"NEW IN {VERSION}",
@@ -239,10 +239,10 @@ EN = {
   "macOS 14 Sonoma or later; recommended: Mac with Apple silicon and 16 GB",
  ],
  "avail_h": "AVAILABILITY",
- "avail": f"voyzSESSION {VERSION} is available for download at pegelwerk.com. The update is free for existing "
+ "avail": f"voyzSESSION PRO {VERSION} is available for download at pegelwerk.com. The update is free for existing "
           "customers. The subscription costs EUR 24.99 per month or EUR 249 per year, VAT included, cancellable "
           "monthly. The full version can be tried free for seven days &ndash; no account and no email address "
-          "needed. voyzSESSION runs on macOS 14 Sonoma or later; a Mac with Apple silicon is recommended.",
+          "needed. voyzSESSION PRO runs on macOS 14 Sonoma or later; a Mac with Apple silicon is recommended.",
  "about_h": "ABOUT PEGELWERK",
  "about": "pegelWERK is an independent audio software company based in Siegburg, Germany, founded by Sascha "
           "Hömske. The lineup covers native apps for macOS, iPadOS and iPhone around broadcast, post production "
@@ -251,10 +251,10 @@ EN = {
             "Germany &middot; pegelwerk.com",
  "cleared": "All materials are cleared for editorial use.",
  "fs_kicker": "FACT SHEET",
- "fs_title": "voyzSESSION &ndash; Fact Sheet",
+ "fs_title": "voyzSESSION PRO &ndash; Fact Sheet",
  "fs_sub": "The DAW for voice production: voice-over, reporting, podcast, radio drama.",
  "fs_rows": [
-  ("Product", "voyzSESSION &ndash; DAW for voice production with AUTO MIX and a manual mode built to DAW standard"),
+  ("Product", "voyzSESSION PRO &ndash; DAW for voice production with AUTO MIX and a manual mode built to DAW standard"),
   ("Category", "Voice-over and podcast production, audio post production, broadcast delivery"),
   ("Systems", "macOS 14 Sonoma or later &middot; recommended: Mac with Apple silicon (M1 or newer) and 16 GB of "
               "memory, 32 GB for long projects with 4K video &middot; Intel Macs still run &middot; iPadOS as a "
@@ -400,7 +400,7 @@ def readme(lang, t):
     lg  = "Hersteller-Logo" if lang == "de" else "vendor logo"
     hd  = "Inhalt:" if lang == "de" else "Contents:"
     ct  = "Pressekontakt" if lang == "de" else "Press contact"
-    return (f"# pegelWERK voyzSESSION — Press Kit ({lang.upper()})\n\n{hd}\n"
+    return (f"# pegelWERK voyzSESSION PRO — Press Kit ({lang.upper()})\n\n{hd}\n"
             f"- press-release.pdf / .txt — {rel} {VERSION}\n"
             f"- fact-sheet.pdf / .md — {fs}\n"
             f"- boilerplate.txt — {bp}\n"
@@ -461,8 +461,8 @@ def patch_html():
     # ANDEREN Produkte -- beides am 21.09.2026 einmal passiert.
     s = re.sub(r"(/press/(?:pegelwerk-)?voyzsession-[A-Za-z0-9._-]+)\?v=\d+",
                rf"\g<1>?v={VTAG}", s)
-    s = re.sub(r'(<div class="card-meta">pegelWERK voyzSESSION )[\d.]+(</div>)',
-               rf"\g<1>{VERSION}\g<2>", s)
+    s = re.sub(r'(<div class="card-meta">pegelWERK voyzSESSION)(?: PRO)? [\d.]+(</div>)',
+               rf"\g<1> PRO {VERSION}\g<2>", s)
     # Die beiden Prosa-Felder stehen dreimal (sichtbarer Text + zwei Tabellen).
     s = re.sub(r'(data-i18n="latest_h">)[^<]*(</div>)',
                lambda m: m.group(1) + plain(DE["headline"]) + m.group(2), s)

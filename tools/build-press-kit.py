@@ -41,9 +41,9 @@ MONTH_EN = "November 2026"
 DE = {
  "kicker": "PRESSEMITTEILUNG",
  "headline": f"voyzSESSION {VERSION}: Neun Klangmodule, ein Mischmodus nach DAW-Standard und ein AUTO MIX für Rohmaterial",
- "lead": "Die DAW für Sprachproduktion bekommt den größten Umbau seit dem Erstrelease: eigene Klangbausteine "
-         "mit sichtbaren Werten, einen Manual-Modus ohne versteckte Verarbeitung und einen AUTO MIX, der auch "
-         "mit ungepegelten Einzelspuren zurechtkommt.",
+ "lead": "Die DAW für Sprachproduktion vermisst jetzt jede Stimme, bevor sie mischt, und stellt ihre "
+         "Klangmodule danach ein &ndash; für Sprecher wie für O-Ton, auch aus ungepegeltem Rohmaterial. Dazu kommt "
+         "ein Manual-Modus nach DAW-Standard, in dem jeder ermittelte Wert sichtbar und änderbar ist.",
  "body": [
   f"<b>Siegburg, {DATE_DE}</b> &ndash; pegelWERK veröffentlicht Version {VERSION} von voyzSESSION, der DAW "
   "für Sprachproduktion. Es ist der größte Umbau seit dem Erstrelease: ein Kanalzug mit neun eigenen "
@@ -55,6 +55,15 @@ DE = {
   "Jeder öffnet ein Modulfenster mit echten Parametern sowie Werks- und eigenen Presets. Die Anzeigen "
   "werden aus denselben Werten gerechnet, mit denen der Klang entsteht &ndash; was das Modul zeigt, ist das, "
   "was wirkt. Die Reihenfolge im Raster ist die Signalfolge und lässt sich ändern.",
+
+  "Bevor der AUTO MIX mischt, analysiert er jede Stimme einzeln: ihre Klangfarbe, ihr Pegelverhalten, die "
+  "Schärfe ihrer S-Laute, Atmer und Klicks. Daraus stellt er die Module für genau diese Stimme ein. Der EQ "
+  "gleicht die gemessene Klangfarbe an ein Sprachziel an, der Kompressor richtet sich nach der Dynamik des "
+  "Sprechers, der De-Esser greift bei einer scharfen Stimme stärker und lässt eine weiche in Ruhe. Beim "
+  "Sprecher werden zusätzlich Atmer und Klicks dort behandelt, wo sie gefunden wurden. Ein O-Ton bekommt "
+  "dieselbe Klanganalyse für EQ, Kompressor und De-Esser. "
+  "Das Ergebnis steht als echte Einstellung im jeweiligen Modul &ndash; im Assist zum Ansehen, im Manual als "
+  "Ausgangspunkt für die eigene Feinarbeit.",
 
   "Bisher ging der AUTO MIX davon aus, dass ein Cutter die Spuren vorgemischt hat. Jetzt kommt er mit "
   "ungepegeltem Rohmaterial zurecht. Jede Rolle hat ihr eigenes Pegelziel: Sprecher und O-Ton führen die "
@@ -88,7 +97,7 @@ DE = {
   "Signalfolge im Kanalzug änderbar; eigene Kanalzüge für Gruppen und Master",
   "AUTO MIX für ungepegeltes Rohmaterial: Pegelziel je Rolle, Sprecher und O-Ton führen, neue Rolle Stadion",
   "Pegelarbeit sichtbar: Ritt der Stimme als Linie am Take, Ducks als Automation auf der Spur",
-  "De-Esser-Stärke je Stimme vom AUTO MIX eingestellt",
+  "Analyse vor dem Mischen: EQ, Kompressor und De-Esser je Stimme aus Klangfarbe, Dynamik und S-Schärfe eingestellt, für Sprecher und O-Ton",
   "Manual-Modus nach DAW-Standard: rohe Abhöre, Export als reiner Bounce, Normalisieren nur auf Wunsch",
   "Master-Fader mit Automation; Automation für Pan, Mute und Plugin-Parameter; Trim-Modus",
   "Aufnahme-Mithören nach dem Auto-Input-Prinzip; das Mikrofon läuft durch die Kette seiner Spur",
@@ -125,9 +134,11 @@ DE = {
   ("Kanalzug", "Neun Module: Restauration (De-Click, De-Plosive), Entrauschen, EQ mit dynamischen Bändern, "
                "Resonanz, De-Esser, Kompressor, De-Breath, Saturate, Hall &middot; Werks- und eigene Presets "
                "&middot; Signalfolge änderbar &middot; Referenzstimme je Sprecher"),
-  ("AUTO MIX", "Für ungepegeltes Rohmaterial &middot; Pegelziel je Rolle (Sprecher, O-Ton, Musik, Atmo, "
-               "Stadion u. a.) &middot; Ritt der Stimme als Linie am Take, Ducks als Automation &middot; "
-               "De-Esser-Stärke je Stimme"),
+  ("AUTO MIX", "Analysiert jede Stimme vor dem Mischen (Klangfarbe, Dynamik, S-Schärfe, Atmer, Klicks) und "
+               "stellt EQ, Kompressor und De-Esser je Sprecher und O-Ton ein, beim Sprecher zusätzlich De-Breath und "
+               "De-Click &middot; für "
+               "ungepegeltes Rohmaterial &middot; Pegelziel je Rolle (Sprecher, O-Ton, Musik, Atmo, Stadion u. a.) "
+               "&middot; Ritt der Stimme als Linie am Take, Ducks als Automation"),
   ("Aufnahme", "Direkt in den Projektordner, 32 Bit Fließkomma &middot; Overdub gegen Video oder Skript &middot; "
                "V-PUNCH, der sprachgesteuerte Ein- und Ausstieg &middot; sprachsynchroner Prompter, auch für "
                "PDF-Skripte &middot; Mehrspur &middot; Kabinenfenster für den Monitor beim Sprecher &middot; "
@@ -164,9 +175,9 @@ DE = {
 EN = {
  "kicker": "PRESS RELEASE",
  "headline": f"voyzSESSION {VERSION}: Nine sound modules, a mix mode built to DAW standard and AUTO MIX for raw material",
- "lead": "The DAW for voice production gets its biggest overhaul since the first release: in-house sound "
-         "modules with visible values, a manual mode with no hidden processing, and an AUTO MIX that copes "
-         "with unlevelled individual tracks.",
+ "lead": "The DAW for voice production now measures every voice before it mixes and sets its sound modules "
+         "accordingly &ndash; for narrator and original sound alike, even from unlevelled raw material. On top "
+         "comes a manual mode built to DAW standard in which every derived value is visible and editable.",
  "body": [
   f"<b>Siegburg, {DATE_EN}</b> &ndash; pegelWERK releases version {VERSION} of voyzSESSION, the DAW for voice "
   "production. It is the biggest overhaul since the first release: a channel strip with nine in-house "
@@ -178,6 +189,14 @@ EN = {
   "opens a module window with real parameters plus factory and user presets. The displays are computed "
   "from the same values that shape the sound &ndash; what the module shows is what it does. The grid reads "
   "in signal order, and the order can be changed.",
+
+  "Before AUTO MIX mixes, it analyses every voice on its own: its timbre, its level behaviour, the sharpness "
+  "of its sibilants, breaths and clicks. From that it sets the modules for exactly this voice. The EQ matches "
+  "the measured timbre to a speech target, the compressor follows the narrator's dynamics, the de-esser works "
+  "harder on a sharp voice and leaves a soft one alone. On the narrator, breaths and clicks are also treated "
+  "where they were found. Original sound gets the same timbre analysis for EQ, compressor and de-esser. The "
+  "result is a real setting in each module "
+  "&ndash; to look at in Assist mode, and the starting point for your own fine-tuning in Manual mode.",
 
   "Until now AUTO MIX assumed that an editor had pre-mixed the tracks. Now it handles unlevelled raw "
   "material. Every role has its own level target: narrator and original sound lead the mix, music and "
@@ -210,7 +229,7 @@ EN = {
   "Signal order in the channel strip can be changed; own channel strips for groups and master",
   "AUTO MIX for unlevelled raw material: level target per role, narrator and original sound lead, new Stadium role",
   "Level work made visible: voice ride as a line on the take, ducks as automation on the track",
-  "De-esser strength set per voice by AUTO MIX",
+  "Analysis before mixing: EQ, compressor and de-esser set per voice from timbre, dynamics and sibilance, for narrator and original sound",
   "Manual mode to DAW standard: raw monitoring, export as a plain bounce, normalisation only on request",
   "Master fader with automation; automation for pan, mute and plugin parameters; trim mode",
   "Input monitoring on the auto-input principle; the microphone runs through the chain of its track",
@@ -245,9 +264,11 @@ EN = {
   ("Channel strip", "Nine modules: restoration (de-click, de-plosive), noise reduction, EQ with dynamic bands, "
                     "resonance, de-esser, compressor, de-breath, saturate, reverb &middot; factory and user presets "
                     "&middot; signal order can be changed &middot; reference voice per narrator"),
-  ("AUTO MIX", "For unlevelled raw material &middot; level target per role (narrator, original sound, music, "
-               "ambience, stadium and more) &middot; voice ride as a line on the take, ducks as automation "
-               "&middot; de-esser strength per voice"),
+  ("AUTO MIX", "Analyses every voice before mixing (timbre, dynamics, sibilance, breaths, clicks) and sets EQ, "
+               "compressor and de-esser per narrator and original sound, plus de-breath and de-click on the narrator "
+               "&middot; for "
+               "unlevelled raw material &middot; level target per role (narrator, original sound, music, ambience, "
+               "stadium and more) &middot; voice ride as a line on the take, ducks as automation"),
   ("Recording", "Straight into the project folder, 32-bit float &middot; overdub against video or script &middot; "
                 "V-PUNCH, the voice-driven punch in and out &middot; speech-synced prompter, PDF scripts included "
                 "&middot; multitrack &middot; booth window for the narrator's monitor &middot; auto input, "

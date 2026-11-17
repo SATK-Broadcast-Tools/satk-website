@@ -25,82 +25,84 @@ ROOT  = pathlib.Path(__file__).resolve().parent.parent
 PRESS = ROOT / "press"
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
-VERSION  = "1.6.0"
-VTAG     = "160"                      # Cache-Buster in den Links: ?v=160
-DATE_DE  = "21. September 2026"
-DATE_EN  = "21 September 2026"
-MONTH_DE = "September 2026"
-MONTH_EN = "September 2026"
+VERSION  = "2.0"
+VTAG     = "200"                      # Cache-Buster in den Links: ?v=200
+DATE_DE  = "18. November 2026"
+DATE_EN  = "18 November 2026"
+MONTH_DE = "November 2026"
+MONTH_EN = "November 2026"
 
 # ---------------------------------------------------------------- Inhalte ----
 # Eine Quelle für PDF, Textfassung, Kit-Beilagen UND press.html. Wer hier
 # etwas ändert, ändert es ueberall -- vorher liefen die Fassungen auseinander.
+# 2.0 (16./17.11.2026): keine fremden Produktnamen im Text (Nutzerregel 13.10.);
+# Schnittstellen-Namen (Stream Deck, MCU) bleiben, sie beschreiben Kompatibilitaet.
 
 DE = {
  "kicker": "PRESSEMITTEILUNG",
- "headline": f"voyzSESSION {VERSION}: Aufnahme auf die Platte, Medienablage und Kapitel für Podcasts",
- "lead": "Die DAW für Sprachproduktion nimmt jetzt direkt in den Projektordner auf, bekommt eine "
-         "durchsuchbare Medienablage mit Vorhören und liefert Podcasts mit Kapitelmarken aus.",
+ "headline": f"voyzSESSION {VERSION}: Neun Klangmodule, ein Mischmodus nach DAW-Standard und ein AUTO MIX für Rohmaterial",
+ "lead": "Die DAW für Sprachproduktion bekommt den größten Umbau seit dem Erstrelease: eigene Klangbausteine "
+         "mit sichtbaren Werten, einen Manual-Modus ohne versteckte Verarbeitung und einen AUTO MIX, der auch "
+         "mit ungepegelten Einzelspuren zurechtkommt.",
  "body": [
   f"<b>Siegburg, {DATE_DE}</b> &ndash; pegelWERK veröffentlicht Version {VERSION} von voyzSESSION, der DAW "
-  "für Sprachproduktion. Es ist das größte Update seit dem Erstrelease: die Aufnahme wandert von "
-  "Arbeitsspeicher auf die Platte, eine Medienablage kommt dazu, Podcasts bekommen Kapitel, und die "
-  "Zeitleiste lässt sich bedienen wie in den großen DAWs.",
+  "für Sprachproduktion. Es ist der größte Umbau seit dem Erstrelease: ein Kanalzug mit neun eigenen "
+  "Modulen, ein Manual-Modus, der arbeitet wie eine professionelle DAW, und ein AUTO MIX, der nicht mehr "
+  "auf eine Vormischung angewiesen ist. Zum ersten Mal spricht die App sechs Sprachen.",
 
-  "Aufgenommen wird ab dieser Version direkt in den Projektordner, in 32 Bit Fließkomma und unter dem "
-  "Namen der Spur. Damit ist der Stillstand bei langen Sitzungen weg: bisher hielt das Programm jede "
-  "Aufnahme vollständig im Arbeitsspeicher, und bei zehn Spuren begann macOS auszulagern. Speichern "
-  "verknüpft die Dateien jetzt, statt sie zu kopieren &ndash; ein Projekt mit 29 GB Audio ist in Sekunden "
-  "gesichert statt in Minuten und belegt den Platz nur einmal.",
+  "Jede Spur hat jetzt einen Kanalzug mit neun Bausteinen: Restauration (De-Click und De-Plosive), "
+  "Entrauschen, EQ mit dynamischen Bändern, Resonanz, De-Esser, Kompressor, De-Breath, Saturate und Hall. "
+  "Jeder öffnet ein Modulfenster mit echten Parametern sowie Werks- und eigenen Presets. Die Anzeigen "
+  "werden aus denselben Werten gerechnet, mit denen der Klang entsteht &ndash; was das Modul zeigt, ist das, "
+  "was wirkt. Die Reihenfolge im Raster ist die Signalfolge und lässt sich ändern.",
 
-  "Die neue Medienablage sitzt rechts neben der Zeitleiste, dort, wo Pro Tools seine Clip List hat. Sie "
-  "durchsucht das Material des offenen Projekts, ein Klick hört vor, Ziehen legt auf die Spur. "
-  "Vorgehört wird auf dem Pegel, den die Datei auf der Spur haben wird &ndash; ein gekaufter Jingle liegt "
-  "gern 14 Dezibel über einem sendefertigen Programm und klingt hier trotzdem so wie nachher. Dasselbe "
-  "Vorhören gibt es im Importdialog des Systems.",
+  "Bisher ging der AUTO MIX davon aus, dass ein Cutter die Spuren vorgemischt hat. Jetzt kommt er mit "
+  "ungepegeltem Rohmaterial zurecht. Jede Rolle hat ihr eigenes Pegelziel: Sprecher und O-Ton führen die "
+  "Mischung an, Musik und Atmo ordnen sich beiden unter. Die neue Rolle Stadion gleicht Pegelsprünge aus, "
+  "ohne geduckt zu werden. Auch der De-Esser stellt sich je Stimme selbst ein. Und die Pegelarbeit bleibt "
+  "nicht im Verborgenen: der Ritt der Stimme liegt als Linie am Take, die Ducks liegen als Automation auf "
+  "der Spur &ndash; sichtbar und von Hand korrigierbar.",
 
-  "Für Podcasts gibt es ein eigenes Kapitel-Fenster mit Zeit, Titel, Bild und Link. Ausgeliefert wird "
-  "als MP3 mit ID3v2.3-Kapitelmarken, Titelbild und Folgenangaben, dazu eine Kapiteldatei nach "
-  "Podcasting-2.0-Norm. Verfehlt das Titelbild die Vorgaben von Apple Podcasts, sagt das Programm es "
-  "beim Auswählen &ndash; sonst erfährt man es Tage später vom Hoster.",
+  "Der Manual-Modus arbeitet nach DAW-Standard: die Abhöre spielt roh, der Export ist ein reiner Bounce "
+  "dessen, was man hört, und normalisiert wird nur, wenn es im Export-Fenster angehakt ist. Neu sind ein "
+  "Master-Fader mit Automation, Automation für Pan, Mute und Plugin-Parameter, ein Trim-Modus, der eine "
+  "bestehende Kurve an einzelnen Stellen verschiebt, ohne ihre Form zu verändern, und Aufnahme-Mithören "
+  "nach dem Auto-Input-Prinzip. Ein AUTO MIX aus dem Assist-Modus dient dabei als Ausgangspunkt.",
 
-  "Neu sind außerdem Sitzungsvorlagen, das Dehnen eines Takes auf eine Bildlücke ohne "
-  "Tonhöhenänderung und die Referenzstimme: die Klangfarbe einer Spur wird angelernt, jede andere "
-  "Stimmspur lässt sich darauf abgleichen. Das Profil gehört dem Sprecher und steht in jedem Projekt "
-  "zur Verfügung, damit eine Folge klingt wie die vorige.",
+  "Auch die Bedienung ist gewachsen: Spuren lassen sich in Zeitleiste und Mixer umsortieren, eine "
+  "Navigationszeile zeigt das ganze Projekt als Wellenform, und ein Fenster für Projekteinstellungen führt "
+  "Abtastrate, Bildrate und Startzeitcode. Das Projekt bestimmt die Abtastrate, nicht das Interface. Die "
+  "Oberfläche gibt es auf Deutsch, Englisch, Französisch, Spanisch, Italienisch und Portugiesisch.",
 
-  "Bei den Formaten kommen FLAC, Opus und die AES31-3-Schnittliste dazu. Damit deckt voyzSESSION alle "
-  "gängigen Liefer-Formate ab, und alles, was das Programm verlässt, wird an einer Stelle angehakt.",
+  "Bei der MXF-Auslieferung wird das Bild unverändert durchgereicht, und Tonspuren der Quelle, die nicht "
+  "ersetzt werden, bleiben bitgleich erhalten.",
 
-  "Im Manual-Modus ist der AutoMix jetzt wirklich die Basis: Kanalzug und Pegelverlauf werden einmal je "
-  "Spur übernommen, wie sie geklungen haben, und liegen als editierbare Keyframes auf der Spur. Dazu "
-  "kommt Software-Monitoring nach DAW-Vorbild mit einem &bdquo;I&ldquo; je Stimmspur.",
-
-  "Behoben sind drei Fehler, die im Betrieb die Arbeit anhalten konnten: nach einem Wechsel des "
-  "Audio-Interfaces konnte alles stumm bleiben, gelöschte Aufnahmen überlebten das Speichern nicht, "
-  "und eine Aufnahme, die nicht geschrieben werden konnte, hinterließ stille Lücken, ohne es zu sagen.",
+  "voyzSESSION 2.0 läuft ab macOS 14 Sonoma. Empfohlen ist ein Mac mit Apple-Prozessor (M1 oder neuer) und "
+  "mindestens 16 GB Arbeitsspeicher: dort laufen AUTO MIX, Entrauschen und Transkription deutlich "
+  "schneller. Auf Intel-Macs läuft die App weiterhin.",
  ],
  "bullets_h": f"NEU IN {VERSION}",
  "bullets": [
-  "Aufnahme direkt in den Projektordner statt in den Arbeitsspeicher, in 32 Bit Fließkomma und unter dem Namen der Spur",
-  "Speichern verknüpft die Audiodateien statt sie zu kopieren &ndash; ein Projekt mit 29 GB ist in Sekunden gesichert",
-  "Medienablage mit Suche, Vorhören auf Zielpegel und Ziehen auf die Spur, auch im Importdialog des Systems",
-  "Kapitel für Podcasts mit Zeit, Titel, Bild und Link; MP3 mit ID3v2.3-Kapitelmarken und Kapiteldatei nach Podcasting-2.0-Norm",
-  "Sitzungsvorlagen für Spuren, Namen, Farben, DSP, Inserts, Gruppen und Prompter-Text",
-  "Take auf eine Bildlücke dehnen (&bdquo;fit to picture&ldquo;), die Tonhöhe bleibt",
-  "Referenzstimme: Klangfarbe anlernen und jede andere Stimmspur darauf abgleichen",
-  "FLAC- und Opus-Export sowie AES31-3-Schnittlisten",
-  "Zeitleiste verschieben und auf die Auswahl zoomen, Spur per Klick auf den Kopf wählen, Auswahl auf eine andere Spur ziehen",
-  "Der AutoMix ist im Manual-Modus die Basis: Kanalzug und Pegelverlauf als editierbare Keyframes",
-  "Software-Monitoring mit einem &bdquo;I&ldquo; je Stimmspur (AUTO INPUT und INPUT ONLY)",
-  "Transkript im Skript-Editor per Doppelklick korrigierbar, ohne den Ton anzufassen",
-  "Behoben: stummes Audiogerät nach Interfacewechsel, gelöschte Aufnahmen beim Speichern, stille Lücken bei vollem Datenträger",
+  "Kanalzug mit neun Modulen: Restauration, Entrauschen, EQ, Resonanz, De-Esser, Kompressor, De-Breath, Saturate, Hall",
+  "Modulfenster mit echten Parametern, Werks- und eigenen Presets; Anzeigen aus denselben Werten wie der Klang",
+  "Signalfolge im Kanalzug änderbar; eigene Kanalzüge für Gruppen und Master",
+  "AUTO MIX für ungepegeltes Rohmaterial: Pegelziel je Rolle, Sprecher und O-Ton führen, neue Rolle Stadion",
+  "Pegelarbeit sichtbar: Ritt der Stimme als Linie am Take, Ducks als Automation auf der Spur",
+  "De-Esser-Stärke je Stimme vom AUTO MIX eingestellt",
+  "Manual-Modus nach DAW-Standard: rohe Abhöre, Export als reiner Bounce, Normalisieren nur auf Wunsch",
+  "Master-Fader mit Automation; Automation für Pan, Mute und Plugin-Parameter; Trim-Modus",
+  "Aufnahme-Mithören nach dem Auto-Input-Prinzip; das Mikrofon läuft durch die Kette seiner Spur",
+  "Spuren umsortieren, Navigationszeile, Projekteinstellungen mit Abtastrate, Bildrate und Startzeitcode",
+  "Sechs Sprachen: Deutsch, Englisch, Französisch, Spanisch, Italienisch, Portugiesisch",
+  "Rückfrage beim Beenden mit ungespeicherten Änderungen",
+  "Ab macOS 14 Sonoma; empfohlen: Mac mit Apple-Prozessor und 16 GB",
  ],
  "avail_h": "VERFÜGBARKEIT",
  "avail": f"voyzSESSION {VERSION} steht ab sofort auf pegelwerk.com zum Download bereit. Für Bestandskunden "
           "ist das Update kostenlos. Das Abo kostet 24,99 EUR im Monat oder 249 EUR im Jahr, jeweils "
           "inklusive Mehrwertsteuer und monatlich kündbar. Sieben Tage lässt sich die Vollversion "
-          "kostenlos testen &ndash; ohne Konto und ohne E-Mail-Adresse. voyzSESSION läuft auf macOS.",
+          "kostenlos testen &ndash; ohne Konto und ohne E-Mail-Adresse. voyzSESSION läuft ab macOS 14 Sonoma; "
+          "empfohlen ist ein Mac mit Apple-Prozessor.",
  "about_h": "ÜBER PEGELWERK",
  "about": "pegelWERK ist eine unabhängige Audio-Software-Schmiede aus Siegburg, Deutschland, gegründet "
           "von Sascha Hömske. Das Lineup umfasst native Apps für macOS, iPadOS und iPhone rund um "
@@ -113,112 +115,119 @@ DE = {
  "fs_title": "voyzSESSION &ndash; Fact Sheet",
  "fs_sub": "Die DAW für Sprachproduktion: Voice-over, Beitrag, Podcast, Hörspiel.",
  "fs_rows": [
-  ("Produkt", "voyzSESSION &ndash; DAW für Sprachproduktion mit R128-Automatik und Handmodus"),
+  ("Produkt", "voyzSESSION &ndash; DAW für Sprachproduktion mit AUTO MIX und Manual-Modus nach DAW-Standard"),
   ("Kategorie", "Voice-over- und Podcast-Produktion, Audio-Postproduktion, Broadcast-Auslieferung"),
-  ("Plattformen", "macOS 12+ (Apple Silicon und Intel, Universal Binary) &middot; iPadOS"),
-  ("Arbeitsweisen", "Assist-Modus mit Auto Edit, Auto DSP und Auto Mix &middot; Manual-Modus mit Kanalzügen, "
-                    "Gruppen und Automation in Read, Touch, Latch und Write"),
+  ("Systeme", "macOS 14 Sonoma oder neuer &middot; empfohlen: Mac mit Apple-Prozessor (M1 oder neuer) und "
+              "16 GB Arbeitsspeicher, 32 GB für lange Projekte mit 4K-Video &middot; Intel-Macs laufen weiterhin "
+              "&middot; iPadOS als eigene App"),
+  ("Arbeitsweisen", "Assist-Modus mit Auto Edit, Auto DSP und AUTO MIX &middot; Manual-Modus mit Kanalzügen, "
+                    "Gruppen, Master-Fader und Automation in Read, Touch, Latch, Write und Trim"),
+  ("Kanalzug", "Neun Module: Restauration (De-Click, De-Plosive), Entrauschen, EQ mit dynamischen Bändern, "
+               "Resonanz, De-Esser, Kompressor, De-Breath, Saturate, Hall &middot; Werks- und eigene Presets "
+               "&middot; Signalfolge änderbar &middot; Referenzstimme je Sprecher"),
+  ("AUTO MIX", "Für ungepegeltes Rohmaterial &middot; Pegelziel je Rolle (Sprecher, O-Ton, Musik, Atmo, "
+               "Stadion u. a.) &middot; Ritt der Stimme als Linie am Take, Ducks als Automation &middot; "
+               "De-Esser-Stärke je Stimme"),
   ("Aufnahme", "Direkt in den Projektordner, 32 Bit Fließkomma &middot; Overdub gegen Video oder Skript &middot; "
                "V-PUNCH, der sprachgesteuerte Ein- und Ausstieg &middot; sprachsynchroner Prompter, auch für "
-               "PDF-Skripte &middot; Mehrspur mit Sprecher-Ausgleich &middot; Kabinenfenster für den Monitor beim "
-               "Sprecher &middot; Software- und Hardware-Monitoring"),
-  ("Bearbeitung", "Medienablage mit Suche und Vorhören auf Zielpegel &middot; Take auf eine Bildlücke dehnen, "
-                  "ohne die Tonhöhe zu ändern &middot; Sitzungsvorlagen &middot; Kapitel für Podcasts"),
-  ("Klang", "Neuronale Entrauschung (DeepFilterNet 3) &middot; Echtzeit-Sprachkette mit EQ, Kompressor, "
-            "De-Esser, SmartLeveler &middot; Referenzstimme je Sprecher &middot; Musik- und FX-Bett mit Auto-Ducking"),
-  ("Plugins", "AU und VST3, fünf Insert-Plätze je Kanal, dazu Voice-, IT/FX- und Master-Gruppe (macOS)"),
+               "PDF-Skripte &middot; Mehrspur &middot; Kabinenfenster für den Monitor beim Sprecher &middot; "
+               "Auto Input, Software- und Hardware-Monitoring"),
+  ("Bearbeitung", "Medienablage mit Suche und Vorhören auf Zielpegel &middot; Spuren umsortieren &middot; "
+                  "Navigationszeile &middot; Take auf eine Bildlücke dehnen &middot; Sitzungsvorlagen &middot; "
+                  "Kapitel für Podcasts"),
+  ("Plugins", "AU und VST3, fünf Insert-Plätze je Kanal, dazu Voice-, IT- und Master-Gruppe"),
   ("Transkription", "Offline und wortgenau, Sprachmodell im Programm &middot; Script-Editor mit korrigierbarem "
                     "Transkript &middot; Untertitel als SubRip (.srt) und WebVTT (.vtt)"),
   ("Format-Profile", "EBU R128, ATSC A/85, ARIB TR-B32, OP-59, CST-RT-040 &middot; Podcast (-16 LUFS), YouTube "
                      "(-14 LUFS), Hörbuch, Doku, Sport &middot; Studio 0 dB ohne Normalisierung"),
-  ("Auslieferung", "MXF mit acht Sound-Tracks, M&amp;E der Quelle bleibt erhalten &middot; Profile für ARD/ZDF "
-                   "HDF01a, ARIB RDD9 und CST AS-10 &middot; Video-Mux &middot; WAV, AIFF, FLAC, AAC, MP3, MP2 und "
-                   "Opus &middot; MP3 mit Kapitelmarken und Kapiteldatei &middot; AES31-3-Schnittliste (ADL)"),
+  ("Auslieferung", "MXF mit acht Sound-Tracks, Bild unverändert durchgereicht, nicht ersetzte Tonspuren der "
+                   "Quelle bitgleich &middot; Profile für ARD/ZDF HDF01a, ARIB RDD9 und CST AS-10 &middot; "
+                   "Video-Mux &middot; WAV, AIFF, FLAC, AAC, MP3, MP2 und Opus &middot; MP3 mit Kapitelmarken "
+                   "&middot; AES31-3-Schnittliste (ADL)"),
   ("Schnittstellen", "Virtuelle Kamera und virtuelles Audiogerät &middot; Mackie MCU &middot; Elgato Stream Deck "
-                     "&middot; OSC &middot; Web-Konsole für MakePro X"),
+                     "&middot; OSC"),
+  ("Sprachen", "Deutsch, Englisch, Französisch, Spanisch, Italienisch, Portugiesisch"),
   ("Datenschutz", "Alles läuft lokal auf dem eigenen Rechner: kein Cloud-Sync, kein Upload, kein Streaming"),
-  ("Technik", "Nativ in C++ auf JUCE 8"),
+  ("Technik", "Nativ in C++"),
   ("Preis", "Abo 24,99 EUR im Monat oder 249 EUR im Jahr, inkl. MwSt., monatlich kündbar &middot; sieben Tage "
             "kostenlos testen, ohne Konto und ohne E-Mail"),
   ("Version", f"{VERSION} ({MONTH_DE})"),
   ("Hersteller", "pegelWERK &ndash; Sascha Hömske, Siegburg, Deutschland"),
   ("Web", "pegelwerk.com &middot; info@pegelwerk.com"),
  ],
- "card_summary": f"Stand {MONTH_DE}, Version {VERSION}. Aufgenommen wird jetzt direkt in den Projektordner "
-                 "statt in den Arbeitsspeicher, womit der Stillstand bei langen Sitzungen entfällt. Neu sind "
-                 "eine durchsuchbare Medienablage mit Vorhören, Kapitel für Podcasts samt ID3-Marken und "
-                 "Kapiteldatei, Sitzungsvorlagen, das Dehnen eines Takes aufs Bild und die Referenzstimme. "
-                 "Dazu FLAC, Opus und AES31-3. Kostenloses Update für Bestandskunden.",
+ "card_summary": f"Stand {MONTH_DE}, Version {VERSION}. Der größte Umbau seit dem Erstrelease: ein Kanalzug mit "
+                 "neun Modulen, ein Manual-Modus nach DAW-Standard mit Master-Fader und Trim, und ein AUTO MIX "
+                 "für ungepegeltes Rohmaterial mit sichtbarer Pegelarbeit. Sechs Sprachen, ab macOS 14, "
+                 "empfohlen auf Macs mit Apple-Prozessor. Kostenloses Update für Bestandskunden.",
 }
 
 EN = {
  "kicker": "PRESS RELEASE",
- "headline": f"voyzSESSION {VERSION}: Recording to disk, a media pool and podcast chapters",
- "lead": "The DAW for voice production now records straight into the project folder, gains a searchable "
-         "media pool with auditioning, and delivers podcasts with chapter marks.",
+ "headline": f"voyzSESSION {VERSION}: Nine sound modules, a mix mode built to DAW standard and AUTO MIX for raw material",
+ "lead": "The DAW for voice production gets its biggest overhaul since the first release: in-house sound "
+         "modules with visible values, a manual mode with no hidden processing, and an AUTO MIX that copes "
+         "with unlevelled individual tracks.",
  "body": [
-  f"<b>Siegburg, Germany, {DATE_EN}</b> &ndash; pegelWERK releases version {VERSION} of voyzSESSION, the DAW "
-  "for voice production. It is the biggest update since launch: recording moves from memory to disk, a "
-  "media pool arrives, podcasts get chapters, and the timeline can be handled the way the big DAWs do it.",
+  f"<b>Siegburg, {DATE_EN}</b> &ndash; pegelWERK releases version {VERSION} of voyzSESSION, the DAW for voice "
+  "production. It is the biggest overhaul since the first release: a channel strip with nine in-house "
+  "modules, a manual mode that works like a professional DAW, and an AUTO MIX that no longer depends on a "
+  "pre-mix. For the first time the app speaks six languages.",
 
-  "From this version on, recording goes straight into the project folder, in 32-bit float and under the "
-  "track’s name. That removes the stalls during long sessions: until now the app held every recording "
-  "fully in memory, and with ten tracks macOS began to swap. Saving links the files instead of copying "
-  "them &ndash; a project with 29 GB of audio is saved in seconds instead of minutes, and takes the space "
-  "only once.",
+  "Every track now has a channel strip with nine processors: restoration (de-click and de-plosive), noise "
+  "reduction, EQ with dynamic bands, resonance, de-esser, compressor, de-breath, saturate and reverb. Each "
+  "opens a module window with real parameters plus factory and user presets. The displays are computed "
+  "from the same values that shape the sound &ndash; what the module shows is what it does. The grid reads "
+  "in signal order, and the order can be changed.",
 
-  "The new media pool sits to the right of the timeline, where Pro Tools keeps its Clip List. It searches "
-  "the open project’s material, a click auditions, dragging places the file on a track. Auditioning plays "
-  "at the level the file will have on the track &ndash; a bought jingle often sits 14 decibels above a "
-  "broadcast-ready programme and still sounds here the way it will later. The same auditioning works "
-  "inside the system’s import dialog.",
+  "Until now AUTO MIX assumed that an editor had pre-mixed the tracks. Now it handles unlevelled raw "
+  "material. Every role has its own level target: narrator and original sound lead the mix, music and "
+  "ambience sit below both. The new Stadium role evens out level jumps without being ducked. The de-esser "
+  "also sets itself per voice. And the level work no longer stays hidden: the voice ride sits as a line on "
+  "the take, the ducks as automation on the track &ndash; visible and correctable by hand.",
 
-  "For podcasts there is a chapter window of its own, with time, title, image and link. Delivery is MP3 "
-  "with ID3v2.3 chapter marks, cover art and episode details, plus a chapter file to the Podcasting 2.0 "
-  "spec. If the cover art misses Apple Podcasts’ requirements, the app says so while you pick it &ndash; "
-  "otherwise you hear about it days later from the host.",
+  "Manual mode works to DAW standard: monitoring plays raw, export is a plain bounce of what you hear, and "
+  "loudness normalisation only happens when ticked in the export window. New are a master fader with "
+  "automation, automation for pan, mute and plugin parameters, a trim mode that shifts an existing curve "
+  "at individual spots without changing its shape, and input monitoring on the auto-input principle. An "
+  "AUTO MIX made in Assist mode serves as the starting point.",
 
-  "Also new are session templates, fitting a take to a gap in the picture without changing its pitch, and "
-  "the reference voice: the tonal character of one track is learned, and any other voice track can be "
-  "matched to it. The profile belongs to the speaker and is available in every project, so one episode "
-  "sounds like the last.",
+  "Handling has grown too: tracks can be reordered in the timeline and the mixer, a navigation bar shows "
+  "the whole project as a waveform, and a project settings window holds sample rate, frame rate and start "
+  "timecode. The project sets the sample rate, not the interface. The interface is available in German, "
+  "English, French, Spanish, Italian and Portuguese.",
 
-  "On formats, FLAC, Opus and the AES31-3 edit list are added. voyzSESSION now covers every common "
-  "delivery format, and everything that leaves the app is ticked in one place.",
+  "For MXF delivery the picture is passed through unchanged, and source audio tracks that are not replaced "
+  "stay bit-identical.",
 
-  "In manual mode the AutoMix really is the basis now: channel strip and level ride are taken over once "
-  "per track, exactly as they sounded, and appear as editable keyframes. Alongside comes software "
-  "monitoring the way DAWs do it, with an &ldquo;I&rdquo; on each voice track.",
-
-  "Three bugs that could halt work are fixed: after switching audio interfaces everything could go silent, "
-  "deleted recordings did not survive saving, and a recording that could not be written left silent gaps "
-  "without saying so.",
+  "voyzSESSION 2.0 runs on macOS 14 Sonoma or later. We recommend a Mac with Apple silicon (M1 or newer) and "
+  "at least 16 GB of memory: AUTO MIX, noise reduction and transcription run much faster there. The app "
+  "still runs on Intel Macs.",
  ],
  "bullets_h": f"NEW IN {VERSION}",
  "bullets": [
-  "Recording straight into the project folder instead of into memory, in 32-bit float and under the track’s name",
-  "Saving links the audio files instead of copying them &ndash; a 29 GB project is saved in seconds",
-  "Media pool with search, auditioning at target level and drag-to-track, inside the system import dialog as well",
-  "Podcast chapters with time, title, image and link; MP3 with ID3v2.3 chapter marks and a Podcasting 2.0 chapter file",
-  "Session templates for tracks, names, colours, DSP, inserts, groups and prompter text",
-  "Fit a take to a gap in the picture (&ldquo;fit to picture&rdquo;), pitch preserved",
-  "Reference voice: learn a tonal character and match any other voice track to it",
-  "FLAC and Opus export, plus AES31-3 edit lists",
-  "Scroll and zoom the timeline to the selection, select a track from its head, drag a selection to another track",
-  "In manual mode the AutoMix is the basis: channel strip and level ride as editable keyframes",
-  "Software monitoring with an &ldquo;I&rdquo; on each voice track (AUTO INPUT and INPUT ONLY)",
-  "Correct the transcript in the script editor by double-click, without touching the audio",
-  "Fixed: dead audio device after an interface switch, deleted recordings lost on save, silent gaps on a full disk",
+  "Channel strip with nine modules: restoration, noise reduction, EQ, resonance, de-esser, compressor, de-breath, saturate, reverb",
+  "Module windows with real parameters, factory and user presets; displays computed from the same values as the sound",
+  "Signal order in the channel strip can be changed; own channel strips for groups and master",
+  "AUTO MIX for unlevelled raw material: level target per role, narrator and original sound lead, new Stadium role",
+  "Level work made visible: voice ride as a line on the take, ducks as automation on the track",
+  "De-esser strength set per voice by AUTO MIX",
+  "Manual mode to DAW standard: raw monitoring, export as a plain bounce, normalisation only on request",
+  "Master fader with automation; automation for pan, mute and plugin parameters; trim mode",
+  "Input monitoring on the auto-input principle; the microphone runs through the chain of its track",
+  "Reorder tracks, navigation bar, project settings with sample rate, frame rate and start timecode",
+  "Six languages: German, English, French, Spanish, Italian, Portuguese",
+  "Prompt to save unsaved changes when quitting",
+  "macOS 14 Sonoma or later; recommended: Mac with Apple silicon and 16 GB",
  ],
  "avail_h": "AVAILABILITY",
  "avail": f"voyzSESSION {VERSION} is available for download at pegelwerk.com. The update is free for existing "
-          "customers. The subscription costs EUR 24.99 per month or EUR 249 per year, each including VAT and "
-          "cancellable monthly. A full seven-day trial is available &ndash; no account, no email address. "
-          "voyzSESSION runs on macOS.",
+          "customers. The subscription costs EUR 24.99 per month or EUR 249 per year, VAT included, cancellable "
+          "monthly. The full version can be tried free for seven days &ndash; no account and no email address "
+          "needed. voyzSESSION runs on macOS 14 Sonoma or later; a Mac with Apple silicon is recommended.",
  "about_h": "ABOUT PEGELWERK",
  "about": "pegelWERK is an independent audio software company based in Siegburg, Germany, founded by Sascha "
-          "Hömske. The lineup covers native apps for macOS, iPadOS and iPhone around broadcast, post "
-          "production and voiceover. All apps share the same EBU R128 DSP engine. More at pegelwerk.com.",
+          "Hömske. The lineup covers native apps for macOS, iPadOS and iPhone around broadcast, post production "
+          "and voice-over. All apps share the same EBU R128 DSP engine. More at pegelwerk.com.",
  "contact": "<b>Press contact</b> Sascha Hömske, pegelWERK &middot; info@pegelwerk.com &middot; Siegburg, "
             "Germany &middot; pegelwerk.com",
  "cleared": "All materials are cleared for editorial use.",
@@ -226,42 +235,49 @@ EN = {
  "fs_title": "voyzSESSION &ndash; Fact Sheet",
  "fs_sub": "The DAW for voice production: voice-over, reporting, podcast, radio drama.",
  "fs_rows": [
-  ("Product", "voyzSESSION &ndash; DAW for voice production with R128 automation and a manual mode"),
+  ("Product", "voyzSESSION &ndash; DAW for voice production with AUTO MIX and a manual mode built to DAW standard"),
   ("Category", "Voice-over and podcast production, audio post production, broadcast delivery"),
-  ("Platforms", "macOS 12+ (Apple Silicon and Intel, universal binary) &middot; iPadOS"),
-  ("Modes", "Assist mode with auto edit, auto DSP and auto mix &middot; manual mode with channel strips, groups "
-            "and automation in read, touch, latch and write"),
+  ("Systems", "macOS 14 Sonoma or later &middot; recommended: Mac with Apple silicon (M1 or newer) and 16 GB of "
+              "memory, 32 GB for long projects with 4K video &middot; Intel Macs still run &middot; iPadOS as a "
+              "separate app"),
+  ("Modes", "Assist mode with auto edit, auto DSP and AUTO MIX &middot; manual mode with channel strips, groups, "
+            "master fader and automation in read, touch, latch, write and trim"),
+  ("Channel strip", "Nine modules: restoration (de-click, de-plosive), noise reduction, EQ with dynamic bands, "
+                    "resonance, de-esser, compressor, de-breath, saturate, reverb &middot; factory and user presets "
+                    "&middot; signal order can be changed &middot; reference voice per narrator"),
+  ("AUTO MIX", "For unlevelled raw material &middot; level target per role (narrator, original sound, music, "
+               "ambience, stadium and more) &middot; voice ride as a line on the take, ducks as automation "
+               "&middot; de-esser strength per voice"),
   ("Recording", "Straight into the project folder, 32-bit float &middot; overdub against video or script &middot; "
-                "V-PUNCH, the voice-driven punch in and out &middot; voice-synced prompter, PDF scripts included "
-                "&middot; multitrack with speaker matching &middot; booth window for the monitor at the speaker "
-                "&middot; software and hardware monitoring"),
-  ("Editing", "Media pool with search and auditioning at target level &middot; fit a take to a gap in the "
-              "picture without changing pitch &middot; session templates &middot; podcast chapters"),
-  ("Sound", "Neural noise removal (DeepFilterNet 3) &middot; real-time voice chain with EQ, compressor, "
-            "de-esser, SmartLeveler &middot; reference voice per speaker &middot; music and FX bed with auto ducking"),
-  ("Plugins", "AU and VST3, five insert slots per channel, plus voice, IT/FX and master group (macOS)"),
-  ("Transcription", "Offline and word-accurate, speech model inside the app &middot; script editor with a "
-                    "correctable transcript &middot; subtitles as SubRip (.srt) and WebVTT (.vtt)"),
-  ("Format profiles", "EBU R128, ATSC A/85, ARIB TR-B32, OP-59, CST-RT-040 &middot; podcast (-16 LUFS), YouTube "
-                      "(-14 LUFS), audiobook, documentary, sport &middot; Studio 0 dB without normalisation"),
-  ("Delivery", "MXF with eight sound tracks, the source M&amp;E is preserved &middot; profiles for ARD/ZDF HDF01a, "
-               "ARIB RDD9 and CST AS-10 &middot; video mux &middot; WAV, AIFF, FLAC, AAC, MP3, MP2 and Opus &middot; "
-               "MP3 with chapter marks and a chapter file &middot; AES31-3 edit list (ADL)"),
-  ("Interfaces", "Virtual camera and virtual audio device &middot; Mackie MCU &middot; Elgato Stream Deck &middot; "
-                 "OSC &middot; web console for MakePro X"),
+                "V-PUNCH, the voice-driven punch in and out &middot; speech-synced prompter, PDF scripts included "
+                "&middot; multitrack &middot; booth window for the narrator's monitor &middot; auto input, "
+                "software and hardware monitoring"),
+  ("Editing", "Media pool with search and auditioning at target level &middot; reorder tracks &middot; navigation "
+              "bar &middot; fit a take to a picture gap &middot; session templates &middot; podcast chapters"),
+  ("Plugins", "AU and VST3, five insert slots per channel, plus voice, IT and master group"),
+  ("Transcription", "Offline and word-accurate, speech model built in &middot; script editor with correctable "
+                    "transcript &middot; subtitles as SubRip (.srt) and WebVTT (.vtt)"),
+  ("Loudness profiles", "EBU R128, ATSC A/85, ARIB TR-B32, OP-59, CST-RT-040 &middot; podcast (-16 LUFS), YouTube "
+                        "(-14 LUFS), audiobook, documentary, sport &middot; studio 0 dB without normalisation"),
+  ("Delivery", "MXF with eight sound tracks, picture passed through unchanged, source tracks not replaced stay "
+               "bit-identical &middot; profiles for ARD/ZDF HDF01a, ARIB RDD9 and CST AS-10 &middot; video mux "
+               "&middot; WAV, AIFF, FLAC, AAC, MP3, MP2 and Opus &middot; MP3 with chapter marks &middot; "
+               "AES31-3 edit list (ADL)"),
+  ("Interfaces", "Virtual camera and virtual audio device &middot; Mackie MCU &middot; Elgato Stream Deck "
+                 "&middot; OSC"),
+  ("Languages", "German, English, French, Spanish, Italian, Portuguese"),
   ("Privacy", "Everything runs locally on your own machine: no cloud sync, no upload, no streaming"),
-  ("Technology", "Native C++ on JUCE 8"),
+  ("Technology", "Native C++"),
   ("Price", "Subscription EUR 24.99 per month or EUR 249 per year, VAT included, cancellable monthly &middot; "
             "seven-day free trial, no account and no email"),
   ("Version", f"{VERSION} ({MONTH_EN})"),
   ("Vendor", "pegelWERK &ndash; Sascha Hömske, Siegburg, Germany"),
   ("Web", "pegelwerk.com &middot; info@pegelwerk.com"),
  ],
- "card_summary": f"As of {MONTH_EN}, version {VERSION}. Recording now goes straight into the project folder "
-                 "instead of into memory, which removes the stalls during long sessions. New are a searchable "
-                 "media pool with auditioning, podcast chapters with ID3 marks and a chapter file, session "
-                 "templates, fitting a take to picture, and the reference voice. Plus FLAC, Opus and AES31-3. "
-                 "Free update for existing customers.",
+ "card_summary": f"As of {MONTH_EN}, version {VERSION}. The biggest overhaul since the first release: a channel "
+                 "strip with nine modules, a manual mode built to DAW standard with master fader and trim, and "
+                 "an AUTO MIX for unlevelled raw material with visible level work. Six languages, macOS 14 or "
+                 "later, recommended on Macs with Apple silicon. Free update for existing customers.",
 }
 
 # ------------------------------------------------------------- Gestaltung ----

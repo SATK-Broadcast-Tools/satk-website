@@ -246,6 +246,11 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <li data-i18n="cl_od_200_7">Das Projekt bestimmt die Abtastrate, nicht das Interface. Ein neues Fenster „Projekteinstellungen“ führt Abtastrate, Bildrate, Startzeitcode und Folgen-Angaben; eine Kopie mit anderer Abtastrate lässt sich speichern, das Original bleibt unberührt.</li>
  <li data-i18n="cl_od_200_8">Eine Navigationszeile über dem Transport zeigt das ganze Projekt als Wellenform mit Marken und Bereich; Start, Ende und Länge sind eintippbar.</li>
  <li data-i18n="cl_od_200_9">Die App spricht sechs Sprachen: Deutsch, Englisch, Französisch, Spanisch, Italienisch und Portugiesisch. Ab Werk folgt sie der Systemsprache, umstellen lässt sie sich im neuen Menü „Einstellungen“.</li>
+ <li data-i18n="cl_od_200_11">Der AUTO MIX misst, wie scharf die S-Laute jeder Stimme sind, und stellt den De-Esser danach ein: eine weiche Stimme bleibt unberührt, eine scharfe wird stärker entschärft. Das gilt für Sprecher und O-Ton; im Manual lässt sich der Wert ändern.</li>
+ <li data-i18n="cl_od_200_12">Beim Abhören über die Software läuft der Eingang jeder scharfgeschalteten Stimmspur durch den Kanalzug dieser Spur, mit Hall und Inserts – bisher teilten sich alle eine Mikrofonkette. Bei der Aufnahme gilt die DAW-Regel: bis zum Punch-In laufen die vorhandenen Takes, danach der Eingang; mit „I“ hört man nur den Eingang.</li>
+ <li data-i18n="cl_od_200_13">Neuer Automationsmodus TRIM je Spur und Bus: Touch, Latch und Write verschieben die vorhandene Kurve, statt sie zu überschreiben, ihre Form bleibt erhalten.</li>
+ <li data-i18n="cl_od_200_14">Beim Beenden fragt die App nach ungespeicherten Änderungen (Speichern, Verwerfen, Abbrechen), auch über den Fensterknopf.</li>
+ <li data-i18n="cl_od_200_15">Video- und MXF-Export gehen jetzt von jeder Seite aus, auch von der AUDIO-Seite.</li>
  <li data-i18n="cl_od_200_10">Hinweis zum Umstieg: die Klangkette hat sich geändert, Projekte aus 1.6 brauchen deshalb einen neuen AUTO MIX.</li>
  </ul>
  </div>
@@ -601,6 +606,11 @@ cl_od_200_6: 'Spuren lassen sich in Zeitleiste und Mixer umsortieren, auch mehre
 cl_od_200_7: 'Das Projekt bestimmt die Abtastrate, nicht das Interface. Ein neues Fenster „Projekteinstellungen“ führt Abtastrate, Bildrate, Startzeitcode und Folgen-Angaben; eine Kopie mit anderer Abtastrate lässt sich speichern, das Original bleibt unberührt.',
 cl_od_200_8: 'Eine Navigationszeile über dem Transport zeigt das ganze Projekt als Wellenform mit Marken und Bereich; Start, Ende und Länge sind eintippbar.',
 cl_od_200_9: 'Die App spricht sechs Sprachen: Deutsch, Englisch, Französisch, Spanisch, Italienisch und Portugiesisch. Ab Werk folgt sie der Systemsprache, umstellen lässt sie sich im neuen Menü „Einstellungen“.',
+cl_od_200_11: 'Der AUTO MIX misst, wie scharf die S-Laute jeder Stimme sind, und stellt den De-Esser danach ein: eine weiche Stimme bleibt unberührt, eine scharfe wird stärker entschärft. Das gilt für Sprecher und O-Ton; im Manual lässt sich der Wert ändern.',
+cl_od_200_12: 'Beim Abhören über die Software läuft der Eingang jeder scharfgeschalteten Stimmspur durch den Kanalzug dieser Spur, mit Hall und Inserts – bisher teilten sich alle eine Mikrofonkette. Bei der Aufnahme gilt die DAW-Regel: bis zum Punch-In laufen die vorhandenen Takes, danach der Eingang; mit „I“ hört man nur den Eingang.',
+cl_od_200_13: 'Neuer Automationsmodus TRIM je Spur und Bus: Touch, Latch und Write verschieben die vorhandene Kurve, statt sie zu überschreiben, ihre Form bleibt erhalten.',
+cl_od_200_14: 'Beim Beenden fragt die App nach ungespeicherten Änderungen (Speichern, Verwerfen, Abbrechen), auch über den Fensterknopf.',
+cl_od_200_15: 'Video- und MXF-Export gehen jetzt von jeder Seite aus, auch von der AUDIO-Seite.',
 cl_od_200_10: 'Hinweis zum Umstieg: die Klangkette hat sich geändert, Projekte aus 1.6 brauchen deshalb einen neuen AUTO MIX.',
 cl_od_162_t: 'MXF-Import wie angehakt, Transkribieren-Knopf',
 cl_od_162_1: 'Beim MXF-Import wird jede angehakte Tonspur genau so ins Projekt übernommen: eine einzelne Spur als Monospur, zwei im Auswahlfenster gepaarte Spuren als Stereospur („Mit Spur N paaren“ / „Trennen“). Bisher wurde die erste gewählte Spur automatisch zur Stereo-Tonspur des Videos – auch wenn sie mono war.',
@@ -776,6 +786,11 @@ cl_od_200_6: 'Tracks can be reordered in the timeline and the mixer, several at 
 cl_od_200_7: 'The project sets the sample rate, not the interface. A new Project Settings window holds sample rate, frame rate, start timecode and episode details; a copy at another sample rate can be saved while the original stays untouched.',
 cl_od_200_8: 'A navigation bar above the transport shows the whole project as a waveform with markers and range; start, end and length can be typed in.',
 cl_od_200_9: 'The app speaks six languages: German, English, French, Spanish, Italian and Portuguese. It follows the system language by default and can be switched in the new Settings menu.',
+cl_od_200_11: 'AUTO MIX measures how sharp the sibilants of each voice are and sets the de-esser accordingly: a soft voice stays untouched, a sharp one gets more de-essing. This applies to narrator and original sound; the value can be changed in Manual mode.',
+cl_od_200_12: 'With software monitoring, the input of every record-armed voice track runs through the channel strip of that track, with reverb and inserts - previously all shared one microphone chain. Recording follows the DAW rule: the existing takes play up to the punch-in, the input after it; "I" monitors the input only.',
+cl_od_200_13: 'New automation mode TRIM per track and bus: Touch, Latch and Write shift the existing curve instead of overwriting it, keeping its shape.',
+cl_od_200_14: 'Quitting now asks about unsaved changes (Save, Discard, Cancel), also via the window button.',
+cl_od_200_15: 'Video and MXF export now work from every page, including the AUDIO page.',
 cl_od_200_10: 'Upgrade note: the processing chain has changed, so projects from 1.6 need a fresh AUTO MIX.',
 cl_od_162_t: 'MXF import as ticked, Transcribe button',
 cl_od_162_1: 'MXF import now brings in every ticked audio track exactly as chosen: a single track as a mono track, two tracks paired in the selection window as a stereo track ("Pair with N" / "Split"). Previously the first selected track automatically became the stereo video sound - even when it was mono.',

@@ -40,58 +40,58 @@ MONTH_EN = "November 2026"
 
 DE = {
  "kicker": "PRESSEMITTEILUNG",
- "headline": f"voyzSESSION {VERSION}: Neun Klangmodule, ein Mischmodus nach DAW-Standard und ein AUTO MIX für Rohmaterial",
- "lead": "Die DAW für Sprachproduktion vermisst jetzt jede Stimme, bevor sie mischt, und stellt ihre "
-         "Klangmodule danach ein &ndash; für Sprecher wie für O-Ton, auch aus ungepegeltem Rohmaterial. Dazu kommt "
-         "ein Manual-Modus nach DAW-Standard, in dem jeder ermittelte Wert sichtbar und änderbar ist.",
+ "headline": f"voyzSESSION {VERSION}: Die komplette Sprachproduktion in einer Anwendung &ndash; vom Prompter bis zum <span style=\"white-space:nowrap\">Sende-MXF</span>",
+ "lead": "Aufnahme gegen Bild und Skript, eine vollständige Klangbearbeitung, eine Mischung, die jede Stimme erst "
+         "vermisst, und die sendefertige Auslieferung: voyzSESSION 2.0 bündelt, was in der Sprachproduktion sonst "
+         "auf mehrere Programme und Plugin-Pakete verteilt ist.",
  "body": [
   f"<b>Siegburg, {DATE_DE}</b> &ndash; pegelWERK veröffentlicht Version {VERSION} von voyzSESSION, der DAW "
-  "für Sprachproduktion. Es ist der größte Umbau seit dem Erstrelease: ein Kanalzug mit neun eigenen "
-  "Modulen, ein Manual-Modus, der arbeitet wie eine professionelle DAW, und ein AUTO MIX, der nicht mehr "
-  "auf eine Vormischung angewiesen ist. Zum ersten Mal spricht die App sechs Sprachen.",
+  "für Sprachproduktion. Wer heute einen Beitrag vertont, einen Podcast produziert oder ein Hörspiel mischt, "
+  "arbeitet meist mit einer DAW, mehreren Plugin-Paketen, einem Teleprompter, einem Transkriptionsdienst und "
+  "einem eigenen Werkzeug für die Auslieferung. voyzSESSION 2.0 vereint all das in einer Anwendung. Alle "
+  "Bausteine, die diese Arbeit braucht, sind in hoher Qualität an Bord &ndash; Software von Drittanbietern ist "
+  "nicht nötig. Wer seine eigenen Plugins schätzt, setzt sie trotzdem ein.",
 
-  "Jede Spur hat jetzt einen Kanalzug mit neun Bausteinen: Restauration (De-Click und De-Plosive), "
-  "Entrauschen, EQ mit dynamischen Bändern, Resonanz, De-Esser, Kompressor, De-Breath, Saturate und Hall. "
-  "Jeder öffnet ein Modulfenster mit echten Parametern sowie Werks- und eigenen Presets. Die Anzeigen "
-  "werden aus denselben Werten gerechnet, mit denen der Klang entsteht &ndash; was das Modul zeigt, ist das, "
-  "was wirkt. Die Reihenfolge im Raster ist die Signalfolge und lässt sich ändern.",
+  "Die Aufnahme beginnt am Skript: Der Prompter läuft per Spracherkennung mit, ein Kabinenfenster zeigt dem "
+  "Sprecher Text, Bild und Timecode, und nach einem Versprecher findet V-PUNCH am Gesprochenen die "
+  "Stelle, an der neu eingesetzt wird. Aufgenommen wird gegen das Video, direkt in den Projektordner.",
 
-  "Bevor der AUTO MIX mischt, analysiert er jede Stimme einzeln: ihre Klangfarbe, ihr Pegelverhalten, die "
-  "Schärfe ihrer S-Laute, Atmer und Klicks. Daraus stellt er die Module für genau diese Stimme ein. Der EQ "
-  "gleicht die gemessene Klangfarbe an ein Sprachziel an, der Kompressor richtet sich nach der Dynamik des "
-  "Sprechers, der De-Esser greift bei einer scharfen Stimme stärker und lässt eine weiche in Ruhe. Beim "
-  "Sprecher werden zusätzlich Atmer und Klicks dort behandelt, wo sie gefunden wurden. Ein O-Ton bekommt "
-  "dieselbe Klanganalyse für EQ, Kompressor und De-Esser. "
-  "Das Ergebnis steht als echte Einstellung im jeweiligen Modul &ndash; im Assist zum Ansehen, im Manual als "
-  "Ausgangspunkt für die eigene Feinarbeit.",
+  "Für den Klang hat jede Spur einen Kanalzug mit neun eigenen Modulen: Restauration (De-Click und "
+  "De-Plosive), Entrauschen, EQ mit dynamischen Bändern, Resonanz, De-Esser, Kompressor, De-Breath, "
+  "Saturate und Hall. Jedes Modul zeigt, was es tatsächlich tut &ndash; Kurven und Anzeigen werden aus "
+  "denselben Werten gerechnet, mit denen der Klang entsteht. Werks- und eigene Presets sind dabei, und die "
+  "Reihenfolge der Bausteine lässt sich ändern.",
 
-  "Bisher ging der AUTO MIX davon aus, dass ein Cutter die Spuren vorgemischt hat. Jetzt kommt er mit "
-  "ungepegeltem Rohmaterial zurecht. Jede Rolle hat ihr eigenes Pegelziel: Sprecher und O-Ton führen die "
-  "Mischung an, Musik und Atmo ordnen sich beiden unter. Die neue Rolle Stadion gleicht Pegelsprünge aus, "
-  "ohne geduckt zu werden. Auch der De-Esser stellt sich je Stimme selbst ein. Und die Pegelarbeit bleibt "
-  "nicht im Verborgenen: der Ritt der Stimme liegt als Linie am Take, die Ducks liegen als Automation auf "
-  "der Spur &ndash; sichtbar und von Hand korrigierbar.",
+  "Das Herzstück ist der AUTO MIX. Bevor er mischt, vermisst er jede Stimme einzeln: Klangfarbe, "
+  "Pegelverhalten und die Schärfe der S-Laute. Daraus stellt er EQ, Kompressor und De-Esser für genau diese "
+  "Stimme ein &ndash; für den Sprecher ebenso wie für den O-Ton. Beim Sprecher behandelt er zusätzlich Atmer "
+  "und Klicks dort, wo sie gefunden wurden. Und er kommt mit ungepegeltem Rohmaterial zurecht: Jede Rolle hat "
+  "ihr eigenes Pegelziel, Sprecher und O-Ton führen die Mischung an, Musik und Atmo ordnen sich beiden unter, "
+  "die Rolle Stadion hält die Atmosphäre gleichmäßig. Am Ende steht eine sendefertige Mischung nach dem "
+  "gewählten Lautheitsprofil &ndash; mit einem Klick.",
 
-  "Der Manual-Modus arbeitet nach DAW-Standard: die Abhöre spielt roh, der Export ist ein reiner Bounce "
-  "dessen, was man hört, und normalisiert wird nur, wenn es im Export-Fenster angehakt ist. Neu sind ein "
-  "Master-Fader mit Automation, Automation für Pan, Mute und Plugin-Parameter, ein Trim-Modus, der eine "
-  "bestehende Kurve an einzelnen Stellen verschiebt, ohne ihre Form zu verändern, und Aufnahme-Mithören "
-  "nach dem Auto-Input-Prinzip. Ein AUTO MIX aus dem Assist-Modus dient dabei als Ausgangspunkt.",
+  "Dabei arbeitet voyzSESSION in zwei Modi, die ineinandergreifen. Im Assist-Modus liefert auch, wer keine "
+  "Erfahrung mit Ton hat, professionell ab. Im Manual-Modus gilt DAW-Standard: rohe Abhöre, Export als reiner "
+  "Bounce, Master-Fader und Automation, ein Trim-Modus, der eine Kurve an einzelnen Stellen formerhaltend "
+  "verschiebt. Jeder Wert, den der AUTO MIX ermittelt hat, steht dort als echte Einstellung im Modul und "
+  "ist der Ausgangspunkt für die eigene Feinarbeit. Der Ritt der Stimme liegt als Linie am Take, die Ducks "
+  "liegen als Automation auf der Spur &ndash; nichts geschieht im Verborgenen.",
 
-  "Auch die Bedienung ist gewachsen: Spuren lassen sich in Zeitleiste und Mixer umsortieren, eine "
-  "Navigationszeile zeigt das ganze Projekt als Wellenform, und ein Fenster für Projekteinstellungen führt "
-  "Abtastrate, Bildrate und Startzeitcode. Das Projekt bestimmt die Abtastrate, nicht das Interface. Die "
-  "Oberfläche gibt es auf Deutsch, Englisch, Französisch, Spanisch, Italienisch und Portugiesisch.",
+  "Geliefert wird, was der Sender verlangt: MXF mit acht Tonspuren und Lieferprofilen unter anderem für "
+  "ARD/ZDF, wobei das Bild unverändert durchgereicht wird und nicht ersetzte Tonspuren der Quelle bitgleich "
+  "erhalten bleiben. Dazu WAV, AIFF, FLAC, AAC, MP3, MP2 und Opus, MP3 mit Kapitelmarken für Podcasts, "
+  "Untertitel aus der Offline-Transkription und Schnittlisten im AES31-Format. Alles läuft lokal auf dem "
+  "eigenen Rechner, ohne Cloud.",
 
-  "Bei der MXF-Auslieferung wird das Bild unverändert durchgereicht, und Tonspuren der Quelle, die nicht "
-  "ersetzt werden, bleiben bitgleich erhalten.",
-
-  "voyzSESSION 2.0 läuft ab macOS 14 Sonoma. Empfohlen ist ein Mac mit Apple-Prozessor (M1 oder neuer) und "
-  "mindestens 16 GB Arbeitsspeicher: dort laufen AUTO MIX, Entrauschen und Transkription deutlich "
-  "schneller. Auf Intel-Macs läuft die App weiterhin.",
+  "Version 2.0 bringt außerdem sechs Sprachen (Deutsch, Englisch, Französisch, Spanisch, Italienisch, "
+  "Portugiesisch), Spuren zum Umsortieren, eine Navigationszeile und Projekteinstellungen mit Abtastrate, "
+  "Bildrate und Startzeitcode. voyzSESSION 2.0 läuft ab macOS 14 Sonoma; empfohlen ist ein Mac mit "
+  "Apple-Prozessor (M1 oder neuer) und mindestens 16 GB Arbeitsspeicher &ndash; dort laufen AUTO MIX, "
+  "Entrauschen und Transkription deutlich schneller.",
  ],
  "bullets_h": f"NEU IN {VERSION}",
  "bullets": [
+  "Alles in einer Anwendung: Prompter, Aufnahme gegen Bild, Klangbearbeitung, AUTO MIX, Transkription und Sende-Auslieferung &ndash; ohne Drittanbieter-Software",
   "Kanalzug mit neun Modulen: Restauration, Entrauschen, EQ, Resonanz, De-Esser, Kompressor, De-Breath, Saturate, Hall",
   "Modulfenster mit echten Parametern, Werks- und eigenen Presets; Anzeigen aus denselben Werten wie der Klang",
   "Signalfolge im Kanalzug änderbar; eigene Kanalzüge für Gruppen und Master",
@@ -166,7 +166,7 @@ DE = {
   ("Hersteller", "pegelWERK &ndash; Sascha Hömske, Siegburg, Deutschland"),
   ("Web", "pegelwerk.com &middot; info@pegelwerk.com"),
  ],
- "card_summary": f"Stand {MONTH_DE}, Version {VERSION}. Der größte Umbau seit dem Erstrelease: ein Kanalzug mit "
+ "card_summary": f"Stand {MONTH_DE}, Version {VERSION}. Die komplette Sprachproduktion in einer Anwendung: ein Kanalzug mit "
                  "neun Modulen, ein Manual-Modus nach DAW-Standard mit Master-Fader und Trim, und ein AUTO MIX "
                  "für ungepegeltes Rohmaterial mit sichtbarer Pegelarbeit. Sechs Sprachen, ab macOS 14, "
                  "empfohlen auf Macs mit Apple-Prozessor. Kostenloses Update für Bestandskunden.",
@@ -174,56 +174,56 @@ DE = {
 
 EN = {
  "kicker": "PRESS RELEASE",
- "headline": f"voyzSESSION {VERSION}: Nine sound modules, a mix mode built to DAW standard and AUTO MIX for raw material",
- "lead": "The DAW for voice production now measures every voice before it mixes and sets its sound modules "
-         "accordingly &ndash; for narrator and original sound alike, even from unlevelled raw material. On top "
-         "comes a manual mode built to DAW standard in which every derived value is visible and editable.",
+ "headline": f"voyzSESSION {VERSION}: The complete voice production in one application &ndash; from prompter to broadcast MXF",
+ "lead": "Recording against picture and script, a complete set of sound processing, a mix that measures every "
+         "voice first, and broadcast-ready delivery: voyzSESSION 2.0 brings together what voice production "
+         "otherwise spreads across several programs and plugin bundles.",
  "body": [
   f"<b>Siegburg, {DATE_EN}</b> &ndash; pegelWERK releases version {VERSION} of voyzSESSION, the DAW for voice "
-  "production. It is the biggest overhaul since the first release: a channel strip with nine in-house "
-  "modules, a manual mode that works like a professional DAW, and an AUTO MIX that no longer depends on a "
-  "pre-mix. For the first time the app speaks six languages.",
+  "production. Anyone voicing a report, producing a podcast or mixing a radio drama today usually works with a "
+  "DAW, several plugin bundles, a teleprompter, a transcription service and a separate tool for delivery. "
+  "voyzSESSION 2.0 unites all of it in one application. Every processor the job needs is on board in high "
+  "quality &ndash; no third-party software required. Those who value their own plugins can still use them.",
 
-  "Every track now has a channel strip with nine processors: restoration (de-click and de-plosive), noise "
-  "reduction, EQ with dynamic bands, resonance, de-esser, compressor, de-breath, saturate and reverb. Each "
-  "opens a module window with real parameters plus factory and user presets. The displays are computed "
-  "from the same values that shape the sound &ndash; what the module shows is what it does. The grid reads "
-  "in signal order, and the order can be changed.",
+  "Recording starts at the script: the prompter follows the voice via speech recognition, a booth window shows "
+  "the narrator text, picture and timecode, and after a slip V-PUNCH finds the point to pick up from by "
+  "listening to what was said. Recording runs against the video, straight into the project folder.",
 
-  "Before AUTO MIX mixes, it analyses every voice on its own: its timbre, its level behaviour, the sharpness "
-  "of its sibilants, breaths and clicks. From that it sets the modules for exactly this voice. The EQ matches "
-  "the measured timbre to a speech target, the compressor follows the narrator's dynamics, the de-esser works "
-  "harder on a sharp voice and leaves a soft one alone. On the narrator, breaths and clicks are also treated "
-  "where they were found. Original sound gets the same timbre analysis for EQ, compressor and de-esser. The "
-  "result is a real setting in each module "
-  "&ndash; to look at in Assist mode, and the starting point for your own fine-tuning in Manual mode.",
+  "For the sound, every track has a channel strip with nine in-house modules: restoration (de-click and "
+  "de-plosive), noise reduction, EQ with dynamic bands, resonance, de-esser, compressor, de-breath, saturate "
+  "and reverb. Every module shows what it actually does &ndash; curves and displays are computed from the same "
+  "values that shape the sound. Factory and user presets are included, and the order of the processors can be "
+  "changed.",
 
-  "Until now AUTO MIX assumed that an editor had pre-mixed the tracks. Now it handles unlevelled raw "
-  "material. Every role has its own level target: narrator and original sound lead the mix, music and "
-  "ambience sit below both. The new Stadium role evens out level jumps without being ducked. The de-esser "
-  "also sets itself per voice. And the level work no longer stays hidden: the voice ride sits as a line on "
-  "the take, the ducks as automation on the track &ndash; visible and correctable by hand.",
+  "At the heart is AUTO MIX. Before it mixes, it measures every voice on its own: timbre, level behaviour and "
+  "the sharpness of the sibilants. From that it sets EQ, compressor and de-esser for exactly this voice "
+  "&ndash; for the narrator as well as for original sound. On the narrator it also treats breaths and clicks "
+  "where they were found. And it copes with unlevelled raw material: every role has its own level target, "
+  "narrator and original sound lead the mix, music and ambience sit below both, and the stadium role keeps "
+  "the atmosphere steady. The result is a broadcast-ready mix to the chosen loudness profile &ndash; in one "
+  "click.",
 
-  "Manual mode works to DAW standard: monitoring plays raw, export is a plain bounce of what you hear, and "
-  "loudness normalisation only happens when ticked in the export window. New are a master fader with "
-  "automation, automation for pan, mute and plugin parameters, a trim mode that shifts an existing curve "
-  "at individual spots without changing its shape, and input monitoring on the auto-input principle. An "
-  "AUTO MIX made in Assist mode serves as the starting point.",
+  "voyzSESSION works in two modes that interlock. In Assist mode even people without audio experience deliver "
+  "professional results. In Manual mode DAW standard applies: raw monitoring, export as a plain bounce, master "
+  "fader and automation, a trim mode that shifts a curve at individual spots while keeping its shape. Every "
+  "value AUTO MIX has derived sits there as a real setting in the module and is the starting point for your "
+  "own fine-tuning. The voice ride is a line on the take, the ducks are automation on the track &ndash; nothing "
+  "happens behind your back.",
 
-  "Handling has grown too: tracks can be reordered in the timeline and the mixer, a navigation bar shows "
-  "the whole project as a waveform, and a project settings window holds sample rate, frame rate and start "
-  "timecode. The project sets the sample rate, not the interface. The interface is available in German, "
-  "English, French, Spanish, Italian and Portuguese.",
+  "Delivery is what the broadcaster asks for: MXF with eight audio tracks and delivery profiles including "
+  "ARD/ZDF, with the picture passed through unchanged and source tracks that are not replaced kept "
+  "bit-identical. Plus WAV, AIFF, FLAC, AAC, MP3, MP2 and Opus, MP3 with chapter marks for podcasts, "
+  "subtitles from the offline transcription and AES31 edit lists. Everything runs locally on your own "
+  "machine, without a cloud.",
 
-  "For MXF delivery the picture is passed through unchanged, and source audio tracks that are not replaced "
-  "stay bit-identical.",
-
-  "voyzSESSION 2.0 runs on macOS 14 Sonoma or later. We recommend a Mac with Apple silicon (M1 or newer) and "
-  "at least 16 GB of memory: AUTO MIX, noise reduction and transcription run much faster there. The app "
-  "still runs on Intel Macs.",
+  "Version 2.0 also brings six languages (German, English, French, Spanish, Italian, Portuguese), reorderable "
+  "tracks, a navigation bar and project settings with sample rate, frame rate and start timecode. "
+  "voyzSESSION 2.0 runs on macOS 14 Sonoma or later; a Mac with Apple silicon (M1 or newer) and at least "
+  "16 GB of memory is recommended &ndash; AUTO MIX, noise reduction and transcription run much faster there.",
  ],
  "bullets_h": f"NEW IN {VERSION}",
  "bullets": [
+  "Everything in one application: prompter, recording to picture, sound processing, AUTO MIX, transcription and broadcast delivery &ndash; no third-party software needed",
   "Channel strip with nine modules: restoration, noise reduction, EQ, resonance, de-esser, compressor, de-breath, saturate, reverb",
   "Module windows with real parameters, factory and user presets; displays computed from the same values as the sound",
   "Signal order in the channel strip can be changed; own channel strips for groups and master",
@@ -295,7 +295,7 @@ EN = {
   ("Vendor", "pegelWERK &ndash; Sascha Hömske, Siegburg, Germany"),
   ("Web", "pegelwerk.com &middot; info@pegelwerk.com"),
  ],
- "card_summary": f"As of {MONTH_EN}, version {VERSION}. The biggest overhaul since the first release: a channel "
+ "card_summary": f"As of {MONTH_EN}, version {VERSION}. The complete voice production in one application: a channel "
                  "strip with nine modules, a manual mode built to DAW standard with master fader and trim, and "
                  "an AUTO MIX for unlevelled raw material with visible level work. Six languages, macOS 14 or "
                  "later, recommended on Macs with Apple silicon. Free update for existing customers.",

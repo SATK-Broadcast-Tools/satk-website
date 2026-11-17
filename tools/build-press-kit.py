@@ -94,26 +94,18 @@ DE = {
  "bullets_h": f"NEU IN {VERSION}",
  "bullets": [
   "Alles in einer Anwendung: Prompter, Aufnahme gegen Bild, Klangbearbeitung, AUTO MIX, Transkription und Sende-Auslieferung, ohne Drittanbieter-Software",
-  "Kanalzug mit neun Modulen: Restauration, Entrauschen, EQ, Resonanz, De-Esser, Kompressor, De-Breath, Saturate, Hall",
-  "Modulfenster mit echten Parametern, Werks- und eigenen Presets; Anzeigen aus denselben Werten wie der Klang",
-  "Signalfolge im Kanalzug änderbar; eigene Kanalzüge für Gruppen und Master",
-  "AUTO MIX für ungepegeltes Rohmaterial: Pegelziel je Rolle, Sprecher und O-Ton führen, neue Rolle Stadion",
-  "Pegelarbeit sichtbar: Pegelkurve der Stimme und Absenken der Musik liegen als Linien auf den Spuren",
+  "Kanalzug mit neun Modulen: Restauration, Entrauschen, EQ, Resonanz, De-Esser, Kompressor, De-Breath, Saturate, Hall; Werks- und eigene Presets, Reihenfolge änderbar",
   "Analyse vor dem Mischen: EQ, Kompressor und De-Esser je Stimme aus Klangfarbe, Dynamik und S-Schärfe eingestellt, für Sprecher und O-Ton",
-  "Manual-Modus nach DAW-Standard: ohne versteckte Verarbeitung, Export genau wie gehört, Normalisieren nur auf Wunsch",
-  "Master-Fader mit Automation; Automation für Pan, Mute und Plugin-Parameter; Trim-Modus",
-  "Aufnahme-Mithören nach dem Auto-Input-Prinzip; das Mikrofon läuft durch die Kette seiner Spur",
-  "Spuren umsortieren, Navigationszeile, Projekteinstellungen mit Abtastrate, Bildrate und Startzeitcode",
-  "Sechs Sprachen: Deutsch, Englisch, Französisch, Spanisch, Italienisch, Portugiesisch",
-  "Rückfrage beim Beenden mit ungespeicherten Änderungen",
-  "Ab macOS 14 Sonoma; empfohlen: Mac mit Apple-Prozessor und 16 GB",
+  "AUTO MIX für ungepegeltes Rohmaterial mit Pegelziel je Rolle; Sprecher und O-Ton führen, Musik und Atmo ordnen sich unter",
+  "Manual-Modus nach DAW-Standard mit Master-Fader, Automation und Trim-Modus; alle Werte des AUTO MIX sichtbar und änderbar",
+  "MXF-Auslieferung mit unverändertem Bild und Lieferprofilen unter anderem für ARD und ZDF",
+  "Sechs Sprachen, Spuren umsortieren, Navigationszeile, Projekteinstellungen mit Abtastrate, Bildrate und Startzeitcode",
  ],
- "avail_h": "VERFÜGBARKEIT",
+  "avail_h": "VERFÜGBARKEIT",
  "avail": f"voyzSESSION PRO {VERSION} steht ab sofort auf pegelwerk.com zum Download bereit. Für Bestandskunden "
           "ist das Update kostenlos. Das Abo kostet 24,99 EUR im Monat oder 249 EUR im Jahr, jeweils "
           "inklusive Mehrwertsteuer und monatlich kündbar. Sieben Tage lässt sich die Vollversion "
-          "kostenlos testen, ohne Konto und ohne E-Mail-Adresse. voyzSESSION PRO läuft ab macOS 14 Sonoma; "
-          "empfohlen ist ein Mac mit Apple-Prozessor.",
+          "kostenlos testen, ohne Konto und ohne E-Mail-Adresse.",
  "about_h": "ÜBER PEGELWERK",
  "about": "pegelWERK ist eine unabhängige Audio-Software-Schmiede aus Siegburg, Deutschland, gegründet "
           "von Sascha Hömske. Das Lineup umfasst native Apps für macOS, iPadOS und iPhone rund um "
@@ -227,25 +219,18 @@ EN = {
  "bullets_h": f"NEW IN {VERSION}",
  "bullets": [
   "Everything in one application: prompter, recording to picture, sound processing, AUTO MIX, transcription and broadcast delivery, no third-party software needed",
-  "Channel strip with nine modules: restoration, noise reduction, EQ, resonance, de-esser, compressor, de-breath, saturate, reverb",
-  "Module windows with real parameters, factory and user presets; displays computed from the same values as the sound",
-  "Signal order in the channel strip can be changed; own channel strips for groups and master",
-  "AUTO MIX for unlevelled raw material: level target per role, narrator and original sound lead, new Stadium role",
-  "Level work made visible: the voice level curve and the lowering of the music show as lines on the tracks",
+  "Channel strip with nine modules: restoration, noise reduction, EQ, resonance, de-esser, compressor, de-breath, saturate, reverb; factory and user presets, order can be changed",
   "Analysis before mixing: EQ, compressor and de-esser set per voice from timbre, dynamics and sibilance, for narrator and original sound",
-  "Manual mode to DAW standard: no hidden processing, export exactly as heard, normalisation only on request",
-  "Master fader with automation; automation for pan, mute and plugin parameters; trim mode",
-  "Input monitoring on the auto-input principle; the microphone runs through the chain of its track",
-  "Reorder tracks, navigation bar, project settings with sample rate, frame rate and start timecode",
-  "Six languages: German, English, French, Spanish, Italian, Portuguese",
-  "Prompt to save unsaved changes when quitting",
-  "macOS 14 Sonoma or later; recommended: Mac with Apple silicon and 16 GB",
+  "AUTO MIX for unlevelled raw material with a level target per role; narrator and original sound lead, music and ambience sit below",
+  "Manual mode to DAW standard with master fader, automation and trim mode; every AUTO MIX value visible and editable",
+  "MXF delivery with the picture unchanged and delivery profiles including ARD and ZDF",
+  "Six languages, reorderable tracks, navigation bar, project settings with sample rate, frame rate and start timecode",
  ],
- "avail_h": "AVAILABILITY",
+  "avail_h": "AVAILABILITY",
  "avail": f"voyzSESSION PRO {VERSION} is available for download at pegelwerk.com. The update is free for existing "
           "customers. The subscription costs EUR 24.99 per month or EUR 249 per year, VAT included, cancellable "
           "monthly. The full version can be tried free for seven days, no account and no email address "
-          "needed. voyzSESSION PRO runs on macOS 14 Sonoma or later; a Mac with Apple silicon is recommended.",
+          "needed.",
  "about_h": "ABOUT PEGELWERK",
  "about": "pegelWERK is an independent audio software company based in Siegburg, Germany, founded by Sascha "
           "Hömske. The lineup covers native apps for macOS, iPadOS and iPhone around broadcast, post production "
@@ -314,19 +299,25 @@ CSS = """
    Blattkante. Chrome druckt NICHTS ausserhalb des Seitenrand-Kastens, negative
    Raender werden abgeschnitten (am 21.09.2026 gemessen). Nebenwirkung, die das
    Original genauso hat: Folgeseiten beginnen buendig oben. */
-@page { size: A4; margin: 0; }
+@page { size: A4; margin: 14mm 0 16mm; }
+/* Erste Seite oben ohne Rand (Kopfband bis an die Kante), unten mit Rand; Folgeseiten
+   mit Rand oben und unten (17.11.2026: der Text lief unten bis an die Blattkante, und
+   Seite 2 begann buendig oben). */
+@page :first { margin: 0 0 16mm; }
 * { box-sizing: border-box; }
 body { margin:0; padding:0 16mm 18mm; font-family:'Inter', -apple-system, sans-serif;
-       font-size:9.6pt; line-height:1.55; color:#23232a;
+       font-size:9.6pt; line-height:1.5; color:#23232a;
        -webkit-print-color-adjust:exact; print-color-adjust:exact; }
 .band { background:#0a0a0b; color:#fff; margin:0 -16mm; padding:10mm 16mm 7mm;
         display:flex; align-items:center; justify-content:space-between;
         border-bottom:3px solid #4fb99a; }
 .band img { width:52mm; }
 .kicker { color:#4fb99a; font-size:7.6pt; font-weight:700; letter-spacing:.22em; }
-h1 { font-size:20pt; line-height:1.2; margin:11mm 0 4mm; color:#0a0a0b; letter-spacing:-.01em; }
-.lead { font-size:11.4pt; line-height:1.5; color:#7c7c88; margin:0 0 7mm; }
-p { margin:0 0 3.6mm; }
+h1 { font-size:20pt; line-height:1.2; margin:9mm 0 4mm; color:#0a0a0b; letter-spacing:-.01em; }
+.lead { font-size:11.4pt; line-height:1.45; color:#7c7c88; margin:0 0 6mm; }
+p { margin:0 0 3.6mm; break-inside:avoid; orphans:3; widows:3; }
+li, .box, tr { break-inside:avoid; }
+h2 { break-after:avoid; }
 h2 { color:#4fb99a; font-size:8pt; font-weight:700; letter-spacing:.22em;
      margin:8mm 0 3mm; text-transform:uppercase; }
 ul { margin:0; padding:0; list-style:none; }

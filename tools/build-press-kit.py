@@ -98,7 +98,7 @@ DE = {
  ],
  "avail_h": "VERFÜGBARKEIT",
  "avail": f"voyzSESSION {VERSION} steht ab sofort auf pegelwerk.com zum Download bereit. Für Bestandskunden "
-          "ist das Update kostenlos. Das Abo kostet 24,99 EUR im Monat oder 249 EUR im Jahr, jeweils "
+          "ist das Update kostenlos. Das Abo kostet 29,99 EUR im Monat oder 299 EUR im Jahr, jeweils "
           "inklusive Mehrwertsteuer und monatlich kündbar. Sieben Tage lässt sich die Vollversion "
           "kostenlos testen &ndash; ohne Konto und ohne E-Mail-Adresse. voyzSESSION läuft auf macOS.",
  "about_h": "ÜBER PEGELWERK",
@@ -138,7 +138,7 @@ DE = {
                      "&middot; OSC &middot; Web-Konsole für MakePro X"),
   ("Datenschutz", "Alles läuft lokal auf dem eigenen Rechner: kein Cloud-Sync, kein Upload, kein Streaming"),
   ("Technik", "Nativ in C++ auf JUCE 8"),
-  ("Preis", "Abo 24,99 EUR im Monat oder 249 EUR im Jahr, inkl. MwSt., monatlich kündbar &middot; sieben Tage "
+  ("Preis", "Abo 29,99 EUR im Monat oder 299 EUR im Jahr, inkl. MwSt., monatlich kündbar &middot; sieben Tage "
             "kostenlos testen, ohne Konto und ohne E-Mail"),
   ("Version", f"{VERSION} ({MONTH_DE})"),
   ("Hersteller", "pegelWERK &ndash; Sascha Hömske, Siegburg, Deutschland"),
@@ -212,7 +212,7 @@ EN = {
  ],
  "avail_h": "AVAILABILITY",
  "avail": f"voyzSESSION {VERSION} is available for download at pegelwerk.com. The update is free for existing "
-          "customers. The subscription costs EUR 24.99 per month or EUR 249 per year, each including VAT and "
+          "customers. The subscription costs EUR 29.99 per month or EUR 299 per year, each including VAT and "
           "cancellable monthly. A full seven-day trial is available &ndash; no account, no email address. "
           "voyzSESSION runs on macOS.",
  "about_h": "ABOUT PEGELWERK",
@@ -251,7 +251,7 @@ EN = {
                  "OSC &middot; web console for MakePro X"),
   ("Privacy", "Everything runs locally on your own machine: no cloud sync, no upload, no streaming"),
   ("Technology", "Native C++ on JUCE 8"),
-  ("Price", "Subscription EUR 24.99 per month or EUR 249 per year, VAT included, cancellable monthly &middot; "
+  ("Price", "Subscription EUR 29.99 per month or EUR 299 per year, VAT included, cancellable monthly &middot; "
             "seven-day free trial, no account and no email"),
   ("Version", f"{VERSION} ({MONTH_EN})"),
   ("Vendor", "pegelWERK &ndash; Sascha Hömske, Siegburg, Germany"),

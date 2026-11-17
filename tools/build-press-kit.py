@@ -98,9 +98,9 @@ DE = {
   "Modulfenster mit echten Parametern, Werks- und eigenen Presets; Anzeigen aus denselben Werten wie der Klang",
   "Signalfolge im Kanalzug änderbar; eigene Kanalzüge für Gruppen und Master",
   "AUTO MIX für ungepegeltes Rohmaterial: Pegelziel je Rolle, Sprecher und O-Ton führen, neue Rolle Stadion",
-  "Pegelarbeit sichtbar: Ritt der Stimme als Linie am Take, Ducks als Automation auf der Spur",
+  "Pegelarbeit sichtbar: Pegelkurve der Stimme und Absenken der Musik liegen als Linien auf den Spuren",
   "Analyse vor dem Mischen: EQ, Kompressor und De-Esser je Stimme aus Klangfarbe, Dynamik und S-Schärfe eingestellt, für Sprecher und O-Ton",
-  "Manual-Modus nach DAW-Standard: rohe Abhöre, Export als reiner Bounce, Normalisieren nur auf Wunsch",
+  "Manual-Modus nach DAW-Standard: ohne versteckte Verarbeitung, Export genau wie gehört, Normalisieren nur auf Wunsch",
   "Master-Fader mit Automation; Automation für Pan, Mute und Plugin-Parameter; Trim-Modus",
   "Aufnahme-Mithören nach dem Auto-Input-Prinzip; das Mikrofon läuft durch die Kette seiner Spur",
   "Spuren umsortieren, Navigationszeile, Projekteinstellungen mit Abtastrate, Bildrate und Startzeitcode",
@@ -112,7 +112,7 @@ DE = {
  "avail": f"voyzSESSION PRO {VERSION} steht ab sofort auf pegelwerk.com zum Download bereit. Für Bestandskunden "
           "ist das Update kostenlos. Das Abo kostet 24,99 EUR im Monat oder 249 EUR im Jahr, jeweils "
           "inklusive Mehrwertsteuer und monatlich kündbar. Sieben Tage lässt sich die Vollversion "
-          "kostenlos testen &ndash; ohne Konto und ohne E-Mail-Adresse. voyzSESSION PRO läuft ab macOS 14 Sonoma; "
+          "kostenlos testen, ohne Konto und ohne E-Mail-Adresse. voyzSESSION PRO läuft ab macOS 14 Sonoma; "
           "empfohlen ist ein Mac mit Apple-Prozessor.",
  "about_h": "ÜBER PEGELWERK",
  "about": "pegelWERK ist eine unabhängige Audio-Software-Schmiede aus Siegburg, Deutschland, gegründet "
@@ -231,9 +231,9 @@ EN = {
   "Module windows with real parameters, factory and user presets; displays computed from the same values as the sound",
   "Signal order in the channel strip can be changed; own channel strips for groups and master",
   "AUTO MIX for unlevelled raw material: level target per role, narrator and original sound lead, new Stadium role",
-  "Level work made visible: voice ride as a line on the take, ducks as automation on the track",
+  "Level work made visible: the voice level curve and the lowering of the music show as lines on the tracks",
   "Analysis before mixing: EQ, compressor and de-esser set per voice from timbre, dynamics and sibilance, for narrator and original sound",
-  "Manual mode to DAW standard: raw monitoring, export as a plain bounce, normalisation only on request",
+  "Manual mode to DAW standard: no hidden processing, export exactly as heard, normalisation only on request",
   "Master fader with automation; automation for pan, mute and plugin parameters; trim mode",
   "Input monitoring on the auto-input principle; the microphone runs through the chain of its track",
   "Reorder tracks, navigation bar, project settings with sample rate, frame rate and start timecode",
@@ -244,7 +244,7 @@ EN = {
  "avail_h": "AVAILABILITY",
  "avail": f"voyzSESSION PRO {VERSION} is available for download at pegelwerk.com. The update is free for existing "
           "customers. The subscription costs EUR 24.99 per month or EUR 249 per year, VAT included, cancellable "
-          "monthly. The full version can be tried free for seven days &ndash; no account and no email address "
+          "monthly. The full version can be tried free for seven days, no account and no email address "
           "needed. voyzSESSION PRO runs on macOS 14 Sonoma or later; a Mac with Apple silicon is recommended.",
  "about_h": "ABOUT PEGELWERK",
  "about": "pegelWERK is an independent audio software company based in Siegburg, Germany, founded by Sascha "

@@ -40,58 +40,60 @@ MONTH_EN = "November 2026"
 
 DE = {
  "kicker": "PRESSEMITTEILUNG",
- "headline": f"voyzSESSION PRO {VERSION}: Die komplette Sprachproduktion in einer Anwendung &ndash; vom Prompter bis zum <span style=\"white-space:nowrap\">Sende-MXF</span>",
- "lead": "Aufnahme gegen Bild und Skript, eine vollständige Klangbearbeitung, eine Mischung, die jede Stimme erst "
-         "vermisst, und die sendefertige Auslieferung: voyzSESSION PRO 2.0 bündelt, was in der Sprachproduktion sonst "
-         "auf mehrere Programme und Plugin-Pakete verteilt ist.",
+ "headline": f"voyzSESSION PRO {VERSION}: Die komplette Sprachproduktion in einer Anwendung, vom Prompter bis zum <span style=\"white-space:nowrap\">Sende-MXF</span>",
+ "lead": "voyzSESSION PRO 2.0 bündelt, was in der Sprachproduktion sonst auf mehrere Programme und "
+         "Plugin-Pakete verteilt ist. Die Anwendung reicht von der Aufnahme gegen Bild und Skript über die "
+         "Klangbearbeitung und eine automatische Mischung, die jede Stimme vorher vermisst, bis zur "
+         "sendefertigen Datei.",
  "body": [
-  f"<b>Siegburg, {DATE_DE}</b> &ndash; pegelWERK veröffentlicht Version {VERSION} von voyzSESSION PRO, der DAW "
-  "für Sprachproduktion. Wer heute einen Beitrag vertont, einen Podcast produziert oder ein Hörspiel mischt, "
-  "arbeitet meist mit einer DAW, mehreren Plugin-Paketen, einem Teleprompter, einem Transkriptionsdienst und "
-  "einem eigenen Werkzeug für die Auslieferung. voyzSESSION PRO 2.0 vereint all das in einer Anwendung. Alle "
-  "Bausteine, die diese Arbeit braucht, sind in hoher Qualität an Bord &ndash; Software von Drittanbietern ist "
-  "nicht nötig. Wer seine eigenen Plugins schätzt, setzt sie trotzdem ein.",
+  f"<b>Siegburg, {DATE_DE}</b> &ndash; pegelWERK veröffentlicht Version {VERSION} von voyzSESSION PRO, der "
+  "DAW für Sprachproduktion. Für einen vertonten Beitrag, einen Podcast oder ein Hörspiel braucht man bisher "
+  "in der Regel mehrere Werkzeuge: eine DAW, Plugin-Pakete für den Klang, einen Teleprompter, einen "
+  "Transkriptionsdienst und ein Programm für die Auslieferung. voyzSESSION PRO 2.0 vereint diese Aufgaben in "
+  "einer Anwendung. Alle dafür nötigen Klangbausteine sind enthalten, Software von Drittanbietern wird nicht "
+  "gebraucht. Wer eigene Plugins einsetzen möchte, kann das trotzdem tun.",
 
-  "Die Aufnahme beginnt am Skript: Der Prompter läuft per Spracherkennung mit, ein Kabinenfenster zeigt dem "
-  "Sprecher Text, Bild und Timecode, und nach einem Versprecher findet V-PUNCH am Gesprochenen die "
-  "Stelle, an der neu eingesetzt wird. Aufgenommen wird gegen das Video, direkt in den Projektordner.",
+  "Bei der Aufnahme läuft der Prompter per Spracherkennung mit dem Sprecher mit. Ein Kabinenfenster zeigt ihm "
+  "Text, Bild und Timecode. Verspricht er sich, findet die Funktion V-PUNCH anhand des Gesprochenen die "
+  "Stelle, an der er neu einsetzt. Aufgenommen wird gegen das Video und direkt in den Projektordner.",
 
-  "Für den Klang hat jede Spur einen Kanalzug mit neun eigenen Modulen: Restauration (De-Click und "
-  "De-Plosive), Entrauschen, EQ mit dynamischen Bändern, Resonanz, De-Esser, Kompressor, De-Breath, "
-  "Saturate und Hall. Jedes Modul zeigt, was es tatsächlich tut &ndash; Kurven und Anzeigen werden aus "
-  "denselben Werten gerechnet, mit denen der Klang entsteht. Werks- und eigene Presets sind dabei, und die "
-  "Reihenfolge der Bausteine lässt sich ändern.",
+  "Für den Klang hat jede Spur einen Kanalzug mit neun eigenen Modulen, von der Restauration über "
+  "Entrauschen, EQ, De-Esser und Kompressor bis zum Hall. Die Module zeigen die Werte, mit denen sie "
+  "tatsächlich arbeiten, denn Kurven und Anzeigen werden aus denselben Daten berechnet wie der Klang. Die "
+  "Reihenfolge der Module lässt sich ändern, und es gibt Werks- und eigene Presets.",
 
-  "Das Herzstück ist der AUTO MIX. Bevor er mischt, vermisst er jede Stimme einzeln: Klangfarbe, "
-  "Pegelverhalten und die Schärfe der S-Laute. Daraus stellt er EQ, Kompressor und De-Esser für genau diese "
-  "Stimme ein &ndash; für den Sprecher ebenso wie für den O-Ton. Beim Sprecher behandelt er zusätzlich Atmer "
-  "und Klicks dort, wo sie gefunden wurden. Und er kommt mit ungepegeltem Rohmaterial zurecht: Jede Rolle hat "
-  "ihr eigenes Pegelziel, Sprecher und O-Ton führen die Mischung an, Musik und Atmo ordnen sich beiden unter, "
-  "die Rolle Stadion hält die Atmosphäre gleichmäßig. Am Ende steht eine sendefertige Mischung nach dem "
-  "gewählten Lautheitsprofil &ndash; mit einem Klick.",
+  "Im Mittelpunkt steht der AUTO MIX. Er misst vor dem Mischen jede Stimme einzeln aus, also ihre "
+  "Klangfarbe, ihr Pegelverhalten und wie scharf ihre S-Laute sind. Danach stellt er EQ, Kompressor und "
+  "De-Esser passend zu dieser Stimme ein, beim Sprecher ebenso wie beim O-Ton. Beim Sprecher behandelt er "
+  "außerdem Atmer und Klicks an den Stellen, an denen sie vorkommen. Der AUTO MIX arbeitet auch mit "
+  "ungepegeltem Rohmaterial. Jede Spurart hat ein eigenes Pegelziel, Sprecher und O-Ton stehen im "
+  "Vordergrund, Musik und Atmo werden darunter gemischt, und eine eigene Einstellung für Stadionatmo hält "
+  "diese gleichmäßig. Das Ergebnis ist eine sendefertige Mischung nach dem gewählten Lautheitsprofil.",
 
-  "Dabei arbeitet voyzSESSION PRO in zwei Modi, die ineinandergreifen. Im Assist-Modus liefert auch, wer keine "
-  "Erfahrung mit Ton hat, professionell ab. Im Manual-Modus gilt DAW-Standard: rohe Abhöre, Export als reiner "
-  "Bounce, Master-Fader und Automation, ein Trim-Modus, der eine Kurve an einzelnen Stellen formerhaltend "
-  "verschiebt. Jeder Wert, den der AUTO MIX ermittelt hat, steht dort als echte Einstellung im Modul und "
-  "ist der Ausgangspunkt für die eigene Feinarbeit. Der Ritt der Stimme liegt als Linie am Take, die Ducks "
-  "liegen als Automation auf der Spur &ndash; nichts geschieht im Verborgenen.",
+  "voyzSESSION PRO hat zwei Arbeitsweisen. Im Assist-Modus erreichen auch Anwender ohne Erfahrung im Ton ein "
+  "professionelles Ergebnis. Der Manual-Modus richtet sich an Tonprofis und arbeitet wie eine "
+  "professionelle DAW, mit Master-Fader, Automation und einem Trim-Modus für gezielte Korrekturen an "
+  "einzelnen Stellen. Was der AUTO MIX ermittelt hat, ist dort als Einstellung im jeweiligen Modul "
+  "sichtbar und kann weiterbearbeitet werden. Auch die Pegelkurve der Stimme und das Absenken der Musik "
+  "unter der Sprache liegen sichtbar auf den Spuren.",
 
-  "Geliefert wird, was der Sender verlangt: MXF mit acht Tonspuren und Lieferprofilen unter anderem für "
-  "ARD/ZDF, wobei das Bild unverändert durchgereicht wird und nicht ersetzte Tonspuren der Quelle bitgleich "
-  "erhalten bleiben. Dazu WAV, AIFF, FLAC, AAC, MP3, MP2 und Opus, MP3 mit Kapitelmarken für Podcasts, "
-  "Untertitel aus der Offline-Transkription und Schnittlisten im AES31-Format. Alles läuft lokal auf dem "
-  "eigenen Rechner, ohne Cloud.",
+  "Für die Auslieferung schreibt voyzSESSION PRO MXF-Dateien mit acht Tonspuren, unter anderem nach den "
+  "Lieferprofilen von ARD und ZDF. Das Bild wird dabei unverändert übernommen, und Tonspuren der Quelle, "
+  "die nicht ersetzt werden, bleiben bitgleich erhalten. Daneben stehen die gängigen Audioformate zur "
+  "Verfügung, MP3 mit Kapitelmarken für Podcasts, Untertitel aus der Transkription und Schnittlisten im "
+  "AES31-Format. Alle Berechnungen laufen auf dem eigenen Rechner, es werden keine Daten in eine Cloud "
+  "geladen.",
 
-  "Version 2.0 bringt außerdem sechs Sprachen (Deutsch, Englisch, Französisch, Spanisch, Italienisch, "
-  "Portugiesisch), Spuren zum Umsortieren, eine Navigationszeile und Projekteinstellungen mit Abtastrate, "
-  "Bildrate und Startzeitcode. voyzSESSION PRO 2.0 läuft ab macOS 14 Sonoma; empfohlen ist ein Mac mit "
-  "Apple-Prozessor (M1 oder neuer) und mindestens 16 GB Arbeitsspeicher &ndash; dort laufen AUTO MIX, "
-  "Entrauschen und Transkription deutlich schneller.",
+  "Neu in Version 2.0 sind außerdem sechs Sprachen für die Bedienoberfläche (Deutsch, Englisch, "
+  "Französisch, Spanisch, Italienisch und Portugiesisch), Spuren, die sich umsortieren lassen, eine "
+  "Navigationszeile und Projekteinstellungen für Abtastrate, Bildrate und Startzeitcode. voyzSESSION PRO "
+  "2.0 läuft ab macOS 14 Sonoma. Empfohlen wird ein Mac mit Apple-Prozessor (M1 oder neuer) und "
+  "mindestens 16 GB Arbeitsspeicher, weil AUTO MIX, Entrauschen und Transkription dort deutlich schneller "
+  "laufen.",
  ],
  "bullets_h": f"NEU IN {VERSION}",
  "bullets": [
-  "Alles in einer Anwendung: Prompter, Aufnahme gegen Bild, Klangbearbeitung, AUTO MIX, Transkription und Sende-Auslieferung &ndash; ohne Drittanbieter-Software",
+  "Alles in einer Anwendung: Prompter, Aufnahme gegen Bild, Klangbearbeitung, AUTO MIX, Transkription und Sende-Auslieferung, ohne Drittanbieter-Software",
   "Kanalzug mit neun Modulen: Restauration, Entrauschen, EQ, Resonanz, De-Esser, Kompressor, De-Breath, Saturate, Hall",
   "Modulfenster mit echten Parametern, Werks- und eigenen Presets; Anzeigen aus denselben Werten wie der Klang",
   "Signalfolge im Kanalzug änderbar; eigene Kanalzüge für Gruppen und Master",
@@ -174,56 +176,57 @@ DE = {
 
 EN = {
  "kicker": "PRESS RELEASE",
- "headline": f"voyzSESSION PRO {VERSION}: The complete voice production in one application &ndash; from prompter to broadcast MXF",
- "lead": "Recording against picture and script, a complete set of sound processing, a mix that measures every "
-         "voice first, and broadcast-ready delivery: voyzSESSION PRO 2.0 brings together what voice production "
-         "otherwise spreads across several programs and plugin bundles.",
+ "headline": f"voyzSESSION PRO {VERSION}: The complete voice production in one application, from prompter to broadcast MXF",
+ "lead": "voyzSESSION PRO 2.0 brings together what voice production otherwise spreads across several "
+         "programs and plugin bundles. The application covers recording against picture and script, sound "
+         "processing, an automatic mix that measures every voice first, and the finished broadcast file.",
  "body": [
-  f"<b>Siegburg, {DATE_EN}</b> &ndash; pegelWERK releases version {VERSION} of voyzSESSION PRO, the DAW for voice "
-  "production. Anyone voicing a report, producing a podcast or mixing a radio drama today usually works with a "
-  "DAW, several plugin bundles, a teleprompter, a transcription service and a separate tool for delivery. "
-  "voyzSESSION PRO 2.0 unites all of it in one application. Every processor the job needs is on board in high "
-  "quality &ndash; no third-party software required. Those who value their own plugins can still use them.",
+  f"<b>Siegburg, {DATE_EN}</b> &ndash; pegelWERK releases version {VERSION} of voyzSESSION PRO, the DAW for "
+  "voice production. A voiced report, a podcast or a radio drama has so far usually required several tools: "
+  "a DAW, plugin bundles for the sound, a teleprompter, a transcription service and a program for delivery. "
+  "voyzSESSION PRO 2.0 handles these tasks in one application. All the sound processors the work needs are "
+  "included, and no third-party software is required. Users who want to add their own plugins can still do "
+  "so.",
 
-  "Recording starts at the script: the prompter follows the voice via speech recognition, a booth window shows "
-  "the narrator text, picture and timecode, and after a slip V-PUNCH finds the point to pick up from by "
-  "listening to what was said. Recording runs against the video, straight into the project folder.",
+  "During recording the prompter follows the narrator via speech recognition. A booth window shows the "
+  "narrator text, picture and timecode. After a slip of the tongue, the V-PUNCH function uses what was said "
+  "to find the point where the narrator picks up again. Recording runs against the video and goes straight "
+  "into the project folder.",
 
-  "For the sound, every track has a channel strip with nine in-house modules: restoration (de-click and "
-  "de-plosive), noise reduction, EQ with dynamic bands, resonance, de-esser, compressor, de-breath, saturate "
-  "and reverb. Every module shows what it actually does &ndash; curves and displays are computed from the same "
-  "values that shape the sound. Factory and user presets are included, and the order of the processors can be "
-  "changed.",
+  "For the sound, every track has a channel strip with nine in-house modules, from restoration through noise "
+  "reduction, EQ, de-esser and compressor to reverb. The modules show the values they actually work with, "
+  "because curves and displays are computed from the same data as the sound. The order of the modules can "
+  "be changed, and there are factory and user presets.",
 
-  "At the heart is AUTO MIX. Before it mixes, it measures every voice on its own: timbre, level behaviour and "
-  "the sharpness of the sibilants. From that it sets EQ, compressor and de-esser for exactly this voice "
-  "&ndash; for the narrator as well as for original sound. On the narrator it also treats breaths and clicks "
-  "where they were found. And it copes with unlevelled raw material: every role has its own level target, "
-  "narrator and original sound lead the mix, music and ambience sit below both, and the stadium role keeps "
-  "the atmosphere steady. The result is a broadcast-ready mix to the chosen loudness profile &ndash; in one "
-  "click.",
+  "At the centre is AUTO MIX. Before mixing, it measures every voice on its own, meaning its timbre, its "
+  "level behaviour and how sharp its sibilants are. It then sets EQ, compressor and de-esser to suit this "
+  "voice, for the narrator as well as for original sound. On the narrator it also treats breaths and clicks "
+  "where they occur. AUTO MIX also works with unlevelled raw material. Every kind of track has its own level "
+  "target, narrator and original sound stay in front, music and ambience are mixed below them, and a "
+  "dedicated setting for stadium atmosphere keeps it steady. The result is a broadcast-ready mix to the "
+  "chosen loudness profile.",
 
-  "voyzSESSION PRO works in two modes that interlock. In Assist mode even people without audio experience deliver "
-  "professional results. In Manual mode DAW standard applies: raw monitoring, export as a plain bounce, master "
-  "fader and automation, a trim mode that shifts a curve at individual spots while keeping its shape. Every "
-  "value AUTO MIX has derived sits there as a real setting in the module and is the starting point for your "
-  "own fine-tuning. The voice ride is a line on the take, the ducks are automation on the track &ndash; nothing "
-  "happens behind your back.",
+  "voyzSESSION PRO offers two ways of working. In Assist mode, users without audio experience still reach a "
+  "professional result. Manual mode is aimed at audio professionals and works like a professional DAW, with "
+  "a master fader, automation and a trim mode for targeted corrections at individual spots. Whatever AUTO "
+  "MIX has determined is visible there as a setting in the relevant module and can be edited further. The "
+  "level curve of the voice and the lowering of the music under speech are also shown on the tracks.",
 
-  "Delivery is what the broadcaster asks for: MXF with eight audio tracks and delivery profiles including "
-  "ARD/ZDF, with the picture passed through unchanged and source tracks that are not replaced kept "
-  "bit-identical. Plus WAV, AIFF, FLAC, AAC, MP3, MP2 and Opus, MP3 with chapter marks for podcasts, "
-  "subtitles from the offline transcription and AES31 edit lists. Everything runs locally on your own "
-  "machine, without a cloud.",
+  "For delivery, voyzSESSION PRO writes MXF files with eight audio tracks, including to the delivery "
+  "profiles of German public broadcasters ARD and ZDF. The picture is carried over unchanged, and source "
+  "audio tracks that are not replaced stay bit-identical. The common audio formats are also available, plus "
+  "MP3 with chapter marks for podcasts, subtitles from the transcription and AES31 edit lists. All "
+  "processing runs on the user's own machine, and no data is uploaded to a cloud.",
 
-  "Version 2.0 also brings six languages (German, English, French, Spanish, Italian, Portuguese), reorderable "
-  "tracks, a navigation bar and project settings with sample rate, frame rate and start timecode. "
-  "voyzSESSION PRO 2.0 runs on macOS 14 Sonoma or later; a Mac with Apple silicon (M1 or newer) and at least "
-  "16 GB of memory is recommended &ndash; AUTO MIX, noise reduction and transcription run much faster there.",
+  "Also new in version 2.0 are six interface languages (German, English, French, Spanish, Italian and "
+  "Portuguese), reorderable tracks, a navigation bar and project settings for sample rate, frame rate and "
+  "start timecode. voyzSESSION PRO 2.0 runs on macOS 14 Sonoma or later. A Mac with Apple silicon (M1 or "
+  "newer) and at least 16 GB of memory is recommended, because AUTO MIX, noise reduction and transcription "
+  "run much faster there.",
  ],
  "bullets_h": f"NEW IN {VERSION}",
  "bullets": [
-  "Everything in one application: prompter, recording to picture, sound processing, AUTO MIX, transcription and broadcast delivery &ndash; no third-party software needed",
+  "Everything in one application: prompter, recording to picture, sound processing, AUTO MIX, transcription and broadcast delivery, no third-party software needed",
   "Channel strip with nine modules: restoration, noise reduction, EQ, resonance, de-esser, compressor, de-breath, saturate, reverb",
   "Module windows with real parameters, factory and user presets; displays computed from the same values as the sound",
   "Signal order in the channel strip can be changed; own channel strips for groups and master",

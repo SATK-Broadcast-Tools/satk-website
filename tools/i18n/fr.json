@@ -596,5 +596,6 @@
  "AU, AUv3 und VST3, fünf Insert-Plätze je Kanal, dazu Voice-, IT/FX- und Master-Gruppe (macOS)": "AU, AUv3 et VST3, cinq emplacements d’insert par canal, plus les groupes Voice, IT/FX et Master (macOS)",
  "5 × AU/AUv3/VST3 je Kanal, dazu Voice-, IT/FX- und Master-Gruppe (macOS)": "5 × AU/AUv3/VST3 par canal, plus les groupes Voice, IT/FX et Master (macOS)",
  "WAV · AIFF · FLAC · AAC (.m4a) · MP3 · MP2 · Opus · AES31 (ADL) · 44,1 / 48 / 88,2 / 96 kHz · 16 Bit, 24 Bit, 32 Bit Float · Mix, Voice-Stem und Stems je Spur": "WAV · AIFF · FLAC · AAC (.m4a) · MP3 · MP2 · Opus · AES31 (ADL) · 44,1 / 48 / 88,2 / 96 kHz · 16 bits, 24 bits, 32 bits à virgule flottante · mix, stem voix et stems par piste",
- "Fades und Crossfades (Taste F, beim Überlappen automatisch, Kanten ziehbar) · Regionen mit eigenen Namen · Medienablage mit Regionen · Spuren verschieben · Undo": "Fondus et fondus enchaînés (touche F, automatiques au chevauchement, bords réglables) · régions avec leur propre nom · chutier avec régions · déplacer les pistes · annuler"
+ "Fades und Crossfades (Taste F, beim Überlappen automatisch, Kanten ziehbar) · Regionen mit eigenen Namen · Medienablage mit Regionen · Spuren verschieben · Undo": "Fondus et fondus enchaînés (touche F, automatiques au chevauchement, bords réglables) · régions avec leur propre nom · chutier avec régions · déplacer les pistes · annuler",
+ "Systemvoraussetzungen voyzSESSION PRO": "Configuration requise voyzSESSION PRO"
 }

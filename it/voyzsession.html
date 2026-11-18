@@ -368,7 +368,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  </div>
  <div class="mode manual">
  <h3>MANUAL</h3>
- <p class="mode-sub" data-i18n="m_manual_sub">solo ciò che serve davvero alla produzione vocale</p>
+ <p class="mode-sub" data-i18n="m_manual_sub">editing e mixaggio secondo lo standard DAW</p>
  <ul>
  <li data-i18n="m_m1">Tutti gli standard di una DAW a bordo</li>
  <li data-i18n="m_m2">MXF: incorpora in qualsiasi traccia tu voglia</li>
@@ -387,7 +387,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  </div>
  <div class="band-row">
  <dt>Plugins</dt>
- <dd data-i18n="b_plugins">AU e VST3, cinque slot insert per canale, più gruppo Voice, IT/FX e Master (macOS)</dd>
+ <dd data-i18n="b_plugins">AU, AUv3 e VST3, cinque slot insert per canale, più gruppo Voice, IT/FX e Master (macOS)</dd>
  </div>
  <div class="band-row">
  <dt>Virtual Video I/O</dt>
@@ -498,9 +498,10 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="band-row"><dt>Targets</dt><dd>-23 LUFS / -1 dBTP (R128) · -24 LKFS (A/85, TR-B32, OP-59) · -16 LUFS Podcast · -14 LUFS YouTube</dd></div>
  <div class="band-row"><dt>True Peak</dt><dd data-i18n="s_tp">Limiter FIR in sovracampionamento 4x</dd></div>
  <div class="band-row"><dt>Denoiser</dt><dd data-i18n="s_nr">DeepFilterNet 3 (ONNX Runtime) · SmartDenoiser (FFT) come stadio classico</dd></div>
- <div class="band-row"><dt>Channel Strip</dt><dd>AutoEQ · AutoComp · De-Esser · SmartLeveler · Tube-Saturation</dd></div>
+ <div class="band-row"><dt>Channel Strip</dt><dd>Repair (De-Click, De-Plosive) · Denoise · EQ (8 bands, dynamic) · Resonance · De-Esser · Compressor · De-Breath · Saturate · Reverb · SmartLeveler · order adjustable</dd></div>
  <div class="band-row"><dt>Ducker</dt><dd data-i18n="s_duck">SmartDucker, multibanda, con lookahead</dd></div>
- <div class="band-row"><dt>Inserts</dt><dd data-i18n="s_ins">5 × AU/VST3 per canale, più gruppo Voice, IT/FX e Master (macOS)</dd></div>
+ <div class="band-row"><dt>Editing</dt><dd data-i18n="s_edit">Fade e crossfade (tasto F, automatici in sovrapposizione, bordi trascinabili) · regioni con nome proprio · media bin con regioni · spostare le tracce · annulla</dd></div>
+ <div class="band-row"><dt>Inserts</dt><dd data-i18n="s_ins">5 × AU/AUv3/VST3 per canale, più gruppo Voice, IT/FX e Master (macOS)</dd></div>
  <div class="band-row"><dt>Transcription</dt><dd data-i18n="s_tr">Whisper sul dispositivo, marcatori temporali parola per parola, offline</dd></div>
  <div class="band-row"><dt>Prompter</dt><dd data-i18n="s_pr">Riconoscimento vocale di Apple, lingua liberamente selezionabile e indipendente dalla lingua dell’app</dd></div>
  <div class="band-row"><dt>Controller</dt><dd data-i18n="s_ctl">Mackie MCU · Elgato Stream Deck · OSC · console web per MakePro X (macOS)</dd></div>
@@ -508,7 +509,7 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="band-row"><dt>Virtual Camera</dt><dd data-i18n="s_cam">Estensione di sistema dedicata nel bundle dell’app, si registra da sola nel sistema se lo desideri; immagine con timecode e conto alla rovescia (macOS)</dd></div>
  <div class="band-row"><dt>Video In</dt><dd>MP4 · MOV · M4V · MXF</dd></div>
  <div class="band-row"><dt>MXF Delivery</dt><dd data-i18n="s_mxf">8 tracce audio, canale di destinazione selezionabile, l’M&amp;E della sorgente resta intatto · EBU R128 · US ATSC · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10</dd></div>
- <div class="band-row"><dt>Audio Export</dt><dd data-i18n="s_exp">WAV · AIFF · AAC (.m4a) · MP3 · 44,1 / 48 / 88,2 / 96 kHz · 16 bit, 24 bit, 32 bit float · mix, stem voce e stem per traccia</dd></div>
+ <div class="band-row"><dt>Audio Export</dt><dd data-i18n="s_exp">WAV · AIFF · FLAC · AAC (.m4a) · MP3 · MP2 · Opus · AES31 (ADL) · 44,1 / 48 / 88,2 / 96 kHz · 16 bit, 24 bit, 32 bit float · mix, stem voce e stem per traccia</dd></div>
  <div class="band-row"><dt>Subtitles</dt><dd>SubRip (.srt) · WebVTT (.vtt)</dd></div>
  <div class="band-row"><dt>macOS</dt><dd data-i18n="s_mac">14 Sonoma o successivo · Consigliato: Mac con chip Apple (M1 o successivo), molto più veloce di Intel · almeno 16 GB di memoria (32 GB per progetti lunghi con video 4K)</dd></div>
  <div class="band-row"><dt>iPad</dt><dd data-i18n-html="s_ipad">Prodotto a sé: <a href="/it/voyzsession-ios">voyzSESSION per iPad</a>, iPadOS 16 o successivo - anch’esso con prompter</dd></div>
@@ -571,7 +572,7 @@ const i18n = {'it': {
 "m_a4": "V-PUNCH: punch-in a comando vocale",
 "m_a5": "AutoCut toglie il silenzio da ogni take",
 "m_a6": "Editor dello script: tutte le tracce, un solo testo",
-"m_manual_sub": "solo ciò che serve davvero alla produzione vocale",
+"m_manual_sub": "editing e mixaggio secondo lo standard DAW",
 "m_m1": "Tutti gli standard di una DAW a bordo",
 "m_m2": "MXF: incorpora in qualsiasi traccia tu voglia",
 "m_m3": "Stem asciutti traccia per traccia, prima del bus",
@@ -579,7 +580,7 @@ const i18n = {'it': {
 "m_m5": "Collega una superficie di controllo",
 "m_m6": "Registrazione remota senza dispositivo aggregato",
 "b_delivery": "MXF con 8 tracce audio, l’M&E della sorgente resta intatto · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10 · WAV · SRT/VTT",
-"b_plugins": "AU e VST3, cinque slot insert per canale, più gruppo Voice, IT/FX e Master (macOS)",
+"b_plugins": "AU, AUv3 e VST3, cinque slot insert per canale, più gruppo Voice, IT/FX e Master (macOS)",
 "b_camera": "La sessione appare come una videocamera a sé - in ogni app che accetta una videocamera. Con timecode sovraimpresso e conto alla rovescia, senza software aggiuntivo (macOS)",
 "b_controller": "MakePro X (MPX), Mackie MCU, Elgato Stream Deck, OSC",
 "f_label": "In evidenza",
@@ -613,14 +614,15 @@ const i18n = {'it': {
 "s_tp": "Limiter FIR in sovracampionamento 4x",
 "s_nr": "DeepFilterNet 3 (ONNX Runtime) · SmartDenoiser (FFT) come stadio classico",
 "s_duck": "SmartDucker, multibanda, con lookahead",
-"s_ins": "5 × AU/VST3 per canale, più gruppo Voice, IT/FX e Master (macOS)",
+"s_edit": "Fade e crossfade (tasto F, automatici in sovrapposizione, bordi trascinabili) · regioni con nome proprio · media bin con regioni · spostare le tracce · annulla",
+"s_ins": "5 × AU/AUv3/VST3 per canale, più gruppo Voice, IT/FX e Master (macOS)",
 "s_tr": "Whisper sul dispositivo, marcatori temporali parola per parola, offline",
 "s_pr": "Riconoscimento vocale di Apple, lingua liberamente selezionabile e indipendente dalla lingua dell’app",
 "s_ctl": "Mackie MCU · Elgato Stream Deck · OSC · console web per MakePro X (macOS)",
 "s_rem": "Uscita cue e talkback su uscite dedicate - nessun dispositivo aggregato necessario",
 "s_cam": "Estensione di sistema dedicata nel bundle dell’app, si registra da sola nel sistema se lo desideri; immagine con timecode e conto alla rovescia (macOS)",
 "s_mxf": "8 tracce audio, canale di destinazione selezionabile, l’M&E della sorgente resta intatto · EBU R128 · US ATSC · ARD/ZDF HDF01a · ARIB RDD9 · CST AS-10",
-"s_exp": "WAV · AIFF · AAC (.m4a) · MP3 · 44,1 / 48 / 88,2 / 96 kHz · 16 bit, 24 bit, 32 bit float · mix, stem voce e stem per traccia",
+"s_exp": "WAV · AIFF · FLAC · AAC (.m4a) · MP3 · MP2 · Opus · AES31 (ADL) · 44,1 / 48 / 88,2 / 96 kHz · 16 bit, 24 bit, 32 bit float · mix, stem voce e stem per traccia",
 "s_mac": "14 Sonoma o successivo · Consigliato: Mac con chip Apple (M1 o successivo), molto più veloce di Intel · almeno 16 GB di memoria (32 GB per progetti lunghi con video 4K)",
 "s_ipad": "Prodotto a sé: <a href=\"/voyzsession-ios\">voyzSESSION per iPad</a>, iPadOS 16 o successivo - anch’esso con prompter",
 "c_label": "Cosa non è",

@@ -493,7 +493,7 @@
  "Script-Editor: alle Spuren, ein Text": "Editor de guião: todas as faixas, um texto",
  "nur was Sprachproduktion wirklich braucht": "só aquilo de que a produção de voz realmente precisa",
  "Alle DAW-Standards an Bord": "Todos os padrões de DAW a bordo",
- "MXF: auf jede gewünschte Spur einbetten": "MXF: incorpore em qualquer faixa que quiser",
+ "MXF: auf jede gewünschte Spur einbetten": "MXF: incorporar na faixa que quiser",
  "Trockene Einzelspur-Stems, vor dem Bus": "Stems secos por faixa, antes do bus",
  "Mic Mix: Gain-Sharing-Automix je Spur": "Mic Mix: automix com gain sharing por faixa",
  "Hardware-Konsole anschließen": "Ligue uma consola de hardware",
@@ -597,5 +597,15 @@
  "5 × AU/AUv3/VST3 je Kanal, dazu Voice-, IT/FX- und Master-Gruppe (macOS)": "5 × AU/AUv3/VST3 por canal, além dos grupos Voice, IT/FX e Master (macOS)",
  "WAV · AIFF · FLAC · AAC (.m4a) · MP3 · MP2 · Opus · AES31 (ADL) · 44,1 / 48 / 88,2 / 96 kHz · 16 Bit, 24 Bit, 32 Bit Float · Mix, Voice-Stem und Stems je Spur": "WAV · AIFF · FLAC · AAC (.m4a) · MP3 · MP2 · Opus · AES31 (ADL) · 44,1 / 48 / 88,2 / 96 kHz · 16 bits, 24 bits, 32 bits float · mix, stem de voz e stems por faixa",
  "Fades und Crossfades (Taste F, beim Überlappen automatisch, Kanten ziehbar) · Regionen mit eigenen Namen · Medienablage mit Regionen · Spuren verschieben · Undo": "Fades e crossfades (tecla F, automáticos na sobreposição, extremidades ajustáveis) · regiões com nome próprio · media bin com regiões · mover faixas · anular",
- "Systemvoraussetzungen voyzSESSION PRO": "Requisitos do sistema voyzSESSION PRO"
+ "Systemvoraussetzungen voyzSESSION PRO": "Requisitos do sistema voyzSESSION PRO",
+ "Intelligenter AUTO MIX aus bis zu 32 Spuren, auch aus ungemischtem Rohmaterial": "AUTO MIX inteligente com até 32 faixas, também a partir de material em bruto não misturado",
+ "Smarte Effekte je Spur: neun Bausteine, vom AUTO MIX eingestellt": "Efeitos inteligentes por faixa: nove módulos, ajustados pelo AUTO MIX",
+ "Sendefertig nach R128 · A/85 · TR-B32 · OP-59": "Pronto para emissão segundo R128 · A/85 · TR-B32 · OP-59",
+ "Intelligenter Prompter, der der Stimme folgt": "Teleponto inteligente que segue a voz",
+ "V-PUNCH: Versprecher sprachgesteuert neu einsprechen": "V-PUNCH: regravar um erro com a voz",
+ "Script-Editing: Schneiden direkt im Text": "Script editing: editar diretamente no texto",
+ "Jedes Modul mit echten Parametern, vorbelegt vom AUTO MIX": "Cada módulo com parâmetros reais, predefinidos pelo AUTO MIX",
+ "Fades, Crossfades, Regionen und Automation wie in jeder DAW": "Fades, crossfades, regiões e automação como em qualquer DAW",
+ "AU, AUv3 und VST3 auf jedem Kanal": "AU, AUv3 e VST3 em cada canal",
+ "Hardware-Konsole und Stream Deck anschließen": "Ligar uma consola de hardware e Stream Deck"
 }

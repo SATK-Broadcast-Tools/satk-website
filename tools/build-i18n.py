@@ -110,7 +110,13 @@ def linkmap(lang):
             de_p = g["urls"]["de"]
             m[de_p] = g["urls"]["en"]; m[de_p + ".html"] = g["urls"]["en"]
             m[de_p.lstrip("/") + ".html"] = g["urls"]["en"]
+    # Online-Handbuch voyzSESSION PRO: eigene Fassung je Sprache (tools/build-handbuch.py)
+    m["/voyzsession-handbuch/"] = MANUAL[lang]
     return m
+
+
+MANUAL = {"de": "/voyzsession-handbuch/", "en": "/voyzsession-handbuch-en/", "fr": "/fr/voyzsession-handbuch/",
+          "es": "/es/voyzsession-handbuch/", "it": "/it/voyzsession-handbuch/", "pt": "/pt/voyzsession-handbuch/"}
 
 
 # --------------------------------------------------------------- Uebersetzer ---

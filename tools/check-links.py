@@ -66,7 +66,7 @@ def url_of(f):
 
 
 files = sorted(f for f in glob.glob("*.html") + glob.glob("*/*.html")
-               if not f.startswith(("tools/", "press/", "voyzsession-handbuch/")))
+               if not f.startswith(("tools/", "press/", "voyzsession-handbuch")))
 pages = {f: io.open(f, encoding="utf-8").read() for f in files}
 
 # 1. Links und Bilder

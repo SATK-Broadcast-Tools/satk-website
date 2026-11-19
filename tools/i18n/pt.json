@@ -645,7 +645,8 @@
  "Sprecher über jede Konferenz- oder Remote-App: Aufnahme direkt in die Session, Rückweg ohne die eigene Stimme, Talkback, dazu das Bild mit eingebranntem Timecode und Vorlaufzähler als Kamerasignal. Kein Aggregat-Gerät nötig (macOS)": "Locutor através de qualquer app de videoconferência ou de sessão remota: gravação diretamente na sessão, retorno sem a própria voz, talkback e a imagem com timecode gravado e contagem decrescente como sinal de câmara. Sem dispositivo agregado (macOS)",
  "Volle Kontrolle über jedes Modul - der AUTO MIX liefert den Startpunkt": "Controlo total de cada módulo - o AUTO MIX dá o ponto de partida",
  "Alles an Bord, was eine Remote-Session braucht: Aufnahme über jede Konferenz-App, Mix-Minus-Rückweg, Talkback und Bild mit Timecode und Vorlaufzähler für den Sprecher (macOS)": "Tudo o que uma sessão remota precisa, integrado: gravação através de qualquer app de videoconferência, retorno mix-minus, talkback e imagem com timecode e contagem decrescente para o locutor (macOS)",
- "Handbuch": "Manual (alemão)",
+ "Handbuch": "Manual",
  "Gibt es ein Handbuch zu voyzSESSION PRO?": "Existe um manual do voyzSESSION PRO?",
- "Ja. Das <a href=\"/voyzsession-handbuch/\" style=\"color:var(--ac);text-decoration:underline\">Online-Handbuch</a> erklärt alle Funktionen von Version 2.0, von der ersten Aufnahme bis zum Export, mit Suche und Inhaltsverzeichnis.": "Sim. O <a href=\"/voyzsession-handbuch/\" style=\"color:var(--ac);text-decoration:underline\">manual online</a> (em alemão) explica todas as funções da versão 2.0, desde a primeira gravação até à exportação, com pesquisa e índice."
+ "Ja. Das <a href=\"/voyzsession-handbuch/\" style=\"color:var(--ac);text-decoration:underline\">Online-Handbuch</a> erklärt alle Funktionen von Version 2.0, von der ersten Aufnahme bis zum Export, mit Suche und Inhaltsverzeichnis.": "Sim. O <a href=\"/voyzsession-handbuch/\" style=\"color:var(--ac);text-decoration:underline\">manual online</a> explica todas as funções da versão 2.0, desde a primeira gravação até à exportação, com pesquisa e índice.",
+ "Benutzerhandbuch": "Manual"
 }

@@ -7,11 +7,18 @@
 <title>voyzSESSION PRO Benutzerhandbuch | pegelWERK</title>
 <meta name="description" content="Online-Handbuch zu voyzSESSION PRO 2.0 für macOS: Aufnehmen, Schneiden, AUTO MIX, Manual-Modus, Klangmodule, Export und Fernvertonung. Mit Suche und Inhaltsverzeichnis.">
 <link rel="canonical" href="https://pegelwerk.com/voyzsession-handbuch/">
+<link rel="alternate" hreflang="de" href="https://pegelwerk.com/voyzsession-handbuch/">
+<link rel="alternate" hreflang="en" href="https://pegelwerk.com/voyzsession-handbuch-en/">
+<link rel="alternate" hreflang="fr" href="https://pegelwerk.com/fr/voyzsession-handbuch/">
+<link rel="alternate" hreflang="es" href="https://pegelwerk.com/es/voyzsession-handbuch/">
+<link rel="alternate" hreflang="it" href="https://pegelwerk.com/it/voyzsession-handbuch/">
+<link rel="alternate" hreflang="pt" href="https://pegelwerk.com/pt/voyzsession-handbuch/">
+<link rel="alternate" hreflang="x-default" href="https://pegelwerk.com/voyzsession-handbuch-en/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:title" content="voyzSESSION PRO Benutzerhandbuch">
-<meta property="og:description" content="Alle Funktionen von voyzSESSION PRO 2.0, Schritt für Schritt erklärt.">
+<meta property="og:description" content="Online-Handbuch zu voyzSESSION PRO 2.0 für macOS: Aufnehmen, Schneiden, AUTO MIX, Manual-Modus, Klangmodule, Export und Fernvertonung. Mit Suche und Inhaltsverzeichnis.">
 <meta property="og:image" content="https://pegelwerk.com/og-image.png">
 <meta property="og:url" content="https://pegelwerk.com/voyzsession-handbuch/">
 <style>
@@ -185,6 +192,8 @@ figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
 .scrim { display: none; }
 .site-links { margin: 22px 10px 0; padding-top: 14px; border-top: 1px solid var(--line); display: grid; gap: 6px; font-size: 13.5px; }
 .site-links a { color: var(--muted); }
+.langs { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 8px; font-size: 13px; }
+.langs a.cur { color: var(--fg); font-weight: 600; }
 
 @media (max-width: 900px) {
   .toc-btn { display: inline-block; }
@@ -220,13 +229,14 @@ figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
   <nav class="side" id="side" aria-label="Inhaltsverzeichnis">
     <h2>Inhalt</h2>
     <ul class="tree" id="tree"></ul>
-    <div class="site-links"><a href="/voyzsession">voyzSESSION PRO auf pegelwerk.com</a><a href="/support">Supportanfrage</a></div>
+    <div class="site-links"><a href="/voyzsession">voyzSESSION PRO auf pegelwerk.com</a><a href="/support">Supportanfrage</a><div class="langs" aria-label="Sprache"><a href="/voyzsession-handbuch/" hreflang="de" class="cur" aria-current="true">Deutsch</a> <a href="/voyzsession-handbuch-en/" hreflang="en">English</a> <a href="/fr/voyzsession-handbuch/" hreflang="fr">Français</a> <a href="/es/voyzsession-handbuch/" hreflang="es">Español</a> <a href="/it/voyzsession-handbuch/" hreflang="it">Italiano</a> <a href="/pt/voyzsession-handbuch/" hreflang="pt">Português</a></div></div>
   </nav>
   <div class="scrim" id="scrim"></div>
   <main id="main"><div class="page"><p style="color:var(--muted)">Handbuch wird geladen...</p></div></main>
 </div>
 
 <script>
+const L = {"title": "voyzSESSION PRO Benutzerhandbuch", "manual": "Benutzerhandbuch", "toc": "Inhalt", "toc_long": "Inhaltsverzeichnis", "home_aria": "Startseite des Handbuchs", "search": "Handbuch durchsuchen", "search_short": "Suchen", "loading": "Handbuch wird geladen...", "load_error": "Der Inhalt konnte nicht geladen werden. Bitte die Seite neu laden.", "toggle": "auf- oder zuklappen", "paging": "Blättern", "prev": "Zurück", "next": "Weiter", "chapter": "Kapitel", "reference": "Nachschlagen", "topics": "Themen", "version": "Version 2.0 für macOS", "tagline": "Aufnehmen, schneiden und mischen für Voice-over, Synchron, Podcast, Hörbuch und Radio.", "first_steps": "Erste Schritte", "product": "Produktseite und Download", "support": "Supportanfrage", "site_link": "voyzSESSION PRO auf pegelwerk.com", "in_chapter": "In diesem Kapitel", "overview": "Kapitelübersicht", "show_all": "Alle %n Treffer anzeigen", "no_hits": "Keine Treffer für „%q“.", "search_title": "Suche: „%q“", "hits": "Treffer", "lang": "Sprache", "desc": "Online-Handbuch zu voyzSESSION PRO 2.0 für macOS: Aufnehmen, Schneiden, AUTO MIX, Manual-Modus, Klangmodule, Export und Fernvertonung. Mit Suche und Inhaltsverzeichnis.", "start_links": [["k3-1", "Projekt anlegen und speichern"], ["k3-3", "Mikrofon einpegeln"], ["k3-5", "Erste Aufnahme"], ["k7-2", "AUTO MIX starten"], ["k12-1", "Exportieren"]], "product_url": "/voyzsession", "support_url": "/support"};
 (() => {
   const $ = s => document.querySelector(s);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -241,7 +251,7 @@ figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
     });
     buildTree(); route();
   }).catch(() => {
-    $('#main').innerHTML = '<div class="page"><p>Der Inhalt konnte nicht geladen werden. Bitte die Seite neu laden.</p></div>';
+    $('#main').innerHTML = '<div class="page"><p>' + L.load_error + '</p></div>';
   });
 
   const label = c => (c.num ? c.num + ' ' : '') + c.title;
@@ -251,7 +261,7 @@ figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
     $('#tree').innerHTML = chapters.map(c => `
       <li id="li-${c.id}">
         <div class="ch">
-          <button class="tw" aria-label="${esc(c.title)} auf- oder zuklappen" data-tw="${c.id}">${arrow}</button>
+          <button class="tw" aria-label="${esc(c.title)}: ${L.toggle}" data-tw="${c.id}">${arrow}</button>
           <a href="#${c.id}" data-id="${c.id}">${c.num ? `<span class="n">${c.num}</span>` : ''}${esc(c.title)}</a>
         </div>
         <ul>${c.topics.map(t => `<li><a href="#${t.id}" data-id="${t.id}">${t.num ? `<span class="n">${esc(t.num)}</span>` : ''}${esc(t.title)}</a></li>`).join('')}</ul>
@@ -277,36 +287,32 @@ figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
   function pager(item) {
     const i = order.indexOf(item), p = order[i - 1], n = order[i + 1];
     const link = (x, cls, txt) => x ? `<a class="${cls}" href="#${x.id}"><div class="pl">${txt}</div><div class="pt">${esc(label(x))}</div></a>` : '';
-    return `<nav class="pager" aria-label="Blaettern">${link(p, 'prev', 'Zurück')}${link(n, 'next', 'Weiter')}</nav>`;
+    return `<nav class="pager" aria-label="${L.paging}">${link(p, 'prev', L.prev)}${link(n, 'next', L.next)}</nav>`;
   }
 
   function crumb(item) {
-    const parts = [`<a href="#start">Benutzerhandbuch</a>`];
+    const parts = [`<a href="#start">${L.manual}</a>`];
     if (item.kind === 'topic') parts.push(`<a href="#${item.ch.id}">${esc(label(item.ch))}</a>`);
     return `<div class="crumb">${parts.join('<span class="sep">›</span>')}</div>`;
   }
 
   function renderHome() {
     const tiles = chapters.filter(c => c.id !== 'k0').map(c => `
-      <a class="tile" href="#${c.id}"><span class="tn">${c.num ? 'Kapitel ' + c.num : 'Nachschlagen'}</span>
-      <span class="tt">${esc(c.title)}</span><span class="tc">${c.topics.length} Themen</span></a>`).join('');
+      <a class="tile" href="#${c.id}"><span class="tn">${c.num ? L.chapter + ' ' + c.num : L.reference}</span>
+      <span class="tt">${esc(c.title)}</span><span class="tc">${c.topics.length} ${L.topics}</span></a>`).join('');
+    const about = byId.k0 ? `<a href="#k0">${esc(byId.k0.title)}</a> &nbsp;|&nbsp; ` : '';
     return `<div class="page">
-      <section class="hero"><div class="eyebrow">Version 2.0 für macOS</div>
-        <h1>voyzSESSION PRO Benutzerhandbuch</h1>
-        <p>Aufnehmen, schneiden und mischen für Voice-over, Synchron, Podcast, Hörbuch und Radio.</p></section>
+      <section class="hero"><div class="eyebrow">${L.version}</div>
+        <h1>${L.title}</h1>
+        <p>${L.tagline}</p></section>
       <div class="grid">${tiles}</div>
-      <section class="start"><h2>Erste Schritte</h2><ol>
-        <li><a href="#k3-1">Projekt anlegen und speichern</a></li>
-        <li><a href="#k3-3">Mikrofon einpegeln</a></li>
-        <li><a href="#k3-5">Erste Aufnahme</a></li>
-        <li><a href="#k7-2">AUTO MIX starten</a></li>
-        <li><a href="#k12-1">Exportieren</a></li></ol>
-        <p style="margin-top:18px"><a href="#k0">Über dieses Handbuch</a> &nbsp;|&nbsp; <a href="/voyzsession">Produktseite und Download</a> &nbsp;|&nbsp; <a href="/support">Supportanfrage</a></p></section>
+      <section class="start"><h2>${L.first_steps}</h2><ol>${L.start_links.map(([id, t]) => `<li><a href="#${id}">${esc(t)}</a></li>`).join('')}</ol>
+        <p style="margin-top:18px">${about}<a href="${L.product_url}">${L.product}</a> &nbsp;|&nbsp; <a href="${L.support_url}">${L.support}</a></p></section>
     </div>`;
   }
 
   function renderChapter(c) {
-    const list = c.topics.length ? `<section class="topics"><h2>In diesem Kapitel</h2><ul>${c.topics.map(t =>
+    const list = c.topics.length ? `<section class="topics"><h2>${L.in_chapter}</h2><ul>${c.topics.map(t =>
       `<li><a href="#${t.id}"><span class="n">${esc(t.num)}</span><span>${esc(t.title)}</span></a></li>`).join('')}</ul></section>` : '';
     return `<article class="page">${crumb(c)}<h1>${c.num ? `<span class="num">${c.num}</span>` : ''}${esc(c.title)}</h1>
       <div class="content">${c.intro}</div>${list}${pager(c)}</article>`;
@@ -323,11 +329,11 @@ figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
     const id = location.hash.slice(1);
     const item = byId[id];
     const main = $('#main');
-    if (!item) { main.innerHTML = renderHome(); markTree(''); document.title = 'voyzSESSION PRO Benutzerhandbuch'; }
+    if (!item) { main.innerHTML = renderHome(); markTree(''); document.title = L.title; }
     else {
       main.innerHTML = item.kind === 'chapter' ? renderChapter(item) : renderTopic(item);
       markTree(id);
-      document.title = item.title + ' - voyzSESSION PRO Benutzerhandbuch';
+      document.title = item.title + ' - ' + L.title;
     }
     window.scrollTo(0, 0);
     if (pendingHighlight) { highlight(main.querySelector('.content'), pendingHighlight); pendingHighlight = null; }
@@ -369,10 +375,10 @@ figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
     if (!terms.length) return htmlStr;
     return htmlStr.replace(new RegExp('(^|[^\\p{L}\\p{N}])(' + terms.join('|') + ')', 'giu'), '$1<mark>$2</mark>');
   }
-  function where(it) { return it.kind === 'topic' ? label(it.ch) : 'Kapitelübersicht'; }
+  function where(it) { return it.kind === 'topic' ? label(it.ch) : L.overview; }
 
   const q = $('#q'), drop = $('#drop');
-  if (window.matchMedia('(max-width: 900px)').matches) q.placeholder = 'Suchen';
+  if (window.matchMedia('(max-width: 900px)').matches) q.placeholder = L.search_short;
   let sel = -1;
   q.addEventListener('input', () => {
     const v = q.value.trim();
@@ -380,8 +386,8 @@ figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
     const r = search(v); sel = -1;
     drop.innerHTML = r.length
       ? r.slice(0, 7).map(x => `<a href="#${x.it.id}" data-hl="1"><div class="rt">${esc(label(x.it))}</div><div class="rc">${esc(where(x.it))}</div><div class="rs">${snippet(x.it, v)}</div></a>`).join('')
-        + (r.length > 7 ? `<a href="#" class="all" data-all="1">Alle ${r.length} Treffer anzeigen</a>` : '')
-      : `<div class="none">Keine Treffer für „${esc(v)}“.</div>`;
+        + (r.length > 7 ? `<a href="#" class="all" data-all="1">${L.show_all.replace('%n', r.length)}</a>` : '')
+      : `<div class="none">${L.no_hits.replace('%q', esc(v))}</div>`;
     drop.hidden = false;
   });
   q.addEventListener('keydown', e => {
@@ -412,8 +418,8 @@ figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
     closeDrop();
     if (v.length < 2) return;
     const r = search(v);
-    $('#main').innerHTML = `<div class="page results"><div class="crumb"><a href="#start">Benutzerhandbuch</a></div>
-      <h1>Suche: „${esc(v)}“</h1><p style="color:var(--muted)">${r.length} Treffer</p>
+    $('#main').innerHTML = `<div class="page results"><div class="crumb"><a href="#start">${L.manual}</a></div>
+      <h1>${L.search_title.replace('%q', esc(v))}</h1><p style="color:var(--muted)">${r.length} ${L.hits}</p>
       ${r.map(x => `<div class="r"><a href="#${x.it.id}" data-hl="1">${esc(label(x.it))}</a><div class="rc">${esc(where(x.it))}</div><div class="rs">${snippet(x.it, v)}</div></div>`).join('')}</div>`;
     markTree('');
     window.scrollTo(0, 0);

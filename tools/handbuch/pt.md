@@ -1,27 +1,3 @@
-## Sobre este manual
-
-Este manual descreve o voyzSESSION PRO 2.0 para macOS. Não pressupõe conhecimentos de técnica de som. A estrutura segue os manuais de DAWs conhecidas como Pro Tools, Logic Pro ou Cubase: primeiro uma visão geral, depois os passos de trabalho pela ordem em que surgem e, no fim, uma parte de consulta.
-
-Se trabalha pela primeira vez com o programa, leia os [capítulos 1](#k1) a 4 e o capítulo 7. Depois disso, pode gravar, deixar a mistura ser feita automaticamente e exportar um ficheiro para emissão. Quem já trabalha com outras DAWs encontra nos capítulos 8 a 11 a mistura manual, os módulos de som, os plug-ins e a automação. Em caso de problemas, a tabela de resolução de problemas no anexo ajuda.
-
-### Convenções de escrita
-
-| Convenção                  | Significado                                                              |
-|----------------------------|--------------------------------------------------------------------------|
-| AUTO MIX                   | Legenda de um botão ou item de menu na app                               |
-| Definições \> Geral        | No menu «Definições», escolher o item «Geral...»                         |
-| Cmd+S                      | Manter premida a tecla Command e premir S                                |
-| Alt+clique                 | Manter premida a tecla Option e clicar                                   |
-| Clique com o botão direito | Clique com o botão direito do rato ou com a tecla Control premida        |
-
-### Termos
-
-Uma faixa é uma linha na timeline. Um take, também chamado região, é um único excerto de áudio gravado ou importado numa faixa. O channel strip é a fila de controlos que determina o som de uma faixa. Outros termos são explicados no glossário do anexo.
-
-### Figuras
-
-As figuras dos módulos de som no [capítulo 9](#k9) foram criadas com as ferramentas gráficas com que a app desenha os seus módulos. Correspondem à interface da versão 2.0. As formas de onda nelas provêm de uma voz de exemplo. As restantes figuras são capturas de ecrã da app.
-
 ## 1 Introdução
 
 O voyzSESSION PRO é um software de gravação e mistura (DAW) para produções de voz: voice-over e comentário off sobre imagem, dobragem, peças de rádio, podcasts e audiolivros.

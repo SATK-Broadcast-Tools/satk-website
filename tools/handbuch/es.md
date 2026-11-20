@@ -1,27 +1,3 @@
-## Acerca de este manual
-
-Este manual describe voyzSESSION PRO 2.0 para macOS. No presupone conocimientos de técnica de sonido. Su estructura sigue los manuales de DAW conocidas como Pro Tools, Logic Pro o Cubase: primero una visión general, después los pasos de trabajo en el orden en que se presentan y, al final, una parte de consulta.
-
-Si es la primera vez que trabajas con el programa, lee los [capítulos 1](#k1) a 4 y el capítulo 7. Después podrás grabar, dejar que la mezcla se haga automáticamente y exportar un archivo para la emisión. Quien ya trabaja con otras DAW encontrará en los capítulos 8 a 11 la mezcla manual, los módulos de sonido, los plug-ins y la automatización. Si surgen problemas, consulta la tabla de solución de problemas del apéndice.
-
-### Convenciones
-
-| Convención | Significado |
-|---|---|
-| AUTO MIX | Rótulo de un botón o de una opción de menú en la app |
-| Ajustes \> General | En el menú "Ajustes", elegir la opción "General..." |
-| Cmd+S | Mantener pulsada la tecla Comando y pulsar S |
-| Alt+clic | Mantener pulsada la tecla Opción y hacer clic |
-| Clic derecho | Clic con el botón derecho del ratón o con la tecla Control pulsada |
-
-### Términos
-
-Una pista es una fila de la línea de tiempo. Una toma, también llamada región, es un fragmento de audio grabado o importado en una pista. El channel strip es la serie de controles que determina el sonido de una pista. El glosario del apéndice explica otros términos.
-
-### Ilustraciones
-
-Las ilustraciones de los módulos de sonido del [capítulo 9](#k9) se han generado con las herramientas gráficas con las que la app dibuja sus módulos. Corresponden a la interfaz de la versión 2.0. Las formas de onda que aparecen en ellas proceden de una voz de ejemplo. Las demás ilustraciones son capturas de pantalla de la app.
-
 ## 1 Introducción
 
 voyzSESSION PRO es un software de grabación y mezcla (DAW) para producciones de voz: locución y comentario en off sobre imagen, doblaje, reportajes de radio, podcasts y audiolibros.

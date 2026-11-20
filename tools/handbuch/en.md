@@ -1,27 +1,3 @@
-## About this manual
-
-This manual describes voyzSESSION PRO 2.0 for macOS. It assumes no knowledge of audio engineering. Its structure follows the manuals of well-known DAWs such as Pro Tools, Logic Pro or Cubase: first an overview, then the work steps in the order in which they come up, and finally a reference section.
-
-If you are new to the program, read [Chapter 1](#k1) to Chapter 4 and Chapter 7. After that you can record, have the mix done automatically and export a file for broadcast. If you already work with other DAWs, Chapters 8 to 11 cover mixing by hand, the sound modules, plugins and automation. If problems occur, see the troubleshooting table in the appendix.
-
-### Conventions
-
-| Notation                  | Meaning                                                           |
-|---------------------------|-------------------------------------------------------------------|
-| AUTO MIX                  | Label of a button or menu item in the app                         |
-| Settings \> General       | In the "Settings" menu, choose the "General..." item              |
-| Cmd+S                     | Hold down the Command key and press S                             |
-| Alt+click                 | Hold down the Option key and click                                |
-| Right-click               | Click with the right mouse button or with the Control key held    |
-
-### Terms
-
-A track is a row in the timeline. A take, also called a region, is a single recorded or imported piece of audio on a track. The channel strip is the row of controls that determines the sound of a track. The glossary in the appendix explains further terms.
-
-### Illustrations
-
-The illustrations of the sound modules in [Chapter 9](#k9) were created with the same drawing tools the app uses to draw its modules. They match the interface of version 2.0. The waveforms in them come from a sample voice. All other illustrations are screenshots of the app.
-
 ## 1 Introduction
 
 voyzSESSION PRO is recording and mixing software (DAW) for speech productions: voice-over and off-screen commentary to picture, dubbing, radio features, podcasts and audiobooks.

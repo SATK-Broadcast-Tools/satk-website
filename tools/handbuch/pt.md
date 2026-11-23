@@ -60,7 +60,7 @@ Os elementos da esquerda para a direita:
 | Elemento                   | Função                                                                                                                                         |
 |----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 | FICHEIRO                   | Novo projeto, Abrir, Recentes, Guardar, Guardar como, Modelos ([capítulo 15](#k15))                                                           |
-| PROJETO...                 | Definições do projeto: frequência de amostragem, taxa de fotogramas, timecode inicial, perfil                                                 |
+| PROJETO...                 | Definições do projeto: frequência de amostragem, taxa de fotogramas, timecode inicial, perfil, estilo de mistura                              |
 | VÍDEO, ÁUDIO, EDIT, MIXER  | Mudança da página de trabalho ([secção 2.2](#k2-2))                                                                                           |
 | MEDIA                      | Mostrar e ocultar o painel multimédia                                                                                                          |
 | ABRIR VÍDEO                | Abrir um vídeo. Com um vídeo carregado, aparece ao lado um x para o remover. A remoção pode ser anulada.                                      |
@@ -87,7 +87,7 @@ Durante o período de teste, uma etiqueta com a inscrição TESTE mostra os dias
 - **Ao centro:** \|\<\< (para o início), retroceder, **PLAY/STOP**, **REC**, **LOOP**, avançar, \>\>\| (para o fim). Um toque breve numa tecla de bobinagem salta 1 segundo; mantendo-a premida, bobina com velocidade crescente até 32 vezes a velocidade normal.
 - **Contador de posição:** mostra a posição atual, a vermelho durante a gravação, a verde durante a reprodução. Depois de um clique, pode introduzir um tempo. Com o botão direito, escolhe a apresentação em timecode, minutos:segundos ou samples.
 - **Grupo de gravação:** **V-PUNCH** (punch por reconhecimento de fala), **PRE** (pre-roll antes da gravação, 0 a 10 segundos) e **POST** (post-roll depois do punch-out).
-- **À direita:** o comutador **ASSIST \| MANUAL**, o botão **AUTO MIX** (só no modo Assist) e **EXPORT**.
+- **À direita:** o comutador **ASSIST \| MANUAL**, o botão do estilo de mistura (mostra o ativo, por exemplo **REPORTAGEM** ou **TRAILER**, [secção 7.1](#k7-1)), o botão **AUTO MIX** (só no modo Assist) e **EXPORT**.
 
 Por baixo dos botões fica uma linha de mensagens em que a app indica o processo em curso, por exemplo «A gerar o mix...». As mensagens de sucesso aparecem a verde. Se o **AUTO MIX** se acender a azul, a mistura guardada já não corresponde ao projeto e deve ser calculada de novo.
 
@@ -150,7 +150,7 @@ Abre a Verificação de nível através de **LEVEL** na barra superior. Na prede
 | Nível ideal       | -18 a -3 dBFS      | Manter a definição                                             |
 | Demasiado alto    | acima de -3 dBFS   | Reduzir o gain, caso contrário a gravação distorce             |
 
-Na mesma janela escolhe o perfil de formato, ou seja, a norma para a qual entrega, por exemplo EBU/ARD-ZDF ou Podcast. Se quiser que a Verificação de nível apareça em cada arranque, assinale a opção na janela ou ative-a em Definições \> Geral.
+Na mesma janela escolhe o perfil de formato, ou seja, a norma para a qual entrega, por exemplo EBU/ARD-ZDF ou Podcast. A opção «Não mostrar na próxima abertura» vem assinalada de fábrica. Se quiser que a Verificação de nível apareça em cada arranque, desmarque a opção ou ative-a em Definições \> Geral.
 
 ### 3.4 Carregar um vídeo
 
@@ -375,9 +375,9 @@ Também se dispensa o painel: selecione a faixa e prima a tecla I. O ficheiro es
 
 No modo Assist, a app assume a mistura. O **AUTO MIX** (ou Cmd+M) trata a voz, baixa a música e o ambiente por baixo da fala e leva a mistura até à loudness do perfil escolhido. Depois do arranque, o modo Assist está ativo.
 
-### 7.1 Preparação: perfil e funções
+### 7.1 Preparação: perfil, estilo de mistura e funções
 
-Em **PROJETO...** \> Perfil de formato define para que norma entrega. O perfil determina a loudness alvo e o pico máximo permitido (true peak).
+Em **PROJETO...** \> Perfil de formato define para que norma entrega. O perfil determina apenas a entrega: a loudness alvo, o pico máximo permitido (true peak) e a normalização. O som da mistura é determinado pelo estilo de mistura (ver abaixo).
 
 | Grupo     | Perfil                  | Loudness              | True peak          |
 |-----------|-------------------------|-----------------------|--------------------|
@@ -386,15 +386,25 @@ Em **PROJETO...** \> Perfil de formato define para que norma entrega. O perfil d
 | TV/Radio  | ARIB TR-B32 (Japão)     | -24 LUFS              | -1 dBTP            |
 | TV/Radio  | OP-59 (Austrália)       | -24 LUFS              | -2 dBTP            |
 | TV/Radio  | CST-RT-040 (França)     | -23 LUFS              | -3 dBTP            |
-| TV/Radio  | Trailer                 | -23 LUFS              | -1 dBTP            |
 | Streaming | Podcast                 | -16 LUFS              | -1 dBTP            |
 | Streaming | YouTube                 | -14 LUFS              | -1 dBTP            |
-| Outros    | Documentário            | -23 LUFS              | -1 dBTP            |
-| Outros    | Desporto                | -23 LUFS              | -1 dBTP            |
 | Outros    | Audiolivro              | -18 LUFS              | -3 dBTP            |
 | Outros    | Studio 0 dB             | sem alvo de loudness  | pico a 0 dBTP      |
 
-O perfil **Trailer** destina-se a trailers e promos. Aqui, a música é o elemento principal e fica mais alta, com o locutor por cima. Por baixo do locutor, a música só cede na gama de frequências da voz; os graves e os médios graves mantêm-se.
+**Estilo de mistura:** determina a forma como o AUTO MIX pondera as faixas, independentemente do perfil de formato. Escolhe-o com o botão ao lado de **AUTO MIX** na barra de transporte ou em **PROJETO...**, na linha **Estilo de mistura**. Uma mudança pode ser anulada.
+
+| Estilo de mistura        | Botão na barra |
+|--------------------------|----------------|
+| Reportagem / magazine    | REPORTAGEM     |
+| Trailer / promo          | TRAILER        |
+| Documentário             | DOC            |
+| Desporto / comentário    | DESPORTO       |
+| Podcast / conversa       | PODCAST        |
+| Audiolivro / radioteatro | AUDIOLIVRO     |
+
+A predefinição é **Reportagem / magazine**. O estilo de mistura define os valores iniciais, por exemplo a que distância o fundo fica por baixo da voz. Em **Trailer / promo**, a música e os efeitos estão em primeiro plano, o locutor fica mais próximo por cima, e por baixo do locutor a música só cede na gama de frequências da voz. Os graves e os médios graves mantêm-se.
+
+Os projetos guardados com os antigos perfis Trailer, Documentário, Desporto, Podcast ou Audiolivro abrem com o perfil de formato e o estilo de mistura correspondentes.
 
 Cada faixa precisa ainda de uma função. Esta indica à automação o que está na faixa. Escolhe a função através do botão de função no cabeçalho da faixa ou no mixer.
 
@@ -429,6 +439,8 @@ Todas as decisões da automação podem ser vistas e alteradas:
 - **Linha de clip gain da voz:** o volume da fala é equilibrado através de uma linha no take, num intervalo de até 9 dB para cima ou para baixo. A sua própria correção fica como segunda camada por cima.
 - **Ducking como automação de volume:** a redução da música e do ambiente por baixo da fala está como curva na automação de volume da respetiva faixa.
 - **Valores no channel strip:** o EQ, o compressor, o de-esser e os outros módulos estão preenchidos com os valores calculados. Clique com o botão direito num botão \> **Ver...** mostra o módulo bloqueado com esses valores.
+
+A música, os efeitos, o ambiente e o som direto têm cada um a sua própria proteção de picos. Esta só atua quando o ficheiro final, de outro modo, ultrapassaria o limite de true peak do perfil. Por isso, um impacto forte na música já não baixa todo o fundo.
 
 Se o **AUTO MIX** se acender a azul, a mistura guardada já não corresponde ao projeto, por exemplo depois de uma nova gravação ou de um corte. Prima então o botão de novo.
 
@@ -893,7 +905,7 @@ As alterações têm efeito imediato.
 
 - **ÁUDIO, frequência de amostragem:** a frequência de amostragem é determinada pelo projeto, não pela interface. Num projeto vazio, defina-a diretamente. Se o projeto já contiver material, escolha **Guardar cópia com outra frequência de amostragem**. A app converte então uma cópia, e o original fica inalterado.
 - **TEMPO E IMAGEM:** taxa de fotogramas (23,976 a 60 fps, também drop-frame), timecode inicial (escolha rápida 00:00:00:00 ou 10:00:00:00) e **Copiar do vídeo**. Se a taxa de fotogramas do vídeo for diferente, é apresentada a vermelho.
-- **LOUDNESS:** perfil de formato (tabela no [capítulo 7](#k7)).
+- **LOUDNESS:** perfil de formato e estilo de mistura ([secção 7.1](#k7-1)).
 - **EPISÓDIO:** dados para podcasts ([secção 12.5](#k12-5)).
 
 ### 15.4 Guardar, modelos, recuperar

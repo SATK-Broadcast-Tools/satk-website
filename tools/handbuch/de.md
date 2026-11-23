@@ -60,7 +60,7 @@ Die Elemente von links nach rechts:
 | Element                   | Funktion                                                                                                                           |
 |---------------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | DATEI                     | Neues Projekt, Öffnen, Zuletzt verwendet, Speichern, Speichern unter, Vorlagen ([Kapitel 15](#k15))                                |
-| PROJEKT...                | Projekteinstellungen: Abtastrate, Bildrate, Startzeitcode, Profil                                                                  |
+| PROJEKT...                | Projekteinstellungen: Abtastrate, Bildrate, Startzeitcode, Profil, Mischart                                                                 |
 | VIDEO, AUDIO, EDIT, MIXER | Wechsel der Arbeitsseite ([Abschnitt 2.2](#k2-2))                                                                                  |
 | MEDIA                     | Medienablage ein- und ausblenden                                                                                                   |
 | VIDEO LADEN               | Video öffnen. Ist ein Video geladen, erscheint daneben ein x zum Entfernen. Das Entfernen lässt sich rückgängig machen.            |
@@ -87,7 +87,7 @@ Während der Testphase zeigt ein Schild mit der Aufschrift TRIAL die verbleibend
 - **Mitte:** \|\<\< (zum Anfang), Zurückspulen, **PLAY/STOP**, **REC**, **LOOP**, Vorspulen, \>\>\| (zum Ende). Ein kurzer Druck auf eine Spultaste springt 1 Sekunde, gedrückt halten spult mit zunehmender Geschwindigkeit bis zum 32-fachen Tempo.
 - **Positionszähler:** zeigt die aktuelle Position, rot bei Aufnahme, grün bei Wiedergabe. Nach einem Klick können Sie eine Zeit eingeben. Per Rechtsklick wählen Sie die Anzeige in Timecode, Minuten:Sekunden oder Samples.
 - **Aufnahmegruppe:** **V-PUNCH** (Punch per Spracherkennung), **PRE** (Vorlauf vor der Aufnahme, 0 bis 10 Sekunden) und **POST** (Nachlauf nach dem Punch-Out).
-- **Rechts:** der Umschalter **ASSIST \| MANUAL**, der Knopf **AUTO MIX** (nur im Assist-Modus) und **EXPORT**.
+- **Rechts:** der Umschalter **ASSIST \| MANUAL**, die Taste für die Mischart (sie zeigt die aktive, zum Beispiel **BEITRAG** oder **TRAILER**, [Abschnitt 7.1](#k7-1)), der Knopf **AUTO MIX** (nur im Assist-Modus) und **EXPORT**.
 
 Unter den Knöpfen liegt eine Hinweiszeile, in der die App den aktuellen Vorgang meldet, etwa „Mix wird erzeugt...“. Erfolgsmeldungen erscheinen in Grün. Leuchtet **AUTO MIX** blau, passt die gespeicherte Mischung nicht mehr zum Projekt und sollte neu berechnet werden.
 
@@ -150,7 +150,7 @@ Den Pegel-Check öffnen Sie über **LEVEL** in der Kopfleiste. In der Grundeinst
 | Optimaler Pegel | -18 bis -3 dBFS | Einstellung beibehalten                           |
 | Zu laut         | über -3 dBFS    | Gain verringern, sonst verzerrt die Aufnahme      |
 
-Im selben Fenster wählen Sie das Format-Profil, also die Norm, für die Sie liefern, zum Beispiel EBU/ARD-ZDF oder Podcast. Soll der Pegel-Check bei jedem Start erscheinen, setzen Sie den Haken im Fenster oder schalten ihn unter Einstellungen \> Allgemein ein.
+Im selben Fenster wählen Sie das Format-Profil, also die Norm, für die Sie liefern, zum Beispiel EBU/ARD-ZDF oder Podcast. Der Haken „Beim nächsten Start nicht mehr zeigen“ ist ab Werk gesetzt. Soll der Pegel-Check bei jedem Start erscheinen, entfernen Sie den Haken oder schalten Sie ihn unter Einstellungen \> Allgemein ein.
 
 ### 3.4 Video laden
 
@@ -375,9 +375,9 @@ Ohne die Ablage geht es auch so: Spur auswählen und die Taste I drücken. Die g
 
 Im Assist-Modus übernimmt die App die Mischung. **AUTO MIX** (oder Cmd+M) bearbeitet die Stimme, senkt Musik und Atmo unter der Sprache ab und bringt die Mischung auf die Lautheit des gewählten Profils. Nach dem Start ist der Assist-Modus aktiv.
 
-### 7.1 Vorbereitung: Profil und Rollen
+### 7.1 Vorbereitung: Profil, Mischart und Rollen
 
-Unter **PROJEKT...** \> Format-Profil legen Sie fest, für welche Norm Sie liefern. Das Profil bestimmt die Ziel-Lautheit und die höchste zulässige Spitze (True Peak).
+Unter **PROJEKT...** \> Format-Profil legen Sie fest, für welche Norm Sie liefern. Das Profil bestimmt nur die Lieferung: die Ziel-Lautheit, die höchste zulässige Spitze (True Peak) und die Normalisierung. Wie die Mischung klingt, bestimmt die Mischart (siehe unten).
 
 | Gruppe    | Profil                  | Lautheit           | True Peak         |
 |-----------|-------------------------|--------------------|-------------------|
@@ -386,15 +386,25 @@ Unter **PROJEKT...** \> Format-Profil legen Sie fest, für welche Norm Sie liefe
 | TV/Radio  | ARIB TR-B32 (Japan)     | -24 LUFS           | -1 dBTP           |
 | TV/Radio  | OP-59 (Australien)      | -24 LUFS           | -2 dBTP           |
 | TV/Radio  | CST-RT-040 (Frankreich) | -23 LUFS           | -3 dBTP           |
-| TV/Radio  | Trailer                 | -23 LUFS           | -1 dBTP           |
 | Streaming | Podcast                 | -16 LUFS           | -1 dBTP           |
 | Streaming | YouTube                 | -14 LUFS           | -1 dBTP           |
-| Weitere   | Doku                    | -23 LUFS           | -1 dBTP           |
-| Weitere   | Sport                   | -23 LUFS           | -1 dBTP           |
 | Weitere   | Hörbuch                 | -18 LUFS           | -3 dBTP           |
 | Weitere   | Studio 0 dB             | kein Lautheitsziel | Spitze auf 0 dBTP |
 
-Das Profil **Trailer** ist für Trailer und Promos gedacht. Die Musik ist dort das Hauptelement und bleibt lauter, der Sprecher sitzt darüber. Unter dem Sprecher gibt die Musik nur in dessen Frequenzbereich nach, Bass und tiefe Mitten bleiben stehen.
+**Mischart:** Sie legt fest, wie der AUTO MIX die Spuren gewichtet, unabhängig vom Format-Profil. Sie wählen sie mit der Taste neben **AUTO MIX** in der Transportleiste oder unter **PROJEKT...** in der Zeile **Mischart**. Ein Wechsel lässt sich rückgängig machen.
+
+| Mischart          | Leistentaste |
+|-------------------|--------------|
+| Beitrag / Magazin | BEITRAG      |
+| Trailer / Promo   | TRAILER      |
+| Doku              | DOKU         |
+| Sport / Kommentar | SPORT        |
+| Podcast / Talk    | PODCAST      |
+| Hörbuch / Hörspiel| HÖRBUCH      |
+
+Die Grundeinstellung ist **Beitrag / Magazin**. Die Mischart setzt die Startwerte, etwa wie weit das Bett unter der Stimme liegt. Bei **Trailer / Promo** führen Musik und Effekte, der Sprecher sitzt dichter darüber, und die Musik gibt unter dem Sprecher nur in dessen Frequenzbereich nach. Bass und tiefe Mitten bleiben stehen.
+
+Projekte, die mit den früheren Profilen Trailer, Doku, Sport, Podcast oder Hörbuch gespeichert wurden, öffnen mit dem passenden Format-Profil und der passenden Mischart.
 
 Jede Spur braucht außerdem eine Rolle. Sie teilt der Automatik mit, was auf der Spur liegt. Die Rolle wählen Sie über die Rollentaste im Spurkopf oder im Mixer.
 
@@ -429,6 +439,8 @@ Alle Entscheidungen der Automatik lassen sich ansehen und ändern:
 - **Clip-Gain-Linie der Stimme:** Die Lautstärke der Sprache wird über eine Linie am Take ausgeglichen, im Bereich von bis zu 9 dB nach oben oder unten. Ihre eigene Korrektur liegt als zweite Ebene darüber.
 - **Ducking als Volume-Automation:** Das Absenken von Musik und Atmo unter der Sprache steht als Kurve in der Lautstärke-Automation der jeweiligen Spur.
 - **Werte im Kanalzug:** EQ, Kompressor, De-Esser und die anderen Module sind mit den berechneten Werten belegt. Rechtsklick auf eine Taste \> **Ansehen...** zeigt das Modul gesperrt mit diesen Werten.
+
+Musik, Effekte, Atmo und O-Ton haben je einen eigenen Spitzenschutz. Er greift nur, wenn die fertige Datei sonst über die True-Peak-Grenze des Profils käme. Ein lauter Einschlag in der Musik drückt deshalb nicht mehr das ganze Bett.
 
 Leuchtet **AUTO MIX** blau, passt die gespeicherte Mischung nicht mehr zum Projekt, etwa nach einer neuen Aufnahme oder einem Schnitt. Drücken Sie den Knopf dann erneut.
 
@@ -893,7 +905,7 @@ Direkt im Menü Einstellungen liegt der Schalter **Crossfade bei Überlappung** 
 
 - **AUDIO, Abtastrate:** Die Abtastrate wird vom Projekt bestimmt, nicht vom Interface. Bei einem leeren Projekt stellen Sie sie direkt ein. Enthält das Projekt bereits Material, wählen Sie **Kopie mit anderer Abtastrate speichern**. Die App rechnet dann eine Kopie um, das Original bleibt unverändert.
 - **ZEIT UND BILD:** Bildrate (23,976 bis 60 fps, auch Drop-Frame), Startzeitcode (Schnellwahl 00:00:00:00 oder 10:00:00:00) und **Vom Video übernehmen**. Weicht die Bildrate des Videos ab, wird sie rot angezeigt.
-- **LAUTHEIT:** Format-Profil (Tabelle in [Kapitel 7](#k7)).
+- **LAUTHEIT:** Format-Profil und Mischart ([Abschnitt 7.1](#k7-1)).
 - **FOLGE:** Angaben für Podcasts ([Abschnitt 12.5](#k12-5)).
 
 ### 15.4 Speichern, Vorlagen, Wiederherstellen

@@ -60,7 +60,7 @@ Gli elementi da sinistra a destra:
 | Elemento                  | Funzione                                                                                                                                 |
 |---------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | FILE                      | Nuovo progetto, Apri, Recenti, Salva, Salva con nome, Modelli ([capitolo 15](#k15))                                                      |
-| PROGETTO...               | Impostazioni del progetto: frequenza di campionamento, frame rate, timecode iniziale, profilo                                             |
+| PROGETTO...               | Impostazioni del progetto: frequenza di campionamento, frame rate, timecode iniziale, profilo, stile di mix                               |
 | VIDEO, AUDIO, EDIT, MIXER | Cambio della pagina di lavoro ([sezione 2.2](#k2-2))                                                                                     |
 | MEDIA                     | Mostra e nasconde l'archivio media                                                                                                       |
 | APRI VIDEO                | Apre un video. Quando un video è caricato, accanto compare una x per rimuoverlo. La rimozione si può annullare.                          |
@@ -87,7 +87,7 @@ Durante il periodo di prova un'etichetta con la scritta TRIAL mostra i giorni ri
 - **Al centro:** \|\<\< (all'inizio), riavvolgimento, **PLAY/STOP**, **REC**, **LOOP**, avanzamento rapido, \>\>\| (alla fine). Una breve pressione su un tasto di avvolgimento salta di 1 secondo, tenendolo premuto avvolge a velocità crescente fino a 32 volte.
 - **Contatore di posizione:** mostra la posizione corrente, in rosso durante la registrazione, in verde durante la riproduzione. Dopo un clic puoi inserire un tempo. Con un clic destro scegli la visualizzazione in timecode, minuti:secondi o campioni.
 - **Gruppo di registrazione:** **V-PUNCH** (punch tramite riconoscimento vocale), **PRE** (pre-roll prima della registrazione, da 0 a 10 secondi) e **POST** (post-roll dopo il punch-out).
-- **A destra:** il selettore **ASSIST \| MANUAL**, il pulsante **AUTO MIX** (solo in modalità Assist) ed **EXPORT**.
+- **A destra:** il selettore **ASSIST \| MANUAL**, il tasto dello stile di mix (mostra quello attivo, per esempio **SERVIZIO** o **TRAILER**, [sezione 7.1](#k7-1)), il pulsante **AUTO MIX** (solo in modalità Assist) ed **EXPORT**.
 
 Sotto i pulsanti c'è una riga di avviso in cui l'app segnala l'operazione in corso, per esempio “Calcolo del mix...”. I messaggi di conferma compaiono in verde. Se **AUTO MIX** è illuminato in blu, il mix salvato non corrisponde più al progetto e va ricalcolato.
 
@@ -150,7 +150,7 @@ Apri il Controllo livello con **LEVEL** nella barra superiore. Nell'impostazione
 | Livello ottimale | da -18 a -3 dBFS  | Mantieni l'impostazione                                            |
 | Troppo alto      | sopra -3 dBFS     | Riduci il gain, altrimenti la registrazione distorce               |
 
-Nella stessa finestra scegli il profilo formato, cioè la norma per cui consegni, per esempio EBU/ARD-ZDF o Podcast. Se vuoi che il Controllo livello compaia a ogni avvio, metti la spunta nella finestra o attivalo in Impostazioni \> Generale.
+Nella stessa finestra scegli il profilo formato, cioè la norma per cui consegni, per esempio EBU/ARD-ZDF o Podcast. La spunta “Non mostrare al prossimo avvio” è attiva di fabbrica. Se vuoi che il Controllo livello compaia a ogni avvio, togli la spunta o attivalo in Impostazioni \> Generale.
 
 ### 3.4 Caricare un video
 
@@ -375,9 +375,9 @@ Anche senza l'archivio puoi procedere così: seleziona la traccia e premi il tas
 
 In modalità Assist il mix lo fa l'app. **AUTO MIX** (o Cmd+M) elabora la voce, abbassa musica e ambiente sotto il parlato e porta il mix alla loudness del profilo scelto. Dopo l'avvio è attiva la modalità Assist.
 
-### 7.1 Preparazione: profilo e ruoli
+### 7.1 Preparazione: profilo, stile di mix e ruoli
 
-In **PROGETTO...** \> Profilo formato stabilisci per quale norma consegni. Il profilo determina la loudness di destinazione e il picco massimo ammesso (true peak).
+In **PROGETTO...** \> Profilo formato stabilisci per quale norma consegni. Il profilo determina solo la consegna: la loudness di destinazione, il picco massimo ammesso (true peak) e la normalizzazione. Come suona il mix lo determina lo stile di mix (vedi sotto).
 
 | Gruppo    | Profilo                  | Loudness                      | True Peak        |
 |-----------|--------------------------|-------------------------------|------------------|
@@ -386,15 +386,25 @@ In **PROGETTO...** \> Profilo formato stabilisci per quale norma consegni. Il pr
 | TV/Radio  | ARIB TR-B32 (Giappone)   | -24 LUFS                      | -1 dBTP          |
 | TV/Radio  | OP-59 (Australia)        | -24 LUFS                      | -2 dBTP          |
 | TV/Radio  | CST-RT-040 (Francia)     | -23 LUFS                      | -3 dBTP          |
-| TV/Radio  | Trailer                  | -23 LUFS                      | -1 dBTP          |
 | Streaming | Podcast                  | -16 LUFS                      | -1 dBTP          |
 | Streaming | YouTube                  | -14 LUFS                      | -1 dBTP          |
-| Altro     | Documentario             | -23 LUFS                      | -1 dBTP          |
-| Altro     | Sport                    | -23 LUFS                      | -1 dBTP          |
 | Altro     | Audiolibro               | -18 LUFS                      | -3 dBTP          |
 | Altro     | Studio 0 dB              | nessun obiettivo di loudness  | picco a 0 dBTP   |
 
-Il profilo **Trailer** è pensato per trailer e promo. Qui la musica è l'elemento principale e resta più forte, la voce sta sopra. Sotto la voce la musica cede solo nella gamma di frequenze della voce, bassi e medio-bassi restano invariati.
+**Stile di mix:** stabilisce come AUTO MIX bilancia le tracce, indipendentemente dal profilo formato. Lo scegli con il tasto accanto ad **AUTO MIX** nella barra di trasporto o in **PROGETTO...** nella riga **Stile di mix**. Un cambio si può annullare.
+
+| Stile di mix             | Tasto nella barra |
+|--------------------------|-------------------|
+| Servizio / magazine      | SERVIZIO          |
+| Trailer / promo          | TRAILER           |
+| Documentario             | DOCU              |
+| Sport / telecronaca      | SPORT             |
+| Podcast / talk           | PODCAST           |
+| Audiolibro / radiodramma | AUDIOLIBRO        |
+
+L'impostazione predefinita è **Servizio / magazine**. Lo stile di mix imposta i valori di partenza, per esempio quanto il tappeto sta sotto la voce. Con **Trailer / promo** musica ed effetti guidano il mix, la voce sta sopra in modo più compatto e sotto la voce la musica cede solo nella gamma di frequenze della voce. Bassi e medio-bassi restano invariati.
+
+I progetti salvati con i precedenti profili Trailer, Documentario, Sport, Podcast o Audiolibro si aprono con il profilo formato e lo stile di mix corrispondenti.
 
 Ogni traccia ha inoltre bisogno di un ruolo. Il ruolo comunica all'automatismo che cosa c'è sulla traccia. Scegli il ruolo con il tasto del ruolo nell'intestazione della traccia o nel mixer.
 
@@ -429,6 +439,8 @@ Tutte le decisioni dell'automatismo si possono vedere e modificare:
 - **Linea di clip gain della voce:** il volume del parlato viene livellato tramite una linea sul take, entro un intervallo fino a 9 dB in su o in giù. La tua correzione si sovrappone come secondo livello.
 - **Ducking come automazione del volume:** l'abbassamento di musica e ambiente sotto il parlato si trova come curva nell'automazione del volume della rispettiva traccia.
 - **Valori nel channel strip:** EQ, compressore, de-esser e gli altri moduli sono impostati con i valori calcolati. Clic destro su un tasto \> **Visualizza...** mostra il modulo bloccato con questi valori.
+
+Musica, effetti, ambiente e presa diretta hanno ciascuno una propria protezione dei picchi. Interviene solo se altrimenti il file finito supererebbe il limite di true peak del profilo. Un colpo forte nella musica quindi non abbassa più l'intero tappeto.
 
 Se **AUTO MIX** è illuminato in blu, il mix salvato non corrisponde più al progetto, per esempio dopo una nuova registrazione o un taglio. In questo caso premi di nuovo il pulsante.
 
@@ -893,7 +905,7 @@ Le modifiche hanno effetto subito.
 
 - **AUDIO, Frequenza di campionamento:** la frequenza di campionamento è determinata dal progetto, non dall'interfaccia. In un progetto vuoto la imposti direttamente. Se il progetto contiene già materiale, scegli **Salva copia con altra frequenza di campionamento**. L'app converte allora una copia, l'originale resta invariato.
 - **TEMPO E IMMAGINE:** frame rate (da 23,976 a 60 fps, anche drop frame), timecode iniziale (scelta rapida 00:00:00:00 o 10:00:00:00) e **Prendi dal video**. Se il frame rate del video è diverso, viene mostrato in rosso.
-- **LOUDNESS:** profilo formato (tabella nel [capitolo 7](#k7)).
+- **LOUDNESS:** profilo formato e stile di mix ([sezione 7.1](#k7-1)).
 - **EPISODIO:** dati per i podcast ([sezione 12.5](#k12-5)).
 
 ### 15.4 Salvataggio, modelli, ripristino

@@ -60,7 +60,7 @@ The elements from left to right:
 | Element                   | Function                                                                                                                                  |
 |---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | FILE                      | New project, Open, Recent, Save, Save as, Templates ([Chapter 15](#k15))                                                                  |
-| PROJECT...                | Project settings: sample rate, frame rate, start timecode, profile                                                                       |
+| PROJECT...                | Project settings: sample rate, frame rate, start timecode, profile, mix style                                                            |
 | VIDEO, AUDIO, EDIT, MIXER | Switch the working page ([Section 2.2](#k2-2))                                                                                            |
 | MEDIA                     | Show and hide the media bin                                                                                                               |
 | OPEN VIDEO                | Open a video. When a video is loaded, an x for removing it appears next to it. Removing can be undone.                                   |
@@ -87,7 +87,7 @@ During the trial period, a badge labeled TRIAL shows the remaining days. When a 
 - **Center:** \|\<\< (to the start), Rewind, **PLAY/STOP**, **REC**, **LOOP**, Fast forward, \>\>\| (to the end). A short press on a wind button jumps 1 second; holding it winds with increasing speed up to 32 times normal speed.
 - **Position counter:** shows the current position, red while recording, green during playback. After a click you can enter a time. With a right-click you choose the display in timecode, minutes:seconds or samples.
 - **Record group:** **V-PUNCH** (punch by speech recognition), **PRE** (pre-roll before recording, 0 to 10 seconds) and **POST** (post-roll after the punch-out).
-- **Right:** the **ASSIST \| MANUAL** switch, the **AUTO MIX** button (Assist mode only) and **EXPORT**.
+- **Right:** the **ASSIST \| MANUAL** switch, the button for the mix style (it shows the active one, for example **REPORT** or **TRAILER**, [Section 7.1](#k7-1)), the **AUTO MIX** button (Assist mode only) and **EXPORT**.
 
 Below the buttons is a hint line in which the app reports the current operation, for example "Mix rendering...". Success messages appear in green. If **AUTO MIX** lights up blue, the saved mix no longer matches the project and should be recalculated.
 
@@ -150,7 +150,7 @@ You open the Level Check with **LEVEL** in the header bar. By default it does no
 | Optimal level   | -18 to -3 dBFS  | Keep the setting                                      |
 | Too loud        | above -3 dBFS   | Reduce the gain, otherwise the recording distorts     |
 
-In the same window you select the format profile, that is, the standard you deliver to, for example EBU/ARD-ZDF or Podcast. If you want the Level Check to appear at every start, check the box in the window or switch it on under Settings \> General.
+In the same window you select the format profile, that is, the standard you deliver to, for example EBU/ARD-ZDF or Podcast. The box "Don't show on next launch" is checked by default. If you want the Level Check to appear at every start, uncheck the box or switch it on under Settings \> General.
 
 ### 3.4 Loading a video
 
@@ -375,9 +375,9 @@ It also works without the bin: select a track and press the I key. The chosen fi
 
 In Assist mode, the app takes care of the mix. **AUTO MIX** (or Cmd+M) processes the voice, lowers music and atmosphere under the speech and brings the mix to the loudness of the selected profile. After launch, Assist mode is active.
 
-### 7.1 Preparation: profile and roles
+### 7.1 Preparation: profile, mix style and roles
 
-Under **PROJECT...** \> Format profile you specify which standard you deliver to. The profile determines the target loudness and the highest permitted peak (true peak).
+Under **PROJECT...** \> Format profile you specify which standard you deliver to. The profile only determines the delivery: the target loudness, the highest permitted peak (true peak) and the normalization. How the mix sounds is determined by the mix style (see below).
 
 | Group     | Profile                 | Loudness           | True peak         |
 |-----------|-------------------------|--------------------|-------------------|
@@ -386,15 +386,25 @@ Under **PROJECT...** \> Format profile you specify which standard you deliver to
 | TV/Radio  | ARIB TR-B32 (Japan)     | -24 LUFS           | -1 dBTP           |
 | TV/Radio  | OP-59 (Australia)       | -24 LUFS           | -2 dBTP           |
 | TV/Radio  | CST-RT-040 (France)     | -23 LUFS           | -3 dBTP           |
-| TV/Radio  | Trailer                 | -23 LUFS           | -1 dBTP           |
 | Streaming | Podcast                 | -16 LUFS           | -1 dBTP           |
 | Streaming | YouTube                 | -14 LUFS           | -1 dBTP           |
-| Other     | Documentary             | -23 LUFS           | -1 dBTP           |
-| Other     | Sports                  | -23 LUFS           | -1 dBTP           |
 | Other     | Audiobook               | -18 LUFS           | -3 dBTP           |
 | Other     | Studio 0 dB             | no loudness target | peak at 0 dBTP    |
 
-The **Trailer** profile is meant for trailers and promos. Music is the main element there and stays louder, with the voice on top. Under the voice, the music only gives way in the voice's frequency range; bass and low mids stay in place.
+**Mix style:** It specifies how AUTO MIX weights the tracks, independently of the format profile. You choose it with the button next to **AUTO MIX** in the transport bar or under **PROJECT...** in the **Mix style** row. A change can be undone.
+
+| Mix style               | Bar button |
+|-------------------------|------------|
+| Report / magazine       | REPORT     |
+| Trailer / promo         | TRAILER    |
+| Documentary             | DOCU       |
+| Sports / commentary     | SPORTS     |
+| Podcast / talk          | PODCAST    |
+| Audiobook / radio drama | AUDIOBOOK  |
+
+The default is **Report / magazine**. The mix style sets the starting values, for example how far the bed sits below the voice. With **Trailer / promo**, music and effects lead, the voice sits closer on top, and under the voice the music only gives way in the voice's frequency range. Bass and low mids stay in place.
+
+Projects saved with the earlier profiles Trailer, Documentary, Sports, Podcast or Audiobook open with the matching format profile and the matching mix style.
 
 Each track also needs a role. It tells the automatic mix what is on the track. You choose the role with the role button in the track header or in the mixer.
 
@@ -429,6 +439,8 @@ All decisions of the automatic mix can be viewed and changed:
 - **Clip gain line of the voice:** The volume of the speech is evened out with a line on the take, within a range of up to 9 dB up or down. Your own correction lies above it as a second layer.
 - **Ducking as volume automation:** The lowering of music and atmosphere under the speech is a curve in the volume automation of the respective track.
 - **Values in the channel strip:** EQ, compressor, de-esser and the other modules are set to the calculated values. Right-click a button \> **View...** shows the module locked with these values.
+
+Music, effects, atmosphere and production sound each have their own peak protection. It only engages if the finished file would otherwise exceed the true peak limit of the profile. A loud hit in the music therefore no longer pushes down the whole bed.
 
 If **AUTO MIX** lights up blue, the saved mix no longer matches the project, for example after a new recording or an edit. Then press the button again.
 
@@ -893,7 +905,7 @@ Changes take effect immediately.
 
 - **AUDIO, sample rate:** The sample rate is determined by the project, not by the interface. For an empty project you set it directly. If the project already contains material, choose **Save copy at different sample rate**. The app then converts a copy; the original stays unchanged.
 - **TIME AND PICTURE:** frame rate (23.976 to 60 fps, including drop frame), start timecode (quick selection 00:00:00:00 or 10:00:00:00) and **Take from video**. If the frame rate of the video differs, it is shown in red.
-- **LOUDNESS:** format profile (table in [Chapter 7](#k7)).
+- **LOUDNESS:** format profile and mix style ([Section 7.1](#k7-1)).
 - **EPISODE:** details for podcasts ([Section 12.5](#k12-5)).
 
 ### 15.4 Saving, templates, recovery

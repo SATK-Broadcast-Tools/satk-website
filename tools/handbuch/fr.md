@@ -67,7 +67,8 @@ Les éléments de gauche à droite :
 | IMAGE                     | Fenêtre vidéo activée ou désactivée (Cmd+9). Par clic droit, vous placez l'image sur un écran externe ou affichez le timecode.        |
 | LEVEL                     | Contrôle de niveau du micro                                                                                                            |
 | A/V...                    | Réglages audio et vidéo (interface, entrée et sortie)                                                                                  |
-| AIDE                      | Afficher ou masquer l'aide intégrée, fermer avec Esc                                                                                   |
+
+Vous ouvrez le manuel via le menu de l'app : voyzSESSION PRO \> Manuel (Cmd+Shift+/). Il est intégré à l'app et fonctionne sans connexion Internet.
 
 Pendant la période d'essai, un badge portant la mention ESSAI indique les jours restants. Lorsqu'une nouvelle version existe, un badge UPDATE apparaît et mène à la page de téléchargement.
 
@@ -101,6 +102,8 @@ Vous affichez et masquez la barre de navigation via Fenêtre \> Barre de navigat
 | Menu            | Commande                                                                                                             | Raccourci   |
 |-----------------|----------------------------------------------------------------------------------------------------------------------|-------------|
 | voyzSESSION PRO | À propos de voyzSESSION PRO..., Stream Deck : installer le plug-in..., Stream Deck : charger une disposition, Quitter | Cmd+Q       |
+| voyzSESSION PRO | Manuel | Cmd+Shift+/ |
+| Fichier | Importer un AAF... ([section 3.5](#k3-5)) | |
 | Réglages        | Général...                                                                                                           | Cmd+,       |
 | Réglages        | Audio/vidéo...                                                                                                       |             |
 | Réglages        | Fondu enchaîné au chevauchement (activé/désactivé)                                                                   |             |
@@ -109,7 +112,7 @@ Vous affichez et masquez la barre de navigation via Fenêtre \> Barre de navigat
 | Fenêtre         | Fenêtre vidéo                                                                                                        | Cmd+9       |
 | Fenêtre         | Barre de navigation (activée/désactivée)                                                                             |             |
 
-La barre des menus ne comporte pas de menu « Fichier ». Les commandes correspondantes se trouvent dans le bouton **FICHIER** de la barre d'en-tête.
+Nouveau projet, Ouvrir, Enregistrer et Modèles se trouvent dans le bouton **FICHIER** de la barre d'en-tête, pas dans le menu Fichier.
 
 ## 3 Premiers pas
 
@@ -134,7 +137,7 @@ Enregistrez toujours au casque. Lors d'une lecture sur haut-parleurs, le son de 
 
 ### 3.3 Régler le niveau du micro (Contrôle de niveau)
 
-Peu après le lancement, le contrôle de niveau apparaît. Vous pouvez l'ouvrir à tout moment via **LEVEL** dans la barre d'en-tête.
+Vous ouvrez le contrôle de niveau via **LEVEL** dans la barre d'en-tête. Par défaut, il n'apparaît pas de lui-même au lancement.
 
 1.  Choisissez le micro en haut.
 2.  Dites quelques phrases au volume auquel vous enregistrerez ensuite.
@@ -147,7 +150,7 @@ Peu après le lancement, le contrôle de niveau apparaît. Vous pouvez l'ouvrir 
 | Niveau optimal | -18 à -3 dBFS        | Conserver le réglage                                                |
 | Trop fort      | au-dessus de -3 dBFS | Réduire le gain, sinon l'enregistrement sature                      |
 
-Dans la même fenêtre, vous choisissez le profil de format, c'est-à-dire la norme pour laquelle vous livrez, par exemple EBU/ARD-ZDF ou Podcast. Avec « Ne plus afficher au prochain lancement », vous désactivez le contrôle de niveau automatique.
+Dans la même fenêtre, vous choisissez le profil de format, c'est-à-dire la norme pour laquelle vous livrez, par exemple EBU/ARD-ZDF ou Podcast. Si le contrôle de niveau doit apparaître à chaque lancement, cochez la case dans la fenêtre ou activez-le sous Réglages \> Général.
 
 ### 3.4 Charger une vidéo
 
@@ -164,7 +167,31 @@ Si la vidéo comporte plus de deux pistes audio, ce qui est fréquent avec le MX
 
 Les vidéos comportant une ou deux pistes audio sont reprises sans question avec le rôle Auto.
 
-### 3.5 Premier enregistrement
+**Avec un modèle de session :** si le projet contient des pistes de playout vides issues d'un modèle ([section 15.4](#k15-4)), le son de la vidéo arrive sur ces pistes. La fenêtre est alors préremplie, les cases et les rôles sont réglés comme dans le modèle. Une remarque indique combien de pistes vont sur les pistes existantes du modèle. Vous confirmez avec **Importer**, pour voir un nombre de pistes différent dans le nouveau matériel avant qu'il ne s'applique. Pour les vidéos comportant une ou deux pistes audio, l'app attribue les pistes sans question. Le préremplissage n'a lieu que si le numéro de piste et le format (mono ou stéréo) correspondent au modèle. Sinon, de nouvelles pistes sont créées comme auparavant.
+
+Vous reprenez une séquence du montage vidéo via un fichier AAF ([section 3.5](#k3-5)).
+
+### 3.5 Importer une séquence du montage (AAF)
+
+Avec Fichier \> **Importer un AAF...**, vous ajoutez au projet ouvert les pistes audio d'une séquence du montage vidéo, par exemple depuis Avid Media Composer, Adobe Premiere Pro ou DaVinci Resolve. Les pistes sont ajoutées, et chaque clip se place à sa position de timecode.
+
+1.  Choisir Fichier \> **Importer un AAF...** et ouvrir le fichier AAF.
+2.  Dans la fenêtre « Importer un AAF », décider si **Reprendre les niveaux de clip du montage** s'applique. Par défaut, l'interrupteur est désactivé : le volume des clips et les keyframes de niveau du montage sont ignorés, et l'AUTO MIX travaille avec le matériel brut. Activés, ils agissent en plus du réglage de niveau de l'AUTO MIX, sous forme de ligne de clip gain sur le take.
+3.  Cliquer sur **Importer**. L'app lit la séquence et décode les médias. Une barre de progression indique l'opération.
+4.  Si des fichiers média ne se trouvent pas au chemin indiqué dans l'AAF, le message « Fichiers média introuvables » apparaît. Avec **Choisir un dossier...**, l'app les cherche dans un dossier et ses sous-dossiers. Avec **Importer sans eux**, les clips concernés manquent.
+5.  Vérifier les rôles (voir ci-dessous) et confirmer.
+
+Les médias peuvent être intégrés à l'AAF ou liés sous forme de fichiers séparés, y compris en MXF OP-Atom issu d'Avid. Sont repris : les clips, les noms de clips, les fondus, le pan des pistes et l'automation de pan. Les paires mono qui forment une piste stéréo dans le montage sont combinées en pistes stéréo. Dans un projet vide, l'app reprend le timecode de départ de la séquence. Si le projet contient déjà du matériel, les clips sont placés d'après le timecode du projet.
+
+**Rôles :** pour que l'AUTO MIX traite correctement les pistes, chaque piste reçoit un rôle ([section 7.1](#k7-1)).
+
+- **D'après les noms de piste :** si une piste mono s'appelle par exemple « Voice », « Voiceover », « Narrator », « Sprecher » ou « Kommentar », elle devient une piste voix. Des noms comme « Music », « Musik », « Atmo » ou « FX » donnent le rôle correspondant.
+- **D'après le contenu :** pour les pistes dont le nom n'indique pas de rôle, l'app écoute le son et propose un rôle dans la fenêtre « Rôles d'après le contenu » : son direct, musique, effets ou ambiance. La parole est toujours proposée comme son direct, car la piste voix du commentaire n'est en général créée qu'ensuite, lors de l'enregistrement. Vérifiez les propositions et modifiez-les si nécessaire. **Sans rôles du contenu** importe ces pistes sans rôle.
+- **Clips sans parole sur des pistes de parole :** si un clip sans parole, par exemple un bruit ou un son d'ambiance, se trouve sur une piste son direct ou voix, l'AUTO MIX en réglerait le niveau comme de la parole. L'app liste ces clips. Les clips cochés vont sur une piste propre avec le rôle adapté. **Laisser les clips sur leurs pistes** reprend tout sans modification.
+
+Après l'import, un rapport résume ce qui a été repris et ce qui ne l'a pas été. Ne sont notamment pas repris : les effets de clip et de piste, les déformations temporelles (les clips sont lus à leur vitesse d'origine), le pan sur des clips individuels et les formes de fondu particulières, remplacées par la forme standard. Pour les clips de plus de deux canaux, les canaux 1 et 2 sont repris. L'import n'est pas possible pendant un enregistrement ou une sauvegarde.
+
+### 3.6 Premier enregistrement
 
 1.  Dans l'en-tête de la piste voix, cliquez sur **R** pour armer la piste. La touche s'allume en rouge.
 2.  Appuyez sur **REC** ou sur la touche R. Après le pre-roll (**PRE**, 4 secondes par défaut), l'enregistrement commence.
@@ -182,7 +209,7 @@ L'enregistrement se fait sur chaque piste armée. Plusieurs pistes peuvent être
 | Touche  | Nom                           | Fonction                                                                                                                                         |
 |---------|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | R       | Armer                         | REC enregistre sur cette piste. Alt+clic agit sur toutes les pistes.                                                                             |
-| I       | Écouter l'entrée (INPUT ONLY) | Activé : l'entrée est audible aussi pendant la lecture. Désactivé (Auto Input) : l'entrée n'est audible qu'à l'arrêt et pendant l'enregistrement. |
+| I       | Écouter l'entrée (INPUT ONLY) | Activé : l'entrée est toujours audible, aussi pendant la lecture et sans R. Désactivé (Auto Input) : sur une piste armée, l'entrée n'est audible qu'à l'arrêt et pendant l'enregistrement. L'enregistrement n'a lieu qu'avec R. |
 | M       | Muet                          | Rendre la piste muette                                                                                                                           |
 | S       | Solo                          | N'écouter que cette piste                                                                                                                        |
 | AC      | AutoCut                       | Coupe automatiquement le prochain enregistrement aux pauses                                                                                      |
@@ -200,6 +227,7 @@ Par clic droit sur l'en-tête de piste ou via la roue dentée, vous accédez à 
 - **PRE** (pre-roll) détermine combien de temps la vidéo démarre avant le point d'enregistrement. Les valeurs vont de 0 à 10 secondes, le réglage par défaut est de 4 secondes. Un double-clic sur le nombre permet de saisir une valeur.
 - **POST** (post-roll) détermine combien de temps la lecture continue après la fin d'un enregistrement dans la zone.
 - Pendant le pre-roll, le bouton décompte (par exemple « **PRE** 3.2s »), puis il affiche **STOP REC**. Une nouvelle pression interrompt l'enregistrement.
+- **REC pendant la lecture** enregistre immédiatement à la position de lecture, sans saut ni pre-roll (punch-in en cours de lecture). Le pre-roll ne s'applique qu'au démarrage depuis l'arrêt.
 - Si vous enregistrez par-dessus un take existant, le nouvel enregistrement remplace la partie chevauchée. Ce qui se trouve avant et après est conservé.
 
 ### 4.3 Zone, boucle et punch
@@ -208,7 +236,7 @@ En haut de la règle se trouve une bande destinée à une zone. Cette zone vaut 
 
 - **Créer une zone :** faites glisser dans la bande vide. Faire glisser un bord modifie la longueur, faire glisser au milieu déplace la zone, un double-clic la supprime. Le début, la fin et la durée peuvent aussi être saisis dans la barre de navigation.
 - **LOOP** ou la touche L répète la zone. Si aucune zone n'est définie, l'app utilise la partie visible.
-- **Enregistrer seulement dans la zone (punch) :** un clic droit sur **REC** bascule entre « enregistrement jusqu'à STOP » et « Enregistrer dans la zone ». Dans le second cas, la zone s'affiche en orange, et l'enregistrement commence et se termine exactement à ses bords.
+- **Enregistrer seulement dans la zone (punch) :** un clic droit sur **REC** bascule entre « enregistrement jusqu'à STOP » et « Enregistrer dans la zone ». Dans le second cas, la zone s'affiche en orange, et l'enregistrement commence et se termine exactement à ses bords. Si vous appuyez sur REC pendant la lecture avant la zone, l'enregistrement attend son début. Jusque-là, le bouton affiche le temps d'attente (par exemple « **PUNCH** 2.5s »). À l'intérieur de la zone, l'enregistrement commence immédiatement. Si la position de lecture se trouve après la zone ou juste avant sa fin, la lecture s'arrête, et l'enregistrement démarre comme depuis l'arrêt, avec pre-roll.
 
 ### 4.4 Voice Punch
 
@@ -358,12 +386,15 @@ Sous **PROJET...** \> Profil de format, vous définissez la norme pour laquelle 
 | TV/Radio  | ARIB TR-B32 (Japon)     | -24 LUFS                 | -1 dBTP            |
 | TV/Radio  | OP-59 (Australie)       | -24 LUFS                 | -2 dBTP            |
 | TV/Radio  | CST-RT-040 (France)     | -23 LUFS                 | -3 dBTP            |
+| TV/Radio  | Trailer                 | -23 LUFS                 | -1 dBTP            |
 | Streaming | Podcast                 | -16 LUFS                 | -1 dBTP            |
 | Streaming | YouTube                 | -14 LUFS                 | -1 dBTP            |
 | Autres    | Documentaire            | -23 LUFS                 | -1 dBTP            |
 | Autres    | Sport                   | -23 LUFS                 | -1 dBTP            |
 | Autres    | Livre audio             | -18 LUFS                 | -3 dBTP            |
 | Autres    | Studio 0 dB             | pas de cible de loudness | crête à 0 dBTP     |
+
+Le profil **Trailer** est destiné aux bandes-annonces et aux promos. La musique y est l'élément principal et reste plus forte, la voix se place au-dessus. Sous la voix, la musique ne cède que dans la plage de fréquences de la voix, les basses et le bas-médium restent en place.
 
 Chaque piste a en outre besoin d'un rôle. Il indique à l'automatisme ce qui se trouve sur la piste. Vous choisissez le rôle avec la touche de rôle dans l'en-tête de piste ou dans la console de mixage.
 
@@ -444,7 +475,7 @@ Vous ouvrez la console de mixage avec **MIXER** dans la barre d'en-tête. Chaque
 5.  **Sortie :** affichage seulement
 6.  Mode d'automation ([chapitre 11](#k11))
 7.  **Pan :** position dans l'image stéréo
-8.  Fader avec indicateur de niveau, plage de moins l'infini à +12 dB
+8.  Fader avec indicateur de niveau, plage de moins l'infini à +12 dB. Le fader utilise toute la hauteur libre de la fenêtre.
 9.  **S, M et touche d'enregistrement :** solo, mute, armement
 10. Rôle et nom
 
@@ -706,7 +737,9 @@ Avec **EXPORT** dans la barre de transport, vous créez les fichiers de livraiso
 2.  Appuyer sur **EXPORT**. La fenêtre d'export s'ouvre.
 3.  Dans le champ **Nom**, saisir un nom pour la livraison. S'il reste vide, le nom du projet est utilisé.
 4.  Choisir les fichiers à créer ([sections 12.2](#k12-2) à 12.4).
-5.  Cliquer sur **EXPORT** ou appuyer sur Retour, puis choisir le dossier de destination.
+5.  Cliquer sur **EXPORT** ou appuyer sur Retour. Si **Destination** est réglé sur « Demander à chaque export », choisissez maintenant le dossier de destination. Sinon, l'app écrit directement dans la destination choisie.
+
+**Destination :** dans la ligne **Destination** de la fenêtre d'export, vous choisissez « Demander à chaque export », l'une des dernières destinations utilisées ou **Choisir un dossier...**, par exemple un dossier sur un serveur. La destination est enregistrée dans le projet, et donc aussi dans les modèles de session. Si elle n'est pas accessible lors de l'export, par exemple parce que le lecteur réseau n'est pas connecté, ou si les droits d'écriture manquent, l'export s'interrompt avec un message au lieu d'enregistrer les fichiers à un autre endroit. La fenêtre affiche alors « Destination inaccessible - le serveur est-il connecté ? ».
 
 Dans le dossier de destination, un sous-dossier portant le nom de la livraison est créé. Les fichiers s'appellent par exemple `Beitrag_2026-11-19_v1_mix.wav` et `Beitrag_2026-11-19_v1_voice.wav`. À chaque export suivant, le numéro de version augmente (v2, v3, etc.).
 
@@ -745,8 +778,11 @@ Sous **SORTIES**, choisissez **Vidéo (MOV/MP4)** ou **MXF (diffusion)**. L'opti
 Pour le MXF, il existe des réglages supplémentaires :
 
 - **Profil de livraison :** EBU R128, US ATSC - IT 8, Stereo, DE ARD/ZDF - HDF01a, JP ARIB - RDD9, FR CST - AS-10. Si le profil de format du projet ne correspond pas au profil de livraison, un avertissement rouge apparaît.
-- Préréglage des pistes audio, par exemple « Mix 1+2, voix 7+8 ».
-- **Affectation des pistes :** pour chacune des huit pistes T1 à T8, vous définissez ce qu'elle contient (mix G ou D, voix, muet ou un canal de la source). La désignation d'une piste n'est qu'un nom et ne modifie pas son contenu.
+- **Nombre de pistes :** 8 ou 16 pistes audio. Les profils de livraison JP ARIB - RDD9 et FR CST - AS-10 n'autorisent que 8 pistes audio. Pour eux, l'app passe à 8 et le signale.
+- Préréglage des pistes audio, par exemple « Mix 1+2, voix 7+8 ». Sous « Mes préréglages » figurent vos affectations enregistrées.
+- **Affectation des pistes :** pour chaque piste (T1 à T8 ou T16), vous définissez ce qu'elle contient (mix G ou D, voix, muet ou un canal de la source). La désignation d'une piste n'est qu'un nom et ne modifie pas son contenu.
+
+Avec **Enregistrer l'affectation comme préréglage...** dans la liste des préréglages, vous enregistrez l'affectation actuelle sous un nom. Sont enregistrés le nombre de pistes ainsi que le contenu et la désignation de chaque piste.
 
 À côté du MXF, une fiche d'affectation (`<Nom>_tracks.txt`) est créée automatiquement. Elle décrit l'affectation réelle des pistes.
 
@@ -837,7 +873,7 @@ Le fader master de la surface pilote le master, et l'affichage du timecode de la
 |----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | Langue               | Automatique (langue du système), Deutsch, English, Français, Español, Italiano, Português. La modification prend effet au prochain lancement.   |
 | Langue du prompteur  | Langue dans laquelle la reconnaissance vocale suit le texte                                                                                      |
-| Contrôle de niveau   | « Contrôle de niveau au lancement » activé ou désactivé                                                                                          |
+| Contrôle de niveau   | « Contrôle de niveau au lancement » activé ou désactivé. Désactivé par défaut.                                                                    |
 | Astuces              | « Réafficher les astuces » affiche de nouveau les remarques qui n'apparaissent qu'une fois                                                       |
 
 Directement dans le menu Réglages se trouve l'interrupteur **Fondu enchaîné au chevauchement** (activé par défaut, voir [chapitre 6](#k6)).
@@ -864,8 +900,9 @@ Les modifications prennent effet immédiatement.
 
 - Enregistrer avec Cmd+S, Enregistrer sous avec Cmd+Shift+S ou via le bouton **FICHIER**. Un projet est un dossier portant l'extension `.satkproj`. Les enregistrements audio sont placés directement dans le sous-dossier `audio` du projet enregistré. Il est donc conseillé d'enregistrer un nouveau projet avant le premier enregistrement audio.
 - Un Cmd+S pendant un **AUTO MIX** est mis en attente et exécuté ensuite.
-- **Modèles :** **FICHIER** \> **Enregistrer l'actuel comme modèle...** enregistre les pistes, les réglages, les inserts, le profil et le texte du prompteur, mais aucun enregistrement audio, aucune vidéo, aucun chapitre et aucun marqueur. Vous créez ensuite de nouveaux projets avec **FICHIER** \> **Nouveau depuis un modèle**.
+- **Modèles :** **FICHIER** \> **Enregistrer l'actuel comme modèle...** enregistre les pistes, les réglages, les inserts, le profil et le texte du prompteur, mais aucun enregistrement audio, aucune vidéo, aucun chapitre et aucun marqueur. Vous créez ensuite de nouveaux projets avec **FICHIER** \> **Nouveau depuis un modèle**. Dans le modèle, les pistes de playout conservent leur rôle et leur attribution aux pistes audio de la vidéo. Lors du prochain import vidéo, l'app remplit ces pistes ([section 3.4](#k3-4)). La destination d'export est aussi enregistrée dans le modèle.
 - **Sauvegarde automatique :** en cas de modifications, l'app enregistre toutes les 30 secondes un état de restauration. Après un plantage, elle demande au lancement suivant si cet état doit être restauré ou rejeté.
+- **Enregistrement interrompu :** si un enregistrement en cours a été interrompu par un plantage, l'app affiche à l'ouverture suivante « Enregistrement interrompu trouvé ». **Restaurer** le crée sous forme de take, **Abandonner** place les fichiers dans la corbeille. **Plus tard**, Esc ou la fermeture de la fenêtre les laissent en l'état, et l'app pose de nouveau la question à l'ouverture suivante.
 - **Quitter :** en cas de modifications non enregistrées, l'app demande s'il faut enregistrer, rejeter ou annuler. La même question apparaît pour Nouveau et Ouvrir.
 
 ## Annexe
@@ -906,7 +943,7 @@ Les touches sans Cmd, Alt ou Control n'agissent pas tant qu'un champ de texte es
 | Fenêtre    | Cmd+Shift+B                        | Fenêtre cabine                                               |
 | Fenêtre    | Cmd+Shift+K                        | Chapitres                                                    |
 | Prompteur  | Cmd+Plus, Cmd+Moins, Cmd+0         | Taille du texte                                              |
-| Aide       | Esc                                | Fermer l'aide                                                |
+| Aide       | Cmd+Shift+/                        | Manuel                                                       |
 
 ### B Glossaire
 
@@ -948,6 +985,8 @@ Les touches sans Cmd, Alt ou Control n'agissent pas tant qu'un champ de texte es
 | La caméra virtuelle n'apparaît pas                          | L'app doit se trouver dans le dossier Applications. Autoriser l'extension dans les Réglages Système, redémarrer le Mac si nécessaire et, sous A/V..., activer la caméra.                      |
 | voyzSESSION Send ou Return manque                           | Installer le pilote sous A/V... et redémarrer l'app.                                                                                                                                           |
 | La fréquence d'images s'affiche en rouge                    | La vidéo et le projet ont des fréquences d'images différentes. Sous PROJET..., choisir « Depuis la vidéo ».                                                                                   |
+| L'export s'interrompt : destination inaccessible            | Connecter le lecteur réseau ou choisir un autre dossier sous Destination dans la fenêtre d'export. |
+| Import AAF : fichiers média introuvables                    | Cliquer sur **Choisir un dossier...** et indiquer le dossier contenant les médias du montage. L'app cherche aussi dans les sous-dossiers. |
 | L'app a planté                                              | Au lancement suivant, choisir la restauration. En cas de modifications, l'app sauvegarde toutes les 30 secondes.                                                                              |
 | Mauvaise langue d'interface                                 | Choisir Réglages \> Général \> Langue et redémarrer l'app.                                                                                                                                     |
 | La fenêtre des réglages A/V est en anglais                  | Cette fenêtre n'est pas encore traduite dans la version 2.0. Le reste de l'app suit la langue choisie.                                                                                        |

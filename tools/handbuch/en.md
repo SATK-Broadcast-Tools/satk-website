@@ -67,7 +67,8 @@ The elements from left to right:
 | PICTURE                   | Picture window on or off (Cmd+9). With a right-click you put the picture on an external display or show the timecode.                     |
 | LEVEL                     | Level Check for the microphone                                                                                                            |
 | A/V...                    | Audio and video settings (interface, input and output)                                                                                    |
-| HELP                      | Show and hide the built-in help, close with Esc                                                                                           |
+
+You open the user guide from the app menu: voyzSESSION PRO \> User Guide (Cmd+Shift+/). It is part of the app and works without an internet connection.
 
 During the trial period, a badge labeled TRIAL shows the remaining days. When a new version is available, an UPDATE badge appears that leads to the download page.
 
@@ -101,6 +102,8 @@ On the left you enter **START**, **END** and **LENGTH** of the range. On the rig
 | Menu            | Item                                                                                                       | Shortcut          |
 |-----------------|------------------------------------------------------------------------------------------------------------|-------------------|
 | voyzSESSION PRO | About voyzSESSION PRO..., Stream Deck: install plugin..., Stream Deck: load layout, Quit                   | Cmd+Q             |
+| voyzSESSION PRO | User Guide | Cmd+Shift+/ |
+| File | Import AAF... ([Section 3.5](#k3-5)) | |
 | Settings        | General...                                                                                                 | Cmd+,             |
 | Settings        | Audio/Video...                                                                                             |                   |
 | Settings        | Crossfade on overlap (on/off)                                                                              |                   |
@@ -109,7 +112,7 @@ On the left you enter **START**, **END** and **LENGTH** of the range. On the rig
 | Window          | Picture window                                                                                             | Cmd+9             |
 | Window          | Navigation bar (on/off)                                                                                    |                   |
 
-There is no "File" menu in the menu bar. The corresponding commands are in the **FILE** button in the header bar.
+New project, Open, Save and Templates are in the **FILE** button in the header bar, not in the File menu.
 
 ## 3 Getting started
 
@@ -134,7 +137,7 @@ Always record with headphones. When playing back through speakers, the sound of 
 
 ### 3.3 Setting the microphone level (Level Check)
 
-Shortly after launch, the Level Check appears. You can open it at any time with **LEVEL** in the header bar.
+You open the Level Check with **LEVEL** in the header bar. By default it does not appear on its own at startup.
 
 1.  Select the microphone at the top.
 2.  Speak a few sentences at the volume at which you will record later.
@@ -147,7 +150,7 @@ Shortly after launch, the Level Check appears. You can open it at any time with 
 | Optimal level   | -18 to -3 dBFS  | Keep the setting                                      |
 | Too loud        | above -3 dBFS   | Reduce the gain, otherwise the recording distorts     |
 
-In the same window you select the format profile, that is, the standard you deliver to, for example EBU/ARD-ZDF or Podcast. With "Don't show on next launch" you switch off the automatic Level Check.
+In the same window you select the format profile, that is, the standard you deliver to, for example EBU/ARD-ZDF or Podcast. If you want the Level Check to appear at every start, check the box in the window or switch it on under Settings \> General.
 
 ### 3.4 Loading a video
 
@@ -164,7 +167,31 @@ If the video has more than two audio tracks, which is common with MXF, the "Whic
 
 Videos with one or two audio tracks are taken over without asking, with the role Auto.
 
-### 3.5 First recording
+**With a session template:** If the project contains empty playout tracks from a template ([Section 15.4](#k15-4)), the sound of the video goes onto these tracks. The window is then preset, with checkboxes and roles as in the template. A note says how many tracks go onto the existing tracks of the template. You confirm with **Import**, so that you see a different track count in the new material before it takes effect. For videos with one or two audio tracks, the app assigns the tracks without asking. The window is only preset if track number and format (mono or stereo) match the template; otherwise new tracks are created as before.
+
+You take over a sequence from the video edit with an AAF file ([Section 3.5](#k3-5)).
+
+### 3.5 Importing a sequence from the edit (AAF)
+
+With File \> **Import AAF...** you bring the audio tracks of a sequence from the video edit into the open project, for example from Avid Media Composer, Adobe Premiere Pro or DaVinci Resolve. The tracks are added, and each clip lies at its timecode position.
+
+1.  Choose File \> **Import AAF...** and open the AAF file.
+2.  In the "Import AAF" window, decide whether **Take over clip levels from the edit** applies. By default the switch is off: clip volume and level keyframes from the edit are ignored, and the AUTO MIX works with the raw material. When it is on, they act in addition to the leveling of the AUTO MIX, as a clip gain line on the take.
+3.  Click **Import**. The app reads the sequence and decodes the media. A progress bar shows the operation.
+4.  If media files are not at the path stated in the AAF, "Media files not found" appears. With **Choose folder...** the app searches for them in a folder and its subfolders; with **Import without them** the affected clips are missing.
+5.  Check the roles (see below) and confirm.
+
+The media can be embedded in the AAF or linked as separate files, including MXF OP-Atom from Avid. Clips, clip names, fades, track pan and pan automation are taken over. Mono pairs that form a stereo track in the edit are combined into stereo tracks. In an empty project, the app takes over the start timecode of the sequence. If the project already contains material, the clips are placed according to the timecode of the project.
+
+**Roles:** So that the AUTO MIX treats the tracks correctly, each track gets a role ([Section 7.1](#k7-1)).
+
+- **From the track names:** If a mono track is called, for example, "Voice", "Voiceover", "Narrator", "Sprecher" or "Kommentar", it becomes a voice track. Names such as "Music", "Atmo" or "FX" result in the matching role.
+- **From the content:** For tracks without a role in their name, the app listens to the sound and suggests a role in the "Roles from the content" window: production sound, music, effects or atmosphere. Speech is always suggested as production sound, because the voice track for the narration is usually only created afterwards, during recording. Check the suggestions and change them if necessary. **Without content roles** imports these tracks without a role.
+- **Clips without speech on speech tracks:** If a production sound or voice track contains a clip without speech, such as a noise or room tone, the AUTO MIX would level it like speech. The app lists such clips. Checked clips go onto a separate track with a matching role. **Leave clips on their tracks** takes over everything unchanged.
+
+After the import, a report summarizes what was taken over and what was not. Not taken over are, among other things, clip and track effects, time warps (the clips play at original speed), pan on individual clips and special fade shapes, which are replaced by the standard shape. For clips with more than two channels, channels 1 and 2 are taken over. The import is not possible during a recording or while saving.
+
+### 3.6 First recording
 
 1.  In the track header of the voice track, click **R** to arm the track. The button lights up red.
 2.  Press **REC** or the R key. After the pre-roll (**PRE**, default 4 seconds) the recording starts.
@@ -182,7 +209,7 @@ Recording takes place on every track that is armed. Several tracks can be armed 
 | Button  | Name                         | Function                                                                                                                                      |
 |---------|------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
 | R       | Arm                          | REC records on this track. Alt+click affects all tracks.                                                                                      |
-| I       | Input monitoring (INPUT ONLY)| On: the input is also audible during playback. Off (Auto Input): the input is only audible while stopped and during recording.               |
+| I       | Input monitoring (INPUT ONLY)| On: the input is always audible, also during playback and without R. Off (Auto Input): on an armed track, the input is only audible while stopped and during recording. Recording only happens with R. |
 | M       | Mute                         | Mute the track                                                                                                                                |
 | S       | Solo                         | Hear only this track                                                                                                                          |
 | AC      | AutoCut                      | Automatically cuts the next recording at the pauses                                                                                           |
@@ -200,6 +227,7 @@ Right-clicking the track header or clicking the gear icon gives you further comm
 - **PRE** (pre-roll) determines how long the video runs before the recording point. You can set 0 to 10 seconds; the default is 4 seconds. Double-click the number to enter a value.
 - **POST** (post-roll) determines how long playback continues after the end of a range recording.
 - During the pre-roll, the button counts down (for example "**PRE** 3.2s"), after that it shows **STOP REC**. Pressing it again cancels the recording.
+- **REC during playback** records immediately at the playback position, without a jump and without pre-roll (punch-in on the fly). The pre-roll only applies when starting from a stop.
 - If you record over an existing take, the new recording replaces the overlapped part. Whatever lies before and after it is kept.
 
 ### 4.3 Range, loop and punch
@@ -208,7 +236,7 @@ At the top of the ruler is a strip for a range. This range applies to both the l
 
 - **Creating a range:** Drag in the empty strip. Dragging an edge changes the length, dragging in the middle moves the range, a double-click deletes it. Start, end and length can also be entered in the navigation bar.
 - **LOOP** or the L key repeats the range. If no range is set, the app uses the visible section.
-- **Recording only in the range (punch):** A right-click on **REC** switches between "Record until STOP" and "Record in range". In the second case the range is shown in orange, and the recording starts and ends exactly at its edges.
+- **Recording only in the range (punch):** A right-click on **REC** switches between "Record until STOP" and "Record in range". In the second case the range is shown in orange, and the recording starts and ends exactly at its edges. If you press REC during playback before the range, the recording waits for its start. Until then the button shows the waiting time (for example "**PUNCH** 2.5s"). Inside the range the recording starts immediately. If the playback position is behind the range or just before its end, playback stops, and the recording starts as from a stop, with pre-roll.
 
 ### 4.4 Voice Punch
 
@@ -358,12 +386,15 @@ Under **PROJECT...** \> Format profile you specify which standard you deliver to
 | TV/Radio  | ARIB TR-B32 (Japan)     | -24 LUFS           | -1 dBTP           |
 | TV/Radio  | OP-59 (Australia)       | -24 LUFS           | -2 dBTP           |
 | TV/Radio  | CST-RT-040 (France)     | -23 LUFS           | -3 dBTP           |
+| TV/Radio  | Trailer                 | -23 LUFS           | -1 dBTP           |
 | Streaming | Podcast                 | -16 LUFS           | -1 dBTP           |
 | Streaming | YouTube                 | -14 LUFS           | -1 dBTP           |
 | Other     | Documentary             | -23 LUFS           | -1 dBTP           |
 | Other     | Sports                  | -23 LUFS           | -1 dBTP           |
 | Other     | Audiobook               | -18 LUFS           | -3 dBTP           |
 | Other     | Studio 0 dB             | no loudness target | peak at 0 dBTP    |
+
+The **Trailer** profile is meant for trailers and promos. Music is the main element there and stays louder, with the voice on top. Under the voice, the music only gives way in the voice's frequency range; bass and low mids stay in place.
 
 Each track also needs a role. It tells the automatic mix what is on the track. You choose the role with the role button in the track header or in the mixer.
 
@@ -444,7 +475,7 @@ You open the mixer with **MIXER** in the header bar. Each track has a channel st
 5.  **Output:** display only
 6.  Automation mode ([Chapter 11](#k11))
 7.  **Pan:** position in the stereo image
-8.  Fader with level meter, range minus infinity to +12 dB
+8.  Fader with level meter, range minus infinity to +12 dB. The fader uses the full free height of the window.
 9.  **S, M and record button:** solo, mute, record enable
 10. Role and name
 
@@ -706,7 +737,9 @@ With **EXPORT** in the transport bar you create the delivery files: the finished
 2.  Press **EXPORT**. The export window opens.
 3.  Enter a name for the delivery in the **Name** field. If it stays empty, the project name is used.
 4.  Select which files are to be created ([Sections 12.2](#k12-2) to 12.4).
-5.  Click **EXPORT** or press Return, and choose the destination folder.
+5.  Click **EXPORT** or press Return. If **Destination** is set to "Ask at every export", you now choose the destination folder; otherwise the app writes directly to the chosen destination.
+
+**Destination:** In the **Destination** row of the export window you choose "Ask at every export", one of the recently used destinations or **Choose folder...**, for example a folder on a server. The destination is saved in the project and therefore also in session templates. If it cannot be reached at export time, for example because the server drive is not connected, or if write permissions are missing, the export stops with a message instead of putting the files somewhere else. The window then shows "Destination not reachable - is the server connected?".
 
 A subfolder with the delivery name is created in the destination folder. The files are named, for example, `Beitrag_2026-11-19_v1_mix.wav` and `Beitrag_2026-11-19_v1_voice.wav`. With each further export the version number increases (v2, v3 and so on).
 
@@ -745,8 +778,11 @@ Under **OUTPUTS** you choose **Video (MOV/MP4)** or **MXF (broadcast)**. The opt
 For MXF there are additional settings:
 
 - **Delivery profile:** EBU R128, US ATSC - IT 8, Stereo, DE ARD/ZDF - HDF01a, JP ARIB - RDD9, FR CST - AS-10. If the format profile of the project does not match the delivery profile, a red warning appears.
-- Preset for the audio tracks, for example "Mix 1+2, voice 7+8".
-- **TRACK ALLOCATION:** For each of the eight tracks T1 to T8 you specify what is on it (mix L or R, voice, silent or a channel of the source). The label of a track is only a name and does not change its content.
+- **Track count:** 8 or 16 audio tracks. The delivery profiles JP ARIB - RDD9 and FR CST - AS-10 only allow 8 audio tracks. For them, the app switches to 8 and reports this.
+- Preset for the audio tracks, for example "Mix 1+2, voice 7+8". Under "My presets" are your saved allocations.
+- **TRACK ALLOCATION:** For each track (T1 to T8 or T16) you specify what is on it (mix L or R, voice, silent or a channel of the source). The label of a track is only a name and does not change its content.
+
+With **Save allocation as preset...** in the list of presets you save the current allocation under a name. The track count and the content and label of each track are saved.
 
 Next to the MXF, an allocation sheet (`<Name>_tracks.txt`) is created automatically that describes the actual track allocation.
 
@@ -837,7 +873,7 @@ The master fader of the surface controls the master; the timecode display of the
 |---------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | Language                  | Automatic (system language), Deutsch, English, Français, Español, Italiano, Português. The change takes effect at the next start.|
 | Prompter reading language | Language in which speech recognition follows the text                                                                          |
-| Level Check               | "Show level check at startup" on or off                                                                                         |
+| Level Check               | "Show level check at startup" on or off. Off by default.                                                                        |
 | Hints                     | "Show hints again" shows one-time hints again                                                                                   |
 
 Directly in the Settings menu is the **Crossfade on overlap** switch (switched on by default, see [Chapter 6](#k6)).
@@ -864,8 +900,9 @@ Changes take effect immediately.
 
 - Save with Cmd+S, Save as with Cmd+Shift+S or with the **FILE** button. A project is a folder with the extension `.satkproj`. Recordings are stored directly in the `audio` subfolder of the saved project. A new project should therefore be saved before the first recording.
 - Cmd+S during an **AUTO MIX** is queued and carried out afterwards.
-- **Templates:** **FILE** \> **Save current as template...** saves tracks, settings, inserts, profile and prompter text, but no recordings, no video, no chapters and no markers. You then create new projects with **FILE** \> **New from template**.
+- **Templates:** **FILE** \> **Save current as template...** saves tracks, settings, inserts, profile and prompter text, but no recordings, no video, no chapters and no markers. You then create new projects with **FILE** \> **New from template**. In the template, playout tracks keep their role and their assignment to the audio tracks of the video. At the next video import, the app fills these tracks ([Section 3.4](#k3-4)). The export destination is also saved in the template.
 - **Automatic backup:** When there are changes, the app saves a recovery state every 30 seconds. After a crash, it asks at the next start whether this state should be restored or discarded.
+- **Interrupted recording:** If a running recording was interrupted by a crash, the app reports "Interrupted recording found" the next time it opens. **Restore** creates a take from it, **Discard** moves the files to the Trash. **Later**, Esc or closing the window leave it unchanged, and the app asks again the next time it opens.
 - **Quitting:** If there are unsaved changes, the app asks whether to save, discard or cancel. The same question appears with New and Open.
 
 ## Appendix
@@ -906,7 +943,7 @@ Keys without Cmd, Alt or Control have no effect while a text field is active.
 | Window     | Cmd+Shift+B                       | Booth window                                          |
 | Window     | Cmd+Shift+K                       | Chapters                                              |
 | Prompter   | Cmd+Plus, Cmd+Minus, Cmd+0        | Font size                                             |
-| Help       | Esc                               | Close help                                            |
+| Help       | Cmd+Shift+/                       | User Guide                                            |
 
 ### B Glossary
 
@@ -948,6 +985,8 @@ Keys without Cmd, Alt or Control have no effect while a text field is active.
 | The virtual camera does not appear                      | The app must be in the Applications folder. Approve the extension in System Settings, restart the Mac if necessary and switch on the camera under A/V...                     |
 | voyzSESSION Send or Return is missing                   | Install the driver under A/V... and restart the app.                                                                                                                           |
 | The frame rate is shown in red                          | Video and project have different frame rates. Under PROJECT..., choose "Take from video".                                                                                      |
+| Export stops: destination not reachable                 | Connect the server drive or choose another folder under Destination in the export window. |
+| AAF import: media files not found                       | Click **Choose folder...** and select the folder with the media of the edit. The app also searches subfolders. |
 | The app has crashed                                     | At the next start, choose recovery. The app backs up every 30 seconds when there are changes.                                                                                  |
 | Wrong interface language                                | Choose Settings \> General \> Language and restart the app.                                                                                                                    |
 | The A/V settings window is in English                   | This window is not yet translated in version 2.0. The rest of the app follows the selected language.                                                                          |

@@ -67,7 +67,8 @@ Los elementos, de izquierda a derecha:
 | IMAGEN | Activar o desactivar la ventana de vídeo (Cmd+9). Con un clic derecho llevas la imagen a una pantalla externa o muestras el código de tiempo. |
 | LEVEL | Control de nivel del micrófono |
 | A/V... | Ajustes de audio y vídeo (interfaz, entrada y salida) |
-| AYUDA | Mostrar y ocultar la ayuda integrada; se cierra con Esc |
+
+El manual de usuario lo abres desde el menú de la app: voyzSESSION PRO \> Manual (Cmd+Shift+/). Viene incluido en la app y funciona sin conexión a internet.
 
 Durante el periodo de prueba, una etiqueta con el rótulo PRUEBA muestra los días restantes. Si hay una versión nueva, aparece una etiqueta UPDATE que lleva a la página de descarga.
 
@@ -101,6 +102,8 @@ A la izquierda introduces **START**, **FIN** y **DURACIÓN** del rango. A la der
 | Menú | Opción | Atajo de teclado |
 |---|---|---|
 | voyzSESSION PRO | Acerca de voyzSESSION PRO..., Stream Deck: instalar plug-in..., Stream Deck: cargar disposición, Salir | Cmd+Q |
+| voyzSESSION PRO | Manual | Cmd+Shift+/ |
+| Archivo | Importar AAF... ([sección 3.5](#k3-5)) | |
 | Ajustes | General... | Cmd+, |
 | Ajustes | Audio/vídeo... | |
 | Ajustes | Fundido cruzado al solapar (activar/desactivar) | |
@@ -109,7 +112,7 @@ A la izquierda introduces **START**, **FIN** y **DURACIÓN** del rango. A la der
 | Ventana | Ventana de imagen | Cmd+9 |
 | Ventana | Barra de navegación (activar/desactivar) | |
 
-En la barra de menús no hay un menú "Archivo". Los comandos correspondientes están en el botón **ARCHIVO** de la barra superior.
+Proyecto nuevo, abrir, guardar y plantillas están en el botón **ARCHIVO** de la barra superior, no en el menú Archivo.
 
 ## 3 Primeros pasos
 
@@ -134,7 +137,7 @@ Graba siempre con auriculares. Si reproduces por altavoces, el sonido del vídeo
 
 ### 3.3 Ajustar el nivel del micrófono (control de nivel)
 
-Poco después del inicio aparece el control de nivel. Puedes abrirlo en cualquier momento con **LEVEL** en la barra superior.
+El control de nivel lo abres con **LEVEL** en la barra superior. Con el ajuste por defecto no aparece por sí solo al iniciar.
 
 1.  Elige el micrófono arriba.
 2.  Di algunas frases con el volumen con el que vas a grabar después.
@@ -147,7 +150,7 @@ Poco después del inicio aparece el control de nivel. Puedes abrirlo en cualquie
 | Nivel óptimo | -18 a -3 dBFS | Mantener el ajuste |
 | Demasiado alto | por encima de -3 dBFS | Bajar el gain; de lo contrario la grabación se distorsiona |
 
-En la misma ventana eliges el perfil de formato, es decir, la norma para la que entregas, por ejemplo EBU/ARD-ZDF o Podcast. Con "No mostrar en el próximo inicio" desactivas el control de nivel automático.
+En la misma ventana eliges el perfil de formato, es decir, la norma para la que entregas, por ejemplo EBU/ARD-ZDF o Podcast. Si quieres que el control de nivel aparezca en cada inicio, marca la casilla en la ventana o actívalo en Ajustes \> General.
 
 ### 3.4 Cargar un vídeo
 
@@ -164,7 +167,31 @@ Si el vídeo tiene más de dos pistas de audio, algo frecuente en MXF, aparece l
 
 Los vídeos con una o dos pistas de audio se adoptan sin preguntar, con el rol Auto.
 
-### 3.5 Primera grabación
+**Con una plantilla de sesión:** si el proyecto contiene pistas de playout vacías procedentes de una plantilla ([sección 15.4](#k15-4)), el sonido del vídeo va a esas pistas. La ventana aparece entonces ya rellenada, con las casillas y los roles como en la plantilla. Un aviso indica cuántas pistas van a las pistas existentes de la plantilla. Confirmas con **Importar**; así ves un número de pistas distinto en el material nuevo antes de que se aplique. Con vídeos de una o dos pistas de audio, la app asigna sin preguntar. Solo se rellena de antemano si el número de pista y el formato (mono o estéreo) coinciden con la plantilla; si no, se crean pistas nuevas como hasta ahora.
+
+Una secuencia del montaje de vídeo la adoptas mediante un archivo AAF ([sección 3.5](#k3-5)).
+
+### 3.5 Importar una secuencia del montaje (AAF)
+
+Con Archivo \> **Importar AAF...** traes al proyecto abierto las pistas de audio de una secuencia del montaje de vídeo, por ejemplo de Avid Media Composer, Adobe Premiere Pro o DaVinci Resolve. Las pistas se añaden y cada clip queda en su posición de código de tiempo.
+
+1.  Elige Archivo \> **Importar AAF...** y abre el archivo AAF.
+2.  En la ventana "Importar AAF", decide si se aplica **Adoptar los niveles de clip del montaje**. Por defecto el conmutador está desactivado: el volumen de clip y los keyframes de nivel del montaje se ignoran, y AUTO MIX trabaja con el material en bruto. Si lo activas, actúan además de la nivelación de AUTO MIX, como línea de clip gain en la toma.
+3.  Haz clic en **Importar**. La app lee la secuencia y decodifica los medios. Una barra de progreso muestra el proceso.
+4.  Si los archivos multimedia no están en la ruta que figura en el AAF, aparece "Archivos multimedia no encontrados". Con **Elegir carpeta...** la app los busca en una carpeta y sus subcarpetas; con **Importar sin ellos** faltan los clips afectados.
+5.  Comprueba los roles (ver más abajo) y confirma.
+
+Los medios pueden estar incrustados en el AAF o vinculados como archivos aparte, también como MXF OP-Atom de Avid. Se adoptan los clips, los nombres de los clips, los fundidos, el pan de pista y la automatización de pan. Las parejas mono que forman una pista estéreo en el montaje se combinan en pistas estéreo. En un proyecto vacío, la app adopta el código de tiempo inicial de la secuencia. Si el proyecto ya contiene material, los clips se colocan según el código de tiempo del proyecto.
+
+**Roles:** para que AUTO MIX trate las pistas correctamente, cada pista recibe un rol ([sección 7.1](#k7-1)).
+
+- **Según los nombres de pista:** si una pista mono se llama, por ejemplo, "Voice", "Voiceover", "Narrator", "Sprecher" o "Kommentar", se convierte en pista de voz. Nombres como "Music", "Musik", "Atmo" o "FX" dan el rol correspondiente.
+- **Según el contenido:** para las pistas sin rol en el nombre, la app escucha el audio y propone un rol en la ventana "Roles según el contenido": sonido directo, música, efectos o ambiente. El habla se propone siempre como sonido directo, porque la pista de voz para el texto en off suele crearse después, al grabar. Revisa las propuestas y cámbialas si es necesario. **Sin roles del contenido** importa estas pistas sin rol.
+- **Clips sin habla en pistas de habla:** si en una pista de sonido directo o de voz hay un clip sin habla, por ejemplo un ruido o un tono de sala, AUTO MIX lo nivelaría como si fuera habla. La app enumera esos clips. Los clips marcados van a una pista propia con el rol adecuado. **Dejar los clips en sus pistas** lo adopta todo sin cambios.
+
+Tras la importación, un informe resume lo que se ha adoptado y lo que no. No se adoptan, entre otras cosas, los efectos de clip y de pista, las alteraciones de tiempo (los clips se reproducen a velocidad original), el pan en clips sueltos ni las formas de fundido especiales, que se sustituyen por la forma estándar. En los clips con más de dos canales se adoptan los canales 1 y 2. La importación no es posible durante una grabación ni mientras se guarda.
+
+### 3.6 Primera grabación
 
 1.  En la cabecera de la pista de voz, haz clic en **R** para armar la pista. La tecla se ilumina en rojo.
 2.  Pulsa **REC** o la tecla R. Tras el pre-roll (**PRE**, por defecto 4 segundos) empieza la grabación.
@@ -182,7 +209,7 @@ Se graba en cada pista que esté armada. Puede haber varias pistas armadas a la 
 | Tecla | Nombre | Función |
 |---|---|---|
 | R | Armar | REC graba en esta pista. Alt+clic actúa sobre todas las pistas. |
-| I | Escuchar la entrada (INPUT ONLY) | Activado: la entrada también se oye durante la reproducción. Desactivado (Auto Input): la entrada solo se oye con el transporte parado y durante la grabación. |
+| I | Escuchar la entrada (INPUT ONLY) | Activado: la entrada se oye siempre, también durante la reproducción y sin R. Desactivado (Auto Input): con la pista armada, la entrada solo se oye con el transporte parado y durante la grabación. Solo se graba con R. |
 | M | Silencio | Silenciar la pista |
 | S | Solo | Oír solo esta pista |
 | AC | AutoCut | Corta automáticamente la siguiente grabación en las pausas |
@@ -200,6 +227,7 @@ Con un clic derecho en la cabecera de pista o con la rueda dentada accedes a má
 - **PRE** (pre-roll) determina cuánto tiempo arranca el vídeo antes del punto de grabación. Se puede ajustar de 0 a 10 segundos; el valor por defecto es 4 segundos. Con un doble clic en el número introduces un valor.
 - **POST** (post-roll) determina cuánto tiempo sigue la reproducción tras el final de una grabación en rango.
 - Durante el pre-roll el botón hace una cuenta atrás (por ejemplo "**PRE** 3.2s") y después muestra **STOP REC**. Una nueva pulsación cancela la grabación.
+- **REC durante la reproducción** graba de inmediato en la posición de reproducción, sin salto y sin pre-roll (punch-in en marcha). El pre-roll solo se aplica al arrancar desde parado.
 - Si se graba sobre una toma existente, la nueva grabación sustituye la parte solapada. Lo que queda antes y después se conserva.
 
 ### 4.3 Rango, loop y punch
@@ -208,7 +236,7 @@ Arriba, en la regla, hay una franja para un rango. Este rango sirve tanto para e
 
 - **Crear un rango:** arrastra en la franja vacía. Arrastrar un borde cambia la longitud, arrastrar en el centro desplaza el rango y un doble clic lo borra. El inicio, el final y la duración también se pueden introducir en la barra de navegación.
 - **LOOP** o la tecla L repite el rango. Si no hay ningún rango, la app usa la sección visible.
-- **Grabar solo en el rango (punch):** un clic derecho en **REC** alterna entre "grabar hasta STOP" y "Grabar en rango". En el segundo caso el rango se muestra en naranja, y la grabación empieza y termina exactamente en sus bordes.
+- **Grabar solo en el rango (punch):** un clic derecho en **REC** alterna entre "grabar hasta STOP" y "Grabar en rango". En el segundo caso el rango se muestra en naranja, y la grabación empieza y termina exactamente en sus bordes. Si pulsas REC durante la reproducción antes del rango, la grabación espera a su inicio. Hasta entonces el botón muestra el tiempo de espera (por ejemplo "**PUNCH** 2.5s"). Dentro del rango la grabación empieza de inmediato. Si la posición de reproducción está detrás del rango o justo antes de su final, la reproducción se detiene y la grabación arranca como desde parado, con pre-roll.
 
 ### 4.4 Voice Punch
 
@@ -358,12 +386,15 @@ En **PROYECTO...** \> Perfil de formato fijas para qué norma entregas. El perfi
 | TV/Radio | ARIB TR-B32 (Japón) | -24 LUFS | -1 dBTP |
 | TV/Radio | OP-59 (Australia) | -24 LUFS | -2 dBTP |
 | TV/Radio | CST-RT-040 (Francia) | -23 LUFS | -3 dBTP |
+| TV/Radio | Trailer | -23 LUFS | -1 dBTP |
 | Streaming | Podcast | -16 LUFS | -1 dBTP |
 | Streaming | YouTube | -14 LUFS | -1 dBTP |
 | Otros | Documental | -23 LUFS | -1 dBTP |
 | Otros | Deportes | -23 LUFS | -1 dBTP |
 | Otros | Audiolibro | -18 LUFS | -3 dBTP |
 | Otros | Studio 0 dB | sin objetivo de sonoridad | pico a 0 dBTP |
+
+El perfil **Trailer** está pensado para tráileres y promos. En él la música es el elemento principal y se mantiene más alta, con el locutor por encima. Bajo el locutor, la música solo cede en su rango de frecuencias; los graves y los medios bajos se mantienen.
 
 Además, cada pista necesita un rol. El rol indica al automatismo qué hay en la pista. Lo eliges con el botón de rol de la cabecera de pista o en el mezclador.
 
@@ -444,7 +475,7 @@ El mezclador se abre con **MIXER** en la barra superior. Cada pista tiene un cha
 5.  **Salida:** solo indicación
 6.  Modo de automatización ([capítulo 11](#k11))
 7.  **Pan:** posición en la imagen estéreo
-8.  Fader con medidor de nivel, rango de menos infinito a +12 dB
+8.  Fader con medidor de nivel, rango de menos infinito a +12 dB. El fader aprovecha toda la altura libre de la ventana.
 9.  **S, M y tecla de grabación:** solo, silencio, preparación para grabar
 10. Rol y nombre
 
@@ -706,7 +737,9 @@ Con **EXPORT** en la barra de transporte creas los archivos de entrega: la mezcl
 2.  Pulsa **EXPORT**. Se abre la ventana de exportación.
 3.  En el campo **Nombre**, escribe un nombre para la entrega. Si queda vacío, se usa el nombre del proyecto.
 4.  Elige qué archivos se van a crear ([secciones 12.2](#k12-2) a 12.4).
-5.  Haz clic en **EXPORT** o pulsa Return y elige la carpeta de destino.
+5.  Haz clic en **EXPORT** o pulsa Return. Si **Destino** está en "Preguntar en cada exportación", eliges ahora la carpeta de destino; si no, la app escribe directamente en el destino elegido.
+
+**Destino:** en la fila **Destino** de la ventana de exportación eliges "Preguntar en cada exportación", uno de los destinos usados recientemente o **Elegir carpeta...**, por ejemplo una carpeta en un servidor. El destino se guarda en el proyecto y, con ello, también en las plantillas de sesión. Si al exportar no es accesible, por ejemplo porque la unidad del servidor no está conectada, o faltan permisos de escritura, la exportación se cancela con un mensaje en lugar de dejar los archivos en otro lugar. La ventana muestra entonces "Destino no accesible - ¿está conectado el servidor?".
 
 En la carpeta de destino se crea una subcarpeta con el nombre de la entrega. Los archivos se llaman, por ejemplo, `Beitrag_2026-11-19_v1_mix.wav` y `Beitrag_2026-11-19_v1_voice.wav`. Con cada exportación adicional sube el número de versión (v2, v3, etc.).
 
@@ -745,8 +778,11 @@ En **SALIDAS** eliges **Vídeo (MOV/MP4)** o **MXF (broadcast)**. Está activa l
 Con MXF hay ajustes adicionales:
 
 - **Perfil de entrega:** EBU R128, US ATSC - IT 8, Stereo, DE ARD/ZDF - HDF01a, JP ARIB - RDD9, FR CST - AS-10. Si el perfil de formato del proyecto no corresponde al perfil de entrega, aparece una advertencia roja.
-- Preajuste para las pistas de audio, por ejemplo "Mezcla 1+2, voz 7+8".
-- **Asignación de pistas:** para cada una de las ocho pistas T1 a T8 fijas qué lleva (mezcla L o R, voz, silencio o un canal de la fuente). La denominación de una pista es solo un nombre y no cambia su contenido.
+- **Número de pistas:** 8 o 16 pistas de audio. Los perfiles de entrega JP ARIB - RDD9 y FR CST - AS-10 solo admiten 8 pistas de audio. Con ellos, la app cambia a 8 y lo indica.
+- Preajuste para las pistas de audio, por ejemplo "Mezcla 1+2, voz 7+8". En "Mis presets" están tus asignaciones guardadas.
+- **Asignación de pistas:** para cada pista (T1 a T8 o T16) fijas qué lleva (mezcla L o R, voz, silencio o un canal de la fuente). La denominación de una pista es solo un nombre y no cambia su contenido.
+
+Con **Guardar asignación como preset...** en la lista de preajustes guardas la asignación actual con un nombre. Se guardan el número de pistas y el contenido y la denominación de cada pista.
 
 Junto al MXF se crea automáticamente una hoja de asignación (`<Nombre>_tracks.txt`) que describe la asignación real de las pistas.
 
@@ -837,7 +873,7 @@ El fader master de la superficie controla el master, y el visor de código de ti
 |---|---|
 | Idioma | Automático (idioma del sistema), Deutsch, English, Français, Español, Italiano, Português. El cambio se aplica en el próximo inicio. |
 | Idioma del prompter | Idioma en el que el reconocimiento de voz sigue el texto |
-| Control de nivel | "Mostrar el control de nivel al iniciar" activado o desactivado |
+| Control de nivel | "Mostrar el control de nivel al iniciar" activado o desactivado. Desactivado por defecto. |
 | Consejos | "Volver a mostrar los consejos" vuelve a mostrar los avisos que solo aparecen una vez |
 
 Directamente en el menú Ajustes está el conmutador **Fundido cruzado al solapar** (activado por defecto, consulta el [capítulo 6](#k6)).
@@ -864,8 +900,9 @@ Los cambios se aplican de inmediato.
 
 - Guardar con Cmd+S, guardar como con Cmd+Shift+S o mediante el botón **ARCHIVO**. Un proyecto es una carpeta con la extensión `.satkproj`. Las grabaciones se guardan directamente en la subcarpeta `audio` del proyecto guardado. Por eso, un proyecto nuevo debería guardarse antes de la primera grabación.
 - Cmd+S durante un **AUTO MIX** queda anotado y se ejecuta después.
-- **Plantillas:** **ARCHIVO** \> **Guardar el actual como plantilla...** guarda las pistas, los ajustes, los inserts, el perfil y el texto del prompter, pero no las grabaciones, el vídeo, los capítulos ni los marcadores. Los proyectos nuevos los creas después con **ARCHIVO** \> **Nuevo desde plantilla**.
+- **Plantillas:** **ARCHIVO** \> **Guardar el actual como plantilla...** guarda las pistas, los ajustes, los inserts, el perfil y el texto del prompter, pero no las grabaciones, el vídeo, los capítulos ni los marcadores. Los proyectos nuevos los creas después con **ARCHIVO** \> **Nuevo desde plantilla**. En la plantilla, las pistas de playout conservan su rol y su asignación a las pistas de audio del vídeo. En la siguiente importación de vídeo, la app rellena esas pistas ([sección 3.4](#k3-4)). La plantilla guarda también el destino de exportación.
 - **Copia de seguridad automática:** cuando hay cambios, la app guarda cada 30 segundos un estado de recuperación. Tras un cierre inesperado, en el siguiente inicio pregunta si se debe restaurar o descartar ese estado.
+- **Grabación interrumpida:** si un cierre inesperado interrumpió una grabación en curso, la próxima vez que abras el proyecto la app muestra "Se encontró una grabación interrumpida". **Restaurar** la crea como toma, **Descartar** mueve los archivos a la papelera. **Más tarde**, Esc o cerrar la ventana la dejan como está, y la app vuelve a preguntar la próxima vez que lo abras.
 - **Salir:** si hay cambios sin guardar, la app pregunta si se deben guardar, descartar o cancelar. La misma pregunta aparece con Nuevo y Abrir.
 
 ## Apéndice
@@ -906,7 +943,7 @@ Las teclas sin Cmd, Alt o Control no actúan mientras haya un campo de texto act
 | Ventana | Cmd+Shift+B | Ventana de cabina |
 | Ventana | Cmd+Shift+K | Capítulos |
 | Prompter | Cmd+Más, Cmd+Menos, Cmd+0 | Tamaño de letra |
-| Ayuda | Esc | Cerrar la ayuda |
+| Ayuda | Cmd+Shift+/ | Manual |
 
 ### B Glosario
 
@@ -948,6 +985,8 @@ Las teclas sin Cmd, Alt o Control no actúan mientras haya un campo de texto act
 | La cámara virtual no aparece | La app debe estar en la carpeta Aplicaciones. Autoriza la extensión en Ajustes del Sistema, reinicia el Mac si es necesario y activa la cámara en A/V... |
 | Falta voyzSESSION Send o Return | Instala el controlador en A/V... y reinicia la app. |
 | La frecuencia de imagen se muestra en rojo | El vídeo y el proyecto tienen frecuencias de imagen distintas. En PROYECTO..., elige "Tomar del vídeo". |
+| La exportación se cancela: destino no accesible | Conecta la unidad del servidor o elige otra carpeta en la ventana de exportación, en Destino. |
+| Importación AAF: archivos multimedia no encontrados | Haz clic en **Elegir carpeta...** e indica la carpeta con los medios del montaje. La app busca también en las subcarpetas. |
 | La app se ha cerrado inesperadamente | En el siguiente inicio, elige la recuperación. Cuando hay cambios, la app guarda una copia cada 30 segundos. |
 | Idioma de la interfaz incorrecto | Elige Ajustes \> General \> Idioma y reinicia la app. |
 | La ventana de ajustes de A/V está en inglés | Esta ventana todavía no está traducida en la versión 2.0. El resto de la app sigue el idioma elegido. |

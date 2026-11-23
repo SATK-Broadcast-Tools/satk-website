@@ -67,7 +67,8 @@ Die Elemente von links nach rechts:
 | BILD                      | Videofenster ein oder aus (Cmd+9). Per Rechtsklick legen Sie das Bild auf einen externen Bildschirm oder blenden den Timecode ein. |
 | LEVEL                     | Pegel-Check für das Mikrofon                                                                                                       |
 | A/V...                    | Audio- und Videoeinstellungen (Interface, Ein- und Ausgang)                                                                        |
-| HILFE                     | Eingebaute Hilfe ein- und ausblenden, schließen mit Esc                                                                            |
+
+Das Benutzerhandbuch öffnen Sie über das App-Menü: voyzSESSION PRO \> Benutzerhandbuch (Cmd+Shift+/). Es liegt in der App und funktioniert ohne Internetverbindung.
 
 Während der Testphase zeigt ein Schild mit der Aufschrift TRIAL die verbleibenden Tage. Gibt es eine neue Version, erscheint ein Schild UPDATE, das zur Downloadseite führt.
 
@@ -101,6 +102,8 @@ Links geben Sie **START**, **ENDE** und **LÄNGE** des Bereichs ein. Rechts lieg
 | Menü            | Eintrag                                                                                            | Tastenkombination |
 |-----------------|----------------------------------------------------------------------------------------------------|-------------------|
 | voyzSESSION PRO | Über voyzSESSION PRO..., Stream Deck: Plugin installieren..., Stream Deck: Belegung laden, Beenden | Cmd+Q             |
+| voyzSESSION PRO | Benutzerhandbuch | Cmd+Shift+/ |
+| Ablage | AAF importieren ... ([Abschnitt 3.5](#k3-5)) | |
 | Einstellungen   | Allgemein...                                                                                       | Cmd+,             |
 | Einstellungen   | Audio/Video...                                                                                     |                   |
 | Einstellungen   | Crossfade bei Überlappung (ein/aus)                                                                |                   |
@@ -109,7 +112,7 @@ Links geben Sie **START**, **ENDE** und **LÄNGE** des Bereichs ein. Rechts lieg
 | Fenster         | Videofenster                                                                                       | Cmd+9             |
 | Fenster         | Navigationszeile (ein/aus)                                                                         |                   |
 
-Ein Menü „Datei“ gibt es in der Menüleiste nicht. Die zugehörigen Befehle liegen im Knopf **DATEI** in der Kopfleiste.
+Neues Projekt, Öffnen, Speichern und Vorlagen liegen im Knopf **DATEI** in der Kopfleiste, nicht im Menü Ablage.
 
 ## 3 Erste Schritte
 
@@ -134,7 +137,7 @@ Nehmen Sie immer mit Kopfhörer auf. Bei Wiedergabe über Lautsprecher gelangt d
 
 ### 3.3 Mikrofon einpegeln (Pegel-Check)
 
-Kurz nach dem Start erscheint der Pegel-Check. Sie können ihn jederzeit über **LEVEL** in der Kopfleiste öffnen.
+Den Pegel-Check öffnen Sie über **LEVEL** in der Kopfleiste. In der Grundeinstellung erscheint er beim Start nicht von selbst.
 
 1.  Wählen Sie oben das Mikrofon.
 2.  Sprechen Sie einige Sätze in der Lautstärke, in der Sie später aufnehmen.
@@ -147,7 +150,7 @@ Kurz nach dem Start erscheint der Pegel-Check. Sie können ihn jederzeit über *
 | Optimaler Pegel | -18 bis -3 dBFS | Einstellung beibehalten                           |
 | Zu laut         | über -3 dBFS    | Gain verringern, sonst verzerrt die Aufnahme      |
 
-Im selben Fenster wählen Sie das Format-Profil, also die Norm, für die Sie liefern, zum Beispiel EBU/ARD-ZDF oder Podcast. Mit „Beim nächsten Start nicht mehr zeigen“ schalten Sie den automatischen Pegel-Check ab.
+Im selben Fenster wählen Sie das Format-Profil, also die Norm, für die Sie liefern, zum Beispiel EBU/ARD-ZDF oder Podcast. Soll der Pegel-Check bei jedem Start erscheinen, setzen Sie den Haken im Fenster oder schalten ihn unter Einstellungen \> Allgemein ein.
 
 ### 3.4 Video laden
 
@@ -164,7 +167,31 @@ Hat das Video mehr als zwei Tonspuren, was bei MXF häufig vorkommt, erscheint d
 
 Videos mit einer oder zwei Tonspuren werden ohne Rückfrage mit der Rolle Auto übernommen.
 
-### 3.5 Erste Aufnahme
+**Mit einer Sitzungsvorlage:** Enthält das Projekt leere Zuspielspuren aus einer Vorlage ([Abschnitt 15.4](#k15-4)), landet der Ton des Videos auf diesen Spuren. Das Fenster ist dann vorbelegt, Haken und Rollen stehen wie in der Vorlage. Ein Hinweis nennt, wie viele Spuren auf die vorhandenen Spuren der Vorlage kommen. Sie bestätigen mit **Importieren**, damit Sie eine abweichende Spurzahl im neuen Material sehen, bevor sie wirkt. Bei Videos mit einer oder zwei Tonspuren ordnet die App ohne Rückfrage zu. Vorbelegt wird nur, wenn Spurnummer und Format (mono oder stereo) zur Vorlage passen, sonst entstehen wie bisher neue Spuren.
+
+Eine Sequenz aus dem Videoschnitt übernehmen Sie über eine AAF-Datei ([Abschnitt 3.5](#k3-5)).
+
+### 3.5 Sequenz aus dem Schnitt importieren (AAF)
+
+Mit Ablage \> **AAF importieren ...** holen Sie die Tonspuren einer Sequenz aus dem Videoschnitt in das offene Projekt, zum Beispiel aus Avid Media Composer, Adobe Premiere Pro oder DaVinci Resolve. Die Spuren werden hinzugefügt, jeder Clip liegt an seiner Timecode-Position.
+
+1.  Ablage \> **AAF importieren ...** wählen und die AAF-Datei öffnen.
+2.  Im Fenster „AAF importieren“ entscheiden, ob **Clip-Pegel aus dem Schnitt übernehmen** gilt. In der Grundeinstellung ist der Schalter aus: Clip-Lautstärke und Pegel-Keyframes aus dem Schnitt werden ignoriert, und der AUTO MIX arbeitet mit dem Rohmaterial. Eingeschaltet wirken sie zusätzlich zur Pegelung des AUTO MIX, als Clip-Gain-Linie am Take.
+3.  **Importieren** klicken. Die App liest die Sequenz und dekodiert die Medien. Ein Fortschrittsbalken zeigt den Vorgang.
+4.  Liegen Mediendateien nicht unter dem Pfad, der im AAF steht, erscheint „Mediendateien nicht gefunden“. Mit **Ordner wählen ...** sucht die App in einem Ordner samt Unterordnern danach, mit **Ohne sie importieren** fehlen die betroffenen Clips.
+5.  Die Rollen prüfen (siehe unten) und bestätigen.
+
+Die Medien dürfen im AAF eingebettet oder als eigene Dateien verknüpft sein, auch als MXF OP-Atom aus Avid. Übernommen werden Clips, Clipnamen, Blenden, Spur-Pan und Pan-Automation. Monopaare, die im Schnitt eine Stereospur bilden, werden zu Stereospuren zusammengelegt. In ein leeres Projekt übernimmt die App den Startzeitcode der Sequenz. Enthält das Projekt bereits Material, werden die Clips nach dem Timecode des Projekts platziert.
+
+**Rollen:** Damit der AUTO MIX die Spuren richtig behandelt, bekommt jede Spur eine Rolle ([Abschnitt 7.1](#k7-1)).
+
+- **Aus den Spurnamen:** Heißt eine Monospur zum Beispiel „Sprecher“, „Sprecherin“, „Voice“, „Voiceover“, „Narrator“ oder „Kommentar“, wird sie eine Sprecherspur. Namen wie „Musik“, „Music“, „Atmo“ oder „FX“ ergeben die passende Rolle.
+- **Aus dem Inhalt:** Für Spuren ohne Rolle im Namen hört die App in den Ton und schlägt im Fenster „Rollen aus dem Inhalt“ eine Rolle vor: O-Ton, Musik, Effekt oder Atmo. Sprache wird dabei immer als O-Ton vorgeschlagen, denn die Sprecherspur für den Off-Text entsteht meist erst danach bei der Aufnahme. Prüfen Sie die Vorschläge und stellen Sie sie bei Bedarf um. **Ohne Inhaltsrollen** importiert diese Spuren ohne Rolle.
+- **Clips ohne Sprache auf Sprachspuren:** Liegt auf einer O-Ton- oder Sprecherspur ein Clip ohne Sprache, etwa ein Geräusch oder Raumton, würde der AUTO MIX ihn wie Sprache pegeln. Die App listet solche Clips auf. Angehakte Clips kommen auf eine eigene Spur mit passender Rolle. **Clips auf ihren Spuren lassen** übernimmt alles unverändert.
+
+Nach dem Import fasst ein Bericht zusammen, was übernommen wurde und was nicht. Nicht übernommen werden unter anderem Clip- und Spureffekte, Zeitverzerrungen (die Clips laufen in Originalgeschwindigkeit), Pan an einzelnen Clips und besondere Blendenformen, die durch die Standardform ersetzt werden. Bei Clips mit mehr als zwei Kanälen werden Kanal 1 und 2 übernommen. Der Import ist während einer Aufnahme oder beim Speichern nicht möglich.
+
+### 3.6 Erste Aufnahme
 
 1.  Klicken Sie im Spurkopf der Sprecherspur auf **R**, um die Spur scharf zu schalten. Die Taste leuchtet rot.
 2.  Drücken Sie **REC** oder die Taste R. Nach dem Vorlauf (**PRE**, Grundeinstellung 4 Sekunden) beginnt die Aufnahme.
@@ -182,7 +209,7 @@ Aufgenommen wird auf jede Spur, die scharf geschaltet ist. Es können mehrere Sp
 | Taste   | Name                         | Funktion                                                                                                                                  |
 |---------|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | R       | Scharf schalten              | REC nimmt auf dieser Spur auf. Alt+Klick wirkt auf alle Spuren.                                                                           |
-| I       | Eingang abhören (INPUT ONLY) | Ein: Der Eingang ist auch bei der Wiedergabe hörbar. Aus (Auto Input): Der Eingang ist nur im Stillstand und während der Aufnahme hörbar. |
+| I       | Eingang abhören (INPUT ONLY) | Ein: Der Eingang ist immer hörbar, auch bei der Wiedergabe und ohne R. Aus (Auto Input): Bei scharf geschalteter Spur ist der Eingang nur im Stillstand und während der Aufnahme hörbar. Aufgenommen wird nur mit R. |
 | M       | Stumm                        | Spur stummschalten                                                                                                                        |
 | S       | Solo                         | Nur diese Spur hören                                                                                                                      |
 | AC      | AutoCut                      | Schneidet die nächste Aufnahme automatisch an den Pausen                                                                                  |
@@ -200,6 +227,7 @@ Per Rechtsklick auf den Spurkopf oder über das Zahnrad erreichen Sie weitere Be
 - **PRE** (Pre-Roll) bestimmt, wie lange das Video vor dem Aufnahmepunkt anläuft. Einstellbar sind 0 bis 10 Sekunden, die Grundeinstellung ist 4 Sekunden. Per Doppelklick auf die Zahl geben Sie einen Wert ein.
 - **POST** (Post-Roll) bestimmt, wie lange die Wiedergabe nach dem Ende einer Bereichsaufnahme weiterläuft.
 - Während des Vorlaufs zählt der Knopf herunter (zum Beispiel „**PRE** 3.2s“), danach zeigt er **STOP REC**. Ein erneuter Druck bricht die Aufnahme ab.
+- **REC während der Wiedergabe** nimmt sofort an der Abspielposition auf, ohne Sprung und ohne Vorlauf (Punch-In im Lauf). Der Vorlauf gilt nur beim Start aus dem Stillstand.
 - Wird über einen vorhandenen Take aufgenommen, ersetzt die neue Aufnahme den überlappten Teil. Was davor und dahinter liegt, bleibt erhalten.
 
 ### 4.3 Bereich, Loop und Punch
@@ -208,7 +236,7 @@ Oben im Lineal liegt eine Leiste für einen Bereich. Dieser Bereich gilt sowohl 
 
 - **Bereich anlegen:** In der leeren Leiste ziehen. Ziehen an einer Kante ändert die Länge, Ziehen in der Mitte verschiebt den Bereich, ein Doppelklick löscht ihn. Start, Ende und Länge lassen sich auch in der Navigationszeile eingeben.
 - **LOOP** oder die Taste L wiederholt den Bereich. Ist kein Bereich gesetzt, verwendet die App den sichtbaren Ausschnitt.
-- **Aufnahme nur im Bereich (Punch):** Ein Rechtsklick auf **REC** schaltet zwischen „Aufnahme bis STOP“ und „Aufnahme im Bereich“ um. Im zweiten Fall wird der Bereich orange dargestellt, und die Aufnahme beginnt und endet genau an seinen Kanten.
+- **Aufnahme nur im Bereich (Punch):** Ein Rechtsklick auf **REC** schaltet zwischen „Aufnahme bis STOP“ und „Aufnahme im Bereich“ um. Im zweiten Fall wird der Bereich orange dargestellt, und die Aufnahme beginnt und endet genau an seinen Kanten. Drücken Sie REC während der Wiedergabe vor dem Bereich, wartet die Aufnahme auf seinen Anfang. Der Knopf zeigt bis dahin die Wartezeit (zum Beispiel „**PUNCH** 2.5s“). Innerhalb des Bereichs beginnt die Aufnahme sofort. Liegt die Abspielposition hinter dem Bereich oder knapp vor seinem Ende, hält die Wiedergabe an, und die Aufnahme startet wie aus dem Stillstand mit Vorlauf.
 
 ### 4.4 Voice Punch
 
@@ -358,12 +386,15 @@ Unter **PROJEKT...** \> Format-Profil legen Sie fest, für welche Norm Sie liefe
 | TV/Radio  | ARIB TR-B32 (Japan)     | -24 LUFS           | -1 dBTP           |
 | TV/Radio  | OP-59 (Australien)      | -24 LUFS           | -2 dBTP           |
 | TV/Radio  | CST-RT-040 (Frankreich) | -23 LUFS           | -3 dBTP           |
+| TV/Radio  | Trailer                 | -23 LUFS           | -1 dBTP           |
 | Streaming | Podcast                 | -16 LUFS           | -1 dBTP           |
 | Streaming | YouTube                 | -14 LUFS           | -1 dBTP           |
 | Weitere   | Doku                    | -23 LUFS           | -1 dBTP           |
 | Weitere   | Sport                   | -23 LUFS           | -1 dBTP           |
 | Weitere   | Hörbuch                 | -18 LUFS           | -3 dBTP           |
 | Weitere   | Studio 0 dB             | kein Lautheitsziel | Spitze auf 0 dBTP |
+
+Das Profil **Trailer** ist für Trailer und Promos gedacht. Die Musik ist dort das Hauptelement und bleibt lauter, der Sprecher sitzt darüber. Unter dem Sprecher gibt die Musik nur in dessen Frequenzbereich nach, Bass und tiefe Mitten bleiben stehen.
 
 Jede Spur braucht außerdem eine Rolle. Sie teilt der Automatik mit, was auf der Spur liegt. Die Rolle wählen Sie über die Rollentaste im Spurkopf oder im Mixer.
 
@@ -444,7 +475,7 @@ Den Mixer öffnen Sie mit **MIXER** in der Kopfleiste. Jede Spur hat einen Kanal
 5.  **Ausgang:** nur Anzeige
 6.  Automationsmodus ([Kapitel 11](#k11))
 7.  **Pan:** Position im Stereobild
-8.  Fader mit Pegelanzeige, Bereich minus unendlich bis +12 dB
+8.  Fader mit Pegelanzeige, Bereich minus unendlich bis +12 dB. Der Fader nutzt die ganze freie Höhe des Fensters.
 9.  **S, M und Aufnahmetaste:** Solo, Stummschaltung, Aufnahmebereitschaft
 10. Rolle und Name
 
@@ -706,7 +737,9 @@ Mit **EXPORT** in der Transportleiste erzeugen Sie die Lieferdateien: die fertig
 2.  **EXPORT** drücken. Das Export-Fenster öffnet sich.
 3.  Im Feld **Name** einen Namen für die Lieferung eintragen. Bleibt es leer, wird der Projektname verwendet.
 4.  Auswählen, welche Dateien entstehen sollen ([Abschnitte 12.2](#k12-2) bis 12.4).
-5.  **EXPORT** klicken oder Return drücken und den Zielordner wählen.
+5.  **EXPORT** klicken oder Return drücken. Steht **Ziel** auf „Bei jedem Export fragen“, wählen Sie jetzt den Zielordner, sonst schreibt die App direkt in das gewählte Ziel.
+
+**Ziel:** In der Zeile **Ziel** des Export-Fensters wählen Sie „Bei jedem Export fragen“, eines der zuletzt benutzten Ziele oder **Ordner wählen ...**, zum Beispiel einen Ordner auf einem Server. Das Ziel wird im Projekt gespeichert und damit auch in Sitzungsvorlagen. Ist es beim Export nicht erreichbar, etwa weil das Server-Laufwerk nicht verbunden ist, oder fehlen Schreibrechte, bricht der Export mit einer Meldung ab, statt die Dateien an einem anderen Ort abzulegen. Im Fenster steht dann „Ziel nicht erreichbar - ist der Server verbunden?“.
 
 Im Zielordner entsteht ein Unterordner mit dem Liefernamen. Die Dateien heißen zum Beispiel `Beitrag_2026-11-19_v1_mix.wav` und `Beitrag_2026-11-19_v1_voice.wav`. Bei jedem weiteren Export steigt die Versionsnummer (v2, v3 usw.).
 
@@ -745,8 +778,11 @@ Unter **AUSGABEN** wählen Sie **Video (MOV/MP4)** oder **MXF (Broadcast)**. Akt
 Beim MXF gibt es zusätzliche Einstellungen:
 
 - **Delivery-Profil:** EBU R128, US ATSC - IT 8, Stereo, DE ARD/ZDF - HDF01a, JP ARIB - RDD9, FR CST - AS-10. Passt das Format-Profil des Projekts nicht zum Delivery-Profil, erscheint eine rote Warnung.
-- Voreinstellung für die Tonspuren, zum Beispiel „Mix 1+2, Voice 7+8“.
-- **Tonspur-Belegung:** Für jede der acht Spuren T1 bis T8 legen Sie fest, was darauf liegt (Mischung L oder R, Voice, stumm oder ein Kanal der Quelle). Die Bezeichnung einer Spur ist nur ein Name und ändert ihren Inhalt nicht.
+- **Spurzahl:** 8 oder 16 Tonspuren. Die Lieferprofile JP ARIB - RDD9 und FR CST - AS-10 erlauben nur 8 Tonspuren. Bei ihnen stellt die App auf 8 und meldet das.
+- Voreinstellung für die Tonspuren, zum Beispiel „Mix 1+2, Voice 7+8“. Unter „Eigene Presets“ stehen Ihre gespeicherten Belegungen.
+- **Tonspur-Belegung:** Für jede Spur (T1 bis T8 bzw. T16) legen Sie fest, was darauf liegt (Mischung L oder R, Voice, stumm oder ein Kanal der Quelle). Die Bezeichnung einer Spur ist nur ein Name und ändert ihren Inhalt nicht.
+
+Mit **Belegung als Preset sichern...** in der Liste der Voreinstellungen speichern Sie die aktuelle Belegung unter einem Namen. Gesichert werden die Spurzahl sowie Inhalt und Bezeichnung jeder Spur.
 
 Neben dem MXF entsteht automatisch ein Belegungsblatt (`<Name>_tracks.txt`), das die tatsächliche Spurbelegung beschreibt.
 
@@ -837,7 +873,7 @@ Der Master-Fader des Pults steuert den Master, die Timecode-Anzeige des Pults l�
 |----------------------|--------------------------------------------------------------------------------------------------------------------------------|
 | Sprache              | Automatisch (Systemsprache), Deutsch, English, Français, Español, Italiano, Português. Die Änderung wirkt beim nächsten Start. |
 | Lesesprache Prompter | Sprache, in der die Spracherkennung dem Text folgt                                                                             |
-| Pegel-Check          | „Pegel-Check beim Start zeigen“ ein oder aus                                                                                   |
+| Pegel-Check          | „Pegel-Check beim Start zeigen“ ein oder aus. In der Grundeinstellung aus.                                                           |
 | Hinweise             | „Hinweise wieder anzeigen“ blendet einmalige Hinweise erneut ein                                                               |
 
 Direkt im Menü Einstellungen liegt der Schalter **Crossfade bei Überlappung** (in der Grundeinstellung eingeschaltet, siehe [Kapitel 6](#k6)).
@@ -864,8 +900,9 @@ Direkt im Menü Einstellungen liegt der Schalter **Crossfade bei Überlappung** 
 
 - Speichern mit Cmd+S, Speichern unter mit Cmd+Shift+S oder über den Knopf **DATEI**. Ein Projekt ist ein Ordner mit der Endung `.satkproj`. Aufnahmen werden direkt im Unterordner `audio` des gespeicherten Projekts abgelegt. Ein neues Projekt sollte deshalb vor der ersten Aufnahme gespeichert werden.
 - Cmd+S während eines **AUTO MIX** wird vorgemerkt und danach ausgeführt.
-- **Vorlagen:** **DATEI** \> **Aktuelles als Vorlage sichern...** speichert Spuren, Einstellungen, Inserts, Profil und Prompter-Text, aber keine Aufnahmen, kein Video, keine Kapitel und keine Marken. Neue Projekte legen Sie dann mit **DATEI** \> **Neu aus Vorlage** an.
+- **Vorlagen:** **DATEI** \> **Aktuelles als Vorlage sichern...** speichert Spuren, Einstellungen, Inserts, Profil und Prompter-Text, aber keine Aufnahmen, kein Video, keine Kapitel und keine Marken. Neue Projekte legen Sie dann mit **DATEI** \> **Neu aus Vorlage** an. Zuspielspuren behalten in der Vorlage ihre Rolle und ihre Zuordnung zu den Tonspuren des Videos. Beim nächsten Videoimport füllt die App diese Spuren ([Abschnitt 3.4](#k3-4)). Auch das Exportziel wird in der Vorlage gespeichert.
 - **Automatische Sicherung:** Die App speichert bei Änderungen alle 30 Sekunden einen Wiederherstellungsstand. Nach einem Absturz fragt sie beim nächsten Start, ob dieser Stand wiederhergestellt oder verworfen werden soll.
+- **Unterbrochene Aufnahme:** Wurde eine laufende Aufnahme durch einen Absturz unterbrochen, meldet die App beim nächsten Öffnen „Unterbrochene Aufnahme gefunden“. **Wiederherstellen** legt sie als Take an, **Verwerfen** legt die Dateien in den Papierkorb. **Später**, Esc oder das Schließen des Fensters lassen sie unverändert liegen, und die App fragt beim nächsten Öffnen erneut.
 - **Beenden:** Bei ungespeicherten Änderungen fragt die App, ob gespeichert, verworfen oder abgebrochen werden soll. Dieselbe Frage erscheint bei Neu und Öffnen.
 
 ## Anhang
@@ -906,7 +943,7 @@ Tasten ohne Cmd, Alt oder Control wirken nicht, solange ein Textfeld aktiv ist.
 | Fenster    | Cmd+Shift+B                       | Kabinenfenster                                        |
 | Fenster    | Cmd+Shift+K                       | Kapitel                                               |
 | Prompter   | Cmd+Plus, Cmd+Minus, Cmd+0        | Schriftgröße                                          |
-| Hilfe      | Esc                               | Hilfe schließen                                       |
+| Hilfe      | Cmd+Shift+/                       | Benutzerhandbuch                                      |
 
 ### B Glossar
 
@@ -948,6 +985,8 @@ Tasten ohne Cmd, Alt oder Control wirken nicht, solange ein Textfeld aktiv ist.
 | Die virtuelle Kamera erscheint nicht                  | Die App muss im Ordner Programme liegen. Erweiterung in den Systemeinstellungen freigeben, gegebenenfalls den Mac neu starten und die Kamera unter A/V... einschalten.         |
 | voyzSESSION Send oder Return fehlt                    | Treiber unter A/V... installieren und die App neu starten.                                                                                                                     |
 | Die Bildrate wird rot angezeigt                       | Video und Projekt haben unterschiedliche Bildraten. Unter PROJEKT... „Vom Video übernehmen“ wählen.                                                                            |
+| Export bricht ab: Ziel nicht erreichbar               | Server-Laufwerk verbinden oder im Export-Fenster unter Ziel einen anderen Ordner wählen. |
+| AAF-Import: Mediendateien nicht gefunden              | **Ordner wählen ...** klicken und den Ordner mit den Medien des Schnitts angeben. Die App sucht auch in Unterordnern. |
 | Die App ist abgestürzt                                | Beim nächsten Start die Wiederherstellung wählen. Die App sichert bei Änderungen alle 30 Sekunden.                                                                             |
 | Falsche Sprache der Oberfläche                        | Einstellungen \> Allgemein \> Sprache wählen und die App neu starten.                                                                                                          |
 | Das Fenster A/V-Einstellungen ist englisch            | Dieses Fenster ist in Version 2.0 noch nicht übersetzt. Die übrige App folgt der gewählten Sprache.                                                                            |

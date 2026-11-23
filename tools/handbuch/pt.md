@@ -67,7 +67,8 @@ Os elementos da esquerda para a direita:
 | IMAGEM                     | Janela de vídeo ligada ou desligada (Cmd+9). Com o botão direito, coloca a imagem num ecrã externo ou mostra o timecode.                       |
 | LEVEL                      | Verificação de nível do microfone                                                                                                              |
 | A/V...                     | Definições de áudio e vídeo (interface, entrada e saída)                                                                                       |
-| AJUDA                      | Mostrar e ocultar a ajuda integrada, fechar com Esc                                                                                            |
+
+Abre o manual do utilizador através do menu da app: voyzSESSION PRO \> Manual (Cmd+Shift+/). Está incluído na app e funciona sem ligação à Internet.
 
 Durante o período de teste, uma etiqueta com a inscrição TESTE mostra os dias restantes. Quando existe uma nova versão, aparece uma etiqueta ATUALIZAR que leva à página de download.
 
@@ -101,6 +102,8 @@ A barra de navegação é mostrada e ocultada através de Janela \> Barra de nav
 | Menu            | Item                                                                                                       | Atalho de teclado |
 |-----------------|------------------------------------------------------------------------------------------------------------|-------------------|
 | voyzSESSION PRO | Acerca do voyzSESSION PRO..., Stream Deck: instalar plug-in..., Stream Deck: carregar layout, Sair         | Cmd+Q             |
+| voyzSESSION PRO | Manual | Cmd+Shift+/ |
+| Ficheiro | Importar AAF... ([secção 3.5](#k3-5)) | |
 | Definições      | Geral...                                                                                                   | Cmd+,             |
 | Definições      | Áudio/vídeo...                                                                                             |                   |
 | Definições      | Crossfade na sobreposição (lig./desl.)                                                                     |                   |
@@ -109,7 +112,7 @@ A barra de navegação é mostrada e ocultada através de Janela \> Barra de nav
 | Janela          | Janela de vídeo                                                                                            | Cmd+9             |
 | Janela          | Barra de navegação (lig./desl.)                                                                            |                   |
 
-Na barra de menus não existe um menu «Ficheiro». Os comandos correspondentes estão no botão **FICHEIRO** da barra superior.
+Novo projeto, Abrir, Guardar e Modelos estão no botão **FICHEIRO** da barra superior, não no menu Ficheiro.
 
 ## 3 Primeiros passos
 
@@ -134,7 +137,7 @@ Grave sempre com auscultadores. Na reprodução por altifalantes, o som do víde
 
 ### 3.3 Ajustar o nível do microfone (Verificação de nível)
 
-Pouco depois do arranque aparece a Verificação de nível. Pode abri-la a qualquer momento através de **LEVEL** na barra superior.
+Abre a Verificação de nível através de **LEVEL** na barra superior. Na predefinição, não aparece automaticamente no arranque.
 
 1.  Escolha o microfone em cima.
 2.  Diga algumas frases ao volume a que vai gravar mais tarde.
@@ -147,7 +150,7 @@ Pouco depois do arranque aparece a Verificação de nível. Pode abri-la a qualq
 | Nível ideal       | -18 a -3 dBFS      | Manter a definição                                             |
 | Demasiado alto    | acima de -3 dBFS   | Reduzir o gain, caso contrário a gravação distorce             |
 
-Na mesma janela escolhe o perfil de formato, ou seja, a norma para a qual entrega, por exemplo EBU/ARD-ZDF ou Podcast. Com «Não mostrar na próxima abertura» desliga a Verificação de nível automática.
+Na mesma janela escolhe o perfil de formato, ou seja, a norma para a qual entrega, por exemplo EBU/ARD-ZDF ou Podcast. Se quiser que a Verificação de nível apareça em cada arranque, assinale a opção na janela ou ative-a em Definições \> Geral.
 
 ### 3.4 Carregar um vídeo
 
@@ -164,7 +167,31 @@ Se o vídeo tiver mais de duas faixas de áudio, o que acontece com frequência 
 
 Os vídeos com uma ou duas faixas de áudio são importados sem pergunta, com a função Auto.
 
-### 3.5 Primeira gravação
+**Com um modelo de sessão:** se o projeto contiver faixas de playout vazias de um modelo ([secção 15.4](#k15-4)), o som do vídeo vai para essas faixas. A janela aparece então pré-preenchida, com as marcas e as funções como no modelo. Uma indicação diz quantas faixas vão para as faixas já existentes do modelo. Confirma com **Importar**, para ver um número de faixas diferente no material novo antes de ter efeito. Nos vídeos com uma ou duas faixas de áudio, a app faz a atribuição sem pergunta. Só há pré-preenchimento quando o número da faixa e o formato (mono ou estéreo) correspondem ao modelo; caso contrário, são criadas faixas novas, como até aqui.
+
+Uma sequência da edição de vídeo é importada através de um ficheiro AAF ([secção 3.5](#k3-5)).
+
+### 3.5 Importar uma sequência da edição (AAF)
+
+Com Ficheiro \> **Importar AAF...** traz as faixas de áudio de uma sequência da edição de vídeo para o projeto aberto, por exemplo do Avid Media Composer, do Adobe Premiere Pro ou do DaVinci Resolve. As faixas são acrescentadas, e cada clip fica na sua posição de timecode.
+
+1.  Escolher Ficheiro \> **Importar AAF...** e abrir o ficheiro AAF.
+2.  Na janela «Importar AAF», decidir se **Adotar os níveis de clip da montagem** se aplica. Na predefinição, a opção está desligada: o volume dos clips e os keyframes de nível da edição são ignorados, e o AUTO MIX trabalha com o material em bruto. Ligada, estes valores atuam além do ajuste de nível do AUTO MIX, como linha de clip gain no take.
+3.  Clicar em **Importar**. A app lê a sequência e descodifica os ficheiros multimédia. Uma barra de progresso mostra o processo.
+4.  Se os ficheiros multimédia não estiverem no caminho indicado no AAF, aparece «Ficheiros multimédia não encontrados». Com **Escolher pasta...**, a app procura-os numa pasta e nas suas subpastas; com **Importar sem eles**, os clips afetados ficam de fora.
+5.  Verificar as funções (ver abaixo) e confirmar.
+
+Os ficheiros multimédia podem estar incorporados no AAF ou ligados como ficheiros próprios, também como MXF OP-Atom do Avid. São importados os clips, os nomes dos clips, os fades, o pan das faixas e a automação de pan. Os pares mono que formam uma faixa estéreo na edição são combinados em faixas estéreo. Num projeto vazio, a app adota o timecode inicial da sequência. Se o projeto já contiver material, os clips são colocados segundo o timecode do projeto.
+
+**Funções:** para que o AUTO MIX trate as faixas corretamente, cada faixa recebe uma função ([secção 7.1](#k7-1)).
+
+- **A partir dos nomes das faixas:** se uma faixa mono se chamar, por exemplo, «Voice», «Voiceover», «Narrator», «Sprecher» ou «Kommentar», passa a ser uma faixa de voz. Nomes como «Music», «Musik», «Atmo» ou «FX» dão a função correspondente.
+- **A partir do conteúdo:** para as faixas sem função no nome, a app ouve o som e propõe uma função na janela «Funções a partir do conteúdo»: Som direto, Música, Efeitos ou Ambiente. A fala é sempre proposta como Som direto, porque a faixa de voz para o texto off normalmente só é criada depois, na gravação. Verifique as propostas e altere-as se necessário. **Sem funções do conteúdo** importa estas faixas sem função.
+- **Clips sem fala em faixas de fala:** se numa faixa de som direto ou de voz houver um clip sem fala, por exemplo um ruído ou som de sala, o AUTO MIX ajustaria o seu nível como se fosse fala. A app lista esses clips. Os clips assinalados vão para uma faixa própria com a função adequada. **Deixar os clips nas suas faixas** importa tudo sem alterações.
+
+Depois da importação, um relatório resume o que foi importado e o que não foi. Não são importados, entre outros, os efeitos de clip e de faixa, as alterações de velocidade (os clips correm à velocidade original), o pan em clips individuais e as formas especiais de fade, que são substituídas pela forma padrão. Em clips com mais de dois canais, são importados os canais 1 e 2. A importação não é possível durante uma gravação nem enquanto o projeto é guardado.
+
+### 3.6 Primeira gravação
 
 1.  No cabeçalho da faixa de voz, clique em **R** para armar a faixa. O botão acende-se a vermelho.
 2.  Prima **REC** ou a tecla R. Depois do pre-roll (**PRE**, predefinição de 4 segundos), a gravação começa.
@@ -182,7 +209,7 @@ Grava-se em todas as faixas que estejam armadas. Podem estar várias faixas arma
 | Botão   | Nome                                 | Função                                                                                                                                         |
 |---------|--------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 | R       | Armar                                | O REC grava nesta faixa. Alt+clique atua em todas as faixas.                                                                                   |
-| I       | Monitorizar a entrada (INPUT ONLY)   | Ligado: a entrada também é audível durante a reprodução. Desligado (Auto Input): a entrada só é audível com o transporte parado e durante a gravação. |
+| I       | Monitorizar a entrada (INPUT ONLY)   | Ligado: a entrada é sempre audível, também durante a reprodução e sem R. Desligado (Auto Input): com a faixa armada, a entrada só é audível com o transporte parado e durante a gravação. Só se grava com R. |
 | M       | Mute                                 | Silenciar a faixa                                                                                                                              |
 | S       | Solo                                 | Ouvir só esta faixa                                                                                                                            |
 | AC      | AutoCut                              | Corta automaticamente a próxima gravação nas pausas                                                                                            |
@@ -200,6 +227,7 @@ Clicando com o botão direito no cabeçalho da faixa ou através da roda dentada
 - **PRE** (pre-roll) determina durante quanto tempo o vídeo corre antes do ponto de gravação. É possível definir de 0 a 10 segundos; a predefinição é de 4 segundos. Com um duplo clique no número, introduz um valor.
 - **POST** (post-roll) determina durante quanto tempo a reprodução continua depois do fim de uma gravação num intervalo.
 - Durante o pre-roll, o botão faz a contagem decrescente (por exemplo «**PRE** 3.2s») e depois mostra **STOP REC**. Premir de novo cancela a gravação.
+- **REC durante a reprodução** grava de imediato na posição de reprodução, sem salto e sem pre-roll (punch-in em andamento). O pre-roll só se aplica ao arrancar com o transporte parado.
 - Se gravar sobre um take existente, a nova gravação substitui a parte sobreposta. O que fica antes e depois mantém-se.
 
 ### 4.3 Intervalo, loop e punch
@@ -208,7 +236,7 @@ Na parte superior da régua há uma faixa para um intervalo. Este intervalo serv
 
 - **Criar um intervalo:** arrastar na faixa vazia. Arrastar uma extremidade altera a duração, arrastar no meio desloca o intervalo, um duplo clique elimina-o. O início, o fim e a duração também podem ser introduzidos na barra de navegação.
 - **LOOP** ou a tecla L repete o intervalo. Se não houver nenhum intervalo definido, a app usa o excerto visível.
-- **Gravar só no intervalo (punch):** um clique com o botão direito em **REC** alterna entre «Gravar até STOP» e «Gravar no intervalo». No segundo caso, o intervalo é apresentado a cor de laranja, e a gravação começa e termina exatamente nas suas extremidades.
+- **Gravar só no intervalo (punch):** um clique com o botão direito em **REC** alterna entre «Gravar até STOP» e «Gravar no intervalo». No segundo caso, o intervalo é apresentado a cor de laranja, e a gravação começa e termina exatamente nas suas extremidades. Se premir REC durante a reprodução antes do intervalo, a gravação espera pelo seu início. Até lá, o botão mostra o tempo de espera (por exemplo «**PUNCH** 2.5s»). Dentro do intervalo, a gravação começa de imediato. Se a posição de reprodução estiver depois do intervalo ou pouco antes do seu fim, a reprodução para e a gravação arranca como a partir do transporte parado, com pre-roll.
 
 ### 4.4 Voice Punch
 
@@ -358,12 +386,15 @@ Em **PROJETO...** \> Perfil de formato define para que norma entrega. O perfil d
 | TV/Radio  | ARIB TR-B32 (Japão)     | -24 LUFS              | -1 dBTP            |
 | TV/Radio  | OP-59 (Austrália)       | -24 LUFS              | -2 dBTP            |
 | TV/Radio  | CST-RT-040 (França)     | -23 LUFS              | -3 dBTP            |
+| TV/Radio  | Trailer                 | -23 LUFS              | -1 dBTP            |
 | Streaming | Podcast                 | -16 LUFS              | -1 dBTP            |
 | Streaming | YouTube                 | -14 LUFS              | -1 dBTP            |
 | Outros    | Documentário            | -23 LUFS              | -1 dBTP            |
 | Outros    | Desporto                | -23 LUFS              | -1 dBTP            |
 | Outros    | Audiolivro              | -18 LUFS              | -3 dBTP            |
 | Outros    | Studio 0 dB             | sem alvo de loudness  | pico a 0 dBTP      |
+
+O perfil **Trailer** destina-se a trailers e promos. Aqui, a música é o elemento principal e fica mais alta, com o locutor por cima. Por baixo do locutor, a música só cede na gama de frequências da voz; os graves e os médios graves mantêm-se.
 
 Cada faixa precisa ainda de uma função. Esta indica à automação o que está na faixa. Escolhe a função através do botão de função no cabeçalho da faixa ou no mixer.
 
@@ -444,7 +475,7 @@ Abre o mixer com **MIXER** na barra superior. Cada faixa tem um channel strip co
 5.  **Saída:** só indicação
 6.  Modo de automação ([capítulo 11](#k11))
 7.  **Pan:** posição na imagem estéreo
-8.  Fader com indicador de nível, intervalo de menos infinito a +12 dB
+8.  Fader com indicador de nível, intervalo de menos infinito a +12 dB. O fader usa toda a altura livre da janela.
 9.  **S, M e botão de gravação:** solo, mute, prontidão para gravação
 10. Função e nome
 
@@ -706,7 +737,9 @@ Com **EXPORT** na barra de transporte, cria os ficheiros de entrega: a mistura f
 2.  Premir **EXPORT**. A janela de exportação abre-se.
 3.  No campo **Nome**, introduzir um nome para a entrega. Se ficar vazio, é usado o nome do projeto.
 4.  Escolher que ficheiros devem ser criados ([secções 12.2](#k12-2) a 12.4).
-5.  Clicar em **EXPORT** ou premir Return e escolher a pasta de destino.
+5.  Clicar em **EXPORT** ou premir Return. Se **Destino** estiver em «Perguntar em cada exportação», escolhe agora a pasta de destino; caso contrário, a app grava diretamente no destino escolhido.
+
+**Destino:** na linha **Destino** da janela de exportação, escolhe «Perguntar em cada exportação», um dos destinos usados recentemente ou **Escolher pasta...**, por exemplo uma pasta num servidor. O destino é guardado no projeto e, por isso, também nos modelos de sessão. Se não estiver acessível na exportação, por exemplo porque a unidade do servidor não está ligada, ou se faltarem permissões de escrita, a exportação é cancelada com uma mensagem, em vez de guardar os ficheiros noutro local. A janela mostra então «Destino inacessível - o servidor está ligado?».
 
 Na pasta de destino é criada uma subpasta com o nome da entrega. Os ficheiros chamam-se, por exemplo, `Beitrag_2026-11-19_v1_mix.wav` e `Beitrag_2026-11-19_v1_voice.wav`. A cada nova exportação, o número de versão aumenta (v2, v3, etc.).
 
@@ -745,8 +778,11 @@ Em **SAÍDAS** escolhe **Vídeo (MOV/MP4)** ou **MXF (broadcast)**. Está ativa 
 No MXF há definições adicionais:
 
 - **Perfil de entrega:** EBU R128, US ATSC - IT 8, Stereo, DE ARD/ZDF - HDF01a, JP ARIB - RDD9, FR CST - AS-10. Se o perfil de formato do projeto não corresponder ao perfil de entrega, aparece um aviso vermelho.
-- Predefinição para as faixas de áudio, por exemplo «Mix 1+2, voz 7+8».
-- **Alocação de faixas:** para cada uma das oito faixas T1 a T8 define o que está nela (mix L ou R, voz, silêncio ou um canal da fonte). A designação de uma faixa é apenas um nome e não altera o seu conteúdo.
+- **Número de faixas:** 8 ou 16 faixas de áudio. Os perfis de entrega JP ARIB - RDD9 e FR CST - AS-10 só permitem 8 faixas de áudio. Com eles, a app muda para 8 e avisa.
+- Predefinição para as faixas de áudio, por exemplo «Mix 1+2, voz 7+8». Em «Os meus presets» ficam as alocações que guardou.
+- **Alocação de faixas:** para cada faixa (T1 a T8 ou T16) define o que está nela (mix L ou R, voz, silêncio ou um canal da fonte). A designação de uma faixa é apenas um nome e não altera o seu conteúdo.
+
+Com **Guardar atribuição como preset...** na lista de predefinições, guarda a alocação atual com um nome. São guardados o número de faixas e o conteúdo e a designação de cada faixa.
 
 Ao lado do MXF é criada automaticamente uma folha de alocação (`<Nome>_tracks.txt`) que descreve a alocação real das faixas.
 
@@ -837,7 +873,7 @@ O fader master da superfície controla o master, e o indicador de timecode da su
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | Idioma                 | Automático (idioma do sistema), Deutsch, English, Français, Español, Italiano, Português. A alteração tem efeito no próximo arranque. |
 | Idioma do prompter     | Idioma em que o reconhecimento de fala segue o texto                                                                                |
-| Verificação de nível   | «Verificação de nível no arranque» ligada ou desligada                                                                              |
+| Verificação de nível   | «Verificação de nível no arranque» ligada ou desligada. Desligada na predefinição.                                                  |
 | Dicas                  | «Voltar a mostrar as dicas» volta a mostrar as indicações que só aparecem uma vez                                                    |
 
 Diretamente no menu Definições está o comutador **Crossfade na sobreposição** (ligado na predefinição, ver [capítulo 6](#k6)).
@@ -864,8 +900,9 @@ As alterações têm efeito imediato.
 
 - Guardar com Cmd+S, Guardar como com Cmd+Shift+S ou através do botão **FICHEIRO**. Um projeto é uma pasta com a extensão `.satkproj`. As gravações são guardadas diretamente na subpasta `audio` do projeto guardado. Por isso, um projeto novo deve ser guardado antes da primeira gravação.
 - Cmd+S durante um **AUTO MIX** fica em espera e é executado a seguir.
-- **Modelos:** **FICHEIRO** \> **Guardar atual como modelo...** guarda as faixas, as definições, os inserts, o perfil e o texto do prompter, mas nenhuma gravação, nenhum vídeo, nenhum capítulo e nenhum marcador. Os projetos novos criam-se então com **FICHEIRO** \> **Novo a partir de modelo**.
+- **Modelos:** **FICHEIRO** \> **Guardar atual como modelo...** guarda as faixas, as definições, os inserts, o perfil e o texto do prompter, mas nenhuma gravação, nenhum vídeo, nenhum capítulo e nenhum marcador. Os projetos novos criam-se então com **FICHEIRO** \> **Novo a partir de modelo**. As faixas de playout mantêm no modelo a sua função e a sua atribuição às faixas de áudio do vídeo. Na importação de vídeo seguinte, a app preenche estas faixas ([secção 3.4](#k3-4)). O destino da exportação também é guardado no modelo.
 - **Cópia de segurança automática:** quando há alterações, a app guarda a cada 30 segundos um estado de recuperação. Depois de uma falha, pergunta no arranque seguinte se esse estado deve ser recuperado ou descartado.
+- **Gravação interrompida:** se uma gravação em curso tiver sido interrompida por uma falha, a app indica na abertura seguinte «Gravação interrompida encontrada». **Restaurar** cria-a como take, **Descartar** põe os ficheiros no Lixo. **Mais tarde**, Esc ou fechar a janela deixam-na como está, e a app pergunta de novo na abertura seguinte.
 - **Sair:** se houver alterações não guardadas, a app pergunta se devem ser guardadas, descartadas ou se a ação deve ser cancelada. A mesma pergunta aparece em Novo e Abrir.
 
 ## Anexo
@@ -906,7 +943,7 @@ As teclas sem Cmd, Alt ou Control não têm efeito enquanto um campo de texto es
 | Janela     | Cmd+Shift+B                           | Janela da cabine                                              |
 | Janela     | Cmd+Shift+K                           | Capítulos                                                     |
 | Prompter   | Cmd+Mais, Cmd+Menos, Cmd+0            | Tamanho da letra                                              |
-| Ajuda      | Esc                                   | Fechar a ajuda                                                |
+| Ajuda      | Cmd+Shift+/                           | Manual                                                        |
 
 ### B Glossário
 
@@ -948,6 +985,8 @@ As teclas sem Cmd, Alt ou Control não têm efeito enquanto um campo de texto es
 | A câmara virtual não aparece                                   | A app tem de estar na pasta Aplicações. Autorizar a extensão nas Definições do Sistema, se necessário reiniciar o Mac e, em A/V..., ligar a câmara.                                               |
 | Falta o voyzSESSION Send ou o voyzSESSION Return               | Instalar o controlador em A/V... e reiniciar a app.                                                                                                                                             |
 | A taxa de fotogramas é apresentada a vermelho                  | O vídeo e o projeto têm taxas de fotogramas diferentes. Em PROJETO..., escolher «Copiar do vídeo».                                                                                              |
+| A exportação é cancelada: destino inacessível                 | Ligar a unidade do servidor ou, na janela de exportação, escolher outra pasta em Destino. |
+| Importação AAF: ficheiros multimédia não encontrados           | Clicar em **Escolher pasta...** e indicar a pasta com os ficheiros multimédia da edição. A app também procura nas subpastas. |
 | A app falhou                                                   | No arranque seguinte, escolher a recuperação. A app guarda a cada 30 segundos quando há alterações.                                                                                             |
 | Idioma errado na interface                                     | Escolher Definições \> Geral \> Idioma e reiniciar a app.                                                                                                                                       |
 | A janela de definições A/V está em inglês                      | Esta janela ainda não está traduzida na versão 2.0. O resto da app segue o idioma escolhido.                                                                                                    |

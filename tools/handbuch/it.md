@@ -67,7 +67,8 @@ Gli elementi da sinistra a destra:
 | IMMAGINE                  | Attiva o disattiva la finestra video (Cmd+9). Con un clic destro sposti l'immagine su uno schermo esterno o mostri il timecode.          |
 | LEVEL                     | Controllo livello per il microfono                                                                                                       |
 | A/V...                    | Impostazioni audio e video (interfaccia, ingresso e uscita)                                                                              |
-| AIUTO                     | Mostra e nasconde la guida integrata, si chiude con Esc                                                                                  |
+
+Apri il manuale dal menu dell'app: voyzSESSION PRO \> Manuale (Cmd+Shift+/). Il manuale è incluso nell'app e funziona senza connessione a Internet.
 
 Durante il periodo di prova un'etichetta con la scritta TRIAL mostra i giorni rimanenti. Se è disponibile una nuova versione, compare un'etichetta UPDATE che porta alla pagina di download.
 
@@ -101,6 +102,8 @@ A sinistra inserisci **START**, **FINE** e **LUNGHEZZA** dell'intervallo. A dest
 | Menu            | Voce                                                                                                        | Scorciatoia |
 |-----------------|-------------------------------------------------------------------------------------------------------------|-------------|
 | voyzSESSION PRO | Informazioni su voyzSESSION PRO..., Stream Deck: installa plug-in..., Stream Deck: carica layout, Esci     | Cmd+Q       |
+| voyzSESSION PRO | Manuale                                                                                                     | Cmd+Shift+/ |
+| Archivio        | Importa AAF... ([sezione 3.5](#k3-5))                                                                       |             |
 | Impostazioni    | Generale...                                                                                                 | Cmd+,       |
 | Impostazioni    | Audio/video...                                                                                              |             |
 | Impostazioni    | Dissolvenza incrociata in sovrapposizione (on/off)                                                          |             |
@@ -109,7 +112,7 @@ A sinistra inserisci **START**, **FINE** e **LUNGHEZZA** dell'intervallo. A dest
 | Finestra        | Finestra video                                                                                              | Cmd+9       |
 | Finestra        | Barra di navigazione (on/off)                                                                               |             |
 
-Nella barra dei menu non c'è un menu “File”. I comandi corrispondenti si trovano nel pulsante **FILE** della barra superiore.
+Nuovo progetto, Apri, Salva e Modelli si trovano nel pulsante **FILE** della barra superiore, non nel menu Archivio.
 
 ## 3 Primi passi
 
@@ -134,7 +137,7 @@ Registra sempre con le cuffie. Con la riproduzione dagli altoparlanti l'audio de
 
 ### 3.3 Regolare il livello del microfono (Controllo livello)
 
-Poco dopo l'avvio compare il Controllo livello. Puoi aprirlo in qualsiasi momento con **LEVEL** nella barra superiore.
+Apri il Controllo livello con **LEVEL** nella barra superiore. Nell'impostazione predefinita non compare da solo all'avvio.
 
 1.  In alto scegli il microfono.
 2.  Pronuncia alcune frasi al volume con cui registrerai in seguito.
@@ -147,7 +150,7 @@ Poco dopo l'avvio compare il Controllo livello. Puoi aprirlo in qualsiasi moment
 | Livello ottimale | da -18 a -3 dBFS  | Mantieni l'impostazione                                            |
 | Troppo alto      | sopra -3 dBFS     | Riduci il gain, altrimenti la registrazione distorce               |
 
-Nella stessa finestra scegli il profilo formato, cioè la norma per cui consegni, per esempio EBU/ARD-ZDF o Podcast. Con “Non mostrare al prossimo avvio” disattivi il Controllo livello automatico.
+Nella stessa finestra scegli il profilo formato, cioè la norma per cui consegni, per esempio EBU/ARD-ZDF o Podcast. Se vuoi che il Controllo livello compaia a ogni avvio, metti la spunta nella finestra o attivalo in Impostazioni \> Generale.
 
 ### 3.4 Caricare un video
 
@@ -164,7 +167,31 @@ Se il video ha più di due tracce audio, cosa frequente con gli MXF, compare la 
 
 I video con una o due tracce audio vengono importati senza domande con il ruolo Auto.
 
-### 3.5 Prima registrazione
+**Con un modello:** se il progetto contiene tracce di playout vuote provenienti da un modello ([sezione 15.4](#k15-4)), l'audio del video finisce su queste tracce. La finestra è allora precompilata, spunte e ruoli sono impostati come nel modello. Un avviso indica quante tracce vengono assegnate alle tracce già presenti nel modello. Confermi con **Importa**, così vedi un numero di tracce diverso nel nuovo materiale prima che abbia effetto. Con i video con una o due tracce audio l'app assegna le tracce senza domande. L'assegnazione automatica avviene solo se numero di traccia e formato (mono o stereo) corrispondono al modello, altrimenti vengono create nuove tracce come finora.
+
+Una sequenza dal montaggio video la importi tramite un file AAF ([sezione 3.5](#k3-5)).
+
+### 3.5 Importare una sequenza dal montaggio (AAF)
+
+Con Archivio \> **Importa AAF...** porti le tracce audio di una sequenza dal montaggio video nel progetto aperto, per esempio da Avid Media Composer, Adobe Premiere Pro o DaVinci Resolve. Le tracce vengono aggiunte, ogni clip si trova nella sua posizione di timecode.
+
+1.  Scegli Archivio \> **Importa AAF...** e apri il file AAF.
+2.  Nella finestra “Importa AAF” decidi se attivare **Riprendere i livelli delle clip dal montaggio**. Nell'impostazione predefinita l'interruttore è disattivato: il volume delle clip e i keyframe di livello del montaggio vengono ignorati e AUTO MIX lavora con il materiale grezzo. Se è attivato, agiscono in aggiunta al livellamento di AUTO MIX, come linea di clip gain sul take.
+3.  Fai clic su **Importa**. L'app legge la sequenza e decodifica i media. Una barra di avanzamento mostra l'operazione.
+4.  Se dei file multimediali non si trovano nel percorso indicato nell'AAF, compare “File multimediali non trovati”. Con **Scegli cartella...** l'app li cerca in una cartella e nelle sue sottocartelle, con **Importa senza di essi** le clip interessate mancano.
+5.  Controlla i ruoli (vedi sotto) e conferma.
+
+I media possono essere incorporati nell'AAF o collegati come file separati, anche come MXF OP-Atom da Avid. Vengono ripresi clip, nomi delle clip, fade, pan delle tracce e automazione del pan. Le coppie mono che nel montaggio formano una traccia stereo vengono unite in tracce stereo. In un progetto vuoto l'app riprende il timecode iniziale della sequenza. Se il progetto contiene già materiale, le clip vengono collocate secondo il timecode del progetto.
+
+**Ruoli:** perché AUTO MIX tratti correttamente le tracce, ogni traccia riceve un ruolo ([sezione 7.1](#k7-1)).
+
+- **Dai nomi delle tracce:** se una traccia mono si chiama per esempio “Voice”, “Voiceover”, “Narrator”, “Sprecher” o “Kommentar”, diventa una traccia voce. Nomi come “Music”, “Musik”, “Atmo” o “FX” danno il ruolo corrispondente.
+- **Dal contenuto:** per le tracce senza ruolo nel nome l'app ascolta l'audio e nella finestra “Ruoli dal contenuto” propone un ruolo: Presa diretta, Musica, Effetti o Ambiente. Il parlato viene sempre proposto come presa diretta, perché la traccia voce per il testo fuori campo nasce di solito solo dopo, con la registrazione. Controlla le proposte e, se serve, cambiale. **Senza ruoli dal contenuto** importa queste tracce senza ruolo.
+- **Clip senza parlato su tracce di parlato:** se su una traccia di presa diretta o voce c'è una clip senza parlato, per esempio un rumore o il suono dell'ambiente, AUTO MIX la livellerebbe come parlato. L'app elenca queste clip. Le clip spuntate finiscono su una traccia separata con il ruolo adatto. **Lasciare i clip sulle loro tracce** riprende tutto invariato.
+
+Dopo l'importazione un resoconto riassume che cosa è stato ripreso e che cosa no. Tra l'altro non vengono ripresi gli effetti di clip e di traccia, le variazioni di velocità (le clip scorrono alla velocità originale), il pan su singole clip e le forme di fade particolari, che vengono sostituite dalla forma standard. Per le clip con più di due canali vengono ripresi i canali 1 e 2. L'importazione non è possibile durante una registrazione o un salvataggio.
+
+### 3.6 Prima registrazione
 
 1.  Nell'intestazione della traccia voce fai clic su **R** per armare la traccia. Il tasto si illumina in rosso.
 2.  Premi **REC** o il tasto R. Dopo il pre-roll (**PRE**, impostazione predefinita 4 secondi) inizia la registrazione.
@@ -182,7 +209,7 @@ Si registra su ogni traccia armata. Più tracce possono essere armate contempora
 | Tasto    | Nome                          | Funzione                                                                                                                                        |
 |----------|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | R        | Armare                        | REC registra su questa traccia. Alt+clic agisce su tutte le tracce.                                                                             |
-| I        | Ascolto ingresso (INPUT ONLY) | On: l'ingresso è udibile anche durante la riproduzione. Off (Auto Input): l'ingresso è udibile solo da fermo e durante la registrazione.        |
+| I        | Ascolto ingresso (INPUT ONLY) | On: l'ingresso è sempre udibile, anche durante la riproduzione e senza R. Off (Auto Input): con la traccia armata l'ingresso è udibile solo da fermo e durante la registrazione. Si registra solo con R. |
 | M        | Mute                          | Silenzia la traccia                                                                                                                             |
 | S        | Solo                          | Ascolta solo questa traccia                                                                                                                     |
 | AC       | AutoCut                       | Taglia automaticamente la registrazione successiva in corrispondenza delle pause                                                                |
@@ -200,6 +227,7 @@ Con un clic destro sull'intestazione della traccia o con l'icona a ingranaggio r
 - **PRE** (pre-roll) stabilisce per quanto tempo il video scorre prima del punto di registrazione. Puoi impostare da 0 a 10 secondi, l'impostazione predefinita è 4 secondi. Con un doppio clic sul numero inserisci un valore.
 - **POST** (post-roll) stabilisce per quanto tempo la riproduzione prosegue dopo la fine di una registrazione nell'intervallo.
 - Durante il pre-roll il pulsante esegue un conto alla rovescia (per esempio “**PRE** 3.2s”), poi mostra **STOP REC**. Una nuova pressione interrompe la registrazione.
+- **REC durante la riproduzione** registra subito dalla posizione di riproduzione, senza salto e senza pre-roll (punch-in in corsa). Il pre-roll vale solo per l'avvio da fermo.
 - Se registri sopra un take esistente, la nuova registrazione sostituisce la parte sovrapposta. Ciò che si trova prima e dopo resta invariato.
 
 ### 4.3 Intervallo, loop e punch
@@ -208,7 +236,7 @@ In alto nel righello c'è una fascia per un intervallo. Questo intervallo vale s
 
 - **Creare un intervallo:** trascina nella fascia vuota. Trascinando un bordo cambi la lunghezza, trascinando al centro sposti l'intervallo, un doppio clic lo elimina. Inizio, fine e lunghezza si possono inserire anche nella barra di navigazione.
 - **LOOP** o il tasto L ripete l'intervallo. Se non è impostato alcun intervallo, l'app usa la porzione visibile.
-- **Registrazione solo nell'intervallo (punch):** un clic destro su **REC** commuta tra “registrazione fino a STOP” e “Registra nell'intervallo”. Nel secondo caso l'intervallo appare in arancione e la registrazione inizia e finisce esattamente ai suoi bordi.
+- **Registrazione solo nell'intervallo (punch):** un clic destro su **REC** commuta tra “registrazione fino a STOP” e “Registra nell'intervallo”. Nel secondo caso l'intervallo appare in arancione e la registrazione inizia e finisce esattamente ai suoi bordi. Se premi REC durante la riproduzione prima dell'intervallo, la registrazione attende il suo inizio. Fino ad allora il pulsante mostra il tempo di attesa (per esempio “**PUNCH** 2.5s”). All'interno dell'intervallo la registrazione inizia subito. Se la posizione di riproduzione è dopo l'intervallo o poco prima della sua fine, la riproduzione si ferma e la registrazione parte come da fermo, con pre-roll.
 
 ### 4.4 Voice Punch
 
@@ -358,12 +386,15 @@ In **PROGETTO...** \> Profilo formato stabilisci per quale norma consegni. Il pr
 | TV/Radio  | ARIB TR-B32 (Giappone)   | -24 LUFS                      | -1 dBTP          |
 | TV/Radio  | OP-59 (Australia)        | -24 LUFS                      | -2 dBTP          |
 | TV/Radio  | CST-RT-040 (Francia)     | -23 LUFS                      | -3 dBTP          |
+| TV/Radio  | Trailer                  | -23 LUFS                      | -1 dBTP          |
 | Streaming | Podcast                  | -16 LUFS                      | -1 dBTP          |
 | Streaming | YouTube                  | -14 LUFS                      | -1 dBTP          |
 | Altro     | Documentario             | -23 LUFS                      | -1 dBTP          |
 | Altro     | Sport                    | -23 LUFS                      | -1 dBTP          |
 | Altro     | Audiolibro               | -18 LUFS                      | -3 dBTP          |
 | Altro     | Studio 0 dB              | nessun obiettivo di loudness  | picco a 0 dBTP   |
+
+Il profilo **Trailer** è pensato per trailer e promo. Qui la musica è l'elemento principale e resta più forte, la voce sta sopra. Sotto la voce la musica cede solo nella gamma di frequenze della voce, bassi e medio-bassi restano invariati.
 
 Ogni traccia ha inoltre bisogno di un ruolo. Il ruolo comunica all'automatismo che cosa c'è sulla traccia. Scegli il ruolo con il tasto del ruolo nell'intestazione della traccia o nel mixer.
 
@@ -444,7 +475,7 @@ Apri il mixer con **MIXER** nella barra superiore. Ogni traccia ha un channel st
 5.  **Uscita:** solo indicazione
 6.  Modalità di automazione ([capitolo 11](#k11))
 7.  **Pan:** posizione nell'immagine stereo
-8.  Fader con indicatore di livello, intervallo da meno infinito a +12 dB
+8.  Fader con indicatore di livello, intervallo da meno infinito a +12 dB. Il fader usa tutta l'altezza libera della finestra.
 9.  **S, M e tasto di registrazione:** solo, mute, armamento per la registrazione
 10. Ruolo e nome
 
@@ -706,7 +737,9 @@ Con **EXPORT** nella barra di trasporto crei i file di consegna: il mix finito, 
 2.  Premi **EXPORT**. Si apre la finestra di esportazione.
 3.  Nel campo **Nome** inserisci un nome per la consegna. Se resta vuoto, viene usato il nome del progetto.
 4.  Scegli quali file devono essere creati (dalla [sezione 12.2](#k12-2) alla 12.4).
-5.  Fai clic su **EXPORT** o premi Return e scegli la cartella di destinazione.
+5.  Fai clic su **EXPORT** o premi Return. Se **Destinazione** è impostata su “Chiedi a ogni esportazione”, scegli ora la cartella di destinazione, altrimenti l'app scrive direttamente nella destinazione scelta.
+
+**Destinazione:** nella riga **Destinazione** della finestra di esportazione scegli “Chiedi a ogni esportazione”, una delle ultime destinazioni usate oppure **Scegli cartella...**, per esempio una cartella su un server. La destinazione viene salvata nel progetto e quindi anche nei modelli. Se al momento dell'esportazione non è raggiungibile, per esempio perché l'unità del server non è connessa, o se mancano i permessi di scrittura, l'esportazione si interrompe con un messaggio invece di salvare i file in un altro posto. Nella finestra compare allora “Destinazione non raggiungibile - il server è connesso?”.
 
 Nella cartella di destinazione viene creata una sottocartella con il nome della consegna. I file si chiamano per esempio `Beitrag_2026-11-19_v1_mix.wav` e `Beitrag_2026-11-19_v1_voice.wav`. A ogni esportazione successiva il numero di versione aumenta (v2, v3 ecc.).
 
@@ -745,8 +778,11 @@ In **USCITE** scegli **Video (MOV/MP4)** o **MXF (broadcast)**. È attiva l'opzi
 Per l'MXF ci sono impostazioni aggiuntive:
 
 - **Profilo di delivery:** EBU R128, US ATSC - IT 8, Stereo, DE ARD/ZDF - HDF01a, JP ARIB - RDD9, FR CST - AS-10. Se il profilo formato del progetto non corrisponde al profilo di delivery, compare un avviso rosso.
-- Preimpostazione per le tracce audio, per esempio “Mix 1+2, voce 7+8”.
-- **Assegnazione tracce:** per ognuna delle otto tracce da T1 a T8 stabilisci che cosa contiene (mix L o R, voce, muto o un canale della sorgente). Il nome di una traccia è solo un nome e non ne cambia il contenuto.
+- **Numero di tracce:** 8 o 16 tracce audio. I profili di delivery JP ARIB - RDD9 e FR CST - AS-10 consentono solo 8 tracce audio. Con questi profili l'app imposta 8 tracce e lo segnala.
+- Preimpostazione per le tracce audio, per esempio “Mix 1+2, voce 7+8”. In “I miei preset” trovi le assegnazioni che hai salvato.
+- **Assegnazione tracce:** per ogni traccia (da T1 a T8 o T16) stabilisci che cosa contiene (mix L o R, voce, muto o un canale della sorgente). Il nome di una traccia è solo un nome e non ne cambia il contenuto.
+
+Con **Salva assegnazione come preset...** nell'elenco delle preimpostazioni salvi l'assegnazione corrente con un nome. Vengono salvati il numero di tracce e il contenuto e il nome di ogni traccia.
 
 Accanto all'MXF viene creato automaticamente un foglio di assegnazione (`<Nome>_tracks.txt`) che descrive l'assegnazione effettiva delle tracce.
 
@@ -837,7 +873,7 @@ Il fader master della superficie controlla il master, il display del timecode de
 |----------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | Lingua               | Automatico (lingua di sistema), Deutsch, English, Français, Español, Italiano, Português. La modifica ha effetto al prossimo avvio. |
 | Lingua del prompter  | Lingua in cui il riconoscimento vocale segue il testo                                                                               |
-| Controllo livello    | “Mostra il controllo livello all'avvio” on o off                                                                                    |
+| Controllo livello    | “Mostra il controllo livello all'avvio” on o off. Disattivato nell'impostazione predefinita.                                        |
 | Suggerimenti         | “Mostra di nuovo i suggerimenti” mostra di nuovo gli avvisi che compaiono una sola volta                                            |
 
 Direttamente nel menu Impostazioni si trova l'interruttore **Dissolvenza incrociata in sovrapposizione** (attivo nell'impostazione predefinita, vedi [capitolo 6](#k6)).
@@ -864,8 +900,9 @@ Le modifiche hanno effetto subito.
 
 - Salva con Cmd+S, Salva con nome con Cmd+Shift+S oppure tramite il pulsante **FILE**. Un progetto è una cartella con l'estensione `.satkproj`. Le registrazioni vengono salvate direttamente nella sottocartella `audio` del progetto salvato. Per questo conviene salvare un nuovo progetto prima della prima registrazione.
 - Cmd+S durante un **AUTO MIX** viene messo in coda ed eseguito al termine.
-- **Modelli:** **FILE** \> **Salva l'attuale come modello...** salva tracce, impostazioni, insert, profilo e testo del prompter, ma non registrazioni, video, capitoli e marker. Crei poi i nuovi progetti con **FILE** \> **Nuovo da modello**.
+- **Modelli:** **FILE** \> **Salva l'attuale come modello...** salva tracce, impostazioni, insert, profilo e testo del prompter, ma non registrazioni, video, capitoli e marker. Crei poi i nuovi progetti con **FILE** \> **Nuovo da modello**. Nel modello le tracce di playout mantengono il loro ruolo e la loro assegnazione alle tracce audio del video. Alla successiva importazione di un video l'app riempie queste tracce ([sezione 3.4](#k3-4)). Anche la destinazione di esportazione viene salvata nel modello.
 - **Salvataggio automatico:** in caso di modifiche l'app salva ogni 30 secondi uno stato di ripristino. Dopo un crash, al successivo avvio chiede se ripristinare o scartare questo stato.
+- **Registrazione interrotta:** se una registrazione in corso è stata interrotta da un crash, alla successiva apertura l'app segnala “Trovata registrazione interrotta”. **Ripristina** la crea come take, **Scarta** sposta i file nel Cestino. **Più tardi**, Esc o la chiusura della finestra li lasciano invariati, e l'app chiede di nuovo alla successiva apertura.
 - **Uscire:** se ci sono modifiche non salvate, l'app chiede se salvare, scartare o annullare. La stessa domanda compare con Nuovo e Apri.
 
 ## Appendice
@@ -906,7 +943,7 @@ I tasti senza Cmd, Alt o Control non hanno effetto finché è attivo un campo di
 | Finestra   | Cmd+Shift+B                         | Finestra cabina                                              |
 | Finestra   | Cmd+Shift+K                         | Capitoli                                                     |
 | Prompter   | Cmd+Più, Cmd+Meno, Cmd+0            | Dimensione del carattere                                     |
-| Aiuto      | Esc                                 | Chiude la guida                                              |
+| Aiuto      | Cmd+Shift+/                         | Manuale                                                      |
 
 ### B Glossario
 
@@ -948,6 +985,8 @@ I tasti senza Cmd, Alt o Control non hanno effetto finché è attivo un campo di
 | La videocamera virtuale non compare                               | L'app deve trovarsi nella cartella Applicazioni. Autorizza l'estensione nelle Impostazioni di Sistema, se necessario riavvia il Mac e in A/V... attiva la videocamera.                      |
 | Manca voyzSESSION Send o Return                                   | Installa il driver in A/V... e riavvia l'app.                                                                                                                                              |
 | Il frame rate è mostrato in rosso                                 | Video e progetto hanno frame rate diversi. In PROGETTO... scegli “Prendi dal video”.                                                                                                       |
+| L'esportazione si interrompe: destinazione non raggiungibile     | Connetti l'unità del server o nella finestra di esportazione scegli un'altra cartella in Destinazione.                                                                                    |
+| Importazione AAF: file multimediali non trovati                  | Fai clic su **Scegli cartella...** e indica la cartella con i media del montaggio. L'app cerca anche nelle sottocartelle.                                                                  |
 | L'app è andata in crash                                           | Al successivo avvio scegli il ripristino. In caso di modifiche l'app salva ogni 30 secondi.                                                                                                |
 | Lingua dell'interfaccia errata                                    | Scegli Impostazioni \> Generale \> Lingua e riavvia l'app.                                                                                                                                 |
 | La finestra delle impostazioni A/V è in inglese                   | Questa finestra non è ancora tradotta nella versione 2.0. Il resto dell'app segue la lingua scelta.                                                                                        |

@@ -150,7 +150,7 @@ El control de nivel lo abres con **LEVEL** en la barra superior. Con el ajuste p
 | Nivel óptimo | -18 a -3 dBFS | Mantener el ajuste |
 | Demasiado alto | por encima de -3 dBFS | Bajar el gain; de lo contrario la grabación se distorsiona |
 
-En la misma ventana eliges el perfil de formato, es decir, la norma para la que entregas, por ejemplo EBU/ARD-ZDF o Podcast. La casilla "No mostrar en el próximo inicio" viene marcada de fábrica. Si quieres que el control de nivel aparezca en cada inicio, desmarca la casilla o actívalo en Ajustes \> General.
+En la misma ventana eliges el perfil de sonoridad, es decir, la norma para la que entregas, por ejemplo EBU/ARD-ZDF o Podcast. La casilla "No mostrar en el próximo inicio" viene marcada de fábrica. Si quieres que el control de nivel aparezca en cada inicio, desmarca la casilla o actívalo en Ajustes \> General.
 
 ### 3.4 Cargar un vídeo
 
@@ -377,7 +377,7 @@ En el modo Assist, la app se encarga de la mezcla. **AUTO MIX** (o Cmd+M) proces
 
 ### 7.1 Preparación: perfil, estilo de mezcla y roles
 
-En **PROYECTO...** \> Perfil de formato fijas para qué norma entregas. El perfil determina solo la entrega: la sonoridad objetivo, el pico máximo admisible (true peak) y la normalización. Cómo suena la mezcla lo determina el estilo de mezcla (ver más abajo).
+En **PROYECTO...** \> Perfil de sonoridad fijas para qué norma entregas. El perfil determina solo la entrega: la sonoridad objetivo, el pico máximo admisible (true peak) y la normalización. Cómo suena la mezcla lo determina el estilo de mezcla (ver más abajo).
 
 | Grupo | Perfil | Sonoridad | True peak |
 |---|---|---|---|
@@ -391,7 +391,7 @@ En **PROYECTO...** \> Perfil de formato fijas para qué norma entregas. El perfi
 | Otros | Audiolibro | -18 LUFS | -3 dBTP |
 | Otros | Studio 0 dB | sin objetivo de sonoridad | pico a 0 dBTP |
 
-**Estilo de mezcla:** fija cómo pondera AUTO MIX las pistas, con independencia del perfil de formato. Lo eliges con el botón junto a **AUTO MIX** en la barra de transporte o en **PROYECTO...**, en la fila **Estilo de mezcla**. El cambio se puede deshacer.
+**Estilo de mezcla:** fija cómo pondera AUTO MIX las pistas, con independencia del perfil de sonoridad. Lo eliges con el botón junto a **AUTO MIX** en la barra de transporte o en **PROYECTO...**, en la fila **Estilo de mezcla**. El cambio se puede deshacer.
 
 | Estilo de mezcla | Botón de la barra |
 |---|---|
@@ -404,7 +404,7 @@ En **PROYECTO...** \> Perfil de formato fijas para qué norma entregas. El perfi
 
 El ajuste predeterminado es **Reportaje / magacín**. El estilo de mezcla fija los valores iniciales, por ejemplo cuánto queda la cama por debajo de la voz. Con **Tráiler / promo** mandan la música y los efectos, el locutor queda más denso por encima y, bajo el locutor, la música solo cede en su rango de frecuencias. Los graves y los medios bajos se mantienen.
 
-Los proyectos guardados con los antiguos perfiles Trailer, Documental, Deportes, Podcast o Audiolibro se abren con el perfil de formato y el estilo de mezcla correspondientes.
+Los proyectos guardados con los antiguos perfiles Trailer, Documental, Deportes, Podcast o Audiolibro se abren con el perfil de sonoridad y el estilo de mezcla correspondientes.
 
 Además, cada pista necesita un rol. El rol indica al automatismo qué hay en la pista. Lo eliges con el botón de rol de la cabecera de pista o en el mezclador.
 
@@ -789,7 +789,7 @@ En **SALIDAS** eliges **Vídeo (MOV/MP4)** o **MXF (broadcast)**. Está activa l
 
 Con MXF hay ajustes adicionales:
 
-- **Perfil de entrega:** EBU R128, US ATSC - IT 8, Stereo, DE ARD/ZDF - HDF01a, JP ARIB - RDD9, FR CST - AS-10. Si el perfil de formato del proyecto no corresponde al perfil de entrega, aparece una advertencia roja.
+- **Perfil de entrega:** EBU R128, US ATSC - IT 8, Stereo, DE ARD/ZDF - HDF01a, JP ARIB - RDD9, FR CST - AS-10. Si el perfil de sonoridad del proyecto no corresponde al perfil de entrega, aparece una advertencia roja.
 - **Número de pistas:** 8 o 16 pistas de audio. Los perfiles de entrega JP ARIB - RDD9 y FR CST - AS-10 solo admiten 8 pistas de audio. Con ellos, la app cambia a 8 y lo indica.
 - Preajuste para las pistas de audio, por ejemplo "Mezcla 1+2, voz 7+8". En "Mis presets" están tus asignaciones guardadas.
 - **Asignación de pistas:** para cada pista (T1 a T8 o T16) fijas qué lleva (mezcla L o R, voz, silencio o un canal de la fuente). La denominación de una pista es solo un nombre y no cambia su contenido.
@@ -905,7 +905,7 @@ Los cambios se aplican de inmediato.
 
 - **AUDIO, frecuencia de muestreo:** la frecuencia de muestreo la determina el proyecto, no la interfaz. En un proyecto vacío la ajustas directamente. Si el proyecto ya contiene material, elige **Guardar copia con otra frecuencia de muestreo**. La app convierte entonces una copia; el original no cambia.
 - **TIEMPO E IMAGEN:** frecuencia de imagen (23,976 a 60 fps, también drop frame), código de tiempo inicial (selección rápida 00:00:00:00 o 10:00:00:00) y **Tomar del vídeo**. Si la frecuencia de imagen del vídeo es distinta, se muestra en rojo.
-- **SONORIDAD:** perfil de formato y estilo de mezcla ([sección 7.1](#k7-1)).
+- **SONORIDAD:** perfil de sonoridad y estilo de mezcla ([sección 7.1](#k7-1)).
 - **EPISODIO:** datos para podcasts ([sección 12.5](#k12-5)).
 
 ### 15.4 Guardar, plantillas, recuperar

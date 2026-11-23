@@ -150,7 +150,7 @@ Vous ouvrez le contrôle de niveau via **LEVEL** dans la barre d'en-tête. Par d
 | Niveau optimal | -18 à -3 dBFS        | Conserver le réglage                                                |
 | Trop fort      | au-dessus de -3 dBFS | Réduire le gain, sinon l'enregistrement sature                      |
 
-Dans la même fenêtre, vous choisissez le profil de format, c'est-à-dire la norme pour laquelle vous livrez, par exemple EBU/ARD-ZDF ou Podcast. La case « Ne plus afficher au prochain lancement » est cochée par défaut. Si le contrôle de niveau doit apparaître à chaque lancement, décochez la case ou activez-le sous Réglages \> Général.
+Dans la même fenêtre, vous choisissez le profil de sonie, c'est-à-dire la norme pour laquelle vous livrez, par exemple EBU/ARD-ZDF ou Podcast. La case « Ne plus afficher au prochain lancement » est cochée par défaut. Si le contrôle de niveau doit apparaître à chaque lancement, décochez la case ou activez-le sous Réglages \> Général.
 
 ### 3.4 Charger une vidéo
 
@@ -377,7 +377,7 @@ En mode Assist, l'app se charge du mixage. **AUTO MIX** (ou Cmd+M) traite la voi
 
 ### 7.1 Préparation : profil, style de mixage et rôles
 
-Sous **PROJET...** \> Profil de format, vous définissez la norme pour laquelle vous livrez. Le profil détermine uniquement la livraison : la loudness cible, la crête maximale admise (True Peak) et la normalisation. La sonorité du mix est déterminée par le style de mixage (voir ci-dessous).
+Sous **PROJET...** \> Profil de sonie, vous définissez la norme pour laquelle vous livrez. Le profil détermine uniquement la livraison : la loudness cible, la crête maximale admise (True Peak) et la normalisation. La sonorité du mix est déterminée par le style de mixage (voir ci-dessous).
 
 | Groupe    | Profil                  | Loudness                 | True Peak          |
 |-----------|-------------------------|--------------------------|--------------------|
@@ -391,7 +391,7 @@ Sous **PROJET...** \> Profil de format, vous définissez la norme pour laquelle 
 | Autres    | Livre audio             | -18 LUFS                 | -3 dBTP            |
 | Autres    | Studio 0 dB             | pas de cible de loudness | crête à 0 dBTP     |
 
-**Style de mixage :** il définit la façon dont l'AUTO MIX pondère les pistes, indépendamment du profil de format. Vous le choisissez avec la touche à côté de **AUTO MIX** dans la barre de transport ou sous **PROJET...** à la ligne **Style de mixage**. Un changement peut être annulé.
+**Style de mixage :** il définit la façon dont l'AUTO MIX pondère les pistes, indépendamment du profil de sonie. Vous le choisissez avec la touche à côté de **AUTO MIX** dans la barre de transport ou sous **PROJET...** à la ligne **Style de mixage**. Un changement peut être annulé.
 
 | Style de mixage             | Touche de la barre |
 |-----------------------------|--------------------|
@@ -404,7 +404,7 @@ Sous **PROJET...** \> Profil de format, vous définissez la norme pour laquelle 
 
 Le réglage par défaut est **Reportage / magazine**. Le style de mixage fixe les valeurs de départ, par exemple la distance entre le tapis et la voix. Avec **Bande-annonce / promo**, la musique et les effets mènent, la voix se place plus près au-dessus, et sous la voix, la musique ne cède que dans la plage de fréquences de la voix. Les basses et le bas-médium restent en place.
 
-Les projets enregistrés avec les anciens profils Trailer, Documentaire, Sport, Podcast ou Livre audio s'ouvrent avec le profil de format et le style de mixage correspondants.
+Les projets enregistrés avec les anciens profils Trailer, Documentaire, Sport, Podcast ou Livre audio s'ouvrent avec le profil de sonie et le style de mixage correspondants.
 
 Chaque piste a en outre besoin d'un rôle. Il indique à l'automatisme ce qui se trouve sur la piste. Vous choisissez le rôle avec la touche de rôle dans l'en-tête de piste ou dans la console de mixage.
 
@@ -789,7 +789,7 @@ Sous **SORTIES**, choisissez **Vidéo (MOV/MP4)** ou **MXF (diffusion)**. L'opti
 
 Pour le MXF, il existe des réglages supplémentaires :
 
-- **Profil de livraison :** EBU R128, US ATSC - IT 8, Stereo, DE ARD/ZDF - HDF01a, JP ARIB - RDD9, FR CST - AS-10. Si le profil de format du projet ne correspond pas au profil de livraison, un avertissement rouge apparaît.
+- **Profil de livraison :** EBU R128, US ATSC - IT 8, Stereo, DE ARD/ZDF - HDF01a, JP ARIB - RDD9, FR CST - AS-10. Si le profil de sonie du projet ne correspond pas au profil de livraison, un avertissement rouge apparaît.
 - **Nombre de pistes :** 8 ou 16 pistes audio. Les profils de livraison JP ARIB - RDD9 et FR CST - AS-10 n'autorisent que 8 pistes audio. Pour eux, l'app passe à 8 et le signale.
 - Préréglage des pistes audio, par exemple « Mix 1+2, voix 7+8 ». Sous « Mes préréglages » figurent vos affectations enregistrées.
 - **Affectation des pistes :** pour chaque piste (T1 à T8 ou T16), vous définissez ce qu'elle contient (mix G ou D, voix, muet ou un canal de la source). La désignation d'une piste n'est qu'un nom et ne modifie pas son contenu.
@@ -905,7 +905,7 @@ Les modifications prennent effet immédiatement.
 
 - **AUDIO, fréquence d'échantillonnage :** la fréquence d'échantillonnage est déterminée par le projet, pas par l'interface. Pour un projet vide, vous la réglez directement. Si le projet contient déjà du matériel, choisissez **Enregistrer une copie à une autre fréquence d'échantillonnage**. L'app convertit alors une copie, et l'original reste inchangé.
 - **TEMPS ET IMAGE :** fréquence d'images (23,976 à 60 fps, y compris drop frame), timecode de départ (choix rapide 00:00:00:00 ou 10:00:00:00) et **Depuis la vidéo**. Si la fréquence d'images de la vidéo diffère, elle s'affiche en rouge.
-- **LOUDNESS :** profil de format et style de mixage ([section 7.1](#k7-1)).
+- **LOUDNESS :** profil de sonie et style de mixage ([section 7.1](#k7-1)).
 - **ÉPISODE :** informations pour les podcasts ([section 12.5](#k12-5)).
 
 ### 15.4 Sauvegarde, modèles, restauration

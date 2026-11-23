@@ -150,7 +150,7 @@ Den Pegel-Check öffnen Sie über **LEVEL** in der Kopfleiste. In der Grundeinst
 | Optimaler Pegel | -18 bis -3 dBFS | Einstellung beibehalten                           |
 | Zu laut         | über -3 dBFS    | Gain verringern, sonst verzerrt die Aufnahme      |
 
-Im selben Fenster wählen Sie das Format-Profil, also die Norm, für die Sie liefern, zum Beispiel EBU/ARD-ZDF oder Podcast. Der Haken „Beim nächsten Start nicht mehr zeigen“ ist ab Werk gesetzt. Soll der Pegel-Check bei jedem Start erscheinen, entfernen Sie den Haken oder schalten Sie ihn unter Einstellungen \> Allgemein ein.
+Im selben Fenster wählen Sie das Lautheitsprofil, also die Norm, für die Sie liefern, zum Beispiel EBU/ARD-ZDF oder Podcast. Der Haken „Beim nächsten Start nicht mehr zeigen“ ist ab Werk gesetzt. Soll der Pegel-Check bei jedem Start erscheinen, entfernen Sie den Haken oder schalten Sie ihn unter Einstellungen \> Allgemein ein.
 
 ### 3.4 Video laden
 
@@ -377,7 +377,7 @@ Im Assist-Modus übernimmt die App die Mischung. **AUTO MIX** (oder Cmd+M) bearb
 
 ### 7.1 Vorbereitung: Profil, Mischart und Rollen
 
-Unter **PROJEKT...** \> Format-Profil legen Sie fest, für welche Norm Sie liefern. Das Profil bestimmt nur die Lieferung: die Ziel-Lautheit, die höchste zulässige Spitze (True Peak) und die Normalisierung. Wie die Mischung klingt, bestimmt die Mischart (siehe unten).
+Unter **PROJEKT...** \> Lautheitsprofil legen Sie fest, für welche Norm Sie liefern. Das Profil bestimmt nur die Lieferung: die Ziel-Lautheit, die höchste zulässige Spitze (True Peak) und die Normalisierung. Wie die Mischung klingt, bestimmt die Mischart (siehe unten).
 
 | Gruppe    | Profil                  | Lautheit           | True Peak         |
 |-----------|-------------------------|--------------------|-------------------|
@@ -391,7 +391,7 @@ Unter **PROJEKT...** \> Format-Profil legen Sie fest, für welche Norm Sie liefe
 | Weitere   | Hörbuch                 | -18 LUFS           | -3 dBTP           |
 | Weitere   | Studio 0 dB             | kein Lautheitsziel | Spitze auf 0 dBTP |
 
-**Mischart:** Sie legt fest, wie der AUTO MIX die Spuren gewichtet, unabhängig vom Format-Profil. Sie wählen sie mit der Taste neben **AUTO MIX** in der Transportleiste oder unter **PROJEKT...** in der Zeile **Mischart**. Ein Wechsel lässt sich rückgängig machen.
+**Mischart:** Sie legt fest, wie der AUTO MIX die Spuren gewichtet, unabhängig vom Lautheitsprofil. Sie wählen sie mit der Taste neben **AUTO MIX** in der Transportleiste oder unter **PROJEKT...** in der Zeile **Mischart**. Ein Wechsel lässt sich rückgängig machen.
 
 | Mischart          | Leistentaste |
 |-------------------|--------------|
@@ -404,7 +404,7 @@ Unter **PROJEKT...** \> Format-Profil legen Sie fest, für welche Norm Sie liefe
 
 Die Grundeinstellung ist **Beitrag / Magazin**. Die Mischart setzt die Startwerte, etwa wie weit das Bett unter der Stimme liegt. Bei **Trailer / Promo** führen Musik und Effekte, der Sprecher sitzt dichter darüber, und die Musik gibt unter dem Sprecher nur in dessen Frequenzbereich nach. Bass und tiefe Mitten bleiben stehen.
 
-Projekte, die mit den früheren Profilen Trailer, Doku, Sport, Podcast oder Hörbuch gespeichert wurden, öffnen mit dem passenden Format-Profil und der passenden Mischart.
+Projekte, die mit den früheren Profilen Trailer, Doku, Sport, Podcast oder Hörbuch gespeichert wurden, öffnen mit dem passenden Lautheitsprofil und der passenden Mischart.
 
 Jede Spur braucht außerdem eine Rolle. Sie teilt der Automatik mit, was auf der Spur liegt. Die Rolle wählen Sie über die Rollentaste im Spurkopf oder im Mixer.
 
@@ -789,8 +789,8 @@ Unter **AUSGABEN** wählen Sie **Video (MOV/MP4)** oder **MXF (Broadcast)**. Akt
 
 Beim MXF gibt es zusätzliche Einstellungen:
 
-- **Delivery-Profil:** EBU R128, US ATSC - IT 8, Stereo, DE ARD/ZDF - HDF01a, JP ARIB - RDD9, FR CST - AS-10. Passt das Format-Profil des Projekts nicht zum Delivery-Profil, erscheint eine rote Warnung.
-- **Spurzahl:** 8 oder 16 Tonspuren. Die Lieferprofile JP ARIB - RDD9 und FR CST - AS-10 erlauben nur 8 Tonspuren. Bei ihnen stellt die App auf 8 und meldet das.
+- **Delivery-Profil:** EBU R128, US ATSC - IT 8, Stereo, DE ARD/ZDF - HDF01a, JP ARIB - RDD9, FR CST - AS-10. Passt das Lautheitsprofil des Projekts nicht zum Delivery-Profil, erscheint eine rote Warnung.
+- **Spurzahl:** 8 oder 16 Tonspuren. Die Delivery-Profile JP ARIB - RDD9 und FR CST - AS-10 erlauben nur 8 Tonspuren. Bei ihnen stellt die App auf 8 und meldet das.
 - Voreinstellung für die Tonspuren, zum Beispiel „Mix 1+2, Voice 7+8“. Unter „Eigene Presets“ stehen Ihre gespeicherten Belegungen.
 - **Tonspur-Belegung:** Für jede Spur (T1 bis T8 bzw. T16) legen Sie fest, was darauf liegt (Mischung L oder R, Voice, stumm oder ein Kanal der Quelle). Die Bezeichnung einer Spur ist nur ein Name und ändert ihren Inhalt nicht.
 
@@ -905,7 +905,7 @@ Direkt im Menü Einstellungen liegt der Schalter **Crossfade bei Überlappung** 
 
 - **AUDIO, Abtastrate:** Die Abtastrate wird vom Projekt bestimmt, nicht vom Interface. Bei einem leeren Projekt stellen Sie sie direkt ein. Enthält das Projekt bereits Material, wählen Sie **Kopie mit anderer Abtastrate speichern**. Die App rechnet dann eine Kopie um, das Original bleibt unverändert.
 - **ZEIT UND BILD:** Bildrate (23,976 bis 60 fps, auch Drop-Frame), Startzeitcode (Schnellwahl 00:00:00:00 oder 10:00:00:00) und **Vom Video übernehmen**. Weicht die Bildrate des Videos ab, wird sie rot angezeigt.
-- **LAUTHEIT:** Format-Profil und Mischart ([Abschnitt 7.1](#k7-1)).
+- **LAUTHEIT:** Lautheitsprofil und Mischart ([Abschnitt 7.1](#k7-1)).
 - **FOLGE:** Angaben für Podcasts ([Abschnitt 12.5](#k12-5)).
 
 ### 15.4 Speichern, Vorlagen, Wiederherstellen

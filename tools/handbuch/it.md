@@ -150,7 +150,7 @@ Apri il Controllo livello con **LEVEL** nella barra superiore. Nell'impostazione
 | Livello ottimale | da -18 a -3 dBFS  | Mantieni l'impostazione                                            |
 | Troppo alto      | sopra -3 dBFS     | Riduci il gain, altrimenti la registrazione distorce               |
 
-Nella stessa finestra scegli il profilo formato, cioè la norma per cui consegni, per esempio EBU/ARD-ZDF o Podcast. La spunta “Non mostrare al prossimo avvio” è attiva di fabbrica. Se vuoi che il Controllo livello compaia a ogni avvio, togli la spunta o attivalo in Impostazioni \> Generale.
+Nella stessa finestra scegli il profilo di loudness, cioè la norma per cui consegni, per esempio EBU/ARD-ZDF o Podcast. La spunta “Non mostrare al prossimo avvio” è attiva di fabbrica. Se vuoi che il Controllo livello compaia a ogni avvio, togli la spunta o attivalo in Impostazioni \> Generale.
 
 ### 3.4 Caricare un video
 
@@ -377,7 +377,7 @@ In modalità Assist il mix lo fa l'app. **AUTO MIX** (o Cmd+M) elabora la voce, 
 
 ### 7.1 Preparazione: profilo, stile di mix e ruoli
 
-In **PROGETTO...** \> Profilo formato stabilisci per quale norma consegni. Il profilo determina solo la consegna: la loudness di destinazione, il picco massimo ammesso (true peak) e la normalizzazione. Come suona il mix lo determina lo stile di mix (vedi sotto).
+In **PROGETTO...** \> Profilo di loudness stabilisci per quale norma consegni. Il profilo determina solo la consegna: la loudness di destinazione, il picco massimo ammesso (true peak) e la normalizzazione. Come suona il mix lo determina lo stile di mix (vedi sotto).
 
 | Gruppo    | Profilo                  | Loudness                      | True Peak        |
 |-----------|--------------------------|-------------------------------|------------------|
@@ -391,7 +391,7 @@ In **PROGETTO...** \> Profilo formato stabilisci per quale norma consegni. Il pr
 | Altro     | Audiolibro               | -18 LUFS                      | -3 dBTP          |
 | Altro     | Studio 0 dB              | nessun obiettivo di loudness  | picco a 0 dBTP   |
 
-**Stile di mix:** stabilisce come AUTO MIX bilancia le tracce, indipendentemente dal profilo formato. Lo scegli con il tasto accanto ad **AUTO MIX** nella barra di trasporto o in **PROGETTO...** nella riga **Stile di mix**. Un cambio si può annullare.
+**Stile di mix:** stabilisce come AUTO MIX bilancia le tracce, indipendentemente dal profilo di loudness. Lo scegli con il tasto accanto ad **AUTO MIX** nella barra di trasporto o in **PROGETTO...** nella riga **Stile di mix**. Un cambio si può annullare.
 
 | Stile di mix             | Tasto nella barra |
 |--------------------------|-------------------|
@@ -404,7 +404,7 @@ In **PROGETTO...** \> Profilo formato stabilisci per quale norma consegni. Il pr
 
 L'impostazione predefinita è **Servizio / magazine**. Lo stile di mix imposta i valori di partenza, per esempio quanto il tappeto sta sotto la voce. Con **Trailer / promo** musica ed effetti guidano il mix, la voce sta sopra in modo più compatto e sotto la voce la musica cede solo nella gamma di frequenze della voce. Bassi e medio-bassi restano invariati.
 
-I progetti salvati con i precedenti profili Trailer, Documentario, Sport, Podcast o Audiolibro si aprono con il profilo formato e lo stile di mix corrispondenti.
+I progetti salvati con i precedenti profili Trailer, Documentario, Sport, Podcast o Audiolibro si aprono con il profilo di loudness e lo stile di mix corrispondenti.
 
 Ogni traccia ha inoltre bisogno di un ruolo. Il ruolo comunica all'automatismo che cosa c'è sulla traccia. Scegli il ruolo con il tasto del ruolo nell'intestazione della traccia o nel mixer.
 
@@ -789,7 +789,7 @@ In **USCITE** scegli **Video (MOV/MP4)** o **MXF (broadcast)**. È attiva l'opzi
 
 Per l'MXF ci sono impostazioni aggiuntive:
 
-- **Profilo di delivery:** EBU R128, US ATSC - IT 8, Stereo, DE ARD/ZDF - HDF01a, JP ARIB - RDD9, FR CST - AS-10. Se il profilo formato del progetto non corrisponde al profilo di delivery, compare un avviso rosso.
+- **Profilo di delivery:** EBU R128, US ATSC - IT 8, Stereo, DE ARD/ZDF - HDF01a, JP ARIB - RDD9, FR CST - AS-10. Se il profilo di loudness del progetto non corrisponde al profilo di delivery, compare un avviso rosso.
 - **Numero di tracce:** 8 o 16 tracce audio. I profili di delivery JP ARIB - RDD9 e FR CST - AS-10 consentono solo 8 tracce audio. Con questi profili l'app imposta 8 tracce e lo segnala.
 - Preimpostazione per le tracce audio, per esempio “Mix 1+2, voce 7+8”. In “I miei preset” trovi le assegnazioni che hai salvato.
 - **Assegnazione tracce:** per ogni traccia (da T1 a T8 o T16) stabilisci che cosa contiene (mix L o R, voce, muto o un canale della sorgente). Il nome di una traccia è solo un nome e non ne cambia il contenuto.
@@ -905,7 +905,7 @@ Le modifiche hanno effetto subito.
 
 - **AUDIO, Frequenza di campionamento:** la frequenza di campionamento è determinata dal progetto, non dall'interfaccia. In un progetto vuoto la imposti direttamente. Se il progetto contiene già materiale, scegli **Salva copia con altra frequenza di campionamento**. L'app converte allora una copia, l'originale resta invariato.
 - **TEMPO E IMMAGINE:** frame rate (da 23,976 a 60 fps, anche drop frame), timecode iniziale (scelta rapida 00:00:00:00 o 10:00:00:00) e **Prendi dal video**. Se il frame rate del video è diverso, viene mostrato in rosso.
-- **LOUDNESS:** profilo formato e stile di mix ([sezione 7.1](#k7-1)).
+- **LOUDNESS:** profilo di loudness e stile di mix ([sezione 7.1](#k7-1)).
 - **EPISODIO:** dati per i podcast ([sezione 12.5](#k12-5)).
 
 ### 15.4 Salvataggio, modelli, ripristino

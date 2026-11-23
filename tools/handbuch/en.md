@@ -150,7 +150,7 @@ You open the Level Check with **LEVEL** in the header bar. By default it does no
 | Optimal level   | -18 to -3 dBFS  | Keep the setting                                      |
 | Too loud        | above -3 dBFS   | Reduce the gain, otherwise the recording distorts     |
 
-In the same window you select the format profile, that is, the standard you deliver to, for example EBU/ARD-ZDF or Podcast. The box "Don't show on next launch" is checked by default. If you want the Level Check to appear at every start, uncheck the box or switch it on under Settings \> General.
+In the same window you select the loudness profile, that is, the standard you deliver to, for example EBU/ARD-ZDF or Podcast. The box "Don't show on next launch" is checked by default. If you want the Level Check to appear at every start, uncheck the box or switch it on under Settings \> General.
 
 ### 3.4 Loading a video
 
@@ -377,7 +377,7 @@ In Assist mode, the app takes care of the mix. **AUTO MIX** (or Cmd+M) processes
 
 ### 7.1 Preparation: profile, mix style and roles
 
-Under **PROJECT...** \> Format profile you specify which standard you deliver to. The profile only determines the delivery: the target loudness, the highest permitted peak (true peak) and the normalization. How the mix sounds is determined by the mix style (see below).
+Under **PROJECT...** \> Loudness profile you specify which standard you deliver to. The profile only determines the delivery: the target loudness, the highest permitted peak (true peak) and the normalization. How the mix sounds is determined by the mix style (see below).
 
 | Group     | Profile                 | Loudness           | True peak         |
 |-----------|-------------------------|--------------------|-------------------|
@@ -391,7 +391,7 @@ Under **PROJECT...** \> Format profile you specify which standard you deliver to
 | Other     | Audiobook               | -18 LUFS           | -3 dBTP           |
 | Other     | Studio 0 dB             | no loudness target | peak at 0 dBTP    |
 
-**Mix style:** It specifies how AUTO MIX weights the tracks, independently of the format profile. You choose it with the button next to **AUTO MIX** in the transport bar or under **PROJECT...** in the **Mix style** row. A change can be undone.
+**Mix style:** It specifies how AUTO MIX weights the tracks, independently of the loudness profile. You choose it with the button next to **AUTO MIX** in the transport bar or under **PROJECT...** in the **Mix style** row. A change can be undone.
 
 | Mix style               | Bar button |
 |-------------------------|------------|
@@ -404,7 +404,7 @@ Under **PROJECT...** \> Format profile you specify which standard you deliver to
 
 The default is **Report / magazine**. The mix style sets the starting values, for example how far the bed sits below the voice. With **Trailer / promo**, music and effects lead, the voice sits closer on top, and under the voice the music only gives way in the voice's frequency range. Bass and low mids stay in place.
 
-Projects saved with the earlier profiles Trailer, Documentary, Sports, Podcast or Audiobook open with the matching format profile and the matching mix style.
+Projects saved with the earlier profiles Trailer, Documentary, Sports, Podcast or Audiobook open with the matching loudness profile and the matching mix style.
 
 Each track also needs a role. It tells the automatic mix what is on the track. You choose the role with the role button in the track header or in the mixer.
 
@@ -789,7 +789,7 @@ Under **OUTPUTS** you choose **Video (MOV/MP4)** or **MXF (broadcast)**. The opt
 
 For MXF there are additional settings:
 
-- **Delivery profile:** EBU R128, US ATSC - IT 8, Stereo, DE ARD/ZDF - HDF01a, JP ARIB - RDD9, FR CST - AS-10. If the format profile of the project does not match the delivery profile, a red warning appears.
+- **Delivery profile:** EBU R128, US ATSC - IT 8, Stereo, DE ARD/ZDF - HDF01a, JP ARIB - RDD9, FR CST - AS-10. If the loudness profile of the project does not match the delivery profile, a red warning appears.
 - **Track count:** 8 or 16 audio tracks. The delivery profiles JP ARIB - RDD9 and FR CST - AS-10 only allow 8 audio tracks. For them, the app switches to 8 and reports this.
 - Preset for the audio tracks, for example "Mix 1+2, voice 7+8". Under "My presets" are your saved allocations.
 - **TRACK ALLOCATION:** For each track (T1 to T8 or T16) you specify what is on it (mix L or R, voice, silent or a channel of the source). The label of a track is only a name and does not change its content.
@@ -905,7 +905,7 @@ Changes take effect immediately.
 
 - **AUDIO, sample rate:** The sample rate is determined by the project, not by the interface. For an empty project you set it directly. If the project already contains material, choose **Save copy at different sample rate**. The app then converts a copy; the original stays unchanged.
 - **TIME AND PICTURE:** frame rate (23.976 to 60 fps, including drop frame), start timecode (quick selection 00:00:00:00 or 10:00:00:00) and **Take from video**. If the frame rate of the video differs, it is shown in red.
-- **LOUDNESS:** format profile and mix style ([Section 7.1](#k7-1)).
+- **LOUDNESS:** loudness profile and mix style ([Section 7.1](#k7-1)).
 - **EPISODE:** details for podcasts ([Section 12.5](#k12-5)).
 
 ### 15.4 Saving, templates, recovery

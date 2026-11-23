@@ -150,7 +150,7 @@ Abre a Verificação de nível através de **LEVEL** na barra superior. Na prede
 | Nível ideal       | -18 a -3 dBFS      | Manter a definição                                             |
 | Demasiado alto    | acima de -3 dBFS   | Reduzir o gain, caso contrário a gravação distorce             |
 
-Na mesma janela escolhe o perfil de formato, ou seja, a norma para a qual entrega, por exemplo EBU/ARD-ZDF ou Podcast. A opção «Não mostrar na próxima abertura» vem assinalada de fábrica. Se quiser que a Verificação de nível apareça em cada arranque, desmarque a opção ou ative-a em Definições \> Geral.
+Na mesma janela escolhe o perfil de loudness, ou seja, a norma para a qual entrega, por exemplo EBU/ARD-ZDF ou Podcast. A opção «Não mostrar na próxima abertura» vem assinalada de fábrica. Se quiser que a Verificação de nível apareça em cada arranque, desmarque a opção ou ative-a em Definições \> Geral.
 
 ### 3.4 Carregar um vídeo
 
@@ -377,7 +377,7 @@ No modo Assist, a app assume a mistura. O **AUTO MIX** (ou Cmd+M) trata a voz, b
 
 ### 7.1 Preparação: perfil, estilo de mistura e funções
 
-Em **PROJETO...** \> Perfil de formato define para que norma entrega. O perfil determina apenas a entrega: a loudness alvo, o pico máximo permitido (true peak) e a normalização. O som da mistura é determinado pelo estilo de mistura (ver abaixo).
+Em **PROJETO...** \> Perfil de loudness define para que norma entrega. O perfil determina apenas a entrega: a loudness alvo, o pico máximo permitido (true peak) e a normalização. O som da mistura é determinado pelo estilo de mistura (ver abaixo).
 
 | Grupo     | Perfil                  | Loudness              | True peak          |
 |-----------|-------------------------|-----------------------|--------------------|
@@ -391,7 +391,7 @@ Em **PROJETO...** \> Perfil de formato define para que norma entrega. O perfil d
 | Outros    | Audiolivro              | -18 LUFS              | -3 dBTP            |
 | Outros    | Studio 0 dB             | sem alvo de loudness  | pico a 0 dBTP      |
 
-**Estilo de mistura:** determina a forma como o AUTO MIX pondera as faixas, independentemente do perfil de formato. Escolhe-o com o botão ao lado de **AUTO MIX** na barra de transporte ou em **PROJETO...**, na linha **Estilo de mistura**. Uma mudança pode ser anulada.
+**Estilo de mistura:** determina a forma como o AUTO MIX pondera as faixas, independentemente do perfil de loudness. Escolhe-o com o botão ao lado de **AUTO MIX** na barra de transporte ou em **PROJETO...**, na linha **Estilo de mistura**. Uma mudança pode ser anulada.
 
 | Estilo de mistura        | Botão na barra |
 |--------------------------|----------------|
@@ -404,7 +404,7 @@ Em **PROJETO...** \> Perfil de formato define para que norma entrega. O perfil d
 
 A predefinição é **Reportagem / magazine**. O estilo de mistura define os valores iniciais, por exemplo a que distância o fundo fica por baixo da voz. Em **Trailer / promo**, a música e os efeitos estão em primeiro plano, o locutor fica mais próximo por cima, e por baixo do locutor a música só cede na gama de frequências da voz. Os graves e os médios graves mantêm-se.
 
-Os projetos guardados com os antigos perfis Trailer, Documentário, Desporto, Podcast ou Audiolivro abrem com o perfil de formato e o estilo de mistura correspondentes.
+Os projetos guardados com os antigos perfis Trailer, Documentário, Desporto, Podcast ou Audiolivro abrem com o perfil de loudness e o estilo de mistura correspondentes.
 
 Cada faixa precisa ainda de uma função. Esta indica à automação o que está na faixa. Escolhe a função através do botão de função no cabeçalho da faixa ou no mixer.
 
@@ -789,7 +789,7 @@ Em **SAÍDAS** escolhe **Vídeo (MOV/MP4)** ou **MXF (broadcast)**. Está ativa 
 
 No MXF há definições adicionais:
 
-- **Perfil de entrega:** EBU R128, US ATSC - IT 8, Stereo, DE ARD/ZDF - HDF01a, JP ARIB - RDD9, FR CST - AS-10. Se o perfil de formato do projeto não corresponder ao perfil de entrega, aparece um aviso vermelho.
+- **Perfil de entrega:** EBU R128, US ATSC - IT 8, Stereo, DE ARD/ZDF - HDF01a, JP ARIB - RDD9, FR CST - AS-10. Se o perfil de loudness do projeto não corresponder ao perfil de entrega, aparece um aviso vermelho.
 - **Número de faixas:** 8 ou 16 faixas de áudio. Os perfis de entrega JP ARIB - RDD9 e FR CST - AS-10 só permitem 8 faixas de áudio. Com eles, a app muda para 8 e avisa.
 - Predefinição para as faixas de áudio, por exemplo «Mix 1+2, voz 7+8». Em «Os meus presets» ficam as alocações que guardou.
 - **Alocação de faixas:** para cada faixa (T1 a T8 ou T16) define o que está nela (mix L ou R, voz, silêncio ou um canal da fonte). A designação de uma faixa é apenas um nome e não altera o seu conteúdo.
@@ -905,7 +905,7 @@ As alterações têm efeito imediato.
 
 - **ÁUDIO, frequência de amostragem:** a frequência de amostragem é determinada pelo projeto, não pela interface. Num projeto vazio, defina-a diretamente. Se o projeto já contiver material, escolha **Guardar cópia com outra frequência de amostragem**. A app converte então uma cópia, e o original fica inalterado.
 - **TEMPO E IMAGEM:** taxa de fotogramas (23,976 a 60 fps, também drop-frame), timecode inicial (escolha rápida 00:00:00:00 ou 10:00:00:00) e **Copiar do vídeo**. Se a taxa de fotogramas do vídeo for diferente, é apresentada a vermelho.
-- **LOUDNESS:** perfil de formato e estilo de mistura ([secção 7.1](#k7-1)).
+- **LOUDNESS:** perfil de loudness e estilo de mistura ([secção 7.1](#k7-1)).
 - **EPISÓDIO:** dados para podcasts ([secção 12.5](#k12-5)).
 
 ### 15.4 Guardar, modelos, recuperar

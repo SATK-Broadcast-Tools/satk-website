@@ -234,6 +234,22 @@ h1,h2,h3,h4,h5,p,li{text-wrap:balance}
  <div class="product-name">pegelWERK voyzSESSION PRO <span class="product-status" data-i18n="cl_st_live">Live</span></div>
 
  <div class="release">
+ <span class="release-version">2.0.1</span><span class="release-date">2026-11-24</span>
+ <div class="release-title" data-i18n="cl_od_201_t">AAF-Import aus dem Schnitt, Mischarten neben AUTO MIX, 16 Tonspuren, Handbuch in der App</div>
+ <ul class="release-list">
+ <li data-i18n="cl_od_201_1">AAF-Import: eine Sequenz aus dem Schnitt kommt mit Clips, Pegeln, Blenden, Clipnamen, Panorama und Stereopaaren in die offene Sitzung. Rollen werden aus Spurnamen und Inhalt vorgeschlagen, fehlende Medien lassen sich aus einem Ordner neu verknüpfen.</li>
+ <li data-i18n="cl_od_201_2">Neben AUTO MIX wählt man die Mischart: Beitrag, Trailer, Doku, Sport, Podcast oder Hörbuch. Das Lautheitsprofil (früher Format-Profil) bestimmt nur noch, wie laut geliefert wird.</li>
+ <li data-i18n="cl_od_201_3">Trailer: die Musik trägt, die Effekte dürfen knallen. Platz für den Sprecher macht die Musik gezielt im Frequenzbereich der Stimme, und wo Musik, Effekte oder Atmo die Stimme trotzdem verdecken, geben sie genau dort nach.</li>
+ <li data-i18n="cl_od_201_4">Jede Rolle hat ihren eigenen Spitzenschutz: ein Einschlag in der Musik drückt nicht mehr das ganze Bett, und Musik und Effekte werden nicht stärker begrenzt, als die Auslieferung verlangt.</li>
+ <li data-i18n="cl_od_201_5">MXF-Export mit 16 Tonspuren und freier Belegung je Spur, als eigenes Preset speicherbar, mit Belegungsblatt. Ein festes Exportziel, auch auf einem Server-Laufwerk, wird im Projekt und in Vorlagen gespeichert.</li>
+ <li data-i18n="cl_od_201_6">Neu aus Vorlage: beim Videoimport ist die Spurzuordnung der Vorlage vorbelegt.</li>
+ <li data-i18n="cl_od_201_7">Aufnahme: REC während der Wiedergabe setzt am Abspielkopf ein, „I“ hört den Eingang ab, ohne die Spur scharf zu schalten, unterbrochene Aufnahmen bleiben erhalten.</li>
+ <li data-i18n="cl_od_201_8">Das Benutzerhandbuch ist in der App, offline und in der Sprache der App. Das Pegel-Check-Fenster erscheint beim Start nicht mehr von selbst, am Filmende bleibt das letzte Bild stehen.</li>
+ <li data-i18n="cl_od_201_9">Hinweis: die Klangkette hat sich geändert, gespeicherte Mischungen rechnen beim nächsten AUTO MIX einmal neu.</li>
+ </ul>
+ </div>
+
+ <div class="release">
  <span class="release-version">2.0</span><span class="release-date">2026-11-18</span>
  <div class="release-title" data-i18n="cl_od_200_t">Kanalzug mit neun Modulen, Manual-Modus nach DAW-Standard, AUTO MIX für Rohmaterial</div>
  <ul class="release-list">
@@ -596,6 +612,16 @@ const i18n = {
  cl_lc_100_2: 'Two-Pass mit automatischem Refine: Pass 1 misst, Pass 2 korrigiert, Pass 3 verifiziert. Bei Residualwerten über 0,1 LU läuft die Korrektur automatisch nochmal mit getrimmter Verstärkung.',
  cl_lc_100_3: '3-Band LRA-Processor (Linkwitz-Riley 4. Ordnung mit perfekter Rekonstruktion) bringt jede LRA in den Sendekorridor, ohne Pumpen, ohne Phasen-Artefakte.',
  cl_lc_100_4: 'Mono bis 9.1.6 mit BS.1770-konformem LFE-Gewicht. DSP-Engine byte-identisch zum pegelWERK loudness METER PRO, Messen und Korrigieren mit derselben Wahrheit.',
+cl_od_201_t: 'AAF-Import aus dem Schnitt, Mischarten neben AUTO MIX, 16 Tonspuren, Handbuch in der App',
+cl_od_201_1: 'AAF-Import: eine Sequenz aus dem Schnitt kommt mit Clips, Pegeln, Blenden, Clipnamen, Panorama und Stereopaaren in die offene Sitzung. Rollen werden aus Spurnamen und Inhalt vorgeschlagen, fehlende Medien lassen sich aus einem Ordner neu verknüpfen.',
+cl_od_201_2: 'Neben AUTO MIX wählt man die Mischart: Beitrag, Trailer, Doku, Sport, Podcast oder Hörbuch. Das Lautheitsprofil (früher Format-Profil) bestimmt nur noch, wie laut geliefert wird.',
+cl_od_201_3: 'Trailer: die Musik trägt, die Effekte dürfen knallen. Platz für den Sprecher macht die Musik gezielt im Frequenzbereich der Stimme, und wo Musik, Effekte oder Atmo die Stimme trotzdem verdecken, geben sie genau dort nach.',
+cl_od_201_4: 'Jede Rolle hat ihren eigenen Spitzenschutz: ein Einschlag in der Musik drückt nicht mehr das ganze Bett, und Musik und Effekte werden nicht stärker begrenzt, als die Auslieferung verlangt.',
+cl_od_201_5: 'MXF-Export mit 16 Tonspuren und freier Belegung je Spur, als eigenes Preset speicherbar, mit Belegungsblatt. Ein festes Exportziel, auch auf einem Server-Laufwerk, wird im Projekt und in Vorlagen gespeichert.',
+cl_od_201_6: 'Neu aus Vorlage: beim Videoimport ist die Spurzuordnung der Vorlage vorbelegt.',
+cl_od_201_7: 'Aufnahme: REC während der Wiedergabe setzt am Abspielkopf ein, „I“ hört den Eingang ab, ohne die Spur scharf zu schalten, unterbrochene Aufnahmen bleiben erhalten.',
+cl_od_201_8: 'Das Benutzerhandbuch ist in der App, offline und in der Sprache der App. Das Pegel-Check-Fenster erscheint beim Start nicht mehr von selbst, am Filmende bleibt das letzte Bild stehen.',
+cl_od_201_9: 'Hinweis: die Klangkette hat sich geändert, gespeicherte Mischungen rechnen beim nächsten AUTO MIX einmal neu.',
 cl_od_200_t: 'Kanalzug mit neun Modulen, Manual-Modus nach DAW-Standard, AUTO MIX für Rohmaterial',
 cl_od_200_1: 'Jede Spur hat einen Kanalzug mit neun eigenen Bausteinen: Restauration (De-Click, De-Plosive), Entrauschen, EQ, Resonanz, De-Esser, Kompressor, De-Breath, Saturate und Hall. Jeder öffnet ein Modulfenster mit echten Parametern. Die Lesereihenfolge des Rasters ist die Signalfolge, und sie lässt sich ändern.',
 cl_od_200_2: 'Die Module zeigen, was wirklich passiert: die EQ-Kurve wird aus denselben Werten gerechnet, mit denen der Filter arbeitet, der Analyzer zeigt echte Bandpegel, und die Pegelreduktion ist auf allen Kanalzügen zu sehen – auch beim Abspielen der fertigen Assist-Mischung.',
@@ -776,6 +802,16 @@ cl_od_161_2: 'Behoben: ein gescheiterter Transkriptionslauf wurde als leeres Erg
  cl_lc_100_2: 'Two-pass with automatic refine: pass 1 measures, pass 2 corrects, pass 3 verifies. If the residual is above 0.1 LU, correction runs again with trimmed gain.',
  cl_lc_100_3: '3-band LRA processor (Linkwitz-Riley 4th order with perfect reconstruction) pulls every LRA into the broadcast corridor, no pumping, no phase artefacts.',
  cl_lc_100_4: 'Mono to 9.1.6 with BS.1770-compliant LFE weighting. DSP engine byte-identical to pegelWERK loudness METER PRO, measure and correct with the same truth.',
+cl_od_201_t: 'AAF import from the edit, mix styles next to AUTO MIX, 16 sound tracks, user guide in the app',
+cl_od_201_1: 'AAF import: a sequence from the edit arrives in the open session with clips, levels, fades, clip names, pan and stereo pairs. Roles are suggested from track names and content, missing media can be relinked from a folder.',
+cl_od_201_2: 'Next to AUTO MIX you choose the mix style: report, trailer, documentary, sports, podcast or audiobook. The loudness profile (formerly format profile) now only decides how loud the delivery is.',
+cl_od_201_3: 'Trailer: the music carries, the effects may hit hard. The music makes room for the speaker in the voice\'s frequency range, and where music, effects or atmo still mask the voice, they give way right there.',
+cl_od_201_4: 'Every role has its own peak guard: a hit in the music no longer pushes down the whole bed, and music and effects are not limited harder than the delivery requires.',
+cl_od_201_5: 'MXF export with 16 sound tracks, freely allocated per track, savable as your own preset, with an allocation sheet. A fixed export destination, also on a server drive, is stored in the project and in templates.',
+cl_od_201_6: 'New from template: when importing a video, the template\'s track mapping is pre-filled.',
+cl_od_201_7: 'Recording: REC during playback punches in at the playhead, "I" monitors the input without arming the track, interrupted recordings are kept.',
+cl_od_201_8: 'The user guide is in the app, offline and in the app\'s language. The level check window no longer opens on its own at startup, and at the end of the film the last frame stays on screen.',
+cl_od_201_9: 'Note: the sound chain has changed, saved mixes are recalculated once at the next AUTO MIX.',
 cl_od_200_t: 'Channel strip with nine modules, Manual mode to DAW standard, AUTO MIX for raw material',
 cl_od_200_1: 'Every track has a channel strip with nine in-house processors: restoration (de-click, de-plosive), noise reduction, EQ, resonance, de-esser, compressor, de-breath, saturate and reverb. Each opens a module window with real parameters. The grid reads in signal order, and the order can be changed.',
 cl_od_200_2: 'The modules show what really happens: the EQ curve is computed from the same values the filter uses, the analyzer shows true band levels, and gain reduction is visible on every channel strip - also while the finished Assist mix plays back.',

@@ -9,7 +9,7 @@ Bei Produktionen zum Bild laden Sie ein Video, nehmen den Text synchron dazu auf
 |                   | Assist-Modus                                               | Manual-Modus                                        |
 |-------------------|------------------------------------------------------------|-----------------------------------------------------|
 | Gedacht für       | Sprecher, Redakteure und Cutter ohne Tontechnik-Kenntnisse | Tonmeister und Toningenieure                        |
-| Wer mischt        | Die Automatik (AUTO MIX)                                   | Sie selbst, von Hand wie in einer DAW             |
+| Wer mischt        | Die Automatik (AUTO MIX)                                   | Sie selbst, mit dem vollen Funktionsumfang einer professionellen DAW             |
 | Typischer Einsatz | Aufnahme und schnelle Lieferung                            | Schnitt und Feinmischung                            |
 | Ergebnis          | Mischung nach der gewählten Lautheitsnorm per Knopfdruck   | Volle Kontrolle über Regler, Plugins und Automation |
 
@@ -456,7 +456,7 @@ Wer selbst mischen möchte, wechselt mit **MANUAL** in den Manual-Modus. Die Mis
 
 ## 8 Manual-Modus: Mixer, Kanalzug, Gruppen, Master
 
-Im Manual-Modus mischen Sie selbst, von Hand wie in einer DAW. Die App verändert keine Fader, die Abhöre spielt ohne zusätzliche Bearbeitung, und der Export schreibt genau das in die Datei, was Sie hören.
+Im Manual-Modus ist voyzSESSION PRO eine vollwertige DAW, und Sie mischen selbst. Die App verändert keine Fader, die Abhöre spielt ohne zusätzliche Bearbeitung, und der Export schreibt genau das in die Datei, was Sie hören.
 
 ### 8.1 In den Manual-Modus wechseln
 

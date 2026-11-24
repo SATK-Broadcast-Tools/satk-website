@@ -9,7 +9,7 @@ Nas produções sobre imagem, carrega um vídeo, grava o texto em sincronia com 
 |                   | Modo Assist                                                  | Modo Manual                                           |
 |-------------------|--------------------------------------------------------------|-------------------------------------------------------|
 | Pensado para      | Locutores, redatores e editores sem conhecimentos de som     | Técnicos de som e engenheiros de som                  |
-| Quem mistura      | A automação (AUTO MIX)                                       | O próprio utilizador, à mão como numa DAW   |
+| Quem mistura      | A automação (AUTO MIX)                                       | O próprio utilizador, com todas as funções de uma DAW profissional   |
 | Utilização típica | Gravação e entrega rápida                                    | Edição e mistura fina                                 |
 | Resultado         | Mistura conforme a norma de loudness escolhida, com um clique | Controlo total sobre faders, plug-ins e automação     |
 
@@ -456,7 +456,7 @@ Quem quiser misturar por si próprio muda com **MANUAL** para o modo Manual. A m
 
 ## 8 Modo Manual: mixer, channel strip, grupos, master
 
-No modo Manual, mistura por si próprio, à mão como numa DAW. A app não altera nenhum fader, a monitorização reproduz sem tratamento adicional e a exportação grava no ficheiro exatamente aquilo que ouve.
+No modo Manual, o voyzSESSION PRO é uma DAW completa e mistura por si próprio. A app não altera nenhum fader, a monitorização reproduz sem tratamento adicional e a exportação grava no ficheiro exatamente aquilo que ouve.
 
 ### 8.1 Mudar para o modo Manual
 

@@ -9,7 +9,7 @@ Nelle produzioni sulle immagini carichi un video, registri il testo in sincrono 
 |                   | Modalità Assist                                                       | Modalità Manual                                        |
 |-------------------|-----------------------------------------------------------------------|--------------------------------------------------------|
 | Pensata per       | Speaker, redattori e montatori senza conoscenze di tecnica del suono  | Fonici e tecnici del suono                             |
-| Chi fa il mix     | L'automatismo (AUTO MIX)                                              | Tu stesso, come in Pro Tools o Logic                   |
+| Chi fa il mix     | L'automatismo (AUTO MIX)                                              | Tu stesso, a mano come in una DAW                   |
 | Uso tipico        | Registrazione e consegna rapida                                       | Montaggio e mix di precisione                          |
 | Risultato         | Mix secondo la norma di loudness scelta, con un solo clic             | Pieno controllo su controlli, plug-in e automazione    |
 
@@ -456,7 +456,7 @@ Chi vuole fare il mix da sé passa con **MANUAL** alla modalità Manual. Il mix 
 
 ## 8 Modalità Manual: mixer, channel strip, gruppi, master
 
-In modalità Manual fai il mix da te, come in Pro Tools, Logic o Nuendo. L'app non modifica alcun fader, l'ascolto avviene senza elaborazioni aggiuntive e l'esportazione scrive nel file esattamente ciò che senti.
+In modalità Manual fai il mix da te, a mano come in una DAW. L'app non modifica alcun fader, l'ascolto avviene senza elaborazioni aggiuntive e l'esportazione scrive nel file esattamente ciò che senti.
 
 ### 8.1 Passare alla modalità Manual
 

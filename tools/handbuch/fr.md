@@ -9,7 +9,7 @@ Pour les productions sur image, vous chargez une vidéo, enregistrez le texte en
 |                   | Mode Assist                                                                     | Mode Manual                                                |
 |-------------------|---------------------------------------------------------------------------------|------------------------------------------------------------|
 | Destiné à         | Comédiens voix off, journalistes et monteurs sans connaissances en technique du son | Ingénieurs du son et mixeurs                           |
-| Qui mixe          | L'automatisme (AUTO MIX)                                                        | Vous-même, comme dans Pro Tools ou Logic                   |
+| Qui mixe          | L'automatisme (AUTO MIX)                                                        | Vous-même, à la main comme dans une DAW                   |
 | Usage typique     | Enregistrement et livraison rapide                                              | Montage et mixage fin                                      |
 | Résultat          | Mix conforme à la norme de loudness choisie, d'un simple clic                   | Contrôle total des réglages, des plug-ins et de l'automation |
 
@@ -456,7 +456,7 @@ Pour mixer vous-même, passez en mode Manual avec **MANUAL**. Le mix de l'AUTO M
 
 ## 8 Mode Manual : console de mixage, tranche, groupes, master
 
-En mode Manual, vous mixez vous-même, comme dans Pro Tools, Logic ou Nuendo. L'app ne modifie aucun fader, l'écoute se fait sans traitement supplémentaire, et l'export écrit dans le fichier exactement ce que vous entendez.
+En mode Manual, vous mixez vous-même, à la main comme dans une DAW. L'app ne modifie aucun fader, l'écoute se fait sans traitement supplémentaire, et l'export écrit dans le fichier exactement ce que vous entendez.
 
 ### 8.1 Passer en mode Manual
 

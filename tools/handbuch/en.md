@@ -9,7 +9,7 @@ For productions to picture, you load a video, record the text in sync with it an
 |                   | Assist mode                                                     | Manual mode                                         |
 |-------------------|-----------------------------------------------------------------|-----------------------------------------------------|
 | Intended for      | Voice artists, editors and video editors without audio training | Sound engineers and audio engineers                 |
-| Who mixes         | The automatic mix (AUTO MIX)                                    | You, as in Pro Tools or Logic                       |
+| Who mixes         | The automatic mix (AUTO MIX)                                    | You, by hand as in a DAW                       |
 | Typical use       | Recording and fast delivery                                     | Editing and fine mixing                             |
 | Result            | Mix to the selected loudness standard at the push of a button   | Full control over faders, plugins and automation    |
 
@@ -456,7 +456,7 @@ If you want to mix yourself, switch to Manual mode with **MANUAL**. The AUTO MIX
 
 ## 8 Manual mode: mixer, channel strip, groups, master
 
-In Manual mode you mix yourself, as in Pro Tools, Logic or Nuendo. The app does not change any faders, monitoring plays without additional processing, and the export writes exactly what you hear into the file.
+In Manual mode you mix yourself, by hand as in a DAW. The app does not change any faders, monitoring plays without additional processing, and the export writes exactly what you hear into the file.
 
 ### 8.1 Switching to Manual mode
 

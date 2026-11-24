@@ -1002,3 +1002,7 @@ Les touches sans Cmd, Alt ou Control n'agissent pas tant qu'un champ de texte es
 | L'app a planté                                              | Au lancement suivant, choisir la restauration. En cas de modifications, l'app sauvegarde toutes les 30 secondes.                                                                              |
 | Mauvaise langue d'interface                                 | Choisir Réglages \> Général \> Langue et redémarrer l'app.                                                                                                                                     |
 | La fenêtre des réglages A/V est en anglais                  | Cette fenêtre n'est pas encore traduite dans la version 2.0. Le reste de l'app suit la langue choisie.                                                                                        |
+
+### D Marques
+
+Tous les noms de produits et de sociétés cités dans ce manuel sont des marques ou des marques déposées de leurs propriétaires respectifs. Ils ne sont cités que pour indiquer avec quoi voyzSESSION PRO fonctionne. Leur mention n'implique aucun lien avec ces sociétés ni aucune recommandation de leur part.

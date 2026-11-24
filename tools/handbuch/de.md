@@ -1002,3 +1002,7 @@ Tasten ohne Cmd, Alt oder Control wirken nicht, solange ein Textfeld aktiv ist.
 | Die App ist abgestürzt                                | Beim nächsten Start die Wiederherstellung wählen. Die App sichert bei Änderungen alle 30 Sekunden.                                                                             |
 | Falsche Sprache der Oberfläche                        | Einstellungen \> Allgemein \> Sprache wählen und die App neu starten.                                                                                                          |
 | Das Fenster A/V-Einstellungen ist englisch            | Dieses Fenster ist in Version 2.0 noch nicht übersetzt. Die übrige App folgt der gewählten Sprache.                                                                            |
+
+### D Marken
+
+Alle in diesem Handbuch genannten Produkt- und Firmennamen sind Marken oder eingetragene Marken ihrer jeweiligen Inhaber. Sie werden nur genannt, um anzugeben, womit voyzSESSION PRO zusammenarbeitet. Die Nennung bedeutet keine Verbindung zu diesen Unternehmen und keine Empfehlung durch sie.

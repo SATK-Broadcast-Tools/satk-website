@@ -1002,3 +1002,7 @@ I tasti senza Cmd, Alt o Control non hanno effetto finché è attivo un campo di
 | L'app è andata in crash                                           | Al successivo avvio scegli il ripristino. In caso di modifiche l'app salva ogni 30 secondi.                                                                                                |
 | Lingua dell'interfaccia errata                                    | Scegli Impostazioni \> Generale \> Lingua e riavvia l'app.                                                                                                                                 |
 | La finestra delle impostazioni A/V è in inglese                   | Questa finestra non è ancora tradotta nella versione 2.0. Il resto dell'app segue la lingua scelta.                                                                                        |
+
+### D Marchi
+
+Tutti i nomi di prodotti e aziende citati in questo manuale sono marchi o marchi registrati dei rispettivi proprietari. Sono citati solo per indicare con che cosa funziona voyzSESSION PRO. La loro menzione non implica alcun legame con queste aziende né alcuna loro approvazione.

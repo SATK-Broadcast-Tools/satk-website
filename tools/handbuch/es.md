@@ -1002,3 +1002,7 @@ Las teclas sin Cmd, Alt o Control no actúan mientras haya un campo de texto act
 | La app se ha cerrado inesperadamente | En el siguiente inicio, elige la recuperación. Cuando hay cambios, la app guarda una copia cada 30 segundos. |
 | Idioma de la interfaz incorrecto | Elige Ajustes \> General \> Idioma y reinicia la app. |
 | La ventana de ajustes de A/V está en inglés | Esta ventana todavía no está traducida en la versión 2.0. El resto de la app sigue el idioma elegido. |
+
+### D Marcas
+
+Todos los nombres de productos y empresas mencionados en este manual son marcas o marcas registradas de sus respectivos propietarios. Solo se mencionan para indicar con qué funciona voyzSESSION PRO. Su mención no implica ninguna relación con estas empresas ni su respaldo.

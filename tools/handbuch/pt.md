@@ -1002,3 +1002,7 @@ As teclas sem Cmd, Alt ou Control não têm efeito enquanto um campo de texto es
 | A app falhou                                                   | No arranque seguinte, escolher a recuperação. A app guarda a cada 30 segundos quando há alterações.                                                                                             |
 | Idioma errado na interface                                     | Escolher Definições \> Geral \> Idioma e reiniciar a app.                                                                                                                                       |
 | A janela de definições A/V está em inglês                      | Esta janela ainda não está traduzida na versão 2.0. O resto da app segue o idioma escolhido.                                                                                                    |
+
+### D Marcas
+
+Todos os nomes de produtos e empresas mencionados neste manual são marcas ou marcas registadas dos respetivos proprietários. São mencionados apenas para indicar com que o voyzSESSION PRO funciona. A sua menção não implica qualquer ligação a estas empresas nem o seu aval.

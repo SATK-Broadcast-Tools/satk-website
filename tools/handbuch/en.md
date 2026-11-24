@@ -1002,3 +1002,7 @@ Keys without Cmd, Alt or Control have no effect while a text field is active.
 | The app has crashed                                     | At the next start, choose recovery. The app backs up every 30 seconds when there are changes.                                                                                  |
 | Wrong interface language                                | Choose Settings \> General \> Language and restart the app.                                                                                                                    |
 | The A/V settings window is in English                   | This window is not yet translated in version 2.0. The rest of the app follows the selected language.                                                                          |
+
+### D Trademarks
+
+All product and company names mentioned in this manual are trademarks or registered trademarks of their respective owners. They are mentioned only to indicate what voyzSESSION PRO works with. Their mention does not imply any affiliation with or endorsement by these companies.
